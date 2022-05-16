@@ -48,7 +48,7 @@ export default {
 		return { slug, utm, ...data, size: 1000 }
 	},
 	mounted() {
-		this.image = this.img.cdn.replace('images/', '')
+		this.image = this.img?.cdn.replace('images/', '')
 
 		if (this.$route.hash == '#qr') {
 			this.isQR = true
