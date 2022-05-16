@@ -93,7 +93,12 @@ export const actions = {
 							...(data?.alt && { alt: data?.alt }),
 							...(img?.name &&
 								img?.kind === 'image' && {
-									img: { url: img?.url, height: img?.height, width: img?.width },
+									img: {
+										url: img?.url,
+										cdn: cdn(img?.url),
+										height: img?.height,
+										width: img?.width,
+									},
 								}),
 						})
 
@@ -103,4 +108,12 @@ export const actions = {
 
 		commit('setLinks', result)
 	},
+}
+
+function cdn(url) {
+	const url = url
+	const name = url.split('/')[url.split('/').length - 1].split('?')[0]
+	const cdn = 'images/cdn/' + name
+
+	return cdn
 }

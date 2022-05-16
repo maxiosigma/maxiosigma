@@ -9,8 +9,8 @@ export default async function ({ store, $prismic }) {
 		.map((it) => {
 			if (it?.img?.url) {
 				const url = it.img.url
-				const name = RemoveParameterFromUrl(url.split('/')[url.split('/').length - 1])
-				const path = 'images/cdn/' + name
+				const name = url.split('/')[url.split('/').length - 1].split('?')[0]
+				const cdn = 'images/cdn/' + name
 
 				console.log(name)
 			}
