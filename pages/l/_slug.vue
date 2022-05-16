@@ -1,8 +1,6 @@
 <template>
 	<div class="link">
-		<TemplateHead :title="title" :description="description" :main="require(`~/${cdn}`)" :short="cdn" />
-
-		<!--<TemplateHead :title="title" :description="description" />-->
+		<TemplateHead :title="title" :description="description" />
 
 		<h1 class="-z-999 absolute" v-if="title">{{ title }}</h1>
 
@@ -51,8 +49,6 @@ export default {
 			alt = data.alt,
 			url = data?.img?.url
 
-		//console.log(require('~/'))
-
 		return { slug, utm, title, cdn, url, description, link, alt, size: 1000 }
 	},
 	mounted() {
@@ -61,16 +57,16 @@ export default {
 		} else if (this.isQR == false) {
 			const ut = this.utm?.[Object.keys(this.$route.query)?.[0]] ?? this.utm.origin
 
-			//!!this.updateURL(ut)
-			//	? setTimeout(() => {
-			//			!!this.vkPixel()
-			//				? setTimeout(() => {
-			//						location.href = this.link
-			//						setTimeout(() => (location.href = this.alt), 2250)
-			//				  }, 250)
-			//				: null
-			//	  }, 500)
-			//	: null
+			!!this.updateURL(ut)
+				? setTimeout(() => {
+						!!this.vkPixel()
+							? setTimeout(() => {
+									location.href = this.link
+									setTimeout(() => (location.href = this.alt), 2250)
+							  }, 250)
+							: null
+				  }, 500)
+				: null
 		}
 	},
 }
