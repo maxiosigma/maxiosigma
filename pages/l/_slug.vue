@@ -1,8 +1,6 @@
 <template>
 	<div class="link">
-		<!--
-			<TemplateHead :title="title" :description="description" :main="img_logo" :alt="img_logo" :short="img_logo" :ico="img_ico" />
-		-->
+		<!--<TemplateHead :title="title" :description="description" :main="img_logo" :alt="img_logo" :short="img_logo" :ico="img_ico" />-->
 
 		<TemplateHead :title="title" :description="description" />
 
