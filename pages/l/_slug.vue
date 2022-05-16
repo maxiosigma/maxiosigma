@@ -1,6 +1,6 @@
 <template>
 	<div class="link">
-		<TemplateHead :title="title" :description="description" :main="require('~/images') + cdn" :short="require('~/images') + cdn" />
+		<TemplateHead :title="title" :description="description" :main="require(`~/${cdn}`)" :short="cdn" />
 
 		<!--<TemplateHead :title="title" :description="description" />-->
 
