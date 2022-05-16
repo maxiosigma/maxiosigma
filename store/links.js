@@ -104,8 +104,6 @@ export const actions = {
 									width: img?.width,
 								},
 							}),
-
-							//data: data,
 						})
 
 						return sum
