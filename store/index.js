@@ -2,6 +2,7 @@ export const state = () => ({
 	scroll: 0,
 	mainMenu: 0,
 	timeout: 1000,
+	uploadCdn: false,
 	animateKinesis: true,
 	modal: {
 		discount: false,
@@ -10,6 +11,9 @@ export const state = () => ({
 })
 
 export const mutations = {
+	setUploadCdn(state) {
+		state.uploadCdn = true
+	},
 	addSlide(state, prop) {
 		state.slides.push(prop)
 	},
@@ -20,7 +24,11 @@ export const mutations = {
 		if (prop) state.mainMenu = prop
 		else {
 			state.mainMenu = state.mainMenu == 0 ? 1 : -state.mainMenu
-			state.mainMenu == 1 ? (document.body.style.overflow = 'hidden') : state.mainMenu == -1 ? setTimeout(() => (document.body.style.overflow = 'auto'), 2000) : null
+			state.mainMenu == 1
+				? (document.body.style.overflow = 'hidden')
+				: state.mainMenu == -1
+				? setTimeout(() => (document.body.style.overflow = 'auto'), 2000)
+				: null
 		}
 	},
 	modalOpen(state, name) {

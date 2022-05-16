@@ -91,15 +91,14 @@ export const actions = {
 							...(data?.dsc && { description: data?.dsc }),
 							...(data?.lnk && { link: data?.lnk }),
 							...(data?.alt && { alt: data?.alt }),
-							...(img?.name &&
-								img?.kind === 'image' && {
-									img: {
-										url: img?.url,
-										cdn: cdn(img?.url),
-										height: img?.height,
-										width: img?.width,
-									},
-								}),
+							...(img?.name && {
+								img: {
+									url: img?.url,
+									cdn: cdn(img?.url),
+									height: img?.height,
+									width: img?.width,
+								},
+							}),
 						})
 
 						return sum
@@ -111,9 +110,6 @@ export const actions = {
 }
 
 function cdn(url) {
-	const url = url
 	const name = url.split('/')[url.split('/').length - 1].split('?')[0]
-	const cdn = 'images/cdn/' + name
-
-	return cdn
+	return 'images/cdn/' + name
 }
