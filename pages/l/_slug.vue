@@ -45,7 +45,7 @@ export default {
 			utm = store.state.utm,
 			data = store.state.links?.data?.filter((it) => it?.short == slug)?.[0] ?? {},
 			title = data?.title,
-			cdn = data?.img?.cdn.replace('images/', ''),
+			cdn = data?.img?.cdn,
 			description = data?.description,
 			link = data.link,
 			alt = data.alt,
