@@ -1,8 +1,8 @@
 <template>
 	<div class="link">
-		<!--<TemplateHead :title="title" :description="description" :main="img_logo" :alt="img_logo" :short="img_logo" :ico="img_ico" />-->
+		<TemplateHead :title="title" :description="description" :main="cdn" :alt="cdn" :short="cdn" :ico="cdn" />
 
-		<TemplateHead :title="title" :description="description" />
+		<!--<TemplateHead :title="title" :description="description" />-->
 
 		<h1 class="-z-999 absolute" v-if="title">{{ title }}</h1>
 
@@ -54,8 +54,6 @@ export default {
 		return { slug, utm, title, cdn, url, description, link, alt, size: 1000 }
 	},
 	mounted() {
-		//this.image = this.img?.cdn.replace('images/', '')
-
 		if (this.$route.hash == '#qr') {
 			this.isQR = true
 		} else if (this.isQR == false) {
