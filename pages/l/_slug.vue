@@ -1,6 +1,6 @@
 <template>
 	<div class="link">
-		<TemplateHead :title="title" :description="description" :main="cdn" :alt="cdn" :short="cdn" :ico="cdn" />
+		<TemplateHead :title="title" :description="description" :main="require('~/images') + cdn" :short="require('~/images') + cdn" />
 
 		<!--<TemplateHead :title="title" :description="description" />-->
 
@@ -50,6 +50,8 @@ export default {
 			link = data.link,
 			alt = data.alt,
 			url = data?.img?.url
+
+		//console.log(require('~/'))
 
 		return { slug, utm, title, cdn, url, description, link, alt, size: 1000 }
 	},
