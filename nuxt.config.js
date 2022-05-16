@@ -228,7 +228,6 @@ function includes() {
 		plugins = [
 			'@plugins/passive/mixins',
 			'@plugins/passive/directives',
-			{ src: '@plugins/passive/ddImg.js', mode: 'server' },
 			'@plugins/active/VueTypedJs',
 			'@plugins/active/QR.js',
 		],

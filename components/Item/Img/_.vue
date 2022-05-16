@@ -6,8 +6,7 @@
 		:alt="alt ? alt : 'img'"
 		:title="title"
 		:aria-label="title ? title : 'img'"
-		:class="[id, 'img-render']"
-		v-if="getImg(src)" />
+		:class="[id, 'img-render']" />
 </template>
 
 <script>

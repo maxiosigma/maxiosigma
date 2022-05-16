@@ -82,13 +82,10 @@ export const actions = {
 	},
 	async fetchPrismicLinks({ commit }, prismic) {
 		const result = prismic
-			? (await prismic.api.query(prismic.predicates.at('document.type', 'link'))).results
-					//?.filter((it) => it?.lnk)
-					?.reduce((sum, it) => {
+			? (await prismic.api.query(prismic.predicates.at('document.type', 'link'))).results?.reduce(
+					(sum, it) => {
 						const data = it?.data,
 							img = data?.img
-
-						//console.log(img)
 
 						sum.push({
 							...(it?.uid && { short: it?.uid }),
@@ -107,7 +104,9 @@ export const actions = {
 						})
 
 						return sum
-					}, [])
+					},
+					[]
+			  )
 			: []
 
 		commit('setLinks', result)
@@ -116,7 +115,7 @@ export const actions = {
 		const https = require('https') // or 'https' for https:// URLs
 		const fs = require('fs')
 
-		state.data
+		await state.data
 			?.filter((it) => it?.img)
 			.map((it) => {
 				const path = it.img.cdn,
