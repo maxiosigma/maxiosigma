@@ -40,6 +40,14 @@
           "placeholder": ""
         }
       },
+      "img": {
+        "type": "Link",
+        "config": {
+          "label": "Img",
+          "placeholder": "",
+          "select": "media"
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

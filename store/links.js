@@ -75,17 +75,26 @@ export const actions = {
 		await dispatch('fetchPrismicLinks', data?.prismic)
 	},
 	async fetchPrismicLinks({ commit }, prismic) {
+		//const test = (await prismic.api.query(prismic.predicates.at('document.type', 'link'))).results
+		//console.log(test)
+
 		const result = prismic
 			? (await prismic.api.query(prismic.predicates.at('document.type', 'link'))).results
-					?.filter((it) => it?.lnk)
+					//?.filter((it) => it?.lnk)
 					?.reduce((sum, it) => {
+						const data = it?.data,
+							img = data?.img
+
 						sum.push({
 							...(it?.uid && { short: it?.uid }),
-							...(it?.data?.ttl && { title: it?.data?.ttl }),
-							...(it?.data?.dsc && { description: it?.data?.dsc }),
-							...(it?.data?.lnk && { link: it?.data?.lnk }),
-							...(it?.data?.alt && { alt: it?.data?.alt }),
-							...(it?.data?.img && { alt: it?.data?.img }),
+							...(data?.ttl && { title: data?.ttl }),
+							...(data?.dsc && { description: data?.dsc }),
+							...(data?.lnk && { link: data?.lnk }),
+							...(data?.alt && { alt: data?.alt }),
+							...(img?.name &&
+								img?.kind === 'image' && {
+									img: { url: img?.url, height: img?.height, width: img?.width },
+								}),
 						})
 
 						return sum

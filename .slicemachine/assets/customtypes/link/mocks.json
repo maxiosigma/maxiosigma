@@ -1,11 +1,15 @@
 {
-  "id": "ec5f6265-7d03-466d-a5aa-cbdf34f629b4",
-  "uid": "possimus-rerum-nesciunt",
+  "id": "8b4acc17-5b35-4ad9-965c-1e68a4e9d32d",
+  "uid": "sequi-eos-at",
   "type": "link",
   "data": {
-    "lnk": "embrace cross-platform mindshare",
-    "alt": "target customized metrics",
-    "ttl": "redefine granular ROI",
-    "dsc": "redefine compelling convergence"
+    "lnk": "orchestrate mission-critical e-services",
+    "alt": "repurpose sexy solutions",
+    "ttl": "reinvent e-business action-items",
+    "dsc": "syndicate sticky architectures",
+    "img": {
+      "link_type": "media",
+      "url": "https://source.unsplash.com/daily"
+    }
   }
 }

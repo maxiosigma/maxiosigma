@@ -15,6 +15,7 @@ export default {
 			title: 'Автор',
 		}
 	},
+	middleware: 'links',
 	data() {
 		return {
 			visual: false,
@@ -37,9 +38,11 @@ export default {
 		setTimeout(() => {
 			this.visual = true
 		}, this.$store.state.timeout)
+
 		setTimeout(() => {
 			this.$refs.promo?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 		}, this.$store.state.timeout - 1 + 90601)
+
 		this.storageItem('about')
 	},
 }

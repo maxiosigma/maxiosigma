@@ -21,4 +21,9 @@ fs.access?.(path, function (error) {
 	}
 })
 
-export default function () {}
+export default async function ({ store, $prismic }) {
+	await store.dispatch('links/getLinks', { prismic: $prismic })
+	//console.log(store.state.links)
+
+	//console.log($prismic)
+}
