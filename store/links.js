@@ -112,15 +112,16 @@ export const actions = {
 
 		commit('setLinks', result)
 	},
-	async downloadLinksImage({ dispatch }, data) {
+	async downloadLinksImage({ state }) {
 		const https = require('https') // or 'https' for https:// URLs
 		const fs = require('fs')
 
-		state.links.data
+		state.data
 			?.filter((it) => it?.img)
 			.map((it) => {
 				const path = it.img.cdn,
 					url = it.img.url
+
 				fs.access?.(path, (error) => {
 					if (error) {
 						const file = fs.createWriteStream(path)
