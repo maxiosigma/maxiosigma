@@ -33,8 +33,9 @@ export default {
 	//	//this.heightImg = clientHeight !== 0 ? clientHeight : offsetHeight
 	//},
 	computed: {
-		getImg(src) {
-			return src ? require(`~/images/${src}`) : false
+		getImg() {
+			//return false
+			return this.src ? require(`~/images/${this.src}`) ?? false : false
 		},
 	},
 }
