@@ -2,7 +2,7 @@
 .nuxt
 .env.*
 .netlify
-.slicemachine
+#.slicemachine
 
 dist
 node_modules

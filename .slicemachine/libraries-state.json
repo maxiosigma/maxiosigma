@@ -1,0 +1,68 @@
+{
+  "slices": {
+    "components": {
+      "repeat_links": {
+        "library": "slices",
+        "id": "repeat_links",
+        "name": "RepeatLinks",
+        "description": "RepeatLinks",
+        "model": {
+          "id": "repeat_links",
+          "type": "SharedSlice",
+          "name": "RepeatLinks",
+          "description": "RepeatLinks",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "RepeatLinks",
+              "primary": {},
+              "items": {
+                "links": {
+                  "type": "Link",
+                  "config": {
+                    "label": "Links",
+                    "select": "document",
+                    "customtypes": [
+                      "link"
+                    ]
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "repeat_links",
+            "items": [
+              {
+                "links": {
+                  "link_type": "Web",
+                  "url": "https://slicemachine.dev"
+                }
+              },
+              {
+                "links": {
+                  "link_type": "Web",
+                  "url": "https://prismic.io"
+                }
+              }
+            ],
+            "primary": {}
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "vue"
+        },
+        "screenshotPaths": {}
+      }
+    }
+  }
+}
