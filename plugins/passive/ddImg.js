@@ -1,9 +1,9 @@
-const https = require('https') // or 'https' for https:// URLs
-const fs = require('fs')
-
 export default async function ({ store, req, $prismic }) {
 	if (!process.server && req) return
 	else if (!store.state.uploadCdn) {
+		const https = require('https') // or 'https' for https:// URLs
+		const fs = require('fs')
+
 		await store.commit('setUploadCdn')
 		await store.dispatch('links/getLinks', { prismic: $prismic })
 		await store.state.links.data

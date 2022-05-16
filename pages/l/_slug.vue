@@ -4,7 +4,11 @@
 			<TemplateHead :title="title" :description="description" :main="img_logo" :alt="img_logo" :short="img_logo" :ico="img_ico" />
 		-->
 
-		<TemplateHead class="hidden" :title="title" :description="description" />
+		<TemplateHead :title="title" :description="description" />
+
+		<h1 v-if="title">{{ title }}</h1>
+
+		<!--<ItemImg src="" v-if=""></ItemImg>-->
 
 		<noscript class="hidden" inline-template>
 			<div class="hidden">
@@ -24,7 +28,6 @@
 <script>
 export default {
 	nuxtI18n: false,
-	middleware: 'links',
 	head() {
 		return {
 			title: this.title,
@@ -36,7 +39,10 @@ export default {
 	async asyncData({ store, params }) {
 		const slug = params.slug
 		const utm = store.state.utm
-		const data = store.state.links.data?.filter((it) => it?.short == slug)?.[0] ?? {}
+		const data = store.state.links?.data?.filter((it) => it?.short == slug)?.[0] ?? {}
+
+		console.log(store.state.links.data)
+
 		return { slug, utm, ...data, size: 1000 }
 	},
 	data() {
@@ -51,16 +57,16 @@ export default {
 		} else if (this.isQR == false) {
 			const ut = this.utm?.[Object.keys(this.$route.query)?.[0]] ?? this.utm.origin
 
-			!!this.updateURL(ut)
-				? setTimeout(() => {
-						!!this.vkPixel()
-							? setTimeout(() => {
-									location.href = this.link
-									setTimeout(() => (location.href = this.alt), 2250)
-							  }, 250)
-							: null
-				  }, 500)
-				: null
+			//!!this.updateURL(ut)
+			//	? setTimeout(() => {
+			//			!!this.vkPixel()
+			//				? setTimeout(() => {
+			//						location.href = this.link
+			//						setTimeout(() => (location.href = this.alt), 2250)
+			//				  }, 250)
+			//				: null
+			//	  }, 500)
+			//	: null
 		}
 	},
 }

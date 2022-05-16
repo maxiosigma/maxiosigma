@@ -8,7 +8,6 @@
 <script>
 export default {
 	nuxtI18n: false,
-	middleware: 'links',
 	head() {
 		return {
 			title: '',

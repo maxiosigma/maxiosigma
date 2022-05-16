@@ -61,11 +61,12 @@ const links = [
 
 export const state = () => ({
 	data: [],
+	isUpload: false,
 })
 
 export const mutations = {
 	setLinks(state, data) {
-		state.data = [...links, ...data, ...state.data]
+		!state.isUpload ? (state.data = [...links, ...data, ...state.data]) : (state.isUpload = true)
 	},
 }
 
@@ -75,9 +76,6 @@ export const actions = {
 		await dispatch('fetchPrismicLinks', data?.prismic)
 	},
 	async fetchPrismicLinks({ commit }, prismic) {
-		//const test = (await prismic.api.query(prismic.predicates.at('document.type', 'link'))).results
-		//console.log(test)
-
 		const result = prismic
 			? (await prismic.api.query(prismic.predicates.at('document.type', 'link'))).results
 					//?.filter((it) => it?.lnk)
