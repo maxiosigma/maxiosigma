@@ -1,12 +1,13 @@
 <template>
 	<img
-		:src="require(`~/images/${src}`)"
+		:src="getImg(src)"
 		:width="widthImg"
 		:height="heightImg"
 		:alt="alt ? alt : 'img'"
 		:title="title"
 		:aria-label="title ? title : 'img'"
-		:class="[id, 'img-render']" />
+		:class="[id, 'img-render']"
+		v-if="getImg(src)" />
 </template>
 
 <script>
@@ -31,6 +32,11 @@ export default {
 		//	offsetHeight = img?.offsetHeight
 		//this.widthImg = clientWidth !== 0 ? clientWidth : offsetWidth
 		//this.heightImg = clientHeight !== 0 ? clientHeight : offsetHeight
+	},
+	methods: {
+		getImg(src) {
+			return require(`~/images/${src}`) ?? false
+		},
 	},
 }
 </script>
