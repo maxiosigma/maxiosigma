@@ -12,7 +12,7 @@ export default async function ({ store, req, $prismic }) {
 				const path = it.img.cdn,
 					url = it.img.url
 
-				fs.access?.(path, function (error) {
+				fs.access?.(path, (error) => {
 					if (error) {
 						const file = fs.createWriteStream(path)
 						https.get(url, function (response) {
@@ -21,7 +21,6 @@ export default async function ({ store, req, $prismic }) {
 								file.close()
 							})
 						})
-					} else {
 					}
 				})
 			})
