@@ -15,7 +15,6 @@ export default {
 			title: 'Автор',
 		}
 	},
-	//middleware: 'links',
 	data() {
 		return {
 			visual: false,
@@ -50,6 +49,6 @@ export default {
 
 <style lang="scss">
 .about {
-	@apply flex flex-col -mt-20 z-10 fle relative <lg: (flex-wrap pt-5 pb-10);
+	@apply flex flex-col -mt-20 z-10 fle relative <lg: (flex-wrap pt-5 pb-10) ;
 }
 </style>

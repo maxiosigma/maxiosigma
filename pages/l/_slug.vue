@@ -6,9 +6,9 @@
 
 		<TemplateHead :title="title" :description="description" />
 
-		<h1 v-if="title">{{ title }}</h1>
+		<h1 class="-z-999 absolute" v-if="title">{{ title }}</h1>
 
-		<!--<ItemImg src="" v-if=""></ItemImg>-->
+		<ItemImg class="w-full -z-999 absolute" :src="img.cdn.replace('images/', '')" v-if="img.cdn"></ItemImg>
 
 		<noscript class="hidden" inline-template>
 			<div class="hidden">
@@ -28,7 +28,6 @@
 <script>
 export default {
 	nuxtI18n: false,
-	middleware: 'links',
 	head() {
 		return {
 			title: this.title,
@@ -37,18 +36,18 @@ export default {
 			slug: this.slug,
 		}
 	},
+	data() {
+		return {
+			isQR: false,
+			value: this.$config.baseUrl + this.$route.path,
+		}
+	},
 	async asyncData({ store, params }) {
 		const slug = params.slug
 		const utm = store.state.utm
 		const data = store.state.links?.data?.filter((it) => it?.short == slug)?.[0] ?? {}
 
 		return { slug, utm, ...data, size: 1000 }
-	},
-	data() {
-		return {
-			isQR: false,
-			value: this.$config.baseUrl + this.$route.path,
-		}
 	},
 	mounted() {
 		if (this.$route.hash == '#qr') {
@@ -73,7 +72,7 @@ export default {
 
 <style lang="scss">
 .link {
-	@apply bg-black flex-center h-screen w-screen relative;
+	@apply bg-black flex-center flex-col h-screen w-screen relative;
 }
 .qr-code {
 	@apply flex-center w-1/2 overflow-hidden;

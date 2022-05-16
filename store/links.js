@@ -105,7 +105,7 @@ export const actions = {
 								},
 							}),
 
-							data: data,
+							//data: data,
 						})
 
 						return sum

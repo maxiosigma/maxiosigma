@@ -6,6 +6,7 @@ export default async function ({ store, $prismic }) {
 		await store.dispatch('links/getLinks', { prismic: $prismic })
 
 		store.commit('setUploadCdn')
+
 		store.state.links.data
 			?.filter((it) => it?.img)
 			.map((it) => {
