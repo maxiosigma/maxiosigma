@@ -6,7 +6,7 @@
 
 		<h1 class="-z-999 absolute" v-if="title">{{ title }}</h1>
 
-		<ItemImg class="w-full -z-999 absolute" :src="img.cdn.replace('images/', '')" v-if="img.cdn"></ItemImg>
+		<ItemImg class="w-full -z-999 absolute" :src="image"></ItemImg>
 
 		<noscript class="hidden" inline-template>
 			<div class="hidden">
@@ -48,6 +48,8 @@ export default {
 		return { slug, utm, ...data, size: 1000 }
 	},
 	mounted() {
+		this.image = this.img.cdn.replace('images/', '')
+
 		if (this.$route.hash == '#qr') {
 			this.isQR = true
 		} else if (this.isQR == false) {
