@@ -1,3 +1,71 @@
+
+/*
+
+#[build]
+#	 dir="dist"
+#  publish = "dist/"
+
+[build.environment]
+	#CI = "1"
+	#CI = "true"
+	#functions="netlify/functions"
+
+#[[redirects]]
+#	from="/napi/*"
+#	to="/.netlify/functions/:splat"
+#	status="200"
+
+#[[redirects]]
+#	from="/"
+#	to="/ru-ru/"
+#	status="301"
+
+#[[redirects]]
+#	from="/about"
+#	to="/ru-ru/about"
+#	status="301"
+
+#[[plugins]]
+#  package = "netlify-plugin-html-validate"
+
+#		[plugins.inputs]
+#			ext = "html"
+#			config = ".htmlvalidate.json"
+
+#[[plugins]]
+#	package = "netlify-plugin-webmentions"
+
+#		[plugins.inputs]
+#			feedPath = "/feed.xml"
+#			limit = 1
+
+#[[plugins]]
+#	package = "netlify-plugin-fetch-feeds"
+
+#		[plugins.inputs]
+#			dataDir = "netlify/data"
+#			[[plugins.inputs.feeds]]
+#				name = "hawksworx"
+#				url = "https://hawksworx.com/feed.json"
+#				ttl = 3600
+#			[[plugins.inputs.feeds]]
+#				name = "netlify"
+#				url = "https://www.netlify.com/blog/index.xml"
+#				ttl = 86400
+
+#[dev]
+#	framework = "nuxt"
+#	port = 3000
+#	targetPort = 3000
+	#jwtSecret = "secret"
+	#jwtRolePath = "app_metadata.authorization.roles"
+	#port = 8888
+	#targetPort = 3000
+	#autoLaunch = true
+
+
+
+
 // @nuxt/content @nuxt/static @nuxt/utils @nuxtjs/axios @nuxtjs/feed @nuxtjs/html-minifier @nuxtjs/html-validator @nuxtjs/localtunnel @nuxtjs/netlify-files @nuxtjs/pwa @nuxtjs/sitemap @nuxtjs/svg-sprite @nuxtjs/toast @nuxtjs/universal-storage @nuxtjs/webpack-profile @nuxtjs/webpackmonitor @windicss/animations @windicss/plugin-heropatterns @windicss/plugin-icons @windicss/plugin-interaction-variants @windicss/plugin-question-mark @windicss/plugin-scrollbar contentful contentful-management cookie-universal-nuxt core-js cross-env css-loader glob lottie-web node-sass nuxt nuxt-build-optimisations nuxt-content-body-html nuxt-helmet nuxt-ssr-cache nuxt-static nuxt-user-agent nuxt-windicss postcss postcss-import postcss-loader sass sass-loader tailwindcss-border-gradients tailwindcss-elevation tailwindcss-fluid tailwindcss-triangle-after vue-fragment vue-kinesis vue-slick-carousel vue-typed-js windicss @nuxtjs/google-analytics nuxt-animejs nuxt-fontagon nuxt-gsap-module nuxt-typed-router pug pug-plain-loader
 
 // npm i core-js@3.20.0 vue@2.6.14 nuxt-windicss@2.2.1 vue-server-renderer@2.6.14 vue-template-compiler@2.6.14 webpack@5.65.0

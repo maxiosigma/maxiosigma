@@ -1,6 +1,6 @@
 import plugin from 'windicss/plugin'
-import colors from 'windicss/colors'
-import theme from 'windicss/defaultTheme'
+//import colors from 'windicss/colors'
+//import theme from 'windicss/defaultTheme'
 import { defineConfig, transform } from 'windicss/helpers'
 
 export default defineConfig({
@@ -11,7 +11,17 @@ export default defineConfig({
 	},
 	variants: {
 		extend: {
-			backgroundColor: ['group-focus-within', 'group-focus-visible', 'group-active', 'group-visited', 'group-disabled', 'hocus', 'group-hocus', 'can-hover', 'no-hover'],
+			backgroundColor: [
+				'group-focus-within',
+				'group-focus-visible',
+				'group-active',
+				'group-visited',
+				'group-disabled',
+				'hocus',
+				'group-hocus',
+				'can-hover',
+				'no-hover',
+			],
 		},
 	},
 	plugins: plugins(),
