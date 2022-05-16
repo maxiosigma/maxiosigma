@@ -1,0 +1,65 @@
+[build]
+	dir="dist"
+  publish = "dist/"
+
+[build.environment]
+	#CI = "1"
+	#CI = "true"
+	functions="netlify/functions"
+	NODE_VERSION="14.18.2"
+	NPM_VERSION="6.14.15"
+	NETLIFY_USE_YARN="true"
+	NETLIFY_BUILD_DEBUG="true"
+
+#[[redirects]]
+#	from="/napi/*"
+#	to="/.netlify/functions/:splat"
+#	status="200"
+
+#[[redirects]]
+#	from="/"
+#	to="/ru-ru/"
+#	status="301"
+
+#[[redirects]]
+#	from="/about"
+#	to="/ru-ru/about"
+#	status="301"
+
+#[[plugins]]
+#  package = "netlify-plugin-html-validate"
+
+#		[plugins.inputs]
+#			ext = "html"
+#			config = ".htmlvalidate.json"
+
+#[[plugins]]
+#	package = "netlify-plugin-webmentions"
+
+#		[plugins.inputs]
+#			feedPath = "/feed.xml"
+#			limit = 1
+
+#[[plugins]]
+#	package = "netlify-plugin-fetch-feeds"
+
+#		[plugins.inputs]
+#			dataDir = "netlify/data"
+#			[[plugins.inputs.feeds]]
+#				name = "hawksworx"
+#				url = "https://hawksworx.com/feed.json"
+#				ttl = 3600
+#			[[plugins.inputs.feeds]]
+#				name = "netlify"
+#				url = "https://www.netlify.com/blog/index.xml"
+#				ttl = 86400
+
+[dev]
+	framework = "nuxt"
+	port = 3000
+	targetPort = 3000
+	#jwtSecret = "secret"
+	#jwtRolePath = "app_metadata.authorization.roles"
+	#port = 8888
+	#targetPort = 3000
+	#autoLaunch = true

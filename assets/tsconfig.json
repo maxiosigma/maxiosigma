@@ -1,0 +1,5 @@
+{
+	"compilerOptions": {
+		"types": ["@nuxt/types", "@nuxt/http", "@nuxtjs/auth-next", "@nuxtjs/dayjs", "dayjs/plugin/relativeTime"]
+	}
+}

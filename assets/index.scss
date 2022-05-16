@@ -1,0 +1,25 @@
+@import "./scss/animation.scss";
+
+@import "~/fonts/roboto/index.css";
+@import "~/fonts/vetka/index.css";
+@import "~/fonts/fg/font-svg.css";
+@import "~/fonts/mw/font-svg.scss";
+
+@import "./scss/nuxt-content.scss";
+
+//@import "vue-slick-carousel/dist/vue-slick-carousel.css";
+//@import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
+
+//@import "./scss/icons.scss";
+
+[class^="font"] {
+	font-display: swap;
+	//font-size: 1.001em;
+}
+
+@font-face {
+	font-display: swap;
+}
+
+// @import "~/fonts/futuranew/index.css";
+// @import "./scss/vueformulate.scss";

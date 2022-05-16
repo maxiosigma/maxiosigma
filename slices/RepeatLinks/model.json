@@ -1,0 +1,29 @@
+{
+  "id": "repeat_links",
+  "type": "SharedSlice",
+  "name": "RepeatLinks",
+  "description": "RepeatLinks",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "RepeatLinks",
+      "primary": {},
+      "items": {
+        "links": {
+          "type": "Link",
+          "config": {
+            "label": "Links",
+            "select": "document",
+            "customtypes": [
+              "link"
+            ]
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    }
+  ]
+}

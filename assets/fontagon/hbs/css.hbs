@@ -1,0 +1,40 @@
+@font-face {
+	font-family: '{{fontName}}';
+	src: 
+	url('{{fontName}}.ttf') format("truetype"),
+	url('{{fontName}}.svg') format("svg"),
+	{{{src}}};
+}
+
+.font-{{classPrefix}} {
+	align-items: center;
+	direction: ltr;
+	display: inline-block;
+	display: inline-flex;
+	fill: currentColor;
+	font-family: '{{fontName}}';
+	font-feature-settings: 'liga';
+	font-style: normal;
+	font-weight: normal;
+	height: 1em;
+	justify-content: center;
+	letter-spacing: normal;
+	line-height: 1;
+	position: relative;
+	text-rendering: optimizeLegibility;
+	text-transform: none;
+	user-select: none;
+	vertical-align: middle;
+	white-space: nowrap;
+	width: 1em;
+	word-wrap: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+{{#each codepoints}}
+.{{../classPrefix}}-{{@key}}:before { content: "\\{{this}}"; }
+{{/each}}

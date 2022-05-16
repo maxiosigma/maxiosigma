@@ -1,0 +1,11 @@
+.env
+.nuxt
+.env.*
+.netlify
+.slicemachine
+
+dist
+node_modules
+
+fonts/fg
+fonts/fg/*.*

@@ -1,0 +1,35 @@
+{
+  "id": "links",
+  "label": "Рефералки",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "group": {
+        "type": "Group",
+        "config": {
+          "label": "Group",
+          "fields": {
+            "refer": {
+              "type": "Link",
+              "config": {
+                "label": "Refer",
+                "select": "document",
+                "customtypes": [
+                  "link"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {}
+        }
+      }
+    }
+  }
+}
