@@ -34,7 +34,7 @@ export default {
 	//},
 	computed: {
 		getImg(src) {
-			return src ? require(`~/images/${src?.replace('images/', '')}`) : false
+			return src ? require(`~/images/${src}`) : false
 		},
 	},
 }

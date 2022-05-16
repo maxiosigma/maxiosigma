@@ -4,7 +4,7 @@
 
 		<h1 class="-z-999 absolute" v-if="title">{{ title }}</h1>
 
-		<ItemImg class="h-full object-contain w-full -z-999 absolute" :src="cdn"></ItemImg>
+		<ItemImg class="h-full object-contain w-full -z-999 absolute" :src="cdn.replace('images/', '')"></ItemImg>
 
 		<noscript class="hidden" inline-template>
 			<div class="hidden">
