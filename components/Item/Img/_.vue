@@ -35,7 +35,7 @@ export default {
 	},
 	methods: {
 		getImg(src) {
-			return require(`~/images/${src}`) ?? false
+			return src ? require(`~/images/${src}`) : false
 		},
 	},
 }
