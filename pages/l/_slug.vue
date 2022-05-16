@@ -28,6 +28,7 @@
 <script>
 export default {
 	nuxtI18n: false,
+	middleware: 'links',
 	head() {
 		return {
 			title: this.title,
@@ -40,8 +41,6 @@ export default {
 		const slug = params.slug
 		const utm = store.state.utm
 		const data = store.state.links?.data?.filter((it) => it?.short == slug)?.[0] ?? {}
-
-		//console.log(store.state.links.data)
 
 		return { slug, utm, ...data, size: 1000 }
 	},

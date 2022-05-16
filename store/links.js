@@ -77,7 +77,6 @@ export const mutations = {
 }
 
 export const actions = {
-	//{ commit, rootState, dispatch, state }
 	async getLinks({ dispatch }, data) {
 		await dispatch('fetchPrismicLinks', data?.prismic)
 	},
@@ -89,13 +88,15 @@ export const actions = {
 						const data = it?.data,
 							img = data?.img
 
+						//console.log(img)
+
 						sum.push({
 							...(it?.uid && { short: it?.uid }),
 							...(data?.ttl && { title: data?.ttl }),
 							...(data?.dsc && { description: data?.dsc }),
 							...(data?.lnk && { link: data?.lnk }),
 							...(data?.alt && { alt: data?.alt }),
-							...(img?.name && {
+							...(img?.url && {
 								img: {
 									url: img?.url,
 									cdn: cdn(img?.url),
@@ -103,6 +104,8 @@ export const actions = {
 									width: img?.width,
 								},
 							}),
+
+							data: data,
 						})
 
 						return sum
@@ -114,6 +117,6 @@ export const actions = {
 }
 
 function cdn(url) {
-	const name = url.split('/')[url.split('/').length - 1].split('?')[0]
+	const name = url?.split('/')[url.split('/').length - 1].split('?')[0]
 	return 'images/cdn/' + name
 }

@@ -1,12 +1,12 @@
-export default async function ({ store, req, $prismic }) {
-	if (!process.server && req) return
-	else if (!store.state.uploadCdn) {
+export default async function ({ store, $prismic }) {
+	if (process.server && !store.state.uploadCdn) {
 		const https = require('https') // or 'https' for https:// URLs
 		const fs = require('fs')
 
-		await store.commit('setUploadCdn')
 		await store.dispatch('links/getLinks', { prismic: $prismic })
-		await store.state.links.data
+
+		store.commit('setUploadCdn')
+		store.state.links.data
 			?.filter((it) => it?.img)
 			.map((it) => {
 				const path = it.img.cdn,
