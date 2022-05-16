@@ -23,16 +23,16 @@ export default {
 					.join('_'),
 		}
 	},
-	mounted() {
-		//const img = document.getElementsByClassName(this.id)[0],
-		//	clientWidth = img?.clientWidth,
-		//	clientHeight = img?.clientHeight,
-		//	offsetWidth = img?.offsetWidth,
-		//	offsetHeight = img?.offsetHeight
-		//this.widthImg = clientWidth !== 0 ? clientWidth : offsetWidth
-		//this.heightImg = clientHeight !== 0 ? clientHeight : offsetHeight
-	},
-	methods: {
+	//mounted() {
+	//	//const img = document.getElementsByClassName(this.id)[0],
+	//	//	clientWidth = img?.clientWidth,
+	//	//	clientHeight = img?.clientHeight,
+	//	//	offsetWidth = img?.offsetWidth,
+	//	//	offsetHeight = img?.offsetHeight
+	//	//this.widthImg = clientWidth !== 0 ? clientWidth : offsetWidth
+	//	//this.heightImg = clientHeight !== 0 ? clientHeight : offsetHeight
+	//},
+	computed: {
 		getImg(src) {
 			return src ? require(`~/images/${src?.replace('images/', '')}`) : false
 		},
