@@ -57,6 +57,8 @@ const links = [
 	{ name: 'bosslike', short: 'bsl', link: 'https://bosslike.ru/?ref=5669842' },
 	{ name: 'mlmco', short: 'bmcl', link: 'https://best.mlmco.net/?ref=maxiosigma' },
 	{ name: 'megadisk', short: 'mega', link: 'https://mega.nz/aff=FX_NFvIVdH0' },
+
+	{ name: 'megadisk', short: 'amega', link: 'https://mega.nz/aff=FX_NFvIVdH0' },
 ]
 
 export const state = () => ({
@@ -66,7 +68,11 @@ export const state = () => ({
 
 export const mutations = {
 	setLinks(state, data) {
-		!state.isUpload ? (state.data = [...links, ...data, ...state.data]) : (state.isUpload = true)
+		const result = links?.filter(
+			(ln) => data.filter((dln) => ln?.short === dln?.short).length === 0
+		)
+
+		!state.isUpload ? (state.data = [...data, ...result]) : (state.isUpload = true)
 	},
 }
 

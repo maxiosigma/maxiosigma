@@ -15,6 +15,7 @@ export default {
 			title: 'Автор',
 		}
 	},
+	//middleware: 'links',
 	data() {
 		return {
 			visual: false,

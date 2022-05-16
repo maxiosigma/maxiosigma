@@ -41,7 +41,7 @@ export default {
 		const utm = store.state.utm
 		const data = store.state.links?.data?.filter((it) => it?.short == slug)?.[0] ?? {}
 
-		console.log(store.state.links.data)
+		//console.log(store.state.links.data)
 
 		return { slug, utm, ...data, size: 1000 }
 	},
