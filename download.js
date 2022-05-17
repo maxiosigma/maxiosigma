@@ -14,18 +14,24 @@ const accessToken = require('dotenv').config().parsed.PRC_CDA_ACCESS_TOKEN
 		?.filter((it) => it.data.img.url)
 		?.map((it) => it.data.img)
 		?.map(async (it) => {
-			const fileName = cdnName(it.url),
+			const isCheck = { response: false },
+				fileName = cdnName(it.url),
 				data = new downloader({
 					url: it.url,
 					fileName,
 					directory: './images/cdn',
 					cloneFiles: false,
 					skipExistingFileName: true,
+					onResponse() {
+						isCheck.response = true
+					},
 				})
 
 			try {
-				await data.download()
-				console.log(`Файл ${fileName} скачен`)
+				if (isCheck.response) {
+					await data.download()
+					console.log(`Файл ${fileName} скачен`)
+				}
 			} catch (error) {
 				console.log(`Ошибка скачивания: ${fileName} `, error)
 			}
