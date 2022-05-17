@@ -1,6 +1,6 @@
 <template>
 	<img
-		:src="getImg(src)"
+		:src="getImg"
 		:width="widthImg"
 		:height="heightImg"
 		:alt="alt ? alt : 'img'"
@@ -34,7 +34,6 @@ export default {
 	//},
 	computed: {
 		getImg() {
-			//return false
 			return this.src ? require(`~/images/${this.src}`) ?? false : false
 		},
 	},
