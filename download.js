@@ -14,6 +14,7 @@ async function download() {
 
 	api_query_links.map((it) => {
 		console.log(it)
+		//aaaaaaaaaa
 	})
 }
 
