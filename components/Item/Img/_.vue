@@ -38,7 +38,7 @@ export default {
 			try {
 				return require(`~/images/${this.src}`)
 			} catch (error) {
-				return this.src ? this.src : false
+				return this.src || false
 			}
 		},
 	},
