@@ -11,11 +11,12 @@ const accessToken = require('dotenv').config().parsed.PRC_CDA_ACCESS_TOKEN
 //.api.query('')
 
 ;(async () => {
-	const client = prismic
+	const client = await prismic
 		.client(apiEndpoint, {
 			accessToken,
 		})
-		.queryFirst('link')
+		.query('')
+	//.queryFirst('link')
 
 	console.log(client)
 
