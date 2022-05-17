@@ -13,22 +13,29 @@ const client = prismic.createClient(repoName, { fetch, accessToken })
 		?.filter((it) => it.data.img.url)
 		?.map((it) => it.data.img.url)
 
-	const fileName = cdnName(it)
-
-	api_query_links.map((it) => {
-		const data = new downloader({
-			url: it,
-			fileName,
-			directory: './images/cdn',
-			cloneFiles: false,
-			maxAttempts: 3,
-		})
+	api_query_links.map(async (it) => {
+		const fileName = cdnName(it),
+			data = new downloader({
+				url: it,
+				fileName,
+				directory: './images/cdn',
+				cloneFiles: false,
+				maxAttempts: 3,
+				onError: function (error) {
+					console.log(`Ошибка чтения: ${fileName}`, error)
+				},
+				shouldStop: function (error) {
+					if (e.statusCode && e.statusCode === 404) {
+						return true
+					}
+				},
+			})
 
 		try {
-			data.download()
+			await data.download()
 			console.log(`Файл ${fileName} скачен`)
 		} catch (error) {
-			console.log(`Ошибка: ${fileName}`, error)
+			console.log(`Ошибка скачивания: ${fileName} `, error)
 		}
 	})
 })()
