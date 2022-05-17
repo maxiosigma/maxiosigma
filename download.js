@@ -28,10 +28,9 @@ const accessToken = require('dotenv').config().parsed.PRC_CDA_ACCESS_TOKEN
 				})
 
 			try {
-				if (isCheck.response) {
-					await data.download()
-					console.log(`Файл ${fileName} скачен`)
-				}
+				await data.download()
+
+				if (isCheck.response) console.log(`Файл ${fileName} загружен`)
 			} catch (error) {
 				console.log(`Ошибка скачивания: ${fileName} `, error)
 			}
