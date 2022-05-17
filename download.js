@@ -14,7 +14,7 @@ const client = prismic.createClient(repoName, { fetch, accessToken })
 		?.map((it) => it.data.img.url)
 
 	api_query_links.map((it) => {
-		const data = new downloader({ url: it, directory: './images/cdn' })
+		const data = new downloader({ url: it, directory: './images/cdn', fileName: cdnName(url) })
 
 		try {
 			data.download()
@@ -24,3 +24,7 @@ const client = prismic.createClient(repoName, { fetch, accessToken })
 		}
 	})
 })()
+
+function cdnName(url) {
+	return url?.split('/')[url.split('/').length - 1].split('?')[0]
+}
