@@ -52,15 +52,6 @@ export default {
 			active: false,
 		}
 	},
-	mounted() {
-		const isAbout = this.$route.fullPath.indexOf('about') !== -1
-
-		if (!isAbout)
-			setTimeout(() => {
-				this.notifyCook()
-				this.updateSite(this.LVU())
-			}, 500)
-	},
 }
 </script>
 

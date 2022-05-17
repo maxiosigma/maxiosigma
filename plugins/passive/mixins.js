@@ -85,42 +85,6 @@ Vue.mixin({
 			const locale = this.$i18n.locale
 			return this.$ua.deviceType() === 'pc' ? locale + '-amp' : locale.replace('-amp', '')
 		},
-		async isLast() {
-			const lastVersion = await this.LVU()
-			return await (!localStorage.getItem('lastVersion') ||
-				localStorage.getItem('lastVersion') !== String(lastVersion))
-		},
-		async LVU() {
-			const updates = await this.$store.state.contentful.updates
-			const version = updates?.filter((it = it.fields) => it.fields.version)[0].fields.version
-			return version
-		},
-		async updateSite(lv) {
-			// ['nuxt-tailvue', {all: true}]
-
-			const cook = localStorage.getItem('capcake')
-			const lastVersion = await lv
-			const time = 8000
-
-			if (await this.isLast())
-				setTimeout(
-					() =>
-						this.$toast.show(
-							'<div class="px-2 pt-4 pb-8 sm:pb-4">Сайт обновлён до версии <b class="text-yellow-600">' +
-								lastVersion +
-								'</b>, посмотреть: <a href="' +
-								this.$i18n.locale +
-								'/about/update' +
-								'" class="text-sm text-blue-500 uppercase"><u>Обновления</u></a></div>',
-							{
-								theme: this.isLight ? 'outline' : 'bubble',
-								position: 'bottom-right',
-								duration: time,
-							}
-						) && setTimeout(() => localStorage.setItem('lastVersion', lastVersion), time / 3),
-					!cook || cook == 0 ? 4200 : 1000
-				)
-		},
 		notifyCook() {
 			setTimeout(() => {
 				const cook = localStorage.getItem('capcake')

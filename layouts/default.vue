@@ -16,9 +16,10 @@ export default {
 	},
 	beforeMount() {
 		window.onresize = function () {
-			console.log(window.outerHeight - window.innerHeight)
+			//console.log(window.outerHeight - window.innerHeight)
 			if (window.outerHeight - window.innerHeight > 100) {
 				console.log('Вы открыли панель разработчика')
+				location.href = '/404'
 			}
 		}
 	},

@@ -4,7 +4,7 @@ const { apiEndpoint } = require('./sm.json')
 const accessToken = require('dotenv').config().parsed.PRC_CDA_ACCESS_TOKEN
 
 ;(async () => {
-	const query = (
+	;(
 		await prismic
 			.client(apiEndpoint, {
 				accessToken,
@@ -29,7 +29,6 @@ const accessToken = require('dotenv').config().parsed.PRC_CDA_ACCESS_TOKEN
 
 			try {
 				await data.download()
-
 				if (isCheck.response) console.log(`Файл ${fileName} загружен`)
 			} catch (error) {
 				console.log(`Ошибка скачивания: ${fileName} `, error)
