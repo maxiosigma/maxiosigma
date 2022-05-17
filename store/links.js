@@ -114,6 +114,5 @@ export const actions = {
 }
 
 function cdn(url) {
-	const name = url?.split('/')[url.split('/').length - 1].split('?')[0]
-	return 'images/cdn/' + name
+	return 'images/cdn/' + url?.split('/')[url.split('/').length - 1].split('?')[0]
 }
