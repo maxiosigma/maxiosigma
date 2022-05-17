@@ -32,8 +32,8 @@ const client = prismic.createClient(repoName, { fetch, accessToken })
 			})
 
 		try {
-			setTimeout(() => data.cancel(), 5000)
-			await data.download()
+			setTimeout(() => data?.cancel(), 3000)
+			await data?.download()
 			console.log(`Файл ${fileName} скачен`)
 		} catch (error) {
 			console.log(`Ошибка скачивания: ${fileName} `, error)
