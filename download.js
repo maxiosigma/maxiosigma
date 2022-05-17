@@ -11,43 +11,39 @@ const accessToken = require('dotenv').config().parsed.PRC_CDA_ACCESS_TOKEN
 //.api.query('')
 
 ;(async () => {
-	const client = await prismic
-		.client(apiEndpoint, {
-			accessToken,
-		})
-		.query('')
-	//.queryFirst('link')
+	const query = (
+		await prismic
+			.client(apiEndpoint, {
+				accessToken,
+			})
+			.query(prismic.predicates.at('document.type', 'link'))
+	).results
+		?.filter((it) => it.data.img.url)
+		?.map((it) => cdnName(it.data.img.url))
 
-	console.log(client)
+	console.log(query)
 
-	//.client({
-	//	endpoint: apiEndpoint,
-	//	modern: true,
-	//	apiOptions: {
-	//		accessToken,
-	//	},
-	//}).api.httpClient
+	//const api_query_links = (await client?.getAllByType('link'))
+	//	?.filter((it) => it.data.img.url)
+	//	?.map((it) => it.data.img.url)
 
-	//	const api_query_links = (await client?.getAllByType('link'))
-	//		?.filter((it) => it.data.img.url)
-	//		?.map((it) => it.data.img.url)
-	//	api_query_links.map(async (it) => {
-	//		const fileName = cdnName(it),
-	//			data = new downloader({
-	//				url: it,
-	//				fileName,
-	//				directory: './images/cdn',
-	//				cloneFiles: false,
-	//			})
-	//		try {
-	//			await data.download()
-	//			console.log(`Файл ${fileName} скачен`)
-	//		} catch (error) {
-	//			console.log(`Ошибка скачивания: ${fileName} `, error)
-	//		}
-	//	})
+	//api_query_links.map(async (it) => {
+	//	const fileName = cdnName(it),
+	//		data = new downloader({
+	//			url: it,
+	//			fileName,
+	//			directory: './images/cdn',
+	//			cloneFiles: false,
+	//		})
+	//	try {
+	//		await data.download()
+	//		console.log(`Файл ${fileName} скачен`)
+	//	} catch (error) {
+	//		console.log(`Ошибка скачивания: ${fileName} `, error)
+	//	}
+	//})
 })()
 
-//function cdnName(url) {
-//	return url?.split('/')[url.split('/').length - 1].split('?')[0]
-//}
+function cdnName(url) {
+	return url?.split('/')[url.split('/').length - 1].split('?')[0]
+}
