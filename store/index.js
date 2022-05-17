@@ -47,7 +47,6 @@ export const mutations = {
 export const actions = {
 	async nuxtServerInit({ dispatch }, { $prismic }) {
 		await dispatch('links/getLinks', { prismic: $prismic })
-		//await dispatch('links/downloadLinksImage')
 	},
 }
 
