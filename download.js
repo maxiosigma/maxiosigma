@@ -20,14 +20,12 @@ const client = prismic.createClient(repoName, { fetch, accessToken })
 				fileName,
 				directory: './images/cdn',
 				cloneFiles: false,
-				maxAttempts: 3,
-				onError: function (error) {
-					console.log(`Ошибка чтения: ${fileName}`, error)
-				},
+				//maxAttempts: 3,
+				//onError: function (error) {
+				//	console.log(`Ошибка чтения: ${fileName}`, error)
+				//},
 				shouldStop: function (error) {
-					if (e.statusCode && e.statusCode === 404) {
-						return true
-					}
+					return e.statusCode && e.statusCode === 404 ? true : false
 				},
 			})
 
