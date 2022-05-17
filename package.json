@@ -18,6 +18,7 @@
 		"netly-deploy": "netlify deploy",
 		"netly-deploy-prod": "netlify deploy --prod",
 		"generate": "nuxt generate",
+		"generate-zero": "node download.js && nuxt generate",
 		"generate-nlf": "CI=1 nuxt generate --quiet",
 		"generate-optimization": "SET NUXT_OPTIMIZATION=true & nuxt generate",
 		"generate-optimization-start": "npm run generate-optimization && npm run start",

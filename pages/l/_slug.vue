@@ -4,7 +4,7 @@
 
 		<h1 class="-z-999 absolute" v-if="title">{{ title }}</h1>
 
-		<img class="h-full object-contain w-full -z-999 absolute" :src="url" />
+		<img class="h-full object-contain w-full -z-999 absolute" :src="cdn" />
 
 		<noscript class="hidden" inline-template>
 			<div class="hidden">
