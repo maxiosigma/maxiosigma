@@ -31,7 +31,8 @@
 		"Старые зависимости": "npm-check-updates",
 		"Обновить все старые зависимости": "npm-check-updates -u && npm run update",
 		"Очистить кэш": "npm cache clean --force -g",
-		"git-fetch": "git fetch --prune"
+		"git-fetch": "git fetch --prune",
+		"node-download": "node download.js"
 	},
 	"dependencies": {
 		"@apollo/client": "^3.6.2",
@@ -47,7 +48,7 @@
 		"@nuxtjs/toast": "^3.3.1",
 		"@nuxtjs/universal-storage": "^0.5.9",
 		"@nuxtjs/vercel-builder": "^0.22.1",
-		"@prismicio/client": "^5.1.1",
+		"@prismicio/client": "^6.4.3",
 		"@prismicio/helpers": "^2.3.0",
 		"@prismicio/slice-simulator-vue": "^0.2.1",
 		"@prismicio/vue": "^2.1.2",
@@ -68,6 +69,8 @@
 		"import-postcss": "^8.0.2",
 		"lottie-web": "^5.9.4",
 		"markdown-it": "^13.0.1",
+		"node-fetch": "^3.2.4",
+		"nodejs-file-downloader": "^4.9.3",
 		"nuxt": "2.15.8",
 		"nuxt-i18n-easy": "^1.5.1",
 		"nuxt-parallel-middleware": "^0.0.2",

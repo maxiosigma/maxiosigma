@@ -250,13 +250,18 @@ function includes() {
 }
 
 function prismic() {
+	console.log(process.env.PRC_CDA_ACCESS_TOKEN)
+
 	return {
 		prismic: {
-			//previewReloadType: 'hot',
+			previewReloadType: 'hot',
 			components: true,
 			preview: false,
 			endpoint: apiEndpoint,
 			modern: true,
+			apiOptions: {
+				accessToken: process.env.PRC_CDA_ACCESS_TOKEN,
+			},
 		},
 	}
 }
