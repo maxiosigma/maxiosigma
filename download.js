@@ -1,9 +1,9 @@
-const fetch = require('node-fetch')
+//const fetch = require('node-fetch')
 const downloader = require('nodejs-file-downloader')
 const prismic = require('@prismicio/client/umd/@prismicio/client')
 const { apiEndpoint } = require('./sm.json')
 
-const repoName = apiEndpoint?.split('/')?.[2]?.split('.')?.[0]
+//const repoName = apiEndpoint?.split('/')?.[2]?.split('.')?.[0]
 const accessToken = require('dotenv').config().parsed.PRC_CDA_ACCESS_TOKEN
 
 //const client = prismic.createClient(repoName, { fetch, accessToken })
@@ -19,15 +19,17 @@ const accessToken = require('dotenv').config().parsed.PRC_CDA_ACCESS_TOKEN
 			.query(prismic.predicates.at('document.type', 'link'))
 	).results
 		?.filter((it) => it.data.img.url)
-		?.map((it) => it.data.img.url)
+		?.map((it) => it.data.img)
 		?.map(async (it) => {
-			const fileName = cdnName(it),
+			const fileName = cdnName(it.url),
 				data = new downloader({
-					url: it,
+					url: it.url,
 					fileName,
 					directory: './images/cdn',
 					cloneFiles: false,
+					skipExistingFileName: true,
 				})
+
 			try {
 				await data.download()
 				console.log(`Файл ${fileName} скачен`)
