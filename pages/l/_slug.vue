@@ -49,8 +49,6 @@ export default {
 			alt = data.alt,
 			url = data?.img?.url
 
-		//console.log(cdn)
-
 		return { slug, utm, title, cdn, url, description, link, alt, size: 1000 }
 	},
 	mounted() {

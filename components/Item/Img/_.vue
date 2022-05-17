@@ -34,7 +34,13 @@ export default {
 	//},
 	computed: {
 		getImg() {
-			return this.src ? require(`~/images/${this.src}`) ?? false : false
+			try {
+				return require(`~/images/${this.src}`)
+			} catch (error) {
+				return false
+			}
+
+			//return this.src ? require(`~/images/${this.src}`) ?? false : false
 		},
 	},
 }
