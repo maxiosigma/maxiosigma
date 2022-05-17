@@ -15,15 +15,17 @@ export default {
 		}
 	},
 	beforeMount() {
-		window.onresize = function () {
-			if (window.outerHeight - window.innerHeight > 100) {
-				console.log('Вы открыли панель разработчика')
-				setTimeout(() => {
-					location = '/404'
-					location.href = '/404'
-				}, 1500)
+		if (!this.$config.isDev)
+			window.onresize = function () {
+				if (window.outerHeight - window.innerHeight > 100) {
+					console.log('Вы открыли панель разработчика')
+
+					setTimeout(() => {
+						location = '/404'
+						location.href = '/404'
+					}, 1500)
+				}
 			}
-		}
 	},
 	mounted() {
 		this.noContextMenu()

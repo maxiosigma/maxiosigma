@@ -121,6 +121,6 @@ export default {
 }
 
 .debug__screens {
-	@apply before: (bg-black shadow-xl text-sm text-white px-2.5 rounded-tl-md opacity-70 py-1 bottom-0 right-0 z-99999 fixed) <sm:before:content-["screen-none"] @sm: before:content-["screen-sm"] @md: before:content-["screen-md"] @lg: before:content-["screen-lg"] @xl: before:content-['screen-xl'] @2xl: before:content-["screen-2xl"] ;
+	@apply before: (bg-black shadow-xl text-sm text-white px-2.5 rounded-tl-md opacity-70 py-1 bottom-0 right-0 z-99999 fixed) <sm:before:content-["screen-none"] @sm: before:content-["screen-sm"] @md: before:content-["screen-md"] @lg: before:content-["screen-lg"] @xl: before:content-['screen-xl'] @2xl: before:content-["screen-2xl"];
 }
 </style>
