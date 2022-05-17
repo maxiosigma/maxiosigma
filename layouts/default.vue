@@ -14,18 +14,18 @@ export default {
 			htmlAttrs: { ...i18nHead.htmlAttrs },
 		}
 	},
+	beforeMount() {
+		window.onresize = function () {
+			console.log(window.outerHeight - window.innerHeight)
+			if (window.outerHeight - window.innerHeight > 100) {
+				console.log('Вы открыли панель разработчика')
+			}
+		}
+	},
 	mounted() {
-		//this.allActions()
 		this.noContextMenu()
 		this.ymPixel()
 		this.gtm()
-		//console.log(this.$store.state.contentful)
 	},
-	//methods: {
-	//	//async allActions() {
-	//	//	await this.$store.dispatch('contentful/allActions')
-	//	//},
-	//},
-	middleware: [],
 }
 </script>

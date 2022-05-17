@@ -1,0 +1,10 @@
+{
+  "id": "portfolio",
+  "label": "Портфолио",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Дизайнер": {},
+    "Разработчик": {}
+  }
+}

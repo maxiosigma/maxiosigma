@@ -46,6 +46,7 @@
 		"@nuxtjs/sitemap": "^2.4.0",
 		"@nuxtjs/toast": "^3.3.1",
 		"@nuxtjs/universal-storage": "^0.5.9",
+		"@nuxtjs/vercel-builder": "^0.22.1",
 		"@prismicio/client": "^5.1.1",
 		"@prismicio/helpers": "^2.3.0",
 		"@prismicio/slice-simulator-vue": "^0.2.1",
