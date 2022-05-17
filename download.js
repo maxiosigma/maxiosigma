@@ -7,6 +7,12 @@ const accessToken = require('dotenv').config().parsed.PRC_CDA_ACCESS_TOKEN
 const client = prismic.createClient(repoName, { fetch, accessToken })
 
 async function download() {
-	const test = await client.getFirst()
+	const test = await (await client?.getAllByType('link'))
+		?.filter((it) => it.data.img.url)
+		?.map((it) => it.data.img.url)
+
+	//.api.query(prismic.predicates.at('document.type', 'link'))).results
 	console.log(test)
 }
+
+download()
