@@ -6,7 +6,8 @@
 		:alt="alt ? alt : 'img'"
 		:title="title"
 		:aria-label="title ? title : 'img'"
-		:class="[id, 'img-render']" />
+		:class="[id, 'img-render']"
+		v-if="getImg" />
 </template>
 
 <script>
@@ -39,8 +40,6 @@ export default {
 			} catch (error) {
 				return false
 			}
-
-			//return this.src ? require(`~/images/${this.src}`) ?? false : false
 		},
 	},
 }
