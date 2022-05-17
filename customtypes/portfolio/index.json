@@ -4,7 +4,29 @@
   "repeatable": false,
   "status": true,
   "json": {
-    "Дизайнер": {},
+    "Дизайнер": {
+      "landing": {
+        "type": "Group",
+        "config": {
+          "label": "Landing",
+          "fields": {}
+        }
+      },
+      "banner": {
+        "type": "Group",
+        "config": {
+          "label": "Banner",
+          "fields": {}
+        }
+      },
+      "logo": {
+        "type": "Group",
+        "config": {
+          "label": "Logo",
+          "fields": {}
+        }
+      }
+    },
     "Разработчик": {}
   }
 }

@@ -211,6 +211,7 @@ function env() {
 		CTF_MODEL_PROGRAMS: 'program',
 		CTF_MODEL_SHORTLINK: 'shortlink',
 		CTF_MODEL_CATEGORIES: 'category',
+		PRC_CDA_ACCESS_TOKEN: process.env.PRC_CDA_ACCESS_TOKEN,
 	}
 }
 
@@ -232,12 +233,12 @@ function includes() {
 			'@plugins/active/QR.js',
 		],
 		modules = [
-			'@nuxtjs/markdownit',
+			//'@nuxtjs/markdownit',
 			'@nuxtjs/i18n',
-			'@nuxt/content',
-			'@nuxtjs/toast',
+			//'@nuxt/content',
+			//'@nuxtjs/toast',
 			['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }],
-			'nuxt-parallel-middleware',
+			//'nuxt-parallel-middleware',
 		],
 		transpile = ['@prismicio/vue', 'lottie-web', 'vue-typed-js']
 
@@ -250,8 +251,6 @@ function includes() {
 }
 
 function prismic() {
-	console.log(process.env.PRC_CDA_ACCESS_TOKEN)
-
 	return {
 		prismic: {
 			previewReloadType: 'hot',

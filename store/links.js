@@ -81,35 +81,33 @@ export const actions = {
 		await dispatch('fetchPrismicLinks', data?.prismic)
 	},
 	async fetchPrismicLinks({ commit }, prismic) {
-		const result = prismic
-			? (await prismic.api.query(prismic.predicates.at('document.type', 'link'))).results?.reduce(
-					(sum, it) => {
-						const data = it?.data,
-							img = data?.img
-
-						sum.push({
-							...(it?.uid && { short: it?.uid }),
-							...(data?.ttl && { title: data?.ttl }),
-							...(data?.dsc && { description: data?.dsc }),
-							...(data?.lnk && { link: data?.lnk }),
-							...(data?.alt && { alt: data?.alt }),
-							...(img?.url && {
-								img: {
-									url: img?.url,
-									cdn: cdn(img?.url),
-									height: img?.height,
-									width: img?.width,
-								},
-							}),
-						})
-
-						return sum
-					},
-					[]
-			  )
-			: []
-
-		commit('setLinks', result)
+		console.log(prismic)
+		//const result = prismic
+		//	? (await prismic.api.query(prismic.predicates.at('document.type', 'link'))).results?.reduce(
+		//			(sum, it) => {
+		//				const data = it?.data,
+		//					img = data?.img
+		//				sum.push({
+		//					...(it?.uid && { short: it?.uid }),
+		//					...(data?.ttl && { title: data?.ttl }),
+		//					...(data?.dsc && { description: data?.dsc }),
+		//					...(data?.lnk && { link: data?.lnk }),
+		//					...(data?.alt && { alt: data?.alt }),
+		//					...(img?.url && {
+		//						img: {
+		//							url: img?.url,
+		//							cdn: cdn(img?.url),
+		//							height: img?.height,
+		//							width: img?.width,
+		//						},
+		//					}),
+		//				})
+		//				return sum
+		//			},
+		//			[]
+		//	  )
+		//	: []
+		//commit('setLinks', result)
 	},
 }
 
