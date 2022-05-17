@@ -6,7 +6,8 @@
 		"fs": false
 	},
 	"scripts": {
-		"dev": "nuxt",
+		"dev": "yarn node-download && nuxt",
+		"slicemachine": "start-slicemachine",
 		"dev-ntl": "netlify dev",
 		"dev-ntl-live": "netlify dev --live",
 		"dev-graph": "netlify dev --live --graph",
@@ -16,7 +17,8 @@
 		"generate-build-netly-deploy": "npm run generate && npm run netly-deploy-prod",
 		"netly-deploy": "netlify deploy",
 		"netly-deploy-prod": "netlify deploy --prod",
-		"generate": "nuxt generate",
+		"generate": "yarn node-download && nuxt generate",
+		"generate-zero": "nuxt generate",
 		"generate-nlf": "CI=1 nuxt generate --quiet",
 		"generate-optimization": "SET NUXT_OPTIMIZATION=true & nuxt generate",
 		"generate-optimization-start": "npm run generate-optimization && npm run start",
@@ -30,7 +32,8 @@
 		"Старые зависимости": "npm-check-updates",
 		"Обновить все старые зависимости": "npm-check-updates -u && npm run update",
 		"Очистить кэш": "npm cache clean --force -g",
-		"git-fetch": "git fetch --prune"
+		"git-fetch": "git fetch --prune",
+		"node-download": "node download.js"
 	},
 	"dependencies": {
 		"@nuxt-hero-icons/outline": "^1.0.1",
