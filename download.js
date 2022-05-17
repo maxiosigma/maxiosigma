@@ -19,7 +19,7 @@ const accessToken = require('dotenv').config().parsed.PRC_CDA_ACCESS_TOKEN
 			.query(prismic.predicates.at('document.type', 'link'))
 	).results
 		?.filter((it) => it.data.img.url)
-		?.map((it) => cdnName(it.data.img.url))
+		?.map((it) => it.data.img.url)
 		?.map(async (it) => {
 			const fileName = cdnName(it),
 				data = new downloader({
