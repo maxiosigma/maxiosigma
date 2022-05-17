@@ -18,7 +18,7 @@ export default {
 		window.onresize = function () {
 			if (window.outerHeight - window.innerHeight > 100) {
 				console.log('Вы открыли панель разработчика')
-				setTimeout(() => (location.href = '/404'), 1500)
+				setTimeout(() => (location = '/404') && (location.href = '/404'), 1500)
 			}
 		}
 	},
