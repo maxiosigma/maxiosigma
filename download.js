@@ -14,18 +14,13 @@ const client = prismic.createClient(repoName, { fetch, accessToken })
 		?.map((it) => it.data.img.url)
 
  	api_query_links.map((it) => {
-		//console.log(it)
-		//aaaaaaaaaa
-
 		const downloader = new downloader({ url: it, directory: './images/cdn' })
 
 		try {
-			await downloader.download(); //Downloader.download() returns a promise.
-			console.log("All done");
+			await downloader.download();
+			console.log(`Файл ${it} скачен`);
 		} catch (error) {
-			//IMPORTANT: Handle a possible error. An error is thrown in case of network errors, or status codes of 400 and above.
-			//Note that if the maxAttempts is set to higher than 1, the error is thrown only if all attempts fail.
-			console.log("Download failed", error);
+			console.log(`Ошибка: ${it}`);
 		}
 	})
 })
