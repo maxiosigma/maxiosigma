@@ -11,7 +11,26 @@
 				<div id="stars" class="z-30 self-start"></div>
 				<div id="stars2" class="z-40 self-start"></div>
 				<div id="stars3" class="z-20 self-start"></div>
-				<h1 class="font-mono text-white text-6xl z-50"> {{ error.statusCode }} - Ooops... are you lost? </h1>
+				<h1 class="flex-center flex-col font-mono text-white p-4 z-50 sm:p-10">
+					<div class="font-black text-7xl"> <b class="tracking-wide">Ошибка</b> : {{ error.statusCode }}</div>
+					<div class="my-4"></div>
+					<ItemLink
+						class="
+							font-bold
+							text-base
+							transition-all
+							text-indigo-100
+							tracking-5px
+							duration-500
+							uppercase
+							hover:(text-lime-500
+							text-lg
+							tracking-10px)
+							"
+						src="/">
+						→ На главную ←
+					</ItemLink>
+				</h1>
 				<nuxt-link
 					to="/"
 					class="
@@ -28,10 +47,11 @@
 						duration-150
 						justify-center
 						items-center
-						hover:text-white hover:scale-105
-					">
+						hover:(text-white
+						scale-105)
+						">
 					<!-- DON T FORGET TO CHANGE THE IMG -->
-					<img src="/astronaut.png" alt="" />
+					<!--<img src="/astronaut.png" alt="" />-->
 				</nuxt-link>
 			</div>
 		</div>
@@ -47,7 +67,7 @@ export default {
 
 <style lang="scss">
 .error {
-	@apply flex-center text-lime-50;
+	@apply text-lime-50;
 }
 </style>
 
