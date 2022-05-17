@@ -12,7 +12,9 @@ async function download() {
 		?.filter((it) => it.data.img.url)
 		?.map((it) => it.data.img.url)
 
-	console.log(api_query_links)
+	await api_query_links.map((it) => {
+		console.log(it)
+	})
 }
 
 download()
