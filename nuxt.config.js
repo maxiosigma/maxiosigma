@@ -254,7 +254,7 @@ function prismic() {
 	return {
 		prismic: {
 			previewReloadType: 'hot',
-			components: true,
+			components: false,
 			preview: false,
 			endpoint: apiEndpoint,
 			modern: true,

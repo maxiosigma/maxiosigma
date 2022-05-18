@@ -65,7 +65,7 @@ Vue.mixin({
 			return new Date(date).toLocaleDateString(locale, options)
 		},
 		noContextMenu() {
-			if (!this.$config.isDev) {
+			if (!this.$config.app.isDev) {
 				window.oncontextmenu = function () {
 					return false
 				}

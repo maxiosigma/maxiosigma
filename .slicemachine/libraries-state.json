@@ -62,6 +62,166 @@
           "extension": "vue"
         },
         "screenshotPaths": {}
+      },
+      "site": {
+        "library": "slices",
+        "id": "site",
+        "name": "Site",
+        "description": "Site",
+        "model": {
+          "id": "site",
+          "type": "SharedSlice",
+          "name": "Site",
+          "description": "Site",
+          "variations": [
+            {
+              "id": "default",
+              "name": "Default",
+              "docURL": "...",
+              "version": "sktwi1xtmkfgx8626",
+              "description": "Site",
+              "primary": {
+                "title": {
+                  "type": "StructuredText",
+                  "config": {
+                    "single": "heading1",
+                    "label": "Title",
+                    "placeholder": "This is where it all begins..."
+                  }
+                },
+                "description": {
+                  "type": "StructuredText",
+                  "config": {
+                    "single": "paragraph",
+                    "label": "Description",
+                    "placeholder": "A nice description of your product"
+                  }
+                },
+                "date": {
+                  "type": "Date",
+                  "config": {
+                    "label": "Date",
+                    "placeholder": ""
+                  }
+                },
+                "link": {
+                  "type": "Text",
+                  "config": {
+                    "label": "Link",
+                    "placeholder": ""
+                  }
+                },
+                "media": {
+                  "type": "Link",
+                  "config": {
+                    "label": "Media",
+                    "placeholder": "",
+                    "select": "media"
+                  }
+                },
+                "img": {
+                  "type": "Image",
+                  "config": {
+                    "label": "Img",
+                    "constraint": {
+                      "width": 50,
+                      "height": 50
+                    },
+                    "thumbnails": []
+                  }
+                }
+              },
+              "items": {
+                "technology": {
+                  "type": "Link",
+                  "config": {
+                    "label": "Technology",
+                    "select": "document",
+                    "customtypes": [
+                      "technology"
+                    ]
+                  }
+                }
+              },
+              "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+            }
+          ]
+        },
+        "mocks": {
+          "default": {
+            "variation": "default",
+            "name": "Default",
+            "slice_type": "site",
+            "items": [
+              {
+                "technology": {
+                  "link_type": "Web",
+                  "url": "https://slicemachine.dev"
+                }
+              },
+              {
+                "technology": {
+                  "link_type": "Web",
+                  "url": "http://twitter.com"
+                }
+              },
+              {
+                "technology": {
+                  "link_type": "Web",
+                  "url": "http://google.com"
+                }
+              },
+              {
+                "technology": {
+                  "link_type": "Web",
+                  "url": "http://twitter.com"
+                }
+              },
+              {
+                "technology": {
+                  "link_type": "Web",
+                  "url": "https://slicemachine.dev"
+                }
+              }
+            ],
+            "primary": {
+              "title": [
+                {
+                  "type": "heading1",
+                  "text": "Unleash back-end systems",
+                  "spans": []
+                }
+              ],
+              "description": [
+                {
+                  "type": "paragraph",
+                  "text": "Commodo officia reprehenderit minim.",
+                  "spans": []
+                }
+              ],
+              "date": "2016-05-17",
+              "link": "orchestrate revolutionary blockchains",
+              "media": {
+                "link_type": "media",
+                "url": "https://source.unsplash.com/daily"
+              },
+              "img": {
+                "dimensions": {
+                  "width": 50,
+                  "height": 50
+                },
+                "alt": "Placeholder image",
+                "copyright": null,
+                "url": "https://images.unsplash.com/photo-1585399000684-d2f72660f092?w=50&h=50&fit=crop"
+              }
+            }
+          }
+        },
+        "meta": {
+          "fileName": "index",
+          "extension": "vue"
+        },
+        "screenshotPaths": {}
       }
     }
   }

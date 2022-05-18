@@ -4,6 +4,28 @@
     "links": {
       "group": {}
     },
-    "portfolio": {}
+    "portfolio": {
+      "site": {
+        "description": {
+          "config": {
+            "patternType": "PARAGRAPH",
+            "blocks": 1
+          }
+        }
+      }
+    },
+    "technology": {}
+  },
+  "slices": {
+    "Site": {
+      "default": {
+        "items": {},
+        "primary": {
+          "img": {
+            "content": "https://images.unsplash.com/photo-1585399000684-d2f72660f092"
+          }
+        }
+      }
+    }
   }
 }

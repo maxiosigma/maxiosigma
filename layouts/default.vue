@@ -15,7 +15,7 @@ export default {
 		}
 	},
 	beforeMount() {
-		if (!this.$config.isDev)
+		if (!this.$config.app.isDev)
 			window.onresize = function () {
 				if (window.outerHeight - window.innerHeight > 100) {
 					console.log('Вы открыли панель разработчика')
