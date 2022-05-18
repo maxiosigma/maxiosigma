@@ -98,7 +98,7 @@
             "title": {
               "type": "Text",
               "config": {
-                "label": "Title",
+                "label": "Заголовок",
                 "placeholder": ""
               }
             },

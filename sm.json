@@ -1,6 +1,6 @@
 {
 	"_latest": "0.3.7",
 	"apiEndpoint": "https://maxiosigma.prismic.io/api/v2",
-	"libraries": ["@/slices"],
+	"libraries": ["@/slices", "vue-essential-slices"],
 	"localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
 }

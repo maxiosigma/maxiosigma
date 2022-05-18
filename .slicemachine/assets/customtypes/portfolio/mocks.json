@@ -1,16 +1,16 @@
 {
-  "id": "0ebb6453-ef63-4030-85bc-0952146db8a4",
-  "uid": "est-illum-rem",
+  "id": "e6a11b86-8999-43ac-a462-ec830f977d53",
+  "uid": "soluta-sit-earum",
   "type": "portfolio",
   "data": {
     "landing": [
       {
-        "date": "2019-05-05",
-        "title": "optimize best-of-breed communities",
+        "date": "2019-07-17",
+        "title": "maximize ubiquitous networks",
         "description": [
           {
             "type": "paragraph",
-            "text": "Aliqua sit dolor eiusmod labore consequat consequat adipisicing nostrud pariatur dolor. Magna aute aute sit incididunt laborum est nisi mollit do adipisicing.",
+            "text": "Laborum eiusmod non non non magna adipisicing cillum ullamco esse aliquip minim Lorem voluptate. Laborum cillum nostrud ea ex proident dolore qui officia aliqua laboris elit quis.",
             "spans": []
           }
         ],
@@ -21,16 +21,16 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1589321599763-d66926c29613?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1493119508027-2b584f234d6c?w=900&h=500&fit=crop"
         }
       },
       {
-        "date": "2014-01-12",
-        "title": "empower cutting-edge platforms",
+        "date": "2014-02-13",
+        "title": "integrate viral infrastructures",
         "description": [
           {
             "type": "paragraph",
-            "text": "Velit consequat dolore ad velit consectetur nostrud consequat mollit deserunt.",
+            "text": "Mollit ut exercitation sunt sit ipsum occaecat labore magna esse mollit proident quis elit.",
             "spans": []
           }
         ],
@@ -41,16 +41,242 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1544731612-de7f96afe55f?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1591012911207-0dbac31f37da?w=900&h=500&fit=crop"
         }
       },
       {
-        "date": "2021-04-18",
-        "title": "embrace proactive e-commerce",
+        "date": "2020-11-29",
+        "title": "transition visionary models",
         "description": [
           {
             "type": "paragraph",
-            "text": "Ipsum exercitation labore labore esse id ut consectetur adipisicing proident aute incididunt consequat quis sint. Ea deserunt id aliqua aliqua duis sunt commodo dolore minim. Dolor fugiat aliqua ea voluptate ipsum laboris adipisicing labore laboris excepteur.",
+            "text": "Cillum occaecat sint culpa pariatur mollit enim fugiat officia aliqua. Ut laboris nulla id magna. Culpa ea amet ullamco commodo deserunt dolor sit aliquip sit adipisicing mollit aliquip ipsum aute consequat.",
+            "spans": []
+          }
+        ],
+        "img": {
+          "dimensions": {
+            "width": 900,
+            "height": 500
+          },
+          "alt": "Placeholder image",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1551739440-5dd934d3a94a?w=900&h=500&fit=crop"
+        }
+      },
+      {
+        "date": "2013-11-13",
+        "title": "whiteboard transparent metrics",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Cupidatat duis nulla ut consequat reprehenderit.",
+            "spans": []
+          }
+        ],
+        "img": {
+          "dimensions": {
+            "width": 900,
+            "height": 500
+          },
+          "alt": "Placeholder image",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1593642633279-1796119d5482?w=900&h=500&fit=crop"
+        }
+      }
+    ],
+    "banner": [
+      {
+        "date": "2017-05-25",
+        "title": "expedite proactive infomediaries",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Excepteur ea aliqua id magna pariatur nulla excepteur quis fugiat velit commodo eu adipisicing aliquip. Aliquip quis consequat laborum excepteur quis eiusmod. Ut proident Lorem id laborum cillum eu fugiat ut nulla qui ullamco est deserunt.",
+            "spans": []
+          }
+        ],
+        "img": {
+          "dimensions": {
+            "width": 900,
+            "height": 500
+          },
+          "alt": "Placeholder image",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa?w=900&h=500&fit=crop"
+        }
+      },
+      {
+        "date": "2015-06-29",
+        "title": "revolutionize viral web-readiness",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Ipsum aliquip tempor ea magna occaecat excepteur. Veniam sunt magna id ad nisi sint.",
+            "spans": []
+          }
+        ],
+        "img": {
+          "dimensions": {
+            "width": 900,
+            "height": 500
+          },
+          "alt": "Placeholder image",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1579931794097-0ad001e51edb?w=900&h=500&fit=crop"
+        }
+      },
+      {
+        "date": "2014-11-26",
+        "title": "redefine rich metrics",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Pariatur sit mollit ad reprehenderit aliquip aliqua exercitation.",
+            "spans": []
+          }
+        ],
+        "img": {
+          "dimensions": {
+            "width": 900,
+            "height": 500
+          },
+          "alt": "Placeholder image",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa?w=900&h=500&fit=crop"
+        }
+      },
+      {
+        "date": "2012-11-14",
+        "title": "evolve next-generation schemas",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Commodo voluptate aliquip est commodo officia ad non adipisicing dolor nostrud do. Amet et ut excepteur irure ut est cillum nisi nisi elit mollit quis.",
+            "spans": []
+          }
+        ],
+        "img": {
+          "dimensions": {
+            "width": 900,
+            "height": 500
+          },
+          "alt": "Placeholder image",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8?w=900&h=500&fit=crop"
+        }
+      },
+      {
+        "date": "2013-11-15",
+        "title": "implement vertical e-markets",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Cillum deserunt amet magna dolor reprehenderit commodo.",
+            "spans": []
+          }
+        ],
+        "img": {
+          "dimensions": {
+            "width": 900,
+            "height": 500
+          },
+          "alt": "Placeholder image",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=900&h=500&fit=crop"
+        }
+      }
+    ],
+    "logo": [
+      {
+        "date": "2014-11-28",
+        "title": "seize best-of-breed supply-chains",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Laborum ut sit in laborum. Excepteur commodo amet consectetur nulla incididunt in laborum dolor aliquip.",
+            "spans": []
+          }
+        ],
+        "img": {
+          "dimensions": {
+            "width": 900,
+            "height": 500
+          },
+          "alt": "Placeholder image",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1547082299-de196ea013d6?w=900&h=500&fit=crop"
+        }
+      },
+      {
+        "date": "2015-03-25",
+        "title": "extend magnetic technologies",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Incididunt cupidatat et veniam aliqua sunt est. Aliqua anim ut ullamco minim excepteur.",
+            "spans": []
+          }
+        ],
+        "img": {
+          "dimensions": {
+            "width": 900,
+            "height": 500
+          },
+          "alt": "Placeholder image",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1579931794097-0ad001e51edb?w=900&h=500&fit=crop"
+        }
+      },
+      {
+        "date": "2022-02-08",
+        "title": "harness wireless vortals",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Adipisicing ex laborum sint sit reprehenderit officia.",
+            "spans": []
+          }
+        ],
+        "img": {
+          "dimensions": {
+            "width": 900,
+            "height": 500
+          },
+          "alt": "Placeholder image",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1587653915936-5623ea0b949a?w=900&h=500&fit=crop"
+        }
+      },
+      {
+        "date": "2022-05-10",
+        "title": "brand clicks-and-mortar deliverables",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Quis labore ea aute magna dolore elit Lorem consequat consequat in reprehenderit. Aliqua do amet pariatur eu laborum ut minim Lorem elit reprehenderit cillum quis veniam et non. Pariatur occaecat proident dolore consequat sit occaecat ipsum laborum elit anim veniam cillum elit.",
+            "spans": []
+          }
+        ],
+        "img": {
+          "dimensions": {
+            "width": 900,
+            "height": 500
+          },
+          "alt": "Placeholder image",
+          "copyright": null,
+          "url": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=900&h=500&fit=crop"
+        }
+      }
+    ],
+    "card": [
+      {
+        "date": "2013-05-11",
+        "title": "brand distributed communities",
+        "description": [
+          {
+            "type": "paragraph",
+            "text": "Dolor do fugiat fugiat velit excepteur in ea pariatur tempor commodo qui. Consectetur eu dolor aliquip id ipsum cillum proident aliqua laboris commodo deserunt proident sint ea.",
             "spans": []
           }
         ],
@@ -65,12 +291,12 @@
         }
       },
       {
-        "date": "2022-04-29",
-        "title": "monetize intuitive web services",
+        "date": "2014-09-25",
+        "title": "repurpose real-time e-tailers",
         "description": [
           {
             "type": "paragraph",
-            "text": "Aliquip ea id laborum sint.",
+            "text": "Nulla tempor anim nostrud voluptate ea aute elit consectetur quis culpa adipisicing cillum ipsum reprehenderit pariatur. Tempor fugiat Lorem voluptate aute culpa. Cillum et elit officia irure nulla excepteur tempor esse voluptate adipisicing.",
             "spans": []
           }
         ],
@@ -81,188 +307,22 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1589321599763-d66926c29613?w=900&h=500&fit=crop"
-        }
-      }
-    ],
-    "banner": [
-      {
-        "date": "2019-07-26",
-        "title": "generate visionary e-markets",
-        "description": [
-          {
-            "type": "paragraph",
-            "text": "Proident commodo ex esse eiusmod exercitation do elit in id adipisicing laborum excepteur duis eu tempor. Non ex ullamco in exercitation in amet qui consequat ea tempor. Non tempor labore sit non anim proident fugiat cillum deserunt veniam nostrud consectetur cillum amet aute.",
-            "spans": []
-          }
-        ],
-        "img": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=900&h=500&fit=crop"
-        }
-      },
-      {
-        "date": "2016-05-30",
-        "title": "cultivate compelling e-tailers",
-        "description": [
-          {
-            "type": "paragraph",
-            "text": "Ad dolor nulla nisi dolore anim ea consectetur in labore.",
-            "spans": []
-          }
-        ],
-        "img": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1576662712957-9c79ae1280f8?w=900&h=500&fit=crop"
-        }
-      }
-    ],
-    "logo": [
-      {
-        "date": "2020-04-28",
-        "title": "strategize plug-and-play synergies",
-        "description": [
-          {
-            "type": "paragraph",
-            "text": "Cillum excepteur qui irure ea excepteur ea ullamco sunt.",
-            "spans": []
-          }
-        ],
-        "img": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04?w=900&h=500&fit=crop"
-        }
-      },
-      {
-        "date": "2012-04-09",
-        "title": "morph transparent models",
-        "description": [
-          {
-            "type": "paragraph",
-            "text": "Est occaecat do et enim cillum. Ex id nostrud voluptate laboris et duis enim pariatur duis eiusmod Lorem eu proident.",
-            "spans": []
-          }
-        ],
-        "img": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1560762484-813fc97650a0?w=900&h=500&fit=crop"
-        }
-      },
-      {
-        "date": "2017-04-26",
-        "title": "strategize innovative platforms",
-        "description": [
-          {
-            "type": "paragraph",
-            "text": "Ut qui nostrud adipisicing consectetur enim ea labore laboris. Laborum ex esse mollit. Ea sit aliqua laborum ut irure exercitation officia.",
-            "spans": []
-          }
-        ],
-        "img": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=900&h=500&fit=crop"
-        }
-      },
-      {
-        "date": "2015-03-20",
-        "title": "utilize one-to-one content",
-        "description": [
-          {
-            "type": "paragraph",
-            "text": "Id eu ad aliqua culpa officia sint et.",
-            "spans": []
-          }
-        ],
-        "img": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1600804931749-2da4ce26c869?w=900&h=500&fit=crop"
-        }
-      }
-    ],
-    "card": [
-      {
-        "date": "2013-10-27",
-        "title": "facilitate scalable convergence",
-        "description": [
-          {
-            "type": "paragraph",
-            "text": "Enim id id commodo magna.",
-            "spans": []
-          }
-        ],
-        "img": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e?w=900&h=500&fit=crop"
-        }
-      },
-      {
-        "date": "2012-12-04",
-        "title": "harness bleeding-edge e-tailers",
-        "description": [
-          {
-            "type": "paragraph",
-            "text": "Excepteur esse minim aliqua Lorem culpa do laborum occaecat enim laborum commodo nulla adipisicing esse. Officia laboris quis proident cupidatat nulla ex. Ex duis ut dolore nostrud eu laborum mollit aliquip excepteur consectetur consectetur quis.",
-            "spans": []
-          }
-        ],
-        "img": {
-          "dimensions": {
-            "width": 900,
-            "height": 500
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab?w=900&h=500&fit=crop"
+          "url": "https://images.unsplash.com/photo-1587905069134-008460d7a636?w=900&h=500&fit=crop"
         }
       }
     ],
     "site": [
       {
-        "title": "orchestrate rich methodologies",
+        "title": "deliver virtual networks",
         "description": [
           {
             "type": "paragraph",
-            "text": "Ad duis est officia nulla non aliquip dolore. Do nulla aute elit anim reprehenderit eiusmod quis magna labore id.",
+            "text": "Fugiat enim deserunt minim pariatur est enim veniam est aute exercitation qui ex occaecat sint aliquip.",
             "spans": []
           }
         ],
-        "date": "2015-06-15",
-        "link": "facilitate enterprise schemas",
+        "date": "2020-02-20",
+        "link": "optimize integrated functionalities",
         "img": {
           "dimensions": {
             "width": null,
@@ -270,26 +330,26 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1560457079-9a6532ccb118?w=null&h=null&fit=crop"
+          "url": "https://images.unsplash.com/photo-1600861194802-a2b11076bc51?w=null&h=null&fit=crop"
         },
         "media": {
           "link_type": "media",
           "url": "https://source.unsplash.com/daily"
         },
-        "technology": "integrate sticky infrastructures",
-        "font": "unleash impactful channels"
+        "technology": "transform real-time synergies",
+        "font": "whiteboard extensible methodologies"
       },
       {
-        "title": "drive open-source technologies",
+        "title": "drive magnetic niches",
         "description": [
           {
             "type": "paragraph",
-            "text": "Culpa amet laborum veniam cillum aliqua aute anim in ipsum esse eiusmod. Exercitation laboris non nisi exercitation. Tempor ad aliqua magna.",
+            "text": "Aliquip pariatur tempor sint cillum nulla consectetur nisi et dolor culpa commodo exercitation irure sunt. Dolore occaecat est eiusmod aliquip in laborum ipsum velit nostrud amet consectetur pariatur quis tempor.",
             "spans": []
           }
         ],
-        "date": "2019-05-09",
-        "link": "redefine scalable paradigms",
+        "date": "2019-07-09",
+        "link": "extend viral ROI",
         "img": {
           "dimensions": {
             "width": null,
@@ -297,26 +357,26 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04?w=null&h=null&fit=crop"
+          "url": "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?w=null&h=null&fit=crop"
         },
         "media": {
           "link_type": "media",
           "url": "https://source.unsplash.com/daily"
         },
-        "technology": "e-enable efficient experiences",
-        "font": "architect B2B solutions"
+        "technology": "extend open-source mindshare",
+        "font": "exploit compelling blockchains"
       },
       {
-        "title": "recontextualize out-of-the-box e-markets",
+        "title": "harness scalable relationships",
         "description": [
           {
             "type": "paragraph",
-            "text": "Nostrud ea sint minim id. Minim fugiat proident incididunt laboris deserunt consequat tempor. Minim culpa irure elit aute velit do officia qui magna laboris Lorem.",
+            "text": "Eu nulla aliquip do anim irure nulla ut eu pariatur dolor esse qui consequat. Ipsum sint dolore culpa sunt occaecat fugiat enim ipsum voluptate deserunt laboris cupidatat.",
             "spans": []
           }
         ],
-        "date": "2015-06-01",
-        "link": "whiteboard vertical web services",
+        "date": "2016-06-23",
+        "link": "engage intuitive e-tailers",
         "img": {
           "dimensions": {
             "width": null,
@@ -324,26 +384,26 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1587613865763-4b8b0d19e8ab?w=null&h=null&fit=crop"
+          "url": "https://images.unsplash.com/photo-1491975474562-1f4e30bc9468?w=null&h=null&fit=crop"
         },
         "media": {
           "link_type": "media",
           "url": "https://source.unsplash.com/daily"
         },
-        "technology": "transform intuitive web services",
-        "font": "productize intuitive bandwidth"
+        "technology": "integrate dynamic blockchains",
+        "font": "revolutionize bleeding-edge deliverables"
       },
       {
-        "title": "scale e-business paradigms",
+        "title": "maximize global web services",
         "description": [
           {
             "type": "paragraph",
-            "text": "Cillum deserunt do culpa labore quis est amet adipisicing cupidatat amet consectetur quis culpa.",
+            "text": "Sint qui qui occaecat id excepteur et amet mollit id.",
             "spans": []
           }
         ],
-        "date": "2014-05-02",
-        "link": "transform magnetic niches",
+        "date": "2021-08-29",
+        "link": "incentivize interactive e-commerce",
         "img": {
           "dimensions": {
             "width": null,
@@ -351,41 +411,14 @@
           },
           "alt": "Placeholder image",
           "copyright": null,
-          "url": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=null&h=null&fit=crop"
+          "url": "https://images.unsplash.com/photo-1560762484-813fc97650a0?w=null&h=null&fit=crop"
         },
         "media": {
           "link_type": "media",
           "url": "https://source.unsplash.com/daily"
         },
-        "technology": "reinvent one-to-one supply-chains",
-        "font": "iterate killer blockchains"
-      },
-      {
-        "title": "architect mission-critical schemas",
-        "description": [
-          {
-            "type": "paragraph",
-            "text": "Amet cupidatat magna voluptate consectetur enim deserunt id fugiat culpa quis. Cupidatat pariatur dolor proident occaecat excepteur nostrud in tempor mollit do. Ea exercitation magna cillum laborum commodo voluptate ipsum pariatur ex magna nisi.",
-            "spans": []
-          }
-        ],
-        "date": "2021-06-22",
-        "link": "disintermediate visionary blockchains",
-        "img": {
-          "dimensions": {
-            "width": null,
-            "height": null
-          },
-          "alt": "Placeholder image",
-          "copyright": null,
-          "url": "https://images.unsplash.com/photo-1579931794097-0ad001e51edb?w=null&h=null&fit=crop"
-        },
-        "media": {
-          "link_type": "media",
-          "url": "https://source.unsplash.com/daily"
-        },
-        "technology": "aggregate plug-and-play metrics",
-        "font": "synergize killer metrics"
+        "technology": "redefine innovative web-readiness",
+        "font": "reintermediate value-added deliverables"
       }
     ]
   }

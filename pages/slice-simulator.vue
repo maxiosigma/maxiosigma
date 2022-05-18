@@ -1,20 +1,21 @@
 <template>
-	<SliceSimulator v-slot="{ slices }" :state="state">
+	<div></div>
+	<!--<SliceSimulator v-slot="{ slices }" :state="state">
 		<SliceZone :slices="slices" :components="components" />
-	</SliceSimulator>
+	</SliceSimulator>-->
 </template>
 
 <script>
-import { SliceSimulator } from '@prismicio/slice-simulator-vue'
-import { components } from '~/slices'
-import state from '~~/.slicemachine/libraries-state.json'
+//import { SliceSimulator } from '@prismicio/slice-simulator-vue'
+//import { components } from '~/slices'
+//import state from '~~/.slicemachine/libraries-state.json'
 
-export default {
-	components: {
-		SliceSimulator,
-	},
-	data() {
-		return { state, components }
-	},
-}
+//export default {
+//	components: {
+//		SliceSimulator,
+//	},
+//	data() {
+//		return { state, components }
+//	},
+//}
 </script>

@@ -225,6 +225,7 @@ function includes() {
 			'nuxt-fontagon',
 			'@/plugins/active/GSR',
 			'@nuxtjs/prismic',
+			//'nuxt-stories',
 		],
 		plugins = [
 			'@plugins/passive/mixins',
@@ -240,7 +241,7 @@ function includes() {
 			['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }],
 			//'nuxt-parallel-middleware',
 		],
-		transpile = ['@prismicio/vue', 'lottie-web', 'vue-typed-js']
+		transpile = ['@prismicio/vue', 'vue-slicezone', 'lottie-web', 'vue-typed-js']
 
 	return {
 		buildModules: buildModules.concat(DevBuildModules, OptimizeBuildModules),
@@ -276,6 +277,23 @@ function custom() {
 		},
 		googleAnalytics: {
 			id: 'UA-176733004-3',
+		},
+		stories: {
+			//lang: 'ru',
+			storiesDir: 'assets/stories',
+			//addons: [
+			//	'@storybook/addon-controls',
+			//	'@storybook/addon-notes',
+			//	{
+			//		name: '@storybook/preset-scss',
+			//		options: {
+			//			cssLoaderOptions: {
+			//				modules: true,
+			//				localIdentName: '[name]__[local]--[hash:base64:5]',
+			//			},
+			//		},
+			//	},
+			//],
 		},
 		markdownit: {
 			runtime: true,

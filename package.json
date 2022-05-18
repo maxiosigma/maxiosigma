@@ -43,7 +43,6 @@
 		"encoding": "^0.1.13",
 		"floating-vue": "^2.0.0-beta.16",
 		"fs": "^0.0.0",
-		"glob": "^7.2.0",
 		"import-postcss": "^8.0.2",
 		"lottie-web": "^5.9.4",
 		"markdown-it": "^13.0.1",
@@ -52,6 +51,7 @@
 		"nuxt": "2.15.8",
 		"nuxt-i18n-easy": "^1.5.1",
 		"nuxt-parallel-middleware": "^0.0.2",
+		"nuxt-sm": "^0.1.6",
 		"nuxt-user-agent": "^1.2.2",
 		"nuxt-vuex-router-sync": "^0.0.3",
 		"nuxt-windicss": "^2.3.1",
@@ -79,6 +79,7 @@
 		"nuxt-fontagon": "^1.0.4",
 		"nuxt-gsap-module": "^1.7.0",
 		"nuxt-png-to-ico": "^0.0.3",
+		"nuxt-stories": "^2.0.17",
 		"slice-machine-ui": "^0.3.7"
 	}
 }
