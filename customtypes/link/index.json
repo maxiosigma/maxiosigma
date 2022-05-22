@@ -5,6 +5,15 @@
   "status": true,
   "json": {
     "Main": {
+      "pth": {
+        "type": "Boolean",
+        "config": {
+          "label": "Партнёрка",
+          "placeholder_false": "false",
+          "placeholder_true": "true",
+          "default_value": false
+        }
+      },
       "uid": {
         "type": "UID",
         "config": {

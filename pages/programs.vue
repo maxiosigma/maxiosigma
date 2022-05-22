@@ -1,7 +1,14 @@
 <template>
 	<LayoutPage>
-		<div class="text-white">
-			{{ data }}
+		<div class="flex flex-wrap text-white justify-between">
+			<a
+				:href="'/l/' + it.short"
+				class="bg-dark-900 m-4 w-full py-3 px-6 sm:max-w-1/3 md:max-w-1/4 lg:max-w-1/5"
+				v-for="(it, i) in data"
+				:key="i">
+				<div class="text-sm">{{ it.title }}</div>
+				<div class="mt-2 text-xs">{{ it.description }}</div>
+			</a>
 		</div>
 	</LayoutPage>
 </template>
@@ -10,10 +17,13 @@
 export default {
 	data() {
 		return {
-			data: Object.values(this.$store.state.links.data)?.reduce(
-				(sum, it) => sum.push({ title: it.ttl, description: it.dsc, short: it.short }) && sum,
-				[]
-			),
+			data: Object.values(this.$store.state.links.data)
+				?.filter((it) => {
+					//
+
+					return it.partnership || it.title || it.description
+				})
+				?.reduce((sum, it) => sum.push({ title: it.title, description: it.description, short: it.short }) && sum, []),
 		}
 	},
 }

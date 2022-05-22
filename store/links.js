@@ -92,6 +92,7 @@ export const actions = {
 							...(data?.dsc && { description: data?.dsc }),
 							...(data?.lnk && { link: data?.lnk }),
 							...(data?.alt && { alt: data?.alt }),
+							...(data?.pth && { partnership: data?.pth }),
 							...(img?.url && {
 								img: {
 									url: img?.url,

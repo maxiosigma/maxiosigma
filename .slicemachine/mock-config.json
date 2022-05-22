@@ -1,6 +1,10 @@
 {
   "_cts": {
-    "link": {},
+    "link": {
+      "pth": {
+        "content": false
+      }
+    },
     "portfolio": {
       "site": {
         "description": {

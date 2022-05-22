@@ -30,6 +30,7 @@
 		"@prismicio/helpers": "^2.3.0",
 		"@prismicio/slice-simulator-vue": "^0.2.1",
 		"@prismicio/vue": "^2.1.2",
+		"@slicemachine/init": "^1.1.8",
 		"@windicss/plugin-animations": "^1.0.9",
 		"@windicss/plugin-heropatterns": "0.0.8",
 		"@windicss/plugin-icons": "^1.0.2",
