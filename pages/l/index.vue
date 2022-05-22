@@ -23,7 +23,7 @@ export default {
 		}
 	},
 	mounted() {
-		setTimeout(() => (location.href = '/business-info'), 250)
+		setTimeout(() => (location.href = '/business'), 250)
 	},
 }
 </script>

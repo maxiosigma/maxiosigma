@@ -5,10 +5,10 @@
 				<div class="footer-container">
 					<!--<div class="text-xl text-light-600">Подписывайтесь на нас</div>-->
 					<!-- 	hover:(text-indigo-400 text-shadow-lg) -->
-					<ItemLink href="https://www.facebook.com/maxiosigma.partners" class="footer-link">
-						<div class="footer-link-name">©</div> {{ $config.app.name }} <div class="mx-1 mb-1">▬</div> 2022
+					<div href="https://www.facebook.com/maxiosigma.partners" class="footer-link">
+						<div class="footer-link-name">©</div> {{ $config.app.name }} <div class="mr-2 mb-1 ml-1.5">▬</div> 2022
 						<!--Партнёр для всех-->
-					</ItemLink>
+					</div>
 
 					<!--<LazyItemFbChat class=" "></LazyItemFbChat>-->
 				</div>
