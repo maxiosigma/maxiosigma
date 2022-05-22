@@ -10,7 +10,10 @@
 export default {
 	data() {
 		return {
-			data: Object.values(this.$store.state.links.data)?.reduce((sum, it) => sum.push(it.short) && sum, []),
+			data: Object.values(this.$store.state.links.data)?.reduce(
+				(sum, it) => sum.push({ title: it.ttl, description: it.dsc, short: it.short }) && sum,
+				[]
+			),
 		}
 	},
 }
