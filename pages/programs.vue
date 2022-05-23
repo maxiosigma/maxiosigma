@@ -3,11 +3,26 @@
 		<div class="flex flex-wrap text-white justify-between">
 			<a
 				:href="'/l/' + it.short"
-				class="bg-dark-900 m-4 w-full py-3 px-6 sm:max-w-1/3 md:max-w-1/4 lg:max-w-1/5"
+				class="flex-center bg-dark-900 m-4 w-full py-3 px-6 group sm:max-w-1/3 md:max-w-1/4 lg:max-w-1/5"
 				v-for="(it, i) in data"
 				:key="i">
-				<div class="text-sm">{{ it.title }}</div>
-				<div class="mt-2 text-xs">{{ it.description }}</div>
+				<div class="text-sm absolute group-hover:(animated animate-zoomOut) ">{{ it.title }}</div>
+				<div class="text-xs opacity-0 group-hover:(block animated animate-bounce-in) ">{{ it.description }}</div>
+
+				<!--<vue-typed-js
+					:loop="false"
+					:bindInputFocusEvents="true"
+					:smartBackspace="false"
+					:fadeOut="false"
+					:typeSpeed="20"
+					:startDelay="1000"
+					:backDelay="1000"
+					:backSpeed="10"
+					:cursorChar="''"
+					:strings="[it.title, it.description]"
+					@onTypingPaused="doSmth()">
+					<div class="typing"></div>
+				</vue-typed-js>-->
 			</a>
 		</div>
 	</LayoutPage>
@@ -29,6 +44,11 @@ export default {
 				return sum
 			}, []),
 		}
+	},
+	methods: {
+		doSmth(e) {
+			console.log(e)
+		},
 	},
 }
 </script>

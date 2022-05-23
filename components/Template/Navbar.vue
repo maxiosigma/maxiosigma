@@ -191,6 +191,8 @@ export default {
 			@apply cursor-pointer text-shadow-md tracking-wider transition-all text-[10px] duration-300 uppercase overflow-hidden sm:(text-xs tracking-wide) hover:(overflow-visible) ;
 
 			&-hover {
+				//font-family: 'Wind CTT';
+
 				@apply my-auto min-w-3 py-1 transition-all duration-500 truncate pointer-events-none group-hover:(text-yellow-300 max-w-none tracking-widest overflow-clip overflow-visible text-shadow-lg) ;
 			}
 
@@ -239,7 +241,6 @@ export default {
 			}
 
 			&-link {
-				font-family: 'Wind CTT';
 				@apply font-semibold transition text-light-200 duration-300 hover:(text-black);
 
 				&.exact {
