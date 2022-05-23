@@ -6,8 +6,8 @@
 				class="flex-center bg-dark-900 m-4 w-full py-3 px-6 group sm:max-w-1/3 md:max-w-1/4 lg:max-w-1/5"
 				v-for="(it, i) in data"
 				:key="i">
-				<div class="text-sm absolute group-hover:(animated animate-zoomOut) ">{{ it.title }}</div>
-				<div class="text-xs opacity-0 group-hover:(block animated animate-bounce-in) ">{{ it.description }}</div>
+				<div class="text-sm animate-flipInX animated absolute group-hover:(animate-fadeOut)">{{ it.title }}</div>
+				<div class="text-xs opacity-0 group-hover:(block opacity-100 animated animate-flipInX) ">{{ it.description }}</div>
 
 				<!--<vue-typed-js
 					:loop="false"
