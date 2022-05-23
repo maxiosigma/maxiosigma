@@ -239,6 +239,7 @@ export default {
 			}
 
 			&-link {
+				font-family: 'Wind CTT';
 				@apply font-semibold transition text-light-200 duration-300 hover:(text-black);
 
 				&.exact {
