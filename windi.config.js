@@ -66,6 +66,7 @@ function themeExtend() {
 			'5px': '5px',
 
 			'0.25r': '0.25rem',
+			'0.5r': '0.5rem',
 			'1r': '1rem',
 			'2r': '2rem',
 			'3r': '3rem',

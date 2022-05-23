@@ -1,32 +1,39 @@
 <template>
 	<LayoutPage>
 		<div class="flex flex-wrap text-light-200 justify-between">
-			<a
-				:href="'/l/' + it.short"
+			<ItemLink
+				self
+				@click.native.prevent="handleOpen(it.short)"
+				:href="'/business'"
 				class="
 					rounded-md
 					flex-center
-					bg-cyan-700 bg-opacity-85 bg-hero-rain-white-50 bg-0.25r
+					bg-cyan-700 bg-opacity-80 bg-hero-rain-white-30 bg-0.25r
 					m-4
 					w-full
 					py-4
-					px-6
+					px-5
+					transition
+					duration-700
 					overflow-hidden
 					group
 					sm:max-w-1/3
 					md:max-w-1/4
-					lg:max-w-1/5
+					lg:max-w-1/5 lg:hover:(bg-orange-700)
 				"
 				v-for="(it, i) in data"
 				:key="i">
 				<div
 					class="
 						font-semibold
-						text-md
+						text-lg text-center
 						tracking-wider
+						px-4
 						animate-flipInX animate-delay-400
 						animated
 						absolute
+						whitespace-normal
+						break-words
 						group-hover:(animate-delay-200
 						animate-duration-600 animate-fadeOut)
 						"
@@ -48,7 +55,7 @@
 						"
 					>{{ it.description }}</div
 				>
-			</a>
+			</ItemLink>
 		</div>
 	</LayoutPage>
 </template>
@@ -71,12 +78,9 @@ export default {
 		}
 	},
 	methods: {
-		doSmth(e) {
-			console.log(e)
+		handleOpen(short) {
+			window.open('/l/' + short, '_blank')
 		},
 	},
 }
 </script>
-
-<style lang="scss">
-</style>

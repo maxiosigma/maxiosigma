@@ -17,9 +17,9 @@ export default {
 		const normalHref = this.site
 			? ''
 			: this.href
-				.split('/')
-				.filter((it, i) => !(i === 0 && it === '') && !(i === this.href.length - 1 && it === ''))
-				.join('/')
+					.split('/')
+					.filter((it, i) => !(i === 0 && it === '') && !(i === this.href.length - 1 && it === ''))
+					.join('/')
 
 		return {
 			onBlank: this.isBlank(this.href) || this.blank,
