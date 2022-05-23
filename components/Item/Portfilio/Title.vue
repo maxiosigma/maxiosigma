@@ -1,7 +1,5 @@
 <template>
-	<LayoutPage>
-		<!--<ItemPortfolioTitle></ItemPortfolioTitle>-->
-	</LayoutPage>
+	<div>Портфолио</div>
 </template>
 
 <script>

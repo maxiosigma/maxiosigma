@@ -29,7 +29,7 @@
 						<div
 							class="nav-bar-link-hover"
 							:class="{ 'border-b-2 border-b-yellow-500': isRoute === link.href || isRoute === link.href + '/' }"
-							>{{ link.title }}</div
+							>{{ link.title }} {{ link.dept + link.index + link.position - 1 }} {{ i }}</div
 						>
 					</div>
 				</div>
@@ -58,8 +58,8 @@ export default {
 			openSubMenu: false,
 			openSubMenuCount: 0,
 			crumbs: this.getCrumbs(),
-			links: this.$store.state.navigation.links.reduce((sum, item, i) => {
-				sum.push(...this.recurseObj(item, i + 1, i + 1))
+			links: this.$store.state.navigation.links?.reduce((sum, item, i) => {
+				sum.push(...this.recurseObj(item, i + 1, i + 1, i))
 				return sum
 			}, []),
 			isRoute: this.$route.fullPath?.replace(this?.localePath('/') + '/', ''),
@@ -95,13 +95,15 @@ export default {
 				this.test = this.activeTests[this.activeTests.length - 1]
 			}
 		},
-		getObj(item, index, position, dept = 1) {
-			return { title: item?.title, ...(item.href && { href: item.href }), index, position, dept }
+		getObj(item, index, position, iteration, dept = 1) {
+			return { title: item?.title, ...(item.href && { href: item.href }), index, position, iteration, dept }
 		},
-		recurseObj(item, index, position, dept = 1, result = []) {
+		recurseObj(item, index, position, iteration, dept = 1, result = []) {
 			if (item?.items)
-				item?.items?.forEach((it, j) => this.recurseObj(it, position + dept + index - 1, position + j, dept + 1, result))
-			result.push(this.getObj(item, index, position, dept))
+				item?.items?.forEach((it, j) => this.recurseObj(it, position + dept + index - 1, position + j, iteration, dept + 1, result))
+
+			result.push(this.getObj(item, index, position, iteration, dept))
+
 			return result
 		},
 		getCrumbs() {

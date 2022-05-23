@@ -4,7 +4,7 @@ export const state = () => ({
 			title: 'Главная',
 			items: [
 				{ title: 'Автор', href: 'about' },
-				{ title: 'Политика', href: 'policy' },
+				//{ title: 'Политика', href: 'policy' },
 				//{ title: 'Обновления', href: 'about/update' },
 			],
 		},
@@ -13,6 +13,10 @@ export const state = () => ({
 			items: [
 				{ title: 'Дизайнер', href: 'designer' },
 				{ title: 'Разработчик', href: 'developer' },
+				{
+					title: 'AAAAAAAA',
+					items: [{ title: 'BBBBBBB', href: 'programs' }],
+				},
 			],
 		},
 		//{ title: 'Инфо', items: [{ title: 'Блог', href: 'blog' }] },
