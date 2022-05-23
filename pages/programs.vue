@@ -1,6 +1,6 @@
 <template>
 	<LayoutPage>
-		<div class="flex flex-wrap text-light-200 justify-between">
+		<div class="container flex flex-wrap mx-auto text-light-200 justify-between">
 			<ItemLink
 				self
 				@click.native.prevent="handleOpen(it.short)"
@@ -34,6 +34,9 @@
 						absolute
 						whitespace-normal
 						break-words
+						sm:max-w-1/3
+						md:max-w-1/4
+						lg:max-w-1/5
 						group-hover:(animate-delay-200
 						animate-duration-600 animate-fadeOut)
 						"
