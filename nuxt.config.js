@@ -85,21 +85,21 @@ function generate() {
 			devtools: app_config.isDev ? true : false,
 			exclude: [/^\/test/, ...exd],
 
-			routes() {
-				return staticRoutes()
-			},
+			//routes() {
+			//	return staticRoutes()
+			//},
 		},
 	}
 }
 
-async function staticRoutes() {
-	const { promisify } = require('util')
-	const Glob = require('glob')
-	const glob = promisify(Glob)
-	const files = await glob('./assets/stories/**/*.{vue,js,md}')
-	const routes = files.map((f) => f.replace('./', '/').replace(/(.js|.vue|.md)/, ''))
-	return routes
-}
+//async function staticRoutes() {
+//	const { promisify } = require('util')
+//	const Glob = require('glob')
+//	const glob = promisify(Glob)
+//	const files = await glob('./assets/stories/**/*.{vue,js,md}')
+//	const routes = files.map((f) => f.replace('./', '/').replace(/(.js|.vue|.md)/, ''))
+//	return routes
+//}
 
 function hooks() {
 	return { hooks: {} }
@@ -238,7 +238,7 @@ function includes() {
 			'nuxt-fontagon',
 			'@/plugins/active/GSR',
 			'@nuxtjs/prismic',
-			'nuxt-stories',
+			//'nuxt-stories',
 		],
 		plugins = [
 			'@plugins/passive/mixins',
@@ -321,7 +321,7 @@ function custom() {
 		},
 		iconFont: {
 			files: ['./assets/fontagon/*.svg'],
-			dist: './fonts/fg',
+			dist: './fonts/icons/fg',
 			fontName: 'font-svg',
 			formatOptions: {
 				svg: {

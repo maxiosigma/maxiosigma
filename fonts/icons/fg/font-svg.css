@@ -1,0 +1,52 @@
+@font-face {
+	font-family: 'font-svg';
+	src: 
+	url('font-svg.ttf') format("truetype"),
+	url('font-svg.svg') format("svg"),
+	url("font-svg.eot?ace3e5635952f43c99684c0565cdafca?#iefix") format("embedded-opentype"),
+url("font-svg.woff2?ace3e5635952f43c99684c0565cdafca") format("woff2"),
+url("font-svg.woff?ace3e5635952f43c99684c0565cdafca") format("woff");
+}
+
+.font-ft {
+	align-items: center;
+	direction: ltr;
+	display: inline-block;
+	display: inline-flex;
+	fill: currentColor;
+	font-family: 'font-svg';
+	font-feature-settings: 'liga';
+	font-style: normal;
+	font-weight: normal;
+	height: 1em;
+	justify-content: center;
+	letter-spacing: normal;
+	line-height: 1;
+	position: relative;
+	text-rendering: optimizeLegibility;
+	text-transform: none;
+	user-select: none;
+	vertical-align: middle;
+	white-space: nowrap;
+	width: 1em;
+	word-wrap: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+
+.ft-ameba:before { content: "\f101"; }
+.ft-ins:before { content: "\f102"; }
+.ft-meta:before { content: "\f103"; }
+.ft-ok:before { content: "\f104"; }
+.ft-pikachu:before { content: "\f105"; }
+.ft-telegram:before { content: "\f106"; }
+.ft-tiktok:before { content: "\f107"; }
+.ft-tumblr:before { content: "\f108"; }
+.ft-twitter:before { content: "\f109"; }
+.ft-vk:before { content: "\f10a"; }
+.ft-youtube-1:before { content: "\f10b"; }
+.ft-youtube:before { content: "\f10c"; }
+.ft-zyan:before { content: "\f10d"; }
