@@ -1,17 +1,16 @@
 <template>
 	<LayoutPage>
-		<div class="flex flex-wrap text-black justify-between">
+		<div class="flex flex-wrap text-light-200 justify-between">
 			<a
 				:href="'/l/' + it.short"
 				class="
-					bg-white
 					rounded-md
 					flex-center
-					bg-opacity-90 bg-hero-topography-water-50 bg-10r
+					bg-cyan-700 bg-opacity-85 bg-hero-rain-white-50 bg-0.25r
 					m-4
 					w-full
 					py-4
-					px-5
+					px-6
 					overflow-hidden
 					group
 					sm:max-w-1/3
@@ -22,9 +21,9 @@
 				:key="i">
 				<div
 					class="
-						font-black
+						font-semibold
 						text-md
-						tracking-wide
+						tracking-wider
 						animate-flipInX animate-delay-400
 						animated
 						absolute
