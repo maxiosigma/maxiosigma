@@ -3,6 +3,8 @@
 .env.*
 .netlify
 #.slicemachine
+.nuxt-storybook
+storybook-static
 
 dist
 node_modules

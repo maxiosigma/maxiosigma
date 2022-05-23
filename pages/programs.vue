@@ -15,6 +15,11 @@
 
 <script>
 export default {
+	head() {
+		return {
+			title: 'Партнёрские программы',
+		}
+	},
 	data() {
 		return {
 			data: Object.values(this.$store.state.links.data)?.reduce((sum, it) => {
