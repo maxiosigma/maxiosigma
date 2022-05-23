@@ -13,10 +13,10 @@ export const state = () => ({
 			items: [
 				{ title: 'Дизайнер', href: 'designer' },
 				{ title: 'Разработчик', href: 'developer' },
-				{
-					title: 'AAAAAAAA',
-					items: [{ title: 'BBBBBBB', href: 'programs' }],
-				},
+				//{
+				//	title: 'AAAAAAAA',
+				//	items: [{ title: 'BBBBBBB', href: 'programs' }],
+				//},
 			],
 		},
 		//{ title: 'Инфо', items: [{ title: 'Блог', href: 'blog' }] },

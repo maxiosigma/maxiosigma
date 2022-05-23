@@ -18,12 +18,13 @@ export default {
 	data() {
 		return {
 			data: Object.values(this.$store.state.links.data)
-				?.filter((it) => {
-					//
-
-					return it.partnership || it.title || it.description
-				})
-				?.reduce((sum, it) => sum.push({ title: it.title, description: it.description, short: it.short }) && sum, []),
+			?.reduce(
+				(sum, it) =>
+					it?.partnership && it?.title && it?.description
+						? sum.push({ title: it.title, description: it.description, short: it.short })
+						: null && sum,
+				[]
+			),
 		}
 	},
 }

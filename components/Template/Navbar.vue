@@ -29,7 +29,7 @@
 						<div
 							class="nav-bar-link-hover"
 							:class="{ 'border-b-2 border-b-yellow-500': isRoute === link.href || isRoute === link.href + '/' }"
-							>{{ link.title }} {{ link.dept + link.index + link.position - 1 }} {{ i }}</div
+							>{{ link.title }}</div
 						>
 					</div>
 				</div>
@@ -70,10 +70,7 @@ export default {
 		}
 	},
 	mounted() {
-		//.replace(this.localePath('/') + '/', '')
-		//console.log(this.$route.fullPath?.replace(this?.localePath('/') + '/', ''));
-		//this.st()
-		//console.log(Array.from(this.links))
+		//console.log(this.activeTests)
 	},
 	methods: {
 		handleClickNext(value, link, isClick) {
