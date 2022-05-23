@@ -1,28 +1,54 @@
 <template>
 	<LayoutPage>
-		<div class="flex flex-wrap text-white justify-between">
+		<div class="flex flex-wrap text-black justify-between">
 			<a
 				:href="'/l/' + it.short"
-				class="flex-center bg-dark-900 m-4 w-full py-3 px-6 group sm:max-w-1/3 md:max-w-1/4 lg:max-w-1/5"
+				class="
+					bg-white
+					rounded-md
+					flex-center
+					bg-opacity-90 bg-hero-topography-water-50 bg-10r
+					m-4
+					w-full
+					py-4
+					px-5
+					overflow-hidden
+					group
+					sm:max-w-1/3
+					md:max-w-1/4
+					lg:max-w-1/5
+				"
 				v-for="(it, i) in data"
 				:key="i">
-				<div class="text-sm animate-flipInX animated absolute group-hover:(animate-fadeOut)">{{ it.title }}</div>
-				<div class="text-xs opacity-0 group-hover:(block opacity-100 animated animate-flipInX) ">{{ it.description }}</div>
-
-				<!--<vue-typed-js
-					:loop="false"
-					:bindInputFocusEvents="true"
-					:smartBackspace="false"
-					:fadeOut="false"
-					:typeSpeed="20"
-					:startDelay="1000"
-					:backDelay="1000"
-					:backSpeed="10"
-					:cursorChar="''"
-					:strings="[it.title, it.description]"
-					@onTypingPaused="doSmth()">
-					<div class="typing"></div>
-				</vue-typed-js>-->
+				<div
+					class="
+						font-black
+						text-md
+						tracking-wide
+						animate-flipInX animate-delay-400
+						animated
+						absolute
+						group-hover:(animate-delay-200
+						animate-duration-600 animate-fadeOut)
+						"
+					>{{ it.title }}</div
+				>
+				<div
+					class="
+						text-xs
+						opacity-0
+						transition-opacity
+						animate-backOutLeft
+						duration-300
+						animate-delay-100
+						animated
+						group-hover:(block
+						opacity-100
+						animated
+						animate-delay-700 animate-duration-600 animate-backInLeft)
+						"
+					>{{ it.description }}</div
+				>
 			</a>
 		</div>
 	</LayoutPage>
