@@ -1,19 +1,20 @@
 <template>
 	<LayoutPage>
-		<div class="container flex flex-wrap mx-auto text-light-200 justify-between">
+		<div class="container flex flex-wrap text-light-200 self-center justify-between">
 			<ItemLink
 				self
-				@click.native.prevent="handleOpen(it.short)"
+				@click.native.prevent="backuphandleOpen(it.short)"
 				:href="'/business'"
 				class="
 					rounded-md
 					flex-center
+					h-auto
 					bg-cyan-700 bg-opacity-80 bg-hero-rain-white-30 bg-0.25r
 					m-4
 					w-full
 					py-4
 					px-5
-					transition
+					transition-all
 					duration-700
 					overflow-hidden
 					group
@@ -26,14 +27,16 @@
 				<div
 					class="
 						font-semibold
-						text-lg text-center
-						tracking-wider
-						px-4
+						text-md text-center
+						tracking-widest
+						py-4
+						px-5
+						transition-all
 						animate-flipInX animate-delay-400
 						animated
-						absolute
 						whitespace-normal
 						break-words
+						absolute
 						sm:max-w-1/3
 						md:max-w-1/4
 						lg:max-w-1/5
@@ -67,7 +70,7 @@
 export default {
 	head() {
 		return {
-			title: 'Программы партнёрские',
+			title: 'Программы',
 		}
 	},
 	data() {
