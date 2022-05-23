@@ -17,14 +17,12 @@
 export default {
 	data() {
 		return {
-			data: Object.values(this.$store.state.links.data)
-			?.reduce(
-				(sum, it) =>
-					it?.partnership && it?.title && it?.description
-						? sum.push({ title: it.title, description: it.description, short: it.short })
-						: null && sum,
-				[]
-			),
+			data: Object.values(this.$store.state.links.data)?.reduce((sum, it) => {
+				if (!!it?.partnership && !!it?.title && !!it?.description && !!it?.short)
+					sum.push({ title: it.title, description: it.description, short: it.short })
+
+				return sum
+			}, []),
 		}
 	},
 }
