@@ -7,14 +7,15 @@
 				:href="'/business'"
 				class="
 					rounded-md
-					flex-center
+					flex-center flex-col
 					h-auto
 					bg-cyan-700 bg-opacity-80 bg-hero-rain-white-30 bg-0.25r
 					m-4
 					w-full
+					min-h-20
 					py-4
 					px-5
-					transition-all
+					transition
 					duration-700
 					overflow-hidden
 					group
@@ -27,34 +28,35 @@
 				<div
 					class="
 						font-semibold
-						text-md text-center
+						text-sm text-center
 						tracking-widest
-						py-4
-						px-5
+						px-10
+						pb-2
 						transition-all
 						animate-flipInX animate-delay-400
 						animated
-						whitespace-normal
-						break-words
-						absolute
-						sm:max-w-1/3
-						md:max-w-1/4
+						<sm:(uppercase)
+						md:(text-md
+						max-w-1/4
+						py-4
+						absolute)
 						lg:max-w-1/5
-						group-hover:(animate-delay-200
+						lg:group-hover:(animate-delay-400
 						animate-duration-600 animate-fadeOut)
 						"
 					>{{ it.title }}</div
 				>
 				<div
 					class="
-						text-xs
-						opacity-0
+						text-xs text-center
+						md:(opacity-0
 						transition-opacity
 						animate-backOutLeft
 						duration-300
+						text-left
 						animate-delay-100
-						animated
-						group-hover:(block
+						animated)
+						lg:group-hover:(block
 						opacity-100
 						animated
 						animate-delay-700 animate-duration-600 animate-backInLeft)
