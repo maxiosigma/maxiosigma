@@ -13994,6 +13994,18 @@ svg-parser@^2.0.2:
   resolved "https://registry.yarnpkg.com/svg-parser/-/svg-parser-2.0.4.tgz#fdc2e29e13951736140b76cb122c8ee6630eb6b5"
   integrity sha512-e4hG1hRwoOdRb37cIMSgzNsxyzKfayW6VOflrwvR+/bzrkyxY/31WkbgnQpgtrNp1SdpJvpUAGTa/ZoiPNDuRQ==
 
+svg-path-parser@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/svg-path-parser/-/svg-path-parser-1.1.0.tgz#e16b4b39df0d2b0d39e8347db79fdda1453a6046"
+  integrity sha1-4WtLOd8NKw056DR9t5/doUU6YEY=
+
+svg-path-to-polygons@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/svg-path-to-polygons/-/svg-path-to-polygons-0.1.0.tgz#c03a023f7c0b78f1212287b68b576922878d9755"
+  integrity sha512-+4wNVtS1XHf8CZOxKdO8dfnJAAcE4kk+/HlMq6teVZBQPav9bfxX4SHyxh1pYEdg2zu/Gp+JwWTSxKAGdVvlWA==
+  dependencies:
+    svg-path-parser "^1.1.0"
+
 svg-pathdata@^5.0.2:
   version "5.0.5"
   resolved "https://registry.yarnpkg.com/svg-pathdata/-/svg-pathdata-5.0.5.tgz#65e8d765642ba15fe15434444087d082bc526b29"
