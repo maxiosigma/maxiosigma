@@ -1,6 +1,6 @@
 <template>
 	<LayoutPage>
-		<!--<ItemPortfolioTitle></ItemPortfolioTitle>-->
+		<ItemPortfilioTitle></ItemPortfilioTitle>
 	</LayoutPage>
 </template>
 
