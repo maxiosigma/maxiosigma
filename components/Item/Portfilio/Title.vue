@@ -27,9 +27,9 @@ export default {
 			size = 0.25
 
 		ctx.fillStyle = 'white'
-		ctx.strokeStyle = 'white'
-		ctx.strokeWidth = 1
-		ctx.imageSmoothingEnabled = false
+		//ctx.strokeStyle = 'white'
+		//ctx.strokeWidth = 1
+		//ctx.imageSmoothingEnabled = false
 
 		ctx.beginPath()
 
@@ -44,7 +44,7 @@ export default {
 			}, [])
 
 		ctx.closePath()
-		ctx.stroke()
+		//ctx.stroke()
 		ctx.fill()
 
 		//points?.map((it, i) => {
