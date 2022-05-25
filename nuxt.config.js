@@ -13,7 +13,7 @@ export default {
 	...custom(),
 	...render(),
 	...server(),
-	...strapi(),
+	//...strapi(),
 	...build(),
 	...hooks(),
 	...i18n(),
@@ -24,9 +24,16 @@ export default {
 	plugins,
 }
 
-function strapi() {
-	return { strapi: {} }
-}
+//function strapi() {
+//	return {
+//		strapi: {
+//			url: process.env.STRAPI_URL || 'http://localhost:1337',
+//			prefix: '/api',
+//			//version: 'v4',
+//			cookie: {},
+//		},
+//	}
+//}
 
 function server() {
 	return {
@@ -248,7 +255,7 @@ function includes() {
 			'@/plugins/active/GSR',
 			'@nuxtjs/prismic',
 			//'nuxt-stories',
-			'@nuxtjs/strapi',
+			//'@nuxtjs/strapi',
 		],
 		plugins = [
 			'@plugins/passive/mixins',
