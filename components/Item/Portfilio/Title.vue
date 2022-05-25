@@ -34,9 +34,9 @@ export default {
 			}
 		})
 
-		//ctx.strokeStyle = 'white'
-		//ctx.lineWidth = 1
-		//ctx.stroke()
+		ctx.strokeStyle = 'black'
+		ctx.lineWidth = 1
+		ctx.stroke()
 		ctx.closePath()
 		ctx.fillStyle = 'white'
 		ctx.fill()
