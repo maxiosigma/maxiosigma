@@ -1,13 +1,17 @@
-.env
+*.log*
 .nuxt
-.env.*
+.nitro
+.cache
+.output
 .netlify
-#.slicemachine
 .nuxt-storybook
-storybook-static
-
-dist
-node_modules
+.env
+.env.*
 
 fonts/fg
 fonts/fg/*.*
+storybook-static
+node_modules
+dist
+
+

@@ -1,7 +1,0 @@
-{
-	"_latest": "0.3.7",
-	"storybook": "http://localhost:6000",
-	"apiEndpoint": "https://maxiosigma.prismic.io/api/v2",
-	"libraries": ["@/slices", "vue-essential-slices"],
-	"localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
-}
