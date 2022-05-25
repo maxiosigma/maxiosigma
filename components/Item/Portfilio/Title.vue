@@ -34,11 +34,12 @@ export default {
 		ctx.beginPath()
 
 		segments
-			?.filter((it, i) => i === 0)
+			//?.filter((it, i) => i === 0)
 			?.forEach((st, i) => {
+				//console.log(st.coords)
 				st.coords.forEach((cr, i) => {
 					//console.log(cr)
-					ctx.lineTo(cr[0], cr[1])
+					ctx.lineTo(...cr)
 				})
 			}, [])
 
