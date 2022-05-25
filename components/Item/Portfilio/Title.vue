@@ -18,28 +18,45 @@ export default {
 		//console.log(points)
 
 		const ctx = this.$refs.svg.getContext('2d'),
-			size = 5
+			size = 5,
+			position = { x: 200, dx: 4 }
 
-		ctx.beginPath()
+		function animate() {
+			requestAnimationFrame(animate)
+			ctx.clearRect(0, 0, innerWidth, innerHeight)
+			ctx.beginPath()
 
-		points?.map((it, i) => {
-			if (i == 0) {
-				ctx.moveTo(0, 0)
+			ctx.arc(position.x, 200, 30, 0, Math.PI * 2, false)
+			ctx.strokeStyle = 'white'
+			ctx.stroke()
 
-				console.log(it)
-				it?.map((ln, j) => {
-					ctx.lineTo(ln[0] * size, ln[1] * size)
-					//console.log(ln[0], ln[1])
-				})
-			}
-		})
+			if (position.x > innerWidth) position.dx = -position.dx
 
-		ctx.strokeStyle = 'black'
-		ctx.lineWidth = 1
-		ctx.stroke()
-		ctx.closePath()
-		ctx.fillStyle = 'white'
-		ctx.fill()
+			ctx.closePath()
+			ctx.fill()
+		}
+
+		animate()
+
+		//ctx.fillStyle = 'white'
+
+		//ctx.beginPath()
+
+		//points?.map((it, i) => {
+		//	if (i == 0) {
+		//		ctx.moveTo(0, 0)
+
+		//		console.log(it)
+
+		//		it?.map((ln, j) => {
+		//			//setTimeout(() => ctx.lineTo(ln[0] * size, ln[1] * size), 50)
+		//			ctx.lineTo(ln[0] * size, ln[1] * size)
+		//		})
+		//	}
+		//})
+
+		//ctx.closePath()
+		//ctx.fill()
 
 		//ctx.moveTo(Xcenter + size * Math.cos(0), Ycenter + size * Math.sin(0))
 
