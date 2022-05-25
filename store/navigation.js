@@ -10,14 +10,16 @@ export const state = () => ({
 		},
 		{
 			title: 'Портфолио',
-			items: [
-				{ title: 'Дизайнер', href: 'designer' },
-				{ title: 'Разработчик', href: 'developer' },
-				//{
-				//	title: 'AAAAAAAA',
-				//	items: [{ title: 'BBBBBBB', href: 'programs' }],
-				//},
-			],
+			href: 'portfolio',
+			class: 'font-jokerman',
+			//items: [
+			//	{ title: 'Дизайнер', href: 'designer' },
+			//	{ title: 'Разработчик', href: 'developer' },
+			//	//{
+			//	//	title: 'AAAAAAAA',
+			//	//	items: [{ title: 'BBBBBBB', href: 'programs' }],
+			//	//},
+			//],
 		},
 		//{ title: 'Инфо', items: [{ title: 'Блог', href: 'blog' }] },
 		{

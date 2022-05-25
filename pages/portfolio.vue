@@ -1,12 +1,12 @@
 <template>
-	<LayoutPage></LayoutPage>
+	<LayoutPage> </LayoutPage>
 </template>
 
 <script>
 export default {
 	head() {
 		return {
-			title: 'Разработчик',
+			title: 'Портфолио',
 		}
 	},
 }

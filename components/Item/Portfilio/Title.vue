@@ -18,41 +18,32 @@ export default {
 		//const { pathDataToPolys } = require('svg-path-to-polygons')
 		//const points = pathDataToPolys(this.pathData, { tolerance: 0.0001, decimals: 0 })
 		//console.log(points)
-
-		const pointInSvgPolygon = require('point-in-svg-polygon')
-		const pathString = this.pathData
-		const segments = pointInSvgPolygon.segments(pathString)
-
-		const ctx = this.$refs.svg.getContext('2d'),
-			size = 0.25
-
-		ctx.fillStyle = 'white'
-		//ctx.strokeStyle = 'white'
-		//ctx.strokeWidth = 1
-		//ctx.imageSmoothingEnabled = false
-
-		ctx.beginPath()
-
-		segments
-			//?.filter((it, i) => i === 0)
-			?.forEach((st, i) => {
-				//console.log(st.coords)
-				st.coords.forEach((cr, i) => {
-					//console.log(cr)
-					ctx.lineTo(...cr)
-				})
-			}, [])
-
-		ctx.closePath()
-		//ctx.stroke()
-		ctx.fill()
-
+		//const pointInSvgPolygon = require('point-in-svg-polygon')
+		//const pathString = this.pathData
+		//const segments = pointInSvgPolygon.segments(pathString)
+		//const ctx = this.$refs.svg.getContext('2d'),
+		//	size = 0.25
+		//ctx.fillStyle = 'white'
+		////ctx.strokeStyle = 'white'
+		////ctx.strokeWidth = 1
+		////ctx.imageSmoothingEnabled = false
+		//ctx.beginPath()
+		//segments
+		//	//?.filter((it, i) => i === 0)
+		//	?.forEach((st, i) => {
+		//		//console.log(st.coords)
+		//		st.coords.forEach((cr, i) => {
+		//			//console.log(cr)
+		//			ctx.lineTo(...cr)
+		//		})
+		//	}, [])
+		//ctx.closePath()
+		////ctx.stroke()
+		//ctx.fill()
 		//points?.map((it, i) => {
 		//	if (i == 0) {
 		//		ctx.moveTo(0, 0)
-
 		//		console.log(it)
-
 		//		it?.map((ln, j) => {
 		//			//setTimeout(() => ctx.lineTo(ln[0] * size, ln[1] * size), 50)
 		//			ctx.lineTo(ln[0], ln[1])

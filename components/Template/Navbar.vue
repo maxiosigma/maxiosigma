@@ -28,7 +28,7 @@
 						@click="handleClickNext(link.dept + link.index + link.position - 1, link.href, isRoute === link.href)">
 						<div
 							class="nav-bar-link-hover"
-							:class="{ 'border-b-2 border-b-yellow-500': isRoute === link.href || isRoute === link.href + '/' }"
+							:class="[{ 'border-b-2 border-b-yellow-500': isRoute === link.href || isRoute === link.href + '/' }, link.class]"
 							>{{ link.title }}</div
 						>
 					</div>
@@ -93,7 +93,7 @@ export default {
 			}
 		},
 		getObj(item, index, position, iteration, dept = 1) {
-			return { title: item?.title, ...(item.href && { href: item.href }), index, position, iteration, dept }
+			return { title: item?.title, ...(item.href && { href: item.href }), class: item.class, index, position, iteration, dept }
 		},
 		recurseObj(item, index, position, iteration, dept = 1, result = []) {
 			if (item?.items)
