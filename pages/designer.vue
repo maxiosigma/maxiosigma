@@ -1,8 +1,8 @@
 <template>
 	<LayoutPage>
-		<div class="mx-auto w-1/2">
-			<ItemPortfilioTitle></ItemPortfilioTitle>
-		</div>
+		<!--<div class="mx-auto w-1/2">-->
+		<ItemPortfilioTitle></ItemPortfilioTitle>
+		<!--</div>-->
 	</LayoutPage>
 </template>
 

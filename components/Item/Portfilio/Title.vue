@@ -32,6 +32,8 @@ export default {
 
 			if (position.x > innerWidth) position.dx = -position.dx
 
+			position.x += position.dx
+
 			ctx.closePath()
 			ctx.fill()
 		}
