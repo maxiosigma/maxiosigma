@@ -13,6 +13,7 @@ export default {
 	...custom(),
 	...render(),
 	...server(),
+	...strapi(),
 	...build(),
 	...hooks(),
 	...i18n(),
@@ -21,6 +22,10 @@ export default {
 	buildModules,
 	modules,
 	plugins,
+}
+
+function strapi() {
+	return { strapi: {} }
 }
 
 function server() {
@@ -202,13 +207,17 @@ function build() {
 
 function components() {
 	return {
-		components: true,
-		// {
-		//	watch: true,
-		//	prefetch: true,
-		//	path: '~/components/',
-		//	extensions: ['vue', 'js'],
-		//},
+		//components: true,
+		//// {
+		////	watch: true,
+		////	prefetch: true,
+		////	path: '~/components/',
+		////	extensions: ['vue', 'js'],
+		////},
+		components: [
+			'~/components',
+			//{ path: '~/slices', prefix: '', extensions: ['vue'] }
+		],
 	}
 }
 
@@ -239,6 +248,7 @@ function includes() {
 			'@/plugins/active/GSR',
 			'@nuxtjs/prismic',
 			//'nuxt-stories',
+			'@nuxtjs/strapi',
 		],
 		plugins = [
 			'@plugins/passive/mixins',
