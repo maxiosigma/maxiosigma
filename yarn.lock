@@ -11219,6 +11219,11 @@ pnp-webpack-plugin@^1.6.4:
   dependencies:
     ts-pnp "^1.1.6"
 
+point-in-svg-polygon@^1.0.25:
+  version "1.0.25"
+  resolved "https://registry.yarnpkg.com/point-in-svg-polygon/-/point-in-svg-polygon-1.0.25.tgz#e68c7aa95aacc478e3fc9126da8f206c8c2ce47b"
+  integrity sha512-+awi8uGl58xWLR8MIl5j7sl8mceH/Vl34yyw2kYmMuYFWIWZHNW3qQ+f10GdU0wHW3kPqw/SMcDmXJH4XBVpdg==
+
 popper.js@^1.16.1:
   version "1.16.1"
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
