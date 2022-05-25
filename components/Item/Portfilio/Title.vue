@@ -17,28 +17,40 @@ export default {
 		const points = pathDataToPolys(this.pathData, { tolerance: 1, decimals: 1 })
 		//console.log(points)
 
-		const ctx = this.$refs.svg.getContext('2d')
-
-		var numberOfSides = 6,
-			size = 20,
-			Xcenter = 25,
-			Ycenter = 25
+		const ctx = this.$refs.svg.getContext('2d'),
+			size = 5
 
 		ctx.beginPath()
-		ctx.moveTo(Xcenter + size * Math.cos(0), Ycenter + size * Math.sin(0))
 
-		for (var i = 1; i <= numberOfSides; i += 1) {
-			ctx.lineTo(
-				Xcenter + size * Math.cos((i * 2 * Math.PI) / numberOfSides),
-				Ycenter + size * Math.sin((i * 2 * Math.PI) / numberOfSides)
-			)
-		}
+		points?.map((it, i) => {
+			if (i == 0) {
+				ctx.moveTo(0, 0)
 
-		ctx.strokeStyle = 'white'
-		ctx.lineWidth = 2
-		ctx.stroke()
+				console.log(it)
+				it?.map((ln, j) => {
+					ctx.lineTo(ln[0] * size, ln[1] * size)
+					//console.log(ln[0], ln[1])
+				})
+			}
+		})
 
-		console.log(ctx)
+		//ctx.strokeStyle = 'white'
+		//ctx.lineWidth = 1
+		//ctx.stroke()
+		ctx.closePath()
+		ctx.fillStyle = 'white'
+		ctx.fill()
+
+		//ctx.moveTo(Xcenter + size * Math.cos(0), Ycenter + size * Math.sin(0))
+
+		//for (var i = 1; i <= numberOfSides; i += 1) {
+		//	ctx.lineTo(
+		//		Xcenter + size * Math.cos((i * 2 * Math.PI) / numberOfSides),
+		//		Ycenter + size * Math.sin((i * 2 * Math.PI) / numberOfSides)
+		//	)
+		//}
+
+		//console.log(points)
 	},
 }
 </script>
