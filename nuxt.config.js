@@ -13,11 +13,11 @@ export default {
 	...custom(),
 	...render(),
 	...server(),
-	//...strapi(),
+	...strapi(),
 	...build(),
 	...hooks(),
 	...i18n(),
-	css: ['~/assets/index.scss'],
+	...css(),
 
 	buildModules,
 	modules,
@@ -272,7 +272,7 @@ function includes() {
 			['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }],
 			//'nuxt-parallel-middleware',
 			'@nuxtjs/strapi',
-			'@nuxtjs/proxy',
+			//'@nuxtjs/proxy',
 		],
 		//'@prismicio/vue', 'vue-slicezone', 'lottie-web',
 		transpile = ['vue-typed-js']
@@ -319,18 +319,18 @@ function custom() {
 		//		},
 		//	},
 		//},
-		proxy: {
-			'/api/strapi': {
-				target: 'http://localhost:1337',
-				pathRewrite: {
-					'^/api/strapi': '/',
-				},
-			},
-		},
+		//proxy: {
+		//	'/api/strapi': {
+		//		target: 'http://localhost:1337',
+		//		pathRewrite: {
+		//			'^/api/strapi': '/',
+		//		},
+		//	},
+		//},
 		strapi: {
-			url: '/api/strapi',
+			//url: '/api/strapi',
 			//key: 'userJwt',
-			//url: 'http://localhost:1337',
+			url: 'http://localhost:1337',
 			//entities: ['links'],
 			//cookie: {
 			//	sameSite: 'lax',
@@ -402,6 +402,10 @@ function custom() {
 		privateRuntimeConfig: {
 			sps: process.env.CTF_SPACE_ID,
 			atk: process.env.CTF_CDA_ACCESS_TOKEN,
+			APP_KEYS: process.env.APP_KEYS,
+			API_TOKEN_SALT: process.env.API_TOKEN_SALT,
+			ADMIN_JWT_SECRET: process.env.ADMIN_JWT_SECRET,
+			JWT_SECRET: process.env.JWT_SECRET,
 		},
 	}
 }
