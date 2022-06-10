@@ -1,7 +1,6 @@
 {
 	"private": true,
 	"scripts": {
-<<<<<<< HEAD
 		"dev": "nuxt",
 		"generate": "nuxt generate",
 		"dev-ntl-live": "netlify dev --live",
@@ -69,14 +68,5 @@
 		"webpack": "^4.46.0",
 		"windicss": "^3.4.0",
 		"yarn": "^1.22.18"
-=======
-		"dev": "nuxt dev",
-		"generate": "nuxt generate",
-		"preview": "nuxt preview",
-		"build": "nuxt build"
->>>>>>> 3224fbfcc8aa5c4e471a385ef96acea93daba972
-	},
-	"devDependencies": {
-		"nuxt": "3.0.0-rc.3"
 	}
 }

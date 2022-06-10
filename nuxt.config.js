@@ -1,4 +1,4 @@
-import { apiEndpoint } from './sm.json'
+//import { apiEndpoint } from './sm.json'
 import app_config from './app.config'
 
 const { plugins, buildModules, modules, transpile } = includes()
@@ -8,7 +8,7 @@ export default {
 	...components(),
 	...generate(),
 	...sitemap(),
-	...prismic(),
+	//...prismic(),
 	...router(),
 	...custom(),
 	...render(),
@@ -139,7 +139,7 @@ function i18n() {
 			strategy: 'prefix', //prefix prefix_except_default
 			vueI18nLoader: true,
 			defaultLocale: 'ru-ru', //ru-ru
-			langDir: '~/locales/',
+			//langDir: '~/locales/',
 			noPrefixDefaultLocale: true, //true false
 			vuex: { moduleName: 'i18n', syncLocale: false, syncMessages: false, syncRouteParams: false },
 			locales,
@@ -282,20 +282,20 @@ function includes() {
 	}
 }
 
-function prismic() {
-	return {
-		prismic: {
-			previewReloadType: 'hot',
-			components: false,
-			preview: false,
-			endpoint: apiEndpoint,
-			modern: true,
-			apiOptions: {
-				accessToken: process.env.PRC_CDA_ACCESS_TOKEN,
-			},
-		},
-	}
-}
+//function prismic() {
+//	return {
+//		prismic: {
+//			previewReloadType: 'hot',
+//			components: false,
+//			preview: false,
+//			endpoint: apiEndpoint,
+//			modern: true,
+//			apiOptions: {
+//				accessToken: process.env.PRC_CDA_ACCESS_TOKEN,
+//			},
+//		},
+//	}
+//}
 
 function custom() {
 	return {
