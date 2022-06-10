@@ -5,6 +5,7 @@
 #.slicemachine
 .nuxt-storybook
 storybook-static
+!.github\workflows
 
 dist
 node_modules
