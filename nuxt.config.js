@@ -251,7 +251,7 @@ function includes() {
 		buildModules = [
 			'nuxt-windicss',
 			'nuxt-user-agent',
-			'nuxt-fontagon',
+			//'nuxt-fontagon',
 			'@/plugins/active/GSR',
 			//'@nuxtjs/prismic',
 			//'nuxt-stories',
@@ -270,10 +270,10 @@ function includes() {
 			//'@nuxtjs/toast',
 			['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }],
 			//'nuxt-parallel-middleware',
-			'@nuxtjs/strapi',
+			//'@nuxtjs/strapi',
 		],
 		//'@prismicio/vue', 'vue-slicezone', 'lottie-web',
-		transpile = ['vue-typed-js']
+		transpile = ['@prismicio/vue', 'vue-slicezone', 'lottie-web', 'vue-typed-js']
 
 	return {
 		buildModules: buildModules.concat(DevBuildModules, OptimizeBuildModules),
@@ -310,9 +310,9 @@ function custom() {
 		googleAnalytics: {
 			id: 'UA-176733004-3',
 		},
-		strapi: {
-			// Options
-		},
+		//strapi: {
+		//	// Options
+		//},
 		storybook: {
 			// Options
 		},

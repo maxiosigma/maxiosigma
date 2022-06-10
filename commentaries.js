@@ -548,10 +548,6 @@ rm -rf node_modules package-lock.json && npm install && npm start
 "main": "nuxt.config.js",
 "type": "module",
 
-"files.watcherExclude": {
-	"**/.git/objects/**": true,
-	"**/node_modules/**": true
-},
 
 
 "engines": {

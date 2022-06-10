@@ -8,7 +8,7 @@
 <script>
 export default {
 	props: {
-		href: { type: String, required: true, default: '/' },
+		href: { type: String, required: false, default: '/' },
 		self: { type: Boolean, required: false, default: false },
 		blank: { type: Boolean, required: false, default: false },
 		nolang: { type: Boolean, required: false, default: false },

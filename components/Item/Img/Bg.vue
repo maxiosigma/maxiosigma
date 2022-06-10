@@ -11,10 +11,10 @@ export default {
 		return {
 			id:
 				'img_' +
-				String(Math.random() * (Math.random() * 10000000 / 1.0))
+				String(Math.random() * ((Math.random() * 10000000) / 1.0))
 					.split('.')
 					.join('_'),
-			req: !this.isHypertext(this.src) ? require(`~/images/${this.src}`) : this.src,
+			req: this.src, // !this.isHypertext(this.src) ? require(`~/images/${this.src}`) :
 		}
 	},
 	mounted() {
