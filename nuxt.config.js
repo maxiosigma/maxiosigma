@@ -13,11 +13,11 @@ export default {
 	...custom(),
 	...render(),
 	...server(),
-	...strapi(),
+	//...strapi(),
 	...build(),
 	...hooks(),
 	...i18n(),
-	...css(),
+	//...css(),
 
 	buildModules,
 	modules,
@@ -29,6 +29,7 @@ function strapi() {
 		strapi: {
 			url: process.env.STRAPI_URL || 'http://localhost:1337',
 			prefix: '/api',
+			entities: ['links'],
 			//version: 'v4',
 			cookie: {},
 		},
@@ -74,7 +75,9 @@ function sitemap() {
 }
 
 function middleware() {
-	return { serverMiddleware: [] }
+	return {
+		//serverMiddleware: []
+	}
 }
 
 function generate() {
@@ -95,7 +98,7 @@ function generate() {
 			concurrency: 2000,
 			subFolders: false,
 			devtools: app_config.isDev ? true : false,
-			exclude: [/^\/test/, ...exd],
+			exclude: [/^\/test/, /^\/z/, ...exd],
 
 			//routes() {
 			//	return staticRoutes()
@@ -271,7 +274,7 @@ function includes() {
 			//'@nuxtjs/toast',
 			['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }],
 			//'nuxt-parallel-middleware',
-			'@nuxtjs/strapi',
+			//'@nuxtjs/strapi',
 			//'@nuxtjs/proxy',
 		],
 		//'@prismicio/vue', 'vue-slicezone', 'lottie-web',
