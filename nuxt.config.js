@@ -24,16 +24,16 @@ export default {
 	plugins,
 }
 
-//function strapi() {
-//	return {
-//		strapi: {
-//			url: process.env.STRAPI_URL || 'http://localhost:1337',
-//			prefix: '/api',
-//			//version: 'v4',
-//			cookie: {},
-//		},
-//	}
-//}
+function strapi() {
+	return {
+		strapi: {
+			url: process.env.STRAPI_URL || 'http://localhost:1337',
+			prefix: '/api',
+			//version: 'v4',
+			cookie: {},
+		},
+	}
+}
 
 function server() {
 	return {
@@ -327,15 +327,15 @@ function custom() {
 		//		},
 		//	},
 		//},
-		strapi: {
-			//url: '/api/strapi',
-			//key: 'userJwt',
-			url: 'http://localhost:1337',
-			//entities: ['links'],
-			//cookie: {
-			//	sameSite: 'lax',
-			//},
-		},
+		//strapi: {
+		//	//url: '/api/strapi',
+		//	//key: 'userJwt',
+		//	url: 'http://localhost:1337',
+		//	//entities: ['links'],
+		//	//cookie: {
+		//	//	sameSite: 'lax',
+		//	//},
+		//},
 		storybook: {
 			// Options
 		},

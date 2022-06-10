@@ -74,10 +74,9 @@
 		"vue-typed-js": "^0.1.2",
 		"webpack": "^4.46.0",
 		"windicss": "^3.5.4",
-		"yarn": "^1.22.18"
-	},
-	"devDependencies": {
+		"yarn": "^1.22.18",
 		"@nuxtjs/proxy": "^2.1.0",
 		"@nuxtjs/strapi": "<=0.3.1"
-	}
+	},
+	"devDependencies": {}
 }
