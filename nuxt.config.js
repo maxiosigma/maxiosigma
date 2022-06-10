@@ -270,6 +270,7 @@ function includes() {
 			//'@nuxtjs/toast',
 			['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }],
 			//'nuxt-parallel-middleware',
+			'@nuxtjs/strapi',
 		],
 		//'@prismicio/vue', 'vue-slicezone', 'lottie-web',
 		transpile = ['vue-typed-js']
@@ -308,6 +309,9 @@ function custom() {
 		},
 		googleAnalytics: {
 			id: 'UA-176733004-3',
+		},
+		strapi: {
+			// Options
 		},
 		storybook: {
 			// Options

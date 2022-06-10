@@ -1,6 +1,6 @@
 <template>
 	<Layout :bodyStyle="'index'">
-		<ItemNoScript :id="0" />
+		<!--<ItemNoScript :id="0" />-->
 	</Layout>
 </template>
 
@@ -11,9 +11,19 @@ export default {
 			title: 'Главная',
 		}
 	},
+	data() {
+		return {
+			strapi: '',
+		}
+	},
 	async beforeMount() {
-		!localStorage.getItem('about') || localStorage.getItem('about') === 0 ? this.routeLight('about') : this.routeLight('about')
+		//console.log(this.$strapi)
+		//
+		const s = await this.$strapi.graphql({ query: this.$store.state.gql.links })
 
+		console.log(s)
+		//
+		//!localStorage.getItem('about') || localStorage.getItem('about') === 0 ? this.routeLight('about') : this.routeLight('about')
 		//: !localStorage.getItem('business') || localStorage.getItem('business') === 0
 		//? this.routeLight('business')
 	},

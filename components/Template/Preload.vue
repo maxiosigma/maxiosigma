@@ -8,7 +8,7 @@
 			</div>
 		</div>
 
-		<ItemImg src="other/cat_m.png" :class="{ hidden: !redirect, hidden: !show }" class="rounded-full h-auto p-10 w-60 absolute elevation-24"></ItemImg>
+		<!--<ItemImg src="other/cat_m.png" :class="{ hidden: !redirect, hidden: !show }" class="rounded-full h-auto p-10 w-60 absolute elevation-24"></ItemImg>-->
 	</div>
 </template>
 
