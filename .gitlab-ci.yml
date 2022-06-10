@@ -5,8 +5,11 @@ stages:
 generate-job:
   stage: generate
   script:
+    - nuxt generate
     - echo "Compiling the code..."
     - echo "Compile complete."
+  variables:
+    PRC_CDA_ACCESS_TOKEN: 'MC5Zbkw3aHhJQUFDSUFTVTlj.X--_vRYJMCXvv71kEzkm77-9LkdO77-977-9BWHvv73vv73vv73vv71hI--_vVjvv73vv73vv73vv712'
 
 deploy-job:
   stage: deploy
