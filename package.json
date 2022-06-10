@@ -6,12 +6,11 @@
 		"fs": false
 	},
 	"scripts": {
-		"dev": "yarn node-download && nuxt",
-		"generate": "yarn node-download && nuxt generate",
-		"slicemachine": "start-slicemachine",
+		"dev": "nuxt",
+		"generate": "nuxt generate",
 		"dev-ntl-live": "netlify dev --live",
 		"start": "SET NUXT_ENV_HOST_0=true & nuxt start",
-		"node-download": "node download.js"
+		"node-download": "node z/node/download.js"
 	},
 	"dependencies": {
 		"@apollo/client": "^3.6.2",

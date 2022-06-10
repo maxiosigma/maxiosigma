@@ -1,3 +1,6 @@
+// yarn node-download &&
+// "slicemachine": "start-slicemachine",
+
 function comments() {
 	//'nuxt-build-optimisations'
 	// 'nuxt-build-optimisations'

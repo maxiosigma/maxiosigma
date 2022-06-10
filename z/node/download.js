@@ -19,7 +19,7 @@ const accessToken = require('dotenv').config().parsed.PRC_CDA_ACCESS_TOKEN
 				data = new downloader({
 					url: it.url,
 					fileName,
-					directory: './images/cdn',
+					directory: '../../images/cdn',
 					cloneFiles: false,
 					skipExistingFileName: true,
 					onResponse() {

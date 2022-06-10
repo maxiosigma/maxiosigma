@@ -253,7 +253,7 @@ function includes() {
 			'nuxt-user-agent',
 			'nuxt-fontagon',
 			'@/plugins/active/GSR',
-			'@nuxtjs/prismic',
+			//'@nuxtjs/prismic',
 			//'nuxt-stories',
 			//'@nuxtjs/strapi',
 		],
@@ -271,7 +271,8 @@ function includes() {
 			['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }],
 			//'nuxt-parallel-middleware',
 		],
-		transpile = ['@prismicio/vue', 'vue-slicezone', 'lottie-web', 'vue-typed-js']
+		//'@prismicio/vue', 'vue-slicezone', 'lottie-web',
+		transpile = ['vue-typed-js']
 
 	return {
 		buildModules: buildModules.concat(DevBuildModules, OptimizeBuildModules),
