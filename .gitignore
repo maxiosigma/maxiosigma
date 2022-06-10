@@ -1,14 +1,25 @@
-.env
+*.log*
 .nuxt
-.env.*
+.nitro
+.cache
+.output
 .netlify
-#.slicemachine
 .nuxt-storybook
+<<<<<<< HEAD
 storybook-static
 !.github\workflows
 
 dist
 node_modules
+=======
+.env
+.env.*
+>>>>>>> 3224fbfcc8aa5c4e471a385ef96acea93daba972
 
 fonts/fg
 fonts/fg/*.*
+storybook-static
+node_modules
+dist
+
+

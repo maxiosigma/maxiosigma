@@ -1,11 +1,7 @@
 {
-	"name": "meworld",
-	"version": "1.0.0",
 	"private": true,
-	"browser": {
-		"fs": false
-	},
 	"scripts": {
+<<<<<<< HEAD
 		"dev": "nuxt",
 		"generate": "nuxt generate",
 		"dev-ntl-live": "netlify dev --live",
@@ -73,29 +69,14 @@
 		"webpack": "^4.46.0",
 		"windicss": "^3.4.0",
 		"yarn": "^1.22.18"
+=======
+		"dev": "nuxt dev",
+		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"build": "nuxt build"
+>>>>>>> 3224fbfcc8aa5c4e471a385ef96acea93daba972
 	},
 	"devDependencies": {
-		"@nuxt/utils": "^2.15.8",
-		"@nuxtjs/google-analytics": "^2.4.0",
-		"@nuxtjs/prismic": "^1.4.2",
-		"@nuxtjs/strapi": "^1.3.2",
-		"bootstrap": "^5.1.3",
-		"bootstrap-vue": "^2.22.0",
-		"dompurify": "^2.3.8",
-		"gently-copy": "^3.2.0",
-		"glob": "^8.0.3",
-		"gray-matter": "^4.0.3",
-		"highlight.js": "^11.5.1",
-		"marked": "^4.0.16",
-		"node-sass": "^7.0.1",
-		"nuxt-animejs": "^1.2.3",
-		"nuxt-fontagon": "^1.0.4",
-		"nuxt-gsap-module": "^1.7.0",
-		"nuxt-png-to-ico": "^0.0.3",
-		"nuxt-socket-io": "^2.0.3",
-		"nuxt-stories": "^2.0.17",
-		"pify": "^5.0.0",
-		"sass-loader": "^10.1.1",
-		"slice-machine-ui": "^0.3.8"
+		"nuxt": "3.0.0-rc.3"
 	}
 }
