@@ -5,7 +5,7 @@ stages:
 generate-job:
   stage: generate
   script:
-    - nuxt generate
+    - yarn generate
     - echo "Compiling the code..."
     - echo "Compile complete."
   variables:
