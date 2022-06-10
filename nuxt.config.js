@@ -17,23 +17,24 @@ export default {
 	...build(),
 	...hooks(),
 	...i18n(),
-	...css(),
+	//...css(),
 
 	buildModules,
 	modules,
 	plugins,
 }
 
-//function strapi() {
-//	return {
-//		strapi: {
-//			url: process.env.STRAPI_URL || 'http://localhost:1337',
-//			prefix: '/api',
-//			//version: 'v4',
-//			cookie: {},
-//		},
-//	}
-//}
+function strapi() {
+	return {
+		strapi: {
+			url: process.env.STRAPI_URL || 'http://localhost:1337',
+			prefix: '/api',
+			entities: ['links'],
+			//version: 'v4',
+			cookie: {},
+		},
+	}
+}
 
 function server() {
 	return {
@@ -74,7 +75,9 @@ function sitemap() {
 }
 
 function middleware() {
-	return { serverMiddleware: [] }
+	return {
+		//serverMiddleware: []
+	}
 }
 
 function generate() {
@@ -95,7 +98,7 @@ function generate() {
 			concurrency: 2000,
 			subFolders: false,
 			devtools: app_config.isDev ? true : false,
-			exclude: [/^\/test/, ...exd],
+			exclude: [/^\/test/, /^\/z/, ...exd],
 
 			//routes() {
 			//	return staticRoutes()
@@ -256,6 +259,7 @@ function includes() {
 			//'@nuxtjs/prismic',
 			//'nuxt-stories',
 			//'@nuxtjs/strapi',
+			//'@nuxtjs/apollo',
 		],
 		plugins = [
 			'@plugins/passive/mixins',
@@ -271,6 +275,10 @@ function includes() {
 			['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }],
 			//'nuxt-parallel-middleware',
 			//'@nuxtjs/strapi',
+<<<<<<< HEAD
+=======
+			//'@nuxtjs/proxy',
+>>>>>>> 11e7d41670ae9670826e1a64aa008f036738b8f3
 		],
 		//'@prismicio/vue', 'vue-slicezone', 'lottie-web',
 		transpile = ['@prismicio/vue', 'vue-slicezone', 'lottie-web', 'vue-typed-js']
@@ -379,6 +387,10 @@ function custom() {
 		privateRuntimeConfig: {
 			sps: process.env.CTF_SPACE_ID,
 			atk: process.env.CTF_CDA_ACCESS_TOKEN,
+			APP_KEYS: process.env.APP_KEYS,
+			API_TOKEN_SALT: process.env.API_TOKEN_SALT,
+			ADMIN_JWT_SECRET: process.env.ADMIN_JWT_SECRET,
+			JWT_SECRET: process.env.JWT_SECRET,
 		},
 	}
 }

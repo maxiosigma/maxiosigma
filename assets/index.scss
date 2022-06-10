@@ -1,11 +1,11 @@
 @import "./scss/animation.scss";
 
-@import "~/fonts/ru/roboto/index.css";
-@import "~/fonts/ru/vetka/index.css";
-@import "~/fonts/ru/wind_ctt/index.css";
+//@import "~/fonts/ru/roboto/index.css";
+//@import "~/fonts/ru/vetka/index.css";
+//@import "~/fonts/ru/wind_ctt/index.css";
 
-@import "~/fonts/icons/fg/font-svg.css";
-@import "~/fonts/icons/mw/font-svg.scss";
+//@import "~/fonts/icons/fg/font-svg.css";
+//@import "~/fonts/icons/mw/font-svg.scss";
 
 @import "./scss/nuxt-content.scss";
 
@@ -16,14 +16,14 @@
 
 //@import "./scss/icons.scss";
 
-[class^="font"] {
-	font-display: swap;
-	//font-size: 1.001em;
-}
+//[class^="font"] {
+//	font-display: swap;
+//	//font-size: 1.001em;
+//}
 
-@font-face {
-	font-display: swap;
-}
+//@font-face {
+//	font-display: swap;
+//}
 
 // @import "~/fonts/futuranew/index.css";
 // @import "./scss/vueformulate.scss";

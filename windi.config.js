@@ -253,7 +253,7 @@ function extract() {
 			//'./content/**/*.md',
 			//'./content/**/**/*.md',
 		],
-		exclude: ['node_modules', 'dist', '.nuxt', '.vscode', '.git', 'z'],
+		exclude: ['node_modules', 'dist', '.nuxt', '.vscode', '.github', '.git', 'z'],
 	}
 }
 
