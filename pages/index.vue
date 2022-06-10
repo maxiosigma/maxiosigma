@@ -12,11 +12,10 @@ export default {
 		}
 	},
 	async beforeMount() {
-		!localStorage.getItem('about') || localStorage.getItem('about') === 0
-			? this.routeLight('about')
-			: !localStorage.getItem('business') || localStorage.getItem('business') === 0
-			? this.routeLight('business')
-			: this.routeLight('about')
+		!localStorage.getItem('about') || localStorage.getItem('about') === 0 ? this.routeLight('about') : this.routeLight('about')
+
+		//: !localStorage.getItem('business') || localStorage.getItem('business') === 0
+		//? this.routeLight('business')
 	},
 }
 </script>

@@ -5,16 +5,14 @@
 .output
 .netlify
 .nuxt-storybook
-<<<<<<< HEAD
 storybook-static
 !.github\workflows
+.firebase
 
 dist
 node_modules
-=======
 .env
 .env.*
->>>>>>> 3224fbfcc8aa5c4e471a385ef96acea93daba972
 
 fonts/fg
 fonts/fg/*.*
