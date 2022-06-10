@@ -17,7 +17,7 @@ export default {
 	...build(),
 	...hooks(),
 	...i18n(),
-	...css(),
+	css: ['~/assets/index.scss'],
 
 	buildModules,
 	modules,
@@ -256,6 +256,7 @@ function includes() {
 			//'@nuxtjs/prismic',
 			//'nuxt-stories',
 			//'@nuxtjs/strapi',
+			//'@nuxtjs/apollo',
 		],
 		plugins = [
 			'@plugins/passive/mixins',
@@ -271,6 +272,7 @@ function includes() {
 			['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }],
 			//'nuxt-parallel-middleware',
 			'@nuxtjs/strapi',
+			'@nuxtjs/proxy',
 		],
 		//'@prismicio/vue', 'vue-slicezone', 'lottie-web',
 		transpile = ['vue-typed-js']
@@ -310,8 +312,29 @@ function custom() {
 		googleAnalytics: {
 			id: 'UA-176733004-3',
 		},
+		//apollo: {
+		//	clientConfigs: {
+		//		default: {
+		//			httpEndpoint: 'http://localhost:1337/graphql',
+		//		},
+		//	},
+		//},
+		proxy: {
+			'/api/strapi': {
+				target: 'http://localhost:1337',
+				pathRewrite: {
+					'^/api/strapi': '/',
+				},
+			},
+		},
 		strapi: {
-			// Options
+			url: '/api/strapi',
+			//key: 'userJwt',
+			//url: 'http://localhost:1337',
+			//entities: ['links'],
+			//cookie: {
+			//	sameSite: 'lax',
+			//},
 		},
 		storybook: {
 			// Options
