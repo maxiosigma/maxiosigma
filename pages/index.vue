@@ -38,14 +38,11 @@ export default {
 			this.link = this?.links?.filter((ln) => ln.short === query)[0]
 			if (this.link?.href) setTimeout(() => (location.href = this.link?.href), 1500)
 			if (this.link?.alt) setTimeout(() => (location.href = this.link?.alt), 3000)
+		} else {
+			!localStorage.getItem('about') || localStorage.getItem('about') === 0 ? this.routeLight('about') : this.routeLight('about')
+			//: !localStorage.getItem('business') || localStorage.getItem('business') === 0
+			//? this.routeLight('business')
 		}
-
-		//console.log(this.headTemplate())
-
-		//console.log(this.links)
-		//!localStorage.getItem('about') || localStorage.getItem('about') === 0 ? this.routeLight('about') : this.routeLight('about')
-		//: !localStorage.getItem('business') || localStorage.getItem('business') === 0
-		//? this.routeLight('business')
 	},
 }
 </script>

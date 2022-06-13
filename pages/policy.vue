@@ -26,17 +26,17 @@ export default {
 			description: 'Политика конфиденциальности и Условия использования',
 		}
 	},
-	async asyncData({ $content, params, error }) {
-		const page = await $content('pages/policy')
-			?.fetch()
-			?.catch((err) => {
-				error({ statusCode: 404, message: 'Page not found' })
-			})
+	//async asyncData({ $content, params, error }) {
+	//	const page = await $content('pages/policy')
+	//		?.fetch()
+	//		?.catch((err) => {
+	//			error({ statusCode: 404, message: 'Page not found' })
+	//		})
 
-		return {
-			page,
-		}
-	},
+	//	return {
+	//		page,
+	//	}
+	//},
 }
 </script>
 

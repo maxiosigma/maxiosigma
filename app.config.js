@@ -27,7 +27,7 @@ const data = {
 	login: 'maxiosigma',
 	chat: 'maxiecon',
 	url: '/',
-	host: 'https://maxiosigma.netlify.app',
+	host: 'https://maxiosigma.web.app',
 	audio: '/public/audio/',
 	video: '/public/video/',
 }
