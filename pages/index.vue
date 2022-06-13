@@ -16,24 +16,22 @@ export default {
 			//strapi: '',
 		}
 	},
-	//asyncData({ app, store }) {
-	//	//const clientApollo = app.apolloProvider.defaultClient
-	//	//console.log(store.state.gql.links)
-	//	//return new Promise((resolve, reject) => {
-	//	//	clientApollo.query({
-	//	//		query: store.state.gql.links,
-	//	//	})
-	//	//})
-	//},
+	async asyncData({ store, $strapi }) {
+		console.log($strapi.graphql({ query: store.state.gql.links }))
+
+		//const clientApollo = app.apolloProvider.defaultClient
+		//console.log(store.state.gql.links)
+		//return new Promise((resolve, reject) => {
+		//	clientApollo.query({
+		//		query: store.state.gql.links,
+		//	})
+		//})
+	},
 	async beforeMount() {
 		//console.log(this.$strapi)
 		//
 		//const s = await this.$strapi.graphql({ query: this.$store.state.gql.links })
-<<<<<<< HEAD
 		//console.log(s)
-=======
-		//console.log(this.$strapi)
->>>>>>> 11e7d41670ae9670826e1a64aa008f036738b8f3
 		//
 		//!localStorage.getItem('about') || localStorage.getItem('about') === 0 ? this.routeLight('about') : this.routeLight('about')
 		//: !localStorage.getItem('business') || localStorage.getItem('business') === 0

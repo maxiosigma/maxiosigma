@@ -4,6 +4,7 @@ import app_config from './app.config'
 const { plugins, buildModules, modules, transpile } = includes()
 
 export default {
+	...strapi(),
 	...middleware(),
 	...components(),
 	...generate(),
@@ -13,11 +14,18 @@ export default {
 	...custom(),
 	...render(),
 	...server(),
-	//...strapi(),
 	...build(),
 	...hooks(),
 	...i18n(),
-	//...css(),
+	...css(),
+
+	strapi: {
+		url: process.env.STRAPI_URL || 'http://localhost:1337',
+		//prefix: '/api',
+		//entities: ['links'],
+		//version: 'v4',
+		cookie: {},
+	},
 
 	buildModules,
 	modules,
@@ -161,6 +169,21 @@ function build() {
 			parallel: false,
 			cssSourceMap: false,
 			...(!app_config.isDev && { publicPath: '/public/' }),
+			loaders: {
+				sass: {
+					implementation: require('sass'),
+				},
+				scss: {
+					implementation: require('sass'),
+				},
+			},
+			postcss: {
+				plugins: {
+					'postcss-import': true,
+					'postcss-url': {},
+					autoprefixer: {},
+				},
+			},
 			splitChunks: {
 				runtime: true,
 				commons: true,
@@ -272,13 +295,9 @@ function includes() {
 			'@nuxtjs/i18n',
 			//'@nuxt/content',
 			//'@nuxtjs/toast',
-			['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }],
+			//['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }], // МЕШАЕТ STRAPI
 			//'nuxt-parallel-middleware',
-			//'@nuxtjs/strapi',
-<<<<<<< HEAD
-=======
-			//'@nuxtjs/proxy',
->>>>>>> 11e7d41670ae9670826e1a64aa008f036738b8f3
+			'@nuxtjs/strapi',
 		],
 		//'@prismicio/vue', 'vue-slicezone', 'lottie-web',
 		transpile = ['@prismicio/vue', 'vue-slicezone', 'lottie-web', 'vue-typed-js']
