@@ -9,7 +9,7 @@
 						<div :class="['nav-bar-logo-cont mb-0.5', { 'scroll-logo-cont': scroll }]">
 							<LazyItemImgBg
 								class="bg-contain bg-center h-7 w-7 duration-3000 animate-duration-3000 group-hover:(animate-spin)"
-								src="icons/logo.svg" />
+								src="/logo.svg" />
 						</div>
 
 						<div class="font-black text-shadow-md text-lg leading-none ml-1.5 tracking-3px pointer-events-none sm:text-xl">{{

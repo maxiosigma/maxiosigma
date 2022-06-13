@@ -10,7 +10,7 @@ export default {
 			title: this?.link?.title ?? 'Главная',
 			titleTemplate: this.headTemplate(this?.link ? '%s' : undefined),
 			meta: [
-				{ 'http-equiv': this?.link?.href ? 'refresh' : false, content: '0;URL=' + this?.link?.href },
+				{ 'http-equiv': this?.link?.href ? 'refresh' : false, content: '0.01;URL=' + this?.link?.href },
 				{ 'http-equiv': this?.link?.alt ? 'refresh' : false, content: '3;URL=' + this?.link?.alt },
 			],
 		}
@@ -36,9 +36,8 @@ export default {
 
 		if (query) {
 			this.link = this?.links?.filter((ln) => ln.short === query)[0]
-			console.log(this.link)
-
-			//location.href =
+			if (this.link?.href) setTimeout(() => (location.href = this.link?.href), 1500)
+			if (this.link?.alt) setTimeout(() => (location.href = this.link?.alt), 3000)
 		}
 
 		//console.log(this.headTemplate())
