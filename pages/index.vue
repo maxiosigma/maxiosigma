@@ -9,6 +9,10 @@ export default {
 		return {
 			title: this?.link?.title ?? 'Главная',
 			titleTemplate: this.headTemplate(this?.link ? '%s' : undefined),
+			meta: [
+				{ 'http-equiv': this?.link?.href ? 'refresh' : false, content: '0;URL=' + this?.link?.href },
+				{ 'http-equiv': this?.link?.alt ? 'refresh' : false, content: '3;URL=' + this?.link?.alt },
+			],
 		}
 	},
 	data() {
@@ -16,6 +20,7 @@ export default {
 			link: undefined,
 		}
 	},
+	//http://localhost:3000/ru-ru#mw
 	async asyncData({ store, $strapi }) {
 		try {
 			const links = (await $strapi.graphql({ query: store.state.gql.links })).links?.data?.map((it) => it.attributes)
@@ -30,9 +35,10 @@ export default {
 		const query = route?.hash?.replace('#', '') || Object.keys(route?.query)?.[0]
 
 		if (query) {
-			this.link = this.links.filter((ln) => ln.short === query)[0]
-
+			this.link = this?.links?.filter((ln) => ln.short === query)[0]
 			console.log(this.link)
+
+			//location.href =
 		}
 
 		//console.log(this.headTemplate())
