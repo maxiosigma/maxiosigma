@@ -1,7 +1,5 @@
 <template>
-	<Layout :bodyStyle="'index'">
-		<!--<ItemNoScript :id="0" />-->
-	</Layout>
+	<Layout :bodyStyle="'index'"> </Layout>
 </template>
 
 <script>
@@ -17,22 +15,15 @@ export default {
 		}
 	},
 	async asyncData({ store, $strapi }) {
-		console.log($strapi.graphql({ query: store.state.gql.links }))
-
-		//const clientApollo = app.apolloProvider.defaultClient
-		//console.log(store.state.gql.links)
-		//return new Promise((resolve, reject) => {
-		//	clientApollo.query({
-		//		query: store.state.gql.links,
-		//	})
-		//})
+		try {
+			const links = (await $strapi.graphql({ query: store.state.gql.links })).links?.data?.map((it) => it.attributes)
+			return { links }
+		} catch (error) {
+			return {}
+		}
 	},
 	async beforeMount() {
-		//console.log(this.$strapi)
-		//
-		//const s = await this.$strapi.graphql({ query: this.$store.state.gql.links })
-		//console.log(s)
-		//
+		console.log(this.links)
 		//!localStorage.getItem('about') || localStorage.getItem('about') === 0 ? this.routeLight('about') : this.routeLight('about')
 		//: !localStorage.getItem('business') || localStorage.getItem('business') === 0
 		//? this.routeLight('business')
