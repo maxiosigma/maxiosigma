@@ -4,32 +4,43 @@
 
 <script>
 export default {
+	nuxtI18n: false,
 	head() {
 		return {
-			title: 'Главная',
+			title: this?.link?.title ?? 'Главная',
+			titleTemplate: this.headTemplate(this?.link ? '%s' : undefined),
 		}
 	},
 	data() {
 		return {
-			//strapi: '',
+			link: undefined,
 		}
 	},
 	async asyncData({ store, $strapi }) {
 		try {
 			const links = (await $strapi.graphql({ query: store.state.gql.links })).links?.data?.map((it) => it.attributes)
-
 			return { links }
 		} catch (error) {
 			return {}
 		}
 	},
 	async beforeMount() {
-		console.log(this.links)
+		const route = this.$route
+
+		const query = route?.hash?.replace('#', '') || Object.keys(route?.query)?.[0]
+
+		if (query) {
+			this.link = this.links.filter((ln) => ln.short === query)[0]
+
+			console.log(this.link)
+		}
+
+		//console.log(this.headTemplate())
+
+		//console.log(this.links)
 		//!localStorage.getItem('about') || localStorage.getItem('about') === 0 ? this.routeLight('about') : this.routeLight('about')
 		//: !localStorage.getItem('business') || localStorage.getItem('business') === 0
 		//? this.routeLight('business')
-
-		console.log()
 	},
 }
 </script>

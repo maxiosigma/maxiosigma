@@ -119,8 +119,8 @@ Vue.mixin({
 				}
 			}, 500)
 		},
-		headTemplate(template = '%s') {
-			return template || app_config.head.titleTemplate
+		headTemplate(template = app_config.head.titleTemplate) {
+			return template
 		},
 		headMeta(meta) {
 			return meta ? app_config.head.meta.push(meta) : app_config.head.meta
