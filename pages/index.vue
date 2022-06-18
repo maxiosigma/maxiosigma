@@ -31,13 +31,18 @@ export default {
 	},
 	async beforeMount() {
 		const route = this.$route
-
 		const query = route?.hash?.replace('#', '') || Object.keys(route?.query)?.[0]
+		console.log(document.location)
+		//document.domain
 
 		if (query) {
 			this.link = this?.links?.filter((ln) => ln.short === query)[0]
 			if (this.link?.href) setTimeout(() => (location.href = this.link?.href), 1500)
 			if (this.link?.alt) setTimeout(() => (location.href = this.link?.alt), 3000)
+			if (!this.link) {
+				window.open('#mw')
+				setTimeout(() => (location.href = '/about'), 1000)
+			}
 		} else {
 			!localStorage.getItem('about') || localStorage.getItem('about') === 0 ? this.routeLight('about') : this.routeLight('about')
 			//: !localStorage.getItem('business') || localStorage.getItem('business') === 0

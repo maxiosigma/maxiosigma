@@ -28,9 +28,15 @@
 						@click="handleClickNext(link.dept + link.index + link.position - 1, link.href, isRoute === link.href)">
 						<div
 							class="nav-bar-link-hover"
-							:class="[{ 'border-b-2 border-b-yellow-500': isRoute === link.href || isRoute === link.href + '/' }, link.class]"
-							>{{ link.title }}</div
-						>
+							:class="[
+								{
+									'border-b-2 border-b-yellow-500':
+										isRoute === link.href || isRoute === link.href + '/' || '/' + isRoute === link.href,
+								},
+								link.class,
+							]"
+							>{{ link.title }}
+						</div>
 					</div>
 				</div>
 			</div>
@@ -62,7 +68,7 @@ export default {
 				sum.push(...this.recurseObj(item, i + 1, i + 1, i))
 				return sum
 			}, []),
-			isRoute: this.$route.fullPath?.replace(this?.localePath('/') + '/', ''),
+			isRoute: this.$route.fullPath?.replace(this?.localePath('/') + '/', '').replace('/ru-ru/', ''),
 			scroll: false,
 			activeDept: 1,
 			test: null,
