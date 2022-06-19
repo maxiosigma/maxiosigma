@@ -2,24 +2,16 @@
 	<LayoutPage>
 		<div class="flex-grow grid grid-cols-3">
 			<div
-				:class="[it.name, 'flex-grow flex-center']"
+				:class="[it.name, 'flex-grow flex-center flex-col text-light-200']"
 				v-for="(it, i) in [
 					{ name: 'developer', img: '', title: 'Разработчик' },
 					{ name: 'designer', img: '', title: 'Дизайнер' },
 					{ name: 'entrepreneur', img: '', title: 'Предприниматель' },
 				]"
 				:key="i">
-				<div
-					class="text-white text-center"
-					v-anime="{
-						rotate: 7200,
-						backgroundColor: ['#2f495e', '#00c58e'],
-						duration: 3000,
-						delay: 1000,
-						loop: false,
-					}"
-					>{{ it.title }}</div
-				>
+				<div class="text-center">{{ it.title }}</div>
+				<!--<div class="js-object-log"></div>-->
+				<div class="">{{ properties }}</div>
 			</div>
 		</div>
 	</LayoutPage>
@@ -42,6 +34,8 @@ export default {
 	},
 	mounted() {
 		this.setAnimation()
+
+		//console.log(this.properties)
 	},
 	methods: {
 		setAnimation() {
@@ -50,9 +44,12 @@ export default {
 				prop1: 50,
 				prop2: '100%',
 				easing: 'linear',
+				duration: 3000,
 				round: 1,
 				update: function () {
-					objPropLogEl.innerHTML = JSON.stringify(this.properties)
+					//document.querySelector('.js-object-log').innerHTML = JSON.stringify(this.properties)
+
+					console.log(JSON.stringify(this.properties))
 				},
 			})
 		},
