@@ -185,7 +185,9 @@ function build() {
 				plugins: {
 					'postcss-import': true,
 					'postcss-url': {},
-					autoprefixer: {},
+					...(!app_config.isDev && {
+						autoprefixer: {},
+					}),
 				},
 			},
 			splitChunks: {
@@ -240,6 +242,10 @@ function build() {
 					},
 				})
 
+				config.node = {
+					fs: 'empty',
+				}
+
 				//config.resolve.alias['testerum'] = resolve(__dirname, '../../../../../strapi/public')
 				//config.resolve.alias['~testerum'] = resolve(__dirname, '../../../../../strapi/public')
 
@@ -254,9 +260,6 @@ function build() {
 					//config.resolve.alias['testerum'] = resolve(__dirname, '../../../../../strapi/public')
 					//config.resolve.alias['~testerum'] = resolve(__dirname, '../../../../../strapi/public')
 					//console.log(config.resolve.alias['~testerum'])
-					//config.node = {
-					//	fs: 'empty',
-					//}
 					//images: resolve(__dirname, '../strapi/public'),
 					//stimg: resolve(__dirname, '../strapi/public'),
 					//strapimg: resolve(__dirname, '../../../../../strapi/public'),
@@ -307,7 +310,7 @@ function includes() {
 			'nuxt-user-agent',
 			//'nuxt-fontagon',
 			'@/plugins/active/GSR',
-			'nuxt-resolve-url-loader',
+			//'nuxt-resolve-url-loader',
 			//'nuxt-alias',
 			//'@nuxtjs/prismic',
 			//'nuxt-stories',
@@ -324,6 +327,7 @@ function includes() {
 		modules = [
 			//'@nuxtjs/markdownit',
 			'@nuxtjs/i18n',
+			'@nuxtjs/axios',
 			//'@nuxt/content',
 			//'@nuxtjs/toast',
 			//['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }], // МЕШАЕТ STRAPI

@@ -36,19 +36,16 @@ export default {
 		//console.log(tts)
 	},
 	methods: {
-		async loadStyleImg() {
-			const url = await this.getImg()
-
+		loadStyleImg() {
 			document.body.insertAdjacentHTML(
 				'beforeend',
-				`<style type='text/css' async='true'>.${this.id} { background-image: url('${url}'); }</style>`
+				`<style type='text/css' async='true'>.${this.id} { background-image: url('${this.getImg()}'); }</style>`
 			)
 		},
-		async getImg() {
-			const path = await require('~strapi/public' + this.src)
-			//const path = await require(`./../../../../../strapi/public${this.src}`)
+		getImg() {
+			//const path = await require('~/../../strapi/public' + this.src)
 			//const path = await require(`A:/programs/Projects/strapi/public${this.src}`)
-			return path
+			return require(`./../../../../../strapi/public${this.src}`)
 		},
 	},
 }
