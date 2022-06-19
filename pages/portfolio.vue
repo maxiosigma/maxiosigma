@@ -11,7 +11,7 @@
 				:key="i">
 				<div class="text-center">{{ it.title }}</div>
 				<!--<div class="js-object-log"></div>-->
-				<div class="">{{ properties }}</div>
+				<div class="">{{ properties[it.name] }}</div>
 			</div>
 		</div>
 	</LayoutPage>
@@ -27,30 +27,30 @@ export default {
 	data() {
 		return {
 			properties: {
-				prop1: 0,
-				prop2: '0%',
+				developer: 0,
+				designer: 0,
+				entrepreneur: 0,
 			},
 		}
 	},
 	mounted() {
 		this.setAnimation()
-
-		//console.log(this.properties)
+		//setTimeout(() => this.setAnimation(), 500)
 	},
 	methods: {
 		setAnimation() {
 			this.$anime({
 				targets: this.properties,
-				prop1: 50,
-				prop2: '100%',
+				developer: 100,
+				designer: 200,
+				entrepreneur: 300,
 				easing: 'linear',
-				duration: 3000,
+				duration: 2500,
+				delay: 750,
 				round: 1,
-				update: function () {
-					//document.querySelector('.js-object-log').innerHTML = JSON.stringify(this.properties)
-
-					console.log(JSON.stringify(this.properties))
-				},
+				//update: function () {
+				//	//JSON.stringify(this.properties)
+				//},
 			})
 		},
 	},
