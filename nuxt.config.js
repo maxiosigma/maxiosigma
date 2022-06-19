@@ -181,15 +181,15 @@ function build() {
 					implementation: require('sass'),
 				},
 			},
-			postcss: {
-				plugins: {
-					'postcss-import': true,
-					'postcss-url': {},
-					...(!app_config.isDev && {
-						autoprefixer: {},
-					}),
-				},
-			},
+			//postcss: {
+			//	plugins: {
+			//		...(!app_config.isDev && {
+			//			'postcss-import': true,
+			//			'postcss-url': {},
+			//			autoprefixer: {},
+			//		}),
+			//	},
+			//},
 			splitChunks: {
 				runtime: true,
 				commons: true,
@@ -327,7 +327,7 @@ function includes() {
 		modules = [
 			//'@nuxtjs/markdownit',
 			'@nuxtjs/i18n',
-			'@nuxtjs/axios',
+			//'@nuxtjs/axios',
 			//'@nuxt/content',
 			//'@nuxtjs/toast',
 			//['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }], // МЕШАЕТ STRAPI

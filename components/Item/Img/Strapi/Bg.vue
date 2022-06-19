@@ -20,7 +20,10 @@ export default {
 		}
 	},
 	mounted() {
-		this.loadStyleImg()
+		const img = require(`./../../../../../strapi/public${this.src}`)
+		console.log(img)
+
+		this.loadStyleImg(img)
 		//${this.src}
 		//require(`~/../strapi/public${this.src}`)
 		//console.log(require(`../../../../../strapi/public${this.src}`))
@@ -36,17 +39,17 @@ export default {
 		//console.log(tts)
 	},
 	methods: {
-		loadStyleImg() {
+		loadStyleImg(img) {
 			document.body.insertAdjacentHTML(
 				'beforeend',
-				`<style type='text/css' async='true'>.${this.id} { background-image: url('${this.getImg()}'); }</style>`
+				`<style type='text/css' async='true'>.${this.id} { background-image: url('${img}'); }</style>`
 			)
 		},
-		getImg() {
-			//const path = await require('~/../../strapi/public' + this.src)
-			//const path = await require(`A:/programs/Projects/strapi/public${this.src}`)
-			return require(`./../../../../../strapi/public${this.src}`)
-		},
+		//async getImg() {
+		//	//const path = await require('~/../../strapi/public' + this.src)
+		//	//const path = await require(`A:/programs/Projects/strapi/public${this.src}`)
+		//	return await require(`./../../../../../strapi/public${this.src}`)
+		//},
 	},
 }
 </script>
@@ -56,7 +59,6 @@ export default {
 	&-bg {
 		&-mod {
 			@apply bg-no-repeat w-full;
-			//background-image: url('~images/main-bg.jpg');
 		}
 	}
 }
