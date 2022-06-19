@@ -5,6 +5,7 @@
 		"path": false,
 		"os": false
 	},
+	"type": "commonjs",
 	"scripts": {
 		"npm-run-all": "npm-run-all --parallel strapi-dev firebase-deploy-generate",
 		"dev": "nuxt",
@@ -53,7 +54,6 @@
 		"node-fetch": "<=2.6.1",
 		"nodejs-file-downloader": "^4.9.3",
 		"nuxt": "2.15.8",
-		"nuxt-alias": "^1.2.1",
 		"nuxt-fontagon": "^1.0.4",
 		"nuxt-i18n-easy": "^1.5.1",
 		"nuxt-parallel-middleware": "^0.0.2",

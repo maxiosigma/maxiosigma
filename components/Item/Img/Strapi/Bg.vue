@@ -19,9 +19,13 @@ export default {
 			//req: `${this.src}`, // !this.isHypertext(this.src) ? require(`~/images/${this.src}`) :
 		}
 	},
-	mounted() {
-		const img = require(`./../../../../../strapi/public${this.src}`)
-		console.log(img)
+	async mounted() {
+		//const img = require(`./../../../../../strapi/public${this.src}`)
+		//console.log(img)
+
+		//const img = import(`~images/portfolio/bg_1.png`)
+		const img = (await import(`~~/assets/../../strapi/public/uploads/Frame_3_27d761588c.png`)).default
+		console.log(this.src)
 
 		this.loadStyleImg(img)
 		//${this.src}

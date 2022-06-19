@@ -4,8 +4,13 @@ import app_config from './app.config'
 
 const { plugins, buildModules, modules, transpile } = includes()
 
+console.log(resolve(__dirname, './'))
+
 export default {
 	alias: {
+		'~': resolve(__dirname, './'),
+		'@': resolve(__dirname, './'),
+		images: resolve(__dirname, './images'),
 		strapi: resolve(__dirname, '../strapi'),
 	},
 	...strapi(),
