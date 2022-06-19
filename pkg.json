@@ -86,7 +86,7 @@
 		"nuxt-animejs": "^1.2.4",
 		"nuxt-graphql-request": "^5.2.0",
 		"nuxt-resolve-url-loader": "^1.0.4",
-		"postcss": "8.4.14",
+		"postcss": "8.1.10",
 		"postcss-import": "13.0.0",
 		"postcss-loader": "4.1.0",
 		"postcss-url": "10.1.1",
