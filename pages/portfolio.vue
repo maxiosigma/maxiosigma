@@ -13,6 +13,8 @@
 				<!--<div class="js-object-log"></div>-->
 				<div class="">{{ properties[it.name] }}</div>
 
+				<ItemImgStrapiBg :src="data.Imgs.data[i].attributes.url" :alt="data.Imgs.data[i].attributes.name"></ItemImgStrapiBg>
+
 				<!--<div class="demo-content align-center morphing-demo">
 					<svg width="140" height="140" viewBox="0 0 140 140">
 						<g fill="none" fill-rule="evenodd">
@@ -49,6 +51,20 @@ export default {
 				designer: 0,
 				entrepreneur: 0,
 			},
+		}
+	},
+	async asyncData({ $strapi, store }) {
+		const portfolio = store.state.gql.portfolio
+		const data = (
+			await $strapi.graphql({
+				query: portfolio,
+			})
+		).page.data.attributes
+
+		//console.log(data.Imgs.data)
+
+		return {
+			data,
 		}
 	},
 	mounted() {

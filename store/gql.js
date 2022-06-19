@@ -4,6 +4,7 @@ export const state = () => ({
 	designerWorks: designerWorks(),
 	developerWorks: developerWorks(),
 	links: links(),
+	portfolio: portfolio(),
 })
 
 function designerWorks() {
@@ -127,6 +128,32 @@ function links() {
 						description
 						alt
 						updatedAt
+					}
+				}
+			}
+		}
+	`
+}
+
+function portfolio() {
+	return `
+		query {
+			page (id: 1) {
+				data{
+					attributes {
+						Title
+						Imgs {
+							data {
+								attributes {
+									name
+									width
+									height
+									ext
+									size
+									url
+								}
+							}
+						}
 					}
 				}
 			}

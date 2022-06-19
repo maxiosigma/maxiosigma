@@ -21,7 +21,7 @@ export default {
 		}
 	},
 	//http://localhost:3000/ru-ru#mw
-	async asyncData({ store, $strapi }) {
+	async asyncData({ $strapi, store }) {
 		try {
 			const links = (await $strapi.graphql({ query: store.state.gql.links })).links?.data?.map((it) => it.attributes)
 			return { links }
@@ -32,7 +32,7 @@ export default {
 	async beforeMount() {
 		const route = this.$route
 		const query = route?.hash?.replace('#', '') || Object.keys(route?.query)?.[0]
-		console.log(document.location)
+		//console.log(document.location)
 		//document.domain
 
 		if (query) {
