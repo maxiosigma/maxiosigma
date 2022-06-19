@@ -5,10 +5,12 @@ import app_config from './app.config'
 const { plugins, buildModules, modules, transpile } = includes()
 
 export default {
-	alias: {
-		images: resolve(__dirname, '../strapi/public'),
-		stimg: resolve(__dirname, '../strapi/public'),
-		strapimg: resolve(__dirname, '../../../../../strapi/public'),
+	resolve: {
+		alias: {
+			images: resolve(__dirname, '../strapi/public'),
+			stimg: resolve(__dirname, '../strapi/public'),
+			strapimg: resolve(__dirname, '../../../../../strapi/public'),
+		},
 	},
 
 	...strapi(),
@@ -224,6 +226,7 @@ function build() {
 			}),
 			extend(config, ctx) {
 				ctx.loaders.scss.additionalData = '@use "sass:math";'
+
 				config.module.rules.push({
 					test: /\.ico$/,
 					loader: 'url-loader',
@@ -232,6 +235,7 @@ function build() {
 						name: '[path]favicon_[hash:8].[ext]',
 					},
 				})
+
 				config.module.rules.push({
 					test: /\.pdf$/,
 					loader: 'file-loader',
@@ -241,14 +245,26 @@ function build() {
 					},
 				})
 
-				if (ctx.isServer) {
-					console.log(join(__dirname, '../../../../../strapi/public'))
+				config.resolve.alias['testerum'] = resolve(__dirname, '../../../../../strapi/public')
+				config.resolve.alias['~testerum'] = resolve(__dirname, '../../../../../strapi/public')
 
+				if (ctx.isServer) {
+					//console.log(join(__dirname, '../../../../../strapi/public'))
 					//stimg: resolve(__dirname, './../strapi/public'),
 					//strapimg: resolve(__dirname, '../../../../../strapi/public'),
-					config.resolve.alias['~stimg'] = resolve(__dirname, '../strapi/public')
-					config.resolve.alias['~strapimg'] = resolve(__dirname, '../../../../../strapi/public')
+					//config.resolve.alias['~stimg'] = resolve(__dirname, '../strapi/public')
+					//config.resolve.alias['~strapimg'] = resolve(__dirname, '../../../../../strapi/public')
 					//config.resolve.alias['hammerjs$'] = this.options.rootDir + 'node_modules/vue-touch/dist/hammer-ssr.js'
+					//config.resolve.alias['stimg'] = resolve(__dirname, '../strapi/public')
+					//config.resolve.alias['testerum'] = resolve(__dirname, '../../../../../strapi/public')
+					//config.resolve.alias['~testerum'] = resolve(__dirname, '../../../../../strapi/public')
+					//console.log(config.resolve.alias['~testerum'])
+					//config.node = {
+					//	fs: 'empty',
+					//}
+					//images: resolve(__dirname, '../strapi/public'),
+					//stimg: resolve(__dirname, '../strapi/public'),
+					//strapimg: resolve(__dirname, '../../../../../strapi/public'),
 				}
 			},
 		},
@@ -296,6 +312,8 @@ function includes() {
 			'nuxt-user-agent',
 			//'nuxt-fontagon',
 			'@/plugins/active/GSR',
+			'nuxt-resolve-url-loader',
+			//'nuxt-alias',
 			//'@nuxtjs/prismic',
 			//'nuxt-stories',
 			//'@nuxtjs/strapi',
@@ -360,6 +378,10 @@ function custom() {
 		//},
 		storybook: {
 			// Options
+		},
+		nuxtAlias: {
+			/* module options */
+			rootDir: ['../strapi'],
 		},
 		stories: {
 			//lang: 'ru',
