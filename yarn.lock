@@ -2714,6 +2714,11 @@ analytics-node@^6.0.0:
     remove-trailing-slash "^0.1.0"
     uuid "^8.3.2"
 
+animejs@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/animejs/-/animejs-3.2.1.tgz#de9fe2e792f44a777a7fdf6ae160e26604b0cdda"
+  integrity sha512-sWno3ugFryK5nhiDm/2BKeFCpZv7vzerWUcUPyAZLDhMek3+S/p418ldZJbJXo5ZUOpfm2kP2XRO4NJcULMy9A==
+
 ansi-align@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/ansi-align/-/ansi-align-3.0.1.tgz#0cdf12e111ace773a86e9a1fad1225c43cb19a59"
@@ -8527,6 +8532,13 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha512-4jbtZXNAsfZbAHiiqjLPBiCl16dES1zI4Hpzzxw61Tk+loF+sBDBKx1ICKKKwIqQ7M0mFn1TmkN7euSncWgHiQ==
+
+nuxt-animejs@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/nuxt-animejs/-/nuxt-animejs-1.2.4.tgz#565799fb3ef5348188771d3f3b65c4138f747b2d"
+  integrity sha512-1FF+Lp9tbVuf+zLRfxT7GjHj9qa4LHPdsOkF2PcA/5Z3zKswLNa8DpxV5XA+McWURFaZkwl/9Y7ALIYw3O+E4A==
+  dependencies:
+    animejs "^3.2.1"
 
 nuxt-fontagon@^1.0.4:
   version "1.0.4"

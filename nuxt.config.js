@@ -283,6 +283,7 @@ function includes() {
 			//'nuxt-stories',
 			//'@nuxtjs/strapi',
 			//'@nuxtjs/apollo',
+			'nuxt-animejs',
 		],
 		plugins = [
 			'@plugins/passive/mixins',
