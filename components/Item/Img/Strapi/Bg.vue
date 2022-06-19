@@ -24,10 +24,13 @@ export default {
 		//console.log(img)
 
 		//const img = import(`~images/portfolio/bg_1.png`)
-		const img = (await import(`~~/assets/../../strapi/public/uploads/Frame_3_27d761588c.png`)).default
-		console.log(this.src)
+		//const img = (await import(`~~/assets/../../strapi/public${this.src}`)).default
 
-		this.loadStyleImg(img)
+		const images = require.context('A:/programs/Projects/strapi/public/uploads', false, /\Frame_3_27d761588c.png$/)
+		//const img = images(`A:/programs/Projects/strapi/public${this.src}`)
+		console.log(images(`./Frame_3_27d761588c.png`))
+
+		this.loadStyleImg(images(`./Frame_3_27d761588c.png`))
 		//${this.src}
 		//require(`~/../strapi/public${this.src}`)
 		//console.log(require(`../../../../../strapi/public${this.src}`))
