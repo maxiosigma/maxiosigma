@@ -2,7 +2,7 @@
 	<LayoutPage>
 		<div class="flex-grow grid grid-cols-3">
 			<ItemImgStrapiBg
-				:class="[it.name, 'flex-grow flex-center flex-col text-light-200']"
+				:class="[it.name, 'flex-grow flex-center flex-col text-light-200 bg-center bg-cover']"
 				v-for="(it, i) in [
 					{ name: 'developer', img: '', title: 'Разработчик' },
 					{ name: 'designer', img: '', title: 'Дизайнер' },

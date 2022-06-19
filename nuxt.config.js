@@ -1,12 +1,14 @@
 //import { apiEndpoint } from './sm.json'
-import { resolve } from 'path'
+import { resolve, join } from 'path'
 import app_config from './app.config'
 
 const { plugins, buildModules, modules, transpile } = includes()
 
 export default {
 	alias: {
-		stimg: resolve(__dirname, './../strapi/public'),
+		images: resolve(__dirname, '../strapi/public'),
+		stimg: resolve(__dirname, '../strapi/public'),
+		strapimg: resolve(__dirname, '../../../../../strapi/public'),
 	},
 
 	...strapi(),
@@ -238,6 +240,16 @@ function build() {
 						name: '[path][name]_[hash:8].[ext]',
 					},
 				})
+
+				if (ctx.isServer) {
+					console.log(join(__dirname, '../../../../../strapi/public'))
+
+					//stimg: resolve(__dirname, './../strapi/public'),
+					//strapimg: resolve(__dirname, '../../../../../strapi/public'),
+					config.resolve.alias['~stimg'] = resolve(__dirname, '../strapi/public')
+					config.resolve.alias['~strapimg'] = resolve(__dirname, '../../../../../strapi/public')
+					//config.resolve.alias['hammerjs$'] = this.options.rootDir + 'node_modules/vue-touch/dist/hammer-ssr.js'
+				}
 			},
 		},
 	}
