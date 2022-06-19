@@ -1,8 +1,9 @@
 <template>
 	<LayoutPage>
 		<div class="flex-grow grid grid-cols-3">
+			<!-- , { 'elevation-10': i == 2 } -->
 			<ItemImgStrapiBg
-				:class="[it.name, 'flex-grow flex-center flex-col text-light-200 bg-center bg-cover']"
+				:class="[it.name, 'flex-grow flex-center flex-col text-light-200 elevation-10 bg-top bg-cover']"
 				v-for="(it, i) in [
 					{ name: 'developer', img: '', title: 'Разработчик' },
 					{ name: 'designer', img: '', title: 'Дизайнер' },
