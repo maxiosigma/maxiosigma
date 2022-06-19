@@ -13,7 +13,7 @@
 				<!--<div class="js-object-log"></div>-->
 				<div class="">{{ properties[it.name] }}</div>
 
-				<div class="demo-content align-center morphing-demo">
+				<!--<div class="demo-content align-center morphing-demo">
 					<svg width="140" height="140" viewBox="0 0 140 140">
 						<g fill="none" fill-rule="evenodd">
 							<g fill="currentColor" fill-opacity=".15" transform="translate(0 6)">
@@ -29,7 +29,7 @@
 								points="70 39.111670180848165 118.68507822465598 59.48007822465599 109.9231395287841 130.96482663016016 59.7442177534401 86.51932981915184 18.537670180848167 59.702530652064056 "></polygon>
 						</g>
 					</svg>
-				</div>
+				</div>-->
 			</div>
 		</div>
 	</LayoutPage>
@@ -57,19 +57,22 @@ export default {
 	},
 	methods: {
 		setAnimation() {
-			//this.$anime({
-			//	targets: this.properties,
-			//	developer: 100,
-			//	designer: 200,
-			//	entrepreneur: 300,
-			//	easing: 'linear',
-			//	duration: 2500,
-			//	delay: 750,
-			//	round: 1,
-			//	//update: function () {
-			//	//	//JSON.stringify(this.properties)
-			//	//},
-			//})
+			this.$anime({
+				targets: this.properties,
+				developer: 100,
+				designer: 200,
+				entrepreneur: 300,
+				easing: 'linear',
+				duration: () => this.$anime.random(1, 5800),
+				delay: 750,
+				round: 1,
+
+				//update: function () {
+				//	//JSON.stringify(this.properties)
+				//},
+			})
+
+			//console.log(this.$anime.random(0, 270))
 
 			this.$anime({
 				targets: '.morphing-demo .polymorph',
