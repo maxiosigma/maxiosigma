@@ -1,9 +1,14 @@
 //import { apiEndpoint } from './sm.json'
+import { resolve } from 'path'
 import app_config from './app.config'
 
 const { plugins, buildModules, modules, transpile } = includes()
 
 export default {
+	alias: {
+		stimg: resolve(__dirname, './../strapi/public'),
+	},
+
 	...strapi(),
 	...middleware(),
 	...components(),

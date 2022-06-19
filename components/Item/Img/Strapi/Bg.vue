@@ -14,11 +14,15 @@ export default {
 				String(Math.random() * ((Math.random() * 10000000) / 1.0))
 					.split('.')
 					.join('_'),
-			req: `${this.src}`, // !this.isHypertext(this.src) ? require(`~/images/${this.src}`) :
+			req: `${this.src}`,
+			//req: `${this.src}`, // !this.isHypertext(this.src) ? require(`~/images/${this.src}`) :
 		}
 	},
 	mounted() {
 		this.loadStyleImg()
+		//${this.src}
+		//require(`~/../strapi/public${this.src}`)
+		console.log(require('../../../../../strapi/public/uploads/Frame_3_27d761588c.png?updated_at=2022-06-19T09:35:43.521Z'))
 	},
 	methods: {
 		loadStyleImg() {
