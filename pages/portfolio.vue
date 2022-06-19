@@ -63,8 +63,8 @@ export default {
 				designer: 200,
 				entrepreneur: 300,
 				easing: 'linear',
-				duration: () => this.$anime.random(1, 5800),
-				delay: 750,
+				duration: () => this.$anime.random(2300, 4200),
+				delay: () => this.$anime.random(550, 850),
 				round: 1,
 
 				//update: function () {
