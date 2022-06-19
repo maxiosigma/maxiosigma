@@ -45,7 +45,8 @@ export default {
 			)
 		},
 		async getImg() {
-			const path = await require(`./../../../../../strapi/public${this.src}`)
+			const path = await require('~strapi/public' + this.src)
+			//const path = await require(`./../../../../../strapi/public${this.src}`)
 			//const path = await require(`A:/programs/Projects/strapi/public${this.src}`)
 			return path
 		},

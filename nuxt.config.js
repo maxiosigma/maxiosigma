@@ -5,14 +5,9 @@ import app_config from './app.config'
 const { plugins, buildModules, modules, transpile } = includes()
 
 export default {
-	resolve: {
-		alias: {
-			images: resolve(__dirname, '../strapi/public'),
-			stimg: resolve(__dirname, '../strapi/public'),
-			strapimg: resolve(__dirname, '../../../../../strapi/public'),
-		},
+	alias: {
+		strapi: resolve(__dirname, '../strapi'),
 	},
-
 	...strapi(),
 	...middleware(),
 	...components(),
@@ -245,8 +240,8 @@ function build() {
 					},
 				})
 
-				config.resolve.alias['testerum'] = resolve(__dirname, '../../../../../strapi/public')
-				config.resolve.alias['~testerum'] = resolve(__dirname, '../../../../../strapi/public')
+				//config.resolve.alias['testerum'] = resolve(__dirname, '../../../../../strapi/public')
+				//config.resolve.alias['~testerum'] = resolve(__dirname, '../../../../../strapi/public')
 
 				if (ctx.isServer) {
 					//console.log(join(__dirname, '../../../../../strapi/public'))
