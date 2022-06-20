@@ -190,7 +190,11 @@ function build() {
 				//babelrc: false,
 				//cacheDirectory: undefined,
 				//presets: ['@nuxt/babel-preset-app'],
-				//plugins: ['transform-require-context'],
+				plugins: [
+					'@babel/plugin-transform-runtime',
+					//'transform-require-context',
+					//'require-context-hook',
+				],
 			},
 			postcss: {
 				plugins: {
