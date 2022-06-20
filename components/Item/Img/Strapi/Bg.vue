@@ -14,7 +14,7 @@ export default {
 				String(Math.random() * ((Math.random() * 10000000) / 1.0))
 					.split('.')
 					.join('_'),
-			req: `${this.src}`,
+			//req: `${this.src}`,
 			//req: require(`../../../../../strapi/public${this.src}`),
 			//req: `${this.src}`, // !this.isHypertext(this.src) ? require(`~/images/${this.src}`) :
 		}
@@ -28,22 +28,20 @@ export default {
 
 		//require.context(directory, (useSubdirectories = true), (regExp = /^\.\/.*$/), (mode = 'sync'))
 
-		const name = this.src.replace('/uploads/', '')
+		//const name = this.src.replace('/uploads/', '')
 
 		// /\Frame_3_27d761588c.png$/
 		//const reg = new RegExp(`\\b${this.src}\\b`, 'gi')
 		//const reg = new RegExp(`\\${name}$`, '')
 		//console.log(this.src)
 		//const images = require.context('A:/programs/Projects/strapi/public/uploads', false, /\.png$/)
-		const imp = import(`A:/programs/Projects/strapi/public/uploads/${name}`)
+		import(`A:/programs/Projects/strapi/public/uploads/${this.src.replace('/uploads/', '')}`).then((it) => {
+			this.loadStyleImg(it.default)
+		})
 		//const img = images(`A:/programs/Projects/strapi/public${this.src}`)
 
 		//console.log(images(`./${name}`))
 		//console.log(images(`./Frame_3_27d761588c.png`))
-
-		imp.then((it) => {
-			this.loadStyleImg(it.default)
-		})
 
 		//this.loadStyleImg(images(`./Frame_3_27d761588c.png`))
 		//${this.src}
