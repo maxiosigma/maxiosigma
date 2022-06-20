@@ -32,12 +32,12 @@ export default {
 
 		// /\Frame_3_27d761588c.png$/
 		//const reg = new RegExp(`\\b${this.src}\\b`, 'gi')
-		const reg = new RegExp(`\\Frame_3_27d761588c.png$`, '')
-		console.log()
-		const images = require.context('A:/programs/Projects/strapi/public/uploads', false, /\\this.src$/)
+		const reg = new RegExp(`\\${name}$`, '')
+		console.log(reg)
+		const images = require.context('A:/programs/Projects/strapi/public/uploads', false, /\Frame_3_27d761588c.png$/)
 		//const img = images(`A:/programs/Projects/strapi/public${this.src}`)
 
-		//console.log(images(`./${this.src}`))
+		console.log(images(`./${name}`))
 
 		//this.loadStyleImg(images(`./Frame_3_27d761588c.png`))
 		//${this.src}

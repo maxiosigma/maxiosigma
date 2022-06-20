@@ -4,7 +4,7 @@ import app_config from './app.config'
 
 const { plugins, buildModules, modules, transpile } = includes()
 
-console.log(resolve(__dirname, './'))
+//console.log(resolve(__dirname, './'))
 
 export default {
 	alias: {
@@ -186,15 +186,21 @@ function build() {
 					implementation: require('sass'),
 				},
 			},
-			//postcss: {
-			//	plugins: {
-			//		...(!app_config.isDev && {
-			//			'postcss-import': true,
-			//			'postcss-url': {},
-			//			autoprefixer: {},
-			//		}),
-			//	},
-			//},
+			babel: {
+				//babelrc: false,
+				//cacheDirectory: undefined,
+				//presets: ['@nuxt/babel-preset-app'],
+				//plugins: ['transform-require-context'],
+			},
+			postcss: {
+				plugins: {
+					'postcss-import': true,
+					'postcss-url': {},
+					...(!app_config.isDev && {
+						autoprefixer: {},
+					}),
+				},
+			},
 			splitChunks: {
 				runtime: true,
 				commons: true,

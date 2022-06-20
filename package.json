@@ -42,6 +42,7 @@
 		"@windicss/plugin-icons": "^1.0.2",
 		"@windicss/plugin-interaction-variants": "^1.0.0",
 		"autoprefixer": "^10.4.7",
+		"babel-plugin-transform-require-context": "^0.1.1",
 		"cookie-universal-nuxt": "^2.2.1",
 		"core-js": "^3.21.1",
 		"cross-env": "^7.0.3",
