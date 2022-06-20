@@ -32,20 +32,18 @@ export default {
 
 		// /\Frame_3_27d761588c.png$/
 		//const reg = new RegExp(`\\b${this.src}\\b`, 'gi')
-		const reg = new RegExp(`\\${name}$`, '')
-		console.log(reg)
+		//const reg = new RegExp(`\\${name}$`, '')
+		//console.log(this.src)
 		//const images = require.context('A:/programs/Projects/strapi/public/uploads', false, /\.png$/)
-		const imp = import('A:/programs/Projects/strapi/public/uploads/Frame_3_27d761588c.png')
+		const imp = import(`A:/programs/Projects/strapi/public/uploads/${name}`)
 		//const img = images(`A:/programs/Projects/strapi/public${this.src}`)
 
 		//console.log(images(`./${name}`))
 		//console.log(images(`./Frame_3_27d761588c.png`))
 
-		if (name == 'Frame_3_27d761588c.png') {
-			imp.then((it) => {
-				this.loadStyleImg(it.default)
-			})
-		}
+		imp.then((it) => {
+			this.loadStyleImg(it.default)
+		})
 
 		//this.loadStyleImg(images(`./Frame_3_27d761588c.png`))
 		//${this.src}
