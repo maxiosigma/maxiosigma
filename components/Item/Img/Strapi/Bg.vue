@@ -26,11 +26,20 @@ export default {
 		//const img = import(`~images/portfolio/bg_1.png`)
 		//const img = (await import(`~~/assets/../../strapi/public${this.src}`)).default
 
-		const images = require.context('A:/programs/Projects/strapi/public/uploads', false, /\Frame_3_27d761588c.png$/)
-		//const img = images(`A:/programs/Projects/strapi/public${this.src}`)
-		console.log(images(`./Frame_3_27d761588c.png`))
+		//require.context(directory, (useSubdirectories = true), (regExp = /^\.\/.*$/), (mode = 'sync'))
 
-		this.loadStyleImg(images(`./Frame_3_27d761588c.png`))
+		const name = this.src.replace('/uploads/', '')
+
+		// /\Frame_3_27d761588c.png$/
+		//const reg = new RegExp(`\\b${this.src}\\b`, 'gi')
+		const reg = new RegExp(`\\Frame_3_27d761588c.png$`, '')
+		console.log()
+		const images = require.context('A:/programs/Projects/strapi/public/uploads', false, /\\this.src$/)
+		//const img = images(`A:/programs/Projects/strapi/public${this.src}`)
+
+		//console.log(images(`./${this.src}`))
+
+		//this.loadStyleImg(images(`./Frame_3_27d761588c.png`))
 		//${this.src}
 		//require(`~/../strapi/public${this.src}`)
 		//console.log(require(`../../../../../strapi/public${this.src}`))
