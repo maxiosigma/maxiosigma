@@ -34,7 +34,7 @@ export default {
 		//const reg = new RegExp(`\\b${this.src}\\b`, 'gi')
 		const reg = new RegExp(`\\${name}$`, '')
 		console.log(reg)
-		const images = require.context('A:/programs/Projects/strapi/public/uploads', false, /\Frame_3_27d761588c.png$/)
+		const images = require.context('A:/programs/Projects/strapi/public/uploads', false, /\.png$/)
 		//const img = images(`A:/programs/Projects/strapi/public${this.src}`)
 
 		console.log(images(`./${name}`))
