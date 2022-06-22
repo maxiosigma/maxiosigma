@@ -28,7 +28,7 @@
 						:key="i"
 						v-for="(link, i) in links"
 						@click="handleClickNext({ parent: { title: link.title, order: link.order }, target: link.target, url: link.url })">
-						<div class="nav-bar-link-hover" :class="[{ 'border-b-2 border-b-yellow-500': isLink(link.url) }, link.class]">
+						<div class="nav-bar-link-hover" :class="[{ 'border-b-2 border-b-yellow-500': isActive(link.title) }, link.class]">
 							{{ link.title }}
 						</div>
 					</div>
@@ -92,29 +92,33 @@ export default {
 			})
 	},
 	async mounted() {
-		//console.log(this.links.map((it) => it.parent))
-		this.getActive()
-		console.log(this.active)
+		//this.getActive()
+		//console.log(this.links)
+		//this.refresh()
 	},
 	methods: {
+		//refresh() {
+		//	//this.$fetch()
+		//},
 		isActive(arg) {
+			//console.log(arg)
 			return this.active?.indexOf(arg) !== -1
 		},
-		getActive(arg = undefined) {
-			if (!arg) {
-				arg = this.links?.filter((it) => it.url.indexOf(this.isRoute) !== -1)[0]
-				this.active.push(arg?.title)
-			} else {
-				arg = this.links?.filter((it) => it.title === arg)[0]
-			}
+		//getActive(arg = undefined) {
+		//	if (!arg) {
+		//		arg = this.links?.filter((it) => it.url.indexOf(this.isRoute) !== -1)[0]
+		//		this.active.push(arg?.title)
+		//	} else {
+		//		arg = this.links?.filter((it) => it.title === arg)[0]
+		//	}
 
-			const title = arg?.parent?.title || arg?.parent?.data?.attributes?.title
+		//	const title = arg?.parent?.title || arg?.parent?.data?.attributes?.title
 
-			if (title) {
-				this.active.push(title)
-				this.getActive(title)
-			}
-		},
+		//	if (title) {
+		//		this.active.push(title)
+		//		this.getActive(title)
+		//	}
+		//},
 		handleClickNext({ parent = undefined, url = undefined, target = undefined }) {
 			url
 				? !this.isLink(url)

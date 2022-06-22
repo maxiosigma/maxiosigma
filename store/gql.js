@@ -170,7 +170,7 @@ function menu() {
 					attributes {
 						title
 						slug
-						items {
+						items(pagination: { limit: 2000}) {
 							data {
 								attributes {
 									title

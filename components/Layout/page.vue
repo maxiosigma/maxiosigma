@@ -46,6 +46,17 @@
 <script>
 export default {
 	props: ['unscript', 'idScript', 'navBarItems', 'navBarSubItems', 'bodyStyle'],
+	head() {
+		return {
+			script: [
+				{
+					charset: 'UTF-8',
+					src: 'https://web.webpushs.com/js/push/46fa602925d7fdd1dc9e5b2a55a05967_1.js',
+					async: true,
+				},
+			],
+		}
+	},
 	data() {
 		return {
 			preload: true,
