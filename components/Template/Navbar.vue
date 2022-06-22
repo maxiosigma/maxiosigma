@@ -42,7 +42,7 @@
 			</div>
 		</div>
 
-		<div
+		<!--<div
 			v-if="crumbs.length > 1"
 			:class="['nav-bar-crumbs', scroll ? crumbScroll : '', $store.state.mainMenu == 1 ? crumbScroll : '']">
 			<div class="nav-bar-crumbs-container">
@@ -52,7 +52,7 @@
 					<span class="nav-bar-crumbs-delimetr" v-if="i !== crumbs.length - 1">/</span>
 				</span>
 			</div>
-		</div>
+		</div>-->
 	</div>
 </template>
 
@@ -77,8 +77,31 @@ export default {
 	},
 	mounted() {
 		//console.log(this.activeTests)
+		this.getMenu()
 	},
 	methods: {
+		async getMenu() {
+			const menu = this.$store.state.gql.menu
+
+			const data = (
+				await this.$strapi.graphql({
+					query: menu,
+				})
+			).menusMenus.data[0].attributes.items.data
+				.map((it) => it.attributes)
+				.map((it) => {
+					return {
+						title: it.title,
+						target: it.target,
+						url: it.url,
+						order: it.order,
+						parent: it.parent.data.attributes.reduce((s, pr) => s.push({ order: pr.order, title: pr.title })),
+					}
+				})
+
+			console.log(data)
+		},
+
 		handleClickNext(value, link, isClick) {
 			if (link) {
 				isClick ? null : this.menuRedirect(link)
