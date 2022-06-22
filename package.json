@@ -6,7 +6,7 @@
 		"dev": "nuxt",
 		"strapi-dev": "cd ../strapi/ && yarn strapi develop",
 		"generate": "nuxt generate",
-		"generate-start": "nuxt generate",
+		"generate-start": "yarn generate && yarn start",
 		"strapi-build": "cd ../strapi/ && yarn strapi build",
 		"strapi-generate": "npm-run-all --parallel strapi-dev generate",
 		"dev-ntl-live": "netlify dev --live",

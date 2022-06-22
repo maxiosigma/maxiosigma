@@ -56,7 +56,7 @@ export default {
 	data() {
 		return {
 			menu: [],
-			links: this.menu,
+			links: [],
 			//crumbs: this.getCrumbs(),
 			isRoute: this.$route.fullPath?.replace(this?.localePath('/') + '/', '').replace('/' + this.loke() + '/', ''),
 			parent: { title: undefined, order: undefined },
@@ -65,36 +65,41 @@ export default {
 		}
 	},
 	async fetch() {
-		//if (process.server)
-		this.menu = (
-			await this.$strapi.graphql({
-				query: this.$store.state.gql.menu,
-			})
-		).menusMenus.data[0].attributes.items.data
-			.map((it) => it.attributes)
-			.map((it) => {
-				return {
-					url: it.url?.split('?')?.[0],
-					title: it.title,
-					order: it.order,
-					target: it.target,
-					parent: it.parent.data?.attributes,
-					...it.url
-						?.split('?')?.[1]
-						?.split('&')
-						?.reduce((s, it) => {
-							s = {
-								...s,
-								[it.split('=')[0]]: it.split('=')[1],
-							}
-							return s
-						}, {}),
-				}
-			})
+		try {
+			const data = (
+				await this.$strapi.graphql({
+					query: this.$store.state.gql.menu,
+				})
+			).menusMenus.data[0].attributes.items.data
+				.map((it) => it.attributes)
+				.map((it) => {
+					return {
+						url: it.url?.split('?')?.[0],
+						title: it.title,
+						order: it.order,
+						target: it.target,
+						parent: it.parent.data?.attributes,
+						...it.url
+							?.split('?')?.[1]
+							?.split('&')
+							?.reduce((s, it) => {
+								s = {
+									...s,
+									[it.split('=')[0]]: it.split('=')[1],
+								}
+								return s
+							}, {}),
+					}
+				})
+
+			this.links = data
+		} catch (error) {
+			console.error(JSON.stringify(error, undefined, 2))
+		}
 	},
-	fetchOnServer: true,
+	//fetchOnServer: true,
 	async mounted() {
-		this.links = this.menu
+		//this.links = this.menu
 		this.getActive()
 		//console.log(this.links)
 		//this.refresh()

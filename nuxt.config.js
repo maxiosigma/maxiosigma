@@ -27,7 +27,7 @@ export default {
 	...hooks(),
 	...i18n(),
 	...css(),
-	//...pwa(),
+	...pwa(),
 
 	strapi: {
 		url: process.env.STRAPI_URL || 'http://localhost:1337',
@@ -177,7 +177,7 @@ function build() {
 			transpile: transpile,
 			friendlyErrors: false,
 			parallel: false,
-			cssSourceMap: true,
+			cssSourceMap: false,
 			...(!app_config.isDev && { publicPath: '/public/' }),
 			loaders: {
 				sass: {
@@ -338,7 +338,7 @@ function includes() {
 			//'@nuxtjs/strapi',
 			//'@nuxtjs/apollo',
 			'nuxt-animejs',
-			//'@nuxtjs/pwa',
+			'@nuxtjs/pwa',
 		],
 		plugins = [
 			'@plugins/passive/mixins',
