@@ -5,10 +5,10 @@
 			<ItemImgStrapiBg
 				:class="[
 					it.name,
-					'flex-grow flex-center relative flex-col text-light-200 bg-top bg-cover <lg:(bg-contain max-w-1/2 flex-shrink flex-grow-0 min-h-300px)',
-					{ '<lg:(mr-auto)': i == 0 },
-					{ '<lg:(ml-auto)': i == 1 },
-					{ '<lg:(mr-auto)': i == 2 },
+					'flex-grow flex-center relative flex-col cursor-pointer text-light-200 relative bg-top bg-cover <lg:(bg-contain max-w-1/2 flex-shrink flex-grow-0 min-h-300px)',
+					{ '<lg:(mr-auto z-0)': i == 0 },
+					{ '<lg:(ml-auto -my-30 z-10)': i == 1 },
+					{ '<lg:(mr-auto z-20)': i == 2 },
 				]"
 				v-for="(it, i) in [
 					{ name: 'developer', img: '', title: 'Разработчик' },
@@ -17,7 +17,8 @@
 				]"
 				:key="i"
 				:src="data.Imgs.data[i].attributes.url"
-				:alt="data.Imgs.data[i].attributes.name">
+				:alt="data.Imgs.data[i].attributes.name"
+				@click.native.prevent="redirect(it.name)">
 				<div class="text-center">{{ it.title }}</div>
 				<!--<div class="js-object-log"></div>-->
 				<!--<div class="">{{ properties[it.name] }}</div>-->
@@ -111,6 +112,9 @@ export default {
 			//	duration: 2000,
 			//	loop: true,
 			//})
+		},
+		redirect(url) {
+			location.href = '/' + url
 		},
 	},
 }
