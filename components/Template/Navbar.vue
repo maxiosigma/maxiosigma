@@ -22,7 +22,14 @@
 					<!--<div :class="['nav-bar-cont-arrow', { hidden: parent === undefined }]" @click="handleClickPrev()">←</div>-->
 
 					<!-- 	@click="" -->
-					<div :class="['nav-bar-link group', { hidden: link.parent !== parent }]" :key="i" v-for="(link, i) in menu">
+					<div
+						:class="[
+							'nav-bar-link group',
+							link.parent ? { hidden: link.parent.title !== parent } : { hidden: link.parent !== parent },
+							link.class,
+						]"
+						:key="i"
+						v-for="(link, i) in menu">
 						<div
 							class="nav-bar-link-hover"
 							:class="[
