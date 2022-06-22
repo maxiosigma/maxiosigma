@@ -19,18 +19,17 @@
 				</div>
 
 				<div class="nav-bar-cont-text">
-					<!--<div :class="['nav-bar-cont-arrow', { hidden: parent === undefined }]" @click="handleClickPrev()">←</div>-->
+					<div :class="['nav-bar-cont-arrow', { hidden: parent.title === undefined }]" @click="handleClickPrev()">←</div>
 
-					<!-- 	@click="" -->
 					<div
 						:class="[
 							'nav-bar-link group',
-							link.parent ? { hidden: link.parent.title !== parent } : { hidden: link.parent !== parent },
+							link.parent ? { hidden: link.parent.title !== parent.title } : { hidden: link.parent !== parent.title },
 							link.class,
 						]"
 						:key="i"
 						v-for="(link, i) in menu"
-						@click="handleClickNext({ title: link.title, url: link.url })">
+						@click="handleClickNext({ parent: { title: link.title, order: link.order }, url: link.url })">
 						<div
 							class="nav-bar-link-hover"
 							:class="[
@@ -84,112 +83,73 @@ export default {
 	props: ['openMenu', 'items', 'subitems'],
 	data() {
 		return {
-			openSubMenu: false,
-			openSubMenuCount: 0,
-			crumbs: this.getCrumbs(),
-			//links: this.$store.state.navigation.links?.reduce((sum, item, i) => {
-			//	sum.push(...this.recurseObj(item, i + 1, i + 1, i))
-			//	return sum
-			//}, []),
+			//openSubMenu: false,
+			//openSubMenuCount: 0,
+			//crumbs: this.getCrumbs(),
 			isRoute: this.$route.fullPath?.replace(this?.localePath('/') + '/', '').replace('/ru-ru/', ''),
 			scroll: false,
-			activeDept: 1,
-			test: null,
-			activeTests: [],
-
+			//activeDept: 1,
+			//activeTests: [],
 			menu: [],
-			parent: undefined,
+			parent: { title: undefined, order: undefined },
 		}
 	},
 	async mounted() {
 		await this.getMenu()
 	},
 	methods: {
-		handleClickNext({ title = undefined, url = undefined }) {
-			url ? (location.href = url) : (this.parent = title)
-
-			//value, link, isClick
-			//if (link) {
-			//	isClick ? null : this.menuRedirect(link)
-			//} else {
-			//	this.activeDept++
-			//	this.test = value
-			//	this.activeTests.push(value)
-			//}
+		handleClickNext({ parent = undefined, url = undefined }) {
+			url ? (location.href = url) : (this.parent = parent)
 		},
 		handleClickPrev() {
-			//if (this.activeDept === 2) {
-			//	this.activeDept--
-			//	this.test = null
-			//} else {
-			//	this.activeDept--
-			//	this.activeTests.pop()
-			//	this.test = this.activeTests[this.activeTests.length - 1]
-			//}
+			//console.log(this.menu.filter((it) => it.parent?.title === this.parent))
 		},
-		getObj(item, index, position, iteration, dept = 1) {
-			return { title: item?.title, ...(item.href && { href: item.href }), class: item.class, index, position, iteration, dept }
-		},
-		recurseObj(item, index, position, iteration, dept = 1, result = []) {
-			if (item?.items)
-				item?.items?.forEach((it, j) => this.recurseObj(it, position + dept + index - 1, position + j, iteration, dept + 1, result))
+		//getObj(item, index, position, iteration, dept = 1) {
+		//	return { title: item?.title, ...(item.href && { href: item.href }), class: item.class, index, position, iteration, dept }
+		//},
+		//recurseObj(item, index, position, iteration, dept = 1, result = []) {
+		//	if (item?.items)
+		//		item?.items?.forEach((it, j) => this.recurseObj(it, position + dept + index - 1, position + j, iteration, dept + 1, result))
 
-			result.push(this.getObj(item, index, position, iteration, dept))
+		//	result.push(this.getObj(item, index, position, iteration, dept))
 
-			return result
-		},
-		getCrumbs() {
-			const fullPath = this.$route.fullPath,
-				params = fullPath
-					.replace('/' + this.$i18n.locale, '')
-					.replace('/amp', '')
-					.substring(1)
-					.split('/')
-					.filter((it) => it !== ''),
-				crumbs = []
+		//	return result
+		//},
+		//getCrumbs() {
+		//	const fullPath = this.$route.fullPath,
+		//		params = fullPath
+		//			.replace('/' + this.$i18n.locale, '')
+		//			.replace('/amp', '')
+		//			.substring(1)
+		//			.split('/')
+		//			.filter((it) => it !== ''),
+		//		crumbs = []
 
-			params.reduce((sum, it, i) => {
-				sum += it + '/'
-				crumbs.push({ l: sum, t: this.ucFirst(it) })
-				return sum
-			}, '')
+		//	params.reduce((sum, it, i) => {
+		//		sum += it + '/'
+		//		crumbs.push({ l: sum, t: this.ucFirst(it) })
+		//		return sum
+		//	}, '')
 
-			return crumbs
-		},
+		//	return crumbs
+		//},
 		getScroll() {
 			const bodyHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.body.clientHeight)
 			const scrollHeight = document.documentElement.clientHeight + window.scrollY
 
-			//const dialog = document.querySelector('.fb_dialog_content > iframe:nth-of-type(1)')
-
-			//console.log(dialog)
-
 			if (window.scrollY < 100) {
 				this.scroll = false
 				this.$store.commit('checkScroll', 0)
-
-				//dialog?.classList.remove('!static')
 			}
 
 			if (window.scrollY >= 100) {
 				this.scroll = true
 				this.$store.commit('checkScroll', 1)
-
-				//dialog?.classList.remove('!static')
 			}
-
-			//console.log(bodyHeight - scrollHeight, bodyHeight * (2 / 3), scrollHeight)
-
-			//if (window.scrollY >= 100 && bodyHeight - scrollHeight <= bodyHeight * (1 / 3)) {
-			//	//dialog?.classList.add('!static')
-			//}
 
 			if (window.scrollY >= 100 && bodyHeight - scrollHeight <= 100) {
 				this.scroll = false
 				this.$store.commit('checkScroll', 2)
-
-				//dialog?.classList.remove('!static')
-				//dialog?.classList.add('!static')
 			}
 		},
 		isLink(url) {
