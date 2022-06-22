@@ -1,14 +1,14 @@
 <template>
 	<LayoutPage>
-		<div class="flex-grow grid filter drop-shadow-lg lg:(grid-cols-3) <lg:(grid-cols-1 relative items-center) ">
+		<div class="flex-grow filter drop-shadow-lg lg:(grid grid-cols-3) <lg:(flex flex-col) ">
 			<!-- , { 'elevation-10': i == 2 } ДОБАВИТЬ ТЕНИ ПО БОКАМ -->
 			<ItemImgStrapiBg
 				:class="[
 					it.name,
-					'flex-grow flex-center relative flex-col text-light-200 bg-top bg-cover <lg:(absolute transform bg-contain rotate-y-45 w-full h-2/3)',
-					{ '<lg:(-left-1/3)': i == 0 },
-					{ '': i == 1 },
-					{ '<lg:(-right-1/3)': i == 2 },
+					'flex-grow flex-center relative flex-col text-light-200 bg-top bg-cover <lg:(bg-contain max-w-1/2 flex-shrink flex-grow-0 min-h-300px)',
+					{ '<lg:(mr-auto)': i == 0 },
+					{ '<lg:(ml-auto)': i == 1 },
+					{ '<lg:(mr-auto)': i == 2 },
 				]"
 				v-for="(it, i) in [
 					{ name: 'developer', img: '', title: 'Разработчик' },
