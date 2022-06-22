@@ -65,11 +65,9 @@ export default {
 		}
 	},
 	async fetch() {
-		const menu = this.$store.state.gql.menu
-
-		const data = (
+		this.links = (
 			await this.$strapi.graphql({
-				query: menu,
+				query: this.$store.state.gql.menu,
 			})
 		).menusMenus.data[0].attributes.items.data
 			.map((it) => it.attributes)
@@ -92,10 +90,6 @@ export default {
 						}, {}),
 				}
 			})
-
-		this.links = data
-
-		//this.posts = await this.$http.$get('https://api.nuxtjs.dev/posts')
 	},
 	async mounted() {
 		//this.links = await this.getMenu()
