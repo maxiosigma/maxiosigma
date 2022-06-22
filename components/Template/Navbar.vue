@@ -26,7 +26,7 @@
 							link.class,
 						]"
 						:key="i"
-						v-for="(link, i) in menu"
+						v-for="(link, i) in links"
 						@click="handleClickNext({ parent: { title: link.title, order: link.order }, target: link.target, url: link.url })">
 						<div class="nav-bar-link-hover" :class="[{ 'border-b-2 border-b-yellow-500': isLink(link.url) }, link.class]">
 							{{ link.title }}
@@ -55,18 +55,54 @@ export default {
 	props: ['openMenu', 'items', 'subitems'],
 	data() {
 		return {
-			menu: [],
+			menu: this.getMenu(),
+			links: [],
+
 			//crumbs: this.getCrumbs(),
 			isRoute: this.$route.fullPath?.replace(this?.localePath('/') + '/', '').replace('/ru-ru/', ''),
 			parent: { title: undefined, order: undefined },
 			scroll: false,
 		}
 	},
+	async fetch() {
+		const menu = this.$store.state.gql.menu
+
+		const data = (
+			await this.$strapi.graphql({
+				query: menu,
+			})
+		).menusMenus.data[0].attributes.items.data
+			.map((it) => it.attributes)
+			.map((it) => {
+				return {
+					url: it.url?.split('?')?.[0],
+					title: it.title,
+					order: it.order,
+					target: it.target,
+					parent: it.parent.data?.attributes,
+					...it.url
+						?.split('?')?.[1]
+						?.split('&')
+						?.reduce((s, it) => {
+							s = {
+								...s,
+								[it.split('=')[0]]: it.split('=')[1],
+							}
+							return s
+						}, {}),
+				}
+			})
+
+		this.links = data
+
+		//this.posts = await this.$http.$get('https://api.nuxtjs.dev/posts')
+	},
 	async mounted() {
-		await this.getMenu()
-		console.log(this.menu)
+		//this.links = await this.getMenu()
+		//console.log(this.links)
 	},
 	methods: {
+		isActive() {},
 		handleClickNext({ parent = undefined, url = undefined, target = undefined }) {
 			url
 				? !this.isLink(url)
@@ -77,7 +113,7 @@ export default {
 				: (this.parent = parent)
 		},
 		handleClickPrev() {
-			const next = this.menu?.filter((it) => it.order === this.parent.order && it.title === this.parent.title)?.[0]
+			const next = this.links?.filter((it) => it.order === this.parent.order && it.title === this.parent.title)?.[0]
 			this.parent = { title: next.parent?.title, order: next.parent?.order }
 		},
 		//getCrumbs() {
@@ -149,7 +185,7 @@ export default {
 					}
 				})
 
-			this.menu = data
+			return data
 		},
 	},
 }

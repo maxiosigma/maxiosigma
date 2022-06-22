@@ -45,9 +45,12 @@ export const mutations = {
 }
 
 export const actions = {
-	//async nuxtServerInit({ dispatch }, { $prismic }) {
-	//	await dispatch('links/getLinks', { prismic: $prismic })
-	//},
+	async nuxtServerInit(ctx) {
+		//console.log(ctx)
+		//await dispatch('links/getLinks', { prismic: $prismic })
+	},
 }
 
 export const getters = {}
+
+//npx apollo schema:download --endpoint=http://localhost:1337/graphql schema.json

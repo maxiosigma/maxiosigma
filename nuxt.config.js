@@ -233,7 +233,7 @@ function build() {
 					css: 'styles/[contenthash:5].css',
 					//[path]
 					img: (ctx) => {
-						console.log(ctx)
+						//console.log(ctx)
 						return 'images/img_[hash:5].[ext]'
 					},
 					//[path]

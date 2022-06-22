@@ -69,8 +69,6 @@ export default {
 			})
 		).page.data.attributes
 
-		//console.log(data.Imgs.data)
-
 		return {
 			data,
 		}
