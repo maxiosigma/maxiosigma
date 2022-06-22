@@ -2,6 +2,7 @@
 	<LayoutPage>
 		<div class="flex-grow filter drop-shadow-lg lg:(grid grid-cols-3) <lg:(flex flex-col) ">
 			<!-- , { 'elevation-10': i == 2 } ДОБАВИТЬ ТЕНИ ПО БОКАМ -->
+			<!-- 	@click.native.prevent="redirect(it.name)" -->
 			<ItemImgStrapiBg
 				:class="[
 					it.name,
@@ -17,8 +18,7 @@
 				]"
 				:key="i"
 				:src="data.Imgs.data[i].attributes.url"
-				:alt="data.Imgs.data[i].attributes.name"
-				@click.native.prevent="redirect(it.name)">
+				:alt="data.Imgs.data[i].attributes.name">
 				<div class="text-center">{{ it.title }}</div>
 				<!--<div class="js-object-log"></div>-->
 				<!--<div class="">{{ properties[it.name] }}</div>-->
