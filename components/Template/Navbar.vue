@@ -96,7 +96,7 @@ export default {
 	},
 	async mounted() {
 		await this.getMenu()
-		//console.log(this.menu)
+		console.log(this.menu)
 	},
 	methods: {
 		async getMenu() {
@@ -109,23 +109,22 @@ export default {
 			).menusMenus.data[0].attributes.items.data
 				.map((it) => it.attributes)
 				.map((it) => {
-					const classed = it.url
-						?.split('?')?.[1]
-						?.split('&')
-						.map((it) => {
-							return {
-								class: it[0],
-							}
-						})
-					console.log(classed)
-
 					return {
-						title: it.title,
-						target: it.target,
 						url: it.url,
+						title: it.title,
 						order: it.order,
-						//?.reduce((s, pr) => s.push({ order: pr.order, title: pr.title }) && s, [])
+						target: it.target,
 						parent: it.parent.data?.attributes,
+						...it.url
+							?.split('?')?.[1]
+							?.split('&')
+							?.reduce((s, it) => {
+								s = {
+									...s,
+									[it.split('=')[0]]: it.split('=')[1],
+								}
+								return s
+							}, {}),
 					}
 				})
 
