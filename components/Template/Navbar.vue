@@ -73,11 +73,14 @@ export default {
 			activeDept: 1,
 			test: null,
 			activeTests: [],
+
+			menu: this.getMenu(),
 		}
 	},
 	mounted() {
 		//console.log(this.activeTests)
-		this.getMenu()
+
+		console.log(this.menu)
 	},
 	methods: {
 		async getMenu() {
@@ -95,11 +98,12 @@ export default {
 						target: it.target,
 						url: it.url,
 						order: it.order,
-						parent: it.parent.data.attributes.reduce((s, pr) => s.push({ order: pr.order, title: pr.title })),
+						//?.reduce((s, pr) => s.push({ order: pr.order, title: pr.title }) && s, [])
+						parent: it.parent.data?.attributes,
 					}
 				})
 
-			console.log(data)
+			return data
 		},
 
 		handleClickNext(value, link, isClick) {
