@@ -57,11 +57,11 @@ export default {
 		return {
 			menu: this.getMenu(),
 			links: [],
-
 			//crumbs: this.getCrumbs(),
-			isRoute: this.$route.fullPath?.replace(this?.localePath('/') + '/', '').replace('/ru-ru/', ''),
+			isRoute: this.$route.fullPath?.replace(this?.localePath('/') + '/', '').replace('/' + this.loke() + '/', ''),
 			parent: { title: undefined, order: undefined },
 			scroll: false,
+			active: [],
 		}
 	},
 	async fetch() {
@@ -72,6 +72,15 @@ export default {
 		).menusMenus.data[0].attributes.items.data
 			.map((it) => it.attributes)
 			.map((it) => {
+				const parent = ret(it.parent.data?.attributes)
+
+				console.log(parent)
+
+				function ret(parent) {
+					const attributes = parent?.data?.attributes
+					return attributes ? ret(attributes.parent) : attributes
+				}
+
 				return {
 					url: it.url?.split('?')?.[0],
 					title: it.title,
@@ -90,13 +99,24 @@ export default {
 						}, {}),
 				}
 			})
+		//.parent.data.attributes
 	},
 	async mounted() {
-		//this.links = await this.getMenu()
-		//console.log(this.links)
+		//console.log(this.links.map((it) => it.parent))
+		this.getActive()
 	},
 	methods: {
-		isActive() {},
+		getActive(arg = undefined) {
+			//!arg
+			//	? (arg = this.links?.filter((it) => it.url.indexOf(this.isRoute) !== -1)[0])
+			//	: this.links?.filter((it) => it.title === arg)[0]
+			//const title = arg?.parent?.title
+			//console.log(arg?.parent)
+			//if (title) {
+			//	this.active.push(title)
+			//	this.getActive(title)
+			//}
+		},
 		handleClickNext({ parent = undefined, url = undefined, target = undefined }) {
 			url
 				? !this.isLink(url)

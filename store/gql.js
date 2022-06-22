@@ -184,6 +184,32 @@ function menu() {
 												target
 												url
 												order
+												parent {
+													data {
+														attributes {
+																title
+																target
+																url
+																order
+																parent {
+																	data {
+																		attributes {
+																			parent {
+																				data {
+																					attributes {
+																						title
+																						target
+																						url
+																						order
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+														}
+													}
+												}
 											}
 										}
 									}
