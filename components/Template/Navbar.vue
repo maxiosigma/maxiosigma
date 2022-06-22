@@ -30,7 +30,7 @@
 						]"
 						:key="i"
 						v-for="(link, i) in menu"
-						@click="">
+						@click="handleClickNext({ title: link.title, url: link.url })">
 						<div
 							class="nav-bar-link-hover"
 							:class="[
@@ -103,32 +103,29 @@ export default {
 	},
 	async mounted() {
 		await this.getMenu()
-		console.log(this.menu)
 	},
 	methods: {
-		isLink(url) {
-			console.log(this.isRoute, url)
-			return this.isRoute === url || this.isRoute === url + '/' || '/' + this.isRoute === url
-		},
+		handleClickNext({ title = undefined, url = undefined }) {
+			url ? (location.href = url) : (this.parent = title)
 
-		handleClickNext(value, link, isClick) {
-			if (link) {
-				isClick ? null : this.menuRedirect(link)
-			} else {
-				this.activeDept++
-				this.test = value
-				this.activeTests.push(value)
-			}
+			//value, link, isClick
+			//if (link) {
+			//	isClick ? null : this.menuRedirect(link)
+			//} else {
+			//	this.activeDept++
+			//	this.test = value
+			//	this.activeTests.push(value)
+			//}
 		},
 		handleClickPrev() {
-			if (this.activeDept === 2) {
-				this.activeDept--
-				this.test = null
-			} else {
-				this.activeDept--
-				this.activeTests.pop()
-				this.test = this.activeTests[this.activeTests.length - 1]
-			}
+			//if (this.activeDept === 2) {
+			//	this.activeDept--
+			//	this.test = null
+			//} else {
+			//	this.activeDept--
+			//	this.activeTests.pop()
+			//	this.test = this.activeTests[this.activeTests.length - 1]
+			//}
 		},
 		getObj(item, index, position, iteration, dept = 1) {
 			return { title: item?.title, ...(item.href && { href: item.href }), class: item.class, index, position, iteration, dept }
@@ -194,6 +191,9 @@ export default {
 				//dialog?.classList.remove('!static')
 				//dialog?.classList.add('!static')
 			}
+		},
+		isLink(url) {
+			return this.isRoute === url || this.isRoute === url + '/' || '/' + this.isRoute === url
 		},
 		async getMenu() {
 			const menu = this.$store.state.gql.menu
