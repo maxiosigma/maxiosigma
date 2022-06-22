@@ -2,9 +2,7 @@
 	<div v-scroll="getScroll" class="nav-bar">
 		<div :class="['nav-bar-cont', scroll ? 'cont-scroll' : '']">
 			<div class="nav-bar-cont-main justify-around sm:justify-between">
-				<!-- @click="$store.commit('checkMenu')" -->
 				<div class="nav-bar-menu relative">
-					<!-- absolute -->
 					<div class="flex-center nav-bar-logo group">
 						<div :class="['nav-bar-logo-cont mb-0.5', { 'scroll-logo-cont': scroll }]">
 							<LazyItemImgBg
@@ -29,29 +27,10 @@
 						]"
 						:key="i"
 						v-for="(link, i) in menu"
-						@click="handleClickNext({ parent: { title: link.title, order: link.order }, url: link.url })">
-						<div class="nav-bar-link-hover" :class="[{ 'border-b-2 border-b-yellow-500': isLink(link.url) }, link.class]"
-							>{{ link.title }}
+						@click="handleClickNext({ parent: { title: link.title, order: link.order }, target: link.target, url: link.url })">
+						<div class="nav-bar-link-hover" :class="[{ 'border-b-2 border-b-yellow-500': isLink(link.url) }, link.class]">
+							{{ link.title }}
 						</div>
-
-						<!--<div :class="['nav-bar-cont-arrow', { hidden: test === null }]" @click="handleClickPrev()">←</div>
-
-					<div
-						:class="['nav-bar-link group', { hidden: link.dept !== activeDept }, test !== null ? { hidden: test !== link.index } : '']"
-						:key="i"
-						v-for="(link, i) in links"
-						@click="handleClickNext(link.dept + link.index + link.position - 1, link.href, isRoute === link.href)">
-						<div
-							class="nav-bar-link-hover"
-							:class="[
-								{
-									'border-b-2 border-b-yellow-500':
-										isRoute === link.href || isRoute === link.href + '/' || '/' + isRoute === link.href,
-								},
-								link.class,
-							]"
-							>{{ link.title }}
-						</div>-->
 					</div>
 				</div>
 			</div>
@@ -85,11 +64,17 @@ export default {
 	},
 	async mounted() {
 		await this.getMenu()
-		//console.log(this.menu)
+		console.log(this.menu)
 	},
 	methods: {
-		handleClickNext({ parent = undefined, url = undefined }) {
-			url ? (!this.isLink(url) ? (location.href = '/' + this.$i18n.locale + url) : null) : (this.parent = parent)
+		handleClickNext({ parent = undefined, url = undefined, target = undefined }) {
+			url
+				? !this.isLink(url)
+					? target === 'blank'
+						? window.open(url)
+						: (location.href = '/' + this.$i18n.locale + url)
+					: null
+				: (this.parent = parent)
 		},
 		handleClickPrev() {
 			const next = this.menu?.filter((it) => it.order === this.parent.order && it.title === this.parent.title)?.[0]
