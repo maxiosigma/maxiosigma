@@ -96,12 +96,8 @@ export default {
 			url ? (!this.isLink(url) ? (location.href = '/' + this.$i18n.locale + url) : null) : (this.parent = parent)
 		},
 		handleClickPrev() {
-			//console.log(this.parent?.title, this.parent?.order)
-
 			const next = this.menu?.filter((it) => it.order === this.parent.order && it.title === this.parent.title)?.[0]
 			this.parent = { title: next.parent?.title, order: next.parent?.order }
-
-			console.log(this.parent)
 		},
 		//getCrumbs() {
 		//	const fullPath = this.$route.fullPath,
