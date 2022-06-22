@@ -72,15 +72,6 @@ export default {
 		).menusMenus.data[0].attributes.items.data
 			.map((it) => it.attributes)
 			.map((it) => {
-				const parent = ret(it.parent.data?.attributes)
-
-				console.log(parent)
-
-				function ret(parent) {
-					const attributes = parent?.data?.attributes
-					return attributes ? ret(attributes.parent) : attributes
-				}
-
 				return {
 					url: it.url?.split('?')?.[0],
 					title: it.title,
@@ -99,23 +90,30 @@ export default {
 						}, {}),
 				}
 			})
-		//.parent.data.attributes
 	},
 	async mounted() {
 		//console.log(this.links.map((it) => it.parent))
 		this.getActive()
+		console.log(this.active)
 	},
 	methods: {
+		isActive(arg) {
+			return this.active?.indexOf(arg) !== -1
+		},
 		getActive(arg = undefined) {
-			//!arg
-			//	? (arg = this.links?.filter((it) => it.url.indexOf(this.isRoute) !== -1)[0])
-			//	: this.links?.filter((it) => it.title === arg)[0]
-			//const title = arg?.parent?.title
-			//console.log(arg?.parent)
-			//if (title) {
-			//	this.active.push(title)
-			//	this.getActive(title)
-			//}
+			if (!arg) {
+				arg = this.links?.filter((it) => it.url.indexOf(this.isRoute) !== -1)[0]
+				this.active.push(arg?.title)
+			} else {
+				arg = this.links?.filter((it) => it.title === arg)[0]
+			}
+
+			const title = arg?.parent?.title || arg?.parent?.data?.attributes?.title
+
+			if (title) {
+				this.active.push(title)
+				this.getActive(title)
+			}
 		},
 		handleClickNext({ parent = undefined, url = undefined, target = undefined }) {
 			url
