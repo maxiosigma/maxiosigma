@@ -30,14 +30,7 @@
 						:key="i"
 						v-for="(link, i) in menu"
 						@click="handleClickNext({ parent: { title: link.title, order: link.order }, url: link.url })">
-						<div
-							class="nav-bar-link-hover"
-							:class="[
-								{
-									'border-b-2 border-b-yellow-500': isLink(link.url),
-								},
-								link.class,
-							]"
+						<div class="nav-bar-link-hover" :class="[{ 'border-b-2 border-b-yellow-500': isLink(link.url) }, link.class]"
 							>{{ link.title }}
 						</div>
 
@@ -96,13 +89,17 @@ export default {
 	},
 	async mounted() {
 		await this.getMenu()
+		//console.log(this.menu)
 	},
 	methods: {
 		handleClickNext({ parent = undefined, url = undefined }) {
 			url ? (location.href = url) : (this.parent = parent)
 		},
 		handleClickPrev() {
-			//console.log(this.menu.filter((it) => it.parent?.title === this.parent))
+			//console.log(this.parent?.title, this.parent?.order)
+			this.parent = this.menu?.filter((it) => it.order === this.parent.order && it.title === this.parent.title)?.[0]
+
+			console.log(this.parent)
 		},
 		//getObj(item, index, position, iteration, dept = 1) {
 		//	return { title: item?.title, ...(item.href && { href: item.href }), class: item.class, index, position, iteration, dept }
