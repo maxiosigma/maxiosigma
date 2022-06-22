@@ -1,10 +1,11 @@
 //import gql from 'graphql-tag'
 
 export const state = () => ({
-	designerWorks: designerWorks(),
 	developerWorks: developerWorks(),
-	links: links(),
+	designerWorks: designerWorks(),
 	portfolio: portfolio(),
+	links: links(),
+	menu: menu(),
 })
 
 function designerWorks() {
@@ -151,6 +152,41 @@ function portfolio() {
 									ext
 									size
 									url
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	`
+}
+
+function menu() {
+	return `
+		query {
+			menusMenus{
+				data {
+					attributes {
+						title
+						slug
+						items {
+							data {
+								attributes {
+									title
+									target
+									url
+									order
+									parent {
+										data {
+											attributes {
+												title
+												target
+												url
+												order
+											}
+										}
+									}
 								}
 							}
 						}
