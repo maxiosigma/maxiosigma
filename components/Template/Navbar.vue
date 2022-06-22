@@ -29,13 +29,13 @@
 							link.class,
 						]"
 						:key="i"
-						v-for="(link, i) in menu">
+						v-for="(link, i) in menu"
+						@click="">
 						<div
 							class="nav-bar-link-hover"
 							:class="[
 								{
-									'border-b-2 border-b-yellow-500':
-										isRoute === link.href || isRoute === link.href + '/' || '/' + isRoute === link.href,
+									'border-b-2 border-b-yellow-500': isLink(link.url),
 								},
 								link.class,
 							]"
@@ -106,37 +106,10 @@ export default {
 		console.log(this.menu)
 	},
 	methods: {
-		async getMenu() {
-			const menu = this.$store.state.gql.menu
-
-			const data = (
-				await this.$strapi.graphql({
-					query: menu,
-				})
-			).menusMenus.data[0].attributes.items.data
-				.map((it) => it.attributes)
-				.map((it) => {
-					return {
-						url: it.url,
-						title: it.title,
-						order: it.order,
-						target: it.target,
-						parent: it.parent.data?.attributes,
-						...it.url
-							?.split('?')?.[1]
-							?.split('&')
-							?.reduce((s, it) => {
-								s = {
-									...s,
-									[it.split('=')[0]]: it.split('=')[1],
-								}
-								return s
-							}, {}),
-					}
-				})
-
-			this.menu = data
+		isLink(url) {
+			return this.isRoute === url || this.isRoute === url + '/' || '/' + this.isRoute === url
 		},
+
 		handleClickNext(value, link, isClick) {
 			if (link) {
 				isClick ? null : this.menuRedirect(link)
@@ -220,6 +193,37 @@ export default {
 				//dialog?.classList.remove('!static')
 				//dialog?.classList.add('!static')
 			}
+		},
+		async getMenu() {
+			const menu = this.$store.state.gql.menu
+
+			const data = (
+				await this.$strapi.graphql({
+					query: menu,
+				})
+			).menusMenus.data[0].attributes.items.data
+				.map((it) => it.attributes)
+				.map((it) => {
+					return {
+						url: it.url,
+						title: it.title,
+						order: it.order,
+						target: it.target,
+						parent: it.parent.data?.attributes,
+						...it.url
+							?.split('?')?.[1]
+							?.split('&')
+							?.reduce((s, it) => {
+								s = {
+									...s,
+									[it.split('=')[0]]: it.split('=')[1],
+								}
+								return s
+							}, {}),
+					}
+				})
+
+			this.menu = data
 		},
 	},
 }
