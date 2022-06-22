@@ -19,7 +19,23 @@
 				</div>
 
 				<div class="nav-bar-cont-text">
-					<div :class="['nav-bar-cont-arrow', { hidden: test === null }]" @click="handleClickPrev()">←</div>
+					<!--<div :class="['nav-bar-cont-arrow', { hidden: parent === undefined }]" @click="handleClickPrev()">←</div>-->
+
+					<!-- 	@click="" -->
+					<div :class="['nav-bar-link group', { hidden: link.parent !== parent }]" :key="i" v-for="(link, i) in menu">
+						<div
+							class="nav-bar-link-hover"
+							:class="[
+								{
+									'border-b-2 border-b-yellow-500':
+										isRoute === link.href || isRoute === link.href + '/' || '/' + isRoute === link.href,
+								},
+								link.class,
+							]"
+							>{{ link.title }}
+						</div>
+
+						<!--<div :class="['nav-bar-cont-arrow', { hidden: test === null }]" @click="handleClickPrev()">←</div>
 
 					<div
 						:class="['nav-bar-link group', { hidden: link.dept !== activeDept }, test !== null ? { hidden: test !== link.index } : '']"
@@ -36,7 +52,7 @@
 								link.class,
 							]"
 							>{{ link.title }}
-						</div>
+						</div>-->
 					</div>
 				</div>
 			</div>
@@ -64,23 +80,23 @@ export default {
 			openSubMenu: false,
 			openSubMenuCount: 0,
 			crumbs: this.getCrumbs(),
-			links: this.$store.state.navigation.links?.reduce((sum, item, i) => {
-				sum.push(...this.recurseObj(item, i + 1, i + 1, i))
-				return sum
-			}, []),
+			//links: this.$store.state.navigation.links?.reduce((sum, item, i) => {
+			//	sum.push(...this.recurseObj(item, i + 1, i + 1, i))
+			//	return sum
+			//}, []),
 			isRoute: this.$route.fullPath?.replace(this?.localePath('/') + '/', '').replace('/ru-ru/', ''),
 			scroll: false,
 			activeDept: 1,
 			test: null,
 			activeTests: [],
 
-			menu: this.getMenu(),
+			menu: [],
+			parent: undefined,
 		}
 	},
-	mounted() {
-		//console.log(this.activeTests)
-
-		console.log(this.menu)
+	async mounted() {
+		await this.getMenu()
+		//console.log(this.menu)
 	},
 	methods: {
 		async getMenu() {
@@ -93,6 +109,16 @@ export default {
 			).menusMenus.data[0].attributes.items.data
 				.map((it) => it.attributes)
 				.map((it) => {
+					const classed = it.url
+						?.split('?')?.[1]
+						?.split('&')
+						.map((it) => {
+							return {
+								class: it[0],
+							}
+						})
+					console.log(classed)
+
 					return {
 						title: it.title,
 						target: it.target,
@@ -103,9 +129,8 @@ export default {
 					}
 				})
 
-			return data
+			this.menu = data
 		},
-
 		handleClickNext(value, link, isClick) {
 			if (link) {
 				isClick ? null : this.menuRedirect(link)
