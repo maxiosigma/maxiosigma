@@ -107,6 +107,7 @@ export default {
 	},
 	methods: {
 		isLink(url) {
+			console.log(this.isRoute, url)
 			return this.isRoute === url || this.isRoute === url + '/' || '/' + this.isRoute === url
 		},
 
@@ -205,7 +206,7 @@ export default {
 				.map((it) => it.attributes)
 				.map((it) => {
 					return {
-						url: it.url,
+						url: it.url?.split('?')?.[0],
 						title: it.title,
 						order: it.order,
 						target: it.target,
