@@ -66,9 +66,10 @@ export default {
 	},
 	async fetch() {
 		try {
+			const menus = this.$store.state.gql.menu
 			const data = (
 				await this.$strapi.graphql({
-					query: this.$store.state.gql.menu,
+					query: menus,
 				})
 			).menusMenus.data[0].attributes.items.data
 				.map((it) => it.attributes)
