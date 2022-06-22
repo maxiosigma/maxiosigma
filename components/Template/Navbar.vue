@@ -24,7 +24,7 @@
 					<div
 						:class="[
 							'nav-bar-link group',
-							link.parent ? { hidden: link.parent.title !== parent.title } : { hidden: link.parent !== parent.title },
+							link.parent && parent ? { hidden: link.parent.title !== parent.title } : { hidden: link.parent !== parent.title },
 							link.class,
 						]"
 						:key="i"
@@ -93,25 +93,16 @@ export default {
 	},
 	methods: {
 		handleClickNext({ parent = undefined, url = undefined }) {
-			url ? (location.href = url) : (this.parent = parent)
+			url ? (!this.isLink(url) ? (location.href = '/' + this.$i18n.locale + url) : null) : (this.parent = parent)
 		},
 		handleClickPrev() {
 			//console.log(this.parent?.title, this.parent?.order)
-			this.parent = this.menu?.filter((it) => it.order === this.parent.order && it.title === this.parent.title)?.[0]
+
+			const next = this.menu?.filter((it) => it.order === this.parent.order && it.title === this.parent.title)?.[0]
+			this.parent = { title: next.parent?.title, order: next.parent?.order }
 
 			console.log(this.parent)
 		},
-		//getObj(item, index, position, iteration, dept = 1) {
-		//	return { title: item?.title, ...(item.href && { href: item.href }), class: item.class, index, position, iteration, dept }
-		//},
-		//recurseObj(item, index, position, iteration, dept = 1, result = []) {
-		//	if (item?.items)
-		//		item?.items?.forEach((it, j) => this.recurseObj(it, position + dept + index - 1, position + j, iteration, dept + 1, result))
-
-		//	result.push(this.getObj(item, index, position, iteration, dept))
-
-		//	return result
-		//},
 		//getCrumbs() {
 		//	const fullPath = this.$route.fullPath,
 		//		params = fullPath
