@@ -19,5 +19,5 @@ fonts/fg/*.*
 storybook-static
 node_modules
 dist
-
+sw.*
 

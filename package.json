@@ -1,16 +1,12 @@
 {
 	"private": true,
-	"browser": {
-		"fs": false,
-		"path": false,
-		"os": false
-	},
-	"type": "commonjs",
+	"type": "module",
 	"scripts": {
 		"npm-run-all": "npm-run-all --parallel strapi-dev firebase-deploy-generate",
 		"dev": "nuxt",
-		"generate": "nuxt generate",
 		"strapi-dev": "cd ../strapi/ && yarn strapi develop",
+		"generate": "nuxt generate",
+		"generate-start": "nuxt generate",
 		"strapi-build": "cd ../strapi/ && yarn strapi build",
 		"strapi-generate": "npm-run-all --parallel strapi-dev generate",
 		"dev-ntl-live": "netlify dev --live",

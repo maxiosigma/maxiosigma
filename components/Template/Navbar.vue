@@ -55,8 +55,8 @@ export default {
 	props: ['openMenu', 'items', 'subitems'],
 	data() {
 		return {
-			menu: this.getMenu(),
-			links: [],
+			menu: [],
+			links: this.menu,
 			//crumbs: this.getCrumbs(),
 			isRoute: this.$route.fullPath?.replace(this?.localePath('/') + '/', '').replace('/' + this.loke() + '/', ''),
 			parent: { title: undefined, order: undefined },
@@ -65,7 +65,8 @@ export default {
 		}
 	},
 	async fetch() {
-		this.links = (
+		//if (process.server)
+		this.menu = (
 			await this.$strapi.graphql({
 				query: this.$store.state.gql.menu,
 			})
@@ -91,8 +92,10 @@ export default {
 				}
 			})
 	},
+	fetchOnServer: true,
 	async mounted() {
-		//this.getActive()
+		this.links = this.menu
+		this.getActive()
 		//console.log(this.links)
 		//this.refresh()
 	},
@@ -104,21 +107,21 @@ export default {
 			//console.log(arg)
 			return this.active?.indexOf(arg) !== -1
 		},
-		//getActive(arg = undefined) {
-		//	if (!arg) {
-		//		arg = this.links?.filter((it) => it.url.indexOf(this.isRoute) !== -1)[0]
-		//		this.active.push(arg?.title)
-		//	} else {
-		//		arg = this.links?.filter((it) => it.title === arg)[0]
-		//	}
+		getActive(arg = undefined) {
+			if (!arg) {
+				arg = this.links?.filter((it) => it.url.indexOf(this.isRoute) !== -1)[0]
+				this.active.push(arg?.title)
+			} else {
+				arg = this.links?.filter((it) => it.title === arg)[0]
+			}
 
-		//	const title = arg?.parent?.title || arg?.parent?.data?.attributes?.title
+			const title = arg?.parent?.title || arg?.parent?.data?.attributes?.title
 
-		//	if (title) {
-		//		this.active.push(title)
-		//		this.getActive(title)
-		//	}
-		//},
+			if (title) {
+				this.active.push(title)
+				this.getActive(title)
+			}
+		},
 		handleClickNext({ parent = undefined, url = undefined, target = undefined }) {
 			url
 				? !this.isLink(url)
@@ -172,37 +175,37 @@ export default {
 		isLink(url) {
 			return this.isRoute === url || this.isRoute === url + '/' || '/' + this.isRoute === url
 		},
-		async getMenu() {
-			const menu = this.$store.state.gql.menu
+		//async getMenu() {
+		//	const menu = this.$store.state.gql.menu
 
-			const data = (
-				await this.$strapi.graphql({
-					query: menu,
-				})
-			).menusMenus.data[0].attributes.items.data
-				.map((it) => it.attributes)
-				.map((it) => {
-					return {
-						url: it.url?.split('?')?.[0],
-						title: it.title,
-						order: it.order,
-						target: it.target,
-						parent: it.parent.data?.attributes,
-						...it.url
-							?.split('?')?.[1]
-							?.split('&')
-							?.reduce((s, it) => {
-								s = {
-									...s,
-									[it.split('=')[0]]: it.split('=')[1],
-								}
-								return s
-							}, {}),
-					}
-				})
+		//	const data = (
+		//		await this.$strapi.graphql({
+		//			query: menu,
+		//		})
+		//	).menusMenus.data[0].attributes.items.data
+		//		.map((it) => it.attributes)
+		//		.map((it) => {
+		//			return {
+		//				url: it.url?.split('?')?.[0],
+		//				title: it.title,
+		//				order: it.order,
+		//				target: it.target,
+		//				parent: it.parent.data?.attributes,
+		//				...it.url
+		//					?.split('?')?.[1]
+		//					?.split('&')
+		//					?.reduce((s, it) => {
+		//						s = {
+		//							...s,
+		//							[it.split('=')[0]]: it.split('=')[1],
+		//						}
+		//						return s
+		//					}, {}),
+		//			}
+		//		})
 
-			return data
-		},
+		//	return data
+		//},
 	},
 }
 </script>

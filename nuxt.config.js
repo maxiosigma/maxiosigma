@@ -27,6 +27,7 @@ export default {
 	...hooks(),
 	...i18n(),
 	...css(),
+	//...pwa(),
 
 	strapi: {
 		url: process.env.STRAPI_URL || 'http://localhost:1337',
@@ -176,7 +177,7 @@ function build() {
 			transpile: transpile,
 			friendlyErrors: false,
 			parallel: false,
-			cssSourceMap: false,
+			cssSourceMap: true,
 			...(!app_config.isDev && { publicPath: '/public/' }),
 			loaders: {
 				sass: {
@@ -232,10 +233,7 @@ function build() {
 					manifest: 'manifest.[hash:5].js',
 					css: 'styles/[contenthash:5].css',
 					//[path]
-					img: (ctx) => {
-						//console.log(ctx)
-						return 'images/img_[hash:5].[ext]'
-					},
+					img: 'images/img_[hash:5].[ext]',
 					//[path]
 					font: 'fonts/font_[name]_[hash:5].[ext]',
 					//[path]
@@ -265,9 +263,9 @@ function build() {
 					},
 				})
 
-				config.node = {
-					fs: 'empty',
-				}
+				//config.node = {
+				//	fs: 'empty',
+				//}
 
 				//config.resolve.alias['testerum'] = resolve(__dirname, '../../../../../strapi/public')
 				//config.resolve.alias['~testerum'] = resolve(__dirname, '../../../../../strapi/public')
@@ -340,6 +338,7 @@ function includes() {
 			//'@nuxtjs/strapi',
 			//'@nuxtjs/apollo',
 			'nuxt-animejs',
+			//'@nuxtjs/pwa',
 		],
 		plugins = [
 			'@plugins/passive/mixins',
@@ -358,7 +357,7 @@ function includes() {
 			'@nuxtjs/strapi',
 		],
 		//'@prismicio/vue', 'vue-slicezone', 'lottie-web',
-		transpile = ['@prismicio/vue', 'vue-slicezone', 'lottie-web', 'vue-typed-js']
+		transpile = ['lottie-web', 'vue-typed-js']
 
 	return {
 		buildModules: buildModules.concat(DevBuildModules, OptimizeBuildModules),
@@ -515,49 +514,49 @@ function motion() {
 function pwa() {
 	return {
 		pwa: {
-			icon: {
-				fileName: 'favicon.png',
-			},
-			meta: {
-				charset: false,
-				viewport: false,
-				mobileApp: true,
-				mobileAppIOS: false,
-				appleStatusBarStyle: 'black',
-				favicon: true,
-				name: app_config.name,
-				author: app_config.author,
-				description: app_config.description,
-				theme_color: '#000000',
-				lang: app_config.lang,
-				ogType: 'website',
-				ogSiteName: app_config.name,
-				ogTitle: app_config.name,
-				ogDescription: app_config.description,
-				ogHost: app_config.host,
-				ogImage: true,
-				ogUrl: app_config.host,
-				twitterCard: 'summary',
-				twitterSite: app_config.host,
-				twitterCreator: app_config.autor,
-			},
-			manifest: {
-				name: app_config.name,
-				short_name: app_config.name,
-				display: 'standalone', // 'browser', 'fullscreen', 'standalone', 'minimal-ui'
-				description: app_config.description,
-				crossorigin: 'use-credentials',
-				background_color: '#ffffff',
-				theme_color: '#000000',
-				dir: 'ltr',
-				lang: app_config.lang,
-			},
+			//icon: {
+			//	fileName: 'favicon.png',
+			//},
+			//meta: {
+			//	charset: false,
+			//	viewport: false,
+			//	mobileApp: true,
+			//	mobileAppIOS: false,
+			//	appleStatusBarStyle: 'black',
+			//	favicon: true,
+			//	name: app_config.name,
+			//	author: app_config.author,
+			//	description: app_config.description,
+			//	theme_color: '#000000',
+			//	lang: app_config.lang,
+			//	ogType: 'website',
+			//	ogSiteName: app_config.name,
+			//	ogTitle: app_config.name,
+			//	ogDescription: app_config.description,
+			//	ogHost: app_config.host,
+			//	ogImage: true,
+			//	ogUrl: app_config.host,
+			//	twitterCard: 'summary',
+			//	twitterSite: app_config.host,
+			//	twitterCreator: app_config.autor,
+			//},
+			//manifest: {
+			//	name: app_config.name,
+			//	short_name: app_config.name,
+			//	display: 'standalone', // 'browser', 'fullscreen', 'standalone', 'minimal-ui'
+			//	description: app_config.description,
+			//	crossorigin: 'use-credentials',
+			//	background_color: '#ffffff',
+			//	theme_color: '#000000',
+			//	dir: 'ltr',
+			//	lang: app_config.lang,
+			//},
 			workbox: {
 				offline: true,
 				autoRegister: true,
 				offlineAnalytics: true,
-				enabled: app_config.isDev,
-				autoRegister: app_config.isDev,
+				//enabled: app_config.isDev,
+				//autoRegister: app_config.isDev,
 			},
 		},
 	}
