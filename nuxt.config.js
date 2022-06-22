@@ -329,7 +329,7 @@ function includes() {
 		buildModules = [
 			'nuxt-windicss',
 			'nuxt-user-agent',
-			//'nuxt-fontagon',
+			'nuxt-fontagon',
 			'@/plugins/active/GSR',
 			//'nuxt-resolve-url-loader',
 			//'nuxt-alias',
@@ -349,7 +349,7 @@ function includes() {
 		modules = [
 			//'@nuxtjs/markdownit',
 			'@nuxtjs/i18n',
-			//'@nuxtjs/axios',
+			'@nuxtjs/axios',
 			//'@nuxt/content',
 			//'@nuxtjs/toast',
 			//['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }], // МЕШАЕТ STRAPI

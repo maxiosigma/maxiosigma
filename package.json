@@ -1,6 +1,11 @@
 {
 	"private": true,
-	"type": "module",
+	"browser": {
+		"fs": false,
+		"path": false,
+		"os": false
+	},
+	"type": "commonjs",
 	"scripts": {
 		"npm-run-all": "npm-run-all --parallel strapi-dev firebase-deploy-generate",
 		"dev": "nuxt",
