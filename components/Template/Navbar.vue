@@ -76,15 +76,11 @@ export default {
 	props: ['openMenu', 'items', 'subitems'],
 	data() {
 		return {
-			//openSubMenu: false,
-			//openSubMenuCount: 0,
+			menu: [],
 			//crumbs: this.getCrumbs(),
 			isRoute: this.$route.fullPath?.replace(this?.localePath('/') + '/', '').replace('/ru-ru/', ''),
-			scroll: false,
-			//activeDept: 1,
-			//activeTests: [],
-			menu: [],
 			parent: { title: undefined, order: undefined },
+			scroll: false,
 		}
 	},
 	async mounted() {
