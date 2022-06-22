@@ -231,29 +231,37 @@ function build() {
 					vendor: 'scripts/[chunkhash:5].js',
 					manifest: 'manifest.[hash:5].js',
 					css: 'styles/[contenthash:5].css',
-					img: '[path]img_[hash:8].[ext]',
-					font: '[path][name].[ext]',
-					video: '[path][name]_[hash:5].[ext]',
+					//[path]
+					img: (ctx) => {
+						console.log(ctx)
+						return 'images/img_[hash:5].[ext]'
+					},
+					//[path]
+					font: 'fonts/font_[name]_[hash:5].[ext]',
+					//[path]
+					video: 'video/vio_[hash:5].[ext]',
 				},
 			}),
 			extend(config, ctx) {
 				ctx.loaders.scss.additionalData = '@use "sass:math";'
 
+				//[path]
 				config.module.rules.push({
 					test: /\.ico$/,
 					loader: 'url-loader',
 					query: {
 						limit: 1,
-						name: '[path]favicon_[hash:8].[ext]',
+						name: 'icons/favicon_[hash:8].[ext]',
 					},
 				})
 
+				//[path]
 				config.module.rules.push({
 					test: /\.pdf$/,
 					loader: 'file-loader',
 					query: {
 						limit: 1,
-						name: '[path][name]_[hash:8].[ext]',
+						name: 'files/[name]_[hash:8].[ext]',
 					},
 				})
 

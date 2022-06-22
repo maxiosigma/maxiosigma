@@ -1,6 +1,6 @@
 <template>
 	<LayoutPage>
-		<div class="flex-grow grid grid-cols-3 filter drop-shadow-lg <lg:(grid-cols-1 relative items-center ) ">
+		<div class="flex-grow grid filter drop-shadow-lg lg:(grid-cols-3) <lg:(grid-cols-1 relative items-center) ">
 			<!-- , { 'elevation-10': i == 2 } ДОБАВИТЬ ТЕНИ ПО БОКАМ -->
 			<ItemImgStrapiBg
 				:class="[

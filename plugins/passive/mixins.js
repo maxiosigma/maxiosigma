@@ -208,7 +208,7 @@ Vue.mixin({
 						a.parentNode.insertBefore(k, a)
 				})(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym')
 
-				ym(88709157, 'init', {
+				ym(89264491, 'init', {
 					clickmap: true,
 					trackLinks: true,
 					accurateTrackBounce: true,

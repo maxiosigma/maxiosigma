@@ -11,7 +11,7 @@
 		"dev": "nuxt",
 		"generate": "nuxt generate",
 		"strapi-dev": "cd ../strapi/ && yarn strapi develop",
-		"strapi-generate": "yarn generate & cd ../strapi/ & yarn strapi develop",
+		"strapi-generate": "npm-run-all --parallel strapi-dev generate",
 		"dev-ntl-live": "netlify dev --live",
 		"start": "SET NUXT_ENV_HOST_0=true & nuxt start",
 		"node-download": "node z/node/download.js",
