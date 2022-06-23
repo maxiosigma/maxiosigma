@@ -57,6 +57,7 @@ export default {
 		return {
 			menu: [],
 			links: [],
+			gql: this.$store.state.gql.menu,
 			//crumbs: this.getCrumbs(),
 			isRoute: this.$route.fullPath?.replace(this?.localePath('/') + '/', '').replace('/' + this.loke() + '/', ''),
 			parent: { title: undefined, order: undefined },
@@ -66,17 +67,18 @@ export default {
 	},
 	async fetch() {
 		try {
-			this.links = await this.$strapi.graphql({
-				query: this.$store.state.gql.menu,
+			this.menu = await this.$strapi.graphql({
+				query: this.gql,
 			})
 		} catch (error) {
 			console.error(JSON.stringify(error, undefined, 2))
 		}
 	},
 	fetchOnServer: true,
-	async beforeMount() {
-		this.links = this.links.menusMenus.data[0].attributes.items.data
-			.map((it) => it.attributes)
+	beforeMount() {},
+	mounted() {
+		this.links = this.menu?.menusMenus?.data[0]?.attributes?.items?.data
+			.map((it) => it?.attributes)
 			.map((it) => {
 				return {
 					url: it.url?.split('?')?.[0],
@@ -96,8 +98,9 @@ export default {
 						}, {}),
 				}
 			})
-	},
-	async mounted() {
+
+		//console.log(this.links)
+
 		this.getActive()
 		//console.log(this.links)
 		//this.refresh()
@@ -135,7 +138,7 @@ export default {
 				: (this.parent = parent)
 		},
 		handleClickPrev() {
-			const next = this.menu?.filter((it) => it.order === this.parent.order && it.title === this.parent.title)?.[0]
+			const next = this.links?.filter((it) => it.order === this.parent.order && it.title === this.parent.title)?.[0]
 			this.parent = { title: next.parent?.title, order: next.parent?.order }
 		},
 		//getCrumbs() {

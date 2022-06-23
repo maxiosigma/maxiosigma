@@ -46,6 +46,8 @@ export const mutations = {
 
 export const actions = {
 	async nuxtServerInit(ctx) {
+		//console.log(this.$strapi)
+		//console.log(ctx.$strapi)
 		//console.log(ctx)
 		//await dispatch('links/getLinks', { prismic: $prismic })
 	},
