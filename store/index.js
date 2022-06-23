@@ -14,8 +14,6 @@ export const state = () => ({
 export const mutations = {
 	uploadNavbar(state, payload) {
 		state.navbar = payload
-
-		console.log(state.navbar)
 	},
 	setUploadCdn(state) {
 		state.uploadCdn = true

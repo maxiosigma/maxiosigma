@@ -114,6 +114,8 @@ export default {
 	//fetchOnServer: true,
 	//beforeMount() {},
 	mounted() {
+		console.log(this.$store.state.navbar)
+
 		this.links = this.menu?.menusMenus?.data[0]?.attributes?.items?.data
 			.map((it) => it?.attributes)
 			.map((it) => {
