@@ -14,8 +14,8 @@ export default {
 			title: 'Подписка',
 			script: [
 				{
-					//hid: 'sps',
-					//charset: 'UTF-8',
+					hid: 'sps',
+					charset: 'UTF-8',
 					src: 'https://web.webformscr.com/apps/fc3/build/loader.js',
 					'sp-form-id': '92f82bda931595468aa0e45bb80616a19501e8c5859cdbeb62910883729b89bc',
 					async: false,

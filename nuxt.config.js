@@ -263,9 +263,9 @@ function build() {
 					},
 				})
 
-				//config.node = {
-				//	fs: 'empty',
-				//}
+				config.node = {
+					fs: 'empty',
+				}
 
 				//config.resolve.alias['testerum'] = resolve(__dirname, '../../../../../strapi/public')
 				//config.resolve.alias['~testerum'] = resolve(__dirname, '../../../../../strapi/public')

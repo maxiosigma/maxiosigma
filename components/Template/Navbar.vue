@@ -65,42 +65,43 @@ export default {
 		}
 	},
 	async fetch() {
-		try {
-			const menus = this.$store.state.gql.menu
-			const data = (
-				await this.$strapi.graphql({
-					query: menus,
-				})
-			).menusMenus.data[0].attributes.items.data
-				.map((it) => it.attributes)
-				.map((it) => {
-					return {
-						url: it.url?.split('?')?.[0],
-						title: it.title,
-						order: it.order,
-						target: it.target,
-						parent: it.parent.data?.attributes,
-						...it.url
-							?.split('?')?.[1]
-							?.split('&')
-							?.reduce((s, it) => {
-								s = {
-									...s,
-									[it.split('=')[0]]: it.split('=')[1],
-								}
-								return s
-							}, {}),
-					}
-				})
+		if (process.server)
+			try {
+				const menus = this.$store.state.gql.menu
+				const data = (
+					await this.$strapi.graphql({
+						query: menus,
+					})
+				).menusMenus.data[0].attributes.items.data
+					.map((it) => it.attributes)
+					.map((it) => {
+						return {
+							url: it.url?.split('?')?.[0],
+							title: it.title,
+							order: it.order,
+							target: it.target,
+							parent: it.parent.data?.attributes,
+							...it.url
+								?.split('?')?.[1]
+								?.split('&')
+								?.reduce((s, it) => {
+									s = {
+										...s,
+										[it.split('=')[0]]: it.split('=')[1],
+									}
+									return s
+								}, {}),
+						}
+					})
 
-			this.links = data
-		} catch (error) {
-			console.error(JSON.stringify(error, undefined, 2))
-		}
+				this.links = data
+			} catch (error) {
+				console.error(JSON.stringify(error, undefined, 2))
+			}
 	},
 	//fetchOnServer: true,
 	async mounted() {
-		//this.links = this.menu
+		this.menu = this.links
 		this.getActive()
 		//console.log(this.links)
 		//this.refresh()
@@ -138,7 +139,7 @@ export default {
 				: (this.parent = parent)
 		},
 		handleClickPrev() {
-			const next = this.links?.filter((it) => it.order === this.parent.order && it.title === this.parent.title)?.[0]
+			const next = this.menu?.filter((it) => it.order === this.parent.order && it.title === this.parent.title)?.[0]
 			this.parent = { title: next.parent?.title, order: next.parent?.order }
 		},
 		//getCrumbs() {
