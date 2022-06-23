@@ -57,9 +57,9 @@ export default {
 	props: ['openMenu', 'items', 'subitems'],
 	data() {
 		return {
-			menu: [],
-			links: [],
-			gql: this.$store.state.gql.menu,
+			//menu: [],
+			links: this.$store.state.navbar || nav,
+			//gql: this.$store.state.gql.menu,
 			//crumbs: this.getCrumbs(),
 			isRoute: this.$route.fullPath?.replace(this?.localePath('/') + '/', '').replace('/' + this.loke() + '/', ''),
 			parent: { title: undefined, order: undefined },
@@ -67,43 +67,44 @@ export default {
 			active: [],
 		}
 	},
-	async fetch() {
-		//console.log(nav)
+	//async fetch() {
+	//	//console.log(nav)
 
-		try {
-			if (process.static) {
-				//this.menu = await this.$axios.$get(this.$payloadURL(this.route))
-				await this.$strapi
-					.graphql({
-						query: this.gql,
-					})
-					.then((res) => {
-						this.menu = res
-					})
-			} else {
-				this.menu = await this.$strapi.graphql({
-					query: this.gql,
-				})
-			}
+	//	try {
+	//		//if (process.static) {
+	//		//	//this.menu = await this.$axios.$get(this.$payloadURL(this.route))
+	//		//	await this.$strapi
+	//		//		.graphql({
+	//		//			query: this.gql,
+	//		//		})
+	//		//		.then((res) => {
+	//		//			this.menu = res
+	//		//		})
+	//		//} else {
+	//		//	this.menu = await this.$strapi.graphql({
+	//		//		query: this.gql,
+	//		//	})
+	//		//}
 
-			//this.menu = await this.$axios
-			//	.$get({
-			//		url: 'http://localhost:1337/graphql',
-			//		method: 'post',
-			//		data: {
-			//			query: this.gql,
-			//		},
-			//	})
-			//	.then((result) => {
-			//		console.log(result.data)
-			//	})
+	//		//this.menu = await this.$axios
+	//		//	.$get({
+	//		//		url: 'http://localhost:1337/graphql',
+	//		//		method: 'post',
+	//		//		data: {
+	//		//			query: this.gql,
+	//		//		},
+	//		//	})
+	//		//	.then((result) => {
+	//		//		console.log(result.data)
+	//		//	})
 
-			//console.log(this.menu)
-		} catch (error) {
-			this.menu = nav
-			console.error(JSON.stringify(error, undefined, 2))
-		}
-	},
+	//		//console.log(this.menu)
+	//	} catch (error) {
+	//		this.menu = nav
+	//		console.error(JSON.stringify(error, undefined, 2))
+	//		console.log('NAV')
+	//	}
+	//},
 	//fetchOnServer: false,
 	//fetchKey: 'site-nav-bar',
 	//fetchKey(getCounter) {
@@ -114,29 +115,29 @@ export default {
 	//fetchOnServer: true,
 	//beforeMount() {},
 	mounted() {
-		console.log(this.$store.state.navbar)
+		//console.log(this.$store.state.navbar)
 
-		this.links = this.menu?.menusMenus?.data[0]?.attributes?.items?.data
-			.map((it) => it?.attributes)
-			.map((it) => {
-				return {
-					url: it.url?.split('?')?.[0],
-					title: it.title,
-					order: it.order,
-					target: it.target,
-					parent: it.parent.data?.attributes,
-					...it.url
-						?.split('?')?.[1]
-						?.split('&')
-						?.reduce((s, it) => {
-							s = {
-								...s,
-								[it.split('=')[0]]: it.split('=')[1],
-							}
-							return s
-						}, {}),
-				}
-			})
+		//this.links = this.menu?.menusMenus?.data[0]?.attributes?.items?.data
+		//	.map((it) => it?.attributes)
+		//	.map((it) => {
+		//		return {
+		//			url: it.url?.split('?')?.[0],
+		//			title: it.title,
+		//			order: it.order,
+		//			target: it.target,
+		//			parent: it.parent.data?.attributes,
+		//			...it.url
+		//				?.split('?')?.[1]
+		//				?.split('&')
+		//				?.reduce((s, it) => {
+		//					s = {
+		//						...s,
+		//						[it.split('=')[0]]: it.split('=')[1],
+		//					}
+		//					return s
+		//				}, {}),
+		//		}
+		//	})
 
 		//console.log(this.links)
 
