@@ -12,6 +12,8 @@
 		"generate-start": "yarn generate && yarn start",
 		"generate": "nuxt generate",
 		"start": "SET NUXT_ENV_HOST_0=true & nuxt start",
+		"vercel npm-run-all": "npm-run-all --parallel strapi-dev vercel-deploy",
+		"vercel-deploy": "yarn generate && vercel --prod",
 		"strapi-generate": "npm-run-all --parallel strapi-dev generate",
 		"firebase npm-run-all": "npm-run-all --parallel strapi-dev firebase-deploy-generate",
 		"firebase-deploy-generate": "yarn generate && yarn firebase-deploy",
