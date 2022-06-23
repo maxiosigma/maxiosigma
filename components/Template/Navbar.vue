@@ -73,8 +73,8 @@ export default {
 			console.error(JSON.stringify(error, undefined, 2))
 		}
 	},
-	//fetchOnServer: true,
-	async mounted() {
+	fetchOnServer: true,
+	async beforeMount() {
 		this.links = this.links.menusMenus.data[0].attributes.items.data
 			.map((it) => it.attributes)
 			.map((it) => {
@@ -96,7 +96,8 @@ export default {
 						}, {}),
 				}
 			})
-
+	},
+	async mounted() {
 		this.getActive()
 		//console.log(this.links)
 		//this.refresh()
