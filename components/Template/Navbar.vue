@@ -51,6 +51,8 @@
 </template>
 
 <script>
+import nav from '~/assets/json/nav.json'
+
 export default {
 	props: ['openMenu', 'items', 'subitems'],
 	data() {
@@ -66,27 +68,51 @@ export default {
 		}
 	},
 	async fetch() {
+		//console.log(nav)
+
 		try {
-			if (process.static && process.client && $payloadURL) {
-				this.menu = await this.$axios.$get($payloadURL(this.route))
+			if (process.static) {
+				//this.menu = await this.$axios.$get(this.$payloadURL(this.route))
+				await this.$strapi
+					.graphql({
+						query: this.gql,
+					})
+					.then((res) => {
+						this.menu = res
+					})
 			} else {
 				this.menu = await this.$strapi.graphql({
 					query: this.gql,
 				})
 			}
 
-			//console.log(process.static)
+			//this.menu = await this.$axios
+			//	.$get({
+			//		url: 'http://localhost:1337/graphql',
+			//		method: 'post',
+			//		data: {
+			//			query: this.gql,
+			//		},
+			//	})
+			//	.then((result) => {
+			//		console.log(result.data)
+			//	})
 
-			//console.log(this.$payloadURL(this.route))
-
-			//const unswer = require(this.menu)
-			//console.log(unswer)
+			//console.log(this.menu)
 		} catch (error) {
+			this.menu = nav
 			console.error(JSON.stringify(error, undefined, 2))
 		}
 	},
-	fetchOnServer: true,
-	beforeMount() {},
+	//fetchOnServer: false,
+	//fetchKey: 'site-nav-bar',
+	//fetchKey(getCounter) {
+	//	// getCounter is a method that can be called to get the next number in a sequence
+	//	// as part of generating a unique fetchKey.
+	//	return getCounter('site-nav-bar')
+	//},
+	//fetchOnServer: true,
+	//beforeMount() {},
 	mounted() {
 		this.links = this.menu?.menusMenus?.data[0]?.attributes?.items?.data
 			.map((it) => it?.attributes)

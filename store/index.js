@@ -8,9 +8,15 @@ export const state = () => ({
 		discount: false,
 	},
 	slides: [],
+	navbar: [],
 })
 
 export const mutations = {
+	uploadNavbar(state, payload) {
+		state.navbar = payload
+
+		console.log(state.navbar)
+	},
 	setUploadCdn(state) {
 		state.uploadCdn = true
 	},
@@ -46,7 +52,36 @@ export const mutations = {
 
 export const actions = {
 	async nuxtServerInit(ctx) {
-		//console.log(this.$strapi)
+		const data = (
+			await this.$strapi.graphql({
+				query: ctx.state.gql.menu,
+			})
+		)?.menusMenus?.data[0]?.attributes?.items?.data
+			.map((it) => it?.attributes)
+			.map((it) => {
+				return {
+					url: it.url?.split('?')?.[0],
+					title: it.title,
+					order: it.order,
+					target: it.target,
+					parent: it.parent.data?.attributes,
+					...it.url
+						?.split('?')?.[1]
+						?.split('&')
+						?.reduce((s, it) => {
+							s = {
+								...s,
+								[it.split('=')[0]]: it.split('=')[1],
+							}
+							return s
+						}, {}),
+				}
+			})
+
+		//const data = ctx.state.gql.menu
+
+		ctx.commit('uploadNavbar', data)
+
 		//console.log(ctx.$strapi)
 		//console.log(ctx)
 		//await dispatch('links/getLinks', { prismic: $prismic })

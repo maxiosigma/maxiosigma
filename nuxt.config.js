@@ -337,6 +337,7 @@ function includes() {
 		OptimizeBuildModules = app_config.optimization ? [] : [],
 		buildModules = [
 			'nuxt-windicss',
+			'@luxdamore/nuxt-apis-to-file',
 			'nuxt-user-agent',
 			'nuxt-fontagon',
 			//'@/plugins/active/GSR',
@@ -364,7 +365,7 @@ function includes() {
 			//['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }], // МЕШАЕТ STRAPI
 			//'nuxt-parallel-middleware',
 			'@nuxtjs/strapi',
-			'nuxt-payload-extractor',
+			//'nuxt-payload-extractor',
 		],
 		//'@prismicio/vue', 'vue-slicezone', 'lottie-web',
 		transpile = ['lottie-web', 'vue-typed-js']
@@ -407,6 +408,15 @@ function custom() {
 		//strapi: {
 		//	// Options
 		//},
+		apisToFile: {
+			file: {
+				name: 'data',
+				ext: 'json',
+				path: './',
+				startFromStaticDir: false,
+				options: {},
+			},
+		},
 		storybook: {
 			// Options
 		},

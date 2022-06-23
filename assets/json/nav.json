@@ -1,0 +1,293 @@
+{
+	"data": {
+		"menusMenus": {
+			"data": [
+				{
+					"attributes": {
+						"title": "Main Menu",
+						"slug": "menu",
+						"items": {
+							"data": [
+								{
+									"attributes": {
+										"title": "Главная",
+										"target": "self",
+										"url": "",
+										"order": 0,
+										"parent": {
+											"data": null
+										}
+									}
+								},
+								{
+									"attributes": {
+										"title": "Автор",
+										"target": "self",
+										"url": "/about",
+										"order": 0,
+										"parent": {
+											"data": {
+												"attributes": {
+													"title": "Главная",
+													"target": "self",
+													"url": "",
+													"order": 0,
+													"parent": {
+														"data": null
+													}
+												}
+											}
+										}
+									}
+								},
+								{
+									"attributes": {
+										"title": "Портфолио",
+										"target": "self",
+										"url": "/portfolio?class=font-jokerman&syle=red",
+										"order": 1,
+										"parent": {
+											"data": null
+										}
+									}
+								},
+								{
+									"attributes": {
+										"title": "Сообщество",
+										"target": "self",
+										"url": "",
+										"order": 2,
+										"parent": {
+											"data": null
+										}
+									}
+								},
+								{
+									"attributes": {
+										"title": "Программы",
+										"target": null,
+										"url": "/programs",
+										"order": 0,
+										"parent": {
+											"data": {
+												"attributes": {
+													"title": "Сообщество",
+													"target": "self",
+													"url": "",
+													"order": 2,
+													"parent": {
+														"data": null
+													}
+												}
+											}
+										}
+									}
+								},
+								{
+									"attributes": {
+										"title": "Контакты",
+										"target": "self",
+										"url": "",
+										"order": 3,
+										"parent": {
+											"data": null
+										}
+									}
+								},
+								{
+									"attributes": {
+										"title": "VK",
+										"target": "blank",
+										"url": "https://vk.com/maxiosigma",
+										"order": 0,
+										"parent": {
+											"data": {
+												"attributes": {
+													"title": "Контакты",
+													"target": "self",
+													"url": "",
+													"order": 3,
+													"parent": {
+														"data": null
+													}
+												}
+											}
+										}
+									}
+								},
+								{
+									"attributes": {
+										"title": "TG",
+										"target": "blank",
+										"url": "https://t.me/maxiosigma",
+										"order": 2,
+										"parent": {
+											"data": {
+												"attributes": {
+													"title": "Контакты",
+													"target": "self",
+													"url": "",
+													"order": 3,
+													"parent": {
+														"data": null
+													}
+												}
+											}
+										}
+									}
+								},
+								{
+									"attributes": {
+										"title": "YTub",
+										"target": "blank",
+										"url": "https://www.youtube.com/channel/UC23sONwCUL2dUY7IjcR-vhg",
+										"order": 1,
+										"parent": {
+											"data": {
+												"attributes": {
+													"title": "Контакты",
+													"target": "self",
+													"url": "",
+													"order": 3,
+													"parent": {
+														"data": null
+													}
+												}
+											}
+										}
+									}
+								},
+								{
+									"attributes": {
+										"title": "Dzen",
+										"target": "blank",
+										"url": "https://zen.yandex.ru/maxibisness",
+										"order": 3,
+										"parent": {
+											"data": {
+												"attributes": {
+													"title": "Контакты",
+													"target": "self",
+													"url": "",
+													"order": 3,
+													"parent": {
+														"data": null
+													}
+												}
+											}
+										}
+									}
+								},
+								{
+									"attributes": {
+										"title": "WA",
+										"target": "blank",
+										"url": "https://wa.me/message/XAL2G63EC7A5I1",
+										"order": 4,
+										"parent": {
+											"data": {
+												"attributes": {
+													"title": "Контакты",
+													"target": "self",
+													"url": "",
+													"order": 3,
+													"parent": {
+														"data": null
+													}
+												}
+											}
+										}
+									}
+								},
+								{
+									"attributes": {
+										"title": "Дизайнер",
+										"target": "self",
+										"url": "/designer",
+										"order": 0,
+										"parent": {
+											"data": {
+												"attributes": {
+													"title": "Портфолио",
+													"target": "self",
+													"url": "/portfolio?class=font-jokerman&syle=red",
+													"order": 1,
+													"parent": {
+														"data": null
+													}
+												}
+											}
+										}
+									}
+								},
+								{
+									"attributes": {
+										"title": "Разработчик",
+										"target": "self",
+										"url": "/developer",
+										"order": 1,
+										"parent": {
+											"data": {
+												"attributes": {
+													"title": "Портфолио",
+													"target": "self",
+													"url": "/portfolio?class=font-jokerman&syle=red",
+													"order": 1,
+													"parent": {
+														"data": null
+													}
+												}
+											}
+										}
+									}
+								},
+								{
+									"attributes": {
+										"title": "Предприниматель",
+										"target": "blank",
+										"url": "/entrepreneur",
+										"order": 2,
+										"parent": {
+											"data": {
+												"attributes": {
+													"title": "Портфолио",
+													"target": "self",
+													"url": "/portfolio?class=font-jokerman&syle=red",
+													"order": 1,
+													"parent": {
+														"data": null
+													}
+												}
+											}
+										}
+									}
+								},
+								{
+									"attributes": {
+										"title": "Подписка",
+										"target": "self",
+										"url": "/subs",
+										"order": 1,
+										"parent": {
+											"data": {
+												"attributes": {
+													"title": "Сообщество",
+													"target": "self",
+													"url": "",
+													"order": 2,
+													"parent": {
+														"data": null
+													}
+												}
+											}
+										}
+									}
+								}
+							]
+						}
+					}
+				}
+			]
+		}
+	}
+}
