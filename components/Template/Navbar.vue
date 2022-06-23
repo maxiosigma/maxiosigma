@@ -67,9 +67,20 @@ export default {
 	},
 	async fetch() {
 		try {
-			this.menu = await this.$strapi.graphql({
-				query: this.gql,
-			})
+			if (process.static && process.client && $payloadURL) {
+				this.menu = await this.$axios.$get($payloadURL(this.route))
+			} else {
+				this.menu = await this.$strapi.graphql({
+					query: this.gql,
+				})
+			}
+
+			//console.log(process.static)
+
+			//console.log(this.$payloadURL(this.route))
+
+			//const unswer = require(this.menu)
+			//console.log(unswer)
 		} catch (error) {
 			console.error(JSON.stringify(error, undefined, 2))
 		}

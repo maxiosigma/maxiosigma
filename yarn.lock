@@ -8582,6 +8582,11 @@ json-buffer@3.0.0:
   resolved "https://registry.yarnpkg.com/json-buffer/-/json-buffer-3.0.0.tgz#5b1f397afc75d677bde8bcfc0e47e1f9a3d9a898"
   integrity sha512-CuUqjv0FUZIdXkHPI8MezCnFCdaTAacej1TZYulLoAg1h/PhwkdXFN4V/gzY4g+fMBCOV2xF+rp7t2XD2ns/NQ==
 
+json-loader@^0.5.7:
+  version "0.5.7"
+  resolved "https://registry.yarnpkg.com/json-loader/-/json-loader-0.5.7.tgz#dca14a70235ff82f0ac9a3abeb60d337a365185d"
+  integrity sha512-QLPs8Dj7lnf3e3QYS1zkCo+4ZwqOiF9d/nZnYozTISxXWCfNs9yuky5rJw4/W34s7POaNlbZmQGaB5NiXCbP4w==
+
 json-parse-better-errors@^1.0.1, json-parse-better-errors@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/json-parse-better-errors/-/json-parse-better-errors-1.0.2.tgz#bb867cfb3450e69107c131d1c514bab3dc8bcaa9"
@@ -10478,6 +10483,11 @@ nuxt-parallel-middleware@^0.0.2:
   resolved "https://registry.yarnpkg.com/nuxt-parallel-middleware/-/nuxt-parallel-middleware-0.0.2.tgz#97a3c39ed9285fd8e02bc40818ad8369755df990"
   integrity sha512-ltF6aCjcq+qilmdJWE+i/kf6EAHkIVTsSVWwVt6XYt3unGDRmHSBJGEf4be+Y91NW1+RNNEhPssK0pJoqb0lDw==
 
+nuxt-payload-extractor@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/nuxt-payload-extractor/-/nuxt-payload-extractor-1.1.1.tgz#b1002bce7ea5c3514c357ed89fb0d94117fc6e2e"
+  integrity sha512-L4aTM6sqe8qvhWmw8XHWff3HkmPS2TjZ9hQivc7gDn3ceOF5HCVJPDIEippNxzL5nKE3VJa661pz2As/4yUuqw==
+
 nuxt-resolve-url-loader@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/nuxt-resolve-url-loader/-/nuxt-resolve-url-loader-1.0.4.tgz#7fd6cc44ea78daab6906e50828a6fced6bd491b4"
@@ -10493,6 +10503,11 @@ nuxt-sm@^0.1.6:
     consola "^2.11.3"
     slash "^3.0.0"
     sm-commons "0.1.6"
+
+nuxt-state-extractor@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/nuxt-state-extractor/-/nuxt-state-extractor-1.1.1.tgz#b916c202a94ef0168a2165374ea191c5ac68cccf"
+  integrity sha512-EnrzICuJvouADWwS8YPl0quNUjarXR/bEEkCuqP89wNLixKE/C8m5M2JV1BqmBoNQFoViV3SePVSk1p6ox5PIw==
 
 nuxt-user-agent@^1.2.2:
   version "1.2.2"

@@ -68,8 +68,8 @@ function router() {
 		router: {
 			fallback: true,
 			mode: 'history',
-			prefetchLinks: true,
-			prefetchPayloads: true,
+			prefetchLinks: false,
+			prefetchPayloads: false,
 			linkActiveClass: 'nav-item-active',
 			linkExactActiveClass: 'exact-active-link',
 			linkPrefetchedClass: 'link-prefetched',
@@ -248,7 +248,7 @@ function build() {
 					test: /\.ico$/,
 					loader: 'url-loader',
 					query: {
-						limit: 1,
+						//limit: 1,
 						name: 'icons/favicon_[hash:8].[ext]',
 					},
 				})
@@ -258,10 +258,19 @@ function build() {
 					test: /\.pdf$/,
 					loader: 'file-loader',
 					query: {
-						limit: 1,
+						//limit: 1,
 						name: 'files/[name]_[hash:8].[ext]',
 					},
 				})
+
+				//config.module.rules.push({
+				//	test: /\.json$/,
+				//	loader: 'json-loader',
+				//	query: {
+				//		//limit: 1,
+				//		name: 'json/[name]_[hash:8].[ext]',
+				//	},
+				//})
 
 				config.node = {
 					fs: 'empty',
@@ -330,7 +339,7 @@ function includes() {
 			'nuxt-windicss',
 			'nuxt-user-agent',
 			'nuxt-fontagon',
-			'@/plugins/active/GSR',
+			//'@/plugins/active/GSR',
 			//'nuxt-resolve-url-loader',
 			//'nuxt-alias',
 			//'@nuxtjs/prismic',
@@ -355,6 +364,7 @@ function includes() {
 			//['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }], // МЕШАЕТ STRAPI
 			//'nuxt-parallel-middleware',
 			'@nuxtjs/strapi',
+			'nuxt-payload-extractor',
 		],
 		//'@prismicio/vue', 'vue-slicezone', 'lottie-web',
 		transpile = ['lottie-web', 'vue-typed-js']
