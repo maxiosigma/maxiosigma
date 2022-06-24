@@ -1,5 +1,5 @@
 <template>
-	<Layout :bodyStyle="'index'"> </Layout>
+	<Layout :bodyStyle="'index'"></Layout>
 </template>
 
 <script>
@@ -18,17 +18,18 @@ export default {
 	data() {
 		return {
 			link: undefined,
+			links: this.$store.state.reffers
 		}
 	},
 	//http://localhost:3000/ru-ru#mw
-	async asyncData({ $strapi, store }) {
-		try {
-			const links = (await $strapi.graphql({ query: store.state.gql.links })).links?.data?.map((it) => it.attributes)
-			return { links }
-		} catch (error) {
-			return {}
-		}
-	},
+	//async asyncData({ $strapi, store }) {
+	//	try {
+	//		const links = (await $strapi.graphql({ query: store.state.gql.links })).links?.data?.map((it) => it.attributes)
+	//		return { links }
+	//	} catch (error) {
+	//		return {}
+	//	}
+	//},
 	async beforeMount() {
 		const route = this.$route
 		const query = route?.hash?.replace('#', '') || Object.keys(route?.query)?.[0]

@@ -3,22 +3,17 @@
 		<div class="flex-grow filter drop-shadow-lg lg:(grid grid-cols-3) <lg:(flex flex-col) ">
 			<!-- , { 'elevation-10': i == 2 } ДОБАВИТЬ ТЕНИ ПО БОКАМ -->
 			<!-- 	@click.native.prevent="redirect(it.name)" -->
-			<ItemImgStrapiBg
-				:class="[
-					it.name,
-					'flex-grow flex-center relative flex-col cursor-pointer text-light-200 relative bg-top bg-cover <lg:(bg-contain max-w-1/2 flex-shrink flex-grow-0 min-h-300px)',
-					{ '<lg:(mr-auto z-0)': i == 0 },
-					{ '<lg:(ml-auto -my-30 z-10)': i == 1 },
-					{ '<lg:(mr-auto z-20)': i == 2 },
-				]"
-				v-for="(it, i) in [
-					{ name: 'developer', img: '', title: 'Разработчик' },
-					{ name: 'designer', img: '', title: 'Дизайнер' },
-					{ name: 'entrepreneur', img: '', title: 'Предприниматель' },
-				]"
-				:key="i"
-				:src="data.Imgs.data[i].attributes.url"
-				:alt="data.Imgs.data[i].attributes.name">
+			<ItemImgStrapiBg :class="[
+				it.name,
+				'flex-grow flex-center relative flex-col cursor-pointer text-light-200 relative bg-top bg-cover <lg:(bg-contain max-w-1/2 flex-shrink flex-grow-0 min-h-300px)',
+				{ '<lg:(mr-auto z-0)': i == 0 },
+				{ '<lg:(ml-auto -my-30 z-10)': i == 1 },
+				{ '<lg:(mr-auto z-20)': i == 2 },
+			]" v-for="(it, i) in [
+	{ name: 'developer', img: '', title: 'Разработчик' },
+	{ name: 'designer', img: '', title: 'Дизайнер' },
+	{ name: 'entrepreneur', img: '', title: 'Предприниматель' },
+]" :key="i" :src="data.Imgs.data[i].attributes.url" :alt="data.Imgs.data[i].attributes.name">
 				<div class="text-center">{{ it.title }}</div>
 				<!--<div class="js-object-log"></div>-->
 				<!--<div class="">{{ properties[it.name] }}</div>-->
@@ -67,7 +62,7 @@ export default {
 			await $strapi.graphql({
 				query: portfolio,
 			})
-		).page.data.attributes
+		)?.page?.data?.attributes
 
 		return {
 			data,
