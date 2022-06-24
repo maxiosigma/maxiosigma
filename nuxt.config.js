@@ -340,6 +340,7 @@ function includes() {
 			'@luxdamore/nuxt-apis-to-file',
 			'nuxt-user-agent',
 			'nuxt-fontagon',
+			'@vueuse/nuxt',
 			//'@/plugins/active/GSR',
 			//'nuxt-resolve-url-loader',
 			//'nuxt-alias',
@@ -365,6 +366,7 @@ function includes() {
 			//['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }], // МЕШАЕТ STRAPI
 			//'nuxt-parallel-middleware',
 			'@nuxtjs/strapi',
+			'@nuxtjs/gtm',
 			//'nuxt-payload-extractor',
 		],
 		//'@prismicio/vue', 'vue-slicezone', 'lottie-web',
@@ -404,6 +406,9 @@ function custom() {
 		},
 		googleAnalytics: {
 			id: 'UA-176733004-3',
+		},
+		gtm: {
+			id: 'GTM-MSJZ4PT',
 		},
 		//strapi: {
 		//	// Options

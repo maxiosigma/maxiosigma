@@ -124,19 +124,23 @@ export default {
 	@apply before: (bg-black shadow-xl text-sm text-white px-2.5 rounded-tl-md opacity-70 py-1 bottom-0 right-0 z-99999 fixed) <sm:before:content-["screen-none"] @sm: before:content-["screen-sm"] @md: before:content-["screen-md"] @lg: before:content-["screen-lg"] @xl: before:content-['screen-xl'] @2xl: before:content-["screen-2xl"] ;
 }
 
-.sp-link-wrapper > .sp-link > span {
-	@apply hidden #{!important};
+.sp-link-wrapper {
+	@apply bottom-full h-0 opacity-0 w-0 absolute overflow-hidden #{!important};
+
+	.sp-link > span {
+		@apply opacity-0 #{!important};
+	}
 }
 
 .sp-link > span {
-	@apply hidden #{!important};
+	@apply opacity-0 #{!important};
 }
 
 .sp-link-wrapper .sp-link > span {
-	@apply hidden #{!important};
+	@apply opacity-0 #{!important};
 }
 
 .sp-link span {
-	@apply hidden #{!important};
+	@apply opacity-0 #{!important};
 }
 </style>

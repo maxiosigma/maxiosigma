@@ -8,10 +8,10 @@ export const state = () => ({
 	menu: menu(),
 })
 
-function designerWorks() {
+function designerWorks(page = 1, limit = 200) {
 	return `
 		query designerWork {
-			designerWorks {
+			designerWorks(pagination: { page: ${page}, limit: ${limit} }) {
 				data {
 					attributes {
 						title
@@ -62,10 +62,10 @@ function designerWorks() {
 	`
 }
 
-function developerWorks() {
+function developerWorks(page = 1, limit = 200) {
 	return `
 		query developerWorks {
-			developerWorks {
+			developerWorks(pagination: { page: ${page}, limit: ${limit} }) {
 				data {
 					attributes {
 						title
@@ -170,7 +170,7 @@ function menu() {
 					attributes {
 						title
 						slug
-						items(pagination: { limit: 2000}) {
+						items(pagination: { limit: 200}) {
 							data {
 								attributes {
 									title
