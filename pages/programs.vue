@@ -20,7 +20,7 @@ export default {
 		return {
 			links: this.$store.state.reffers.reduce((sum, it) => {
 				if (!!it?.partnership && !!it?.title && !!it?.description && !!it?.short)
-					sum.push({ title: it.title, description: it.description, short: it.short })
+					sum.push({ title: it.title, description: it.description, short: it.short, top: it.top })
 				return sum
 			}, []).sort((a, b) => a.top < b.top ? 1 : -1),
 
