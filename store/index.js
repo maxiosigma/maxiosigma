@@ -1,19 +1,20 @@
 export const state = () => ({
-	scroll: 0,
-	mainMenu: 0,
+	//scroll: 0,
+	//mainMenu: 0,
 	timeout: 1000,
-	uploadCdn: false,
-	animateKinesis: true,
-	modal: {
-		discount: false,
-	},
-	slides: [],
+	//uploadCdn: false,
+	//animateKinesis: true,
+	//modal: {
+	//	discount: false,
+	//},
+	//slides: [],
 	navbar: [],
+	reffers: []
 })
 
 export const mutations = {
-	uploadNavbar(state, payload) {
-		state.navbar = payload
+	uploadStrapi(state, {key, payload}) {
+		state[key] = payload
 	},
 	setUploadCdn(state) {
 		state.uploadCdn = true
@@ -50,7 +51,7 @@ export const mutations = {
 
 export const actions = {
 	async nuxtServerInit(ctx) {
-		const data = (
+		const menu = (
 			await this.$strapi.graphql({
 				query: ctx.state.gql.menu,
 			})
@@ -76,9 +77,11 @@ export const actions = {
 				}
 			})
 
-		//const data = ctx.state.gql.menu
+		ctx.commit('uploadStrapi',  { key: "navbar", payload: menu})
 
-		ctx.commit('uploadNavbar', data)
+		const reffers = (await this.$strapi.graphql({ query: ctx.state.gql.links })).links?.data?.map((it) => it.attributes)
+
+		ctx.commit('uploadStrapi',  { key: "reffers", payload: reffers})
 
 		//console.log(ctx.$strapi)
 		//console.log(ctx)
