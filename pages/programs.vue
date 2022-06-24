@@ -1,7 +1,7 @@
 <template>
 	<LayoutPage>
 		<div class="programms-container">
-			<ItemLink self @click.native.prevent="backuphandleOpen(it.short)" :href="'/business'" class="programms-link" v-for="(it, i) in data" :key="i">
+			<ItemLink self @click.native.prevent="handleOpen(it.short)" :href="'/about'" class="programms-link" v-for="(it, i) in links" :key="i">
 				<div class="programms-link-title">{{ it.title }}</div>
 				<div class="programms-link-description">{{ it.description }}</div>
 			</ItemLink>
@@ -18,7 +18,15 @@ export default {
 	},
 	data() {
 		return {
-			links: this.$store.state.reffers,
+			links: this.$store.state.reffers.reduce((sum, it) => {
+
+				//console.log(it);
+
+				if (!!it?.partnership && !!it?.title && !!it?.description && !!it?.short)
+					sum.push({ title: it.title, description: it.description, short: it.short })
+
+				return sum
+			}, []),
 
 			//data: Object.values(this.$store.state.links.data)?.reduce((sum, it) => {
 			//	if (!!it?.partnership && !!it?.title && !!it?.description && !!it?.short)
@@ -29,11 +37,11 @@ export default {
 		}
 	},
 	mounted() {
-		console.log(this.links);
+		//console.log(this.links);
 	},
 	methods: {
 		handleOpen(short) {
-			window.open('/l/' + short, '_blank')
+			window.open('/#' + short, '_blank')
 		},
 	},
 }

@@ -127,6 +127,7 @@ function links() {
 						href
 						name
 						description
+						partnership
 						alt
 						updatedAt
 					}
