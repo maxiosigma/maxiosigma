@@ -130,6 +130,7 @@ function links() {
 						partnership
 						alt
 						updatedAt
+						top
 					}
 				}
 			}
