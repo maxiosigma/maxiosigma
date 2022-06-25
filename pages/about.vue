@@ -18,9 +18,14 @@
     <kinesis-container class="flex-center text-white inset-0 z-0 fixed">
       <!-- class="bg-black" -->
 
-      <kinesis-element v-for="(it, i) in 2" :key="i">
+      <kinesis-element
+        v-for="(it, i) in 2"
+        :key="i"
+        :strength="intRandom(25, 75) + 10 * Math.sin(i) * i"
+      >
         <canvas :ref="'canva_' + i"></canvas>
-        {{ Math.floor(Math.random() * 10) }}
+
+        {{ stringRandom(["depth", "depth_inv"]) }}
       </kinesis-element>
 
       <!--<kinesis-element type="depth" :strength="50">
