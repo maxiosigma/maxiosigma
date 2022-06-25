@@ -18,8 +18,9 @@
     <kinesis-container class="flex-center text-white inset-0 z-0 fixed">
       <!-- class="bg-black" -->
 
-      <kinesis-element v-for="(it, i) in 10" :key="i">
+      <kinesis-element v-for="(it, i) in 2" :key="i">
         <canvas :ref="'canva_' + i"></canvas>
+        {{ Math.floor(Math.random() * 10) }}
       </kinesis-element>
 
       <!--<kinesis-element type="depth" :strength="50">
@@ -48,7 +49,9 @@ export default {
     }
   },
   mounted() {
-    const trangle = this.$refs?.canva_1
+    console.log(this.$refs?.canva_0[0])
+
+    const trangle = this.$refs?.canva_0?.[0]
     this.isDraw(trangle, () => {
       const ctx = trangle.getContext("2d")
       ctx.beginPath()
@@ -61,7 +64,7 @@ export default {
       ctx.stroke()
     })
 
-    const trangle2 = this.$refs?.canva_2
+    const trangle2 = this.$refs?.canva_1?.[0]
     this.isDraw(trangle2, () => {
       const ctx = trangle2.getContext("2d")
       ctx.beginPath()
