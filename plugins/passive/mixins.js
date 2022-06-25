@@ -158,7 +158,7 @@ Vue.mixin({
     stringRandom(arr) {
       const count = arr?.length;
       const rundom = this.intRandom(0, count);
-      return rundom[count];
+      return arr[rundom];
     },
     isJS() {
       return true;
