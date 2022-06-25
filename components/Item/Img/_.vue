@@ -37,7 +37,7 @@ export default {
   computed: {
     getImg() {
       try {
-        return require(`~/images/${this.src}`)
+        return require(`~/media/${this.src}`)
       } catch (error) {
         return this.src || false
       }

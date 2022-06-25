@@ -1,12 +1,17 @@
 <template>
   <LayoutPage :bodyStyle="'body-bg about'">
-    <div class="grid-cols-[1fr,1fr] inline-grid">
-      <div class="flex min-w-1/2 about-img-container items-end">
-        <ItemImg class="object-contain about-img" src="about/face_1.png"></ItemImg>
+    <div class="container flex-grow mx-auto gap-5 grid-cols-[0.9fr,1.1fr] inline-grid">
+      <div class="flex justify-center about-img-container items-end">
+        <ItemImg
+          class="h-full object-cover object-center about-img"
+          src="about/face_1.png"
+        ></ItemImg>
       </div>
 
-      <div class="flex self-center about-text">
-        <div class="text-white">11111</div>
+      <div class="flex-col text-white inline-flex self-center about-text">
+        <div class="">Добро пожаловать</div>
+        <div class="">Меня зовут Максим</div>
+        <div class="">Автор и разработчик сайта</div>
       </div>
     </div>
   </LayoutPage>
@@ -43,13 +48,13 @@ export default {
     }
   },
   mounted() {
-    setTimeout(() => {
-      this.visual = true
-    }, this.$store.state.timeout)
-    setTimeout(() => {
-      this.$refs.promo?.scrollIntoView({ behavior: "smooth", block: "start" })
-    }, this.$store.state.timeout - 1 + 90601)
-    this.storageItem("about")
+    //setTimeout(() => {
+    //  this.visual = true
+    //}, this.$store.state.timeout)
+    //setTimeout(() => {
+    //  this.$refs.promo?.scrollIntoView({ behavior: "smooth", block: "start" })
+    //}, this.$store.state.timeout - 1 + 90601)
+    //this.storageItem("about")
   },
   methods: {
     handleClick() {
