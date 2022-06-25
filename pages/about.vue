@@ -1,6 +1,6 @@
 <template>
   <LayoutPage :bodyStyle="'body-bg about'">
-    <div class="container flex-grow mx-auto gap-5 grid-cols-[0.9fr,1.1fr] inline-grid">
+    <!--<div class="container flex-grow mx-auto z-10 gap-5 grid-cols-[0.9fr,1.1fr] relative inline-grid">
       <div class="flex justify-center about-img-container items-end">
         <ItemImg
           class="h-full object-cover object-center about-img"
@@ -13,11 +13,19 @@
         <div class="">Меня зовут Максим</div>
         <div class="">Автор и разработчик сайта</div>
       </div>
-    </div>
+    </div>-->
 
-    <div class="flex text-white inset-0 -z-10 fixed">
-      <div class="bg-black h-1/2 w-1/2"></div>
-    </div>
+    <kinesis-container class="flex-center text-white inset-0 z-0 fixed">
+      <!-- class="bg-black" -->
+
+      <kinesis-element type="depth" :strength="50">
+        <canvas ref="trangle"></canvas>
+      </kinesis-element>
+
+      <kinesis-element type="depth" :strength="50">
+        <canvas ref="trangle2"></canvas>
+      </kinesis-element>
+    </kinesis-container>
   </LayoutPage>
 </template>
 
@@ -28,42 +36,49 @@ export default {
       title: "Автор",
     }
   },
+  //setup() {},
   data() {
     return {
-      visual: false,
       visible: 0,
       //deviceType: this.$ua.deviceType(),
-      //items: {
-      //  titles: [
-      //    { t: "Лидер", cl: "text-yellow-600" },
-      //    {},
-      //    { t: "Бизнесмен", cl: "text-red-600" },
-      //    {},
-      //    { t: "Филантроп", cl: "text-blue-600" },
-      //  ],
-      //  abouts: ["Работаю с командой", "Фрилансер с 2017 года", "Поддерживаю бренд"],
-      //  commerce: [
-      //    "Оцифровываю бизнесы",
-      //    "Помогаю с доходом на конкурентах",
-      //    "Приобщаю к умным покупкам",
-      //  ],
-      //  hobbies: ["Разрабатываю сайты", "Создаю продающий дизайн", "Занимаюсь спортом"],
-      //},
     }
   },
   mounted() {
-    //setTimeout(() => {
-    //  this.visual = true
-    //}, this.$store.state.timeout)
-    //setTimeout(() => {
-    //  this.$refs.promo?.scrollIntoView({ behavior: "smooth", block: "start" })
-    //}, this.$store.state.timeout - 1 + 90601)
-    //this.storageItem("about")
+    const trangle = this.$refs?.trangle
+    this.isDraw(trangle, () => {
+      const ctx = trangle.getContext("2d")
+      ctx.beginPath()
+      ctx.moveTo(125, 125)
+      ctx.lineTo(125, 45)
+      ctx.lineTo(45, 125)
+      ctx.closePath()
+      ctx.strokeStyle = "orange"
+      ctx.lineWidth = 3
+      ctx.stroke()
+    })
+
+    const trangle2 = this.$refs?.trangle2
+    this.isDraw(trangle2, () => {
+      const ctx = trangle2.getContext("2d")
+      ctx.beginPath()
+      ctx.moveTo(125, 125)
+      ctx.lineTo(125, 45)
+      ctx.lineTo(45, 125)
+      ctx.closePath()
+      ctx.strokeStyle = "orange"
+      ctx.lineWidth = 3
+      ctx.stroke()
+    })
   },
   methods: {
     handleClick() {
       this.visible += 0.5
       setTimeout(() => (this.visible += 1), 1500)
+    },
+    isDraw(ref, callback) {
+      if (ref?.getContext) {
+        callback()
+      }
     },
   },
 }

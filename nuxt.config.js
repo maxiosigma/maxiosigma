@@ -1,128 +1,129 @@
 //import { apiEndpoint } from './sm.json'
-import { resolve, join } from 'path'
-import app_config from './app.config'
+import { resolve, join } from "path";
+import app_config from "./app.config";
 
-const { plugins, buildModules, modules, transpile } = includes()
+const { plugins, buildModules, modules, transpile } = includes();
 
 //console.log(resolve(__dirname, './'))
 
 export default {
-	alias: {
-		'~': resolve(__dirname, './'),
-		'@': resolve(__dirname, './'),
-		images: resolve(__dirname, './images'),
-		strapi: resolve(__dirname, '../strapi'),
-	},
-	...strapi(),
-	...middleware(),
-	...components(),
-	...generate(),
-	...sitemap(),
-	//...prismic(),
-	...router(),
-	...custom(),
-	...render(),
-	...server(),
-	...build(),
-	...hooks(),
-	...i18n(),
-	...css(),
-	//...pwa(),
+  alias: {
+    "~": resolve(__dirname, "./"),
+    "@": resolve(__dirname, "./"),
+    images: resolve(__dirname, "./images"),
+    strapi: resolve(__dirname, "../strapi"),
+  },
+  ...strapi(),
+  ...middleware(),
+  ...components(),
+  ...generate(),
+  ...sitemap(),
+  //...prismic(),
+  ...router(),
+  ...custom(),
+  ...render(),
+  ...server(),
+  ...build(),
+  ...hooks(),
+  ...i18n(),
+  ...css(),
+  //...pwa(),
 
-	strapi: {
-		url: process.env.STRAPI_URL || 'http://localhost:1337',
-		//prefix: '/api',
-		//entities: ['links'],
-		//version: 'v4',
-		cookie: {},
-	},
+  strapi: {
+    url: process.env.STRAPI_URL || "http://localhost:1337",
+    //prefix: '/api',
+    //entities: ['links'],
+    //version: 'v4',
+    cookie: {},
+  },
 
-	buildModules,
-	modules,
-	plugins,
-}
+  buildModules,
+  modules,
+  plugins,
+};
 
 function strapi() {
-	return {
-		strapi: {
-			url: process.env.STRAPI_URL || 'http://localhost:1337',
-			prefix: '/api',
-			entities: ['links'],
-			//version: 'v4',
-			cookie: {},
-		},
-	}
+  return {
+    strapi: {
+      url: process.env.STRAPI_URL || "http://localhost:1337",
+      prefix: "/api",
+      entities: ["links"],
+      //version: 'v4',
+      cookie: {},
+    },
+  };
 }
 
 function server() {
-	return {
-		server: {
-			//host: '0.0.0.0',
-			//host: process.env.NUXT_ENV_HOST_0 ? '0.0.0.0' : 'localhost',
-		},
-	}
+  return {
+    server: {
+      //host: '0.0.0.0',
+      //host: process.env.NUXT_ENV_HOST_0 ? '0.0.0.0' : 'localhost',
+    },
+  };
 }
 
 function router() {
-	return {
-		router: {
-			fallback: true,
-			mode: 'history',
-			prefetchLinks: false,
-			prefetchPayloads: false,
-			linkActiveClass: 'nav-item-active',
-			linkExactActiveClass: 'exact-active-link',
-			linkPrefetchedClass: 'link-prefetched',
-		},
-	}
+  return {
+    router: {
+      fallback: true,
+      mode: "history",
+      prefetchLinks: false,
+      prefetchPayloads: false,
+      linkActiveClass: "nav-item-active",
+      linkExactActiveClass: "exact-active-link",
+      linkPrefetchedClass: "link-prefetched",
+    },
+  };
 }
 
 function sitemap() {
-	return {
-		sitemap: {
-			hostname: app_config.host,
-			cacheTime: 300000,
-			gzip: false,
-			defaults: {
-				changefreq: 'daily',
-				priority: 1,
-				lastmod: new Date(),
-			},
-		},
-	}
+  return {
+    sitemap: {
+      hostname: app_config.host,
+      cacheTime: 300000,
+      gzip: false,
+      defaults: {
+        changefreq: "daily",
+        priority: 1,
+        lastmod: new Date(),
+      },
+    },
+  };
 }
 
 function middleware() {
-	return {
-		//serverMiddleware: []
-	}
+  return {
+    //serverMiddleware: []
+  };
 }
 
 function generate() {
-	const exd =
-		app_config.excluded?.reduce(
-			(sum, ex) =>
-				i18n().i18n.locales?.map((lc) => sum.push(new RegExp('^/' + lc.code + '/' + ex + ''))) &&
-				sum,
-			[]
-		) ?? []
+  const exd =
+    app_config.excluded?.reduce(
+      (sum, ex) =>
+        i18n().i18n.locales?.map((lc) =>
+          sum.push(new RegExp("^/" + lc.code + "/" + ex + ""))
+        ) && sum,
+      []
+    ) ?? [];
 
-	return {
-		generate: {
-			dir: 'dist',
-			interval: 50,
-			fallback: true,
-			nojekyll: false,
-			concurrency: 2000,
-			subFolders: false,
-			devtools: app_config.isDev ? true : false,
-			exclude: [/^\/test/, /^\/z/, ...exd],
+  return {
+    generate: {
+      dir: "dist",
+      interval: 50,
+      fallback: true,
+      nojekyll: false,
+      concurrency: 2000,
+      subFolders: false,
+      devtools: app_config.isDev ? true : false,
+      exclude: [/^\/test/, /^\/z/, ...exd],
 
-			//routes() {
-			//	return staticRoutes()
-			//},
-		},
-	}
+      //routes() {
+      //	return staticRoutes()
+      //},
+    },
+  };
 }
 
 //async function staticRoutes() {
@@ -135,249 +136,261 @@ function generate() {
 //}
 
 function hooks() {
-	return { hooks: {} }
+  return { hooks: {} };
 }
 
 function i18n() {
-	const locales = [
-		{ code: 'ru-ru', iso: 'ru-RU', name: 'Русский', file: 'ru-RU.js' },
-		//{ code: 'en-es', iso: 'en-ES', name: 'English', file: 'en-ES.js' },
-	]
+  const locales = [
+    { code: "ru-ru", iso: "ru-RU", name: "Русский", file: "ru-RU.js" },
+    //{ code: 'en-es', iso: 'en-ES', name: 'English', file: 'en-ES.js' },
+  ];
 
-	locales?.map((locale) => {
-		locales.push({
-			code: locale.code + '-amp',
-			iso: locale.iso,
-			name: locale.name,
-			file: locale.file,
-		})
-	})
+  locales?.map((locale) => {
+    locales.push({
+      code: locale.code + "-amp",
+      iso: locale.iso,
+      name: locale.name,
+      file: locale.file,
+    });
+  });
 
-	return {
-		i18n: {
-			seo: true,
-			lazy: false,
-			strategy: 'prefix', //prefix prefix_except_default
-			vueI18nLoader: true,
-			defaultLocale: 'ru-ru', //ru-ru
-			//langDir: '~/locales/',
-			noPrefixDefaultLocale: true, //true false
-			vuex: { moduleName: 'i18n', syncLocale: false, syncMessages: false, syncRouteParams: false },
-			locales,
-		},
-	}
+  return {
+    i18n: {
+      seo: true,
+      lazy: false,
+      strategy: "prefix", //prefix prefix_except_default
+      vueI18nLoader: true,
+      defaultLocale: "ru-ru", //ru-ru
+      //langDir: '~/locales/',
+      noPrefixDefaultLocale: true, //true false
+      vuex: {
+        moduleName: "i18n",
+        syncLocale: false,
+        syncMessages: false,
+        syncRouteParams: false,
+      },
+      locales,
+    },
+  };
 }
 
 function build() {
-	return {
-		build: {
-			cache: false,
-			target: 'static',
-			optimizeCss: false,
-			transpile: transpile,
-			friendlyErrors: false,
-			parallel: false,
-			cssSourceMap: false,
-			...(!app_config.isDev && { publicPath: '/public/' }),
-			loaders: {
-				sass: {
-					implementation: require('sass'),
-				},
-				scss: {
-					implementation: require('sass'),
-				},
-			},
-			//babel: {
-			//	//babelrc: false,
-			//	//cacheDirectory: undefined,
-			//	//presets: ['@nuxt/babel-preset-app'],
-			//	plugins: [
-			//		'@babel/plugin-transform-runtime',
-			//		//'transform-require-context',
-			//		//'require-context-hook',
-			//	],
-			//},
-			postcss: {
-				plugins: {
-					'postcss-import': true,
-					'postcss-url': {},
-					...(!app_config.isDev && {
-						autoprefixer: {},
-					}),
-				},
-			},
-			splitChunks: {
-				runtime: true,
-				commons: true,
-				components: true,
-				layouts: true,
-				vendor: true,
-				pages: true,
-			},
-			optimization: {
-				minimize: !app_config.isDev,
-				splitChunks: {
-					chunks: 'all',
-					automaticNameDelimiter: '/',
-					name: undefined,
-					//maxSize: 51200,
-				},
-			},
-			//maxChunkSize: 51200,
-			...(!app_config.isDev && {
-				extractCSS: true,
-				filenames: {
-					app: 'scripts/[chunkhash:5].js',
-					chunk: 'scripts/[chunkhash:5].js',
-					vendor: 'scripts/[chunkhash:5].js',
-					manifest: 'manifest.[hash:5].js',
-					css: 'styles/[contenthash:5].css',
-					//[path]
-					img: 'images/img_[hash:5].[ext]',
-					//[path]
-					font: 'fonts/font_[name]_[hash:5].[ext]',
-					//[path]
-					video: 'video/vio_[hash:5].[ext]',
-				},
-			}),
-			extend(config, ctx) {
-				ctx.loaders.scss.additionalData = '@use "sass:math";'
+  return {
+    build: {
+      cache: false,
+      target: "static",
+      optimizeCss: false,
+      transpile: transpile,
+      friendlyErrors: false,
+      parallel: false,
+      cssSourceMap: false,
+      ...(!app_config.isDev && { publicPath: "/public/" }),
+      loaders: {
+        sass: {
+          implementation: require("sass"),
+        },
+        scss: {
+          implementation: require("sass"),
+        },
+      },
+      //babel: {
+      //	//babelrc: false,
+      //	//cacheDirectory: undefined,
+      //	//presets: ['@nuxt/babel-preset-app'],
+      //	plugins: [
+      //		'@babel/plugin-transform-runtime',
+      //		//'transform-require-context',
+      //		//'require-context-hook',
+      //	],
+      //},
+      postcss: {
+        plugins: {
+          "postcss-import": true,
+          "postcss-url": {},
+          ...(!app_config.isDev && {
+            autoprefixer: {},
+          }),
+        },
+      },
+      splitChunks: {
+        runtime: true,
+        commons: true,
+        components: true,
+        layouts: true,
+        vendor: true,
+        pages: true,
+      },
+      optimization: {
+        minimize: !app_config.isDev,
+        splitChunks: {
+          chunks: "all",
+          automaticNameDelimiter: "/",
+          name: undefined,
+          //maxSize: 51200,
+        },
+      },
+      //maxChunkSize: 51200,
+      ...(!app_config.isDev && {
+        extractCSS: true,
+        filenames: {
+          app: "scripts/[chunkhash:5].js",
+          chunk: "scripts/[chunkhash:5].js",
+          vendor: "scripts/[chunkhash:5].js",
+          manifest: "manifest.[hash:5].js",
+          css: "styles/[contenthash:5].css",
+          //[path]
+          img: "images/img_[hash:5].[ext]",
+          //[path]
+          font: "fonts/font_[name]_[hash:5].[ext]",
+          //[path]
+          video: "video/vio_[hash:5].[ext]",
+        },
+      }),
+      extend(config, ctx) {
+        ctx.loaders.scss.additionalData = '@use "sass:math";';
 
-				//[path]
-				config.module.rules.push({
-					test: /\.ico$/,
-					loader: 'url-loader',
-					query: {
-						//limit: 1,
-						name: 'icons/favicon_[hash:8].[ext]',
-					},
-				})
+        //[path]
+        config.module.rules.push({
+          test: /\.ico$/,
+          loader: "url-loader",
+          query: {
+            //limit: 1,
+            name: "icons/favicon_[hash:8].[ext]",
+          },
+        });
 
-				//[path]
-				config.module.rules.push({
-					test: /\.pdf$/,
-					loader: 'file-loader',
-					query: {
-						//limit: 1,
-						name: 'files/[name]_[hash:8].[ext]',
-					},
-				})
+        //[path]
+        config.module.rules.push({
+          test: /\.pdf$/,
+          loader: "file-loader",
+          query: {
+            //limit: 1,
+            name: "files/[name]_[hash:8].[ext]",
+          },
+        });
 
-				//config.module.rules.push({
-				//	test: /\.json$/,
-				//	loader: 'json-loader',
-				//	query: {
-				//		//limit: 1,
-				//		name: 'json/[name]_[hash:8].[ext]',
-				//	},
-				//})
+        config.module.rules.push({
+          test: /\.mjs$/,
+          include: /node_modules/,
+          type: "javascript/auto",
+        });
 
-				config.node = {
-					fs: 'empty',
-				}
+        //config.module.rules.push({
+        //	test: /\.json$/,
+        //	loader: 'json-loader',
+        //	query: {
+        //		//limit: 1,
+        //		name: 'json/[name]_[hash:8].[ext]',
+        //	},
+        //})
 
-				//config.resolve.alias['testerum'] = resolve(__dirname, '../../../../../strapi/public')
-				//config.resolve.alias['~testerum'] = resolve(__dirname, '../../../../../strapi/public')
+        config.node = {
+          fs: "empty",
+        };
 
-				if (ctx.isServer) {
-					//console.log(join(__dirname, '../../../../../strapi/public'))
-					//stimg: resolve(__dirname, './../strapi/public'),
-					//strapimg: resolve(__dirname, '../../../../../strapi/public'),
-					//config.resolve.alias['~stimg'] = resolve(__dirname, '../strapi/public')
-					//config.resolve.alias['~strapimg'] = resolve(__dirname, '../../../../../strapi/public')
-					//config.resolve.alias['hammerjs$'] = this.options.rootDir + 'node_modules/vue-touch/dist/hammer-ssr.js'
-					//config.resolve.alias['stimg'] = resolve(__dirname, '../strapi/public')
-					//config.resolve.alias['testerum'] = resolve(__dirname, '../../../../../strapi/public')
-					//config.resolve.alias['~testerum'] = resolve(__dirname, '../../../../../strapi/public')
-					//console.log(config.resolve.alias['~testerum'])
-					//images: resolve(__dirname, '../strapi/public'),
-					//stimg: resolve(__dirname, '../strapi/public'),
-					//strapimg: resolve(__dirname, '../../../../../strapi/public'),
-				}
-			},
-		},
-	}
+        //config.resolve.alias['testerum'] = resolve(__dirname, '../../../../../strapi/public')
+        //config.resolve.alias['~testerum'] = resolve(__dirname, '../../../../../strapi/public')
+
+        if (ctx.isServer) {
+          //console.log(join(__dirname, '../../../../../strapi/public'))
+          //stimg: resolve(__dirname, './../strapi/public'),
+          //strapimg: resolve(__dirname, '../../../../../strapi/public'),
+          //config.resolve.alias['~stimg'] = resolve(__dirname, '../strapi/public')
+          //config.resolve.alias['~strapimg'] = resolve(__dirname, '../../../../../strapi/public')
+          //config.resolve.alias['hammerjs$'] = this.options.rootDir + 'node_modules/vue-touch/dist/hammer-ssr.js'
+          //config.resolve.alias['stimg'] = resolve(__dirname, '../strapi/public')
+          //config.resolve.alias['testerum'] = resolve(__dirname, '../../../../../strapi/public')
+          //config.resolve.alias['~testerum'] = resolve(__dirname, '../../../../../strapi/public')
+          //console.log(config.resolve.alias['~testerum'])
+          //images: resolve(__dirname, '../strapi/public'),
+          //stimg: resolve(__dirname, '../strapi/public'),
+          //strapimg: resolve(__dirname, '../../../../../strapi/public'),
+        }
+      },
+    },
+  };
 }
 
 function components() {
-	return {
-		//components: true,
-		//// {
-		////	watch: true,
-		////	prefetch: true,
-		////	path: '~/components/',
-		////	extensions: ['vue', 'js'],
-		////},
-		components: [
-			'~/components',
-			//{ path: '~/slices', prefix: '', extensions: ['vue'] }
-		],
-	}
+  return {
+    //components: true,
+    //// {
+    ////	watch: true,
+    ////	prefetch: true,
+    ////	path: '~/components/',
+    ////	extensions: ['vue', 'js'],
+    ////},
+    components: [
+      "~/components",
+      //{ path: '~/slices', prefix: '', extensions: ['vue'] }
+    ],
+  };
 }
 
 function css() {
-	return { css: ['~/assets/index.scss'] }
+  return { css: ["~/assets/index.scss"] };
 }
 
 function env() {
-	return {
-		CTF_MODEL_ARTICLES: 'article',
-		CTF_MODEL_UPDATES: 'update',
-		CTF_MODEL_LINKS: 'linked',
-		CTF_MODEL_PROGRAMS: 'program',
-		CTF_MODEL_SHORTLINK: 'shortlink',
-		CTF_MODEL_CATEGORIES: 'category',
-		PRC_CDA_ACCESS_TOKEN: process.env.PRC_CDA_ACCESS_TOKEN,
-	}
+  return {
+    CTF_MODEL_ARTICLES: "article",
+    CTF_MODEL_UPDATES: "update",
+    CTF_MODEL_LINKS: "linked",
+    CTF_MODEL_PROGRAMS: "program",
+    CTF_MODEL_SHORTLINK: "shortlink",
+    CTF_MODEL_CATEGORIES: "category",
+    PRC_CDA_ACCESS_TOKEN: process.env.PRC_CDA_ACCESS_TOKEN,
+  };
 }
 
 function includes() {
-	const dev = true,
-		DevBuildModules = app_config.isDev ? [] : [],
-		OptimizeBuildModules = app_config.optimization ? [] : [],
-		buildModules = [
-			'nuxt-windicss',
-			'@luxdamore/nuxt-apis-to-file',
-			'nuxt-user-agent',
-			'nuxt-fontagon',
-			'@vueuse/nuxt',
-			//'@/plugins/active/GSR',
-			//'nuxt-resolve-url-loader',
-			//'nuxt-alias',
-			//'@nuxtjs/prismic',
-			//'nuxt-stories',
-			//'@nuxtjs/strapi',
-			//'@nuxtjs/apollo',
-			'nuxt-animejs',
-			//'@nuxtjs/pwa',
-		],
-		plugins = [
-			'@plugins/passive/mixins',
-			'@plugins/passive/directives',
-			'@plugins/active/VueTypedJs',
-			'@plugins/active/QR.js',
-		],
-		modules = [
-			//'@nuxtjs/markdownit',
-			'@nuxtjs/i18n',
-			'@nuxtjs/axios',
-			//'@nuxt/content',
-			//'@nuxtjs/toast',
-			//['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }], // МЕШАЕТ STRAPI
-			//'nuxt-parallel-middleware',
-			'@nuxtjs/strapi',
-			'@nuxtjs/gtm',
-			//'nuxt-payload-extractor',
-		],
-		//'@prismicio/vue', 'vue-slicezone', 'lottie-web',
-		transpile = ['lottie-web', 'vue-typed-js']
+  const dev = true,
+    DevBuildModules = app_config.isDev ? [] : [],
+    OptimizeBuildModules = app_config.optimization ? [] : [],
+    buildModules = [
+      "nuxt-windicss",
+      "@luxdamore/nuxt-apis-to-file",
+      "nuxt-user-agent",
+      "nuxt-fontagon",
+      "@vueuse/nuxt",
+      //'@/plugins/active/GSR',
+      //'nuxt-resolve-url-loader',
+      //'nuxt-alias',
+      //'@nuxtjs/prismic',
+      //'nuxt-stories',
+      //'@nuxtjs/strapi',
+      //'@nuxtjs/apollo',
+      "nuxt-animejs",
+      //'@nuxtjs/pwa',
+    ],
+    plugins = [
+      "@plugins/passive/mixins",
+      "@plugins/passive/directives",
+      "@plugins/active/VueTypedJs",
+      "@plugins/active/VueKinesis",
+      "@plugins/active/QR.js",
+    ],
+    modules = [
+      //'@nuxtjs/markdownit',
+      "@nuxtjs/i18n",
+      "@nuxtjs/axios",
+      //'@nuxt/content',
+      //'@nuxtjs/toast',
+      //['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }], // МЕШАЕТ STRAPI
+      //'nuxt-parallel-middleware',
+      "@nuxtjs/strapi",
+      "@nuxtjs/gtm",
+      //'nuxt-payload-extractor',
+    ],
+    //'@prismicio/vue', 'vue-slicezone', 'lottie-web',
+    transpile = ["lottie-web", "vue-typed-js"];
 
-	return {
-		buildModules: buildModules.concat(DevBuildModules, OptimizeBuildModules),
-		plugins: plugins,
-		modules: modules,
-		transpile: transpile,
-	}
+  return {
+    buildModules: buildModules.concat(DevBuildModules, OptimizeBuildModules),
+    plugins: plugins,
+    modules: modules,
+    transpile: transpile,
+  };
 }
 
 //function prismic() {
@@ -396,144 +409,144 @@ function includes() {
 //}
 
 function custom() {
-	return {
-		target: 'static',
-		loading: false,
-		telemetry: false,
-		globalName: 'app',
-		globals: {
-			id: `app`,
-		},
-		googleAnalytics: {
-			id: 'UA-176733004-3',
-		},
-		gtm: {
-			id: 'GTM-MSJZ4PT',
-		},
-		//strapi: {
-		//	// Options
-		//},
-		apisToFile: {
-			file: {
-				name: 'data',
-				ext: 'json',
-				path: './',
-				startFromStaticDir: false,
-				options: {},
-			},
-		},
-		storybook: {
-			// Options
-		},
-		nuxtAlias: {
-			/* module options */
-			rootDir: ['../strapi'],
-		},
-		stories: {
-			//lang: 'ru',
-			forceBuild: false,
-			storiesDir: './assets/stories',
-		},
-		markdownit: {
-			runtime: true,
-			preset: 'default',
-			linkify: true,
-			breaks: true,
-		},
-		vue: {
-			config: {
-				productionTip: false,
-				devtools: app_config.isDev,
-			},
-		},
-		content: {
-			prism: {
-				theme: false,
-			},
-			yaml: {
-				json: true,
-			},
-		},
-		iconFont: {
-			files: ['./assets/fontagon/*.svg'],
-			dist: './fonts/icons/fg',
-			fontName: 'font-svg',
-			formatOptions: {
-				svg: {
-					normalize: true,
-					fontHeight: 1000,
-				},
-			},
-			styleTemplate: {
-				css: 'assets/fontagon/hbs/css.hbs',
-			},
-			order: ['eot', 'ttf', 'svg', 'woff2', 'woff'],
-			baseClass: 'fg',
-			classPrefix: 'fg',
-			style: 'css',
-		},
-		...(app_config.optimization && {
-			buildOptimisations: buildOptimisations(app_config),
-		}),
-		publicRuntimeConfig: {
-			app: app_config,
-			isDev: app_config.isDev,
-			baseUrl:
-				process.env.BASE_URL ||
-				(app_config.isDev || process.env.NUXT_ENV_GENDEV
-					? 'http://localhost:3000'
-					: app_config.host),
-			update: app_config.update,
-			lang: app_config.lang,
-			sps: process.env.CTF_SPACE_ID,
-			atk: process.env.CTF_CDA_ACCESS_TOKEN,
-			...env(),
-		},
-		privateRuntimeConfig: {
-			sps: process.env.CTF_SPACE_ID,
-			atk: process.env.CTF_CDA_ACCESS_TOKEN,
-			APP_KEYS: process.env.APP_KEYS,
-			API_TOKEN_SALT: process.env.API_TOKEN_SALT,
-			ADMIN_JWT_SECRET: process.env.ADMIN_JWT_SECRET,
-			JWT_SECRET: process.env.JWT_SECRET,
-		},
-	}
+  return {
+    target: "static",
+    loading: false,
+    telemetry: false,
+    globalName: "app",
+    globals: {
+      id: `app`,
+    },
+    googleAnalytics: {
+      id: "UA-176733004-3",
+    },
+    gtm: {
+      id: "GTM-MSJZ4PT",
+    },
+    //strapi: {
+    //	// Options
+    //},
+    apisToFile: {
+      file: {
+        name: "data",
+        ext: "json",
+        path: "./",
+        startFromStaticDir: false,
+        options: {},
+      },
+    },
+    storybook: {
+      // Options
+    },
+    nuxtAlias: {
+      /* module options */
+      rootDir: ["../strapi"],
+    },
+    stories: {
+      //lang: 'ru',
+      forceBuild: false,
+      storiesDir: "./assets/stories",
+    },
+    markdownit: {
+      runtime: true,
+      preset: "default",
+      linkify: true,
+      breaks: true,
+    },
+    vue: {
+      config: {
+        productionTip: false,
+        devtools: app_config.isDev,
+      },
+    },
+    content: {
+      prism: {
+        theme: false,
+      },
+      yaml: {
+        json: true,
+      },
+    },
+    iconFont: {
+      files: ["./assets/fontagon/*.svg"],
+      dist: "./fonts/icons/fg",
+      fontName: "font-svg",
+      formatOptions: {
+        svg: {
+          normalize: true,
+          fontHeight: 1000,
+        },
+      },
+      styleTemplate: {
+        css: "assets/fontagon/hbs/css.hbs",
+      },
+      order: ["eot", "ttf", "svg", "woff2", "woff"],
+      baseClass: "fg",
+      classPrefix: "fg",
+      style: "css",
+    },
+    ...(app_config.optimization && {
+      buildOptimisations: buildOptimisations(app_config),
+    }),
+    publicRuntimeConfig: {
+      app: app_config,
+      isDev: app_config.isDev,
+      baseUrl:
+        process.env.BASE_URL ||
+        (app_config.isDev || process.env.NUXT_ENV_GENDEV
+          ? "http://localhost:3000"
+          : app_config.host),
+      update: app_config.update,
+      lang: app_config.lang,
+      sps: process.env.CTF_SPACE_ID,
+      atk: process.env.CTF_CDA_ACCESS_TOKEN,
+      ...env(),
+    },
+    privateRuntimeConfig: {
+      sps: process.env.CTF_SPACE_ID,
+      atk: process.env.CTF_CDA_ACCESS_TOKEN,
+      APP_KEYS: process.env.APP_KEYS,
+      API_TOKEN_SALT: process.env.API_TOKEN_SALT,
+      ADMIN_JWT_SECRET: process.env.ADMIN_JWT_SECRET,
+      JWT_SECRET: process.env.JWT_SECRET,
+    },
+  };
 }
 
 function buildOptimisations() {
-	return {
-		profile: 'safe',
-		...(!app_config.isDev && {
-			features: {
-				hardSourcePlugin: false,
-			},
-		}),
-	}
+  return {
+    profile: "safe",
+    ...(!app_config.isDev && {
+      features: {
+        hardSourcePlugin: false,
+      },
+    }),
+  };
 }
 
 function render() {
-	return {
-		ssr: true,
-	}
+  return {
+    ssr: true,
+  };
 }
 
 function motion() {
-	return {
-		directives: {
-			'pop-bottom': {
-				initial: {
-					scale: 0,
-					opacity: 0,
-					y: 100,
-				},
-				visible: {
-					scale: 1,
-					opacity: 1,
-					y: 0,
-				},
-			},
-		},
-	}
+  return {
+    directives: {
+      "pop-bottom": {
+        initial: {
+          scale: 0,
+          opacity: 0,
+          y: 100,
+        },
+        visible: {
+          scale: 1,
+          opacity: 1,
+          y: 0,
+        },
+      },
+    },
+  };
 }
 
 //function pwa() {
@@ -588,27 +601,27 @@ function motion() {
 //}
 
 function netlify() {
-	const redirects = []
+  const redirects = [];
 
-	if (process.env.MAINTENANCE_MODE == true)
-		redirects.push({
-			from: '/*',
-			to: app_config.MAINTENANCE_PAGE,
-			status: 301,
-		})
+  if (process.env.MAINTENANCE_MODE == true)
+    redirects.push({
+      from: "/*",
+      to: app_config.MAINTENANCE_PAGE,
+      status: 301,
+    });
 
-	return {
-		netlify: {
-			detectForms: true,
-			copyExistingFiles: true,
-			netlifyToml: {
-				build: {
-					environment: require('dotenv').config().parsed,
-				},
-				...(redirects != [] && {
-					redirects,
-				}),
-			},
-		},
-	}
+  return {
+    netlify: {
+      detectForms: true,
+      copyExistingFiles: true,
+      netlifyToml: {
+        build: {
+          environment: require("dotenv").config().parsed,
+        },
+        ...(redirects != [] && {
+          redirects,
+        }),
+      },
+    },
+  };
 }
