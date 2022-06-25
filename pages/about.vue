@@ -14,6 +14,10 @@
         <div class="">Автор и разработчик сайта</div>
       </div>
     </div>
+
+    <div class="flex text-white inset-0 -z-10 fixed">
+      <div class="bg-black h-1/2 w-1/2"></div>
+    </div>
   </LayoutPage>
 </template>
 
