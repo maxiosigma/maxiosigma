@@ -18,13 +18,17 @@
     <kinesis-container class="flex-center text-white inset-0 z-0 fixed">
       <!-- class="bg-black" -->
 
-      <kinesis-element type="depth" :strength="50">
+      <kinesis-element v-for="(it, i) in 10" :key="i">
+        <canvas :ref="'canva_' + i"></canvas>
+      </kinesis-element>
+
+      <!--<kinesis-element type="depth" :strength="50">
         <canvas ref="trangle"></canvas>
       </kinesis-element>
 
-      <kinesis-element type="depth" :strength="50">
+      <kinesis-element type="depth_inv" :strength="50">
         <canvas ref="trangle2"></canvas>
-      </kinesis-element>
+      </kinesis-element>-->
     </kinesis-container>
   </LayoutPage>
 </template>
@@ -44,7 +48,7 @@ export default {
     }
   },
   mounted() {
-    const trangle = this.$refs?.trangle
+    const trangle = this.$refs?.canva_1
     this.isDraw(trangle, () => {
       const ctx = trangle.getContext("2d")
       ctx.beginPath()
@@ -57,7 +61,7 @@ export default {
       ctx.stroke()
     })
 
-    const trangle2 = this.$refs?.trangle2
+    const trangle2 = this.$refs?.canva_2
     this.isDraw(trangle2, () => {
       const ctx = trangle2.getContext("2d")
       ctx.beginPath()
