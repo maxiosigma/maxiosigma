@@ -21,7 +21,7 @@
       <kinesis-element
         v-for="(it, i) in 2"
         :key="i"
-        :strength="intRandom(25, 75) + 10 * Math.sin(i) * i"
+        :strength="intRandom(25, 100)"
         :type="stringRandom(['depth', 'depth_inv'])"
       >
         <canvas :ref="'canva_' + i"></canvas>
