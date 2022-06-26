@@ -4,6 +4,7 @@
       class="
         container
         flex-grow
+        h-full
         mx-auto
         max-h-full
         z-10
