@@ -69,37 +69,37 @@ export default {
     }
   },
   mounted() {
-    //Object.keys(this.$refs)?.map((key) => {
-    //  const obj = this.$refs?.[key]?.[0]
-    //  this.preDraw(obj)
+    Object.keys(this.$refs)?.map((key) => {
+      const obj = this.$refs?.[key]?.[0]
+      this.preDraw(obj)
+    })
+
+    //const center = { x: (300 - 25) / 2, y: (150 - 25) / 2 }
+    //const color = this.stringRandom(["#FFA500", "#00ff2a", "#0084ff", "#9d00ff", "#ff0055"])
+
+    //const trangle = this.$refs?.canva_0?.[0]
+    //this.isDraw(trangle, () => {
+    //  const ctx = trangle.getContext("2d")
+    //  ctx.beginPath()
+    //  ctx.arc(25, 25, 9, 0, Math.PI, true)
+    //  ctx.strokeStyle = color
+    //  ctx.lineWidth = 3
+    //  ctx.stroke()
     //})
 
-    const center = { x: (300 - 25) / 2, y: (150 - 25) / 2 }
-    const color = this.stringRandom(["#FFA500", "#00ff2a", "#0084ff", "#9d00ff", "#ff0055"])
-
-    const trangle = this.$refs?.canva_0?.[0]
-    this.isDraw(trangle, () => {
-      const ctx = trangle.getContext("2d")
-      ctx.beginPath()
-      ctx.arc(25, 25, 9, 0, Math.PI, true)
-      ctx.strokeStyle = color
-      ctx.lineWidth = 3
-      ctx.stroke()
-    })
-
-    const trangle2 = this.$refs?.canva_1?.[0]
-    this.isDraw(trangle2, () => {
-      const ctx = trangle2.getContext("2d")
-      ctx.beginPath()
-      ctx.moveTo(center.x, center.y)
-      ctx.lineTo(center.x + 16, center.y)
-      ctx.lineTo(center.x + 16, center.y + 16)
-      ctx.lineTo(center.x, center.y + 16)
-      ctx.closePath()
-      ctx.strokeStyle = color
-      ctx.lineWidth = 3
-      ctx.stroke()
-    })
+    //const trangle2 = this.$refs?.canva_1?.[0]
+    //this.isDraw(trangle2, () => {
+    //  const ctx = trangle2.getContext("2d")
+    //  ctx.beginPath()
+    //  ctx.moveTo(center.x, center.y)
+    //  ctx.lineTo(center.x + 16, center.y)
+    //  ctx.lineTo(center.x + 16, center.y + 16)
+    //  ctx.lineTo(center.x, center.y + 16)
+    //  ctx.closePath()
+    //  ctx.strokeStyle = color
+    //  ctx.lineWidth = 3
+    //  ctx.stroke()
+    //})
   },
   methods: {
     handleClick() {
@@ -114,11 +114,11 @@ export default {
     preDraw(obj) {
       const center = { x: (300 - 25) / 2, y: (150 - 25) / 2 }
       const color = this.stringRandom(["#FFA500", "#00ff2a", "#0084ff", "#9d00ff", "#ff0055"])
+      const ctx = obj?.getContext("2d")
 
       const presets = [
         (obj, triangle) => {
           this.isDraw(obj, () => {
-            const ctx = obj.getContext("2d")
             ctx.beginPath()
             ctx.moveTo(center.x + 25, center.y + 25)
             ctx.lineTo(center.x + 25, center.y + 9)
@@ -131,7 +131,6 @@ export default {
         },
         (obj, square) => {
           this.isDraw(obj, () => {
-            const ctx = obj.getContext("2d")
             ctx.beginPath()
             ctx.moveTo(center.x, center.y)
             ctx.lineTo(center.x + 16, center.y)
@@ -145,7 +144,6 @@ export default {
         },
         (obj, arc) => {
           this.isDraw(obj, () => {
-            const ctx = obj.getContext("2d")
             ctx.beginPath()
             ctx.arc(25, 25, 9, 0, Math.PI, true)
             ctx.strokeStyle = color
@@ -157,7 +155,7 @@ export default {
 
       const rand = this.intRandom(0, presets.length - 1)
 
-      return presets[rand](obj)
+      return presets[rand]
     },
   },
 }
