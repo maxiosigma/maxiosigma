@@ -60,10 +60,14 @@ export default {
   },
   mounted() {
     //?.canva_0?.[0]
-    Object.entries(this.$refs)?.map(([key, value]) => {
+    Object.keys(this.$refs)?.map((key) => {
       //console.log(this.$refs?.canva_0?.[0])
-      console.log(key)
+      const obj = this.$refs?.[key]?.[0]
+
+      //console.log(this.$refs?.[key]?.[0])
     })
+
+    this.preDraw()
 
     //const center = { x: (300 - 25) / 2, y: (150 - 25) / 2 }
 
@@ -103,13 +107,38 @@ export default {
         callback()
       }
     },
-    preDraw() {
+    preDraw(obj) {
       const center = { x: (300 - 25) / 2, y: (150 - 25) / 2 }
-
-      return [
-        (triangle) => {
-          this.isDraw(triangle, () => {
-            const ctx = triangle.getContext("2d")
+      const presets = [
+        (obj, triangle) => {
+          this.isDraw(obj, () => {
+            const ctx = obj.getContext("2d")
+            ctx.beginPath()
+            ctx.moveTo(center.x + 25, center.y + 25)
+            ctx.lineTo(center.x + 25, center.y + 9)
+            ctx.lineTo(center.x + 9, center.y + 25)
+            ctx.closePath()
+            ctx.strokeStyle = "orange"
+            ctx.lineWidth = 3
+            ctx.stroke()
+          })
+        },
+        (obj, square) => {
+          this.isDraw(obj, () => {
+            const ctx = obj.getContext("2d")
+            ctx.beginPath()
+            ctx.moveTo(center.x + 25, center.y + 25)
+            ctx.lineTo(center.x + 25, center.y + 9)
+            ctx.lineTo(center.x + 9, center.y + 25)
+            ctx.closePath()
+            ctx.strokeStyle = "orange"
+            ctx.lineWidth = 3
+            ctx.stroke()
+          })
+        },
+        (obj, arc) => {
+          this.isDraw(obj, () => {
+            const ctx = obj.getContext("2d")
             ctx.beginPath()
             ctx.moveTo(center.x + 25, center.y + 25)
             ctx.lineTo(center.x + 25, center.y + 9)
@@ -121,6 +150,11 @@ export default {
           })
         },
       ]
+
+      const rand = this.intRandom(0, presets.length - 1)
+      console.log(rand, presets.length - 1)
+
+      return presets[rand](obj)
     },
   },
 }
