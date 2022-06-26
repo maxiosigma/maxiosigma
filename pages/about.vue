@@ -1,11 +1,23 @@
 <template>
   <LayoutPage :bodyStyle="'body-bg about'">
-    <div :class="['about-cont', { '': visible === 0.5 }, { '!hidden': visible === 1 }]">
-      <div class="about-img-cont">
+    <div class="about-cont">
+      <div
+        :class="[
+          { 'about-img-cont animated animate-fade-in-left-big': visible === 0 },
+          { 'animated animate-fade-out-left-big': visible === 0.5 },
+          { '!hidden': visible === 1 },
+        ]"
+      >
         <ItemImg class="about-img" src="about/face_1.png"></ItemImg>
       </div>
 
-      <div :class="['about-field', { '': visible === 0.5 }, { '!hidden': visible === 1 }]">
+      <div
+        :class="[
+          { 'about-field animated animate-fade-in-right-big': visible === 0 },
+          { 'animated animate-fade-out-right-big': visible === 0.5 },
+          { '!hidden': visible === 1 },
+        ]"
+      >
         <div class="font-black mb-5 text-2xl tracking-[5px] uppercase">Welcome</div>
         <div class="font-black text-md tracking-[2px] uppercase">← Максим</div>
         <div class="font-black text-md tracking-[2px] uppercase">
@@ -39,9 +51,12 @@ export default {
   methods: {
     handleClick() {
       this.visible += 0.5
-      setTimeout(() => (this.visible += 1), 1500)
 
-      console.log(this.visible)
+      setTimeout(() => {
+        this.visible += 0.5
+
+        console.log(this.visible)
+      }, 3000)
     },
   },
 }
