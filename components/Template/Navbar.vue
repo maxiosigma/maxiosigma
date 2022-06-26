@@ -159,9 +159,9 @@ export default {
 
       //console.log(scrollY)
 
-      if (window.scrollY < 25) this.scroll = 0
+      if (window.scrollY < 125) this.scroll = 0
 
-      if (window.scrollY >= 25) {
+      if (window.scrollY >= 125) {
         this.scroll = 1
         //setTimeout(() => (this.scroll == 1 ? (this.scroll = 2) : null), 500)
       }

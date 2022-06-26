@@ -8,7 +8,7 @@
         max-h-full
         z-10
         gap-5
-        grid-cols-[0.9fr,1.1fr]
+        grid-cols-[2fr,1fr]
         relative
         inline-grid
         overflow-hidden
