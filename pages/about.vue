@@ -1,11 +1,11 @@
 <template>
   <LayoutPage :bodyStyle="'body-bg about'">
-    <div class="about-cont">
+    <div :class="['about-cont', { '': visible === 0 }, { hidden: visible === 0.5 }]">
       <div class="about-img-cont">
         <ItemImg class="about-img" src="about/face_1.png"></ItemImg>
       </div>
 
-      <div class="about-field">
+      <div :class="['about-field', { '': visible === 0 }, { hidden: visible === 0.5 }]">
         <div class="font-black mb-5 text-2xl tracking-[5px] uppercase">Welcome</div>
         <div class="font-black text-md tracking-[2px] uppercase">← Максим</div>
         <div class="font-black text-md tracking-[2px] uppercase">
@@ -16,7 +16,7 @@
           ▬ <span class="text-xs">Желаете узнать подробнее ?</span>
         </div>
 
-        <div class="about-btn">Да</div>
+        <div class="about-btn" @click="handleClick()">Да</div>
       </div>
     </div>
 
