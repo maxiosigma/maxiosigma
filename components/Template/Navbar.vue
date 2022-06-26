@@ -48,7 +48,7 @@
           ←
         </div>
 
-        <div class="nav-bar-cont-text">
+        <div :class="['nav-bar-cont-text']">
           <div
             :class="[
               'nav-bar-link group',
@@ -69,7 +69,11 @@
           >
             <div
               class="nav-bar-link-hover"
-              :class="[{ 'border-b-2 border-b-yellow-500': isActive(link.title) }, link.class]"
+              :class="[
+                { 'border-b-2 border-b-yellow-500': isActive(link.title) },
+                { '<sm:(!text-[7px] !mb-1)': scroll == 1 },
+                link.class,
+              ]"
             >
               {{ link.title }}
             </div>
@@ -159,7 +163,7 @@ export default {
       const scrollHeight = document.documentElement.clientHeight + window.scrollY
 
       const positionTop = 250
-      const positionBottom = 250
+      const positionBottom = 75
 
       //console.log(scrollY)
 
@@ -222,6 +226,7 @@ export default {
       &-text {
         @apply flex max-w-full mt-0.5 ml-1 py-1 px-1 overflow-hidden items-center <sm:(flex-wrap justify-end) ;
       }
+
       &-arrow {
         $forever-and-ever: -1;
         @apply cursor-pointer text-lg text-shadow-md transition-all duration-300 md:(mb-1 mr-2.5) <md:(order-last ml-2.5 mt-0.5 transform rotate-180) hover:(text-yellow-300 tracking-3px text-shadow-lg) ;
