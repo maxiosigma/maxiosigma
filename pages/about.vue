@@ -6,7 +6,7 @@
           'about-img-cont',
           { 'animated animate-fade-in-left-big': visible === 0 },
           { 'animated animate-fade-out-left-big': visible === 0.5 },
-          { '!hidden': visible === 1 },
+          { '!hidden': visible >= 1 },
         ]"
       >
         <ItemImg class="about-img" src="about/face_1.png"></ItemImg>
@@ -17,7 +17,7 @@
           'about-field',
           { 'animated animate-fade-in-right-big': visible === 0 },
           { 'animated animate-fade-out-right-big': visible === 0.5 },
-          { '!hidden': visible === 1 },
+          { '!hidden': visible >= 1 },
         ]"
       >
         <div class="font-black mb-5 text-2xl tracking-[5px] uppercase">Welcome</div>
@@ -38,9 +38,13 @@
           'about-field',
           { 'animated animate-fade-in-down': visible === 1 },
           { 'animated animate-fade-out-right-big': visible === 1.5 },
-          { '!hidden': visible === 2 || !visible === 1 || !visible === 1.5 },
+          { '!hidden': visible >= 2 || visible !== 1 },
+          // || visible !== 1 || visible !== 1.5
         ]"
-      ></div>
+      >
+        <div class="font-black mb-5 text-2xl tracking-[5px] uppercase">Welcome</div>
+        <div class="about-btn" @click="handleClick()">Достижения</div>
+      </div>
     </div>
 
     <!--<LazyItemCanvaBg />-->
@@ -56,8 +60,11 @@ export default {
   },
   data() {
     return {
-      visible: 0,
+      visible: 1,
     }
+  },
+  mounted() {
+    console.log(this.visible)
   },
   methods: {
     handleClick() {
