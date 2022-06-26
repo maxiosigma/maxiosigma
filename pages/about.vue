@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <LazyItemCanvaBg />
+    <!--<LazyItemCanvaBg />-->
   </LayoutPage>
 </template>
 
