@@ -140,7 +140,7 @@ export default {
         },
       ]
 
-      const rand = this.intRandom(0, presets.length - 1)
+      const rand = this.intRandom(0, presets.length)
 
       return presets[rand](obj)
     },
