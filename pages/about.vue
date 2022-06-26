@@ -15,7 +15,11 @@
       </div>
     </div>-->
 
-    <kinesis-container class="flex-center text-white inset-0 -z-1 fixed">
+    <kinesis-container
+      :active="true"
+      :perspective="2000"
+      class="flex-center text-white inset-0 z-0 fixed"
+    >
       <!-- class="bg-black" -->
 
       <!-- v-anime="{
@@ -29,15 +33,17 @@
         v-for="(it, i) in 50"
         :key="i"
         v-anime="{
+          //translateX: Math.cos(i + 1) * intRandom(10, Math.min(size.w, size.h) * 0.75) + i,
+          //translateY: Math.sin(i + 1) * intRandom(10, Math.min(size.w, size.h) * 0.75) + i,
           translateX: Math.cos(i + 1) * intRandom(10, Math.min(size.w, size.h) * 0.75) + i,
           translateY: Math.sin(i + 1) * intRandom(10, Math.min(size.w, size.h) * 0.75) + i,
           duration: 1500,
-          delay: 1000,
+          delay: 1000 + i * 10,
         }"
       >
         <kinesis-element
-          :strength="intRandom(15, 55)"
-          :type="stringRandom(['depth', 'depth_inv', 'translate', 'rotate', 'scale'])"
+          :strength="intRandom(35, 105)"
+          :type="stringRandom(['depth', 'depth_inv', 'translate', 'rotate'])"
         >
           <canvas class="flex-center" :ref="'canva_' + i"></canvas>
         </kinesis-element>
@@ -65,6 +71,7 @@ export default {
   data() {
     return {
       visible: 0,
+      //activeKinesis: this.is
       size: { w: 0, h: 0 },
       //deviceType: this.$ua.deviceType(),
     }
@@ -76,33 +83,6 @@ export default {
     window.addEventListener("resize", () => {
       this.getSize()
     })
-
-    //const center = { x: (300 - 25) / 2, y: (150 - 25) / 2 }
-    //const color = this.stringRandom(["#FFA500", "#00ff2a", "#0084ff", "#9d00ff", "#ff0055"])
-
-    //const trangle = this.$refs?.canva_0?.[0]
-    //this.isDraw(trangle, () => {
-    //  const ctx = trangle.getContext("2d")
-    //  ctx.beginPath()
-    //  ctx.arc(25, 25, 9, 0, Math.PI, true)
-    //  ctx.strokeStyle = color
-    //  ctx.lineWidth = 3
-    //  ctx.stroke()
-    //})
-
-    //const trangle2 = this.$refs?.canva_1?.[0]
-    //this.isDraw(trangle2, () => {
-    //  const ctx = trangle2.getContext("2d")
-    //  ctx.beginPath()
-    //  ctx.moveTo(center.x, center.y)
-    //  ctx.lineTo(center.x + 16, center.y)
-    //  ctx.lineTo(center.x + 16, center.y + 16)
-    //  ctx.lineTo(center.x, center.y + 16)
-    //  ctx.closePath()
-    //  ctx.strokeStyle = color
-    //  ctx.lineWidth = 3
-    //  ctx.stroke()
-    //})
   },
   methods: {
     getSize() {
