@@ -5,7 +5,7 @@
     class="flex-center inset-0 z-0 fixed"
   >
     <div
-      class="animate-fade-in animate-delay-1800 animate-duration-2000 absolute animated"
+      class="animate-fade-in animate-delay-1800 animate-duration-1500 absolute animated"
       v-for="(it, i) in kinesis.count"
       :key="i"
       v-anime="{
@@ -23,7 +23,7 @@
     >
       <!-- 'rotate' -->
       <kinesis-element
-        :strength="intRandom(50, 100)"
+        :strength="intRandom(50, 75)"
         :type="stringRandom(['depth', 'depth_inv', 'translate'])"
       >
         <canvas class="flex-center" :ref="'canva_' + i"></canvas>
@@ -37,8 +37,8 @@ export default {
   data() {
     return {
       kinesis: {
-        step: 5,
-        count: 70,
+        step: 10,
+        count: 50,
         active: false,
         duration: 1700,
         delay: 1900,
