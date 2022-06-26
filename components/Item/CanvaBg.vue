@@ -53,7 +53,6 @@ export default {
 
     window.addEventListener("resize", () => {
       this.getSize()
-      //this.getKinesis()
     })
   },
   methods: {
