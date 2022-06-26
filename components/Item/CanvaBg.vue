@@ -126,7 +126,7 @@ export default {
         (obj, arc) => {
           this.isDraw(obj, () => {
             ctx.beginPath()
-            ctx.arc(25, 25, 9, 0, Math.PI, true)
+            ctx.arc(center.x + 25, center.y + 25, 9, 0, Math.PI, true)
             ctx.strokeStyle = this.stringRandom([
               "#FFA500",
               "#00ff2a",
