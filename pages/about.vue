@@ -46,8 +46,8 @@
 
           //originX: 25,
           //originY: 225,
-          duration: 1700,
-          delay: 1200 + i * 5,
+          duration: kinesis.duration,
+          delay: kinesis.delay + i * kinesis.step,
         }"
       >
         <kinesis-element
@@ -81,6 +81,7 @@ export default {
     return {
       visible: 0,
       kinesis: {
+        step: 5,
         count: 50,
         active: false,
         duration: 1700,
@@ -93,7 +94,10 @@ export default {
   mounted() {
     this.getSize()
     this.getCanvas()
-    setTimeout(() => {}, this.kinesis.count)
+    setTimeout(
+      () => this.kinesis.active,
+      this.kinesis.delay + this.kinesis.count * this.kinesis.step
+    )
 
     window.addEventListener("resize", () => {
       this.getSize()
