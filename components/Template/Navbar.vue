@@ -105,7 +105,6 @@ export default {
     return {
       //menu: [],
       links: this.$store.state.navbar || nav,
-      //gql: this.$store.state.gql.menu,
       //crumbs: this.getCrumbs(),
       isRoute: this.$route.fullPath
         ?.replace(this?.localePath("/") + "/", "")

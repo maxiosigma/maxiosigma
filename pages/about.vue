@@ -72,7 +72,9 @@
           плаванию в 2004 году О профессиональной деятельности подробнее в
         </div>
 
-        <div class="about-btn" @click="handleClick('/portfolio')">Портфолио</div>
+        <div class="about-btn" @click="handleClick('/' + $i18n.locale + '/portfolio')">
+          Портфолио
+        </div>
       </div>
 
       <!-- Хобби & Достижения
