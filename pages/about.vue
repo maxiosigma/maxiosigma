@@ -80,10 +80,10 @@ export default {
     this.isDraw(trangle, () => {
       const ctx = trangle.getContext("2d")
       ctx.beginPath()
-      ctx.moveTo(center.x, center.y + 25)
+      ctx.moveTo(center.x, center.y)
+      ctx.lineTo(center.x + 25, center.y)
       ctx.lineTo(center.x + 25, center.y + 25)
       ctx.lineTo(center.x, center.y + 25)
-      ctx.lineTo(center.x + 25, center.y)
       ctx.closePath()
       ctx.strokeStyle = "orange"
       ctx.lineWidth = 3
