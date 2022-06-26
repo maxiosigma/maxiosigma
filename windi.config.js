@@ -45,6 +45,7 @@ function themeExtend() {
       raleway: ["Raleway"],
       poppins: ["Poppins"],
       ttnorms: ["TT Norms"],
+      windctt: ["Wind CTT"],
       futuranew: ["Futura New"],
       robotoslab: ["Roboto Slab"],
       futuranewbook: ["Futura New Book"],

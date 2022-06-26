@@ -45,17 +45,18 @@
       >
         <div
           class="
-            font-black
+            font-black font-windctt
             border-b-2 border-b-yellow-500
-            pr-10
+            pr-4
             pb-1
-            text-3xl
+            text-4xl
             tracking-[5px]
             self-end
             uppercase
+            md:text-5xl
           "
         >
-          Бография
+          Биография
         </div>
 
         <div class="about-text">Родился в г. Инте.</div>
@@ -113,7 +114,7 @@ export default {
   }
 
   &-btn {
-    @apply rounded-md cursor-pointer bg-green-700 text-white text-xl py-2 px-4 transition-all duration-300 pointer-events-auto hover:(bg-yellow-600 px-6 py-3 text-shadow) ;
+    @apply rounded-md cursor-pointer font-bold bg-green-700 text-white text-sm tracking-wide py-2 px-4 transition-all duration-500 uppercase pointer-events-auto hover:(bg-yellow-600 px-6 text-base py-3 text-shadow) ;
   }
 
   &-field {
