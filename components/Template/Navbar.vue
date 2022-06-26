@@ -41,14 +41,14 @@
           </div>
         </div>
 
-        <div class="nav-bar-cont-text">
-          <div
-            :class="['nav-bar-cont-arrow', { hidden: parent.title === undefined }]"
-            @click="handleClickPrev()"
-          >
-            ←
-          </div>
+        <div
+          :class="['nav-bar-cont-arrow', { hidden: parent.title === undefined }]"
+          @click="handleClickPrev()"
+        >
+          ←
+        </div>
 
+        <div class="nav-bar-cont-text">
           <div
             :class="[
               'nav-bar-link group',
@@ -204,11 +204,11 @@ export default {
     @apply flex-center flex-col text-white w-full py-0 transition-all z-9999 duration-700;
 
     &-cont {
-      @apply bg-repeat flex-center bg-cyan-700 bg-hero-wiggle-white-10 bg-2r h-12 mb-1.5 min-h-10 w-full opacity-100 px-4 transition-opacity duration-500 sm:h-16;
+      @apply bg-repeat flex-center bg-cyan-700 bg-hero-wiggle-white-10 bg-2r mb-1.5 min-h-12 min-h-10 w-full opacity-100 px-4 transition-opacity duration-500 sm:h-16;
 
       &.cont-scroll {
         animation: OPeS 1s;
-        @apply h-6 mb-0 opacity-85 py-2 transition-all top-0 duration-300 delay-250 fixed sm:h-10;
+        @apply min-h-none h-6 mb-0 opacity-85 py-2 transition-all top-0 duration-300 delay-250 fixed sm:h-10;
 
         &.bottom {
           @apply h-auto min-h-7vh opacity-100 transition-all duration-300 delay-250 #{!important};
@@ -220,7 +220,7 @@ export default {
       }
 
       &-text {
-        @apply flex max-w-full mt-0.5 ml-1 px-1 overflow-hidden items-center;
+        @apply flex max-w-full mt-0.5 ml-1 py-1 px-1 overflow-hidden items-center <sm:(flex-wrap justify-end) ;
       }
       &-arrow {
         $forever-and-ever: -1;
@@ -229,11 +229,10 @@ export default {
     }
 
     &-link {
-      // <sm:flex-1
-      @apply cursor-pointer text-shadow-md tracking-wider transition-all text-[10px] duration-300 uppercase overflow-hidden sm:(text-xs tracking-wide) hover:(overflow-visible) ;
+      @apply cursor-pointer text-shadow-md tracking-wider py-1 transition-all text-[10px] duration-300 uppercase overflow-hidden sm:(text-xs tracking-wide) hover:(overflow-visible) ;
 
       &-hover {
-        @apply my-auto min-w-3 py-1 transition-all duration-500 truncate pointer-events-none group-hover:(text-yellow-300 max-w-none tracking-widest overflow-clip overflow-visible text-shadow-lg) ;
+        @apply my-auto min-w-3 py-0.5 transition-all duration-500 truncate pointer-events-none group-hover:(text-yellow-300 max-w-none tracking-widest overflow-clip overflow-visible text-shadow-lg) ;
       }
 
       &:nth-of-type(n + 1) {

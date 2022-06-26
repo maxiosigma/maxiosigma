@@ -63,6 +63,9 @@
 
         <div class="mt-3 about-btn" @click="handleClick()">Достижения</div>
       </div>
+
+      <!-- Опыт работы -->
+      <!-- Опыт работы -->
     </div>
 
     <!--<LazyItemCanvaBg />-->
