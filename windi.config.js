@@ -108,9 +108,9 @@ function themeExtend() {
       "100p": "100%",
     },
     animation: {
-      wiggle: "wiggle 1s ease-in-out infinite",
-      "world-rotate": "worldRotate 1s ease-in-out infinite",
-      "fade-in-85": "fadeIn85 1s ease-in-out",
+      "custom-wiggle": "wiggle 1s ease-in-out infinite",
+      "custom-world-rotate": "worldRotate 1s ease-in-out infinite",
+      "opacity-custom-85": "opacityCustom85 1s ease-in-out",
     },
     keyframes: {
       wiggle: {
@@ -121,7 +121,7 @@ function themeExtend() {
         "0%, 100%": { transform: "rotate3D(0, -1, 0, 360deg)" },
         "50%": { transform: "rotate3D(0, 1, 0, 360deg)" },
       },
-      fadeIn85: {
+      opacityCustom85: {
         from: { opacity: 0 },
         to: { opacity: 0.85 },
       },
