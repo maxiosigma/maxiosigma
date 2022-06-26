@@ -15,6 +15,7 @@
         translateY:
           (Math.sin((i * kinesis.count) / (Math.PI / 180)) * Math.max(size.w, size.h)) /
           intRandom(2.5, 4),
+        rotate: intRandom(0, 360),
         opacity: intRandom(60, 90) / 100 + i * 0.1,
         duration: kinesis.duration,
         delay: kinesis.delay + i * kinesis.step,
@@ -22,7 +23,7 @@
     >
       <!-- 'rotate' -->
       <kinesis-element
-        :strength="intRandom(25, 50)"
+        :strength="intRandom(50, 75)"
         :type="stringRandom(['depth', 'depth_inv', 'translate'])"
       >
         <canvas class="flex-center" :ref="'canva_' + i"></canvas>
