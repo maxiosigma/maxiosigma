@@ -18,16 +18,24 @@
     <kinesis-container class="flex-center text-white inset-0 z-0 fixed">
       <!-- class="bg-black" -->
 
-      <kinesis-element
+      <!--     -->
+      <div
+        class="absolute"
         v-for="(it, i) in 2"
         :key="i"
-        :strength="intRandom(25, 100)"
-        :type="stringRandom(['depth', 'depth_inv'])"
+        v-anime="{
+          translateX: Math.sin(i + 1) * 100,
+          translateY: Math.cos(i + 1) * 100,
+          duration: 1500,
+        }"
       >
-        <canvas :ref="'canva_' + i"></canvas>
-
-        {{ stringRandom(["depth", "depth_inv"]) }}
-      </kinesis-element>
+        <kinesis-element
+          :strength="intRandom(15, 55)"
+          :type="stringRandom(['depth', 'depth_inv', 'translate', 'rotate'])"
+        >
+          <canvas class="flex-center" :ref="'canva_' + i"></canvas>
+        </kinesis-element>
+      </div>
 
       <!--<kinesis-element type="depth" :strength="50">
         <canvas ref="trangle"></canvas>
@@ -61,9 +69,9 @@ export default {
     this.isDraw(trangle, () => {
       const ctx = trangle.getContext("2d")
       ctx.beginPath()
-      ctx.moveTo(125, 125)
-      ctx.lineTo(125, 45)
-      ctx.lineTo(45, 125)
+      ctx.moveTo(25, 25)
+      ctx.lineTo(25, 9)
+      ctx.lineTo(9, 25)
       ctx.closePath()
       ctx.strokeStyle = "orange"
       ctx.lineWidth = 3
@@ -74,9 +82,9 @@ export default {
     this.isDraw(trangle2, () => {
       const ctx = trangle2.getContext("2d")
       ctx.beginPath()
-      ctx.moveTo(125, 125)
-      ctx.lineTo(125, 45)
-      ctx.lineTo(45, 125)
+      ctx.moveTo(25, 25)
+      ctx.lineTo(25, 9)
+      ctx.lineTo(9, 25)
       ctx.closePath()
       ctx.strokeStyle = "orange"
       ctx.lineWidth = 3
@@ -92,6 +100,9 @@ export default {
       if (ref?.getContext) {
         callback()
       }
+    },
+    preDraw() {
+      return []
     },
   },
 }
