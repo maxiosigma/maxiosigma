@@ -35,7 +35,7 @@
 
       <div
         :class="[
-          'about-field',
+          'about-field justify-self-center',
           { '!hidden': visible < 1 },
           { 'animated animate-fade-in-down': visible === 1 },
           { 'animated animate-fade-out-up': visible === 1.5 },
@@ -44,7 +44,17 @@
         ]"
       >
         <div
-          class="font-black border-b-2 border-b-yellow-500 mb-5 text-2xl tracking-[5px] uppercase"
+          class="
+            font-black
+            border-b-2 border-b-yellow-500
+            mb-5
+            px-2
+            pb-1
+            text-3xl
+            tracking-[5px]
+            self-end
+            uppercase
+          "
         >
           Бография
         </div>
