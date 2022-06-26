@@ -15,7 +15,7 @@
       </div>
     </div>-->
 
-    <kinesis-container class="flex-center text-white inset-0 z-0 fixed">
+    <kinesis-container class="flex-center text-white inset-0 -z-1 fixed">
       <!-- class="bg-black" -->
 
       <!-- v-anime="{
@@ -26,11 +26,11 @@
         }"   -->
       <div
         class="absolute"
-        v-for="(it, i) in 5"
+        v-for="(it, i) in 20"
         :key="i"
         v-anime="{
-          translateX: Math.sin(i + 1) * intRandom(50, 150),
-          translateY: Math.cos(i + 1) * intRandom(50, 150),
+          translateX: Math.sin(i + 1) * intRandom(100, size.w),
+          translateY: Math.cos(i + 1) * intRandom(100, size.w),
           duration: 1500,
           delay: 1000,
         }"
@@ -65,13 +65,17 @@ export default {
   data() {
     return {
       visible: 0,
+      size: { w: 0, h: 0 },
       //deviceType: this.$ua.deviceType(),
     }
   },
   mounted() {
-    Object.keys(this.$refs)?.map((key) => {
-      const obj = this.$refs?.[key]?.[0]
-      this.preDraw(obj)
+    this.getSize()
+    this.getCanvas()
+
+    window.addEventListener("resize", () => {
+      this.getSize()
+      this.getCanvas()
     })
 
     //const center = { x: (300 - 25) / 2, y: (150 - 25) / 2 }
@@ -102,6 +106,15 @@ export default {
     //})
   },
   methods: {
+    getSize() {
+      this.size = { w: document.body.clientHeight, h: document.body.clientWidth }
+    },
+    getCanvas() {
+      Object.keys(this.$refs)?.map((key) => {
+        const obj = this.$refs?.[key]?.[0]
+        this.preDraw(obj)
+      })
+    },
     handleClick() {
       this.visible += 0.5
       setTimeout(() => (this.visible += 1), 1500)
