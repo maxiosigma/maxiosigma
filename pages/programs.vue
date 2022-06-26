@@ -79,10 +79,10 @@ export default {
   }
 
   &-link {
-    @apply rounded-md flex-center flex-col h-auto bg-cyan-700 bg-opacity-80 bg-hero-rain-white-30 bg-0.25r m-4 w-full min-h-20 py-4 px-5 transition duration-700 overflow-hidden sm: max-w-1/3 md:max-w-1/4 lg:max-w-1/5 lg:hover:(bg-orange-700) ;
+    @apply rounded-md flex-center flex-col h-auto bg-cyan-700 bg-opacity-80 bg-hero-rain-white-30 bg-0.25r m-4 w-full min-h-20 py-4 px-5 transition duration-700 overflow-hidden sm: max-w-1/3 md:max-w-1/4 lg:max-w-1/5 xl:max-w-1/8 2xl:max-w-1/10 lg:hover:(bg-orange-700) ;
 
     &-title {
-      @apply font-semibold text-sm text-center tracking-widest px-10 pb-2 transition-all animate-flipInX animate-delay-200 animated <sm: (uppercase) md:(text-base max-w-1/4 py-4 absolute) lg:max-w-1/5 ;
+      @apply font-semibold text-sm text-center tracking-widest px-10 pb-2 transition-all animate-flipInX animate-delay-200 animated <sm: (uppercase) md:(text-base max-w-1/4 py-4 absolute) lg:max-w-1/5 xl:max-w-1/8 2xl:max-w-1/10 ;
     }
 
     &-description {

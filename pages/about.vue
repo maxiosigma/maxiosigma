@@ -61,11 +61,22 @@
 
         <div class="about-text">Родился в г. Инте.</div>
 
-        <div class="mt-3 about-btn" @click="handleClick()">Достижения</div>
+        <div class="mt-3 about-btn" @click="handleClick()">Опыт работы</div>
       </div>
 
-      <!-- Опыт работы -->
-      <!-- Опыт работы -->
+      <!-- Опыт работы 
+      Strong web programming experience (HTML | PUG | CSS | SCSS | STYLUS | POSTCSS | JS | JQuery | Vue | PHP | TWIG | SQL + Database). While working and for myself, I created assemblies of Nuxt, Gridsome, Gatsby, Vue, Webpack, Laravel, Laravel Mix (with its own Webpack modules) and examples from site layouts. Also collected prototypes of popular CMS (Wordpress, Strapi, October, Ghost, Storybook) with their own internal plugins. Familiar with the Webflow and Tilda constructors. I use hosting Google (for portfolio), Beget (for server sites), Netlify (static sites - SG with SSR).
+
+      In parallel, I am developing in the areas of design and brand promotion. The main Figma tool (convenience, speed, quality), for additional purposes Affinity Photo (analogue of PS), MIRO. For inspiration, I have Figma Templates, Dribbble, Behance, VK Group (more than 10 sources) and real sites or layouts of sites on freelance (orders or viewed projects).
+
+      Average experience in programming in C# and C-like languages, I understand the mathematical language LaTeX and mathematical packages Maple and MatLab.
+
+      Little experience in developing native applications, Android Studio + Kotlin, as well as a bunch of Flutter with the Dart programming language.
+
+      I can and practice writing articles, term papers, and creating any presentations and presentation templates.
+      -->
+
+      <!-- Достижения -->
     </div>
 
     <!--<LazyItemCanvaBg />-->

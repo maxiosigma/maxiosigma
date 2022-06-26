@@ -1,9 +1,9 @@
 <template>
   <LayoutPage>
-    <div class="flex-grow filter drop-shadow-lg lg:(grid grid-cols-3) <lg:(flex flex-col) ">
-      <!-- , { 'elevation-10': i == 2 } ДОБАВИТЬ ТЕНИ ПО БОКАМ -->
-      <!-- 	@click.native.prevent="redirect(it.name)" -->
-      <!--<ItemImgStrapiBg
+    <!--<div class="flex-grow filter drop-shadow-lg lg:(grid grid-cols-3) <lg:(flex flex-col) ">-->
+    <!-- , { 'elevation-10': i == 2 } ДОБАВИТЬ ТЕНИ ПО БОКАМ -->
+    <!-- 	@click.native.prevent="redirect(it.name)" -->
+    <!--<ItemImgStrapiBg
         :class="[
           it.name,
           'flex-grow flex-center relative flex-col cursor-pointer text-light-200 relative bg-top bg-cover <lg:(bg-contain max-w-1/2 flex-shrink flex-grow-0 min-h-300px)',
@@ -23,7 +23,7 @@
         <div class="text-center">{{ it.title }}</div>
       </ItemImgStrapiBg>-->
 
-      <!--<div class="js-object-log"></div>
+    <!--<div class="js-object-log"></div>
 				<div class="">{{ properties[it.name] }}</div>
 				<div class="demo-content align-center morphing-demo">
 					<svg width="140" height="140" viewBox="0 0 140 140">
@@ -42,7 +42,7 @@
 						</g>
 					</svg>
 				</div>-->
-    </div>
+    <!--</div>-->
   </LayoutPage>
 </template>
 
