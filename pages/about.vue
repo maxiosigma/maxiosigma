@@ -81,9 +81,9 @@ export default {
       const ctx = trangle.getContext("2d")
       ctx.beginPath()
       ctx.moveTo(center.x, center.y)
-      ctx.lineTo(center.x + 25, center.y)
-      ctx.lineTo(center.x + 25, center.y + 25)
-      ctx.lineTo(center.x, center.y + 25)
+      ctx.lineTo(center.x + 16, center.y)
+      ctx.lineTo(center.x + 16, center.y + 16)
+      ctx.lineTo(center.x, center.y + 16)
       ctx.closePath()
       ctx.strokeStyle = "orange"
       ctx.lineWidth = 3
@@ -115,7 +115,7 @@ export default {
     },
     preDraw(obj) {
       const center = { x: (300 - 25) / 2, y: (150 - 25) / 2 }
-      const color = stringRandom(["orange"])
+      const color = stringRandom(["#FFA500"])
 
       const presets = [
         (obj, triangle) => {
@@ -126,7 +126,7 @@ export default {
             ctx.lineTo(center.x + 25, center.y + 9)
             ctx.lineTo(center.x + 9, center.y + 25)
             ctx.closePath()
-            ctx.strokeStyle = "orange"
+            ctx.strokeStyle = color
             ctx.lineWidth = 3
             ctx.stroke()
           })
@@ -135,11 +135,12 @@ export default {
           this.isDraw(obj, () => {
             const ctx = obj.getContext("2d")
             ctx.beginPath()
-            ctx.moveTo(center.x + 25, center.y + 25)
-            ctx.lineTo(center.x + 25, center.y + 9)
-            ctx.lineTo(center.x + 9, center.y + 25)
+            ctx.moveTo(center.x, center.y)
+            ctx.lineTo(center.x + 16, center.y)
+            ctx.lineTo(center.x + 16, center.y + 16)
+            ctx.lineTo(center.x, center.y + 16)
             ctx.closePath()
-            ctx.strokeStyle = "orange"
+            ctx.strokeStyle = color
             ctx.lineWidth = 3
             ctx.stroke()
           })
@@ -152,7 +153,7 @@ export default {
             ctx.lineTo(center.x + 25, center.y + 9)
             ctx.lineTo(center.x + 9, center.y + 25)
             ctx.closePath()
-            ctx.strokeStyle = "orange"
+            ctx.strokeStyle = color
             ctx.lineWidth = 3
             ctx.stroke()
           })
