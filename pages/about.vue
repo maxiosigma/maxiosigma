@@ -37,14 +37,15 @@
           //translateY: Math.sin(i + 1) * intRandom(10, Math.min(size.w, size.h) * 0.75) + i,
           //rotate: intRandom(0, 360),
           translateX:
-            (Math.cos((i * count) / (Math.PI / 180)) * Math.min(size.w, size.h)) / intRandom(2, 4),
+            (Math.cos((i * count) / (Math.PI / 180)) * Math.min(size.w, size.h)) /
+            intRandom(1.5, 4),
           translateY:
             (Math.sin((i * count) / (Math.PI / 180)) * Math.min(size.w, size.h)) /
             intRandom(2.5, 4),
           //originX: 25,
           //originY: 225,
-          duration: 1500,
-          delay: 1000 + i * 10,
+          duration: 2000,
+          delay: 1000 + i * 20,
         }"
       >
         <!--<kinesis-element
