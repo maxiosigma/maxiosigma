@@ -30,23 +30,29 @@
         }"   -->
       <div
         class="absolute"
-        v-for="(it, i) in 50"
+        v-for="(it, i) in count"
         :key="i"
         v-anime="{
           //translateX: Math.cos(i + 1) * intRandom(10, Math.min(size.w, size.h) * 0.75) + i,
           //translateY: Math.sin(i + 1) * intRandom(10, Math.min(size.w, size.h) * 0.75) + i,
-          translateX: Math.cos(i + 1) * intRandom(10, Math.min(size.w, size.h) * 0.75) + i,
-          translateY: Math.sin(i + 1) * intRandom(10, Math.min(size.w, size.h) * 0.75) + i,
+          //rotate: intRandom(0, 360),
+          translateX:
+            (Math.cos((i * count) / (Math.PI / 180)) * Math.min(size.w, size.h)) / intRandom(2, 4),
+          translateY:
+            (Math.sin((i * count) / (Math.PI / 180)) * Math.min(size.w, size.h)) /
+            intRandom(2.5, 4),
+          //originX: 25,
+          //originY: 225,
           duration: 1500,
           delay: 1000 + i * 10,
         }"
       >
-        <kinesis-element
+        <!--<kinesis-element
           :strength="intRandom(35, 105)"
           :type="stringRandom(['depth', 'depth_inv', 'translate', 'rotate'])"
-        >
-          <canvas class="flex-center" :ref="'canva_' + i"></canvas>
-        </kinesis-element>
+        >-->
+        <canvas class="flex-center" :ref="'canva_' + i"></canvas>
+        <!--</kinesis-element>-->
       </div>
 
       <!--<kinesis-element type="depth" :strength="50">
@@ -71,6 +77,7 @@ export default {
   data() {
     return {
       visible: 0,
+      count: 50,
       //activeKinesis: this.is
       size: { w: 0, h: 0 },
       //deviceType: this.$ua.deviceType(),
