@@ -36,13 +36,18 @@
       <div
         :class="[
           'about-field',
+          { '!hidden': visible < 1 },
           { 'animated animate-fade-in-down': visible === 1 },
-          { 'animated animate-fade-out-top': visible === 1.5 },
+          { 'animated animate-fade-out-up': visible === 1.5 },
           { '!hidden': visible >= 2 },
           // || visible !== 1 || visible !== 1.5
         ]"
       >
-        <div class="font-black mb-5 text-2xl tracking-[5px] uppercase">Welcome</div>
+        <div
+          class="font-black border-b-2 border-b-yellow-500 mb-5 text-2xl tracking-[5px] uppercase"
+        >
+          Бография
+        </div>
         <div class="about-btn" @click="handleClick()">Достижения</div>
       </div>
     </div>
@@ -83,7 +88,7 @@ export default {
 <style lang="scss">
 .about {
   &-cont {
-    @apply container flex-grow h-full mx-auto max-h-full z-10 gap-5 grid-cols-[1.7fr,1fr]  relative inline-grid overflow-hidden pointer-events-none;
+    @apply container flex-grow h-full mx-auto max-h-full px-5 z-10 gap-5 grid-cols-[1.7fr,1fr] relative inline-grid overflow-hidden pointer-events-none;
   }
 
   &-img {
