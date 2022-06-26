@@ -37,8 +37,8 @@
         :class="[
           'about-field',
           { 'animated animate-fade-in-down': visible === 1 },
-          { 'animated animate-fade-out-right-big': visible === 1.5 },
-          { '!hidden': visible >= 2 || visible !== 1 },
+          { 'animated animate-fade-out-top': visible === 1.5 },
+          { '!hidden': visible >= 2 },
           // || visible !== 1 || visible !== 1.5
         ]"
       >
