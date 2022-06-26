@@ -1,6 +1,18 @@
 <template>
   <LayoutPage :bodyStyle="'body-bg about'">
-    <!--<div class="container flex-grow mx-auto z-10 gap-5 grid-cols-[0.9fr,1.1fr] relative inline-grid">
+    <div
+      class="
+        container
+        flex-grow
+        mx-auto
+        z-10
+        gap-5
+        grid-cols-[0.9fr,1.1fr]
+        relative
+        inline-grid
+        pointer-events-none
+      "
+    >
       <div class="flex justify-center about-img-container items-end">
         <ItemImg
           class="h-full object-cover object-center about-img"
@@ -8,12 +20,25 @@
         ></ItemImg>
       </div>
 
-      <div class="flex-col text-white inline-flex self-center about-text">
+      <div class="flex-col text-white inline-flex place-items-start self-center about-text">
         <div class="">Добро пожаловать</div>
         <div class="">Меня зовут Максим</div>
         <div class="">Автор и разработчик сайта</div>
+
+        <div
+          class="
+            cursor-pointer
+            bg-green-700
+            text-white
+            px-4 px-2
+            pointer-events-auto
+            hover:(text-yellow-400)
+          "
+        >
+          Кнопка
+        </div>
       </div>
-    </div>-->
+    </div>
 
     <ItemCanvaBg></ItemCanvaBg>
   </LayoutPage>
