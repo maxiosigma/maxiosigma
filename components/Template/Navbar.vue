@@ -3,9 +3,8 @@
     <div
       :class="[
         'nav-bar-cont',
-        { 'cont-scroll animate-fade-in-85 animated': scroll == 1 || scroll == 2 || scroll == 3 },
-        //{ '!opacity-85': scroll == 2 },
-        { '!opacity-100 !h-10vh': scroll == 3 },
+        { 'cont-scroll animate-fade-in-85 animated': scroll == 1 || scroll == 2 },
+        { '!opacity-100 !h-10vh': scroll == 2 },
       ]"
     >
       <div class="nav-bar-cont-main justify-around sm:justify-between">
@@ -164,10 +163,10 @@ export default {
 
       if (window.scrollY >= 100) {
         this.scroll = 1
-        setTimeout(() => (this.scroll == 1 ? (this.scroll = 2) : null), 500)
+        //setTimeout(() => (this.scroll == 1 ? (this.scroll = 2) : null), 500)
       }
 
-      if (window.scrollY >= 100 && bodyHeight - scrollHeight <= 100) this.scroll = 3
+      if (window.scrollY >= 100 && bodyHeight - scrollHeight <= 100) this.scroll = 2
     },
     isLink(url) {
       return this.isRoute === url || this.isRoute === url + "/" || "/" + this.isRoute === url
@@ -200,11 +199,11 @@ export default {
     @apply flex-center flex-col h-10vh text-white w-full py-0 transition-all z-9999 duration-700;
 
     &-cont {
-      @apply bg-repeat flex-center h-auto bg-cyan-700 bg-hero-wiggle-white-10 bg-2r h-12 mb-1.5 min-h-10 w-full opacity-100 px-4 transition-all sm:h-16;
+      @apply bg-repeat flex-center h-auto bg-cyan-700 bg-hero-wiggle-white-10 bg-2r h-12 mb-1.5 min-h-10 w-full px-4 transition-all sm:h-16;
 
       &.cont-scroll {
-        @apply h-6 mb-0 opacity-0 py-2 top-0 fixed sm:h-10;
-        @apply duration-500 delay-500;
+        @apply h-6 mb-0 py-2 top-0 fixed sm:h-10;
+        //@apply duration-500 delay-500;
       }
 
       &-main {
