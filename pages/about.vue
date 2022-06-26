@@ -115,7 +115,7 @@ export default {
     },
     preDraw(obj) {
       const center = { x: (300 - 25) / 2, y: (150 - 25) / 2 }
-      const color = stringRandom(["#FFA500"])
+      const color = stringRandom(["#FFA500", "#00ff2a", "#0084ff", "#9d00ff", "#ff0055"])
 
       const presets = [
         (obj, triangle) => {
