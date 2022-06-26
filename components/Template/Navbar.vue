@@ -1,6 +1,12 @@
 <template>
-  <div v-scroll="getScroll" :class="['nav-bar', scroll ? 'fixed' : 'relative']">
-    <div :class="['nav-bar-cont', scroll ? 'cont-scroll' : '']">
+  <div v-scroll="getScroll" :class="['nav-bar', 'relative']">
+    <div
+      :class="[
+        'nav-bar-cont',
+        { 'cont-scroll animate-fade-in animated': scroll == 1 || scroll == 2 },
+        { 'opacity-100 h-auto': scroll == 2 },
+      ]"
+    >
       <div class="nav-bar-cont-main justify-around sm:justify-between">
         <div class="nav-bar-menu relative">
           <div class="flex-center nav-bar-logo group">
@@ -101,94 +107,15 @@ export default {
         ?.replace(this?.localePath("/") + "/", "")
         .replace("/" + this.loke() + "/", ""),
       parent: { title: undefined, order: undefined },
-      scroll: false,
+      scroll: 0,
       active: [],
     }
   },
-  //async fetch() {
-  //	//console.log(nav)
-
-  //	try {
-  //		//if (process.static) {
-  //		//	//this.menu = await this.$axios.$get(this.$payloadURL(this.route))
-  //		//	await this.$strapi
-  //		//		.graphql({
-  //		//			query: this.gql,
-  //		//		})
-  //		//		.then((res) => {
-  //		//			this.menu = res
-  //		//		})
-  //		//} else {
-  //		//	this.menu = await this.$strapi.graphql({
-  //		//		query: this.gql,
-  //		//	})
-  //		//}
-
-  //		//this.menu = await this.$axios
-  //		//	.$get({
-  //		//		url: 'http://localhost:1337/graphql',
-  //		//		method: 'post',
-  //		//		data: {
-  //		//			query: this.gql,
-  //		//		},
-  //		//	})
-  //		//	.then((result) => {
-  //		//		console.log(result.data)
-  //		//	})
-
-  //		//console.log(this.menu)
-  //	} catch (error) {
-  //		this.menu = nav
-  //		console.error(JSON.stringify(error, undefined, 2))
-  //		console.log('NAV')
-  //	}
-  //},
-  //fetchOnServer: false,
-  //fetchKey: 'site-nav-bar',
-  //fetchKey(getCounter) {
-  //	// getCounter is a method that can be called to get the next number in a sequence
-  //	// as part of generating a unique fetchKey.
-  //	return getCounter('site-nav-bar')
-  //},
-  //fetchOnServer: true,
-  //beforeMount() {},
   mounted() {
-    //console.log(this.$store.state.navbar)
-
-    //this.links = this.menu?.menusMenus?.data[0]?.attributes?.items?.data
-    //	.map((it) => it?.attributes)
-    //	.map((it) => {
-    //		return {
-    //			url: it.url?.split('?')?.[0],
-    //			title: it.title,
-    //			order: it.order,
-    //			target: it.target,
-    //			parent: it.parent.data?.attributes,
-    //			...it.url
-    //				?.split('?')?.[1]
-    //				?.split('&')
-    //				?.reduce((s, it) => {
-    //					s = {
-    //						...s,
-    //						[it.split('=')[0]]: it.split('=')[1],
-    //					}
-    //					return s
-    //				}, {}),
-    //		}
-    //	})
-
-    //console.log(this.links)
-
     this.getActive()
-    //console.log(this.links)
-    //this.refresh()
   },
   methods: {
-    //refresh() {
-    //	//this.$fetch()
-    //},
     isActive(arg) {
-      //console.log(arg)
       return this.active?.indexOf(arg) !== -1
     },
     getActive(arg = undefined) {
@@ -222,6 +149,25 @@ export default {
 
       this.parent = { title: next.parent?.title, order: next.parent?.order }
     },
+    getScroll() {
+      const bodyHeight = Math.max(
+        document.body.scrollHeight,
+        document.body.offsetHeight,
+        document.body.clientHeight
+      )
+      const scrollHeight = document.documentElement.clientHeight + window.scrollY
+
+      //console.log(scrollY)
+
+      if (window.scrollY < 100) this.scroll = 0
+
+      if (window.scrollY >= 100) this.scroll = 1
+
+      if (window.scrollY >= 100 && bodyHeight - scrollHeight <= 100) this.scroll = 2
+    },
+    isLink(url) {
+      return this.isRoute === url || this.isRoute === url + "/" || "/" + this.isRoute === url
+    },
     //getCrumbs() {
     //	const fullPath = this.$route.fullPath,
     //		params = fullPath
@@ -240,65 +186,6 @@ export default {
 
     //	return crumbs
     //},
-    getScroll() {
-      const bodyHeight = Math.max(
-        document.body.scrollHeight,
-        document.body.offsetHeight,
-        document.body.clientHeight
-      )
-      const scrollHeight = document.documentElement.clientHeight + window.scrollY
-
-      //console.log(scrollY)
-
-      if (window.scrollY < 100) {
-        this.scroll = false
-        //this.$store.commit("checkScroll", 0)
-      }
-
-      if (window.scrollY >= 100) {
-        this.scroll = true
-        //this.$store.commit("checkScroll", 1)
-      }
-
-      if (window.scrollY >= 100 && bodyHeight - scrollHeight <= 100) {
-        this.scroll = false
-        //this.$store.commit("checkScroll", 2)
-      }
-    },
-    isLink(url) {
-      return this.isRoute === url || this.isRoute === url + "/" || "/" + this.isRoute === url
-    },
-    //async getMenu() {
-    //	const menu = this.$store.state.gql.menu
-
-    //	const data = (
-    //		await this.$strapi.graphql({
-    //			query: menu,
-    //		})
-    //	).menusMenus.data[0].attributes.items.data
-    //		.map((it) => it.attributes)
-    //		.map((it) => {
-    //			return {
-    //				url: it.url?.split('?')?.[0],
-    //				title: it.title,
-    //				order: it.order,
-    //				target: it.target,
-    //				parent: it.parent.data?.attributes,
-    //				...it.url
-    //					?.split('?')?.[1]
-    //					?.split('&')
-    //					?.reduce((s, it) => {
-    //						s = {
-    //							...s,
-    //							[it.split('=')[0]]: it.split('=')[1],
-    //						}
-    //						return s
-    //					}, {}),
-    //			}
-    //		})
-
-    //	return data
-    //},
   },
 }
 </script>
@@ -306,13 +193,14 @@ export default {
 <style lang="scss">
 .nav {
   &-bar {
-    @apply flex-center flex-col h-auto text-white w-full py-0 z-9999;
+    @apply flex-center flex-col h-10vh text-white w-full py-0 transition-all z-9999 duration-700;
 
     &-cont {
-      @apply bg-repeat flex-center bg-cyan-700 bg-hero-wiggle-white-10 bg-2r h-12 mb-1.5 min-h-10 w-full opacity-100 px-4 transition-all duration-800 sm:h-16;
+      @apply bg-repeat flex-center h-auto bg-cyan-700 bg-hero-wiggle-white-10 bg-2r h-12 mb-1.5 min-h-10 w-full opacity-100 px-4 sm:h-16;
 
       &.cont-scroll {
-        @apply h-6 mb-0 opacity-75 py-2 sm:h-10;
+        @apply h-6 mb-0 opacity-0 py-2 top-0 fixed sm:h-10;
+        @apply opacity-85 transition-opacity duration-1200 delay-1000 #{!important};
       }
 
       &-main {
