@@ -29,8 +29,8 @@
         v-for="(it, i) in 20"
         :key="i"
         v-anime="{
-          translateX: Math.sin(i + 1) * intRandom(100, size.w),
-          translateY: Math.cos(i + 1) * intRandom(100, size.w),
+          translateX: Math.cos(i + 1) * intRandom(100, Math.min(size.w, size.h) * 0.75),
+          translateY: Math.sin(i + 1) * intRandom(100, Math.min(size.w, size.h) * 0.75),
           duration: 1500,
           delay: 1000,
         }"
