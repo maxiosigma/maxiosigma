@@ -155,18 +155,23 @@ export default {
         document.body.offsetHeight,
         document.body.clientHeight
       )
+
       const scrollHeight = document.documentElement.clientHeight + window.scrollY
+
+      const positionTop = 250
+      const positionBottom = 250
 
       //console.log(scrollY)
 
-      if (window.scrollY < 125) this.scroll = 0
+      if (window.scrollY < positionTop) this.scroll = 0
 
-      if (window.scrollY >= 125) {
+      if (window.scrollY >= positionTop) {
         this.scroll = 1
         //setTimeout(() => (this.scroll == 1 ? (this.scroll = 2) : null), 500)
       }
 
-      if (window.scrollY >= 100 && bodyHeight - scrollHeight <= 100) this.scroll = 2
+      if (window.scrollY >= positionTop && bodyHeight - scrollHeight <= positionBottom)
+        this.scroll = 2
     },
     isLink(url) {
       return this.isRoute === url || this.isRoute === url + "/" || "/" + this.isRoute === url
