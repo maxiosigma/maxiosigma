@@ -24,7 +24,17 @@
           duration: 1500,
           delay: 1000,
         }"   -->
-      <div class="absolute" v-for="(it, i) in 2" :key="i">
+      <div
+        class="absolute"
+        v-for="(it, i) in 2"
+        :key="i"
+        v-anime="{
+          translateX: Math.sin(i + 1) * intRandom(50, 150),
+          translateY: Math.cos(i + 1) * intRandom(50, 150),
+          duration: 1500,
+          delay: 1000,
+        }"
+      >
         <!--<kinesis-element
           :strength="intRandom(15, 55)"
           :type="stringRandom(['depth', 'depth_inv', 'translate', 'rotate', 'scale'])"
@@ -59,43 +69,39 @@ export default {
     }
   },
   mounted() {
-    //?.canva_0?.[0]
-    Object.keys(this.$refs)?.map((key) => {
-      //console.log(this.$refs?.canva_0?.[0])
-      const obj = this.$refs?.[key]?.[0]
+    //Object.keys(this.$refs)?.map((key) => {
+    //  const obj = this.$refs?.[key]?.[0]
+    //  this.preDraw(obj)
+    //})
 
-      //console.log(this.$refs?.[key]?.[0])
+    const center = { x: (300 - 25) / 2, y: (150 - 25) / 2 }
+
+    const trangle = this.$refs?.canva_0?.[0]
+    this.isDraw(trangle, () => {
+      const ctx = trangle.getContext("2d")
+      ctx.beginPath()
+      ctx.moveTo(center.x, center.y + 25)
+      ctx.lineTo(center.x + 25, center.y + 25)
+      ctx.lineTo(center.x, center.y + 25)
+      ctx.lineTo(center.x + 25, center.y)
+      ctx.closePath()
+      ctx.strokeStyle = "orange"
+      ctx.lineWidth = 3
+      ctx.stroke()
     })
 
-    this.preDraw()
-
-    //const center = { x: (300 - 25) / 2, y: (150 - 25) / 2 }
-
-    //const trangle = this.$refs?.canva_0?.[0]
-    //this.isDraw(trangle, () => {
-    //  const ctx = trangle.getContext("2d")
-    //  ctx.beginPath()
-    //  ctx.moveTo(center.x + 25, center.y + 25)
-    //  ctx.lineTo(center.x + 25, center.y + 9)
-    //  ctx.lineTo(center.x + 9, center.y + 25)
-    //  ctx.closePath()
-    //  ctx.strokeStyle = "orange"
-    //  ctx.lineWidth = 3
-    //  ctx.stroke()
-    //})
-
-    //const trangle2 = this.$refs?.canva_1?.[0]
-    //this.isDraw(trangle2, () => {
-    //  const ctx = trangle2.getContext("2d")
-    //  ctx.beginPath()
-    //  ctx.moveTo(center.x + 25, center.y + 25)
-    //  ctx.lineTo(center.x + 25, center.y + 9)
-    //  ctx.lineTo(center.x + 9, center.y + 25)
-    //  ctx.closePath()
-    //  ctx.strokeStyle = "orange"
-    //  ctx.lineWidth = 3
-    //  ctx.stroke()
-    //})
+    const trangle2 = this.$refs?.canva_1?.[0]
+    this.isDraw(trangle2, () => {
+      const ctx = trangle2.getContext("2d")
+      ctx.beginPath()
+      ctx.moveTo(center.x + 25, center.y + 25)
+      ctx.lineTo(center.x + 25, center.y + 9)
+      ctx.lineTo(center.x + 9, center.y + 25)
+      ctx.closePath()
+      ctx.strokeStyle = "orange"
+      ctx.lineWidth = 3
+      ctx.stroke()
+    })
   },
   methods: {
     handleClick() {
@@ -109,6 +115,8 @@ export default {
     },
     preDraw(obj) {
       const center = { x: (300 - 25) / 2, y: (150 - 25) / 2 }
+      const color = stringRandom(["orange"])
+
       const presets = [
         (obj, triangle) => {
           this.isDraw(obj, () => {
@@ -152,7 +160,6 @@ export default {
       ]
 
       const rand = this.intRandom(0, presets.length - 1)
-      console.log(rand, presets.length - 1)
 
       return presets[rand](obj)
     },
