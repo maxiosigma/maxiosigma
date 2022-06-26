@@ -20,22 +20,11 @@
       :perspective="2000"
       class="flex-center text-white inset-0 z-0 fixed"
     >
-      <!-- class="bg-black" -->
-
-      <!-- v-anime="{
-          translateX: Math.sin(i + 1) * intRandom(50, 150),
-          translateY: Math.cos(i + 1) * intRandom(50, 150),
-          duration: 1500,
-          delay: 1000,
-        }"   -->
       <div
         class="absolute"
         v-for="(it, i) in kinesis.count"
         :key="i"
         v-anime="{
-          //translateX: Math.cos(i + 1) * intRandom(10, Math.min(size.w, size.h) * 0.75) + i,
-          //translateY: Math.sin(i + 1) * intRandom(10, Math.min(size.w, size.h) * 0.75) + i,
-          //rotate: intRandom(0, 360),
           translateX:
             (Math.cos((i * kinesis.count) / (Math.PI / 180)) * Math.max(size.w, size.h)) /
             intRandom(1.5, 4),
@@ -43,9 +32,6 @@
             (Math.sin((i * kinesis.count) / (Math.PI / 180)) * Math.max(size.w, size.h)) /
             intRandom(2.5, 4),
           opacity: intRandom(60, 90) / 100,
-
-          //originX: 25,
-          //originY: 225,
           duration: kinesis.duration,
           delay: kinesis.delay + i * kinesis.step,
         }"
@@ -57,14 +43,6 @@
           <canvas class="flex-center" :ref="'canva_' + i"></canvas>
         </kinesis-element>
       </div>
-
-      <!--<kinesis-element type="depth" :strength="50">
-        <canvas ref="trangle"></canvas>
-      </kinesis-element>
-
-      <kinesis-element type="depth_inv" :strength="50">
-        <canvas ref="trangle2"></canvas>
-      </kinesis-element>-->
     </kinesis-container>
   </LayoutPage>
 </template>
@@ -82,7 +60,7 @@ export default {
       visible: 0,
       kinesis: {
         step: 5,
-        count: 70,
+        count: 30,
         active: false,
         duration: 1700,
         delay: 1200,
