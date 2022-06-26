@@ -75,7 +75,7 @@ export default {
 .programms {
   &-container {
     // place-content-start min-h-200vh
-    @apply container flex flex-wrap min-h-200vh text-light-200 self-center justify-evenly;
+    @apply container flex flex-wrap text-light-200 self-center justify-evenly;
   }
 
   &-link {

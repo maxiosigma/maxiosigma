@@ -159,9 +159,9 @@ export default {
 
       //console.log(scrollY)
 
-      if (window.scrollY < 100) this.scroll = 0
+      if (window.scrollY < 25) this.scroll = 0
 
-      if (window.scrollY >= 100) {
+      if (window.scrollY >= 25) {
         this.scroll = 1
         //setTimeout(() => (this.scroll == 1 ? (this.scroll = 2) : null), 500)
       }
@@ -196,17 +196,17 @@ export default {
 <style lang="scss">
 .nav {
   &-bar {
-    @apply flex-center flex-col h-10vh text-white w-full py-0 transition-all z-9999 duration-700;
+    @apply flex-center flex-col text-white w-full py-0 transition-all z-9999 duration-700;
 
     &-cont {
-      @apply bg-repeat flex-center bg-cyan-700 bg-hero-wiggle-white-10 bg-2r h-12 mb-1.5 min-h-10 w-full opacity-100 px-4 sm:h-16;
+      @apply bg-repeat flex-center bg-cyan-700 bg-hero-wiggle-white-10 bg-2r h-12 mb-1.5 min-h-10 w-full opacity-100 px-4 transition-opacity duration-500 sm:h-16;
 
       &.cont-scroll {
         animation: OPeS 1s;
-        @apply h-6 mb-0 opacity-85 py-2 transition-opacity top-0 duration-1000 delay-250 fixed sm:h-10;
+        @apply h-6 mb-0 opacity-85 py-2 transition-all top-0 duration-300 delay-250 fixed sm:h-10;
 
         &.bottom {
-          @apply h-auto opacity-100 transition-all duration-1000 delay-250 #{!important};
+          @apply h-auto min-h-7vh opacity-100 transition-all duration-300 delay-250 #{!important};
         }
       }
 
