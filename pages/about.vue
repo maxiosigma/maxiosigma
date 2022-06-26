@@ -91,9 +91,10 @@ export default {
     this.isDraw(trangle2, () => {
       const ctx = trangle2.getContext("2d")
       ctx.beginPath()
-      ctx.moveTo(center.x + 25, center.y + 25)
-      ctx.lineTo(center.x + 25, center.y + 9)
-      ctx.lineTo(center.x + 9, center.y + 25)
+      ctx.moveTo(center.x, center.y)
+      ctx.lineTo(center.x + 16, center.y)
+      ctx.lineTo(center.x + 16, center.y + 16)
+      ctx.lineTo(center.x, center.y + 16)
       ctx.closePath()
       ctx.strokeStyle = color
       ctx.lineWidth = 3
@@ -146,10 +147,7 @@ export default {
           this.isDraw(obj, () => {
             const ctx = obj.getContext("2d")
             ctx.beginPath()
-            ctx.moveTo(center.x + 25, center.y + 25)
-            ctx.lineTo(center.x + 25, center.y + 9)
-            ctx.lineTo(center.x + 9, center.y + 25)
-            ctx.closePath()
+            ctx.arc(25, 25, 9, 0, Math.PI, true)
             ctx.strokeStyle = color
             ctx.lineWidth = 3
             ctx.stroke()
