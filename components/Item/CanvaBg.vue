@@ -16,7 +16,7 @@
           (Math.sin((i * kinesis.count) / (Math.PI / 180)) * Math.max(size.w, size.h)) /
           intRandom(2.5, 4),
         rotate: intRandom(0, 720),
-        opacity: (intRandom(60, 90) + i * 0.1) / 100,
+        opacity: (intRandom(40, 60) + i * 0.1) / 100,
         duration: kinesis.duration,
         delay: kinesis.delay + i * kinesis.step,
       }"

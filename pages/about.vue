@@ -20,7 +20,7 @@
           { '!hidden': visible >= 1 },
         ]"
       >
-        <div class="font-black mb-5 text-2xl tracking-[5px] uppercase">Welcome</div>
+        <div class="about-title">Welcome</div>
         <div class="font-black text-md tracking-[2px] uppercase">← Максим</div>
         <div class="font-black text-md tracking-[2px] uppercase">
           ← <span class="text-xs">Автор и разработчик сайта</span>
@@ -40,46 +40,54 @@
           { 'animated animate-fade-in-down': visible === 1 },
           { 'animated animate-fade-out-up': visible === 1.5 },
           { '!hidden': visible >= 2 },
-          // || visible !== 1 || visible !== 1.5
         ]"
       >
-        <div
-          class="
-            font-black font-windctt
-            border-b-2 border-b-yellow-500
-            pr-4
-            pb-1
-            text-4xl
-            tracking-[5px]
-            self-end
-            uppercase
-            md:text-5xl
-          "
-        >
-          Биография
-        </div>
+        <div class="about-title-big">Биография</div>
 
-        <div class="about-text">Родился в г. Инте.</div>
+        <div class="about-text">Родился в г.Инте. И так далее ...</div>
 
-        <div class="mt-3 about-btn" @click="handleClick()">Опыт работы</div>
+        <div class="mt-3 about-btn" @click="handleClick()">Хобби & Достижения</div>
       </div>
 
-      <!-- Опыт работы 
-      Strong web programming experience (HTML | PUG | CSS | SCSS | STYLUS | POSTCSS | JS | JQuery | Vue | PHP | TWIG | SQL + Database). While working and for myself, I created assemblies of Nuxt, Gridsome, Gatsby, Vue, Webpack, Laravel, Laravel Mix (with its own Webpack modules) and examples from site layouts. Also collected prototypes of popular CMS (Wordpress, Strapi, October, Ghost, Storybook) with their own internal plugins. Familiar with the Webflow and Tilda constructors. I use hosting Google (for portfolio), Beget (for server sites), Netlify (static sites - SG with SSR).
+      <div
+        :class="[
+          'about-field justify-self-center',
+          { '!hidden': visible < 2 },
+          { 'animated animate-fade-in-down': visible === 2 },
+          { 'animated animate-fade-out-up': visible === 2.5 },
+          { '!hidden': visible >= 3 },
+        ]"
+      >
+        <div class="about-title-big">Хобби & Достижения</div>
 
-      In parallel, I am developing in the areas of design and brand promotion. The main Figma tool (convenience, speed, quality), for additional purposes Affinity Photo (analogue of PS), MIRO. For inspiration, I have Figma Templates, Dribbble, Behance, VK Group (more than 10 sources) and real sites or layouts of sites on freelance (orders or viewed projects).
+        <div class="about-text">
+          MAIN HOBBIES IN PROFESSIONAL ACTIVITY Cross-platform game development Layout of responsive
+          cross-browser sites 3D modeling and customization with animations HOBBIES IN EVERYDAY LIFE
+          Sports - swimming and athletics outdoors and in the gym Writing as a literary work, where
+          the main genre is fantastic Cooking - preparing food for yourself and your family,
+          constantly learning new recipes and strong chips in fast and high-quality cooking CHARTERS
+          AND AWARDS Квалификация повара 2 разряда в 2013 году Грамота за 1 место при соревнованиях
+          по плаванию в 2006 году Грамота за успешное окончание 4 класса, хорошие резальтаты в
+          плавании и участии жизни класса в 2006 году Грамота за 1 место при соревнованиях по
+          плаванию в 2004 году О профессиональной деятельности подробнее в
+        </div>
 
-      Average experience in programming in C# and C-like languages, I understand the mathematical language LaTeX and mathematical packages Maple and MatLab.
+        <div class="about-btn" @click="handleClick('/portfolio')">Портфолио</div>
+      </div>
 
-      Little experience in developing native applications, Android Studio + Kotlin, as well as a bunch of Flutter with the Dart programming language.
+      <!-- Хобби & Достижения
+     
+    
+       -->
 
-      I can and practice writing articles, term papers, and creating any presentations and presentation templates.
-      -->
+      <!-- Портфолио
+       
 
-      <!-- Достижения -->
+      <div class="about-btn" @click="handleClick()">Портфолио</div>
+       -->
     </div>
 
-    <!--<LazyItemCanvaBg />-->
+    <LazyItemCanvaBg />
   </LayoutPage>
 </template>
 
@@ -92,20 +100,18 @@ export default {
   },
   data() {
     return {
-      visible: 1,
+      visible: 2,
     }
   },
   mounted() {
     console.log(this.visible)
   },
   methods: {
-    handleClick() {
+    handleClick(url) {
       this.visible += 0.5
-
       setTimeout(() => {
         this.visible += 0.5
-
-        console.log(this.visible)
+        url ? (location.href = url) : null
       }, 3000)
     },
   },
@@ -132,12 +138,20 @@ export default {
   }
 
   &-field {
-    @apply flex-col text-white inline-flex place-items-start self-center;
+    @apply flex-col text-white py-10 inline-flex place-items-start self-center;
     @apply animate-duration-1000 animate-delay-500;
   }
 
+  &-title {
+    @apply font-black mb-5 text-2xl tracking-[5px] uppercase;
+
+    &-big {
+      @apply font-black font-windctt border-b-2 border-b-yellow-500 pr-4 pb-2 text-4xl tracking-[5px] self-end uppercase md:text-5xl;
+    }
+  }
+
   &-text {
-    @apply font-bold font-vetka my-5 text-xl;
+    @apply font-bold font-vetka my-5 tracking-wider text-2xl;
   }
 }
 </style>
