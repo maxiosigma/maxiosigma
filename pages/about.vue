@@ -16,7 +16,7 @@
     </div>-->
 
     <kinesis-container
-      :active="true"
+      :active="kinesis.active"
       :perspective="2000"
       class="flex-center text-white inset-0 z-0 fixed"
     >
@@ -30,30 +30,32 @@
         }"   -->
       <div
         class="absolute"
-        v-for="(it, i) in count"
+        v-for="(it, i) in kinesis.count"
         :key="i"
         v-anime="{
           //translateX: Math.cos(i + 1) * intRandom(10, Math.min(size.w, size.h) * 0.75) + i,
           //translateY: Math.sin(i + 1) * intRandom(10, Math.min(size.w, size.h) * 0.75) + i,
           //rotate: intRandom(0, 360),
           translateX:
-            (Math.cos((i * count) / (Math.PI / 180)) * Math.max(size.w, size.h)) /
+            (Math.cos((i * kinesis.count) / (Math.PI / 180)) * Math.max(size.w, size.h)) /
             intRandom(1.5, 4),
           translateY:
-            (Math.sin((i * count) / (Math.PI / 180)) * Math.max(size.w, size.h)) /
+            (Math.sin((i * kinesis.count) / (Math.PI / 180)) * Math.max(size.w, size.h)) /
             intRandom(2.5, 4),
+          opacity: intRandom(35, 85) / 100,
+
           //originX: 25,
           //originY: 225,
           duration: 1700,
           delay: 1200 + i * 5,
         }"
       >
-        <!--<kinesis-element
+        <kinesis-element
           :strength="intRandom(35, 105)"
           :type="stringRandom(['depth', 'depth_inv', 'translate', 'rotate'])"
-        >-->
-        <canvas class="flex-center" :ref="'canva_' + i"></canvas>
-        <!--</kinesis-element>-->
+        >
+          <canvas class="flex-center" :ref="'canva_' + i"></canvas>
+        </kinesis-element>
       </div>
 
       <!--<kinesis-element type="depth" :strength="50">
@@ -78,8 +80,12 @@ export default {
   data() {
     return {
       visible: 0,
-      count: 50,
-      //activeKinesis: this.is
+      kinesis: {
+        count: 50,
+        active: false,
+        duration: 1700,
+        delay: 1200,
+      },
       size: { w: 0, h: 0 },
       //deviceType: this.$ua.deviceType(),
     }
@@ -87,6 +93,7 @@ export default {
   mounted() {
     this.getSize()
     this.getCanvas()
+    setTimeout(() => {}, this.kinesis.count)
 
     window.addEventListener("resize", () => {
       this.getSize()
