@@ -94,13 +94,12 @@ export default {
   mounted() {
     this.getSize()
     this.getCanvas()
-    setTimeout(
-      () => this.kinesis.active,
-      this.kinesis.delay + this.kinesis.count * this.kinesis.step
-    )
+    this.getKinesis()
 
     window.addEventListener("resize", () => {
       this.getSize()
+      this.kinesis.active = false
+      this.getKinesis()
     })
   },
   methods: {
@@ -112,6 +111,12 @@ export default {
         const obj = this.$refs?.[key]?.[0]
         this.preDraw(obj)
       })
+    },
+    getKinesis() {
+      setTimeout(
+        () => (this.kinesis.active = true),
+        this.kinesis.delay + this.kinesis.count * this.kinesis.step
+      )
     },
     handleClick() {
       this.visible += 0.5
