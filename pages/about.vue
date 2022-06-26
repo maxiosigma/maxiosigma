@@ -75,6 +75,7 @@ export default {
     //})
 
     const center = { x: (300 - 25) / 2, y: (150 - 25) / 2 }
+    const color = this.stringRandom(["#FFA500", "#00ff2a", "#0084ff", "#9d00ff", "#ff0055"])
 
     const trangle = this.$refs?.canva_0?.[0]
     this.isDraw(trangle, () => {
@@ -85,7 +86,7 @@ export default {
       ctx.lineTo(center.x + 16, center.y + 16)
       ctx.lineTo(center.x, center.y + 16)
       ctx.closePath()
-      ctx.strokeStyle = "orange"
+      ctx.strokeStyle = color
       ctx.lineWidth = 3
       ctx.stroke()
     })
@@ -98,7 +99,7 @@ export default {
       ctx.lineTo(center.x + 25, center.y + 9)
       ctx.lineTo(center.x + 9, center.y + 25)
       ctx.closePath()
-      ctx.strokeStyle = "orange"
+      ctx.strokeStyle = color
       ctx.lineWidth = 3
       ctx.stroke()
     })
@@ -115,7 +116,7 @@ export default {
     },
     preDraw(obj) {
       const center = { x: (300 - 25) / 2, y: (150 - 25) / 2 }
-      const color = stringRandom(["#FFA500", "#00ff2a", "#0084ff", "#9d00ff", "#ff0055"])
+      const color = this.stringRandom(["#FFA500", "#00ff2a", "#0084ff", "#9d00ff", "#ff0055"])
 
       const presets = [
         (obj, triangle) => {
