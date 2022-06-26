@@ -110,7 +110,7 @@ function themeExtend() {
     animation: {
       "custom-wiggle": "wiggle 1s ease-in-out infinite",
       "custom-world-rotate": "worldRotate 1s ease-in-out infinite",
-      "opacity-custom-85": "opacityCustom85 1s ease-in-out",
+      "custom-opacity": "customOpacity 1s ease-in-out",
     },
     keyframes: {
       wiggle: {
@@ -121,7 +121,7 @@ function themeExtend() {
         "0%, 100%": { transform: "rotate3D(0, -1, 0, 360deg)" },
         "50%": { transform: "rotate3D(0, 1, 0, 360deg)" },
       },
-      opacityCustom85: {
+      customOpacity: {
         from: { opacity: 0 },
         to: { opacity: 0.85 },
       },

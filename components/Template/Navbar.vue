@@ -2,8 +2,8 @@
   <div v-scroll="getScroll" :class="['nav-bar', 'relative']">
     <div
       :class="[
-        'nav-bar-cont',
-        { 'cont-scroll animate-custom-fade-in-85 animated': scroll == 1 || scroll == 2 },
+        'nav-bar-cont animate-opacity-custom-85',
+        { 'cont-scroll animate-opacity-custom-85 animated': scroll == 1 || scroll == 2 },
         { '!opacity-100 !h-10vh': scroll == 2 },
       ]"
     >
