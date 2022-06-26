@@ -47,8 +47,7 @@
           class="
             font-black
             border-b-2 border-b-yellow-500
-            mb-5
-            px-2
+            pr-10
             pb-1
             text-3xl
             tracking-[5px]
@@ -58,7 +57,10 @@
         >
           Бография
         </div>
-        <div class="about-btn" @click="handleClick()">Достижения</div>
+
+        <div class="about-text">Родился в г. Инте.</div>
+
+        <div class="mt-3 about-btn" @click="handleClick()">Достижения</div>
       </div>
     </div>
 
@@ -117,6 +119,10 @@ export default {
   &-field {
     @apply flex-col text-white inline-flex place-items-start self-center;
     @apply animate-duration-1000 animate-delay-500;
+  }
+
+  &-text {
+    @apply font-bold font-vetka my-5 text-xl;
   }
 }
 </style>
