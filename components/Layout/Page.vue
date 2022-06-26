@@ -72,7 +72,8 @@ export default {
 
 <style lang="scss">
 .header {
-  @apply flex-grow-0 flex-shrink-0 mt-22 z-10 relative sm:mt-26;
+  //mt-22 sm:mt-26
+  @apply flex-grow-0 flex-shrink-0 z-10 relative;
 }
 .nav {
   @apply w-full z-20 relative;

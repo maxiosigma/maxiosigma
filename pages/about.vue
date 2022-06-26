@@ -5,11 +5,13 @@
         container
         flex-grow
         mx-auto
+        max-h-full
         z-10
         gap-5
         grid-cols-[0.9fr,1.1fr]
         relative
         inline-grid
+        overflow-hidden
         pointer-events-none
       "
     >
@@ -43,7 +45,7 @@
       </div>
     </div>
 
-    <ItemCanvaBg></ItemCanvaBg>
+    <!--<ItemCanvaBg></ItemCanvaBg>-->
   </LayoutPage>
 </template>
 
