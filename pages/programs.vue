@@ -74,7 +74,8 @@ export default {
 <style lang="scss">
 .programms {
   &-container {
-    @apply container flex flex-wrap min-h-200vh text-light-200 self-center justify-evenly;
+    // place-content-start
+    @apply container flex flex-wrap min-h-200vh text-light-200 self-center place-items-start place-content-start justify-evenly;
   }
 
   &-link {

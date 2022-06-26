@@ -110,6 +110,7 @@ function themeExtend() {
     animation: {
       wiggle: "wiggle 1s ease-in-out infinite",
       "world-rotate": "worldRotate 1s ease-in-out infinite",
+      "fade-in-85": "fade-in-85 1s ease-in-out",
     },
     keyframes: {
       wiggle: {
@@ -119,6 +120,10 @@ function themeExtend() {
       worldRotate: {
         "0%, 100%": { transform: "rotate3D(0, -1, 0, 360deg)" },
         "50%": { transform: "rotate3D(0, 1, 0, 360deg)" },
+      },
+      "fade-in-85": {
+        "0%": { opacity: 0 },
+        "100%": { opacity: 85 },
       },
     },
   };
