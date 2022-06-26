@@ -27,15 +27,18 @@
 
         <div
           class="
+            rounded-md
             cursor-pointer
             bg-green-700
+            mt-1
             text-white
             px-4 px-2
+            duration-300
             pointer-events-auto
-            hover:(text-yellow-400)
+            hover:(bg-yellow-600)
           "
         >
-          Кнопка
+          <div>Кнопка</div>
         </div>
       </div>
     </div>
