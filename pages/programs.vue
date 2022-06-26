@@ -14,7 +14,7 @@
             programms-link-title
             lg:group-hover:(animate-delay-200
             animate-duration-400 animate-fadeOut)
-          "
+            "
         >
           {{ it.title }}
         </div>
@@ -25,7 +25,7 @@
             opacity-100
             animated
             animate-delay-300 animate-duration-400 animate-backInLeft)
-          "
+            "
         >
           {{ it.description }}
         </div>
@@ -74,19 +74,19 @@ export default {
 <style lang="scss">
 .programms {
   &-container {
-    // place-content-start
-    @apply container flex flex-wrap min-h-200vh text-light-200 self-center place-items-start place-content-start justify-evenly;
+    // place-content-start min-h-200vh
+    @apply container flex flex-wrap min-h-200vh text-light-200 self-center justify-evenly;
   }
 
   &-link {
-    @apply rounded-md flex-center flex-col h-auto bg-cyan-700 bg-opacity-80 bg-hero-rain-white-30 bg-0.25r m-4 w-full min-h-20 py-4 px-5 transition duration-700 overflow-hidden sm: max-w-1/3 md:max-w-1/4 lg:max-w-1/5 lg:hover:(bg-orange-700);
+    @apply rounded-md flex-center flex-col h-auto bg-cyan-700 bg-opacity-80 bg-hero-rain-white-30 bg-0.25r m-4 w-full min-h-20 py-4 px-5 transition duration-700 overflow-hidden sm: max-w-1/3 md:max-w-1/4 lg:max-w-1/5 lg:hover:(bg-orange-700) ;
 
     &-title {
-      @apply font-semibold text-sm text-center tracking-widest px-10 pb-2 transition-all animate-flipInX animate-delay-200 animated <sm: (uppercase) md:(text-base max-w-1/4 py-4 absolute) lg:max-w-1/5;
+      @apply font-semibold text-sm text-center tracking-widest px-10 pb-2 transition-all animate-flipInX animate-delay-200 animated <sm: (uppercase) md:(text-base max-w-1/4 py-4 absolute) lg:max-w-1/5 ;
     }
 
     &-description {
-      @apply text-xs text-center md: (opacity-0 transition-opacity animate-backOutLeft duration-300 text-left animate-delay-100 animated);
+      @apply text-xs text-center md: (opacity-0 transition-opacity animate-backOutLeft duration-300 text-left animate-delay-100 animated) ;
     }
   }
 }

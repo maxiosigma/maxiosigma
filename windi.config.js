@@ -122,7 +122,7 @@ function themeExtend() {
         "50%": { transform: "rotate3D(0, 1, 0, 360deg)" },
       },
       customOpacity: {
-        from: { opacity: 0 },
+        from: { opacity: 0.0 },
         to: { opacity: 0.85 },
       },
     },

@@ -2,9 +2,9 @@
   <div v-scroll="getScroll" :class="['nav-bar', 'relative']">
     <div
       :class="[
-        'nav-bar-cont animate-opacity-custom-85',
-        { 'cont-scroll animate-opacity-custom-85 animated': scroll == 1 || scroll == 2 },
-        { '!opacity-100 !h-10vh': scroll == 2 },
+        'nav-bar-cont',
+        { 'cont-scroll': scroll == 1 || scroll == 2 },
+        { bottom: scroll == 2 },
       ]"
     >
       <div class="nav-bar-cont-main justify-around sm:justify-between">
@@ -199,11 +199,15 @@ export default {
     @apply flex-center flex-col h-10vh text-white w-full py-0 transition-all z-9999 duration-700;
 
     &-cont {
-      @apply bg-repeat flex-center h-auto bg-cyan-700 bg-hero-wiggle-white-10 bg-2r h-12 mb-1.5 min-h-10 w-full px-4 transition-all sm:h-16;
+      @apply bg-repeat flex-center bg-cyan-700 bg-hero-wiggle-white-10 bg-2r h-12 mb-1.5 min-h-10 w-full opacity-100 px-4 sm:h-16;
 
       &.cont-scroll {
-        @apply h-6 mb-0 py-2 top-0 fixed sm:h-10;
-        //@apply duration-500 delay-500;
+        animation: OPeS 1s;
+        @apply h-6 mb-0 opacity-85 py-2 transition-opacity top-0 duration-1000 delay-250 fixed sm:h-10;
+
+        &.bottom {
+          @apply h-auto opacity-100 transition-all duration-1000 delay-250 #{!important};
+        }
       }
 
       &-main {
@@ -224,8 +228,6 @@ export default {
       @apply cursor-pointer text-shadow-md tracking-wider transition-all text-[10px] duration-300 uppercase overflow-hidden sm:(text-xs tracking-wide) hover:(overflow-visible) ;
 
       &-hover {
-        //font-family: 'Wind CTT';
-
         @apply my-auto min-w-3 py-1 transition-all duration-500 truncate pointer-events-none group-hover:(text-yellow-300 max-w-none tracking-widest overflow-clip overflow-visible text-shadow-lg) ;
       }
 
@@ -351,6 +353,21 @@ export default {
 
   &-menu-text {
     @apply text-sm;
+  }
+}
+
+//.anime-custom-opacity {
+//  animation: OPeS 1s ease-in-out;
+//  //animation-duration: 1000ms;
+//  //animation-fill-mode: both;
+//}
+
+@keyframes OPeS {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.85;
   }
 }
 </style>
