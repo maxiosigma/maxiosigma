@@ -5,7 +5,7 @@
         <ItemImg class="about-img" src="about/face_1.png"></ItemImg>
       </div>
 
-      <div class="flex-col text-white inline-flex place-items-start self-center about-text">
+      <div class="about-field">
         <div class="font-black mb-5 text-2xl tracking-[5px] uppercase">Welcome</div>
         <div class="font-black text-md tracking-[2px] uppercase">← Максим</div>
         <div class="font-black text-md tracking-[2px] uppercase">
@@ -61,6 +61,10 @@ export default {
 
   &-btn {
     @apply rounded-md cursor-pointer bg-green-700 text-white text-xl py-2 px-4 transition-all duration-300 pointer-events-auto hover:(bg-yellow-600 px-6 py-3 text-shadow) ;
+  }
+
+  &-field {
+    @apply flex-col text-white inline-flex place-items-start self-center;
   }
 }
 </style>
