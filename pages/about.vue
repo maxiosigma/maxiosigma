@@ -26,21 +26,21 @@
         }"   -->
       <div
         class="absolute"
-        v-for="(it, i) in 20"
+        v-for="(it, i) in 50"
         :key="i"
         v-anime="{
-          translateX: Math.cos(i + 1) * intRandom(100, Math.min(size.w, size.h) * 0.75),
-          translateY: Math.sin(i + 1) * intRandom(100, Math.min(size.w, size.h) * 0.75),
+          translateX: Math.cos(i + 1) * intRandom(10, Math.min(size.w, size.h) * 0.75) + i,
+          translateY: Math.sin(i + 1) * intRandom(10, Math.min(size.w, size.h) * 0.75) + i,
           duration: 1500,
           delay: 1000,
         }"
       >
-        <!--<kinesis-element
+        <kinesis-element
           :strength="intRandom(15, 55)"
           :type="stringRandom(['depth', 'depth_inv', 'translate', 'rotate', 'scale'])"
-        >-->
-        <canvas class="flex-center" :ref="'canva_' + i"></canvas>
-        <!--</kinesis-element>-->
+        >
+          <canvas class="flex-center" :ref="'canva_' + i"></canvas>
+        </kinesis-element>
       </div>
 
       <!--<kinesis-element type="depth" :strength="50">
@@ -75,7 +75,6 @@ export default {
 
     window.addEventListener("resize", () => {
       this.getSize()
-      this.getCanvas()
     })
 
     //const center = { x: (300 - 25) / 2, y: (150 - 25) / 2 }
