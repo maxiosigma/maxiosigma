@@ -3,7 +3,8 @@
     <div class="about-cont">
       <div
         :class="[
-          { 'about-img-cont animated animate-fade-in-left-big': visible === 0 },
+          'about-img-cont',
+          { 'animated animate-fade-in-left-big': visible === 0 },
           { 'animated animate-fade-out-left-big': visible === 0.5 },
           { '!hidden': visible === 1 },
         ]"
@@ -13,7 +14,8 @@
 
       <div
         :class="[
-          { 'about-field animated animate-fade-in-right-big': visible === 0 },
+          'about-field',
+          { 'animated animate-fade-in-right-big': visible === 0 },
           { 'animated animate-fade-out-right-big': visible === 0.5 },
           { '!hidden': visible === 1 },
         ]"
@@ -32,7 +34,7 @@
       </div>
     </div>
 
-    <!--<ItemCanvaBg></ItemCanvaBg>-->
+    <ItemCanvaBg></ItemCanvaBg>
   </LayoutPage>
 </template>
 
@@ -73,7 +75,7 @@ export default {
 
     &-cont {
       @apply flex justify-center items-end;
-      @apply animate-duration-700 animate-delay-500;
+      @apply animate-duration-1000 animate-delay-500;
     }
   }
 
@@ -83,7 +85,7 @@ export default {
 
   &-field {
     @apply flex-col text-white inline-flex place-items-start self-center;
-    @apply animate-duration-700 animate-delay-500;
+    @apply animate-duration-1000 animate-delay-500;
   }
 }
 </style>

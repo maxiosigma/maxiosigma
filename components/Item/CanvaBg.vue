@@ -5,7 +5,7 @@
     class="flex-center inset-0 z-0 fixed"
   >
     <div
-      class="absolute"
+      class="animate-fade-in animate-delay-1800 animate-duration-2000 absolute animated"
       v-for="(it, i) in kinesis.count"
       :key="i"
       v-anime="{
@@ -23,7 +23,7 @@
     >
       <!-- 'rotate' -->
       <kinesis-element
-        :strength="intRandom(50, 75)"
+        :strength="intRandom(50, 100)"
         :type="stringRandom(['depth', 'depth_inv', 'translate'])"
       >
         <canvas class="flex-center" :ref="'canva_' + i"></canvas>
@@ -36,13 +36,12 @@
 export default {
   data() {
     return {
-      visible: 0,
       kinesis: {
         step: 5,
-        count: 50,
+        count: 70,
         active: false,
         duration: 1700,
-        delay: 1200,
+        delay: 1900,
       },
       size: { w: 0, h: 0 },
       deviceType: this.$ua.deviceType(),
