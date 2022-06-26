@@ -42,7 +42,7 @@
           translateY:
             (Math.sin((i * kinesis.count) / (Math.PI / 180)) * Math.max(size.w, size.h)) /
             intRandom(2.5, 4),
-          opacity: intRandom(35, 85) / 100,
+          opacity: intRandom(60, 90) / 100,
 
           //originX: 25,
           //originY: 225,
@@ -82,7 +82,7 @@ export default {
       visible: 0,
       kinesis: {
         step: 5,
-        count: 50,
+        count: 70,
         active: false,
         duration: 1700,
         delay: 1200,
@@ -98,8 +98,7 @@ export default {
 
     window.addEventListener("resize", () => {
       this.getSize()
-      this.kinesis.active = false
-      this.getKinesis()
+      //this.getKinesis()
     })
   },
   methods: {
@@ -113,9 +112,11 @@ export default {
       })
     },
     getKinesis() {
+      this.kinesis.active = false
+
       setTimeout(
         () => (this.kinesis.active = true),
-        this.kinesis.delay + this.kinesis.count * this.kinesis.step
+        this.kinesis.delay + this.kinesis.count * this.kinesis.step + 1500
       )
     },
     handleClick() {
