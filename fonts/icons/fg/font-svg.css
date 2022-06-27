@@ -3,9 +3,9 @@
 	src: 
 	url('font-svg.ttf') format("truetype"),
 	url('font-svg.svg') format("svg"),
-	url("font-svg.eot?ace3e5635952f43c99684c0565cdafca?#iefix") format("embedded-opentype"),
-url("font-svg.woff2?ace3e5635952f43c99684c0565cdafca") format("woff2"),
-url("font-svg.woff?ace3e5635952f43c99684c0565cdafca") format("woff");
+	url("font-svg.eot?ed9319ff40a707360768c0a7fa1a9420?#iefix") format("embedded-opentype"),
+url("font-svg.woff2?ed9319ff40a707360768c0a7fa1a9420") format("woff2"),
+url("font-svg.woff?ed9319ff40a707360768c0a7fa1a9420") format("woff");
 }
 
 .font-ft {
@@ -38,15 +38,16 @@ url("font-svg.woff?ace3e5635952f43c99684c0565cdafca") format("woff");
 }
 
 .ft-ameba:before { content: "\f101"; }
-.ft-ins:before { content: "\f102"; }
-.ft-meta:before { content: "\f103"; }
-.ft-ok:before { content: "\f104"; }
-.ft-pikachu:before { content: "\f105"; }
-.ft-telegram:before { content: "\f106"; }
-.ft-tiktok:before { content: "\f107"; }
-.ft-tumblr:before { content: "\f108"; }
-.ft-twitter:before { content: "\f109"; }
-.ft-vk:before { content: "\f10a"; }
-.ft-youtube-1:before { content: "\f10b"; }
-.ft-youtube:before { content: "\f10c"; }
-.ft-zyan:before { content: "\f10d"; }
+.ft-arrow-right-1:before { content: "\f102"; }
+.ft-ins:before { content: "\f103"; }
+.ft-meta:before { content: "\f104"; }
+.ft-ok:before { content: "\f105"; }
+.ft-pikachu:before { content: "\f106"; }
+.ft-telegram:before { content: "\f107"; }
+.ft-tiktok:before { content: "\f108"; }
+.ft-tumblr:before { content: "\f109"; }
+.ft-twitter:before { content: "\f10a"; }
+.ft-vk:before { content: "\f10b"; }
+.ft-youtube-1:before { content: "\f10c"; }
+.ft-youtube:before { content: "\f10d"; }
+.ft-zyan:before { content: "\f10e"; }

@@ -14,7 +14,7 @@
 
       <div
         :class="[
-          'about-field max-w-none w-full py-0 place-items-streth self-start',
+          'about-field first',
           { 'animated animate-fade-in-right-big': visible === 0 },
           { 'animated animate-fade-out-right-big': visible === 0.5 },
           { '!hidden': visible >= 1 },
@@ -30,7 +30,7 @@
         </div>
 
         <div class="font-black mt-4 text-xl mb-5 tracking-[1.5px] uppercase">
-          ▬ <span class="text-sm">Желаете узнать подробнее ?</span>
+          ▬ <span class="text-sm">Желаешь узнать подробнее ?</span>
         </div>
 
         <div class="about-btn" @click="handleClick()">Да</div>
@@ -163,7 +163,7 @@ export default {
 <style lang="scss">
 .about {
   &-cont {
-    @apply container flex-grow h-full mx-auto max-h-full px-5 z-10 gap-5 grid-cols-[1.5fr,1fr] relative inline-grid overflow-hidden pointer-events-none;
+    @apply container flex-grow h-full mx-auto max-h-full z-10 gap-5 grid-cols-[1.5fr,1fr] relative inline-grid overflow-hidden pointer-events-none sm:px-5;
   }
 
   &-img {
@@ -180,8 +180,12 @@ export default {
   }
 
   &-field {
-    @apply flex-col mx-auto text-white max-w-2xl py-10 inline-flex place-items-start self-center;
+    @apply flex-col mx-auto text-white max-w-2xl py-10 inline-flex place-items-start self-center <sm:px-5;
     @apply animate-duration-1000 animate-delay-500;
+
+    &.first {
+      @apply max-w-none w-full py-0 px-0 <sm:pr-2 #{!important};
+    }
   }
 
   &-title {

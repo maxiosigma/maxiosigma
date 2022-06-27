@@ -234,8 +234,8 @@ export default {
     }
 
     &-link {
-      //
-      @apply cursor-pointer text-shadow-md tracking-wider py-1 transition-all text-[10px] duration-300 uppercase overflow-hidden sm:(text-sm tracking-wide) hover:(overflow-visible) ;
+      // py-1
+      @apply cursor-pointer text-shadow-md tracking-wider transition-all text-[10px] duration-300 uppercase overflow-hidden sm:(text-xs tracking-wide) hover:(overflow-visible) ;
 
       &-hover {
         @apply my-auto min-w-3 py-0.5 transition-all duration-500 truncate pointer-events-none group-hover:(text-yellow-300 max-w-none tracking-widest overflow-clip overflow-visible text-shadow-lg) ;

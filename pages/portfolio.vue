@@ -1,5 +1,17 @@
 <template>
   <LayoutPage>
+    <div class="flex-grow flex-center flex-col text-white text-center">
+      <div class="font-bold max-w-lg text-3xl uppercase">
+        Портфолио пока не доступно, оно разрабатывается
+      </div>
+
+      <div class="font-vetka font-light max-w-sm mt-3 text-base inline-flex items-center">
+        Через несколько секунд вы будете перенаправлены на список моих предложений, чтобы вы не
+        скучали. Контакты можно получить в меню навигации сверху.
+        <div class="ml-1 transform rotate-z-25 inline">↑↑↑</div>
+      </div>
+    </div>
+
     <!--<div class="flex-grow filter drop-shadow-lg lg:(grid grid-cols-3) <lg:(flex flex-col) ">-->
     <!-- , { 'elevation-10': i == 2 } ДОБАВИТЬ ТЕНИ ПО БОКАМ -->
     <!-- 	@click.native.prevent="redirect(it.name)" -->
@@ -88,6 +100,8 @@ export default {
   },
   mounted() {
     this.setAnimation()
+
+    setTimeout(() => this.routeLight("programs"), 17500)
     //setTimeout(() => this.setAnimation(), 500)
   },
   methods: {
