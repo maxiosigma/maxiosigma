@@ -38,13 +38,15 @@
           'about-field justify-self-center',
           { '!hidden': visible < 1 },
           { 'animated animate-fade-in-down': visible === 1 },
-          { 'animated animate-fade-out-up': visible === 1.5 },
+          { 'animated animate-fade-out-down': visible === 1.5 },
           { '!hidden': visible >= 2 },
         ]"
       >
         <div class="about-title-big">Биография</div>
 
-        <div class="about-text">Родился в г.Инте. И так далее ...</div>
+        <div class="about-text">
+          Родился и вырос в г.Инте. В 5 классе переехал в Сыктывкар. ........
+        </div>
 
         <div class="mt-3 about-btn" @click="handleClick()">Хобби & Достижения</div>
       </div>
@@ -54,7 +56,7 @@
           'about-field justify-self-center col-span-2',
           { '!hidden': visible < 2 },
           { 'animated animate-fade-in-down': visible === 2 },
-          { 'animated animate-fade-out-up': visible === 2.5 },
+          { 'animated animate-fade-out-right': visible === 2.5 },
           { '!hidden': visible >= 3 },
         ]"
       >
@@ -102,24 +104,13 @@
             </div>
           </div>
 
-          <div class="font-roboto mt-3">О профессиональной деятельности подробнее в</div>
+          <div class="mt-5">О профессиональной деятельности подробнее в</div>
         </div>
 
         <div class="about-btn" @click="handleClick('/' + $i18n.locale + '/portfolio')">
           Портфолио
         </div>
       </div>
-
-      <!-- Хобби & Достижения
-     
-    
-       -->
-
-      <!-- Портфолио
-       
-
-      <div class="about-btn" @click="handleClick()">Портфолио</div>
-       -->
     </div>
 
     <!--<LazyItemCanvaBg />-->
@@ -135,7 +126,7 @@ export default {
   },
   data() {
     return {
-      visible: 2,
+      visible: 1,
     }
   },
   mounted() {
