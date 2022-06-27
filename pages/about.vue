@@ -67,9 +67,9 @@
               {
                 title: 'MAIN HOBBIES IN PROFESSIONAL ACTIVITY',
                 items: [
-                  'Cross-platform game development',
-                  'Layout of responsive cross-browser sites',
-                  '3D modeling and customization with animations',
+                  'Кроссплатформенная разработка игр',
+                  'Разработка адаптивных кроссбраузерных сайтов',
+                  '3D-моделирование и персонализация с анимацией',
                 ],
               },
               {
@@ -91,24 +91,17 @@
             ]"
             :key="i"
           >
-            <div class="font-semibold tracking-wider text-4xl uppercase">{{ it.title }}</div>
+            <div class="font-semibold tracking-wider text-3xl uppercase">{{ it.title }}</div>
 
-            <div class="grid text-2xl gap-1">
+            <div class="text-xl grid gap-1">
               <div class="inline-flex" v-for="(sit, j) in it.items" :key="j">
-                <div class="mr-3 ml-5">»</div>
+                <div class="mr-3 ml-5 pointer-events-none">»</div>
                 {{ sit }}
               </div>
             </div>
           </div>
 
-          <!--
-   
-
-           
-           
-           
-          
-          О профессиональной деятельности подробнее в-->
+          <div class="font-roboto mt-3">О профессиональной деятельности подробнее в</div>
         </div>
 
         <div class="about-btn" @click="handleClick('/' + $i18n.locale + '/portfolio')">
