@@ -368,6 +368,7 @@ function includes() {
       "@plugins/passive/directives",
       "@plugins/active/VueTypedJs",
       "@plugins/active/VueKinesis",
+      "@plugins/active/VueTooltip",
       "@plugins/active/QR.js",
     ],
     modules = [

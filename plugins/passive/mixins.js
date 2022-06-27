@@ -20,6 +20,10 @@ Vue.mixin({
     routeLightBlank(link) {
       window.open(this.localePath("/" + link), "_blank");
     },
+    isMobile() {
+      // || this.$ua.deviceType() !== "desktop"
+      return this.$ua.deviceType() !== "pc";
+    },
     lightRedirect() {
       const light = this.isLight();
       const isMobile = this.$ua.deviceType() !== "pc" && !light;

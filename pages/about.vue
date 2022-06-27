@@ -106,7 +106,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this.visible)
+    //console.log(this.visible)
   },
   methods: {
     handleClick(url) {

@@ -54,7 +54,7 @@
     "cross-env": "^7.0.3",
     "data-store": "^4.0.3",
     "encoding": "^0.1.13",
-    "floating-vue": "2.0.0-beta.17",
+    "floating-vue": "^1.0.0-beta.18",
     "fs": "0.0.0",
     "graphql-base64": "^1.0.2",
     "lottie-web": "^5.9.4",
