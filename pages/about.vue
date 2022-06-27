@@ -14,20 +14,23 @@
 
       <div
         :class="[
-          'about-field',
+          'about-field max-w-none w-full py-0 place-items-streth self-start',
           { 'animated animate-fade-in-right-big': visible === 0 },
           { 'animated animate-fade-out-right-big': visible === 0.5 },
           { '!hidden': visible >= 1 },
         ]"
       >
-        <div class="about-title">Welcome</div>
-        <div class="font-black text-md tracking-[2px] uppercase">← Максим</div>
-        <div class="font-black text-md tracking-[2px] uppercase">
-          ← <span class="text-xs">Автор и разработчик сайта</span>
+        <div class="about-title">
+          <!--<vue-typed-js :strings="['Welcome']"><span class="typing"></span></vue-typed-js>-->
+          Welcome
+        </div>
+        <div class="font-black text-xl tracking-[2px] uppercase">← Максим</div>
+        <div class="font-black text-xl tracking-[2px] uppercase">
+          ← <span class="text-base">Автор и разработчик сайта</span>
         </div>
 
-        <div class="font-black mt-4 text-md mb-5 tracking-[1.5px] uppercase">
-          ▬ <span class="text-xs">Желаете узнать подробнее ?</span>
+        <div class="font-black mt-4 text-xl mb-5 tracking-[1.5px] uppercase">
+          ▬ <span class="text-sm">Желаете узнать подробнее ?</span>
         </div>
 
         <div class="about-btn" @click="handleClick()">Да</div>
@@ -35,7 +38,7 @@
 
       <div
         :class="[
-          'about-field justify-self-center',
+          'about-field justify-self-center col-span-2',
           { '!hidden': visible < 1 },
           { 'animated animate-fade-in-down': visible === 1 },
           { 'animated animate-fade-out-down': visible === 1.5 },
@@ -55,7 +58,7 @@
         :class="[
           'about-field justify-self-center col-span-2',
           { '!hidden': visible < 2 },
-          { 'animated animate-fade-in-down': visible === 2 },
+          { 'animated animate-fade-in-left': visible === 2 },
           { 'animated animate-fade-out-right': visible === 2.5 },
           { '!hidden': visible >= 3 },
         ]"
@@ -78,8 +81,8 @@
                 title: 'HOBBIES IN EVERYDAY LIFE',
                 items: [
                   'Литературный труд, где основной жанр фантастика',
-                  'Спорт - плавание и легкая атлетика на свежем воздухе и в тренажерном зале',
-                  'Кулинария - готовлю еду для себя и своей семьи, постоянно изучая новые рецепты',
+                  'Спорт - плавание и легкая атлетика на свежем воздухе',
+                  'Кулинария - готовлю еду, постоянно изучая новые рецепты',
                 ],
               },
               {
@@ -104,20 +107,27 @@
             </div>
           </div>
 
-          <div class="mt-5">О профессиональной деятельности подробнее в</div>
-        </div>
+          <div class="mt-5 inline-flex items-center">
+            О профессиональной деятельности подробнее в
 
-        <div class="about-btn" @click="handleClick('/' + $i18n.locale + '/portfolio')">
-          Портфолио
+            <div
+              class="mt-2 ml-3 pb-2 about-btn"
+              @click="handleClick('/' + $i18n.locale + '/portfolio')"
+            >
+              Портфолио
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!--<LazyItemCanvaBg />-->
+    <LazyItemCanvaBg />
   </LayoutPage>
 </template>
 
 <script>
+//import Typed from "typed.js"
+
 export default {
   head() {
     return {
@@ -126,7 +136,7 @@ export default {
   },
   data() {
     return {
-      visible: 1,
+      visible: 0,
     }
   },
   mounted() {
@@ -140,6 +150,12 @@ export default {
         url ? (location.href = url) : null
       }, 3000)
     },
+    //useTyped(ref, string, value) {
+    //  if (this.visible === value)
+    //    new Typed(ref, {
+    //      strings: [string],
+    //    })
+    //},
   },
 }
 </script>
@@ -147,7 +163,7 @@ export default {
 <style lang="scss">
 .about {
   &-cont {
-    @apply container flex-grow h-full mx-auto max-h-full px-5 z-10 gap-5 grid-cols-[1.7fr,1fr] relative inline-grid overflow-hidden pointer-events-none;
+    @apply container flex-grow h-full mx-auto max-h-full px-5 z-10 gap-5 grid-cols-[1.5fr,1fr] relative inline-grid overflow-hidden pointer-events-none;
   }
 
   &-img {
@@ -160,16 +176,16 @@ export default {
   }
 
   &-btn {
-    @apply rounded-md cursor-pointer font-bold bg-green-700 text-white text-sm tracking-wide py-2 px-4 transition-all duration-500 uppercase pointer-events-auto hover:(bg-yellow-600 px-6 text-base py-3 text-shadow) ;
+    @apply rounded-md cursor-pointer font-roboto font-bold bg-green-700 text-white text-sm py-2 px-4 transition-all tracking-[2px] duration-500 uppercase pointer-events-auto hover:(bg-yellow-600 px-6 text-base py-3 tracking-[3px] text-shadow) ;
   }
 
   &-field {
-    @apply flex-col text-white py-10 inline-flex place-items-start self-center;
+    @apply flex-col mx-auto text-white max-w-2xl py-10 inline-flex place-items-start self-center;
     @apply animate-duration-1000 animate-delay-500;
   }
 
   &-title {
-    @apply font-black mb-5 text-2xl tracking-[5px] uppercase;
+    @apply font-black mb-5 text-4xl tracking-[5px] uppercase;
 
     &-big {
       @apply border-double font-black font-windctt border-b-5 border-b-yellow-500 pr-4 pb-2 text-4xl tracking-[5px] uppercase md:text-5xl;
