@@ -75,15 +75,16 @@
               {
                 title: 'HOBBIES IN EVERYDAY LIFE',
                 items: [
-                  'Sports - swimming and athletics outdoors and in the gym',
-                  'Writing as a literary work, where the main genre is fantastic',
-                  'Cooking - preparing food for yourself and your family, constantly learning new recipes and strong chips in fast and high-quality cooking',
+                  'Литературный труд, где основной жанр фантастика',
+                  'Спорт - плавание и легкая атлетика на свежем воздухе и в тренажерном зале',
+                  'Кулинария - готовлю еду для себя и своей семьи, постоянно изучая новые рецепты',
                 ],
               },
               {
                 title: 'CHARTERS AND AWARDS',
                 items: [
-                  'Квалификация повара 2 разряда в 2013 году Грамота за 1 место при соревнованиях по плаванию в 2006 году',
+                  'Квалификация повара 2 разряда в 2013 году',
+                  'Грамота за 1 место при соревнованиях по плаванию в 2006 году',
                   'Грамота за успешное окончание 4 класса, хорошие резальтаты в плавании и участии жизни класса в 2006 году',
                   'Грамота за 1 место при соревнованиях по плаванию в 2004 году',
                 ],
