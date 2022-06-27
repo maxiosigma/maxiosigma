@@ -51,7 +51,7 @@
 
       <div
         :class="[
-          'about-field justify-self-center',
+          'about-field justify-self-center col-span-2',
           { '!hidden': visible < 2 },
           { 'animated animate-fade-in-down': visible === 2 },
           { 'animated animate-fade-out-up': visible === 2.5 },
@@ -61,15 +61,54 @@
         <div class="about-title-big">Хобби & Достижения</div>
 
         <div class="about-text">
-          MAIN HOBBIES IN PROFESSIONAL ACTIVITY Cross-platform game development Layout of responsive
-          cross-browser sites 3D modeling and customization with animations HOBBIES IN EVERYDAY LIFE
-          Sports - swimming and athletics outdoors and in the gym Writing as a literary work, where
-          the main genre is fantastic Cooking - preparing food for yourself and your family,
-          constantly learning new recipes and strong chips in fast and high-quality cooking CHARTERS
-          AND AWARDS Квалификация повара 2 разряда в 2013 году Грамота за 1 место при соревнованиях
-          по плаванию в 2006 году Грамота за успешное окончание 4 класса, хорошие резальтаты в
-          плавании и участии жизни класса в 2006 году Грамота за 1 место при соревнованиях по
-          плаванию в 2004 году О профессиональной деятельности подробнее в
+          <div
+            class="my-2 grid gap-1"
+            v-for="(it, i) in [
+              {
+                title: 'MAIN HOBBIES IN PROFESSIONAL ACTIVITY',
+                items: [
+                  'Cross-platform game development',
+                  'Layout of responsive cross-browser sites',
+                  '3D modeling and customization with animations',
+                ],
+              },
+              {
+                title: 'HOBBIES IN EVERYDAY LIFE',
+                items: [
+                  'Sports - swimming and athletics outdoors and in the gym',
+                  'Writing as a literary work, where the main genre is fantastic',
+                  'Cooking - preparing food for yourself and your family, constantly learning new recipes and strong chips in fast and high-quality cooking',
+                ],
+              },
+              {
+                title: 'CHARTERS AND AWARDS',
+                items: [
+                  'Квалификация повара 2 разряда в 2013 году Грамота за 1 место при соревнованиях по плаванию в 2006 году',
+                  'Грамота за успешное окончание 4 класса, хорошие резальтаты в плавании и участии жизни класса в 2006 году',
+                  'Грамота за 1 место при соревнованиях по плаванию в 2004 году',
+                ],
+              },
+            ]"
+            :key="i"
+          >
+            <div class="font-semibold tracking-wider text-4xl uppercase">{{ it.title }}</div>
+
+            <div class="grid text-2xl gap-1">
+              <div class="inline-flex" v-for="(sit, j) in it.items" :key="j">
+                <div class="mr-3 ml-5">»</div>
+                {{ sit }}
+              </div>
+            </div>
+          </div>
+
+          <!--
+   
+
+           
+           
+           
+          
+          О профессиональной деятельности подробнее в-->
         </div>
 
         <div class="about-btn" @click="handleClick('/' + $i18n.locale + '/portfolio')">
@@ -148,7 +187,7 @@ export default {
     @apply font-black mb-5 text-2xl tracking-[5px] uppercase;
 
     &-big {
-      @apply font-black font-windctt border-b-2 border-b-yellow-500 pr-4 pb-2 text-4xl tracking-[5px] self-end uppercase md:text-5xl;
+      @apply border-double font-black font-windctt border-b-5 border-b-yellow-500 pr-4 pb-2 text-4xl tracking-[5px] uppercase md:text-5xl;
     }
   }
 
