@@ -71,7 +71,7 @@
               class="nav-bar-link-hover"
               :class="[
                 { 'border-b-2 border-b-yellow-500': isActive(link.title) },
-                { '<sm:(!text-[7px] !mb-1)': scroll == 1 },
+                //{ '<sm:(!text-[7px] !mb-1)': scroll == 1 },
                 link.class,
               ]"
             >
@@ -223,7 +223,8 @@ export default {
       }
 
       &-text {
-        @apply flex max-w-full mt-0.5 ml-1 py-1 px-1 overflow-hidden items-center <sm:(flex-wrap justify-end) ;
+        // flex-wrap py-1
+        @apply flex max-w-full mt-0.5 ml-1 px-1 overflow-hidden items-center <sm:(justify-end);
       }
 
       &-arrow {
@@ -233,7 +234,8 @@ export default {
     }
 
     &-link {
-      @apply cursor-pointer text-shadow-md tracking-wider py-1 transition-all text-[10px] duration-300 uppercase overflow-hidden sm:(text-xs tracking-wide) hover:(overflow-visible) ;
+      //
+      @apply cursor-pointer text-shadow-md tracking-wider py-1 transition-all text-[10px] duration-300 uppercase overflow-hidden sm:(text-sm tracking-wide) hover:(overflow-visible) ;
 
       &-hover {
         @apply my-auto min-w-3 py-0.5 transition-all duration-500 truncate pointer-events-none group-hover:(text-yellow-300 max-w-none tracking-widest overflow-clip overflow-visible text-shadow-lg) ;

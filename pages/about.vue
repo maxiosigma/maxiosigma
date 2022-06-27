@@ -89,7 +89,7 @@
        -->
     </div>
 
-    <LazyItemCanvaBg />
+    <!--<LazyItemCanvaBg />-->
   </LayoutPage>
 </template>
 

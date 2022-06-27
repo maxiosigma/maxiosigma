@@ -9,24 +9,11 @@
         v-for="(it, i) in links"
         :key="i"
       >
-        <div
-          class="
-            programms-link-title
-            lg:group-hover:(animate-delay-200
-            animate-duration-400 animate-fadeOut)
-            "
-        >
+        <div class="programms-link-title">
           {{ it.title }}
         </div>
-        <div
-          class="
-            programms-link-description
-            lg:group-hover:(block
-            opacity-100
-            animated
-            animate-delay-300 animate-duration-400 animate-backInLeft)
-            "
-        >
+
+        <div class="programms-link-description">
           {{ it.description }}
         </div>
       </ItemLink>
@@ -75,18 +62,20 @@ export default {
 .programms {
   &-container {
     // place-content-start min-h-200vh
-    @apply container flex flex-wrap my-auto text-light-200 self-center justify-evenly;
+    @apply container my-auto mx-auto grid text-light-200 gap-5 grid-cols-4 justify-between place-content-center place-items-stretch;
   }
 
   &-link {
-    @apply rounded-md flex-center flex-col h-auto bg-cyan-700 bg-opacity-80 bg-hero-rain-white-30 bg-0.25r m-4 w-full min-h-20 py-4 px-5 transition duration-700 overflow-hidden sm: max-w-1/3 md:max-w-1/4 lg:max-w-1/5 xl:max-w-1/8 2xl:max-w-1/10 lg:hover:(bg-orange-700) ;
+    // sm: max-w-1/3 md:max-w-1/4 lg:max-w-1/5 xl:max-w-1/8 2xl:max-w-1/10
+    @apply rounded-md flex-center flex-col h-auto bg-cyan-700 bg-opacity-80 bg-hero-rain-white-30 bg-0.25r m-4 w-full min-h-20 py-4 px-5 transition duration-700 overflow-hidden lg:hover:(bg-orange-700);
 
     &-title {
-      @apply font-semibold text-sm text-center tracking-widest px-10 pb-2 transition-all animate-flipInX animate-delay-200 animated <sm: (uppercase) md:(text-base max-w-1/4 py-4 absolute) lg:max-w-1/5 xl:max-w-1/8 2xl:max-w-1/10 ;
+      //<sm:uppercase md:(text-base max-w-1/4 py-4 absolute) lg:max-w-1/5 xl:max-w-1/8 2xl:max-w-1/10 pb-2 px-10
+      @apply font-semibold h-auto text-center tracking-widest w-auto transition-all text-[2vmin] duration-500 delay-100 overflow-hidden relative <sm:uppercase lg:group-hover:(h-0 w-0) ;
     }
 
     &-description {
-      @apply text-xs text-center md: (opacity-0 transition-opacity animate-backOutLeft duration-300 text-left animate-delay-100 animated) ;
+      @apply text-xs text-center transition-all duration-500 delay-200 overflow-hidden md:(duration-300 h-0 w-0 text-left) lg:group-hover:(h-auto w-auto) ;
     }
   }
 }
