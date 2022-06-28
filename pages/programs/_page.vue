@@ -58,6 +58,8 @@ export default {
     const from = page === 1 ? 0 : (page - 1) * paginaton
     const to = page === countPages ? countLinks : page * paginaton - 1
 
+    console.log(from, to)
+
     const links = reffers.filter((it, i) => i >= from && i <= to)
 
     return { links, countPages, page }
