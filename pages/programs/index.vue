@@ -1,9 +1,8 @@
 <template>
   <Layout>
     <div class="programms-container">
-      <!--<nuxt-link class="hidden" v-if="false" :to="link"></nuxt-link>-->
-
-      {{ countPages }}
+      <nuxt-link v-if="false" class="hidden" :to="`/programs/${i}`" v-for="i in 2" :key="i">
+      </nuxt-link>
     </div>
   </Layout>
 </template>
@@ -15,8 +14,8 @@ export default {
       title: "Программы",
     }
   },
-  asyncData({ store }) {
-    const paginaton = store.state.pagination
+  asyncData({ store, app }) {
+    const paginaton = app.router.app.isLight() ? 5 : 12
     const countLinks = store.state.links?.length
     const countPages = Math.ceil(countLinks / paginaton)
 
