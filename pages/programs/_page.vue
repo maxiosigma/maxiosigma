@@ -1,6 +1,6 @@
 <template>
   <LayoutPage>
-    <div class="programms-container">
+    <div class="programms-container" @touchstart="touchStart" @touchEndMethod="touchEnd">
       <ItemLink
         self
         @click.native.prevent="handleOpen(it.short)"
@@ -30,6 +30,25 @@
         </div>
       </ItemLink>
     </div>
+
+    <div
+      class="
+        flex-center
+        font-black font-vetka
+        bg-cyan-700
+        text-white
+        tracking-widest
+        w-full
+        py-1
+        px-4
+        bottom-0
+        fixed
+      "
+    >
+      <div class="prev"></div>
+      <span class="count diagonal-fractions">{{ page }}/{{ countPages }}</span>
+      <div class="next"></div>
+    </div>
   </LayoutPage>
 </template>
 
@@ -42,7 +61,7 @@ export default {
   },
   asyncData({ store, app, params }) {
     const page = params.page
-    const paginaton = app.router.app.isLight() ? 3 : 14
+    const paginaton = app.router.app.isLight() ? 5 : 12
 
     const reffers = store.state.reffers
       .reduce((sum, it) => {
@@ -58,7 +77,7 @@ export default {
     const from = page === 1 ? 0 : (page - 1) * paginaton
     const to = page === countPages ? countLinks : page * paginaton - 1
 
-    console.log(from, to)
+    //console.log(from, to)
 
     const links = reffers.filter((it, i) => i >= from && i <= to)
 
@@ -71,6 +90,28 @@ export default {
   methods: {
     handleOpen(short) {
       window.open("/#" + short, "_blank")
+    },
+    touchStart(touchEvent) {
+      if (touchEvent.changedTouches.length !== 1) {
+        // We only care if one finger is used
+        return
+      }
+      const posXStart = touchEvent.changedTouches[0].clientX
+      addEventListener("touchend", (touchEvent) => this.touchEnd(touchEvent, posXStart), {
+        once: true,
+      })
+    },
+    touchEnd(touchEvent, posXStart) {
+      if (touchEvent.changedTouches.length !== 1) {
+        // We only care if one finger is used
+        return
+      }
+      const posXEnd = touchEvent.changedTouches[0].clientX
+      if (posXStart < posXEnd) {
+        console.log("prev")
+      } else if (posXStart > posXEnd) {
+        console.log("next")
+      }
     },
   },
 }
