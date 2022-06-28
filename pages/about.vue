@@ -20,54 +20,16 @@
           { '!hidden': visible >= 1 },
         ]"
       >
-        <div
-          class="about-title"
-          v-anime.set="{ translateX: size.w / 2, opacity: 0 }"
-          v-anime="{
-            translateX: 0,
-            opacity: 1,
-            duration: 1500,
-            delay: 2500,
-          }"
-        >
+        <div class="about-title">
           <!--<vue-typed-js :strings="['Welcome']"><span class="typing"></span></vue-typed-js>-->
           Welcome
         </div>
-        <div
-          class="font-black text-xl tracking-[2px] uppercase"
-          v-anime.set="{ translateX: size.w / 2, opacity: 0 }"
-          v-anime="{
-            translateX: 0,
-            opacity: 1,
-            duration: 500,
-            delay: 2600,
-          }"
-        >
-          ← Максим
-        </div>
-        <div
-          class="font-black text-xl tracking-[2px] uppercase"
-          v-anime.set="{ translateX: size.w / 2, opacity: 0 }"
-          v-anime="{
-            translateX: 0,
-            opacity: 1,
-            duration: 700,
-            delay: 2650,
-          }"
-        >
+        <div class="font-black text-xl tracking-[2px] uppercase">← Максим</div>
+        <div class="font-black text-xl tracking-[2px] uppercase">
           ← <span class="text-base">Автор и разработчик сайта</span>
         </div>
 
-        <div
-          class="font-black mt-4 text-xl mb-5 tracking-[1.5px] uppercase"
-          v-anime.set="{ translateX: size.w / 2, opacity: 0 }"
-          v-anime="{
-            translateX: 0,
-            opacity: 1,
-            duration: 900,
-            delay: 2700,
-          }"
-        >
+        <div class="font-black mt-4 text-xl mb-5 tracking-[1.5px] uppercase">
           ▬ <span class="text-sm">Желаешь узнать подробнее ?</span>
         </div>
 
@@ -93,13 +55,6 @@
               'Сейчас занимаюсь фрилансом и гибридным бизнесом',
             ]"
             :key="i"
-            v-anime.set="{ translateX: size.w / 2, opacity: 0 }"
-            v-anime="{
-              translateX: 0,
-              opacity: 1,
-              duration: 1000,
-              delay: 1500 + i * 100,
-            }"
           >
             {{ it }}
           </div>
@@ -164,18 +119,7 @@
             <div class="font-semibold tracking-wider text-3xl uppercase">{{ it.title }}</div>
 
             <div class="text-xl grid gap-1">
-              <div
-                class="inline-flex diagonal-fractions"
-                v-for="(sit, j) in it.items"
-                :key="j"
-                v-anime.set="{ translateX: -(size.w / 2), opacity: 0 }"
-                v-anime="{
-                  translateX: 0,
-                  opacity: 1,
-                  duration: 1500,
-                  delay: 1500 + (i + 1) * (j + 1) * 150,
-                }"
-              >
+              <div class="inline-flex diagonal-fractions" v-for="(sit, j) in it.items" :key="j">
                 <div class="mr-3 ml-5 pointer-events-none">»</div>
                 {{ sit }}
               </div>
@@ -196,7 +140,8 @@
       </div>
     </div>
 
-    <LazyItemCanvaBg />
+    <!--<LazyItemCanvaBg />-->
+    <ItemCanvaBg />
   </LayoutPage>
 </template>
 
@@ -260,7 +205,7 @@ export default {
   }
 
   &-btn {
-    @apply rounded-md cursor-pointer font-roboto font-bold bg-green-700 text-white text-sm py-2 px-4 transition-all tracking-[2px] duration-500 uppercase pointer-events-auto hover:(bg-yellow-600 px-6 text-base py-3 tracking-[3px] text-shadow);
+    @apply rounded-md cursor-pointer font-roboto font-bold bg-green-700 text-white text-sm py-2 px-4 transition-all tracking-[2px] duration-500 uppercase pointer-events-auto hover:(bg-yellow-600 px-6 text-base py-3 tracking-[3px] text-shadow) ;
   }
 
   &-field {

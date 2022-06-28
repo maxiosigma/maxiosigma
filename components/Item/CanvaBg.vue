@@ -36,15 +36,16 @@
 export default {
   data() {
     return {
+      //this.isMobile() ? 30 :
       kinesis: {
         step: 10,
-        count: this.isMobile() ? 30 : 50,
+        count: 45,
         active: false,
         duration: 1700,
         delay: 1900,
       },
       size: { w: 0, h: 0 },
-      deviceType: this.$ua.deviceType(),
+      //deviceType: this.$ua.deviceType(),
     }
   },
   mounted() {
