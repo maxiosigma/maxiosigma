@@ -56,13 +56,7 @@ export default {
     const page = params.page
     const paginaton = app.router.app.isLight() ? 5 : 12
 
-    const reffers = store.state.reffers
-      .reduce((sum, it) => {
-        if (!!it?.partnership && !!it?.title && !!it?.description && !!it?.short)
-          sum.push({ title: it.title, description: it.description, short: it.short, top: it.top })
-        return sum
-      }, [])
-      .sort((a, b) => (a.top < b.top ? 1 : -1))
+    const reffers = store.state.links
 
     const countLinks = reffers.length
     const countPages = Math.ceil(countLinks / paginaton)

@@ -11,6 +11,7 @@ export const state = () => ({
   //slides: [],
   navbar: [],
   reffers: [],
+  links: [],
 });
 
 export const mutations = {
@@ -88,6 +89,26 @@ export const actions = {
     ).links?.data?.map((it) => it.attributes);
 
     ctx.commit("uploadStrapi", { key: "reffers", payload: reffers });
+
+    const links = reffers
+      .reduce((sum, it) => {
+        if (
+          !!it?.partnership &&
+          !!it?.title &&
+          !!it?.description &&
+          !!it?.short
+        )
+          sum.push({
+            title: it.title,
+            description: it.description,
+            short: it.short,
+            top: it.top,
+          });
+        return sum;
+      }, [])
+      .sort((a, b) => (a.top < b.top ? 1 : -1));
+
+    ctx.commit("uploadStrapi", { key: "links", payload: links });
 
     //console.log(ctx.$strapi)
     //console.log(ctx)

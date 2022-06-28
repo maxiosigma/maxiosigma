@@ -11,6 +11,10 @@ export default {
       title: "Программы",
     }
   },
+  asyncData({ store }) {
+    const links = store.state.links
+    return { links }
+  },
   mounted() {
     this.routeLight("programs/1")
   },
@@ -27,7 +31,7 @@ export default {
 
   &-link {
     // sm: max-w-1/3 md:max-w-1/4 lg:max-w-1/5 xl:max-w-1/8 2xl:max-w-1/10
-    @apply rounded-md flex-center flex-col h-auto bg-cyan-700 bg-opacity-80 bg-hero-rain-white-30 bg-0.25r min-h-20 py-4 px-6 transition duration-700 overflow-hidden md:hover:(bg-orange-700);
+    @apply rounded-md flex-center flex-col h-auto bg-cyan-700 bg-opacity-80 bg-hero-rain-white-30 bg-1r min-h-20 py-4 px-6 transition duration-700 overflow-hidden sm:bg-0.25r md:hover:(bg-orange-700);
 
     &-title {
       //<sm:uppercase md:(text-base max-w-1/4 py-4 absolute) lg:max-w-1/5 xl:max-w-1/8 2xl:max-w-1/10 pb-2 px-10
