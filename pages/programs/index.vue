@@ -1,8 +1,13 @@
 <template>
   <Layout>
     <div class="programms-container">
-      <nuxt-link v-if="false" class="hidden" :to="`/programs/${i}`" v-for="i in 2" :key="i">
-      </nuxt-link>
+      <!-- v-if="false"  -->
+      <nuxt-link
+        class="hidden"
+        :to="`/${$i18n.locale}/programs/${i}`"
+        v-for="i in 2"
+        :key="i"
+      ></nuxt-link>
     </div>
   </Layout>
 </template>
@@ -22,7 +27,8 @@ export default {
     return { countPages }
   },
   mounted() {
-    //this.routeLight("programs/1")
+    this.routeLight("programs/1")
+    //console.log(this.countPages)
   },
 }
 </script>
