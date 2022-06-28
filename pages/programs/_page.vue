@@ -1,6 +1,11 @@
 <template>
   <LayoutPage>
-    <div class="programms-container" @touchstart="touchStart" @touchEndMethod="touchEnd">
+    <div
+      v-scroll="getScroll"
+      class="programms-container"
+      @touchstart="touchStart"
+      @touchEndMethod="touchEnd"
+    >
       <ItemLink
         self
         @click.native.prevent="handleOpen(it.short)"
@@ -77,16 +82,11 @@ export default {
     const from = page === 1 ? 0 : (page - 1) * paginaton
     const to = page === countPages ? countLinks : page * paginaton - 1
 
-    //console.log(from, to)
-
     const links = reffers.filter((it, i) => i >= from && i <= to)
 
     return { links, countPages, page }
   },
-  mounted() {
-    //console.log(this.links);
-    //console.log(this.isMobile())
-  },
+  mounted() {},
   methods: {
     handleOpen(short) {
       window.open("/#" + short, "_blank")
@@ -103,7 +103,6 @@ export default {
     },
     touchStart(touchEvent) {
       if (touchEvent.changedTouches.length !== 1) {
-        // We only care if one finger is used
         return
       }
       const posXStart = touchEvent.changedTouches[0].clientX
@@ -113,15 +112,12 @@ export default {
     },
     touchEnd(touchEvent, posXStart) {
       if (touchEvent.changedTouches.length !== 1) {
-        // We only care if one finger is used
         return
       }
       const posXEnd = touchEvent.changedTouches[0].clientX
       if (posXStart < posXEnd) {
-        //console.log("prev")
         this.toPrev()
       } else if (posXStart > posXEnd) {
-        //console.log("next")
         this.toNext()
       }
     },

@@ -153,27 +153,14 @@ export default {
       this.parent = { title: next.parent?.title, order: next.parent?.order }
     },
     getScroll() {
-      const bodyHeight = Math.max(
-        document.body.scrollHeight,
-        document.body.offsetHeight,
-        document.body.clientHeight
-      )
-
+      const dbd = document.body
+      const bodyHeight = Math.max(dbd.scrollHeight, dbd.offsetHeight, dbd.clientHeight)
       const scrollHeight = document.documentElement.clientHeight + window.scrollY
+      const position = { top: 250, bottom: 75 }
 
-      const positionTop = 250
-      const positionBottom = 75
-
-      //console.log(scrollY)
-
-      if (window.scrollY < positionTop) this.scroll = 0
-
-      if (window.scrollY >= positionTop) {
-        this.scroll = 1
-        //setTimeout(() => (this.scroll == 1 ? (this.scroll = 2) : null), 500)
-      }
-
-      if (window.scrollY >= positionTop && bodyHeight - scrollHeight <= positionBottom)
+      if (window.scrollY < position.top) this.scroll = 0
+      if (window.scrollY >= position.top) this.scroll = 1
+      if (window.scrollY >= position.top && bodyHeight - scrollHeight <= position.bottom)
         this.scroll = 2
     },
     isLink(url) {
