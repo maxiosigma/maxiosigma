@@ -20,16 +20,54 @@
           { '!hidden': visible >= 1 },
         ]"
       >
-        <div class="about-title">
+        <div
+          class="about-title"
+          v-anime.set="{ translateX: size.w / 2, opacity: 0 }"
+          v-anime="{
+            translateX: 0,
+            opacity: 1,
+            duration: 1500,
+            delay: 2300,
+          }"
+        >
           <!--<vue-typed-js :strings="['Welcome']"><span class="typing"></span></vue-typed-js>-->
           Welcome
         </div>
-        <div class="font-black text-xl tracking-[2px] uppercase">← Максим</div>
-        <div class="font-black text-xl tracking-[2px] uppercase">
+        <div
+          class="font-black text-xl tracking-[2px] uppercase"
+          v-anime.set="{ translateX: size.w / 2, opacity: 0 }"
+          v-anime="{
+            translateX: 0,
+            opacity: 1,
+            duration: 1500,
+            delay: 2500,
+          }"
+        >
+          ← Максим
+        </div>
+        <div
+          class="font-black text-xl tracking-[2px] uppercase"
+          v-anime.set="{ translateX: size.w / 2, opacity: 0 }"
+          v-anime="{
+            translateX: 0,
+            opacity: 1,
+            duration: 1500,
+            delay: 2700,
+          }"
+        >
           ← <span class="text-base">Автор и разработчик сайта</span>
         </div>
 
-        <div class="font-black mt-4 text-xl mb-5 tracking-[1.5px] uppercase">
+        <div
+          class="font-black mt-4 text-xl mb-5 tracking-[1.5px] uppercase"
+          v-anime.set="{ translateX: size.w / 2, opacity: 0 }"
+          v-anime="{
+            translateX: 0,
+            opacity: 1,
+            duration: 1500,
+            delay: 3000,
+          }"
+        >
           ▬ <span class="text-sm">Желаешь узнать подробнее ?</span>
         </div>
 
@@ -47,8 +85,16 @@
       >
         <div class="about-title-big">Биография</div>
 
-        <div class="about-text">
-          Родился и вырос в г.Инте. В 5 классе переехал в Сыктывкар. ........
+        <div class="flex-col about-text inline-flex">
+          <div>Родился и вырос в г.Инте.</div>
+          <div>В 5 классе переехал в Сыктывкар.</div>
+          <!--<div>Получил синий диплом по бакалвриату: прикладная математика и информатика.</div>
+          <div>
+            Сходил на годик в армию и брал академический отпуск после полугода магистратуры.
+          </div>
+          <div>Вернулся и перешёл на другую профессию магистратуры: управление проектами.</div>
+          <div>Получил красный диплом при отсутствии полгода на данном направлении.</div>-->
+          ........
         </div>
 
         <div class="mt-3 about-btn" @click="handleClick()">Хобби & Достижения</div>
@@ -88,6 +134,9 @@
               {
                 title: 'CHARTERS AND AWARDS',
                 items: [
+                  'Красный диплом по магистратуре: управление проектами за 2015 при отсутствии 1/2 года в армии',
+                  'Прошёл до конца 1 год срочной армии ВКС ПВО ПРО',
+                  'Cиний диплом по бакалвриату: прикладная математика и информатика за 2013 год',
                   'Квалификация повара 2 разряда в 2013 году',
                   'Грамота за 1 место при соревнованиях по плаванию в 2006 году',
                   'Грамота за успешное окончание 4 класса, хорошие резальтаты в плавании и участии жизни класса в 2006 году',
@@ -100,7 +149,18 @@
             <div class="font-semibold tracking-wider text-3xl uppercase">{{ it.title }}</div>
 
             <div class="text-xl grid gap-1">
-              <div class="inline-flex" v-for="(sit, j) in it.items" :key="j">
+              <div
+                class="inline-flex diagonal-fractions"
+                v-for="(sit, j) in it.items"
+                :key="j"
+                v-anime.set="{ translateX: -(size.w / 2), opacity: 0 }"
+                v-anime="{
+                  translateX: 0,
+                  opacity: 1,
+                  duration: 1500,
+                  delay: 1500 + (i + 1) * (j + 1) * 150,
+                }"
+              >
                 <div class="mr-3 ml-5 pointer-events-none">»</div>
                 {{ sit }}
               </div>
@@ -137,12 +197,20 @@ export default {
   data() {
     return {
       visible: 0,
+      size: { w: 0, h: 0 },
     }
   },
   mounted() {
-    //console.log(this.visible)
+    this.getSize()
+
+    window.addEventListener("resize", () => {
+      this.getSize()
+    })
   },
   methods: {
+    getSize() {
+      this.size = { w: document.body.clientHeight, h: document.body.clientWidth }
+    },
     handleClick(url) {
       this.visible += 0.5
       setTimeout(() => {
