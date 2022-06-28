@@ -38,7 +38,7 @@ export default {
     return {
       kinesis: {
         step: 10,
-        count: 50,
+        count: this.isMobile() ? 30 : 50,
         active: false,
         duration: 1700,
         delay: 1900,
@@ -69,10 +69,11 @@ export default {
     getKinesis() {
       this.kinesis.active = false
 
-      setTimeout(
-        () => (this.kinesis.active = true),
-        this.kinesis.delay + this.kinesis.count * this.kinesis.step + 1500
-      )
+      if (!this.isMobile())
+        setTimeout(
+          () => (this.kinesis.active = true),
+          this.kinesis.delay + this.kinesis.count * this.kinesis.step + 1500
+        )
     },
     isDraw(ref, callback) {
       if (ref?.getContext) {

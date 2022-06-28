@@ -40,10 +40,11 @@ export default {
       title: "Программы",
     }
   },
-  asyncData({ store, route }) {
-    console.log(route)
+  asyncData({ store, app, params }) {
+    const page = params.page
+    const paginaton = app.router.app.isLight() ? 3 : 14
 
-    const links = store.state.reffers
+    const reffers = store.state.reffers
       .reduce((sum, it) => {
         if (!!it?.partnership && !!it?.title && !!it?.description && !!it?.short)
           sum.push({ title: it.title, description: it.description, short: it.short, top: it.top })
@@ -51,19 +52,23 @@ export default {
       }, [])
       .sort((a, b) => (a.top < b.top ? 1 : -1))
 
-    return { links }
+    const countLinks = reffers.length
+    const countPages = Math.ceil(countLinks / paginaton)
+
+    const from = page - 1
+    const to = paginaton
+
+    //if (page !== countPages) {
+    //} else {
+    //  //count % paginaton
+    //}
+
+    //console.log(Math.ceil(count / paginaton))
+
+    const links = reffers
+
+    return { links, page }
   },
-  //data() {
-  //  return {
-  //    links: this.$store.state.reffers
-  //      .reduce((sum, it) => {
-  //        if (!!it?.partnership && !!it?.title && !!it?.description && !!it?.short)
-  //          sum.push({ title: it.title, description: it.description, short: it.short, top: it.top })
-  //        return sum
-  //      }, [])
-  //      .sort((a, b) => (a.top < b.top ? 1 : -1)),
-  //  }
-  //},
   mounted() {
     //console.log(this.links);
     //console.log(this.isMobile())

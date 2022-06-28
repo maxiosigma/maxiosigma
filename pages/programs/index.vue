@@ -1,7 +1,7 @@
 <template>
-  <LayoutPage>
+  <Layout>
     <div class="programms-container"></div>
-  </LayoutPage>
+  </Layout>
 </template>
 
 <script>
@@ -12,7 +12,7 @@ export default {
     }
   },
   mounted() {
-    this.RouteLight("/programs/1")
+    this.routeLight("programs/1")
   },
 }
 </script>

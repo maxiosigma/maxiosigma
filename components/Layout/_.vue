@@ -1,5 +1,9 @@
 <template>
   <div :class="['wrapper', $config.isDev ? 'debug-screens' : '']">
+    <slot name="head">
+      <TemplateHead />
+    </slot>
+
     <slot name="wrapper-before"></slot>
 
     <slot name="nav"></slot>

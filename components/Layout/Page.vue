@@ -1,6 +1,6 @@
 <template>
   <Layout :bodyStyle="bodyStyle" @active="(e) => (active = e)" @preload="(e) => (preload = e)">
-    <TemplateHead />
+    <!--<TemplateHead />-->
 
     <template v-slot:wrapper-before>
       <slot name="wrapper-before"></slot>

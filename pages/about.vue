@@ -167,10 +167,11 @@ export default {
   }
 
   &-img {
-    @apply h-full object-cover object-center;
+    @apply h-full min-h-full object-cover object-center;
 
     &-cont {
-      @apply flex max-h-4/5 justify-center  items-end;
+      // max-h-85vh
+      @apply flex h-full max-h-80vh overflow-hidden justify-center items-end self-end;
       @apply animate-duration-1000 animate-delay-500;
     }
   }

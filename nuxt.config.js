@@ -27,7 +27,7 @@ export default {
   ...hooks(),
   ...i18n(),
   ...css(),
-  //...pwa(),
+  ...pwa(),
 
   strapi: {
     url: process.env.STRAPI_URL || "http://localhost:1337",
@@ -361,7 +361,7 @@ function includes() {
       //'@nuxtjs/strapi',
       //'@nuxtjs/apollo',
       "nuxt-animejs",
-      //'@nuxtjs/pwa',
+      "@nuxtjs/pwa",
     ],
     plugins = [
       "@plugins/passive/mixins",
@@ -550,56 +550,58 @@ function motion() {
   };
 }
 
-//function pwa() {
-//	return {
-//		pwa: {
-//			//icon: {
-//			//	fileName: 'favicon.png',
-//			//},
-//			//meta: {
-//			//	charset: false,
-//			//	viewport: false,
-//			//	mobileApp: true,
-//			//	mobileAppIOS: false,
-//			//	appleStatusBarStyle: 'black',
-//			//	favicon: true,
-//			//	name: app_config.name,
-//			//	author: app_config.author,
-//			//	description: app_config.description,
-//			//	theme_color: '#000000',
-//			//	lang: app_config.lang,
-//			//	ogType: 'website',
-//			//	ogSiteName: app_config.name,
-//			//	ogTitle: app_config.name,
-//			//	ogDescription: app_config.description,
-//			//	ogHost: app_config.host,
-//			//	ogImage: true,
-//			//	ogUrl: app_config.host,
-//			//	twitterCard: 'summary',
-//			//	twitterSite: app_config.host,
-//			//	twitterCreator: app_config.autor,
-//			//},
-//			//manifest: {
-//			//	name: app_config.name,
-//			//	short_name: app_config.name,
-//			//	display: 'standalone', // 'browser', 'fullscreen', 'standalone', 'minimal-ui'
-//			//	description: app_config.description,
-//			//	crossorigin: 'use-credentials',
-//			//	background_color: '#ffffff',
-//			//	theme_color: '#000000',
-//			//	dir: 'ltr',
-//			//	lang: app_config.lang,
-//			//},
-//			workbox: {
-//				offline: true,
-//				autoRegister: true,
-//				offlineAnalytics: true,
-//				//enabled: app_config.isDev,
-//				//autoRegister: app_config.isDev,
-//			},
-//		},
-//	}
-//}
+function pwa() {
+  return {
+    pwa: {
+      icon: false,
+      icons: false,
+      //icon: {
+      //	fileName: 'favicon.png',
+      //},
+      //meta: {
+      //	charset: false,
+      //	viewport: false,
+      //	mobileApp: true,
+      //	mobileAppIOS: false,
+      //	appleStatusBarStyle: 'black',
+      //	favicon: true,
+      //	name: app_config.name,
+      //	author: app_config.author,
+      //	description: app_config.description,
+      //	theme_color: '#000000',
+      //	lang: app_config.lang,
+      //	ogType: 'website',
+      //	ogSiteName: app_config.name,
+      //	ogTitle: app_config.name,
+      //	ogDescription: app_config.description,
+      //	ogHost: app_config.host,
+      //	ogImage: true,
+      //	ogUrl: app_config.host,
+      //	twitterCard: 'summary',
+      //	twitterSite: app_config.host,
+      //	twitterCreator: app_config.autor,
+      //},
+      //manifest: {
+      //	name: app_config.name,
+      //	short_name: app_config.name,
+      //	display: 'standalone', // 'browser', 'fullscreen', 'standalone', 'minimal-ui'
+      //	description: app_config.description,
+      //	crossorigin: 'use-credentials',
+      //	background_color: '#ffffff',
+      //	theme_color: '#000000',
+      //	dir: 'ltr',
+      //	lang: app_config.lang,
+      //},
+      workbox: {
+        offline: true,
+        autoRegister: true,
+        offlineAnalytics: true,
+        enabled: !app_config.isDev,
+        autoRegister: !app_config.isDev,
+      },
+    },
+  };
+}
 
 function netlify() {
   const redirects = [];
