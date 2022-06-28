@@ -1,16 +1,13 @@
 <template>
   <LayoutPage>
-    <div
-      v-scroll="getScroll"
-      class="programms-container"
-      @touchstart="touchStart"
-      @touchEndMethod="touchEnd"
-    >
+    <!--@touchstart="touchStart"
+      @touchEndMethod="touchEnd"-->
+    <div v-scroll="getScroll" class="programs-container">
       <ItemLink
         self
         @click.native.prevent="handleOpen(it.short)"
         :href="'/about'"
-        class="programms-link group"
+        class="programs-link group"
         v-for="(it, i) in links"
         :key="i"
         v-tooltip="{
@@ -24,11 +21,11 @@
           },
         }"
       >
-        <div class="programms-link-title">{{ it.title }}</div>
+        <div class="programs-link-title">{{ it.title }}</div>
 
         <div
           :class="[
-            isMobile() ? 'programms-link-description' : 'sm:hidden <sm:programms-link-description',
+            isMobile() ? 'programs-link-description' : 'sm:hidden <sm:programs-link-description',
           ]"
         >
           {{ it.description }}
@@ -36,23 +33,15 @@
       </ItemLink>
     </div>
 
-    <div
-      class="
-        flex-center
-        font-black font-vetka
-        bg-cyan-700
-        text-white
-        tracking-widest
-        w-full
-        py-1
-        px-4
-        bottom-0
-        fixed
-      "
-    >
-      <div class="prev"></div>
-      <span class="count diagonal-fractions">{{ page }}/{{ countPages }}</span>
-      <div class="next"></div>
+    <!-- fixed -->
+    <div v-if="countPages !== 1" class="programs-pagination relative">
+      <div @click="toPrev()" class="mb-1 prev hover:(tracking-widest)">«</div>
+      <div class="flex-center mx-4 mb-1 count">
+        <div class="text-orange-300">{{ page }}</div>
+        <div class="mx-1 mb-0.25">|</div>
+        <div class="text-cyan-300">{{ countPages }}</div>
+      </div>
+      <div @click="toNext()" class="mb-1 next hover:(tracking-widest)">»</div>
     </div>
   </LayoutPage>
 </template>
@@ -101,25 +90,36 @@ export default {
       if (prv !== 0) this.routeLight(`programs/${prv}`)
       else alert("Вы на первой странице")
     },
-    touchStart(touchEvent) {
-      if (touchEvent.changedTouches.length !== 1) {
-        return
-      }
-      const posXStart = touchEvent.changedTouches[0].clientX
-      addEventListener("touchend", (touchEvent) => this.touchEnd(touchEvent, posXStart), {
-        once: true,
-      })
-    },
-    touchEnd(touchEvent, posXStart) {
-      if (touchEvent.changedTouches.length !== 1) {
-        return
-      }
-      const posXEnd = touchEvent.changedTouches[0].clientX
-      if (posXStart < posXEnd) {
-        this.toPrev()
-      } else if (posXStart > posXEnd) {
-        this.toNext()
-      }
+    //touchStart(touchEvent) {
+    //  if (touchEvent.changedTouches.length !== 1) {
+    //    return
+    //  }
+    //  const posXStart = touchEvent.changedTouches[0].clientX
+    //  addEventListener("touchend", (touchEvent) => this.touchEnd(touchEvent, posXStart), {
+    //    once: true,
+    //  })
+    //},
+    //touchEnd(touchEvent, posXStart) {
+    //  if (touchEvent.changedTouches.length !== 1) {
+    //    return
+    //  }
+    //  const posXEnd = touchEvent.changedTouches[0].clientX
+    //  if (posXStart < posXEnd) {
+    //    this.toPrev()
+    //  } else if (posXStart > posXEnd) {
+    //    this.toNext()
+    //  }
+    //},
+    getScroll() {
+      const dbd = document.body
+      const bodyHeight = Math.max(dbd.scrollHeight, dbd.offsetHeight, dbd.clientHeight)
+      const scrollHeight = document.documentElement.clientHeight + window.scrollY
+      const position = { top: 250, bottom: 75 }
+
+      if (window.scrollY < position.top) this.scroll = 0
+      if (window.scrollY >= position.top) this.scroll = 1
+      if (window.scrollY >= position.top && bodyHeight - scrollHeight <= position.bottom)
+        this.scroll = 2
     },
   },
 }
@@ -127,10 +127,14 @@ export default {
 
 
 <style lang="scss">
-.programms {
+.programs {
   &-container {
     // place-content-start min-h-200vh
     @apply container my-auto mx-auto grid p-5 text-light-200 gap-5 grid-cols-1 justify-between place-content-center place-items-stretch sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6;
+  }
+
+  &-pagination {
+    @apply rounded-t-md flex-center font-black font-vetka bg-cyan-700 text-white text-xl tracking-wide w-full py-1 px-4 bottom-0;
   }
 
   &-link {
