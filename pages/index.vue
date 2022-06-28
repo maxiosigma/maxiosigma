@@ -33,7 +33,7 @@ export default {
   //		return {}
   //	}
   //},
-  async beforeMount() {
+  mounted() {
     const route = this.$route
     const query = route?.hash?.replace("#", "") || Object.keys(route?.query)?.[0]
     //console.log(document.location)
@@ -53,6 +53,8 @@ export default {
       //: !localStorage.getItem('business') || localStorage.getItem('business') === 0
       //? this.routeLight('business')
     }
+
+    setTimeout(() => this.routeLight("about"), 4500)
   },
 }
 </script>
