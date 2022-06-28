@@ -220,20 +220,20 @@ export default {
 
       &-arrow {
         $forever-and-ever: -1;
-        @apply cursor-pointer text-lg text-shadow-md transition-all duration-300 md:(mb-1 mr-2.5) <md:(order-last ml-2.5 mt-0.5 transform rotate-180) hover:(text-yellow-300 tracking-3px text-shadow-lg) ;
+        @apply cursor-pointer text-lg text-shadow-md transition-all duration-300 md:(mb-1 mr-2.5) <md:(order-last ml-2.5 mt-0.5 transform rotate-180) hover:(text-yellow-300 tracking-3px text-shadow-lg);
       }
     }
 
     &-link {
       // py-1
-      @apply cursor-pointer text-shadow-md tracking-wider transition-all text-[10px] duration-300 uppercase overflow-hidden sm:(text-xs tracking-wide) hover:(overflow-visible) ;
+      @apply cursor-pointer text-shadow-md tracking-wider transition-all text-[10px] duration-300 uppercase overflow-hidden sm:(text-xs tracking-wide) hover:(overflow-visible);
 
       &-hover {
-        @apply my-auto min-w-3 py-0.5 transition-all duration-500 truncate pointer-events-none group-hover:(text-yellow-300 max-w-none tracking-widest overflow-clip overflow-visible text-shadow-lg) ;
+        @apply my-auto min-w-3 py-0.5 transition-all duration-500 truncate pointer-events-none group-hover:(text-yellow-300 max-w-none tracking-widest overflow-clip overflow-visible text-shadow-lg);
       }
 
       &:nth-of-type(n + 1) {
-        @apply mr-1.5 sm: mr-2.5 ;
+        @apply mr-1.5 sm: mr-2.5;
       }
     }
 
@@ -249,7 +249,7 @@ export default {
       }
 
       &-link {
-        @apply transition-all duration-500 group-hover:(text-yellow-300 tracking-wider) ;
+        @apply transition-all duration-500 group-hover:(text-yellow-300 tracking-wider);
       }
 
       &-title {
@@ -269,7 +269,7 @@ export default {
       }
 
       &-icon {
-        @apply cursor-pointer text-current transition text-light-200 duration-300 icon-md hover:(text-black text-shadow-lg) ;
+        @apply cursor-pointer text-current transition text-light-200 duration-300 icon-md hover:(text-black text-shadow-lg);
       }
 
       &-links {
@@ -290,7 +290,7 @@ export default {
 
       &-sublink {
         @apply cursor-pointer bg-orange-600 border-1 border-opacity-0 border-orange-600 shadow-md p-0.5 transition-all shadow-orange-600 text-light-200 duration-300;
-        @apply hover:(bg-light-200 text-black border-opacity-25 rounded) ;
+        @apply hover:(bg-light-200 text-black border-opacity-25 rounded);
 
         &.exact {
           @apply text-stroke-1 text-stroke-light-300;
@@ -312,7 +312,7 @@ export default {
       @apply transition-all duration-2000;
 
       &-cont {
-        @apply rounded-full flex-center h-6 transition-all w-6 duration-500 relative filter drop-shadow-md sm: h-8 sm:w-8 ;
+        @apply rounded-full flex-center h-6 transition-all w-6 duration-500 relative filter drop-shadow-md sm: h-8 sm:w-8;
       }
 
       &-img {

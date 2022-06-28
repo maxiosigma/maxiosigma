@@ -1,4 +1,5 @@
 export const state = () => ({
+  paginaton: this.isLight() ? 5 : 12,
   //scroll: 0,
   //scrollBlock: false,
   //mainMenu: 0,

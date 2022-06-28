@@ -1,6 +1,10 @@
 <template>
   <Layout>
-    <div class="programms-container"></div>
+    <div class="programms-container">
+      <!--<nuxt-link class="hidden" v-if="false" :to="link"></nuxt-link>-->
+
+      {{ countPages }}
+    </div>
   </Layout>
 </template>
 
@@ -12,11 +16,14 @@ export default {
     }
   },
   asyncData({ store }) {
-    const links = store.state.links
-    return { links }
+    const paginaton = store.state.pagination
+    const countLinks = store.state.links?.length
+    const countPages = Math.ceil(countLinks / paginaton)
+
+    return { countPages }
   },
   mounted() {
-    this.routeLight("programs/1")
+    //this.routeLight("programs/1")
   },
 }
 </script>
