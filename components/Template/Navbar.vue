@@ -159,7 +159,7 @@ export default {
       const dbd = document.body
       const bodyHeight = Math.max(dbd.scrollHeight, dbd.offsetHeight, dbd.clientHeight)
       const scrollHeight = document.documentElement.clientHeight + window.scrollY
-      const position = { top: 25, bottom: 75 }
+      const position = { top: 75, bottom: 75 }
 
       if (window.scrollY < position.top) this.scroll = 0
       if (window.scrollY >= position.top) this.scroll = 1

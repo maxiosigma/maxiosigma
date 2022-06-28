@@ -130,13 +130,14 @@ export default {
     @apply rounded-md flex-center flex-col h-auto bg-cyan-700 bg-opacity-80 bg-hero-rain-white-30 bg-0.25r min-h-20 py-4 px-6 transition duration-700 overflow-hidden md:hover:(bg-orange-700);
 
     &-title {
-      //<sm:uppercase md:(text-base max-w-1/4 py-4 absolute) lg:max-w-1/5 xl:max-w-1/8 2xl:max-w-1/10 pb-2 px-10
-      @apply flex-center font-semibold h-auto text-center tracking-widest opacity-100 transition-all text-[2vmin] duration-500 delay-200 overflow-hidden relative <sm:(uppercase text-sm mb-2) ;
+      //<sm:uppercase md:(text-base max-w-1/4 py-4 absolute) lg:max-w-1/5 xl:max-w-1/8 2xl:max-w-1/10 pb-2 px-10  text-[2vmin]
+      @apply flex-center font-semibold h-auto text-center text-base tracking-widest opacity-100 transition-all duration-500 delay-200 overflow-hidden relative <sm:(uppercase text-base mb-2) ;
       // @apply lg:group-hover:(h-0 opacity-0) ;
     }
 
     &-description {
-      @apply flex-center mt-3 text-center text-[1.5vmin] <sm:(text-xs text-center) ;
+      //text-[1.5vmin]
+      @apply flex-center mt-3 text-center text-sm <sm:(text-xs mt-1 text-center) ;
       // md:(h-0 opacity-0 text-[1.5vmin] text-left transition-all duration-500 delay-300 overflow-hidden)
       //@apply lg:group-hover:(h-auto opacity-100) ;
     }
