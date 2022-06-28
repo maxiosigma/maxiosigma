@@ -91,6 +91,14 @@ export default {
     handleOpen(short) {
       window.open("/#" + short, "_blank")
     },
+    toNext() {
+      if (this.page !== this.countPages) this.routeLight(`programs/${page + 1}`)
+      else alert("Вы на последней странице")
+    },
+    toPrev() {
+      if (this.page !== 1) this.routeLight(`programs/${page - 1}`)
+      else alert("Вы на первой странице")
+    },
     touchStart(touchEvent) {
       if (touchEvent.changedTouches.length !== 1) {
         // We only care if one finger is used
@@ -108,9 +116,11 @@ export default {
       }
       const posXEnd = touchEvent.changedTouches[0].clientX
       if (posXStart < posXEnd) {
-        console.log("prev")
+        //console.log("prev")
+        this.toPrev()
       } else if (posXStart > posXEnd) {
-        console.log("next")
+        //console.log("next")
+        this.toNext()
       }
     },
   },
