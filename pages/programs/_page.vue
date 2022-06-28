@@ -2,7 +2,7 @@
   <LayoutPage>
     <!--@touchstart="touchStart"
       @touchEndMethod="touchEnd"-->
-    <div v-scroll="getScroll" class="programs-container">
+    <div class="programs-container">
       <ItemLink
         self
         @click.native.prevent="handleOpen(it.short)"
@@ -110,17 +110,6 @@ export default {
     //    this.toNext()
     //  }
     //},
-    getScroll() {
-      const dbd = document.body
-      const bodyHeight = Math.max(dbd.scrollHeight, dbd.offsetHeight, dbd.clientHeight)
-      const scrollHeight = document.documentElement.clientHeight + window.scrollY
-      const position = { top: 250, bottom: 75 }
-
-      if (window.scrollY < position.top) this.scroll = 0
-      if (window.scrollY >= position.top) this.scroll = 1
-      if (window.scrollY >= position.top && bodyHeight - scrollHeight <= position.bottom)
-        this.scroll = 2
-    },
   },
 }
 </script>

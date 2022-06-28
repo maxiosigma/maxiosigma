@@ -1,5 +1,5 @@
 export const state = () => ({
-  //scroll: 0,
+  scroll: 0,
   //mainMenu: 0,
   timeout: 1000,
   //uploadCdn: false,
@@ -15,8 +15,6 @@ export const state = () => ({
 export const mutations = {
   uploadStrapi(state, { key, payload }) {
     state[key] = payload;
-
-    //console.log(state[key], payload);
   },
   setUploadCdn(state) {
     state.uploadCdn = true;
@@ -24,7 +22,7 @@ export const mutations = {
   addSlide(state, prop) {
     state.slides.push(prop);
   },
-  checkScroll(state, prop) {
+  setScroll(state, prop) {
     state.scroll = prop;
   },
   checkMenu(state, prop) {

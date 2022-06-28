@@ -158,10 +158,18 @@ export default {
       const scrollHeight = document.documentElement.clientHeight + window.scrollY
       const position = { top: 250, bottom: 75 }
 
-      if (window.scrollY < position.top) this.scroll = 0
-      if (window.scrollY >= position.top) this.scroll = 1
-      if (window.scrollY >= position.top && bodyHeight - scrollHeight <= position.bottom)
+      if (window.scrollY < position.top) {
+        this.scroll = 0
+        this.$store.commit("setScroll", this.scroll)
+      }
+      if (window.scrollY >= position.top) {
+        this.scroll = 1
+        this.$store.commit("setScroll", this.scroll)
+      }
+      if (window.scrollY >= position.top && bodyHeight - scrollHeight <= position.bottom) {
         this.scroll = 2
+        this.$store.commit("setScroll", this.scroll)
+      }
     },
     isLink(url) {
       return this.isRoute === url || this.isRoute === url + "/" || "/" + this.isRoute === url
