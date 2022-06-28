@@ -100,7 +100,6 @@ export default {
   },
   mounted() {
     this.setAnimation()
-
     setTimeout(() => this.routeLight("programs"), 17500)
     //setTimeout(() => this.setAnimation(), 500)
   },

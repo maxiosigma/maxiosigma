@@ -170,7 +170,7 @@ export default {
     @apply h-full object-cover object-center;
 
     &-cont {
-      @apply flex justify-center items-end;
+      @apply flex max-h-4/5 justify-center  items-end;
       @apply animate-duration-1000 animate-delay-500;
     }
   }

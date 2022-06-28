@@ -1,6 +1,35 @@
 <template>
   <LayoutPage>
-    <div class="programms-container"></div>
+    <div class="programms-container">
+      <ItemLink
+        self
+        @click.native.prevent="handleOpen(it.short)"
+        :href="'/about'"
+        class="programms-link group"
+        v-for="(it, i) in links"
+        :key="i"
+        v-tooltip="{
+          disabled: isMobile(),
+          content: `<div class='text-center'>${it.description}</div>`,
+          html: true,
+          distance: 20,
+          delay: {
+            show: 200,
+            hide: 150,
+          },
+        }"
+      >
+        <div class="programms-link-title">{{ it.title }}</div>
+
+        <div
+          :class="[
+            isMobile() ? 'programms-link-description' : 'sm:hidden <sm:programms-link-description',
+          ]"
+        >
+          {{ it.description }}
+        </div>
+      </ItemLink>
+    </div>
   </LayoutPage>
 </template>
 
@@ -11,8 +40,38 @@ export default {
       title: "Программы",
     }
   },
+  asyncData({ store, route }) {
+    console.log(route)
+
+    const links = store.state.reffers
+      .reduce((sum, it) => {
+        if (!!it?.partnership && !!it?.title && !!it?.description && !!it?.short)
+          sum.push({ title: it.title, description: it.description, short: it.short, top: it.top })
+        return sum
+      }, [])
+      .sort((a, b) => (a.top < b.top ? 1 : -1))
+
+    return { links }
+  },
+  //data() {
+  //  return {
+  //    links: this.$store.state.reffers
+  //      .reduce((sum, it) => {
+  //        if (!!it?.partnership && !!it?.title && !!it?.description && !!it?.short)
+  //          sum.push({ title: it.title, description: it.description, short: it.short, top: it.top })
+  //        return sum
+  //      }, [])
+  //      .sort((a, b) => (a.top < b.top ? 1 : -1)),
+  //  }
+  //},
   mounted() {
-    this.RouteLight("/programs/1")
+    //console.log(this.links);
+    //console.log(this.isMobile())
+  },
+  methods: {
+    handleOpen(short) {
+      window.open("/#" + short, "_blank")
+    },
   },
 }
 </script>
