@@ -1,5 +1,8 @@
 <template>
-  <div v-scroll="getScroll" :class="['nav-bar', 'relative']">
+  <div
+    v-scroll="getScroll"
+    :class="['nav-bar', { relative: scroll == 0 }, { '!fixed top-0': scroll == 1 || scroll == 2 }]"
+  >
     <div
       :class="[
         'nav-bar-cont',
@@ -156,20 +159,12 @@ export default {
       const dbd = document.body
       const bodyHeight = Math.max(dbd.scrollHeight, dbd.offsetHeight, dbd.clientHeight)
       const scrollHeight = document.documentElement.clientHeight + window.scrollY
-      const position = { top: 250, bottom: 75 }
+      const position = { top: 25, bottom: 75 }
 
-      if (window.scrollY < position.top) {
-        this.scroll = 0
-        this.$store.commit("setScroll", this.scroll)
-      }
-      if (window.scrollY >= position.top) {
-        this.scroll = 1
-        this.$store.commit("setScroll", this.scroll)
-      }
-      if (window.scrollY >= position.top && bodyHeight - scrollHeight <= position.bottom) {
+      if (window.scrollY < position.top) this.scroll = 0
+      if (window.scrollY >= position.top) this.scroll = 1
+      if (window.scrollY >= position.top && bodyHeight - scrollHeight <= position.bottom)
         this.scroll = 2
-        this.$store.commit("setScroll", this.scroll)
-      }
     },
     isLink(url) {
       return this.isRoute === url || this.isRoute === url + "/" || "/" + this.isRoute === url
@@ -205,8 +200,9 @@ export default {
       @apply bg-repeat flex-center bg-cyan-700 bg-hero-wiggle-white-10 bg-2r mb-1.5 min-h-12 min-h-10 w-full opacity-100 px-4 transition-opacity duration-500 sm:h-16;
 
       &.cont-scroll {
+        //fixed
         animation: OPeS 1s;
-        @apply min-h-none h-6 mb-0 opacity-85 py-2 transition-all top-0 duration-300 delay-250 fixed sm:h-10;
+        @apply min-h-none h-6 mb-0 opacity-85 py-2 transition-all top-0 duration-300 delay-250  sm:h-10;
 
         &.bottom {
           @apply h-auto min-h-7vh opacity-100 transition-all duration-300 delay-250 #{!important};

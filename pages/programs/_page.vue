@@ -33,8 +33,7 @@
       </ItemLink>
     </div>
 
-    <!-- fixed -->
-    <div v-if="countPages !== 1" class="programs-pagination relative">
+    <div v-if="countPages !== 1" :class="['programs-pagination']">
       <div @click="toPrev()" class="mb-1 prev hover:(tracking-widest)">«</div>
       <div class="flex-center mx-4 mb-1 count">
         <div class="text-orange-300">{{ page }}</div>

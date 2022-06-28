@@ -1,5 +1,6 @@
 export const state = () => ({
-  scroll: 0,
+  //scroll: 0,
+  //scrollBlock: false,
   //mainMenu: 0,
   timeout: 1000,
   //uploadCdn: false,
@@ -23,7 +24,9 @@ export const mutations = {
     state.slides.push(prop);
   },
   setScroll(state, prop) {
-    state.scroll = prop;
+    state.scroll = state.scrollBlock ? state.scroll : prop;
+    state.scrollBlock = true;
+    setTimeout((state.scrollBlock = false), 1250);
   },
   checkMenu(state, prop) {
     if (prop) state.mainMenu = prop;
