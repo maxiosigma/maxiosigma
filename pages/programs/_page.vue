@@ -41,7 +41,7 @@ export default {
     }
   },
   asyncData({ store, app, params }) {
-    const page = 3 || params.page
+    const page = 1 || params.page
     const paginaton = app.router.app.isLight() ? 3 : 14
 
     const reffers = store.state.reffers
@@ -55,17 +55,10 @@ export default {
     const countLinks = reffers.length
     const countPages = Math.ceil(countLinks / paginaton)
 
-    const from = page !== 1 ? 0 : (page - 1) * paginaton + 1
-    const to = page !== countPages ? countLinks : page * paginaton
+    const from = page === 1 ? 0 : (page - 1) * paginaton + 1
+    const to = page === countPages ? countLinks : page * paginaton
 
-    //if (page !== countPages) {
-    //} else {
-    //  //count % paginaton
-    //}
-
-    console.log(from, to, countPages)
-
-    const links = reffers
+    const links = reffers.filter((it, i) => i >= from && i <= to)
 
     return { links, countPages, page }
   },
