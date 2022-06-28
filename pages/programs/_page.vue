@@ -93,12 +93,12 @@ export default {
     },
     toNext() {
       const nxt = this.page - 1 + 2
-      if (this.page !== this.countPages) this.routeLight(`programs/${nxt}`)
+      if (nxt !== this.countPages + 1) this.routeLight(`programs/${nxt}`)
       else alert("Вы на последней странице")
     },
     toPrev() {
       const prv = this.page - 2 + 1
-      if (this.page !== 1) this.routeLight(`programs/${prv}`)
+      if (prv !== 0) this.routeLight(`programs/${prv}`)
       else alert("Вы на первой странице")
     },
     touchStart(touchEvent) {
