@@ -1,15 +1,15 @@
 //import gql from 'graphql-tag'
 
 export const state = () => ({
-	developerWorks: developerWorks(),
-	designerWorks: designerWorks(),
-	portfolio: portfolio(),
-	links: links(),
-	menu: menu(),
-})
+  developerWorks: developerWorks(),
+  designerWorks: designerWorks(),
+  portfolio: portfolio(),
+  links: links(),
+  menu: menu(),
+});
 
 function designerWorks(page = 1, limit = 200) {
-	return `
+  return `
 		query designerWork {
 			designerWorks(pagination: { page: ${page}, limit: ${limit} }) {
 				data {
@@ -59,11 +59,11 @@ function designerWorks(page = 1, limit = 200) {
 				}
 			}
 		}
-	`
+	`;
 }
 
 function developerWorks(page = 1, limit = 200) {
-	return `
+  return `
 		query developerWorks {
 			developerWorks(pagination: { page: ${page}, limit: ${limit} }) {
 				data {
@@ -113,19 +113,18 @@ function developerWorks(page = 1, limit = 200) {
 				}
 			}
 		}
-	`
+	`;
 }
 
-function links() {
-	return `
+function links(page = 1, limit = 200) {
+  return `
 		query {
-			links(pagination: { limit: 2000 }) {
+			links(pagination: { page: ${page}, limit: ${limit} }) {
 				data {
 					attributes {
 						title
 						short
 						href
-						name
 						description
 						partnership
 						alt
@@ -135,11 +134,11 @@ function links() {
 				}
 			}
 		}
-	`
+	`;
 }
 
 function portfolio() {
-	return `
+  return `
 		query {
 			page (id: 1) {
 				data{
@@ -161,18 +160,18 @@ function portfolio() {
 				}
 			}
 		}
-	`
+	`;
 }
 
 function menu() {
-	return `
+  return `
 		query {
 			menusMenus{
 				data {
 					attributes {
 						title
 						slug
-						items(pagination: { limit: 200}) {
+						items(pagination: { limit: 50}) {
 							data {
 								attributes {
 									title
@@ -222,5 +221,5 @@ function menu() {
 				}
 			}
 		}
-	`
+	`;
 }

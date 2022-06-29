@@ -19,7 +19,9 @@
         :key="i"
         v-tooltip="
           isMobile()
-            ? {}
+            ? {
+                disabled: true,
+              }
             : {
                 disabled: isMobile(),
                 content: `<div class='text-center'>${it.description}</div>`,
