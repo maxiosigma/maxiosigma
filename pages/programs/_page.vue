@@ -36,7 +36,7 @@
     <div v-if="countPages !== 1" :class="['programs-pagination']">
       <div
         @click="toPrev()"
-        :class="['cursor-pointer mb-1 prev hover:(text-orange-500)', { hidden: page !== 1 }]"
+        :class="['cursor-pointer mb-1 prev hover:(text-orange-500)', { hidden: page == 1 }]"
       >
         «
       </div>
@@ -49,7 +49,7 @@
         @click="toNext()"
         :class="[
           'cursor-pointer mb-1 next hover:(text-orange-500)',
-          { hidden: page !== countPages },
+          { hidden: page == countPages },
         ]"
       >
         »
