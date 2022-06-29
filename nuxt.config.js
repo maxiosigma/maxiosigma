@@ -592,13 +592,13 @@ function pwa() {
       //	dir: 'ltr',
       //	lang: app_config.lang,
       //},
-      workbox: {
-        offline: true,
-        autoRegister: true,
-        offlineAnalytics: true,
-        enabled: !app_config.isDev,
-        autoRegister: !app_config.isDev,
-      },
+      //workbox: {
+      //  offline: true,
+      //  autoRegister: true,
+      //  offlineAnalytics: true,
+      //  enabled: !app_config.isDev,
+      //  autoRegister: !app_config.isDev,
+      //},
     },
   };
 }
