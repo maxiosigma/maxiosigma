@@ -1,7 +1,7 @@
 <template>
   <div
     v-scroll="getScroll"
-    :class="['nav-bar', { relative: scroll == 0 }, { '!fixed top-0': scroll == 1 || scroll == 2 }]"
+    :class="['nav-bar', { '!min-h-none !h-auto': scroll == 1 || scroll == 2 }]"
   >
     <div
       :class="[
@@ -10,6 +10,21 @@
         { bottom: scroll == 2 },
       ]"
     >
+      <client-only>
+        <!--<div class="nav-indicator">-->
+        <vue-scroll-indicator
+          height="5px"
+          :class="[
+            'nav-bar-indicator',
+            { '!opacity-0': scroll == 0 },
+            { '!opacity-100': scroll == 1 || scroll == 2 },
+          ]"
+          color="#00ffe6"
+          background="#0e7490"
+        />
+        <!--</div>-->
+      </client-only>
+
       <div class="nav-bar-cont-main justify-around sm:justify-between">
         <div class="nav-bar-menu relative">
           <div class="flex-center nav-bar-logo group">
@@ -159,7 +174,7 @@ export default {
       const dbd = document.body
       const bodyHeight = Math.max(dbd.scrollHeight, dbd.offsetHeight, dbd.clientHeight)
       const scrollHeight = document.documentElement.clientHeight + window.scrollY
-      const position = { top: 75, bottom: 75 }
+      const position = { top: 150, bottom: 150 }
 
       if (window.scrollY < position.top) this.scroll = 0
       if (window.scrollY >= position.top) this.scroll = 1
@@ -192,21 +207,35 @@ export default {
 </script>
 
 <style lang="scss">
+.v-scroll--indicator-wrapper {
+  @apply opacity-0 transition-opacity duration-500 delay-1200;
+}
 .nav {
   &-bar {
-    @apply flex-center flex-col text-white w-full py-0 transition-all z-9999 duration-700;
+    @apply flex-center flex-col text-white w-full py-0 transition-all duration-700;
 
     &-cont {
       @apply bg-repeat flex-center bg-cyan-700 bg-hero-wiggle-white-10 bg-2r mb-1.5 min-h-12 min-h-10 w-full opacity-100 px-4 transition-opacity duration-500 sm:h-16;
 
       &.cont-scroll {
-        //fixed
-        animation: OPeS 1s;
-        @apply min-h-none h-6 mb-0 opacity-85 py-2 transition-all top-0 duration-300 delay-250  sm:h-10;
+        //animation: OPeS 2s;
+        @apply min-h-none h-6 mb-0 opacity-85 py-2 transition-all top-0 duration-300 delay-250 sm:h-10;
 
         &.bottom {
           @apply h-auto min-h-7vh opacity-100 transition-all duration-300 delay-250 #{!important};
         }
+      }
+
+      &-indicator {
+        //animation: OPeS 2s;
+        //@apply bg-cyan-500;
+
+        //opacity-100
+        @apply opacity-0 transition-opacity duration-1000 delay-500 #{!important};
+
+        //& > div {
+        //  @apply bg-cyan-500;
+        //}
       }
 
       &-main {
@@ -220,20 +249,20 @@ export default {
 
       &-arrow {
         $forever-and-ever: -1;
-        @apply cursor-pointer text-lg text-shadow-md transition-all duration-300 md:(mb-1 mr-2.5) <md:(order-last ml-2.5 mt-0.5 transform rotate-180) hover:(text-yellow-300 tracking-3px text-shadow-lg);
+        @apply cursor-pointer text-lg text-shadow-md transition-all duration-300 md:(mb-1 mr-2.5) <md:(order-last ml-2.5 mt-0.5 transform rotate-180) hover:(text-yellow-300 tracking-3px text-shadow-lg) ;
       }
     }
 
     &-link {
       // py-1
-      @apply cursor-pointer text-shadow-md tracking-wider transition-all text-[10px] duration-300 uppercase overflow-hidden sm:(text-xs tracking-wide) hover:(overflow-visible);
+      @apply cursor-pointer text-shadow-md tracking-wider transition-all text-[10px] duration-300 uppercase overflow-hidden sm:(text-xs tracking-wide) hover:(overflow-visible) ;
 
       &-hover {
-        @apply my-auto min-w-3 py-0.5 transition-all duration-500 truncate pointer-events-none group-hover:(text-yellow-300 max-w-none tracking-widest overflow-clip overflow-visible text-shadow-lg);
+        @apply my-auto min-w-3 py-0.5 transition-all duration-500 truncate pointer-events-none group-hover:(text-yellow-300 max-w-none tracking-widest overflow-clip overflow-visible text-shadow-lg) ;
       }
 
       &:nth-of-type(n + 1) {
-        @apply mr-1.5 sm: mr-2.5;
+        @apply mr-1.5 sm: mr-2.5 ;
       }
     }
 
@@ -249,7 +278,7 @@ export default {
       }
 
       &-link {
-        @apply transition-all duration-500 group-hover:(text-yellow-300 tracking-wider);
+        @apply transition-all duration-500 group-hover:(text-yellow-300 tracking-wider) ;
       }
 
       &-title {
@@ -269,7 +298,7 @@ export default {
       }
 
       &-icon {
-        @apply cursor-pointer text-current transition text-light-200 duration-300 icon-md hover:(text-black text-shadow-lg);
+        @apply cursor-pointer text-current transition text-light-200 duration-300 icon-md hover:(text-black text-shadow-lg) ;
       }
 
       &-links {
@@ -290,7 +319,7 @@ export default {
 
       &-sublink {
         @apply cursor-pointer bg-orange-600 border-1 border-opacity-0 border-orange-600 shadow-md p-0.5 transition-all shadow-orange-600 text-light-200 duration-300;
-        @apply hover:(bg-light-200 text-black border-opacity-25 rounded);
+        @apply hover:(bg-light-200 text-black border-opacity-25 rounded) ;
 
         &.exact {
           @apply text-stroke-1 text-stroke-light-300;
@@ -312,7 +341,7 @@ export default {
       @apply transition-all duration-2000;
 
       &-cont {
-        @apply rounded-full flex-center h-6 transition-all w-6 duration-500 relative filter drop-shadow-md sm: h-8 sm:w-8;
+        @apply rounded-full flex-center h-6 transition-all w-6 duration-500 relative filter drop-shadow-md sm: h-8 sm:w-8 ;
       }
 
       &-img {

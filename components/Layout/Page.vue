@@ -13,6 +13,7 @@
 		</template>-->
 
     <template v-slot:navbar>
+      <div class="nav-pre-bar"><div class="nav-pre-cont"></div></div>
       <TemplateNavbar
         :class="[preload ? 'preload-hide-nav-bar' : active ? '' : 'preload-show-nav-bar']"
         :items="navBarItems"
@@ -77,11 +78,21 @@ export default {
 }
 .nav {
   @apply w-full z-20 relative;
+
+  &-bar {
+    @apply min-h-8vh top-0 z-20 fixed;
+  }
+
+  &-pre {
+    &-bar {
+      @apply min-w-screen min-h-8vh z-0 relative;
+    }
+    &-cont {
+      @apply min-w-screen min-h-64px z-0 relative;
+    }
+  }
 }
-.navbar,
-.nav-bar {
-  @apply z-20 relative;
-}
+
 .footer {
   @apply flex-grow-0 flex-shrink-0 z-10 relative;
 }

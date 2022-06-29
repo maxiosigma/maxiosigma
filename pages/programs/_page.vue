@@ -7,7 +7,14 @@
         self
         @click.native.prevent="handleOpen(it.short)"
         :href="'/about'"
-        class="programs-link group"
+        :class="[
+          'programs-link group',
+          stringRandom([
+            'rounded-tl-lg rounded-br-lg',
+            'rounded-br-lg rounded-tl-lg',
+            'rounded-lg',
+          ]),
+        ]"
         v-for="(it, i) in links"
         :key="i"
         v-tooltip="{
@@ -34,25 +41,27 @@
     </div>
 
     <div v-if="countPages !== 1" :class="['programs-pagination']">
-      <div
-        @click="toPrev()"
-        :class="['cursor-pointer mb-1 prev hover:(text-orange-500)', { hidden: page == 1 }]"
-      >
-        «
-      </div>
-      <div class="flex-center mx-4 mb-0.5 pointer-events-none count">
-        <div class="text-orange-300">{{ page }}</div>
-        <div class="mx-1 mb-0.5">|</div>
-        <div class="text-cyan-300">{{ countPages }}</div>
-      </div>
-      <div
-        @click="toNext()"
-        :class="[
-          'cursor-pointer mb-1 next hover:(text-orange-500)',
-          { hidden: page == countPages },
-        ]"
-      >
-        »
+      <div :class="['programs-pagination-container']">
+        <div
+          @click="toPrev()"
+          :class="['cursor-pointer mb-1 prev hover:(text-orange-500)', { hidden: page == 1 }]"
+        >
+          «
+        </div>
+        <div class="flex-center mx-5 mb-0.5 pointer-events-none count">
+          <div class="text-orange-300">{{ page }}</div>
+          <div class="mx-2 mb-0.5">|</div>
+          <div class="text-cyan-300">{{ countPages }}</div>
+        </div>
+        <div
+          @click="toNext()"
+          :class="[
+            'cursor-pointer mb-1 next hover:(text-orange-500)',
+            { hidden: page == countPages },
+          ]"
+        >
+          »
+        </div>
       </div>
     </div>
   </LayoutPage>
@@ -128,16 +137,20 @@ export default {
 .programs {
   &-container {
     // place-content-start min-h-200vh
-    @apply container my-auto mx-auto grid p-5 text-light-200 gap-5 grid-cols-1 justify-between place-content-center place-items-stretch sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6;
+    @apply container mx-auto mt-auto h-200vh grid p-5 text-light-200 gap-5 grid-cols-1 justify-between place-content-center place-items-stretch sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6;
   }
 
   &-pagination {
-    @apply rounded-t-md flex-center font-black font-vetka bg-cyan-700 text-white text-xl tracking-wide w-full py-1 px-4 bottom-0;
+    @apply mx-auto mb-auto mt-4;
+
+    &-container {
+      @apply rounded-md flex-center font-black font-vetka bg-cyan-700 text-white text-xl mb-4 tracking-wide px-4 pt-1 pb-2;
+    }
   }
 
   &-link {
     // sm: max-w-1/3 md:max-w-1/4 lg:max-w-1/5 xl:max-w-1/8 2xl:max-w-1/10
-    @apply rounded-md flex-center flex-col h-auto bg-cyan-700 bg-opacity-80 bg-hero-rain-white-30 bg-0.25r min-h-20 py-4 px-6 transition duration-700 overflow-hidden md:hover:(bg-orange-700);
+    @apply flex-center flex-col h-auto bg-cyan-700 bg-opacity-80 bg-hero-rain-white-30 bg-0.25r min-h-20 py-4 px-6 transition duration-700 overflow-hidden md:hover:(bg-orange-700);
 
     &-title {
       //<sm:uppercase md:(text-base max-w-1/4 py-4 absolute) lg:max-w-1/5 xl:max-w-1/8 2xl:max-w-1/10 pb-2 px-10  text-[2vmin]
