@@ -47,7 +47,10 @@
       </div>
       <div
         @click="toNext()"
-        :class="['cursor-pointer mb-1 next hover:(text-orange-500)', { hidden: page !== 1 }]"
+        :class="[
+          'cursor-pointer mb-1 next hover:(text-orange-500)',
+          { hidden: page !== countPages },
+        ]"
       >
         »
       </div>
@@ -59,7 +62,8 @@
 export default {
   head() {
     return {
-      title: "Программы-" + page,
+      title: "Программы",
+      description: "Программы-" + this.page,
     }
   },
   async asyncData({ store, app, params }) {
