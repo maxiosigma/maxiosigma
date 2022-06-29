@@ -13,7 +13,7 @@
       <client-only>
         <!--<div class="nav-indicator">-->
         <vue-scroll-indicator
-          :height="isMobile() ? '2px' : '5px'"
+          :height="isMobile() ? '3px' : '5px'"
           :class="[
             'nav-bar-indicator',
             { '!opacity-0': scroll == 0 },

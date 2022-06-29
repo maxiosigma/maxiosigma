@@ -17,16 +17,20 @@
         ]"
         v-for="(it, i) in links"
         :key="i"
-        v-tooltip="{
-          disabled: isMobile(),
-          content: `<div class='text-center'>${it.description}</div>`,
-          html: true,
-          distance: 20,
-          delay: {
-            show: 200,
-            hide: 150,
-          },
-        }"
+        v-tooltip="
+          isMobile()
+            ? {}
+            : {
+                disabled: isMobile(),
+                content: `<div class='text-center'>${it.description}</div>`,
+                html: true,
+                distance: 20,
+                delay: {
+                  show: 200,
+                  hide: 150,
+                },
+              }
+        "
       >
         <div class="programs-link-title">{{ it.title }}</div>
 
@@ -71,8 +75,8 @@
 export default {
   head() {
     return {
-      title: "Программы",
-      description: "Программы-" + this.page,
+      title: "Предложения",
+      description: "Предложения-" + this.page,
     }
   },
   async asyncData({ store, app, params }) {

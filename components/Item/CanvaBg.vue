@@ -1,37 +1,35 @@
 <template>
-  <client-only>
-    <kinesis-container
-      :active="kinesis.active"
-      :perspective="2000"
-      class="flex-center inset-0 z-0 fixed"
+  <kinesis-container
+    :active="kinesis.active"
+    :perspective="2000"
+    class="flex-center inset-0 z-0 fixed"
+  >
+    <div
+      class="animate-fade-in animate-delay-1800 animate-duration-1500 absolute animated"
+      v-for="(it, i) in kinesis.count"
+      :key="i"
+      v-anime="{
+        translateX:
+          (Math.cos((i * kinesis.count) / (Math.PI / 180)) * Math.max(size.w, size.h)) /
+          intRandom(1.5, 4),
+        translateY:
+          (Math.sin((i * kinesis.count) / (Math.PI / 180)) * Math.max(size.w, size.h)) /
+          intRandom(2.5, 4),
+        rotate: intRandom(0, 720),
+        opacity: (intRandom(40, 60) + i * 0.1) / 100,
+        duration: kinesis.duration,
+        delay: kinesis.delay + i * kinesis.step,
+      }"
     >
-      <div
-        class="animate-fade-in animate-delay-1800 animate-duration-1500 absolute animated"
-        v-for="(it, i) in kinesis.count"
-        :key="i"
-        v-anime="{
-          translateX:
-            (Math.cos((i * kinesis.count) / (Math.PI / 180)) * Math.max(size.w, size.h)) /
-            intRandom(1.5, 4),
-          translateY:
-            (Math.sin((i * kinesis.count) / (Math.PI / 180)) * Math.max(size.w, size.h)) /
-            intRandom(2.5, 4),
-          rotate: intRandom(0, 720),
-          opacity: (intRandom(40, 60) + i * 0.1) / 100,
-          duration: kinesis.duration,
-          delay: kinesis.delay + i * kinesis.step,
-        }"
+      <!-- 'rotate' -->
+      <kinesis-element
+        :strength="intRandom(50, 75)"
+        :type="stringRandom(['depth', 'depth_inv', 'translate'])"
       >
-        <!-- 'rotate' -->
-        <kinesis-element
-          :strength="intRandom(50, 75)"
-          :type="stringRandom(['depth', 'depth_inv', 'translate'])"
-        >
-          <canvas class="flex-center" :ref="'canva_' + i"></canvas>
-        </kinesis-element>
-      </div>
-    </kinesis-container>
-  </client-only>
+        <canvas class="flex-center" :ref="'canva_' + i"></canvas>
+      </kinesis-element>
+    </div>
+  </kinesis-container>
 </template>
 
 <script>
