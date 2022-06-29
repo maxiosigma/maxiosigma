@@ -13,7 +13,7 @@
       <client-only>
         <!--<div class="nav-indicator">-->
         <vue-scroll-indicator
-          height="5px"
+          :height="isMobile() ? '2px' : '5px'"
           :class="[
             'nav-bar-indicator',
             { '!opacity-0': scroll == 0 },
@@ -208,7 +208,7 @@ export default {
 
 <style lang="scss">
 .v-scroll--indicator-wrapper {
-  @apply opacity-0 transition-opacity duration-500 delay-1200;
+  @apply opacity-0 transition-opacity duration-1500 delay-50;
 }
 .nav {
   &-bar {
@@ -227,15 +227,6 @@ export default {
       }
 
       &-indicator {
-        //animation: OPeS 2s;
-        //@apply bg-cyan-500;
-
-        //opacity-100
-        @apply opacity-0 transition-opacity duration-1000 delay-500 #{!important};
-
-        //& > div {
-        //  @apply bg-cyan-500;
-        //}
       }
 
       &-main {

@@ -92,6 +92,7 @@ export default {
     return { links, countPages, page }
   },
   mounted() {
+    if (this.page > this.countPages) this.routeLight("programs/1")
     //console.log(this.links, this.countPages, this.page)
   },
   methods: {
@@ -136,8 +137,8 @@ export default {
 <style lang="scss">
 .programs {
   &-container {
-    // place-content-start min-h-200vh
-    @apply container mx-auto mt-auto h-200vh grid p-5 text-light-200 gap-5 grid-cols-1 justify-between place-content-center place-items-stretch sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6;
+    // place-content-start min-h-200vh h-200vh
+    @apply container mx-auto mt-auto grid p-5 text-light-200 gap-5 grid-cols-1 justify-between place-content-center place-items-stretch sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6;
   }
 
   &-pagination {
