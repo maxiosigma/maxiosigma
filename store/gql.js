@@ -116,19 +116,23 @@ function developerWorks(page = 1, limit = 200) {
 	`;
 }
 
-function links(page = 1, limit = 200) {
+// page: ${page},
+function links(page = 1, limit = 2000) {
   return `
 		query {
-			links(pagination: { page: ${page}, limit: ${limit} }) {
+			links(pagination: { limit: 200 }, sort: "top:DESC") {
 				data {
-					attributes {
-						description
-						partnership
-						updatedAt
+					attributes{
 						title
 						short
 						href
+						tag {
+							title
+						}
+						description
+						partnership
 						alt
+						updatedAt
 						top
 					}
 				}

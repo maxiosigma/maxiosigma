@@ -157,7 +157,7 @@ export default {
 
   &-link {
     // sm: max-w-1/3 md:max-w-1/4 lg:max-w-1/5 xl:max-w-1/8 2xl:max-w-1/10
-    @apply flex-center flex-col h-auto bg-cyan-700 bg-opacity-80 bg-hero-rain-white-30 bg-0.25r min-h-20 py-4 px-6 transition duration-700 overflow-hidden md:hover:(bg-orange-700);
+    @apply flex-center flex-col h-auto bg-cyan-700 bg-opacity-50 min-h-20 py-4 px-6 transition duration-700 overflow-hidden sm:bg-hero-rain-white-30 sm:bg-0.25r md:hover:(bg-orange-700 bg-opacity-100) ;
 
     &-title {
       //<sm:uppercase md:(text-base max-w-1/4 py-4 absolute) lg:max-w-1/5 xl:max-w-1/8 2xl:max-w-1/10 pb-2 px-10  text-[2vmin]

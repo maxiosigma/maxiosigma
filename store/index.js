@@ -90,23 +90,20 @@ export const actions = {
 
     ctx.commit("uploadStrapi", { key: "reffers", payload: reffers });
 
-    const links = reffers
-      .reduce((sum, it) => {
-        if (
-          !!it?.partnership &&
-          !!it?.title &&
-          !!it?.description &&
-          !!it?.short
-        )
-          sum.push({
-            title: it?.title,
-            description: it?.description,
-            short: it?.short,
-            top: it?.top,
-          });
-        return sum;
-      }, [])
-      .sort((hot, normal) => (hot.top < normal.top ? 1 : -1));
+    const links = reffers?.reduce((sum, it) => {
+      if (!!it?.partnership && !!it?.title && !!it?.description && !!it?.short)
+        sum.push({
+          title: it?.title,
+          description: it?.description,
+          //tags: it.tag.
+          short: it?.short,
+          top: it?.top,
+        });
+
+      //console.log(it?.tag);
+      return sum;
+    }, []);
+    //.sort((hot, normal) => (hot.top < normal.top ? 1 : -1));
 
     ctx.commit("uploadStrapi", { key: "links", payload: links });
 
