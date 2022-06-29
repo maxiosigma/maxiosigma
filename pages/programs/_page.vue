@@ -49,7 +49,7 @@
 export default {
   head() {
     return {
-      title: "Программы",
+      title: "Программы-" + page,
     }
   },
   async asyncData({ store, app, params }) {
@@ -127,13 +127,13 @@ export default {
 
     &-title {
       //<sm:uppercase md:(text-base max-w-1/4 py-4 absolute) lg:max-w-1/5 xl:max-w-1/8 2xl:max-w-1/10 pb-2 px-10  text-[2vmin]
-      @apply flex-center font-semibold h-auto text-center text-base tracking-widest opacity-100 transition-all duration-500 delay-200 overflow-hidden relative <sm:(uppercase text-base mb-2);
+      @apply flex-center font-semibold h-auto text-center text-base tracking-widest opacity-100 transition-all duration-500 delay-200 overflow-hidden relative <sm:(uppercase text-base mb-2) ;
       // @apply lg:group-hover:(h-0 opacity-0) ;
     }
 
     &-description {
       //text-[1.5vmin]
-      @apply flex-center mt-3 text-center text-sm <sm:(text-xs mt-1 text-center);
+      @apply flex-center mt-3 text-center text-sm <sm:(text-xs mt-1 text-center) ;
       // md:(h-0 opacity-0 text-[1.5vmin] text-left transition-all duration-500 delay-300 overflow-hidden)
       //@apply lg:group-hover:(h-auto opacity-100) ;
     }
