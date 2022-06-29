@@ -99,10 +99,10 @@ export const actions = {
           !!it?.short
         )
           sum.push({
-            title: it.title,
-            description: it.description,
-            short: it.short,
-            top: it.top,
+            title: it?.title,
+            description: it?.description,
+            short: it?.short,
+            top: it?.top,
           });
         return sum;
       }, [])

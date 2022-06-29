@@ -122,13 +122,13 @@ function links(page = 1, limit = 200) {
 			links(pagination: { page: ${page}, limit: ${limit} }) {
 				data {
 					attributes {
+						description
+						partnership
+						updatedAt
 						title
 						short
 						href
-						description
-						partnership
 						alt
-						updatedAt
 						top
 					}
 				}
