@@ -106,7 +106,7 @@ export const actions = {
           });
         return sum;
       }, [])
-      .sort((a, b) => (a.top < b.top ? 1 : -1));
+      .sort((hot, normal) => (hot.top < normal.top ? 1 : -1));
 
     ctx.commit("uploadStrapi", { key: "links", payload: links });
 
