@@ -34,13 +34,23 @@
     </div>
 
     <div v-if="countPages !== 1" :class="['programs-pagination']">
-      <div @click="toPrev()" class="cursor-pointer mb-1 prev hover:(text-orange-500)">«</div>
+      <div
+        @click="toPrev()"
+        :class="['cursor-pointer mb-1 prev hover:(text-orange-500)', { hidden: page !== 1 }]"
+      >
+        «
+      </div>
       <div class="flex-center mx-4 mb-0.5 pointer-events-none count">
         <div class="text-orange-300">{{ page }}</div>
         <div class="mx-1 mb-0.5">|</div>
         <div class="text-cyan-300">{{ countPages }}</div>
       </div>
-      <div @click="toNext()" class="cursor-pointer mb-1 next hover:(text-orange-500)">»</div>
+      <div
+        @click="toNext()"
+        :class="['cursor-pointer mb-1 next hover:(text-orange-500)', { hidden: page !== 1 }]"
+      >
+        »
+      </div>
     </div>
   </LayoutPage>
 </template>
