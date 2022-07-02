@@ -35,19 +35,19 @@ export default {
   }
 
   &-cicle {
-    @apply border-solid border-6 rounded-1/2 opacity-90 absolute box-border elevation-24;
+    @apply border-solid border-5 rounded-1/2 absolute box-border elevation-24;
     animation: preload-sphere 5.88235294117647s cubic-bezier(0, 0.2, 0.8, 1) infinite;
 
     &:nth-child(1) {
-      @apply border-cyan-400 border-opacity-30 animate-delay-0;
+      @apply border-cyan-400 border-opacity-25 animate-delay-0;
     }
 
     &:nth-child(2) {
-      @apply border-fuchsia-400 border-opacity-30 animate-delay-[-2.941176470588235s];
+      @apply border-fuchsia-400 border-opacity-25 animate-delay-[-2.941176470588235s];
     }
 
     &:nth-child(3) {
-      @apply border-green-400 border-opacity-30 animate-delay-[-4.041176470588235s];
+      @apply border-green-400 border-opacity-25 animate-delay-[-4.041176470588235s];
     }
   }
 
