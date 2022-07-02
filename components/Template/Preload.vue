@@ -28,7 +28,7 @@ export default {
 
 <style lang="scss">
 .preload {
-  @apply flex-center h-full bg-dark-700 w-full inset-0 transition z-999999 duration-75 delay-0 fixed;
+  @apply flex-center h-full bg-indigo-900 bg-opacity-50 bg-2r bg-hero-hexagons-water-5 w-full inset-0 transition z-99999 duration-75 delay-0 fixed;
 
   &-container {
     @apply bg-transparent h-200px w-200px inline-block;
