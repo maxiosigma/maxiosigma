@@ -8,6 +8,11 @@
       </div>
     </div>
 
+    <LazyItemImgBg
+      :class="{ hidden: !redirect, hidden: !show }"
+      class="bg-contain bg-center h-16 mr-1 w-16 absolute"
+      src="/logo.svg"
+    />
     <!--<ItemImg src="other/cat_m.png" :class="{ hidden: !redirect, hidden: !show }" class="rounded-full h-auto p-10 w-60 absolute elevation-24"></ItemImg>-->
   </div>
 </template>

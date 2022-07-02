@@ -4,6 +4,7 @@ import plugin from "windicss/plugin";
 import { defineConfig, transform } from "windicss/helpers";
 
 export default defineConfig({
+  attributify: false,
   shortcuts: shortcuts(),
   theme: {
     //...themeBase(),
