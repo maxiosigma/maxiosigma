@@ -20,16 +20,27 @@
           { '!hidden': visible >= 1 },
         ]"
       >
-        <div class="about-title">
+        <div class="about-title" v-anime="animateBlock({ dl: 2, sk: 7 })">
           <!--<vue-typed-js :strings="['Welcome']"><span class="typing"></span></vue-typed-js>-->
           Welcome
         </div>
-        <div class="font-black text-xl tracking-[2px] uppercase">← Максим</div>
-        <div class="font-black text-xl tracking-[2px] uppercase">
+        <div
+          class="font-black text-xl tracking-[2px] uppercase"
+          v-anime="animateBlock({ dl: 2.1 })"
+        >
+          ← Максим
+        </div>
+        <div
+          class="font-black text-xl tracking-[2px] uppercase"
+          v-anime="animateBlock({ dl: 2.2 })"
+        >
           ← <span class="text-base">Автор и разработчик сайта</span>
         </div>
 
-        <div class="font-black mt-4 text-xl mb-5 tracking-[1.5px] uppercase">
+        <div
+          class="font-black mt-4 text-xl mb-5 tracking-[1.5px] uppercase"
+          v-anime="animateBlock({ dl: 2.3, sk: -10 })"
+        >
           ▬ <span class="text-sm">Желаешь узнать подробнее ?</span>
         </div>
 
@@ -55,6 +66,7 @@
               'Сейчас занимаюсь фрилансом и гибридным бизнесом',
             ]"
             :key="i"
+            v-anime="animateBlock({ dl: 2 + i * 0.1 })"
           >
             {{ it }}
           </div>
@@ -108,6 +120,8 @@
                   'Прошёл до конца 1 год срочной армии ВКС ПВО ПРО',
                   'Cиний диплом по бакалвриату: прикладная математика и информатика за 2017 год',
                   'Квалификация повара 2 разряда и окончание 11 класса в 2013 году',
+                  'Неофициальный статус кандидата в мастера спорта по плаванию в 2011 году, вышел из спорта',
+                  'Квалификация 2 взрослого разряда по плаванию в 2010 году',
                   'Грамота за 1 место при соревнованиях по плаванию в 2006 году',
                   'Грамота за успешное окончание 4 класса, хорошие резальтаты в плавании и участии жизни класса в 2006 году',
                   'Грамота за 1 место при соревнованиях по плаванию в 2004 году',
@@ -178,6 +192,18 @@ export default {
         url ? (location.href = url) : null
       }, 3000)
     },
+    animateBlock({ dl = 1, dr = 1, sc = 1, sk = 1, tx = 0 }) {
+      return {
+        //round: 0,
+        //loop: false,
+        perspective: 5000,
+        translateX: [tx, 0],
+        scale: [0.0, sc],
+        skew: [1, sk],
+        duration: dr * 1000,
+        delay: dl * 1000,
+      }
+    },
     //useTyped(ref, string, value) {
     //  if (this.visible === value)
     //    new Typed(ref, {
@@ -205,7 +231,7 @@ export default {
   }
 
   &-btn {
-    @apply rounded-md cursor-pointer font-roboto font-bold bg-green-700 text-white text-sm py-2 px-4 transition-all tracking-[2px] duration-500 uppercase pointer-events-auto hover:(bg-yellow-600 px-6 text-base py-3 tracking-[3px] text-shadow);
+    @apply rounded-md cursor-pointer font-roboto font-bold bg-green-700 text-white text-sm py-2 px-4 transition-all tracking-[2px] duration-500 uppercase pointer-events-auto hover:(bg-yellow-600 px-6 text-base py-3 tracking-[3px] text-shadow) ;
   }
 
   &-field {

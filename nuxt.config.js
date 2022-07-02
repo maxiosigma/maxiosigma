@@ -381,7 +381,7 @@ function includes() {
       //['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }], // МЕШАЕТ STRAPI
       //'nuxt-parallel-middleware',
       "@nuxtjs/strapi",
-      "@nuxtjs/gtm",
+      //"@nuxtjs/gtm",
       //'nuxt-payload-extractor',
     ],
     //'@prismicio/vue', 'vue-slicezone', 'lottie-web',
@@ -419,12 +419,12 @@ function custom() {
     globals: {
       id: `app`,
     },
-    googleAnalytics: {
-      id: "UA-176733004-3",
-    },
-    gtm: {
-      id: "GTM-MSJZ4PT",
-    },
+    //googleAnalytics: {
+    //  id: "UA-176733004-3",
+    //},
+    //gtm: {
+    //  id: "GTM-MSJZ4PT",
+    //},
     //strapi: {
     //	// Options
     //},
