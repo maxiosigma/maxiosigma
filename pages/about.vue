@@ -26,25 +26,27 @@
         </div>
         <div
           class="font-black text-xl tracking-[2px] uppercase"
-          v-anime="animateBlock({ dl: 2.1 })"
+          v-anime="animateBlock({ dl: 2.2 })"
         >
           ← Максим
         </div>
         <div
           class="font-black text-xl tracking-[2px] uppercase"
-          v-anime="animateBlock({ dl: 2.2 })"
+          v-anime="animateBlock({ dl: 2.4 })"
         >
           ← <span class="text-base">Автор и разработчик сайта</span>
         </div>
 
         <div
           class="font-black mt-4 text-xl mb-5 tracking-[1.5px] uppercase"
-          v-anime="animateBlock({ dl: 2.3, sk: -10 })"
+          v-anime="animateBlock({ dl: 2.6, sk: -10 })"
         >
           ▬ <span class="text-sm">Желаешь узнать подробнее ?</span>
         </div>
 
-        <div class="about-btn" @click="handleClick()">Да</div>
+        <div class="about-btn" v-anime="animateBlock({ dl: 2.7, dr: 0.4 })" @click="handleClick()">
+          Да
+        </div>
       </div>
 
       <div
@@ -66,20 +68,19 @@
               'Сейчас занимаюсь фрилансом и гибридным бизнесом',
             ]"
             :key="i"
-            v-anime="animateBlock({ dl: 2 + i * 0.1 })"
+            v-anime="animateBlock({ dl: 2 + i * 0.2 })"
           >
             {{ it }}
           </div>
-
-          <!--<div>Получил синий диплом по бакалвриату: прикладная математика и информатика.</div>
-          <div>
-            Сходил на годик в армию и брал академический отпуск после полугода магистратуры.
-          </div>
-          <div>Вернулся и перешёл на другую профессию магистратуры: управление проектами.</div>
-          <div>Получил красный диплом при отсутствии полгода на данном направлении.</div>-->
         </div>
 
-        <div class="mt-3 about-btn" @click="handleClick()">Хобби & Достижения</div>
+        <div
+          class="mt-3 about-btn"
+          v-anime="animateBlock({ dl: 2.6, dr: 0.4 })"
+          @click="handleClick()"
+        >
+          Хобби & Достижения
+        </div>
       </div>
 
       <div
@@ -130,17 +131,30 @@
             ]"
             :key="i"
           >
-            <div class="font-semibold tracking-wider text-3xl uppercase">{{ it.title }}</div>
+            <div
+              class="font-semibold tracking-wider text-3xl uppercase"
+              v-anime="animateBlock({ dl: 2 + i * 0.2 })"
+            >
+              {{ it.title }}
+            </div>
 
             <div class="text-xl grid gap-1">
-              <div class="inline-flex diagonal-fractions" v-for="(sit, j) in it.items" :key="j">
+              <div
+                class="inline-flex diagonal-fractions"
+                v-for="(sit, j) in it.items"
+                :key="j"
+                v-anime="animateBlock({ dl: 2 + i * 0.2 + j * 0.1 })"
+              >
                 <div class="mr-3 ml-5 pointer-events-none">»</div>
                 {{ sit }}
               </div>
             </div>
           </div>
 
-          <div class="mt-5 inline-flex items-center">
+          <div
+            class="mt-5 inline-flex items-center"
+            v-anime="animateBlock({ dl: 2.6, dr: 0.4, lp: true })"
+          >
             О профессиональной деятельности подробнее в
 
             <div
@@ -192,10 +206,10 @@ export default {
         url ? (location.href = url) : null
       }, 3000)
     },
-    animateBlock({ dl = 1, dr = 1, sc = 1, sk = 1, tx = 0 }) {
+    animateBlock({ dl = 1, dr = 1, sc = 1, sk = 1, tx = 0, lp = false, rn = 1 }) {
       return {
-        //round: 0,
-        //loop: false,
+        round: rn,
+        loop: lp,
         perspective: 5000,
         translateX: [tx, 0],
         scale: [0.0, sc],
