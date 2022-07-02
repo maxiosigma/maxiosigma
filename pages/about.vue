@@ -151,10 +151,7 @@
             </div>
           </div>
 
-          <div
-            class="mt-5 inline-flex items-center"
-            v-anime="animateBlock({ dl: 2.6, dr: 0.4, lp: true })"
-          >
+          <div class="mt-5 inline-flex items-center" v-anime="animateBlock({ dl: 2.6, dr: 0.4 })">
             О профессиональной деятельности подробнее в
 
             <div
@@ -206,18 +203,18 @@ export default {
         url ? (location.href = url) : null
       }, 3000)
     },
-    animateBlock({ dl = 1, dr = 1, sc = 1, sk = 1, tx = 0, lp = false, rn = 1 }) {
-      return {
-        round: rn,
-        loop: lp,
-        perspective: 5000,
-        translateX: [tx, 0],
-        scale: [0.0, sc],
-        skew: [1, sk],
-        duration: dr * 1000,
-        delay: dl * 1000,
-      }
-    },
+    //animateBlock({ dl = 1, dr = 1, sc = 1, sk = 1, tx = 0, lp = false, rn = 1 }) {
+    //  return {
+    //    //round: rn,
+    //    loop: lp,
+    //    perspective: 5000,
+    //    translateX: [tx, 0],
+    //    scale: [0.0, sc],
+    //    skew: [1, sk],
+    //    duration: dr * 1000,
+    //    delay: dl * 1000,
+    //  }
+    //},
     //useTyped(ref, string, value) {
     //  if (this.visible === value)
     //    new Typed(ref, {

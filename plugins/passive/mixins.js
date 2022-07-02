@@ -190,6 +190,26 @@ Vue.mixin({
 
       return sum ? true : false;
     },
+    animateBlock({
+      dl = 1,
+      dr = 1,
+      sc = 1,
+      sk = 1,
+      tx = 0,
+      lp = false,
+      rn = 1,
+    }) {
+      return {
+        //round: rn,
+        loop: lp,
+        perspective: 5000,
+        translateX: [tx, 0],
+        scale: [0.0, sc],
+        skew: [1, sk],
+        duration: dr * 1000,
+        delay: dl * 1000,
+      };
+    },
     copySign(text, notify = true) {
       const clipboard = navigator?.clipboard;
 

@@ -33,6 +33,7 @@
                 },
               }
         "
+        v-anime="animateBlock({ dl: 1.5 + 0.1 * intRandom(1, i) + i * 0.05, dr: 0.01 })"
       >
         <div class="programs-link-title">{{ it.title }}</div>
 
