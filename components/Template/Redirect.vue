@@ -16,11 +16,16 @@
 export default {
   head() {
     return {
-      meta: [{}],
+      meta: [
+        {
+          "http-equiv": "refresh",
+          content: `17.5;url=/${this.$i18n.locale}/programs`,
+        },
+      ],
     }
   },
   mounted() {
-    setTimeout(() => this.routeLight("programs"), 17500)
+    setTimeout(() => this.routeLight("programs"), 18500)
   },
 }
 </script>

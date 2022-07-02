@@ -1,5 +1,6 @@
 <template>
   <LayoutPage>
+    <TemplateRedirect />
     <!--<div class="flex-grow filter drop-shadow-lg lg:(grid grid-cols-3) <lg:(flex flex-col) ">-->
     <!-- , { 'elevation-10': i == 2 } ДОБАВИТЬ ТЕНИ ПО БОКАМ -->
     <!-- 	@click.native.prevent="redirect(it.name)" -->
