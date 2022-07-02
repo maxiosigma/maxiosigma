@@ -20,7 +20,10 @@ const data = {
     process.env.NODE_ENV == "production"
       ? String(Math.random())
       : "0.7559774425759966",
-  yandex: "7f84512887c0d6ec",
+  verification: {
+    yandex: "cb213dea7621a4e2",
+    google: "ZoLbftcsmf7qpf4CyVJvt8P-45PpBncITlCUyWTnu2M",
+  },
   lang: "ru-RU",
   locale: {
     orig: "ru_RU",
@@ -71,7 +74,9 @@ function meta() {
       content: "telephone=yes,date=yes,address=yes,email=yes,url=yes",
     },
 
-    { name: "yandex-verification", content: data.yandex },
+    { name: "yandex-verification", content: data.verification.yandex },
+    { name: "google-site-verification", content: data.verification.google },
+
     { name: "theme-color", content: "#000000" },
 
     { name: "keywords", content: data.keywords },
