@@ -77,8 +77,8 @@ export default {
           this.active = true
           this.$emit("active", this.active)
         }, 1500)
-        //}, 350)
-      }, 100000000)
+      }, 750)
+    //}, 100000000)
   },
 }
 </script>
