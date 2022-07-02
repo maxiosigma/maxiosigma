@@ -29,7 +29,7 @@
     </template>
 
     <slot>
-      <TemplateDevelop />
+      <TemplateRedirect />
     </slot>
 
     <template v-slot:footer>
