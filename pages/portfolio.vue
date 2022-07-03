@@ -1,9 +1,9 @@
 <template>
   <LayoutPage>
     <div class="flex-center flex-col flex-grow portfolio">
-      <canvas ref="canvasList"></canvas>
-      <canvas ref="canvasList"></canvas>
-      <canvas ref="canvasList"></canvas>
+      <canvas class="list-1 canvasList"></canvas>
+      <canvas class="list-2 canvasList"></canvas>
+      <canvas class="list-3 canvasList"></canvas>
     </div>
   </LayoutPage>
 </template>
@@ -44,23 +44,29 @@ export default {
       location.href = "/" + url
     },
     canvasList() {
-      const obj = this.$refs.canvasList
-      const ctx = obj?.getContext("2d")
+      //const obj = this.$refs.canvasList
+      const arr = document.querySelectorAll(".canvasList")
+      //console.log(arr.forEach((it) => it))
+      arr?.forEach((obj, i) => {
+        const ctx = obj?.getContext("2d")
 
-      ctx.beginPath()
+        ctx.beginPath()
 
-      ctx.moveTo(0, 25)
-      ctx.bezierCurveTo(0, 25, 50, 0, 500, 25)
-      ctx.moveTo(0, 25)
-      ctx.bezierCurveTo(0, 25, 50, 50, 500, 25)
+        ctx.moveTo(0, 25)
+        ctx.bezierCurveTo(0, 25, 150, 0, 300, 25)
+        ctx.moveTo(0, 25)
+        ctx.bezierCurveTo(0, 25, 150, 50, 300, 25)
 
-      //ctx.moveTo(0, 0)
-      //ctx.bezierCurveTo(0, 0, 50, 0, 100, 25)
-      //ctx.moveTo(0, 50)
-      //ctx.bezierCurveTo(0, 50, 50, 50, 100, 25)
+        //ctx.strokeStyle = "white"
+        //ctx.lineWidth = 0.5
+        //ctx.stroke()
+        ctx.fill()
+      })
 
-      ctx.strokeStyle = "white"
-      ctx.stroke()
+      ////ctx.moveTo(0, 0)
+      ////ctx.bezierCurveTo(0, 0, 50, 0, 100, 25)
+      ////ctx.moveTo(0, 50)
+      ////ctx.bezierCurveTo(0, 50, 50, 50, 100, 25)
 
       //console.log(ctx)
     },
@@ -156,4 +162,19 @@ export default {
 </script>
 
 <style lang="scss">
+.canvasList {
+  @apply max-w-screen w-full filter drop-shadow-sm;
+
+  &.list {
+    &-1 {
+      @apply;
+    }
+    &-2 {
+      @apply;
+    }
+    &-3 {
+      @apply;
+    }
+  }
+}
 </style>
