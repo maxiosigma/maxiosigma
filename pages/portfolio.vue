@@ -1,5 +1,11 @@
 <template>
-  <LayoutPage></LayoutPage>
+  <LayoutPage>
+    <div class="flex-center flex-col flex-grow portfolio">
+      <canvas ref="canvasList"></canvas>
+      <canvas ref="canvasList"></canvas>
+      <canvas ref="canvasList"></canvas>
+    </div>
+  </LayoutPage>
 </template>
 
 <script>
@@ -31,12 +37,25 @@ export default {
     }
   },
   mounted() {
-    this.setAnimation()
+    this.canvasList()
   },
   methods: {
-    setAnimation() {},
     redirect(url) {
       location.href = "/" + url
+    },
+    canvasList() {
+      const obj = this.$refs.canvasList
+      const ctx = obj?.getContext("2d")
+
+      ctx.beginPath()
+      ctx.moveTo(0, 0)
+      ctx.bezierCurveTo(0, 0, 50, 0, 100, 25)
+      ctx.moveTo(0, 50)
+      ctx.bezierCurveTo(0, 50, 50, 50, 100, 25)
+      ctx.strokeStyle = "white"
+      ctx.stroke()
+
+      //console.log(ctx)
     },
   },
 }

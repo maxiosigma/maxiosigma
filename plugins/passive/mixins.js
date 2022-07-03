@@ -107,12 +107,41 @@ Vue.mixin({
     },
     notifyCookie() {
       const cookie = localStorage.getItem("capcake");
-      if (!cookie)
-        this.$toast.show("На сайте используются cookie", {
-          theme: "bubble",
-          position: "bottom",
-          duration: 1000,
-        });
+
+      //console.log(cookie);
+
+      if (!cookie || cookie == false) {
+        setTimeout(
+          () =>
+            this.$toast.show(
+              `Сайт использут cookie и локальное хранилище данных. Это позволяет анализировать взаимодействие посетителей с сайтом и делать его лучше по всем правилам закона 152-ФЗ «О персональных данных». Продолжая пользоваться сайтом, вы соглашаетесь с использованием файлов cookie и политикой конфиденциальности ~ главная → конфиденциальность. Нажмите крестик справа, чтобы закрыть.`,
+              {
+                theme: "outline",
+                position: "bottom-center",
+                duration: null,
+                //duration: 10000000000,
+                fullWidth: true,
+                className: "toast-cookie",
+                singleton: true,
+                closeOnSwipe: false,
+                action: [
+                  {
+                    text: "",
+                    class:
+                      "icon-close !m-0 sm:!mr-2 pointer-events-auto !text-yellow-500 transition-all duration-200 hover:(!text-green-300)",
+                    onClick: (e, toastObject) => {
+                      toastObject.goAway(0);
+                      localStorage.setItem("capcake", true);
+                    },
+                  },
+                ],
+              }
+            ),
+          2000
+        );
+
+        //setTimeout(() => localStorage.setItem("capcake", true), 3000);
+      }
     },
     notifyCook() {
       setTimeout(() => {

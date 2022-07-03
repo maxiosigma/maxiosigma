@@ -62,6 +62,9 @@ export default {
       ],
     }
   },
+  mounted() {
+    this.notifyCookie()
+  },
   data() {
     return {
       preload: true,

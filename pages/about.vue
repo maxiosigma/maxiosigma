@@ -1,5 +1,7 @@
 <template>
   <LayoutPage :bodyStyle="'body-bg about'">
+    <!--<div class="rounded-none hover:(!text-yellow-300)"></div>-->
+
     <div class="about-cont">
       <div
         :class="[
