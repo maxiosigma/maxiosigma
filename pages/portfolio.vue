@@ -59,18 +59,9 @@ export default {
         ctx.moveTo(0, 25)
         ctx.bezierCurveTo(0, 25, 150, 50, 300, 25)
 
-        //ctx.strokeStyle = "white"
-        //ctx.lineWidth = 0.5
-        //ctx.stroke()
+        ctx.fillStyle = "#0e9090"
         ctx.fill()
       })
-
-      ////ctx.moveTo(0, 0)
-      ////ctx.bezierCurveTo(0, 0, 50, 0, 100, 25)
-      ////ctx.moveTo(0, 50)
-      ////ctx.bezierCurveTo(0, 50, 50, 50, 100, 25)
-
-      //console.log(ctx)
     },
   },
 }
@@ -166,11 +157,11 @@ export default {
 <style lang="scss">
 .canvas {
   &-container {
-    @apply mr-[5vmin] mb-[15vmin];
+    @apply mr-[10vmin] mb-[15vmin] drop-shadow-2xl;
   }
 
   &-list {
-    @apply max-w-screen transform origin-left w-[25vmin] absolute filter drop-shadow-sm;
+    @apply max-w-screen text-current transform origin-left text-hex-0e9090 w-[25vmin] absolute filter;
 
     &.list {
       &-1 {
@@ -180,7 +171,7 @@ export default {
         @apply rotate-90;
       }
       &-3 {
-        @apply rotate-210 translate-x-[5vmin] -translate-y-[5vmin];
+        @apply rotate-210 translate-x-[4vmin] -translate-y-[5.5vmin];
       }
     }
   }
