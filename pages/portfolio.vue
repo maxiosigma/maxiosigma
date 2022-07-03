@@ -1,9 +1,11 @@
 <template>
   <LayoutPage>
     <div class="flex-center flex-col flex-grow portfolio">
-      <canvas class="list-1 canvasList"></canvas>
-      <canvas class="list-2 canvasList"></canvas>
-      <canvas class="list-3 canvasList"></canvas>
+      <div class="relative">
+        <canvas class="list-1 canvasList"></canvas>
+        <canvas class="list-2 canvasList"></canvas>
+        <canvas class="list-3 canvasList"></canvas>
+      </div>
     </div>
   </LayoutPage>
 </template>
@@ -167,13 +169,13 @@ export default {
 
   &.list {
     &-1 {
-      @apply -rotate-30 translate-x-10 translate-y-10;
+      @apply -rotate-30 translate-x-[8vmin] translate-y-[2vmin];
     }
     &-2 {
       @apply rotate-90;
     }
     &-3 {
-      @apply rotate-210 translate-x-10 -translate-y-10;
+      @apply rotate-210 translate-x-[5vmin] -translate-y-[5vmin];
     }
   }
 }
