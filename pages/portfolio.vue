@@ -167,13 +167,13 @@ export default {
 
   &.list {
     &-1 {
-      @apply rotate-0;
+      @apply -rotate-30 translate-x-10 translate-y-10;
     }
     &-2 {
       @apply rotate-90;
     }
     &-3 {
-      @apply rotate-240;
+      @apply rotate-210 translate-x-10 -translate-y-10;
     }
   }
 }
