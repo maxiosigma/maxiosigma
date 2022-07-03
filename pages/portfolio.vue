@@ -6,6 +6,16 @@
         <canvas class="list-2 canvas-list"></canvas>
         <canvas class="list-3 canvas-list"></canvas>
       </div>
+
+      <div class="relative">
+        <div class="text-white transform -translate-x-[5vmin] translate-y-[25vmin] absolute">
+          <div class="grid grid-cols-4 grid-rows-2">
+            <div class="text-3xl col-span-1 row-span-2">П</div>
+            <div class="text-3xl col-span-3 row-start-1">редпри</div>
+            <div class="text-3xl col-span-3 row-start-2">ниматель</div>
+          </div>
+        </div>
+      </div>
     </div>
   </LayoutPage>
 </template>
@@ -157,7 +167,7 @@ export default {
 <style lang="scss">
 .canvas {
   &-container {
-    @apply mr-[10vmin] mb-[15vmin] drop-shadow-2xl;
+    @apply mr-[10vmin] mb-[15vmin] absolute drop-shadow-2xl;
   }
 
   &-list {
