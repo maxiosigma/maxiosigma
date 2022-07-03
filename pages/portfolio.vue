@@ -8,11 +8,23 @@
       </div>
 
       <div class="relative">
-        <div class="text-white transform -translate-x-[5vmin] translate-y-[25vmin] absolute">
-          <div class="grid grid-cols-4 grid-rows-2">
-            <div class="text-3xl col-span-1 row-span-2">П</div>
-            <div class="text-3xl col-span-3 row-start-1">редпри</div>
-            <div class="text-3xl col-span-3 row-start-2">ниматель</div>
+        <div
+          class="
+            h-full
+            text-white
+            w-full
+            transform
+            -translate-x-[0vmin]
+            translate-y-[25vmin]
+            absolute
+          "
+        >
+          <div class="flex-center mr-2">
+            <div class="text-[50px]">П</div>
+            <div class="-mt-1 tracking-[2px]">
+              <div class="text-[22px]">редпри</div>
+              <div class="text-[22px]">ниматель</div>
+            </div>
           </div>
         </div>
       </div>
