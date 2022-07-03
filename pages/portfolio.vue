@@ -163,17 +163,17 @@ export default {
 
 <style lang="scss">
 .canvasList {
-  @apply max-w-screen transform w-1/3 absolute filter drop-shadow-sm;
+  @apply max-w-screen transform origin-left w-[25vmin] absolute filter drop-shadow-sm;
 
   &.list {
     &-1 {
-      @apply rotate-120;
+      @apply rotate-0;
     }
     &-2 {
-      @apply rotate-240;
+      @apply rotate-90;
     }
     &-3 {
-      @apply rotate-360;
+      @apply rotate-240;
     }
   }
 }
