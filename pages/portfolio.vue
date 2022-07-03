@@ -1,10 +1,10 @@
 <template>
   <LayoutPage>
     <div class="flex-center flex-col flex-grow portfolio">
-      <div class="relative">
-        <canvas class="list-1 canvasList"></canvas>
-        <canvas class="list-2 canvasList"></canvas>
-        <canvas class="list-3 canvasList"></canvas>
+      <div class="canvas-container">
+        <canvas class="list-1 canvas-list"></canvas>
+        <canvas class="list-2 canvas-list"></canvas>
+        <canvas class="list-3 canvas-list"></canvas>
       </div>
     </div>
   </LayoutPage>
@@ -47,7 +47,7 @@ export default {
     },
     canvasList() {
       //const obj = this.$refs.canvasList
-      const arr = document.querySelectorAll(".canvasList")
+      const arr = document.querySelectorAll(".canvas-list")
       //console.log(arr.forEach((it) => it))
       arr?.forEach((obj, i) => {
         const ctx = obj?.getContext("2d")
@@ -164,18 +164,24 @@ export default {
 </script>
 
 <style lang="scss">
-.canvasList {
-  @apply max-w-screen transform origin-left w-[25vmin] absolute filter drop-shadow-sm;
+.canvas {
+  &-container {
+    @apply mr-[5vmin] mb-[15vmin];
+  }
 
-  &.list {
-    &-1 {
-      @apply -rotate-30 translate-x-[8vmin] translate-y-[2vmin];
-    }
-    &-2 {
-      @apply rotate-90;
-    }
-    &-3 {
-      @apply rotate-210 translate-x-[5vmin] -translate-y-[5vmin];
+  &-list {
+    @apply max-w-screen transform origin-left w-[25vmin] absolute filter drop-shadow-sm;
+
+    &.list {
+      &-1 {
+        @apply -rotate-30 translate-x-[8vmin] translate-y-[2vmin];
+      }
+      &-2 {
+        @apply rotate-90;
+      }
+      &-3 {
+        @apply rotate-210 translate-x-[5vmin] -translate-y-[5vmin];
+      }
     }
   }
 }
