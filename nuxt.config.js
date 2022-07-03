@@ -353,7 +353,7 @@ function includes() {
       "nuxt-user-agent",
       "nuxt-fontagon",
       //"@vueuse/nuxt",
-      //'@/plugins/active/GSR',
+      "@/plugins/active/GSR",
       //'nuxt-resolve-url-loader',
       //'nuxt-alias',
       //'@nuxtjs/prismic',

@@ -105,6 +105,15 @@ Vue.mixin({
         ? locale + "-amp"
         : locale.replace("-amp", "");
     },
+    notifyCookie() {
+      const cookie = localStorage.getItem("capcake");
+      if (!cookie)
+        this.$toast.show("На сайте используются cookie", {
+          theme: "bubble",
+          position: "bottom",
+          duration: 1000,
+        });
+    },
     notifyCook() {
       setTimeout(() => {
         const cook = localStorage.getItem("capcake");
