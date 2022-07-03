@@ -48,10 +48,17 @@ export default {
       const ctx = obj?.getContext("2d")
 
       ctx.beginPath()
-      ctx.moveTo(0, 0)
-      ctx.bezierCurveTo(0, 0, 50, 0, 100, 25)
-      ctx.moveTo(0, 50)
-      ctx.bezierCurveTo(0, 50, 50, 50, 100, 25)
+
+      ctx.moveTo(0, 25)
+      ctx.bezierCurveTo(0, 25, 50, 0, 500, 25)
+      ctx.moveTo(0, 25)
+      ctx.bezierCurveTo(0, 25, 50, 50, 500, 25)
+
+      //ctx.moveTo(0, 0)
+      //ctx.bezierCurveTo(0, 0, 50, 0, 100, 25)
+      //ctx.moveTo(0, 50)
+      //ctx.bezierCurveTo(0, 50, 50, 50, 100, 25)
+
       ctx.strokeStyle = "white"
       ctx.stroke()
 
