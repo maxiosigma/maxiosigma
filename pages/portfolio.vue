@@ -20,10 +20,10 @@
           "
         >
           <div class="flex-center mr-2">
-            <div class="text-[50px]">П</div>
+            <div class="text-[50px] text-green-200">П</div>
             <div class="-mt-1 tracking-[2px]">
-              <div class="text-[22px]">редпри</div>
-              <div class="text-[22px]">ниматель</div>
+              <div class="text-[22px] text-indigo-200">редпри</div>
+              <div class="text-[22px] text-indigo-200">ниматель</div>
             </div>
           </div>
         </div>
