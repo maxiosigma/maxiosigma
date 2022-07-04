@@ -1,5 +1,9 @@
 <template>
   <Layout :bodyStyle="'index'">
+    <template v-slot:head>
+      <TemplateHead />
+    </template>
+
     <div class="opacity-0">
       <h1>{{ title }}</h1>
       <h2>{{ description }}</h2>
