@@ -29,7 +29,7 @@
             </ul>
           </li>-->
 
-          <li class="confidentiality-subtitle">
+          <!--<li class="confidentiality-subtitle">
             Основные понятия, используемые в Политике
             <ul class="confidentiality-sublist">
               <li>
@@ -109,6 +109,46 @@
                 уничтожаются материальные носители персональных данных.
               </li>
             </ul>
+          </li>-->
+
+          <!--<li class="confidentiality-subtitle">
+            <ul class="confidentiality-sublist">
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>-->
+
+          <li class="confidentiality-subtitle">
+            <ul class="confidentiality-sublist">
+              Основные права и обязанности Оператора
+              <li>
+                Оператор имеет право:
+                <ul>
+                  <li>
+                    получать от субъекта персональных данных достоверные информацию и/или документы,
+                    содержащие персональные данные;
+                  </li>
+
+                  <li>
+                    в случае отзыва субъектом персональных данных согласия на обработку персональных
+                    данных Оператор вправе продолжить обработку персональных данных без согласия
+                    субъекта персональных данных при наличии оснований, указанных в Законе о
+                    персональных данных;
+                  </li>
+
+                  <li>
+                    самостоятельно определять состав и перечень мер, необходимых и достаточных для
+                    обеспечения выполнения обязанностей, предусмотренных Законом о персональных
+                    данных и принятыми в соответствии с ним нормативными правовыми актами, если иное
+                    не предусмотрено Законом о персональных данных или другими федеральными
+                    законами.
+                  </li>
+                </ul>
+              </li>
+              <li></li>
+              <li></li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -123,12 +163,12 @@ export default {
       title: "Конфиденциальность",
     }
   },
-  //data() {
-  //  return {
-  //    data: [],
-  //  }
-  //},
 }
+//data() {
+//  return {
+//    data: [],
+//  }
+//},
 </script>
 
 <style lang="scss">
@@ -145,14 +185,23 @@ export default {
     @apply text-xl;
   }
   &-list {
-    @apply list-upper-roman;
+    @apply list-outside list-upper-roman;
   }
   &-sublist {
-    @apply list-square  text-sm ml-5;
+    @apply list-square list-inside text-sm;
 
     & > li,
     & li {
-      @apply my-2 text-justify text-sm;
+      @apply my-2 text-justify;
+
+      & > ul {
+        @apply list-disc list-outside ml-10;
+
+        & > li,
+        & li {
+          @apply my-1.5 text-justify;
+        }
+      }
     }
   }
   //&-text {
