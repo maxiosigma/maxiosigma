@@ -1,12 +1,10 @@
 <template>
   <Layout :bodyStyle="'index'">
-    <!--<noscript class="hidden">
-      <img
-        src="https://vk.com/rtrg?p=VK-RTRG-1455228-5lkj2"
-        style="position: fixed; left: -999px"
-        alt=""
-      />
-    </noscript>-->
+    <div class="opacity-0">
+      <h1>{{ title }}</h1>
+      <h2>{{ description }}</h2>
+      <p>{{ description }}</p>
+    </div>
   </Layout>
 </template>
 
@@ -15,7 +13,8 @@ export default {
   nuxtI18n: false,
   head() {
     return {
-      title: this?.link?.title ?? "Главная",
+      title: this.title,
+      ...(this.description && { description: this.description }),
       titleTemplate: this.headTemplate(this?.link ? "%s" : undefined),
       meta: [
         {
@@ -30,6 +29,8 @@ export default {
     return {
       link: undefined,
       links: this.$store.state.reffers,
+      title: this?.link?.title ?? "Главная",
+      description: this?.link?.description,
     }
   },
   async beforeMount() {
@@ -59,7 +60,6 @@ export default {
 
     setTimeout(() => this.routeLight("about"), 4500)
   },
-
   //http://localhost:3000/ru-ru#mw
   //async asyncData({ $strapi, store }) {
   //	try {
