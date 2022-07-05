@@ -99,7 +99,7 @@ export default {
     return { links, countPages, page }
   },
   mounted() {
-    if (this.page > this.countPages) this.routeLight("programs/1")
+    if (this.page > this.countPages || this.page == 0) this.routeLight("programs/1")
     //console.log(this.links, this.countPages, this.page)
   },
   methods: {
