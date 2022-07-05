@@ -632,22 +632,22 @@ export default {
 
 <style lang="scss">
 .confidentiality {
-  @apply flex-grow flex-center flex-col pt-20 text-light-400;
+  @apply flex-grow flex-center flex-col px-5 pt-10 text-light-400 sm:pt-20;
 
   &-content {
     @apply mx-auto max-w-xl text-sm w-full break-all hyphens-auto;
   }
   &-title {
-    @apply font-black max-w-lg text-center mb-14 text-3xl;
+    @apply font-black max-w-lg text-center text-xl mb-8 sm:mb-14 sm:text-3xl;
   }
   &-subtitle {
-    @apply text-xl first-letter:text-green-400;
+    @apply text-base sm:text-xl first-letter:text-green-400;
   }
   &-list {
-    @apply list-outside list-upper-roman;
+    @apply list-outside list-upper-roman text-sm sm:text-base;
   }
   &-sublist {
-    @apply list-square list-inside text-sm break-all;
+    @apply list-square list-inside text-xs break-all sm:text-sm;
 
     & > div {
       @apply my-1.5 first-letter:text-purple-400;
