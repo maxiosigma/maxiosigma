@@ -23,8 +23,10 @@
         :key="i"
       >
         <ItemImgStrapiBg
-          :src="`https://source.unsplash.com/random/300x200?sig=${i}`"
+          v-for="(img, j) in it.images"
+          :src="selectImage(img.url, `${i}${j}`)"
           class="bg-cover bg-top bg-cyan-800 w-full min-h-60 programs-images md:min-h-40"
+          :key="j"
         >
         </ItemImgStrapiBg>
 
@@ -136,6 +138,9 @@ export default {
       const prv = this.page - 2 + 1
       if (prv !== 0) this.routeLight(`programs/${prv}`)
       else alert("Вы на первой странице")
+    },
+    selectImage(url, i) {
+      return url ? url : `https://source.unsplash.com/random/300x200?sig=${i}`
     },
     //touchStart(touchEvent) {
     //  if (touchEvent.changedTouches.length !== 1) {
