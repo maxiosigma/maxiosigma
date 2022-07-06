@@ -22,13 +22,22 @@
         v-for="(it, i) in links"
         :key="i"
       >
-        <ItemImgStrapiBg
-          v-for="(img, j) in it.images"
-          :src="selectImage(img.url, `${i}${j}`)"
-          class="bg-cover bg-top bg-cyan-800 w-full min-h-60 programs-images md:min-h-40"
-          :key="j"
-        >
-        </ItemImgStrapiBg>
+        <div class="programs-image-container">
+          <div v-if="it.images.length > 0" class="relative">
+            <ItemImgStrapiBg
+              v-for="(img, j) in it.images"
+              :src="img.url"
+              class="programs-image group-image"
+              :key="j"
+            />
+          </div>
+
+          <ItemImgStrapiBg
+            v-else
+            class="programs-image"
+            :src="`https://source.unsplash.com/random/300x200?sig=${i}`"
+          />
+        </div>
 
         <!--v-anime="animateBlock({ dl: 1.5 + 0.1 * intRandom(1, i) + i * 0.05, dr: 0.01 })"-->
 
@@ -139,9 +148,6 @@ export default {
       if (prv !== 0) this.routeLight(`programs/${prv}`)
       else alert("Вы на первой странице")
     },
-    selectImage(url, i) {
-      return url ? url : `https://source.unsplash.com/random/300x200?sig=${i}`
-    },
     //touchStart(touchEvent) {
     //  if (touchEvent.changedTouches.length !== 1) {
     //    return
@@ -172,6 +178,18 @@ export default {
   &-container {
     // place-content-start min-h-200vh h-200vh
     @apply container mx-auto mt-auto grid p-5 text-light-200 gap-5 grid-cols-1 justify-between place-content-center place-items-stretch sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4;
+  }
+
+  &-image {
+    @apply bg-cover bg-top bg-cyan-800 w-full min-h-60 md:min-h-40;
+
+    &.group-image {
+      @apply inset-0 absolute;
+    }
+
+    &-container {
+      @apply bg-cyan-800 w-full min-h-60 md:min-h-40;
+    }
   }
 
   &-pagination {
