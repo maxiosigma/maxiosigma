@@ -95,9 +95,13 @@ export const actions = {
         sum.push({
           title: it?.title,
           description: it?.description,
-          //tags: it.tag.
+          //tags: it.tag,
           short: it?.short,
           top: it?.top,
+
+          self: {
+            ...it,
+          },
         });
 
       //console.log(it?.tag);

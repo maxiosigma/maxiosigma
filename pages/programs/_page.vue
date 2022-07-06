@@ -24,7 +24,7 @@
       >
         <ItemImgStrapiBg
           :src="`https://source.unsplash.com/random/300x200?sig=${i}`"
-          class="bg-cover bg-top w-full min-h-60 programs-images md:min-h-40"
+          class="bg-cover bg-top bg-cyan-800 w-full min-h-60 programs-images md:min-h-40"
         >
         </ItemImgStrapiBg>
 
@@ -57,6 +57,8 @@
             ]"
           >
             {{ it.description }}
+
+            {{ it }}
           </div>
         </div>
 
@@ -174,11 +176,11 @@ export default {
   }
 
   &-content {
-    @apply flex-grow flex-center m-auto bg-cyan-700 bg-opacity-50 text-center w-full py-4 px-4 transition duration-700 sm:(bg-hero-rain-white-30 bg-0.25r hover:(bg-green-700  bg-opacity-85)) ;
+    @apply flex-grow flex-center flex-col m-auto bg-cyan-700 bg-opacity-50 bg-hero-rain-white-30 bg-0.25r text-center w-full py-4 px-4  sm:(hover:(transition duration-700 bg-green-700 bg-opacity-85)) ;
   }
 
   &-button {
-    @apply bg-cyan-700 bg-opacity-25 tracking-widest sm:(uppercase text-xs w-full text-center mt-1 duration-700 py-2 font-bold transition bg-hero-rain-white-30 bg-0.25r hover:(bg-orange-700 bg-opacity-85)) ;
+    @apply font-bold bg-cyan-700 bg-opacity-25 bg-hero-rain-white-30 bg-0.25r mt-1 text-xs text-center tracking-widest w-full py-2 uppercase sm:(duration-700  transition hover:(bg-orange-700 bg-opacity-85))  ;
   }
 
   &-link {

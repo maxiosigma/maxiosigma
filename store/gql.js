@@ -129,6 +129,18 @@ function links(page = 1, limit = 2000) {
 						tag {
 							title
 						}
+						imgs {
+							data {
+								attributes {
+									name
+									width
+									height
+									ext
+									size
+									url
+								}
+							}
+						}
 						description
 						partnership
 						alt
