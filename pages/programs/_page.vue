@@ -31,8 +31,8 @@
               :key="j"
               v-anime="{
                 loop: true,
-                opacity: [0, 1],
-                duration: 500,
+                opacity: [0.5, 1],
+                duration: 5000,
                 delay: (j + 1) * 1000 + 5000,
               }"
             />
