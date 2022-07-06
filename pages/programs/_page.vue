@@ -29,6 +29,11 @@
               :src="img.url"
               class="programs-image group-image"
               :key="j"
+              v-anime="{
+                opacity: (intRandom(40, 60) + i * 0.1) / 100,
+                duration: 1000,
+                delay: 1000,
+              }"
             />
           </div>
 
