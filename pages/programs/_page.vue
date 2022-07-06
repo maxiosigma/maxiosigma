@@ -12,38 +12,55 @@
           stringRandom([
             'rounded-tl-lg rounded-br-lg',
             'rounded-br-lg rounded-tl-lg',
+            'rounded-r-lg',
+            'rounded-l-lg',
+            'rounded-t-lg',
+            'rounded-b-lg',
             'rounded-lg',
           ]),
         ]"
         v-for="(it, i) in links"
         :key="i"
-        v-tooltip="
-          isMobile()
-            ? {
-                disabled: true,
-              }
-            : {
-                disabled: isMobile(),
-                content: `<div class='text-center'>${it.description}</div>`,
-                html: true,
-                distance: 20,
-                delay: {
-                  show: 200,
-                  hide: 150,
-                },
-              }
-        "
-        v-anime="animateBlock({ dl: 1.5 + 0.1 * intRandom(1, i) + i * 0.05, dr: 0.01 })"
       >
-        <div class="programs-link-title">{{ it.title }}</div>
+        <ItemImgStrapiBg
+          :src="`https://source.unsplash.com/random/300x200?sig=${i}`"
+          class="bg-cover bg-top w-full min-h-60 programs-images md:min-h-40"
+        >
+        </ItemImgStrapiBg>
+
+        <!--v-anime="animateBlock({ dl: 1.5 + 0.1 * intRandom(1, i) + i * 0.05, dr: 0.01 })"-->
 
         <div
-          :class="[
-            isMobile() ? 'programs-link-description' : 'sm:hidden <sm:programs-link-description',
-          ]"
+          class="programs-content"
+          v-tooltip="
+            isMobile()
+              ? {
+                  disabled: true,
+                }
+              : {
+                  disabled: isMobile(),
+                  content: `<div class='text-center'>${it.description}</div>`,
+                  html: true,
+                  distance: 20,
+                  delay: {
+                    show: 200,
+                    hide: 150,
+                  },
+                }
+          "
         >
-          {{ it.description }}
+          <div class="programs-link-title">{{ it.title }}</div>
+
+          <div
+            :class="[
+              isMobile() ? 'programs-link-description' : 'sm:hidden <sm:programs-link-description',
+            ]"
+          >
+            {{ it.description }}
+          </div>
         </div>
+
+        <div class="programs-button">Подробнее</div>
       </ItemLink>
     </div>
 
@@ -84,7 +101,7 @@ export default {
   },
   async asyncData({ store, app, params }) {
     const page = params.page
-    const paginaton = app.router.app.isLight() ? 5 : 12
+    const paginaton = app.router.app.isLight() ? 5 : 9
 
     const reffers = store.state.links
 
@@ -145,7 +162,7 @@ export default {
 .programs {
   &-container {
     // place-content-start min-h-200vh h-200vh
-    @apply container mx-auto mt-auto grid p-5 text-light-200 gap-5 grid-cols-1 justify-between place-content-center place-items-stretch sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6;
+    @apply container mx-auto mt-auto grid p-5 text-light-200 gap-5 grid-cols-1 justify-between place-content-center place-items-stretch sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4;
   }
 
   &-pagination {
@@ -156,9 +173,18 @@ export default {
     }
   }
 
+  &-content {
+    @apply m-auto bg-cyan-700 bg-opacity-50 text-center w-full py-4 px-4 transition duration-700 sm:(bg-hero-rain-white-30 bg-0.25r hover:(bg-green-700  bg-opacity-85)) ;
+  }
+
+  &-button {
+    @apply bg-cyan-700 bg-opacity-25 tracking-widest sm:(uppercase text-xs w-full text-center mt-1 duration-700 py-2 font-bold transition bg-hero-rain-white-30 bg-0.25r hover:(bg-orange-700 bg-opacity-85)) ;
+  }
+
   &-link {
     // sm: max-w-1/3 md:max-w-1/4 lg:max-w-1/5 xl:max-w-1/8 2xl:max-w-1/10
-    @apply flex-center flex-col h-auto bg-cyan-700 bg-opacity-50 min-h-20 py-4 px-6 transition duration-700 overflow-hidden sm:bg-hero-rain-white-30 sm:bg-0.25r md:hover:(bg-orange-700 bg-opacity-100) ;
+    @apply flex flex-col h-auto items-center justify-start overflow-hidden;
+    // md:hover:(bg-orange-700 bg-opacity-100)
 
     &-title {
       //<sm:uppercase md:(text-base max-w-1/4 py-4 absolute) lg:max-w-1/5 xl:max-w-1/8 2xl:max-w-1/10 pb-2 px-10  text-[2vmin]
