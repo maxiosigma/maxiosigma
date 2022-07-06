@@ -174,7 +174,7 @@ export default {
   }
 
   &-content {
-    @apply m-auto bg-cyan-700 bg-opacity-50 text-center w-full py-4 px-4 transition duration-700 sm:(bg-hero-rain-white-30 bg-0.25r hover:(bg-green-700  bg-opacity-85)) ;
+    @apply flex-grow flex-center m-auto bg-cyan-700 bg-opacity-50 text-center w-full py-4 px-4 transition duration-700 sm:(bg-hero-rain-white-30 bg-0.25r hover:(bg-green-700  bg-opacity-85)) ;
   }
 
   &-button {
