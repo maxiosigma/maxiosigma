@@ -32,8 +32,8 @@
               v-anime="{
                 loop: true,
                 opacity: 0,
-                duration: 2000,
-                delay: (j + 1) * 3000,
+                duration: 1000,
+                delay: (j + 1) * 5000,
               }"
             />
           </div>
