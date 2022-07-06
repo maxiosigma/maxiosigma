@@ -30,9 +30,11 @@
               class="programs-image group-image"
               :key="j"
               v-anime="{
-                opacity: (intRandom(40, 60) + i * 0.1) / 100,
-                duration: 1000,
-                delay: 1000,
+                direction: 'alternate',
+                loop: true,
+                opacity: 0,
+                duration: 2000,
+                delay: j * 3000,
               }"
             />
           </div>
