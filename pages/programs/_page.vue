@@ -30,11 +30,10 @@
               class="programs-image group-image"
               :key="j"
               v-anime="{
-                direction: 'alternate',
                 loop: true,
                 opacity: 0,
                 duration: 2000,
-                delay: j * 3000,
+                delay: (j + 1) * 3000,
               }"
             />
           </div>
