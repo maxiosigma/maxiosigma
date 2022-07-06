@@ -31,9 +31,9 @@
               :key="j"
               v-anime="{
                 loop: true,
-                opacity: 0,
-                duration: 1000,
-                delay: (j + 1) * 5000,
+                opacity: [0, 1],
+                duration: 500,
+                delay: (j + 1) * 1000 + 5000,
               }"
             />
           </div>
