@@ -103,7 +103,7 @@ export const actions = {
           description: link?.description,
           images: link?.imgs?.data.map((img) => img?.attributes),
           short: link?.short,
-          tags: link?.tags?.data?.map((tag) => tag?.attributes),
+          tags: link?.tags?.data?.map((tag) => tag?.attributes?.title),
           top: link?.top,
 
           //self: {
