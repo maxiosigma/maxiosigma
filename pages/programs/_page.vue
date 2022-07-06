@@ -57,7 +57,9 @@
             ]"
           >
             {{ it.description }}
+            <br />
 
+            <div class="mt-2"></div>
             {{ it }}
           </div>
         </div>

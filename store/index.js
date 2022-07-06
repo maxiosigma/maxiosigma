@@ -84,24 +84,31 @@ export const actions = {
 
     ctx.commit("uploadStrapi", { key: "navbar", payload: menu });
 
-    const reffers = (
-      await this.$strapi.graphql({ query: ctx.state.gql.links })
-    ).links?.data?.map((it) => it.attributes);
+    const reffers = (await this.$strapi.graphql({ query: ctx.state.gql.links }))
+      .links?.data;
 
     ctx.commit("uploadStrapi", { key: "reffers", payload: reffers });
 
     const links = reffers?.reduce((sum, it) => {
-      if (!!it?.partnership && !!it?.title && !!it?.description && !!it?.short)
-        sum.push({
-          title: it?.title,
-          description: it?.description,
-          //tags: it.tag,
-          short: it?.short,
-          top: it?.top,
+      const link = it.attributes;
 
-          self: {
-            ...it,
-          },
+      if (
+        !!link?.partnership &&
+        !!link?.title &&
+        !!link?.description &&
+        !!link?.short
+      )
+        sum.push({
+          title: link?.title,
+          description: link?.description,
+          images: link?.imgs?.data.map((img) => img?.attributes),
+          short: link?.short,
+          tags: link?.tags?.data?.map((tag) => tag?.attributes),
+          top: link?.top,
+
+          //self: {
+          //  ...it,
+          //},
         });
 
       //console.log(it?.tag);

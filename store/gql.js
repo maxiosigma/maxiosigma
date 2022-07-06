@@ -123,29 +123,34 @@ function links(page = 1, limit = 2000) {
 			links(pagination: { limit: 200 }, sort: "top:DESC") {
 				data {
 					attributes{
+            top
+            href
 						title
 						short
-						href
-						tag {
-							title
-						}
-						imgs {
-							data {
-								attributes {
-									name
-									width
-									height
-									ext
-									size
-									url
-								}
-							}
-						}
 						description
 						partnership
-						alt
 						updatedAt
-						top
+            alt
+            imgs {
+							data {
+                attributes {
+                  name
+									alternativeText
+									width
+									height
+                  size
+									ext
+									url
+                }
+              }
+						}
+						tags {
+              data {
+                attributes {
+                  title
+                }
+              }
+            }
 					}
 				}
 			}
