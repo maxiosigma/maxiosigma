@@ -31,9 +31,9 @@
               :key="j"
               v-anime="{
                 loop: true,
-                opacity: [0.5, 1],
+                opacity: 0,
                 duration: 5000,
-                delay: (j + 1) * 1000 + 5000,
+                delay: j * 5000,
               }"
             />
           </div>
@@ -74,10 +74,6 @@
             ]"
           >
             {{ it.description }}
-            <br />
-
-            <div class="mt-2"></div>
-            {{ it }}
           </div>
         </div>
 
