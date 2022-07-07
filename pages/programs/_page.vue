@@ -29,11 +29,12 @@
               :src="img.url"
               class="programs-image group-image"
               :key="j"
+              v-anime.set="{ opacity: 0 }"
               v-anime="{
                 loop: true,
-                opacity: 0,
-                duration: j * 1000,
-                delay: (j + 1) * 1000,
+                opacity: 1,
+                duration: (j + 1) * 4000,
+                delay: (j + 1) * 2000,
               }"
             />
           </div>
