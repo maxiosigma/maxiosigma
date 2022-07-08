@@ -27,7 +27,7 @@ export default {
     return { countPages }
   },
   mounted() {
-    this.routeLight("programs/1")
+    this.routeLight("sentences/1")
     //console.log(this.countPages)
   },
 }

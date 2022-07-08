@@ -2,13 +2,13 @@
   <LayoutPage>
     <!--@touchstart="touchStart"
       @touchEndMethod="touchEnd"-->
-    <div class="programs-container">
+    <div class="sentences-container">
       <ItemLink
         self
         @click.native.prevent="handleOpen(it.short)"
         :href="'/about'"
         :class="[
-          'programs-link group',
+          'sentences-link group',
           stringRandom([
             'rounded-tl-lg rounded-br-lg',
             'rounded-br-lg rounded-tl-lg',
@@ -23,12 +23,12 @@
         :key="i"
         v-anime="animateBlock({ dl: 1.5 + 0.1 * intRandom(1, i) + i * 0.05, dr: 1.75 })"
       >
-        <div class="programs-image-container">
+        <div class="sentences-image-container">
           <div v-if="it.images.length > 0" class="relative">
             <ItemImgStrapiBg
               v-for="(img, j) in it.images"
               :src="img.url"
-              class="programs-image group-image"
+              class="sentences-image group-image"
               :key="j"
               v-anime.set="{ opacity: 0 }"
               v-anime="{
@@ -42,7 +42,7 @@
 
           <ItemImgStrapiBg
             v-else
-            class="programs-image"
+            class="sentences-image"
             :src="`https://source.unsplash.com/random/300x200?sig=${i}`"
           />
         </div>
@@ -50,7 +50,7 @@
         <!--v-anime="animateBlock({ dl: 1.5 + 0.1 * intRandom(1, i) + i * 0.05, dr: 0.01 })"-->
 
         <div
-          class="programs-content"
+          class="sentences-content"
           v-tooltip="
             isMobile()
               ? {
@@ -68,23 +68,25 @@
                 }
           "
         >
-          <div class="programs-link-title">{{ it.title }}</div>
+          <div class="sentences-link-title">{{ it.title }}</div>
 
           <div
             :class="[
-              isMobile() ? 'programs-link-description' : 'sm:hidden <sm:programs-link-description',
+              isMobile()
+                ? 'sentences-link-description'
+                : 'sm:hidden <sm:sentences-link-description',
             ]"
           >
             {{ it.description }}
           </div>
         </div>
 
-        <div class="programs-button">Подробнее</div>
+        <div class="sentences-button">Подробнее</div>
       </ItemLink>
     </div>
 
-    <div v-if="countPages !== 1" :class="['programs-pagination']">
-      <div :class="['programs-pagination-container']">
+    <div v-if="countPages !== 1" :class="['sentences-pagination']">
+      <div :class="['sentences-pagination-container']">
         <div
           @click="toPrev()"
           :class="['cursor-pointer mb-1 prev hover:(text-orange-500)', { hidden: page == 1 }]"
@@ -135,7 +137,7 @@ export default {
     return { links, countPages, page }
   },
   mounted() {
-    if (this.page > this.countPages || this.page == 0) this.routeLight("programs/1")
+    if (this.page > this.countPages || this.page == 0) this.routeLight("sentences/1")
     //console.log(this.links, this.countPages, this.page)
   },
   methods: {
@@ -144,12 +146,12 @@ export default {
     },
     toNext() {
       const nxt = this.page - 1 + 2
-      if (nxt !== this.countPages + 1) this.routeLight(`programs/${nxt}`)
+      if (nxt !== this.countPages + 1) this.routeLight(`sentences/${nxt}`)
       else alert("Вы на последней странице")
     },
     toPrev() {
       const prv = this.page - 2 + 1
-      if (prv !== 0) this.routeLight(`programs/${prv}`)
+      if (prv !== 0) this.routeLight(`sentences/${prv}`)
       else alert("Вы на первой странице")
     },
     //touchStart(touchEvent) {
@@ -178,7 +180,7 @@ export default {
 
 
 <style lang="scss">
-.programs {
+.sentences {
   &-container {
     // place-content-start min-h-200vh h-200vh
     @apply container mx-auto mt-auto grid p-5 text-light-200 gap-5 grid-cols-1 justify-between place-content-center place-items-stretch sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4;

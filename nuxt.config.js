@@ -142,15 +142,16 @@ function hooks() {
 function i18n() {
   const locales = [
     { code: "ru-ru", iso: "ru-RU", name: "Русский", file: "ru-RU.js" },
-    //{ code: 'en-es', iso: 'en-ES', name: 'English', file: 'en-ES.js' },
+    { code: "en-es", iso: "en-ES", name: "English", file: "en-ES.js" },
   ];
 
   locales?.map((locale) => {
     locales.push({
+      ...locale,
       code: locale.code + "-amp",
-      iso: locale.iso,
-      name: locale.name,
-      file: locale.file,
+      //iso: locale.iso,
+      //name: locale.name,
+      //file: locale.file,
     });
   });
 
@@ -163,11 +164,18 @@ function i18n() {
       defaultLocale: "ru-ru", //ru-ru
       //langDir: '~/locales/',
       noPrefixDefaultLocale: true, //true false
+      vueI18n: {
+        fallbackLocale: "en-es",
+      },
       vuex: {
         moduleName: "i18n",
         syncLocale: false,
         syncMessages: false,
         syncRouteParams: false,
+      },
+      detectBrowserLanguage: {
+        useCookie: true,
+        cookieKey: "lang",
       },
       locales,
     },
