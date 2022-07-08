@@ -5,6 +5,18 @@ import app_config from "../../app.config";
 // Глабальные методы
 Vue.mixin({
   methods: {
+    LCG(name) {
+      return localStorage.getItem(name) || window.localStorage.getItem(name);
+    },
+    LCS(name, payload) {
+      return (
+        localStorage.setItem(name, payload) ??
+        window.localStorage.setItem(name, payload)
+      );
+    },
+    LCST(name, payload, time = 1500) {
+      setTimeout(() => this.LCS(name, payload), time);
+    },
     isHttps() {
       return document.location.href.indexOf("https://") !== -1;
     },

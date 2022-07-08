@@ -193,6 +193,8 @@ export default {
     window.addEventListener("resize", () => {
       this.getSize()
     })
+
+    this.LCST("about", true, 5000)
   },
   methods: {
     getSize() {

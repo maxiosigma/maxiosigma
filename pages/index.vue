@@ -19,26 +19,25 @@ export default {
     return {
       title: this.title,
       ...(this.description && { description: this.description }),
-      titleTemplate: this.headTemplate(this?.link ? "%s" : undefined),
-      meta: [
-        //{
-        //  "http-equiv": this?.link?.href ? "refresh" : false,
-        //  content: "0.01;URL=" + this?.link?.href,
-        //},
-        //{ "http-equiv": this?.link?.alt ? "refresh" : false, content: "3;URL=" + this?.link?.alt },
-      ],
+      titleTemplate: this.headTemplate(this.link ? "%s" : undefined),
+      meta: !!this.link
+        ? [
+            { "http-equiv": "refresh", content: "0.01;URL=" + this.link?.href },
+            { "http-equiv": "refresh", content: "3;URL=" + this.link?.alt },
+          ]
+        : false,
     }
   },
   data() {
     return {
       link: undefined,
       links: this.$store.state.reffers,
-      title: this?.link?.title ?? "Главная",
-      description: this?.link?.description,
+      title: this.link?.title ?? "Главная",
+      description: this.link?.description,
     }
   },
   async beforeMount() {
-    //await this.vkPixel()
+    await this.vkPixel()
   },
   mounted() {
     const route = this.$route
@@ -47,27 +46,23 @@ export default {
     //document.domain
 
     if (!query) {
-      console.log(window.localStorage.getItem("about"))
-      console.log(this?.link?.href)
+      if (!this.LCG("about")) this.routeLight("about")
+      else this.routeLight("sentences")
 
-      //try {
-      //  if (window.localStorage.getItem("about") ) this.routeLight("about")
-      //  else this.routeLight("sentences")
-      //} catch {
-      //  this.routeLight("about")
-      //}
+      //console.log(window.localStorage.getItem("about"), localStorage.getItem("about"))
+      //console.log(!!this.LCG("about"))
 
       //!localStorage.getItem('about') || localStorage.getItem('about') === 0 ? this.routeLight('about') : this.routeLight('about')
       //: !localStorage.getItem('business') || localStorage.getItem('business') === 0
       //? this.routeLight('business')
     } else {
-      //this.link = this?.links?.filter((ln) => ln?.short === query)[0]
-      //if (this.link?.href) setTimeout(() => (location.href = this.link?.href), 1500)
-      //if (this.link?.alt) setTimeout(() => (location.href = this.link?.alt), 3000)
-      //if (!this.link) {
-      //  window.open("#mw")
-      //  setTimeout(() => (location.href = "/about"), 1000)
-      //}
+      this.link = this.links?.filter((ln) => ln?.short === query)[0]
+      if (this.link?.href) setTimeout(() => (location.href = this.link?.href), 1500)
+      if (this.link?.alt) setTimeout(() => (location.href = this.link?.alt), 3000)
+      if (!this.link) {
+        window.open("#mw")
+        setTimeout(() => (location.href = "/about"), 1000)
+      }
     }
 
     //setTimeout(() => this.routeLight("about"), 4500)

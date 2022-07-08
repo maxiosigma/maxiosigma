@@ -3,6 +3,7 @@
     <!--@touchstart="touchStart"
       @touchEndMethod="touchEnd"-->
     <div class="sentences-container">
+      <!-- v-anime="animateBlock({ dl: 1.5 + 0.1 * intRandom(1, i) + i * 0.05, dr: 1.75 })" -->
       <ItemLink
         self
         @click.native.prevent="handleOpen(it.short)"
@@ -21,7 +22,6 @@
         ]"
         v-for="(it, i) in links"
         :key="i"
-        v-anime="animateBlock({ dl: 1.5 + 0.1 * intRandom(1, i) + i * 0.05, dr: 1.75 })"
       >
         <div class="sentences-image-container">
           <div v-if="it.images.length > 0" class="relative">
@@ -45,6 +45,10 @@
             class="sentences-image"
             :src="`https://source.unsplash.com/random/300x200?sig=${i}`"
           />
+
+          <div class="-right-5 -bottom-5 z-20 tags absolute">
+            <div class="">TAG</div>
+          </div>
         </div>
 
         <!--v-anime="animateBlock({ dl: 1.5 + 0.1 * intRandom(1, i) + i * 0.05, dr: 0.01 })"-->
@@ -183,7 +187,7 @@ export default {
 .sentences {
   &-container {
     // place-content-start min-h-200vh h-200vh
-    @apply container mx-auto mt-auto grid p-5 text-light-200 gap-5 grid-cols-1 justify-between place-content-center place-items-stretch sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4;
+    @apply container mx-auto mt-auto grid p-5 text-light-200 gap-5 grid-cols-1 relative justify-between place-content-center place-items-stretch sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4;
   }
 
   &-image {
