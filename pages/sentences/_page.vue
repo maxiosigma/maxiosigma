@@ -46,9 +46,9 @@
             :src="`https://source.unsplash.com/random/300x200?sig=${i}`"
           />
 
-          <div class="-right-5 -bottom-5 z-20 tags absolute">
+          <!--<div class="-right-5 -bottom-5 z-20 tags absolute">
             <div class="">TAG</div>
-          </div>
+          </div>-->
         </div>
 
         <!--v-anime="animateBlock({ dl: 1.5 + 0.1 * intRandom(1, i) + i * 0.05, dr: 0.01 })"-->
