@@ -120,7 +120,7 @@ export default {
   },
   async asyncData({ store, app, params }) {
     const page = params.page
-    const paginaton = app.router.app.isLight() ? 5 : 9
+    const paginaton = app.router.app.isLight() ? 5 : 12
 
     const reffers = store.state.links
 
