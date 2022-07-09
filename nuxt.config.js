@@ -421,11 +421,11 @@ function includes() {
 //}
 
 function custom() {
-   const cookie = {
+   const cke = {
       orig: ["cookie_control_consent", "cookie_control_enabled_cookies", "strapi_jwt", "lang"],
       ga: ["_ga", "_gat", "_gid"],
       ym: ["_ym_d", "_ym_isad", "_ym_uid", "_ym_visorc", "metrika_enabled"],
-      vk: ["remixir", "remixir", "remixir"],
+      vk: ["remixir"],
    };
 
    return {
@@ -447,8 +447,8 @@ function custom() {
       //},
       cookies: {
          locales: ["ru", "en"],
-         barPosition: "bottom-full",
-         dashInDescription: true,
+         //barPosition: "bottom-full",
+         //dashInDescription: true,
          necessary: [
             {
                name: {
@@ -459,7 +459,7 @@ function custom() {
                   ru: "Используются для управления файлами cookie",
                   en: "Used for cookie control",
                },
-               cookies: cookie.orig,
+               cookies: ["cookie_control_consent", "cookie_control_enabled_cookies", "strapi_jwt", "lang"],
             },
          ],
          optional: [
@@ -471,16 +471,9 @@ function custom() {
                   en: "Google GTM",
                },
                initialState: true,
-               //src:  'https://www.googletagmanager.com/gtag/js?id=<API-KEY>',
                async: true,
-               cookies: cookie.ga,
+               cookies: ["_ga", "_gat", "_gid"],
                accepted: () => {
-                  // window.dataLayer = window.dataLayer || [];
-                  // window.dataLayer.push({
-                  //   'gtm.start': new Date().getTime(),
-                  //   event: 'gtm.js'
-                  // });
-
                   setTimeout(() => {
                      (function (w, d, s, l, i) {
                         w[l] = w[l] || [];
@@ -497,7 +490,7 @@ function custom() {
                   }, 250);
                },
                declined: () => {
-                  cookie.ga.map((it) => window.$nuxt.$cookies.remove(it));
+                  window.$nuxt.$cookies.remove("ga");
                },
             },
             {
@@ -508,16 +501,9 @@ function custom() {
                   en: "Yandex Pixel",
                },
                initialState: true,
-               //src:  'https://www.googletagmanager.com/gtag/js?id=<API-KEY>',
                async: true,
-               cookies: cookie.ym,
+               cookies: ["_ym_d", "_ym_isad", "_ym_uid", "_ym_visorc", "metrika_enabled"],
                accepted: () => {
-                  // window.dataLayer = window.dataLayer || [];
-                  // window.dataLayer.push({
-                  //   'gtm.start': new Date().getTime(),
-                  //   event: 'gtm.js'
-                  // });
-
                   setTimeout(() => {
                      (function (m, e, t, r, i, k, a) {
                         m[i] =
@@ -544,7 +530,7 @@ function custom() {
                   }, 250);
                },
                declined: () => {
-                  cookie.ym.map((it) => window.$nuxt.$cookies.remove(it));
+                  window.$nuxt.$cookies.remove("ym");
                },
             },
             {
@@ -555,16 +541,9 @@ function custom() {
                   en: "VK PIXEL",
                },
                initialState: true,
-               //src:  'https://www.googletagmanager.com/gtag/js?id=<API-KEY>',
                async: true,
-               cookies: cookie.vk,
+               cookies: ["remixir"],
                accepted: () => {
-                  // window.dataLayer = window.dataLayer || [];
-                  // window.dataLayer.push({
-                  //   'gtm.start': new Date().getTime(),
-                  //   event: 'gtm.js'
-                  // });
-
                   !(function () {
                      var t = document.createElement("script");
                      (t.type = "text/javascript"),
@@ -579,7 +558,7 @@ function custom() {
                   console.log("VK PIXEL ACTIVE");
                },
                declined: () => {
-                  cookie.vk.map((it) => window.$nuxt.$cookies.remove(it));
+                  window.$nuxt.$cookies.remove("vk");
                },
             },
          ],
