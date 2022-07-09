@@ -6,6 +6,8 @@ const { plugins, buildModules, modules, transpile } = includes();
 
 //console.log(resolve(__dirname, './'))
 
+// this.$cookies.cookie_control_consent
+
 export default {
    alias: {
       "~": resolve(__dirname, "./"),
@@ -21,6 +23,7 @@ export default {
    //...prismic(),
    ...router(),
    ...custom(),
+   ...cookie(),
    ...render(),
    ...server(),
    ...build(),
@@ -41,6 +44,189 @@ export default {
    modules,
    plugins,
 };
+
+function cookie() {
+   return {
+      cookies: {
+         locales: ["ru", "en"],
+         barPosition: "bottom-right",
+         //barPosition: "bottom-full",
+         //dashInDescription: true,
+         necessary: [
+            {
+               name: {
+                  ru: "Куки по умолчанию",
+                  en: "Default Cookies",
+               },
+               description: {
+                  ru: "Используются для управления файлами cookie",
+                  en: "Used for cookie control",
+               },
+               cookies: ["cookie_control_consent", "cookie_control_enabled_cookies", "i18n_redirected", "strapi_jwt", "lang"],
+            },
+         ],
+         optional: [
+            {
+               name: "Google Analitycs",
+               identifier: "ga",
+               description: {
+                  ru: "Google GTM",
+                  en: "Google GTM",
+               },
+               initialState: true,
+               async: false,
+               cookies: ["_ga", "_gat", "_gid", "_ga_X7YM5GJKXG"],
+               accepted: () => {
+                  setTimeout(() => {
+                     (function (w, d, s, l, i) {
+                        w[l] = w[l] || [];
+                        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+                        var f = d.getElementsByTagName(s)[0],
+                           j = d.createElement(s),
+                           dl = l != "dataLayer" ? "&l=" + l : "";
+                        j.async = true;
+                        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+                        f.parentNode.insertBefore(j, f);
+                     })(window, document, "script", "dataLayer", "GTM-MSJZ4PT");
+
+                     console.log("GTM PIXEL ACTIVE");
+                  }, 250);
+               },
+               declined: () => {
+                  //console.log(window.$nuxt.$cookies);
+                  window.$nuxt.$cookies.remove("ga");
+               },
+            },
+            {
+               name: "Yandex Metrika",
+               identifier: "ym",
+               description: {
+                  ru: "Yandex Pixel",
+                  en: "Yandex Pixel",
+               },
+               initialState: true,
+               async: false,
+               cookies: ["_ym_d", "_ym_isad", "_ym_uid", "_ym_visorc", "metrika_enabled"],
+               accepted: () => {
+                  setTimeout(() => {
+                     (function (m, e, t, r, i, k, a) {
+                        m[i] =
+                           m[i] ||
+                           function () {
+                              (m[i].a = m[i].a || []).push(arguments);
+                           };
+                        m[i].l = 1 * new Date();
+                        (k = e.createElement(t)),
+                           (a = e.getElementsByTagName(t)[0]),
+                           (k.async = 1),
+                           (k.src = r),
+                           a.parentNode.insertBefore(k, a);
+                     })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+                     ym(89264491, "init", {
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true,
+                        webvisor: true,
+                     });
+
+                     console.log("YM PIXEL ACTIVE");
+                  }, 250);
+               },
+               declined: () => {
+                  window.$nuxt.$cookies.remove("ym");
+               },
+            },
+            {
+               name: "VK Pixel",
+               identifier: "vk",
+               description: {
+                  ru: "VK Pixel",
+                  en: "VK Pixel",
+               },
+               initialState: true,
+               async: false,
+               cookies: ["remixir"],
+               accepted: () => {
+                  !(function () {
+                     var t = document.createElement("script");
+                     (t.type = "text/javascript"),
+                        (t.async = !0),
+                        (t.src = "https://vk.com/js/api/openapi.js?169"),
+                        (t.onload = function () {
+                           VK.Retargeting.Init("VK-RTRG-1455228-5lkj2"), VK.Retargeting.Hit();
+                        }),
+                        document.head.appendChild(t);
+                  })();
+
+                  console.log("VK PIXEL ACTIVE");
+               },
+               declined: () => {
+                  window.$nuxt.$cookies.remove("vk");
+               },
+            },
+            {
+               name: "Pulse Pixel",
+               identifier: "pp",
+               description: {
+                  ru: "Pulse Pixel",
+                  en: "Pulse Pixel",
+               },
+               initialState: true,
+               async: false,
+               cookies: ["sbjs_current_add", "sbjs_migrations", "sbjs_current", "sbjs_first", "sbjs_udata"],
+               accepted: () => {
+                  console.log("PULSE PIXEL ACTIVE");
+               },
+               declined: () => {
+                  window.$nuxt.$cookies.remove("pp");
+               },
+            },
+         ],
+         text: {
+            locale: {
+               ru: {
+                  barTitle: "Файлы сookie",
+                  barDescription:
+                     "Сайт использут cookie и локальное хранилище данных. Это позволяет анализировать взаимодействие посетителей с сайтом и делать его лучше по всем правилам закона 152-ФЗ «О персональных данных». Продолжая пользоваться сайтом, вы соглашаетесь с использованием файлов cookie и политикой конфиденциальности.",
+                  acceptAll: "Принять все",
+                  declineAll: "Удалить все",
+                  manageCookies: "Управление файлами cookie",
+                  unsaved: "У вас есть несохраненные настройки",
+                  close: "Закрыть",
+                  save: "Сохранить",
+                  necessary: "Необходимые файлы cookie",
+                  optional: "Необязательные файлы cookie",
+                  functional: "Функциональные файлы cookie",
+                  blockedIframe: "Чтобы увидеть это, включите функциональные файлы cookie",
+                  here: "здесь",
+               },
+            },
+         },
+         colors: {
+            barTextColor: "#fff",
+            barBackground: "#12957b",
+            barButtonColor: "#fff",
+            barButtonBackground: "#206569",
+            barButtonHoverColor: "#fff",
+            barButtonHoverBackground: "#2e495e",
+            modalButtonBackground: "#206569",
+            modalButtonHoverColor: "#fff",
+            controlButtonBackground: "#12957b",
+            controlButtonHoverBackground: "#2e495e",
+            controlButtonIconHoverColor: "#fff",
+            controlButtonIconColor: "#fff",
+            modalButtonHoverBackground: "#2e495e",
+            checkboxActiveBackground: "#2e495e",
+            checkboxInactiveBackground: "#ede1e1",
+            checkboxActiveCircleBackground: "#00c58e",
+            checkboxInactiveCircleBackground: "#f44336",
+            checkboxDisabledBackground: "#ddd",
+            checkboxDisabledCircleBackground: "#fff",
+         },
+      },
+   };
+}
 
 function strapi() {
    return {
@@ -142,7 +328,7 @@ function hooks() {
 function i18n() {
    const locales = [
       { code: "ru-ru", iso: "ru-RU", name: "Русский", file: "ru-RU.js" },
-      { code: "en-es", iso: "en-ES", name: "English", file: "en-ES.js" },
+      //{ code: "en-es", iso: "en-ES", name: "English", file: "en-ES.js" },
    ];
 
    locales?.map((locale) => {
@@ -341,13 +527,13 @@ function css() {
 
 function env() {
    return {
-      CTF_MODEL_ARTICLES: "article",
-      CTF_MODEL_UPDATES: "update",
-      CTF_MODEL_LINKS: "linked",
-      CTF_MODEL_PROGRAMS: "program",
-      CTF_MODEL_SHORTLINK: "shortlink",
-      CTF_MODEL_CATEGORIES: "category",
-      PRC_CDA_ACCESS_TOKEN: process.env.PRC_CDA_ACCESS_TOKEN,
+      //CTF_MODEL_ARTICLES: "article",
+      //CTF_MODEL_UPDATES: "update",
+      //CTF_MODEL_LINKS: "linked",
+      //CTF_MODEL_PROGRAMS: "program",
+      //CTF_MODEL_SHORTLINK: "shortlink",
+      //CTF_MODEL_CATEGORIES: "category",
+      //PRC_CDA_ACCESS_TOKEN: process.env.PRC_CDA_ACCESS_TOKEN,
    };
 }
 
@@ -428,183 +614,6 @@ function custom() {
       globalName: "app",
       globals: {
          id: `app`,
-      },
-      cookies: {
-         locales: ["ru", "en"],
-         barPosition: "bottom-right",
-         //barPosition: "bottom-full",
-         //dashInDescription: true,
-         necessary: [
-            {
-               name: {
-                  ru: "Куки по умолчанию",
-                  en: "Default Cookies",
-               },
-               description: {
-                  ru: "Используются для управления файлами cookie",
-                  en: "Used for cookie control",
-               },
-               cookies: ["cookie_control_consent", "cookie_control_enabled_cookies", "i18n_redirected", "strapi_jwt", "lang"],
-            },
-         ],
-         optional: [
-            {
-               name: "Google Analitycs",
-               identifier: "ga",
-               description: {
-                  ru: "Google GTM",
-                  en: "Google GTM",
-               },
-               initialState: true,
-               async: true,
-               cookies: ["_ga", "_gat", "_gid"],
-               accepted: () => {
-                  setTimeout(() => {
-                     (function (w, d, s, l, i) {
-                        w[l] = w[l] || [];
-                        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-                        var f = d.getElementsByTagName(s)[0],
-                           j = d.createElement(s),
-                           dl = l != "dataLayer" ? "&l=" + l : "";
-                        j.async = true;
-                        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-                        f.parentNode.insertBefore(j, f);
-                     })(window, document, "script", "dataLayer", "GTM-MSJZ4PT");
-
-                     console.log("GTM PIXEL ACTIVE");
-                  }, 250);
-               },
-               declined: () => {
-                  window.$nuxt.$cookies.remove("ga");
-               },
-            },
-            {
-               name: "Yandex Metrika",
-               identifier: "ym",
-               description: {
-                  ru: "Yandex Pixel",
-                  en: "Yandex Pixel",
-               },
-               initialState: true,
-               async: true,
-               cookies: ["_ym_d", "_ym_isad", "_ym_uid", "_ym_visorc", "metrika_enabled"],
-               accepted: () => {
-                  setTimeout(() => {
-                     (function (m, e, t, r, i, k, a) {
-                        m[i] =
-                           m[i] ||
-                           function () {
-                              (m[i].a = m[i].a || []).push(arguments);
-                           };
-                        m[i].l = 1 * new Date();
-                        (k = e.createElement(t)),
-                           (a = e.getElementsByTagName(t)[0]),
-                           (k.async = 1),
-                           (k.src = r),
-                           a.parentNode.insertBefore(k, a);
-                     })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-                     ym(89264491, "init", {
-                        clickmap: true,
-                        trackLinks: true,
-                        accurateTrackBounce: true,
-                        webvisor: true,
-                     });
-
-                     console.log("YM PIXEL ACTIVE");
-                  }, 250);
-               },
-               declined: () => {
-                  window.$nuxt.$cookies.remove("ym");
-               },
-            },
-            {
-               name: "VK Pixel",
-               identifier: "vk",
-               description: {
-                  ru: "VK Pixel",
-                  en: "VK Pixel",
-               },
-               initialState: true,
-               async: true,
-               cookies: ["remixir"],
-               accepted: () => {
-                  !(function () {
-                     var t = document.createElement("script");
-                     (t.type = "text/javascript"),
-                        (t.async = !0),
-                        (t.src = "https://vk.com/js/api/openapi.js?169"),
-                        (t.onload = function () {
-                           VK.Retargeting.Init("VK-RTRG-1455228-5lkj2"), VK.Retargeting.Hit();
-                        }),
-                        document.head.appendChild(t);
-                  })();
-
-                  console.log("VK PIXEL ACTIVE");
-               },
-               declined: () => {
-                  window.$nuxt.$cookies.remove("vk");
-               },
-            },
-            {
-               name: "Pulse Pixel",
-               identifier: "pp",
-               description: {
-                  ru: "Pulse Pixel",
-                  en: "Pulse Pixel",
-               },
-               initialState: true,
-               async: true,
-               cookies: ["sbjs_current_add", "sbjs_migrations", "sbjs_current", "sbjs_first", "sbjs_udata"],
-               accepted: () => {
-                  console.log("PULSE PIXEL ACTIVE");
-               },
-               declined: () => {
-                  window.$nuxt.$cookies.remove("pp");
-               },
-            },
-         ],
-         text: {
-            locale: {
-               ru: {
-                  barTitle: "Файлы сookie",
-                  barDescription:
-                     "Сайт использут cookie и локальное хранилище данных. Это позволяет анализировать взаимодействие посетителей с сайтом и делать его лучше по всем правилам закона 152-ФЗ «О персональных данных». Продолжая пользоваться сайтом, вы соглашаетесь с использованием файлов cookie и политикой конфиденциальности.",
-                  acceptAll: "Принять все",
-                  declineAll: "Удалить все",
-                  manageCookies: "Управление файлами cookie",
-                  unsaved: "У вас есть несохраненные настройки",
-                  close: "Закрыть",
-                  save: "Сохранить",
-                  necessary: "Необходимые файлы cookie",
-                  optional: "Необязательные файлы cookie",
-                  functional: "Функциональные файлы cookie",
-                  blockedIframe: "Чтобы увидеть это, включите функциональные файлы cookie",
-                  here: "здесь",
-               },
-            },
-         },
-         colors: {
-            barTextColor: "#fff",
-            barBackground: "#12957b",
-            barButtonColor: "#fff",
-            barButtonBackground: "#206569",
-            barButtonHoverColor: "#fff",
-            barButtonHoverBackground: "#2e495e",
-            modalButtonBackground: "#206569",
-            modalButtonHoverColor: "#fff",
-            controlButtonBackground: "#12957b",
-            controlButtonHoverBackground: "#2e495e",
-            controlButtonIconHoverColor: "#fff",
-            controlButtonIconColor: "#fff",
-            modalButtonHoverBackground: "#2e495e",
-            checkboxActiveBackground: "#2e495e",
-            checkboxInactiveBackground: "#ede1e1",
-            checkboxActiveCircleBackground: "#00c58e",
-            checkboxInactiveCircleBackground: "#f44336",
-            checkboxDisabledBackground: "#ddd",
-            checkboxDisabledCircleBackground: "#fff",
-         },
       },
       apisToFile: {
          file: {

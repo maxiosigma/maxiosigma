@@ -2,6 +2,7 @@
   <Layout>
     <div class="programms-container">
       <!-- v-if="false"  -->
+      <!-- ${$i18n.locale}/ -->
       <nuxt-link
         class="hidden"
         :to="`/${$i18n.locale}/programs/${i}`"
@@ -21,7 +22,7 @@ export default {
   },
   async asyncData({ store, app }) {
     const paginaton = app.router.app.isLight() ? 5 : 12
-    const countLinks = store.state.links?.length
+    const countLinks = store.state.links.length
     const countPages = Math.ceil(countLinks / paginaton)
 
     return { countPages }

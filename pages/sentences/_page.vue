@@ -8,9 +8,11 @@
         self
         @click.native.prevent="handleOpen(it.short)"
         :href="'/about'"
-        :class="[
-          'sentences-link group',
-          stringRandom([
+        :class="['sentences-link group']"
+        v-for="(it, i) in links"
+        :key="i"
+      >
+        <!--stringRandom([
             'rounded-tl-lg rounded-br-lg',
             'rounded-br-lg rounded-tl-lg',
             'rounded-r-lg',
@@ -18,27 +20,25 @@
             'rounded-t-lg',
             'rounded-b-lg',
             'rounded-lg',
-          ]),
-        ]"
-        v-for="(it, i) in links"
-        :key="i"
-      >
+          ]),-->
+
         <div class="sentences-image-container">
-          <div v-if="it.images.length > 0" class="relative">
+          <!--<div v-if="it.images.length > 0" class="relative">
             <ItemImgStrapiBg
               v-for="(img, j) in it.images"
               :src="img.url"
               class="sentences-image group-image"
               :key="j"
-              v-anime.set="{ opacity: 0 }"
+            />
+          </div>-->
+
+          <!--v-anime.set="{ opacity: 0 }"
               v-anime="{
                 loop: true,
                 opacity: 1,
                 duration: (j + 1) * 6000,
                 delay: (j + 1) * 3000,
-              }"
-            />
-          </div>
+              }"-->
 
           <!-- ВЫДАЁТ ОШИБКУ STYLE -->
 
@@ -58,21 +58,16 @@
 
         <div
           class="sentences-content"
-          v-tooltip="
-            isMobile()
-              ? {
-                  disabled: true,
-                }
-              : {
-                  content: `<div class='text-center'>${it.description}</div>`,
-                  html: true,
-                  distance: 20,
-                  delay: {
-                    show: 200,
-                    hide: 150,
-                  },
-                }
-          "
+          v-tooltip="{
+            disabled: isMobile(),
+            content: `<div class='text-center'>${it.description}</div>`,
+            html: true,
+            distance: 20,
+            delay: {
+              show: 200,
+              hide: 150,
+            },
+          }"
         >
           <div class="sentences-link-title">{{ it.title }}</div>
 
@@ -143,7 +138,7 @@ export default {
     return { links, countPages, page }
   },
   mounted() {
-    if (this.page > this.countPages || this.page == 0) this.routeLight("sentences/1")
+    //if (this.page > this.countPages || this.page == 0) this.routeLight("sentences/1")
     //console.log(this.links, this.countPages, this.page)
   },
   methods: {

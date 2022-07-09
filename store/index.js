@@ -55,61 +55,59 @@ export const mutations = {
 
 export const actions = {
    async nuxtServerInit(ctx) {
-      const menu =
-         (
-            await this.$strapi?.graphql({
-               query: ctx.state.gql.menu,
-            })
-         )?.menusMenus?.data[0]?.attributes?.items?.data
-            .map((it) => it?.attributes)
-            .map((it) => {
-               return {
-                  url: it.url?.split("?")?.[0],
-                  title: it.title,
-                  order: it.order,
-                  target: it.target,
-                  parent: it.parent.data?.attributes,
-                  ...it.url
-                     ?.split("?")?.[1]
-                     ?.split("&")
-                     ?.reduce((s, it) => {
-                        s = {
-                           ...s,
-                           [it.split("=")[0]]: it.split("=")[1],
-                        };
-                        return s;
-                     }, {}),
-               };
-            })
-            .filter((it) => it?.hidden !== "true") ?? {};
+      const menu = (
+         await this.$strapi.graphql({
+            query: ctx.state.gql.menu,
+         })
+      )?.menusMenus?.data[0]?.attributes?.items?.data
+         .map((it) => it?.attributes)
+         .map((it) => {
+            return {
+               url: it.url?.split("?")?.[0],
+               title: it.title,
+               order: it.order,
+               target: it.target,
+               parent: it.parent.data?.attributes,
+               ...it.url
+                  ?.split("?")?.[1]
+                  ?.split("&")
+                  ?.reduce((s, it) => {
+                     s = {
+                        ...s,
+                        [it.split("=")[0]]: it.split("=")[1],
+                     };
+                     return s;
+                  }, {}),
+            };
+         })
+         .filter((it) => it?.hidden !== "true");
 
       ctx.commit("uploadStrapi", { key: "navbar", payload: menu });
 
-      const reffers = (await this.$strapi?.graphql({ query: ctx.state.gql.links })).links?.data ?? [];
+      const reffers = (await this.$strapi.graphql({ query: ctx.state.gql.links })).links?.data;
 
       ctx.commit("uploadStrapi", { key: "reffers", payload: reffers });
 
-      const links =
-         reffers?.reduce((sum, it) => {
-            const link = it.attributes;
+      const links = reffers?.reduce((sum, it) => {
+         const link = it.attributes;
 
-            if (!!link?.partnership && !!link?.title && !!link?.description && !!link?.short)
-               sum.push({
-                  title: link?.title,
-                  description: link?.description,
-                  images: link?.imgs?.data.map((img) => img?.attributes),
-                  short: link?.short,
-                  tags: link?.tags?.data?.map((tag) => tag?.attributes?.title),
-                  top: link?.top,
+         if (!!link?.partnership && !!link?.title && !!link?.description && !!link?.short)
+            sum.push({
+               title: link?.title,
+               description: link?.description,
+               images: link?.imgs?.data.map((img) => img?.attributes),
+               short: link?.short,
+               tags: link?.tags?.data?.map((tag) => tag?.attributes?.title),
+               top: link?.top,
 
-                  //self: {
-                  //  ...it,
-                  //},
-               });
+               //self: {
+               //  ...it,
+               //},
+            });
 
-            //console.log(it?.tag);
-            return sum;
-         }, []) ?? [];
+         //console.log(it?.tag);
+         return sum;
+      }, []);
       //.sort((hot, normal) => (hot.top < normal.top ? 1 : -1));
 
       ctx.commit("uploadStrapi", { key: "links", payload: links });

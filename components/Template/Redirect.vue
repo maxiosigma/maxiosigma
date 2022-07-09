@@ -19,13 +19,13 @@ export default {
       meta: [
         {
           "http-equiv": "refresh",
-          content: `17.5;url=/${this.$i18n.locale}/programs`,
+          content: `17.5;url=/${this.$i18n.locale}/sentences`,
         },
       ],
     }
   },
   mounted() {
-    setTimeout(() => this.routeLight("programs"), 18500)
+    setTimeout(() => this.routeLight("sentences"), 18500)
   },
 }
 </script>
