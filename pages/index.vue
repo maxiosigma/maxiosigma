@@ -22,8 +22,8 @@ export default {
       titleTemplate: this.headTemplate(this.link ? "%s" : undefined),
       meta: !!this.link
         ? [
-            { "http-equiv": "refresh", content: "0.01;URL=" + this.link?.href },
-            { "http-equiv": "refresh", content: "3;URL=" + this.link?.alt },
+            //{ "http-equiv": "refresh", content: "0.01;URL=" + this.link?.href },
+            //{ "http-equiv": "refresh", content: "3;URL=" + this.link?.alt },
           ]
         : false,
     }
@@ -41,13 +41,15 @@ export default {
   },
   mounted() {
     const route = this.$route
-    const query = route?.hash?.replace("#", "") || Object.keys(route?.query)?.[0]
+    const query = Object.keys(route?.query)?.[0] || route?.hash?.replace("#", "")
     //console.log(document.location)
     //document.domain
 
     if (!query) {
-      if (!this.LCG("about")) this.routeLight("about")
-      else this.routeLight("sentences")
+      //if (!this.LCG("about")) this.routeLight("about")
+      //else this.routeLight("sentences")
+
+      console.log(document.cookie)
 
       //console.log(window.localStorage.getItem("about"), localStorage.getItem("about"))
       //console.log(!!this.LCG("about"))
@@ -56,13 +58,13 @@ export default {
       //: !localStorage.getItem('business') || localStorage.getItem('business') === 0
       //? this.routeLight('business')
     } else {
-      this.link = this.links?.filter((ln) => ln?.short === query)[0]
-      if (this.link?.href) setTimeout(() => (location.href = this.link?.href), 1500)
-      if (this.link?.alt) setTimeout(() => (location.href = this.link?.alt), 3000)
-      if (!this.link) {
-        window.open("#mw")
-        setTimeout(() => (location.href = "/about"), 1000)
-      }
+      //this.link = this.links?.filter((ln) => ln?.short === query)[0]
+      //if (this.link?.href) setTimeout(() => (location.href = this.link?.href), 1500)
+      //if (this.link?.alt) setTimeout(() => (location.href = this.link?.alt), 3000)
+      //if (!this.link) {
+      //  window.open("#mw")
+      //  setTimeout(() => (location.href = "/about"), 1000)
+      //}
     }
 
     //setTimeout(() => this.routeLight("about"), 4500)

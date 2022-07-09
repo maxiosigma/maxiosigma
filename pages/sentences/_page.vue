@@ -40,6 +40,8 @@
             />
           </div>
 
+          <!-- ВЫДАЁТ ОШИБКУ STYLE -->
+
           <ItemImgStrapiBg
             v-else
             class="sentences-image"

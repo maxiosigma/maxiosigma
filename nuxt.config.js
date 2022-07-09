@@ -385,6 +385,7 @@ function includes() {
       //'@nuxtjs/markdownit',
       "@nuxtjs/i18n",
       "@nuxtjs/axios",
+      "nuxt-cookie-control",
       //'@nuxt/content',
       "@nuxtjs/toast",
       //['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }], // МЕШАЕТ STRAPI
@@ -437,6 +438,43 @@ function custom() {
     //strapi: {
     //	// Options
     //},
+    cookies: {
+      locales: ["ru", "en"],
+      necessary: [
+        {
+          name: {
+            ru: "Куки по умолчанию",
+            en: "Default Cookies",
+          },
+          description: {
+            ru: "Используется для управления файлами cookie",
+            en: "Used for cookie control",
+          },
+          cookies: ["cookie_control_consent", "cookie_control_enabled_cookies"],
+        },
+      ],
+      colors: {
+        barTextColor: "#fff",
+        barBackground: "#12957b",
+        barButtonColor: "#fff",
+        barButtonBackground: "#206569",
+        barButtonHoverColor: "#fff",
+        barButtonHoverBackground: "#2e495e",
+        modalButtonBackground: "#206569",
+        modalButtonHoverColor: "#fff",
+        controlButtonBackground: "#12957b",
+        controlButtonHoverBackground: "#2e495e",
+        controlButtonIconHoverColor: "#fff",
+        controlButtonIconColor: "#fff",
+        modalButtonHoverBackground: "#2e495e",
+        checkboxActiveBackground: "#2e495e",
+        checkboxInactiveBackground: "#ede1e1",
+        checkboxActiveCircleBackground: "#00c58e",
+        checkboxInactiveCircleBackground: "#f44336",
+        checkboxDisabledBackground: "#ddd",
+        checkboxDisabledCircleBackground: "#fff",
+      },
+    },
     apisToFile: {
       file: {
         name: "data",

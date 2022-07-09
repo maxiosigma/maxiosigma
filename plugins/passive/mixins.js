@@ -42,7 +42,9 @@ Vue.mixin({
       const isDesktop = this.$ua.deviceType() === "pc" && light;
       const checkNoLink =
         app_config.excluded?.filter(
-          (it) => this.$route.path.indexOf("/" + it + "/") !== -1
+          (it) =>
+            this.$route.path.indexOf("/" + it + "/") !== -1 ||
+            this.$route.path.indexOf("/") !== -1
         ).length > 0;
 
       isMobile && !checkNoLink
@@ -52,6 +54,8 @@ Vue.mixin({
       isDesktop && !checkNoLink
         ? (location.href = this.switchLocalePath(this.loke(false)))
         : null;
+
+      console.log(light);
 
       return (isMobile && !checkNoLink) || (isDesktop && !checkNoLink);
     },
@@ -95,6 +99,7 @@ Vue.mixin({
         window.oncontextmenu = function () {
           return false;
         };
+
         document.onkeydown = function (e) {
           if (window.event.keyCode == 123 || e.button == 2) return false;
         };
