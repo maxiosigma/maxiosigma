@@ -177,34 +177,34 @@ Vue.mixin({
             : console.log(text);
       },
       vkPixel() {
-         try {
-            //!(function () {
-            //  var t = document.createElement("script");
-            //  (t.type = "text/javascript"),
-            //    (t.async = !0),
-            //    (t.src = "https://vk.com/js/api/openapi.js?169"),
-            //    (t.onload = function () {
-            //      VK.Retargeting.Init("VK-RTRG-1108817-aRWww"),
-            //        VK.Retargeting.Hit();
-            //    }),
-            //    document.head.appendChild(t);
-            //})();
+         // try {
+         //    //!(function () {
+         //    //  var t = document.createElement("script");
+         //    //  (t.type = "text/javascript"),
+         //    //    (t.async = !0),
+         //    //    (t.src = "https://vk.com/js/api/openapi.js?169"),
+         //    //    (t.onload = function () {
+         //    //      VK.Retargeting.Init("VK-RTRG-1108817-aRWww"),
+         //    //        VK.Retargeting.Hit();
+         //    //    }),
+         //    //    document.head.appendChild(t);
+         //    //})();
 
-            !(function () {
-               var t = document.createElement("script");
-               (t.type = "text/javascript"),
-                  (t.async = !0),
-                  (t.src = "https://vk.com/js/api/openapi.js?169"),
-                  (t.onload = function () {
-                     VK.Retargeting.Init("VK-RTRG-1455228-5lkj2"), VK.Retargeting.Hit();
-                  }),
-                  document.head.appendChild(t);
-            })();
+         //    !(function () {
+         //       var t = document.createElement("script");
+         //       (t.type = "text/javascript"),
+         //          (t.async = !0),
+         //          (t.src = "https://vk.com/js/api/openapi.js?169"),
+         //          (t.onload = function () {
+         //             VK.Retargeting.Init("VK-RTRG-1455228-5lkj2"), VK.Retargeting.Hit();
+         //          }),
+         //          document.head.appendChild(t);
+         //    })();
 
-            console.log("VK PIXEL ACTIVE");
-         } catch (error) {
-            console.log(error);
-         }
+         //    console.log("VK PIXEL ACTIVE");
+         // } catch (error) {
+         //    console.log(error);
+         // }
 
          return true;
       },

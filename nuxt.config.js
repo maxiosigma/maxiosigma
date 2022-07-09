@@ -29,13 +29,13 @@ export default {
    ...css(),
    ...pwa(),
 
-   strapi: {
-      url: process.env.STRAPI_URL || "http://localhost:1337",
-      //prefix: '/api',
-      //entities: ['links'],
-      //version: 'v4',
-      cookie: {},
-   },
+   // strapi: {
+   //    url: process.env.STRAPI_URL || "http://localhost:1337",
+   //    //prefix: '/api',
+   //    //entities: ['links'],
+   //    //version: 'v4',
+   //    cookie: {},
+   // },
 
    buildModules,
    modules,
@@ -46,10 +46,12 @@ function strapi() {
    return {
       strapi: {
          url: process.env.STRAPI_URL || "http://localhost:1337",
-         prefix: "/api",
-         entities: ["links"],
+         // prefix: "/api",
+         // entities: ["links"],
          //version: 'v4',
-         cookie: {},
+         cookie: {
+            strapi_jwt: process.env.JWT_SECRET,
+         },
       },
    };
 }
@@ -419,6 +421,13 @@ function includes() {
 //}
 
 function custom() {
+   const cookie = {
+      orig: ["cookie_control_consent", "cookie_control_enabled_cookies", "strapi_jwt", "lang"],
+      ga: ["_ga", "_gat", "_gid"],
+      ym: ["_ym_d", "_ym_isad", "_ym_uid", "_ym_visorc", "metrika_enabled"],
+      vk: ["remixir", "remixir", "remixir"],
+   };
+
    return {
       target: "static",
       loading: false,
@@ -450,7 +459,7 @@ function custom() {
                   ru: "Используются для управления файлами cookie",
                   en: "Used for cookie control",
                },
-               cookies: ["cookie_control_consent", "cookie_control_enabled_cookies", "lang"],
+               cookies: cookie.orig,
             },
          ],
          optional: [
@@ -464,7 +473,7 @@ function custom() {
                initialState: true,
                //src:  'https://www.googletagmanager.com/gtag/js?id=<API-KEY>',
                async: true,
-               cookies: ["_ga", "_gat", "_gid"],
+               cookies: cookie.ga,
                accepted: () => {
                   // window.dataLayer = window.dataLayer || [];
                   // window.dataLayer.push({
@@ -487,7 +496,9 @@ function custom() {
                      console.log("GTM PIXEL ACTIVE");
                   }, 250);
                },
-               declined: () => {},
+               declined: () => {
+                  cookie.ga.map((it) => browser.cookies.remove(it));
+               },
             },
             {
                name: "Yandex Metrika",
@@ -499,7 +510,7 @@ function custom() {
                initialState: true,
                //src:  'https://www.googletagmanager.com/gtag/js?id=<API-KEY>',
                async: true,
-               cookies: ["_ym_d", "_ym_isad", "_ym_uid", "_ym_visorc", "metrika_enabled"],
+               cookies: cookie.ym,
                accepted: () => {
                   // window.dataLayer = window.dataLayer || [];
                   // window.dataLayer.push({
@@ -532,10 +543,12 @@ function custom() {
                      console.log("YM PIXEL ACTIVE");
                   }, 250);
                },
-               declined: () => {},
+               declined: () => {
+                  cookie.ym.map((it) => browser.cookies.remove(it));
+               },
             },
             {
-              name: "VK PIXEL",
+               name: "VK PIXEL",
                identifier: "vk",
                description: {
                   ru: "VK PIXEL",
@@ -544,7 +557,7 @@ function custom() {
                initialState: true,
                //src:  'https://www.googletagmanager.com/gtag/js?id=<API-KEY>',
                async: true,
-               cookies: [],
+               cookies: cookie.vk,
                accepted: () => {
                   // window.dataLayer = window.dataLayer || [];
                   // window.dataLayer.push({
@@ -553,18 +566,22 @@ function custom() {
                   // });
 
                   !(function () {
-                    var t = document.createElement("script");
-                    (t.type = "text/javascript"),
-                       (t.async = !0),
-                       (t.src = "https://vk.com/js/api/openapi.js?169"),
-                       (t.onload = function () {
-                          VK.Retargeting.Init("VK-RTRG-1455228-5lkj2"), VK.Retargeting.Hit();
-                       }),
-                       document.head.appendChild(t);
-                 })();
-     
-                 console.log("VK PIXEL ACTIVE");
-            }
+                     var t = document.createElement("script");
+                     (t.type = "text/javascript"),
+                        (t.async = !0),
+                        (t.src = "https://vk.com/js/api/openapi.js?169"),
+                        (t.onload = function () {
+                           VK.Retargeting.Init("VK-RTRG-1455228-5lkj2"), VK.Retargeting.Hit();
+                        }),
+                        document.head.appendChild(t);
+                  })();
+
+                  console.log("VK PIXEL ACTIVE");
+               },
+               declined: () => {
+                  cookie.vk.map((it) => browser.cookies.remove(it));
+               },
+            },
          ],
       },
       text: {

@@ -5,7 +5,7 @@
       <TemplateHead />
     </template>
 
-    <div class="text-white">AAAAAAAA</div>
+    <!--<div class="text-white">AAAAAAAA</div>-->
 
     <div class="opacity-0">
       <h1>{{ title }}</h1>
@@ -42,7 +42,7 @@ export default {
   async beforeMount() {
     await this.vkPixel()
 
-    //console.log(this.$cookies)
+    console.log(this.$cookies)
   },
   mounted() {
     const route = this.$route
@@ -55,7 +55,7 @@ export default {
     if (!query) {
       //if (!this.LCG("about")) this.routeLight("about")
       //else this.routeLight("sentences")
-      console.log(document.cookie)
+      //console.log(document.cookie)
       //console.log(window.localStorage.getItem("about"), localStorage.getItem("about"))
       //console.log(!!this.LCG("about"))
       //!localStorage.getItem('about') || localStorage.getItem('about') === 0 ? this.routeLight('about') : this.routeLight('about')
