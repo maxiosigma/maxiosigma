@@ -42,12 +42,12 @@
 
           <!-- ВЫДАЁТ ОШИБКУ STYLE -->
 
-          <client-only v-if="it.images.length > 0">
+          <!--<client-only v-if="it.images.length > 0">
             <ItemImgStrapiBg
               class="sentences-image"
               :src="`https://source.unsplash.com/random/300x200?sig=${i}`"
             ></ItemImgStrapiBg>
-          </client-only>
+          </client-only>-->
 
           <!--<div class="-right-5 -bottom-5 z-20 tags absolute">
             <div class="">TAG</div>
@@ -64,7 +64,6 @@
                   disabled: true,
                 }
               : {
-                  disabled: isMobile(),
                   content: `<div class='text-center'>${it.description}</div>`,
                   html: true,
                   distance: 20,
