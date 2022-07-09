@@ -54,7 +54,7 @@ export default {
 
     if (!query && this.$cookies?.consent) {
       if (!this.LCG("about")) this.routeLight("about")
-      else this.routeLight("sentences")
+      else this.routeLight("sentences/1")
       //console.log(document.cookie)
       //console.log(window.localStorage.getItem("about"), localStorage.getItem("about"))
       //console.log(!!this.LCG("about"))
