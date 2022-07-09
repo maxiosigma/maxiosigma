@@ -57,6 +57,7 @@ function strapi() {
 function server() {
    return {
       server: {
+         port: Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000,
          //host: '0.0.0.0',
          //host: process.env.NUXT_ENV_HOST_0 ? '0.0.0.0' : 'localhost',
       },
@@ -108,10 +109,10 @@ function generate() {
    return {
       generate: {
          dir: "dist",
-         interval: 50,
+         interval: 0,
          fallback: true,
          nojekyll: false,
-         concurrency: 2000,
+         concurrency: 5000,
          subFolders: false,
          devtools: app_config.isDev ? true : false,
          exclude: [/^\/test/, /^\/z/, ...exd],

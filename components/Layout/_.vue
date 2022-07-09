@@ -4,7 +4,7 @@
       <TemplateHead />
     </slot>
 
-    <CookieControl :locale="lang"> </CookieControl>
+    <TemplateCookie />
 
     <slot name="wrapper-before"></slot>
 
@@ -40,7 +40,7 @@ export default {
     return {
       htmlAttrs: {
         class: this?.$style?.html || "html",
-        lang: this.$config.lang,
+        lang: this.lang,
         prefix: "og: https://ogp.me/ns#",
         ...(this.isLight && { amp: "true" }),
       },

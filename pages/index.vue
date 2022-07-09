@@ -5,6 +5,8 @@
       <TemplateHead />
     </template>
 
+    <div class="text-white">AAAAAAAA</div>
+
     <div class="opacity-0">
       <h1>{{ title }}</h1>
       <h2>{{ description }}</h2>
@@ -39,6 +41,8 @@ export default {
   },
   async beforeMount() {
     await this.vkPixel()
+
+    //console.log(this.$cookies)
   },
   mounted() {
     const route = this.$route
