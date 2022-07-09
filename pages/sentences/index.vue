@@ -5,7 +5,7 @@
       <!-- ${$i18n.locale}/ -->
       <nuxt-link
         class="hidden"
-        :to="`/${$i18n.locale}/programs/${i}`"
+        :to="`/${$i18n.locale}/sentences/${i}`"
         v-for="i in countPages"
         :key="i"
       ></nuxt-link>
