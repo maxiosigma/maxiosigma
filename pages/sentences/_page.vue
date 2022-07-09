@@ -42,11 +42,12 @@
 
           <!-- ВЫДАЁТ ОШИБКУ STYLE -->
 
-          <ItemImgStrapiBg
-            v-else
-            class="sentences-image"
-            :src="`https://source.unsplash.com/random/300x200?sig=${i}`"
-          />
+          <client-only v-if="it.images.length > 0">
+            <ItemImgStrapiBg
+              class="sentences-image"
+              :src="`https://source.unsplash.com/random/300x200?sig=${i}`"
+            ></ItemImgStrapiBg>
+          </client-only>
 
           <!--<div class="-right-5 -bottom-5 z-20 tags absolute">
             <div class="">TAG</div>
