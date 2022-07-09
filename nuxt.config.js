@@ -182,6 +182,23 @@ function cookie() {
                   window.$nuxt.$cookies.remove("pp");
                },
             },
+            {
+               name: "Other Cookie",
+               identifier: "oz",
+               description: {
+                  ru: "Other Cookie",
+                  en: "Other Cookie",
+               },
+               initialState: true,
+               async: false,
+               cookies: ["_sp_id.0295", "_sp_id", "ugid"],
+               accepted: () => {
+                  console.log("OTHER COOKIE ACTIVE");
+               },
+               declined: () => {
+                  window.$nuxt.$cookies.remove("oz");
+               },
+            },
          ],
          text: {
             locale: {

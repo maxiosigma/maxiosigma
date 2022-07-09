@@ -42,9 +42,9 @@
           </div>
 
           <ItemImgStrapiBg
-            v-if="it.images.length < 0"
+            v-else
             class="sentences-image"
-            :src="`https://source.unsplash.com/random/300x200?sig=${i}`"
+            :src="`https://source.unsplash.com/random/300x200?sig=${i * intRandom(1, countPages)}`"
           ></ItemImgStrapiBg>
 
           <!--<div class="-right-5 -bottom-5 z-20 tags absolute">
