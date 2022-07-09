@@ -63,7 +63,7 @@ export default {
     }
   },
   mounted() {
-    this.notifyCookie()
+    //this.notifyCookie()
   },
   data() {
     return {

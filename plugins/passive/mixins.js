@@ -48,7 +48,7 @@ Vue.mixin({
 
          isDesktop && !checkNoLink ? (location.href = this.switchLocalePath(this.loke(false))) : null;
 
-         console.log(light);
+         // console.log(light);
 
          return (isMobile && !checkNoLink) || (isDesktop && !checkNoLink);
       },
@@ -102,79 +102,10 @@ Vue.mixin({
       },
       toogleLoke() {
          const locale = this.$i18n.locale;
+         console.log(locale);
          return this.$ua.deviceType() === "pc" ? locale + "-amp" : locale.replace("-amp", "");
       },
-      notifyCookie() {
-         const cookie = this.LCG("capcake");
 
-         //console.log(cookie);
-
-         if (!cookie || cookie == false) {
-            setTimeout(
-               () =>
-                  this.$toast.show(
-                     `Сайт использут cookie и локальное хранилище данных. Это позволяет анализировать взаимодействие посетителей с сайтом и делать его лучше по всем правилам закона 152-ФЗ «О персональных данных». Продолжая пользоваться сайтом, вы соглашаетесь с использованием файлов cookie и политикой конфиденциальности ~ главная → конфиденциальность. Нажмите крестик справа, чтобы закрыть.`,
-                     {
-                        theme: "outline",
-                        position: "bottom-center",
-                        duration: null,
-                        //duration: 10000000000,
-                        fullWidth: true,
-                        className: "toast-cookie",
-                        singleton: true,
-                        closeOnSwipe: false,
-                        action: [
-                           {
-                              text: "",
-                              class: "icon-close !m-0 sm:!mr-2 pointer-events-auto !text-yellow-500 transition-all duration-200 hover:(!text-green-300)",
-                              onClick: (e, toastObject) => {
-                                 toastObject.goAway(0);
-                                 this.LCS("capcake", true);
-                              },
-                           },
-                        ],
-                     }
-                  ),
-               2000
-            );
-
-            //setTimeout(() => this.LCS("capcake", true), 3000);
-         }
-      },
-      notifyCook() {
-         setTimeout(() => {
-            const cook = this.LCG("capcake");
-
-            const toast = (count) => {
-               setTimeout(
-                  () =>
-                     this.$toast.show("На сайте используются cookie " + (count - 1) + " из 2", {
-                        theme: this.isLight ? "outline" : "bubble",
-                        position: "top-right",
-                        duration: 1000,
-                     }),
-                  500
-               );
-               setTimeout(
-                  () =>
-                     this.$toast.show("На сайте используются cookie " + count + " из 2", {
-                        theme: this.isLight ? "outline" : "bubble",
-                        position: "bottom-right",
-                        duration: 1000,
-                     }),
-                  1600
-               );
-            };
-
-            if (!cook || cook == 0) {
-               this.LCS("capcake", 2);
-               toast(Number(this.LCG("capcake")));
-            } else if (cook && cook > 0 && cook < 2) {
-               this.LCS("capcake", Number(cook) + 2);
-               toast(Number(this.LCG("capcake")));
-            }
-         }, 500);
-      },
       headTemplate(template = app_config.head.titleTemplate) {
          return template;
       },
@@ -278,55 +209,53 @@ Vue.mixin({
          return true;
       },
       ymPixel() {
-         setTimeout(() => {
-            (function (m, e, t, r, i, k, a) {
-               m[i] =
-                  m[i] ||
-                  function () {
-                     (m[i].a = m[i].a || []).push(arguments);
-                  };
-               m[i].l = 1 * new Date();
-               (k = e.createElement(t)), (a = e.getElementsByTagName(t)[0]), (k.async = 1), (k.src = r), a.parentNode.insertBefore(k, a);
-            })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-            ym(89264491, "init", {
-               clickmap: true,
-               trackLinks: true,
-               accurateTrackBounce: true,
-               webvisor: true,
-            });
-
-            console.log("YM PIXEL ACTIVE");
-         }, 250);
+         // setTimeout(() => {
+         //    (function (m, e, t, r, i, k, a) {
+         //       m[i] =
+         //          m[i] ||
+         //          function () {
+         //             (m[i].a = m[i].a || []).push(arguments);
+         //          };
+         //       m[i].l = 1 * new Date();
+         //       (k = e.createElement(t)), (a = e.getElementsByTagName(t)[0]), (k.async = 1), (k.src = r), a.parentNode.insertBefore(k, a);
+         //    })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+         //    ym(89264491, "init", {
+         //       clickmap: true,
+         //       trackLinks: true,
+         //       accurateTrackBounce: true,
+         //       webvisor: true,
+         //    });
+         //    console.log("YM PIXEL ACTIVE");
+         // }, 250);
 
          return true;
       },
       gtm() {
-         setTimeout(() => {
-            (function (w, d, s, l, i) {
-               w[l] = w[l] || [];
-               w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-               var f = d.getElementsByTagName(s)[0],
-                  j = d.createElement(s),
-                  dl = l != "dataLayer" ? "&l=" + l : "";
-               j.async = true;
-               j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-               f.parentNode.insertBefore(j, f);
-            })(window, document, "script", "dataLayer", "GTM-MSJZ4PT");
-            //
-            //(function (w, d, s, l, i) {
-            //  w[l] = w[l] || [];
-            //  w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-            //  var f = d.getElementsByTagName(s)[0],
-            //    j = d.createElement(s),
-            //    dl = l != "dataLayer" ? "&l=" + l : "";
-            //  j.async = true;
-            //  j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-            //  f.parentNode.insertBefore(j, f);
-            //})(window, document, "script", "dataLayer", "G-X7YM5GJKXG");
+         // setTimeout(() => {
+         //    (function (w, d, s, l, i) {
+         //       w[l] = w[l] || [];
+         //       w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+         //       var f = d.getElementsByTagName(s)[0],
+         //          j = d.createElement(s),
+         //          dl = l != "dataLayer" ? "&l=" + l : "";
+         //       j.async = true;
+         //       j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+         //       f.parentNode.insertBefore(j, f);
+         //    })(window, document, "script", "dataLayer", "GTM-MSJZ4PT");
+         //    //
+         //    //(function (w, d, s, l, i) {
+         //    //  w[l] = w[l] || [];
+         //    //  w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+         //    //  var f = d.getElementsByTagName(s)[0],
+         //    //    j = d.createElement(s),
+         //    //    dl = l != "dataLayer" ? "&l=" + l : "";
+         //    //  j.async = true;
+         //    //  j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+         //    //  f.parentNode.insertBefore(j, f);
+         //    //})(window, document, "script", "dataLayer", "G-X7YM5GJKXG");
 
-            console.log("GTM PIXEL ACTIVE");
-         }, 250);
+         //    console.log("GTM PIXEL ACTIVE");
+         // }, 250);
 
          return true;
       },

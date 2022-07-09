@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       link: undefined,
-      links: this.$store.state.reffers,
+      links: this.$store.state?.reffers,
       title: this.link?.title ?? "Главная",
       description: this.link?.description,
     }
@@ -55,7 +55,7 @@ export default {
     if (!query) {
       //if (!this.LCG("about")) this.routeLight("about")
       //else this.routeLight("sentences")
-      //console.log(document.cookie)
+      console.log(document.cookie)
       //console.log(window.localStorage.getItem("about"), localStorage.getItem("about"))
       //console.log(!!this.LCG("about"))
       //!localStorage.getItem('about') || localStorage.getItem('about') === 0 ? this.routeLight('about') : this.routeLight('about')

@@ -57,9 +57,9 @@ function strapi() {
 function server() {
    return {
       server: {
-         port: Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000,
-         //host: '0.0.0.0',
-         //host: process.env.NUXT_ENV_HOST_0 ? '0.0.0.0' : 'localhost',
+         // port: app_config.port,
+         // host: '0.0.0.0',
+         // host: process.env.NUXT_ENV_HOST_0 ? '0.0.0.0' : 'localhost',
       },
    };
 }
@@ -465,15 +465,29 @@ function custom() {
                //src:  'https://www.googletagmanager.com/gtag/js?id=<API-KEY>',
                async: true,
                cookies: ["_ga", "_gat", "_gid"],
-               //accepted: () =>{
-               //  window.dataLayer = window.dataLayer || [];
-               //  window.dataLayer.push({
-               //    'gtm.start': new Date().getTime(),
-               //    event: 'gtm.js'
-               //  });
-               //},
-               //declined: () =>{
-               //}
+               accepted: () => {
+                  // window.dataLayer = window.dataLayer || [];
+                  // window.dataLayer.push({
+                  //   'gtm.start': new Date().getTime(),
+                  //   event: 'gtm.js'
+                  // });
+
+                  setTimeout(() => {
+                     (function (w, d, s, l, i) {
+                        w[l] = w[l] || [];
+                        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+                        var f = d.getElementsByTagName(s)[0],
+                           j = d.createElement(s),
+                           dl = l != "dataLayer" ? "&l=" + l : "";
+                        j.async = true;
+                        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+                        f.parentNode.insertBefore(j, f);
+                     })(window, document, "script", "dataLayer", "GTM-MSJZ4PT");
+
+                     console.log("GTM PIXEL ACTIVE");
+                  }, 250);
+               },
+               declined: () => {},
             },
             {
                name: "Yandex Metrika",
@@ -486,16 +500,71 @@ function custom() {
                //src:  'https://www.googletagmanager.com/gtag/js?id=<API-KEY>',
                async: true,
                cookies: ["_ym_d", "_ym_isad", "_ym_uid", "_ym_visorc", "metrika_enabled"],
-               //accepted: () =>{
-               //  window.dataLayer = window.dataLayer || [];
-               //  window.dataLayer.push({
-               //    'gtm.start': new Date().getTime(),
-               //    event: 'gtm.js'
-               //  });
-               //},
-               //declined: () =>{
-               //}
+               accepted: () => {
+                  // window.dataLayer = window.dataLayer || [];
+                  // window.dataLayer.push({
+                  //   'gtm.start': new Date().getTime(),
+                  //   event: 'gtm.js'
+                  // });
+
+                  setTimeout(() => {
+                     (function (m, e, t, r, i, k, a) {
+                        m[i] =
+                           m[i] ||
+                           function () {
+                              (m[i].a = m[i].a || []).push(arguments);
+                           };
+                        m[i].l = 1 * new Date();
+                        (k = e.createElement(t)),
+                           (a = e.getElementsByTagName(t)[0]),
+                           (k.async = 1),
+                           (k.src = r),
+                           a.parentNode.insertBefore(k, a);
+                     })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+                     ym(89264491, "init", {
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true,
+                        webvisor: true,
+                     });
+
+                     console.log("YM PIXEL ACTIVE");
+                  }, 250);
+               },
+               declined: () => {},
             },
+            {
+              name: "VK PIXEL",
+               identifier: "vk",
+               description: {
+                  ru: "VK PIXEL",
+                  en: "VK PIXEL",
+               },
+               initialState: true,
+               //src:  'https://www.googletagmanager.com/gtag/js?id=<API-KEY>',
+               async: true,
+               cookies: [],
+               accepted: () => {
+                  // window.dataLayer = window.dataLayer || [];
+                  // window.dataLayer.push({
+                  //   'gtm.start': new Date().getTime(),
+                  //   event: 'gtm.js'
+                  // });
+
+                  !(function () {
+                    var t = document.createElement("script");
+                    (t.type = "text/javascript"),
+                       (t.async = !0),
+                       (t.src = "https://vk.com/js/api/openapi.js?169"),
+                       (t.onload = function () {
+                          VK.Retargeting.Init("VK-RTRG-1455228-5lkj2"), VK.Retargeting.Hit();
+                       }),
+                       document.head.appendChild(t);
+                 })();
+     
+                 console.log("VK PIXEL ACTIVE");
+            }
          ],
       },
       text: {

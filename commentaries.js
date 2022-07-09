@@ -2,453 +2,518 @@
 // "slicemachine": "start-slicemachine",
 
 function comments() {
-	//'nuxt-build-optimisations'
-	// 'nuxt-build-optimisations'
-	//'@nuxtjs/dotenv',
-	//'@nuxtjs/ngrok',
-	//'@nuxtjs/google-analytics',
-	//'@nuxtjs/localtunnel',
-	//'@nuxtjs/web-vitals',
-	//'@vueuse/nuxt',
-	//'nuxt-headway',
-	//'@nuxtjs/mdx',
-	//'@plugins/active/Contentful.js',
-	//{ src: '@plugins/active/VueFbCustomerChat.js', ssr: false },
-	//'@plugins/active/Ngrok',
-	//'@plugins/active/ContentfulMounted.js',
-	//'@plugins/active/VueFragment',
-	//'@nuxtjs/dotenv',
-	//'@nuxtjs/axios',
-	//'@nuxtjs/sitemap',
-	//'nuxt-facebook-pixel-module',
-	//'nuxt-speedkit',
-	//'@nuxtjs/axios',
-	//'@nuxtjs/apollo',
-	//'nuxt-socket-io',
-	//'@dewib/xhr-cache',
-	//'@nuxtjs/auth-next',
-	//'@nuxtjs/recaptcha',
-	//'nuxt-history-state',
-	//'nuxt-vue-multiselect',
-	//'nuxt-vuex-router-sync',
-	//'nuxt-precompress',
-	//'nuxt-highcharts',
-	//'@nuxtjs/dayjs',
-	//'@nuxt/http',
-	//'windicss',
-	//'virtual:windi.css',
-	//'virtual:windi-base.css',
-	//'virtual:windi-components.css',
-	//'virtual:windi-utilities.css'
-	//standalone: true,
-	//cssSourceMap: true,
-	//sortRoutes: true,
-	//strategy: 'prefix_and_default',
-	//fallbackLocale: 'en-es',
-	//routesNameSeparator: ':',
-	//baseUrl: process.env.BASE_URL || (config.isDev || process.env.NUXT_ENV_GENDEV ? 'http://localhost:3000' : config.host),
-	//loaders: {
-	//	cssModules: {
-	//		modules: {
-	//			localIdentName: '[local]_[hash:base64:5]',
-	//			localIdentHashPrefix: 'mod',
-	//			exportLocalsConvention: 'camelCaseOnly',
-	//		},
-	//	},
-	//},
-	//interval: 0,
-	//crawler: true,
-	//concurrency: 50000,
-	//fallback: '404.html',
-	// ...(!isDev && {
-	// 	workers: 8,
-	// 	workerConcurrency: 500,
-	// }),
-	//Nojekyll: false,
-	//async ready() {
-	//	const { $content } = require('@nuxt/content')
-	//	const files = await $content()
-	//		.only(['slug'])
-	//		.fetch()
-	//	console.log(files)
-	//},
-	// ssr: true,
-	// resourceHints: false, //true
-	// injectScripts: false, //true
-	// asyncScripts: true, //false
-	// compressor: {
-	// 	threshold: 5,
-	// },
-	// pushAssets: (req, res, publicPath, preloadFiles) => {
-	// 	// return preloadFiles.filter((f) => f.asType === "script" && f.file === "runtime.js").map((f) => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`);
-	// 	return false;
-	// },
-	// bundleRenderer: {
-	// 	// directives: {
-	// 	//   custom1: function (el, dir) {
-	// 	//     // something ...
-	// 	//   }
-	// 	// cww: function (vnode, dir) {
-	// 	//   const style = vnode.data.style || (vnode.data.style = {})
-	// 	//   style.backgroundColor = '#ff0016'
-	// 	// }
-	// 	// }
-	// 	// shouldPreload: (file, type) => {
-	// 	// 	return ["script", "font", "style"].includes(type);
-	// 	// },
-	// 	// shouldPrefetch: (file, type) => {
-	// 	// 	return ["style", "font"].includes(type);
-	// 	// },
-	// },
-	//base: '/',
-	//routeNameSplitter: ':',
-	//middleware: ['responseImage'],
-	//compressor: {
-	//	threshold: config.isDev ? 0 : 10,
-	//},
-	//sizes: [8, 16, 24, 32, 64, 120, 144, 152, 192, 384, 512],
-	//sizes: [16, 24, 32, 64, 120, 144, 192],
-	//cleanupOutdatedCaches: true,
-	//swDest: `sw-${config.update}-module.js`,
-	//preCaching: ['/', '/about', '/policy', '/blog', '/partners', '/blog/business-ideas', '/partners/programs', '/partners/world', '/web/clippy', '/web/windi'],
-	//preCaching: ['/', '/policy', '/partners/world'],
-	//clientsClaim: true,
-	//skipWaiting: true,
-	// if (config.netlyConfig.redirects) config.netlyConfig.redirects.map((item) => redirects.push(item));
-	// headers: [
-	// 	{
-	// 		for: "/*",
-	// 		values: { "X-Frame-Options": "DENY", "X-XSS-Protection": "1; mode=block" },
-	// 	},
-	// ],
-	//'~/middleware/responseImage',
-	//redirectSSL.create({
-	//	enabled: !config.isDev,
-	//	exclude: ['localhost'],
-	//}),
-	//'redirect-ssl',
-	//{ path: '/server-middleware', handler: '~/server-middleware/index.js' },
-	// { path: '/static2', handler: serveStatic(__dirname + '/static2') }
-	//html: {
-	//	minify: { minifyCSS: false, minifyJS: false },
-	//},
-	//font: '[path][name].[hash:5].[ext]',
-	//ctx.loaders = [
-	//	{
-	//		test: /favicon\.ico$/,
-	//		loader: 'url',
-	//		query: {
-	//			limit: 1,
-	//			name: '[name].[ext]',
-	//		},
-	//		//query: { mimetype: 'image/x-icon', limit: 0 },
-	//	},
-	//]
-	//const CTF_MODELS = Object.entries(require('dotenv').config().parsed).reduce((sum, it) => {
-	//	sum = { ...sum, ...(it[0].indexOf('CTF_MODEL') !== -1 && { [it[0]]: it[1] }) }
-	//	return sum
-	//}, {})
-	//facebook: {
-	//	pixelId: '564919618181295',
-	//	autoPageView: true,
-	//	//...(config.isDev && {
-	//	//	debug: true,
-	//	//}),
-	//},
-	//ngrok: {
-	//	// module options
-	//	//authtoken: process.env.NGROK_AUTHTOKEN
-	//	addr: 3003,
-	//	subdomain: 'meworld',
-	//	region: 'ru',
-	//},
-	//use: ['markdown-it-div', 'markdown-it-attrs'],
-	//env: require('dotenv').config().parsed,
-	//alias: {
-	//	style: resolve(__dirname, '../assets/style'),
-	//},
-	//import css from './config/parts/css'
-	//import custom from './config/custom'
-	//import i18n from './config/parts/i18n'
-	//import hooks from './config/parts/hooks'
-	//import includes from './config/includes'
-	//import build from './config/parts/build'
-	//import router from './config/parts/router'
-	//import render from './config/parts/render'
-	//import server from './config/parts/server'
-	//import sitemap from './config/parts/sitemap'
-	//import generate from './config/parts/generate'
-	//import middleware from './config/parts/middleware'
-	//const includes = includes(config)
-	//async function prismicClient(api) {
-	//	const prismic = require('@prismicio/client')
-	//	const client = prismic.createClient(apiEndpoint)
-	//	const repository = await client.getRepository()
-	//	const locales = repository.languages.map((lang) => lang.id)
-	//	return {
-	//		client,
-	//		locales,
-	//	}
-	//}
-	//import WindiCSSWebpackPlugin from 'windicss-webpack-plugin'
-	//plugins: [new WindiCSSWebpackPlugin()],
-	//optimizeCss: !config.isDev,
-	//parallel: config.isDev,
-	//cssSourceMap: !config.isDev,
-	//publicPath: config.isDev ? false : '/public/',
-	//terser: {
-	//	//parallel: true,
-	//	//cache: true,
-	//	//sourceMap: true,
-	//	extractComments: {
-	//		filename: 'LICENSES',
-	//	},
-	//	terserOptions: {
-	//		output: {
-	//			comments: /^\**!|@preserve|@license|@cc_on/,
-	//		},
-	//	},
-	//},
-	//babel:{
-	//	presets() {
-	//		return [
-	//			[
-	//				'@nuxt/babel-preset-app',
-	//				{
-	//					corejs: {
-	//						version: 3,
-	//					},
-	//				},
-	//			],
-	//		];
-	//	},
-	//},
-	//parser: [require('postcss-scss')],
-	//postcss: [
-	//	//
-	//	//require('import-postcss')(),
-	//	//require('postcss-cssnext')(),
-	//	//require('postcss-custom-media')(),
-	//	//require('postcss-node-sass')(),
-	//],
-	//postcss: {
-	//	'postcss-windicss': {},
-	//},
-	//config.plugins.push(new WindiCSSWebpackPlugin())
-	//if (ctx.isDev && ctx.isClient) {
-	//	config.module.rules.push({
-	//		enforce: 'pre',
-	//		test: /\.(js|vue)$/,
-	//		loader: 'eslint-loader',
-	//		exclude: /(node_modules)/,
-	//	})
-	//}
-	//return config
-	//minimize: true,
-	// minimizer: [],
-	// cacheGroups: {},
-	//maxSize: 204800,
-	//maxSize: 300000,
-	//maxChunkSize: 300000,
-	// html: {
-	// 	minify: {
-	// 		html5: true,
-	// 		minifyJS: true,
-	// 		minifyCSS: true,
-	// 		useShortDoctype: true,
-	// 		preserveLineBreaks: false,
-	// 		collapseWhitespace: true,
-	// 		collapseBooleanAttributes: true,
-	// 		collapseInlineTagWhitespace: true,
-	// 		processConditionalComments: true,
-	// 		removeRedundantAttributes: true,
-	// 		removeEmptyAttributes: true,
-	// 		trimCustomFragments: true,
-	// 		decodeEntities: false,
-	// 		removeComments: true,
-	// 		minifyURLs: true,
-	// 	},
-	// },
-	//app: 'scripts/app.[name].[chunkhash:5].js',
-	//chunk: 'scripts/[name].[chunkhash:5].js',
-	//vendor: 'scripts/vendor.[name].[chunkhash:5].js',
-	//manifest: 'manifest.[name].[hash:5].js',
-	//css: 'styles/[name].[contenthash:5].css',
-	//config.module.rules
-	//	.find(({ test }) => test.toString() === /\.css$/i.toString())
-	//	.oneOf.find(({ resourceQuery }) => resourceQuery && resourceQuery.toString() === /module/.toString())
-	//	.use.find(({ loader }) => loader === 'css-loader').options.localsConvention = 'camelCaseOnly'
-	// cache: true,
-	// analyze: true,
-	//corejs: 3,
-	//indicator: true,
-	//babel: {
-	//	babelrc: false,
-	//	cacheDirectory: undefined,
-	//	presets: ['@nuxt/babel-preset-app'],
-	//},
-	//optimizeCss: !config.isDev,
-	//postcss: {
-	//	plugins: {
-	//		'postcss-url': false,
-	//		'postcss-nested': {},
-	//		'postcss-responsive-type': {},
-	//		'postcss-hexrgba': {},
-	//	},
-	//	preset: {
-	//		autoprefixer: {
-	//			grid: true,
-	//		},
-	//	},
-	//},
-	//cssSourceMap: false,
-	//localsConvention: 'camelCaseOnly',
-	// splitChunks: {
-	// 	runtime: false,
-	// 	commons: false,
-	// 	components: false,
-	// 	layouts: false,
-	// 	vendor: false,
-	// 	pages: false,
-	// },
-	// vendor: ['axios'],
-	// cache: false,
-	// standalone: true,
-	// hotMiddleware: true,
-	// parallel: config.isDev ? false : true,
-	// cssSourceMap: config.isDev ? false : true,
-	// cacheGroups: {},
-	// cacheGroups: {
-	// 	styles: {
-	// 		name: "styles",
-	// 		test: /\.(css|vue)$/,
-	// 		chunks: "all",
-	// 		enforce: true,
-	// 	},
-	// },
-	// uglify: {
-	// 	uglifyOptions: {
-	// 		compress: false,
-	// 	},
-	// },
-	// babel: {
-	// 	presets: ['es2015', 'stage-0'],
-	// },
-	// analyze: {
-	// 	analyzerMode: 'static',
-	// },
-	// extractCSS: {
-	// 	// allChunks: true,
-	// 	ignoreOrder: true,
-	// },
-	// postcss: {
-	// 	plugins: {
-	// 		"postcss-custom-properties": false,
-	// 	},
-	// },
-	// html: {
-	// 	minify: {
-	// 		html5: true,
-	// 		// minifyJS: true,
-	// 		// minifyCSS: true,
-	// 		minifyJS: false,
-	// 		minifyCSS: false,
-	// 		useShortDoctype: true,
-	// 		preserveLineBreaks: false,
-	// 		collapseWhitespace: true,
-	// 		collapseBooleanAttributes: true,
-	// 		collapseInlineTagWhitespace: true,
-	// 		processConditionalComments: true,
-	// 		removeRedundantAttributes: true,
-	// 		removeEmptyAttributes: true,
-	// 		trimCustomFragments: true,
-	// 		decodeEntities: false,
-	// 		removeComments: true,
-	// 		minifyURLs: true,
-	// 		// caseSensitive: true,
-	// 		// // sortAttributes: true,
-	// 		// trimCustomFragments: false,
-	// 		// includeAutoGeneratedTags: true,
-	// 		// collapseInlineTagWhitespace: false,
-	// 		// collapseBooleanAttributes: false,
-	// 		// conservativeCollapse: true,
-	// 		// continueOnParseError: true,
-	// 		// includeAutoGeneratedTags: false,
-	// 		// minifyURLs: false,
-	// 		// decodeEntities: true,
-	// 		// preserveLineBreaks: true,
-	// 		// collapseWhitespace: false,
-	// 		// collapseBooleanAttributes: false,
-	// 		// collapseInlineTagWhitespace: false,
-	// 		// removeRedundantAttributes: false,
-	// 		// removeEmptyAttributes: false,
-	// 		// trimCustomFragments: false,
-	// 	},
-	// },
-	// import TerserPlugin from "terser-webpack-plugin";
-	// import UglifyJsPlugin from "uglifyjs-webpack-plugin";
-	// import OptimizeCssAssetsPlugin from "optimize-css-assets-webpack-plugin";
-	// hot: true,
-	// analyze: false,
-	// followSymlinks: true,
-	// cache: true,
-	// indicator: false,
-	// hardSource: true,
-	// productionGzip: true,
-	// productionSourceMap: true,
-	// productionGzipExtensions: ["js", "css", "svg"],
-	// cacheGroups: {
-	// 	svgGroup: {
-	// 		test(module, chunks) {
-	// 			const path = require("path");
-	// 			return module.resource && module.resource.endsWith(".svg") && module.resource.includes(`${path.sep}cacheable_svgs${path.sep}`);
-	// 		},
-	// 	},
-	// },
-	// minimizer: [
-	// 	// terser-webpack-plugin
-	// 	// optimize-css-assets-webpack-plugin
-	// ],
-	// splitChunks: {
-	// 	// chunks: "all",
-	// 	// automaticNameDelimiter: ".",
-	// 	// name: undefined,
-	// 	// cacheGroups: {},
-	// 	// maxSize: 51200,
-	// 	// maxSize : 256000
-	// },
-	// app: "scripts/app.[name].[chunkhash:3].js",
-	// chunk: "scripts/[name].[chunkhash:3].js",
-	// vendor: "scripts/vendor.[name].[chunkhash:3].js",
-	// manifest: "manifest/[name].[hash:3].js",
-	// css: "styles/[name].[contenthash:3].css",
-	// img: "[path][name].[contenthash:3].[ext]",
-	// font: "[path][name].[contenthash:3].[ext]",
-	// video: "[path][name].[contenthash:3].[ext]",
-	// app: "scripts/app/[name].[chunkhash:3].js",
-	// chunk: "scripts/[name].[chunkhash:3].js",
-	// vendor: "scripts/vendor/[name].[chunkhash:3].js",
-	// manifest: "manifest.[name].[hash:3].js",
-	// css: "styles/[name].[contenthash:3].css",
-	// img: "[path][name].[ext][query]",
-	// font: "[path][name].[ext][query]",
-	// video: "[path][name].[ext][query]",
-	// if (ctx && ctx.isClient) {
-	// 	// config.optimization.splitChunks.maxSize = 249856;
-	// 	// config.optimization.splitChunks.maxSize = 51200;
-	// 	// config.optimization.splitChunks.maxSize = 30720;
-	// 	// config.devtool = 'eval-source-map'
-	// }
-	// config.module.rules.push({
-	// 	enforce: "pre",
-	// 	test: /\.(js|vue)$/,
-	// 	loader: "eslint-loader",
-	// 	exclude: /(node_modules)|(\.svg$)/ /* <--- here */,
-	// });
+   //notifyCookie() {
+   //		// const cookie = this.LCG("capcake");
+   //		// if (!cookie || cookie == false) {
+   //		//    setTimeout(
+   //		//       () =>
+   //		//          this.$toast.show(
+   //		//             `Сайт использут cookie и локальное хранилище данных. Это позволяет анализировать взаимодействие посетителей с сайтом и делать его лучше по всем правилам закона 152-ФЗ «О персональных данных». Продолжая пользоваться сайтом, вы соглашаетесь с использованием файлов cookie и политикой конфиденциальности ~ главная → конфиденциальность. Нажмите крестик справа, чтобы закрыть.`,
+   //		//             {
+   //		//                theme: "outline",
+   //		//                position: "bottom-center",
+   //		//                duration: null,
+   //		//                //duration: 10000000000,
+   //		//                fullWidth: true,
+   //		//                className: "toast-cookie",
+   //		//                singleton: true,
+   //		//                closeOnSwipe: false,
+   //		//                action: [
+   //		//                   {
+   //		//                      text: "",
+   //		//                      class: "icon-close !m-0 sm:!mr-2 pointer-events-auto !text-yellow-500 transition-all duration-200 hover:(!text-green-300)",
+   //		//                      onClick: (e, toastObject) => {
+   //		//                         toastObject.goAway(0);
+   //		//                         this.LCS("capcake", true);
+   //		//                      },
+   //		//                   },
+   //		//                ],
+   //		//             }
+   //		//          ),
+   //		//       2000
+   //		//    );
+   //		//    //setTimeout(() => this.LCS("capcake", true), 3000);
+   //		// }
+   // },
+   // notifyCook() {
+   //		// setTimeout(() => {
+   //		//    const cook = this.LCG("capcake");
+   //		//    const toast = (count) => {
+   //		//       setTimeout(
+   //		//          () =>
+   //		//             this.$toast.show("На сайте используются cookie " + (count - 1) + " из 2", {
+   //		//                theme: this.isLight ? "outline" : "bubble",
+   //		//                position: "top-right",
+   //		//                duration: 1000,
+   //		//             }),
+   //		//          500
+   //		//       );
+   //		//       setTimeout(
+   //		//          () =>
+   //		//             this.$toast.show("На сайте используются cookie " + count + " из 2", {
+   //		//                theme: this.isLight ? "outline" : "bubble",
+   //		//                position: "bottom-right",
+   //		//                duration: 1000,
+   //		//             }),
+   //		//          1600
+   //		//       );
+   //		//    };
+   //		//    if (!cook || cook == 0) {
+   //		//       this.LCS("capcake", 2);
+   //		//       toast(Number(this.LCG("capcake")));
+   //		//    } else if (cook && cook > 0 && cook < 2) {
+   //		//       this.LCS("capcake", Number(cook) + 2);
+   //		//       toast(Number(this.LCG("capcake")));
+   //		//    }
+   //		// }, 500);
+   // },
+   //'nuxt-build-optimisations'
+   // 'nuxt-build-optimisations'
+   //'@nuxtjs/dotenv',
+   //'@nuxtjs/ngrok',
+   //'@nuxtjs/google-analytics',
+   //'@nuxtjs/localtunnel',
+   //'@nuxtjs/web-vitals',
+   //'@vueuse/nuxt',
+   //'nuxt-headway',
+   //'@nuxtjs/mdx',
+   //'@plugins/active/Contentful.js',
+   //{ src: '@plugins/active/VueFbCustomerChat.js', ssr: false },
+   //'@plugins/active/Ngrok',
+   //'@plugins/active/ContentfulMounted.js',
+   //'@plugins/active/VueFragment',
+   //'@nuxtjs/dotenv',
+   //'@nuxtjs/axios',
+   //'@nuxtjs/sitemap',
+   //'nuxt-facebook-pixel-module',
+   //'nuxt-speedkit',
+   //'@nuxtjs/axios',
+   //'@nuxtjs/apollo',
+   //'nuxt-socket-io',
+   //'@dewib/xhr-cache',
+   //'@nuxtjs/auth-next',
+   //'@nuxtjs/recaptcha',
+   //'nuxt-history-state',
+   //'nuxt-vue-multiselect',
+   //'nuxt-vuex-router-sync',
+   //'nuxt-precompress',
+   //'nuxt-highcharts',
+   //'@nuxtjs/dayjs',
+   //'@nuxt/http',
+   //'windicss',
+   //'virtual:windi.css',
+   //'virtual:windi-base.css',
+   //'virtual:windi-components.css',
+   //'virtual:windi-utilities.css'
+   //standalone: true,
+   //cssSourceMap: true,
+   //sortRoutes: true,
+   //strategy: 'prefix_and_default',
+   //fallbackLocale: 'en-es',
+   //routesNameSeparator: ':',
+   //baseUrl: process.env.BASE_URL || (config.isDev || process.env.NUXT_ENV_GENDEV ? 'http://localhost:3000' : config.host),
+   //loaders: {
+   //	cssModules: {
+   //		modules: {
+   //			localIdentName: '[local]_[hash:base64:5]',
+   //			localIdentHashPrefix: 'mod',
+   //			exportLocalsConvention: 'camelCaseOnly',
+   //		},
+   //	},
+   //},
+   //interval: 0,
+   //crawler: true,
+   //concurrency: 50000,
+   //fallback: '404.html',
+   // ...(!isDev && {
+   // 	workers: 8,
+   // 	workerConcurrency: 500,
+   // }),
+   //Nojekyll: false,
+   //async ready() {
+   //	const { $content } = require('@nuxt/content')
+   //	const files = await $content()
+   //		.only(['slug'])
+   //		.fetch()
+   //	console.log(files)
+   //},
+   // ssr: true,
+   // resourceHints: false, //true
+   // injectScripts: false, //true
+   // asyncScripts: true, //false
+   // compressor: {
+   // 	threshold: 5,
+   // },
+   // pushAssets: (req, res, publicPath, preloadFiles) => {
+   // 	// return preloadFiles.filter((f) => f.asType === "script" && f.file === "runtime.js").map((f) => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`);
+   // 	return false;
+   // },
+   // bundleRenderer: {
+   // 	// directives: {
+   // 	//   custom1: function (el, dir) {
+   // 	//     // something ...
+   // 	//   }
+   // 	// cww: function (vnode, dir) {
+   // 	//   const style = vnode.data.style || (vnode.data.style = {})
+   // 	//   style.backgroundColor = '#ff0016'
+   // 	// }
+   // 	// }
+   // 	// shouldPreload: (file, type) => {
+   // 	// 	return ["script", "font", "style"].includes(type);
+   // 	// },
+   // 	// shouldPrefetch: (file, type) => {
+   // 	// 	return ["style", "font"].includes(type);
+   // 	// },
+   // },
+   //base: '/',
+   //routeNameSplitter: ':',
+   //middleware: ['responseImage'],
+   //compressor: {
+   //	threshold: config.isDev ? 0 : 10,
+   //},
+   //sizes: [8, 16, 24, 32, 64, 120, 144, 152, 192, 384, 512],
+   //sizes: [16, 24, 32, 64, 120, 144, 192],
+   //cleanupOutdatedCaches: true,
+   //swDest: `sw-${config.update}-module.js`,
+   //preCaching: ['/', '/about', '/policy', '/blog', '/partners', '/blog/business-ideas', '/partners/programs', '/partners/world', '/web/clippy', '/web/windi'],
+   //preCaching: ['/', '/policy', '/partners/world'],
+   //clientsClaim: true,
+   //skipWaiting: true,
+   // if (config.netlyConfig.redirects) config.netlyConfig.redirects.map((item) => redirects.push(item));
+   // headers: [
+   // 	{
+   // 		for: "/*",
+   // 		values: { "X-Frame-Options": "DENY", "X-XSS-Protection": "1; mode=block" },
+   // 	},
+   // ],
+   //'~/middleware/responseImage',
+   //redirectSSL.create({
+   //	enabled: !config.isDev,
+   //	exclude: ['localhost'],
+   //}),
+   //'redirect-ssl',
+   //{ path: '/server-middleware', handler: '~/server-middleware/index.js' },
+   // { path: '/static2', handler: serveStatic(__dirname + '/static2') }
+   //html: {
+   //	minify: { minifyCSS: false, minifyJS: false },
+   //},
+   //font: '[path][name].[hash:5].[ext]',
+   //ctx.loaders = [
+   //	{
+   //		test: /favicon\.ico$/,
+   //		loader: 'url',
+   //		query: {
+   //			limit: 1,
+   //			name: '[name].[ext]',
+   //		},
+   //		//query: { mimetype: 'image/x-icon', limit: 0 },
+   //	},
+   //]
+   //const CTF_MODELS = Object.entries(require('dotenv').config().parsed).reduce((sum, it) => {
+   //	sum = { ...sum, ...(it[0].indexOf('CTF_MODEL') !== -1 && { [it[0]]: it[1] }) }
+   //	return sum
+   //}, {})
+   //facebook: {
+   //	pixelId: '564919618181295',
+   //	autoPageView: true,
+   //	//...(config.isDev && {
+   //	//	debug: true,
+   //	//}),
+   //},
+   //ngrok: {
+   //	// module options
+   //	//authtoken: process.env.NGROK_AUTHTOKEN
+   //	addr: 3003,
+   //	subdomain: 'meworld',
+   //	region: 'ru',
+   //},
+   //use: ['markdown-it-div', 'markdown-it-attrs'],
+   //env: require('dotenv').config().parsed,
+   //alias: {
+   //	style: resolve(__dirname, '../assets/style'),
+   //},
+   //import css from './config/parts/css'
+   //import custom from './config/custom'
+   //import i18n from './config/parts/i18n'
+   //import hooks from './config/parts/hooks'
+   //import includes from './config/includes'
+   //import build from './config/parts/build'
+   //import router from './config/parts/router'
+   //import render from './config/parts/render'
+   //import server from './config/parts/server'
+   //import sitemap from './config/parts/sitemap'
+   //import generate from './config/parts/generate'
+   //import middleware from './config/parts/middleware'
+   //const includes = includes(config)
+   //async function prismicClient(api) {
+   //	const prismic = require('@prismicio/client')
+   //	const client = prismic.createClient(apiEndpoint)
+   //	const repository = await client.getRepository()
+   //	const locales = repository.languages.map((lang) => lang.id)
+   //	return {
+   //		client,
+   //		locales,
+   //	}
+   //}
+   //import WindiCSSWebpackPlugin from 'windicss-webpack-plugin'
+   //plugins: [new WindiCSSWebpackPlugin()],
+   //optimizeCss: !config.isDev,
+   //parallel: config.isDev,
+   //cssSourceMap: !config.isDev,
+   //publicPath: config.isDev ? false : '/public/',
+   //terser: {
+   //	//parallel: true,
+   //	//cache: true,
+   //	//sourceMap: true,
+   //	extractComments: {
+   //		filename: 'LICENSES',
+   //	},
+   //	terserOptions: {
+   //		output: {
+   //			comments: /^\**!|@preserve|@license|@cc_on/,
+   //		},
+   //	},
+   //},
+   //babel:{
+   //	presets() {
+   //		return [
+   //			[
+   //				'@nuxt/babel-preset-app',
+   //				{
+   //					corejs: {
+   //						version: 3,
+   //					},
+   //				},
+   //			],
+   //		];
+   //	},
+   //},
+   //parser: [require('postcss-scss')],
+   //postcss: [
+   //	//
+   //	//require('import-postcss')(),
+   //	//require('postcss-cssnext')(),
+   //	//require('postcss-custom-media')(),
+   //	//require('postcss-node-sass')(),
+   //],
+   //postcss: {
+   //	'postcss-windicss': {},
+   //},
+   //config.plugins.push(new WindiCSSWebpackPlugin())
+   //if (ctx.isDev && ctx.isClient) {
+   //	config.module.rules.push({
+   //		enforce: 'pre',
+   //		test: /\.(js|vue)$/,
+   //		loader: 'eslint-loader',
+   //		exclude: /(node_modules)/,
+   //	})
+   //}
+   //return config
+   //minimize: true,
+   // minimizer: [],
+   // cacheGroups: {},
+   //maxSize: 204800,
+   //maxSize: 300000,
+   //maxChunkSize: 300000,
+   // html: {
+   // 	minify: {
+   // 		html5: true,
+   // 		minifyJS: true,
+   // 		minifyCSS: true,
+   // 		useShortDoctype: true,
+   // 		preserveLineBreaks: false,
+   // 		collapseWhitespace: true,
+   // 		collapseBooleanAttributes: true,
+   // 		collapseInlineTagWhitespace: true,
+   // 		processConditionalComments: true,
+   // 		removeRedundantAttributes: true,
+   // 		removeEmptyAttributes: true,
+   // 		trimCustomFragments: true,
+   // 		decodeEntities: false,
+   // 		removeComments: true,
+   // 		minifyURLs: true,
+   // 	},
+   // },
+   //app: 'scripts/app.[name].[chunkhash:5].js',
+   //chunk: 'scripts/[name].[chunkhash:5].js',
+   //vendor: 'scripts/vendor.[name].[chunkhash:5].js',
+   //manifest: 'manifest.[name].[hash:5].js',
+   //css: 'styles/[name].[contenthash:5].css',
+   //config.module.rules
+   //	.find(({ test }) => test.toString() === /\.css$/i.toString())
+   //	.oneOf.find(({ resourceQuery }) => resourceQuery && resourceQuery.toString() === /module/.toString())
+   //	.use.find(({ loader }) => loader === 'css-loader').options.localsConvention = 'camelCaseOnly'
+   // cache: true,
+   // analyze: true,
+   //corejs: 3,
+   //indicator: true,
+   //babel: {
+   //	babelrc: false,
+   //	cacheDirectory: undefined,
+   //	presets: ['@nuxt/babel-preset-app'],
+   //},
+   //optimizeCss: !config.isDev,
+   //postcss: {
+   //	plugins: {
+   //		'postcss-url': false,
+   //		'postcss-nested': {},
+   //		'postcss-responsive-type': {},
+   //		'postcss-hexrgba': {},
+   //	},
+   //	preset: {
+   //		autoprefixer: {
+   //			grid: true,
+   //		},
+   //	},
+   //},
+   //cssSourceMap: false,
+   //localsConvention: 'camelCaseOnly',
+   // splitChunks: {
+   // 	runtime: false,
+   // 	commons: false,
+   // 	components: false,
+   // 	layouts: false,
+   // 	vendor: false,
+   // 	pages: false,
+   // },
+   // vendor: ['axios'],
+   // cache: false,
+   // standalone: true,
+   // hotMiddleware: true,
+   // parallel: config.isDev ? false : true,
+   // cssSourceMap: config.isDev ? false : true,
+   // cacheGroups: {},
+   // cacheGroups: {
+   // 	styles: {
+   // 		name: "styles",
+   // 		test: /\.(css|vue)$/,
+   // 		chunks: "all",
+   // 		enforce: true,
+   // 	},
+   // },
+   // uglify: {
+   // 	uglifyOptions: {
+   // 		compress: false,
+   // 	},
+   // },
+   // babel: {
+   // 	presets: ['es2015', 'stage-0'],
+   // },
+   // analyze: {
+   // 	analyzerMode: 'static',
+   // },
+   // extractCSS: {
+   // 	// allChunks: true,
+   // 	ignoreOrder: true,
+   // },
+   // postcss: {
+   // 	plugins: {
+   // 		"postcss-custom-properties": false,
+   // 	},
+   // },
+   // html: {
+   // 	minify: {
+   // 		html5: true,
+   // 		// minifyJS: true,
+   // 		// minifyCSS: true,
+   // 		minifyJS: false,
+   // 		minifyCSS: false,
+   // 		useShortDoctype: true,
+   // 		preserveLineBreaks: false,
+   // 		collapseWhitespace: true,
+   // 		collapseBooleanAttributes: true,
+   // 		collapseInlineTagWhitespace: true,
+   // 		processConditionalComments: true,
+   // 		removeRedundantAttributes: true,
+   // 		removeEmptyAttributes: true,
+   // 		trimCustomFragments: true,
+   // 		decodeEntities: false,
+   // 		removeComments: true,
+   // 		minifyURLs: true,
+   // 		// caseSensitive: true,
+   // 		// // sortAttributes: true,
+   // 		// trimCustomFragments: false,
+   // 		// includeAutoGeneratedTags: true,
+   // 		// collapseInlineTagWhitespace: false,
+   // 		// collapseBooleanAttributes: false,
+   // 		// conservativeCollapse: true,
+   // 		// continueOnParseError: true,
+   // 		// includeAutoGeneratedTags: false,
+   // 		// minifyURLs: false,
+   // 		// decodeEntities: true,
+   // 		// preserveLineBreaks: true,
+   // 		// collapseWhitespace: false,
+   // 		// collapseBooleanAttributes: false,
+   // 		// collapseInlineTagWhitespace: false,
+   // 		// removeRedundantAttributes: false,
+   // 		// removeEmptyAttributes: false,
+   // 		// trimCustomFragments: false,
+   // 	},
+   // },
+   // import TerserPlugin from "terser-webpack-plugin";
+   // import UglifyJsPlugin from "uglifyjs-webpack-plugin";
+   // import OptimizeCssAssetsPlugin from "optimize-css-assets-webpack-plugin";
+   // hot: true,
+   // analyze: false,
+   // followSymlinks: true,
+   // cache: true,
+   // indicator: false,
+   // hardSource: true,
+   // productionGzip: true,
+   // productionSourceMap: true,
+   // productionGzipExtensions: ["js", "css", "svg"],
+   // cacheGroups: {
+   // 	svgGroup: {
+   // 		test(module, chunks) {
+   // 			const path = require("path");
+   // 			return module.resource && module.resource.endsWith(".svg") && module.resource.includes(`${path.sep}cacheable_svgs${path.sep}`);
+   // 		},
+   // 	},
+   // },
+   // minimizer: [
+   // 	// terser-webpack-plugin
+   // 	// optimize-css-assets-webpack-plugin
+   // ],
+   // splitChunks: {
+   // 	// chunks: "all",
+   // 	// automaticNameDelimiter: ".",
+   // 	// name: undefined,
+   // 	// cacheGroups: {},
+   // 	// maxSize: 51200,
+   // 	// maxSize : 256000
+   // },
+   // app: "scripts/app.[name].[chunkhash:3].js",
+   // chunk: "scripts/[name].[chunkhash:3].js",
+   // vendor: "scripts/vendor.[name].[chunkhash:3].js",
+   // manifest: "manifest/[name].[hash:3].js",
+   // css: "styles/[name].[contenthash:3].css",
+   // img: "[path][name].[contenthash:3].[ext]",
+   // font: "[path][name].[contenthash:3].[ext]",
+   // video: "[path][name].[contenthash:3].[ext]",
+   // app: "scripts/app/[name].[chunkhash:3].js",
+   // chunk: "scripts/[name].[chunkhash:3].js",
+   // vendor: "scripts/vendor/[name].[chunkhash:3].js",
+   // manifest: "manifest.[name].[hash:3].js",
+   // css: "styles/[name].[contenthash:3].css",
+   // img: "[path][name].[ext][query]",
+   // font: "[path][name].[ext][query]",
+   // video: "[path][name].[ext][query]",
+   // if (ctx && ctx.isClient) {
+   // 	// config.optimization.splitChunks.maxSize = 249856;
+   // 	// config.optimization.splitChunks.maxSize = 51200;
+   // 	// config.optimization.splitChunks.maxSize = 30720;
+   // 	// config.devtool = 'eval-source-map'
+   // }
+   // config.module.rules.push({
+   // 	enforce: "pre",
+   // 	test: /\.(js|vue)$/,
+   // 	loader: "eslint-loader",
+   // 	exclude: /(node_modules)|(\.svg$)/ /* <--- here */,
+   // });
 }
 
 function other() {
-	/*
+   /*
 		async downloadLinksImage({ state }) {
 		const https = require('https') // or 'https' for https:// URLs
 		const fs = require('fs')
