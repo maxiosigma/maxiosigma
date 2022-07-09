@@ -5,7 +5,7 @@
       <TemplateHead />
     </template>
 
-    <!--<div class="text-white">AAAAAAAA</div>-->
+    <TemplateCookie />
 
     <div class="opacity-0">
       <h1>{{ title }}</h1>

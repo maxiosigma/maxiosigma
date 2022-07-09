@@ -23,6 +23,8 @@ export default {
 
 <style lang="scss">
 .cookieControl {
+  @apply flex-center;
+
   &__Bar {
     @apply bg-cyan-700 bg-opacity-95;
   }
@@ -39,6 +41,16 @@ export default {
     & > button {
       @apply border-transparent bg-cyan-600 bg-opacity-95 border-2 w-full transition duration-300 hover:(bg-cyan-500 border-cyan-600) ;
       @apply ml-0 #{!important};
+    }
+  }
+  &__ControlButton {
+    @apply md:(h-8 w-8) ;
+    @apply flex-center h-4 m-0 min-h-0 min-w-0 py-2 px-2 inset-0 w-4 relative #{!important};
+
+    & svg,
+    & > svg {
+      @apply md:(h-5 w-5) hover:text-cyan-300 ;
+      @apply h-5 min-h-0 min-w-0 w-5 absolute #{!important};
     }
   }
 }

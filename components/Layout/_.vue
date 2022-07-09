@@ -22,8 +22,6 @@
       :isnt="preload"
       :redirect="preload_redirect"
     />
-
-    <TemplateCookie />
   </div>
 </template>
 

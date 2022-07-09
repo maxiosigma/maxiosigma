@@ -519,11 +519,11 @@ function custom() {
                },
             },
             {
-               name: "VK PIXEL",
+               name: "VK Pixel",
                identifier: "vk",
                description: {
-                  ru: "VK PIXEL",
-                  en: "VK PIXEL",
+                  ru: "VK Pixel",
+                  en: "VK Pixel",
                },
                initialState: true,
                async: true,
@@ -547,15 +547,15 @@ function custom() {
                },
             },
             {
-               name: "PULSE PIXEL",
+               name: "Pulse Pixel",
                identifier: "pp",
                description: {
-                  ru: "VK PIXEL",
-                  en: "VK PIXEL",
+                  ru: "Pulse Pixel",
+                  en: "Pulse Pixel",
                },
                initialState: true,
                async: true,
-               cookies: ["sbjs_current", "sbjs_current_add", "sbjs_first", "sbjs_first", "sbjs_migrations", "sbjs_udata"],
+               cookies: ["sbjs_current_add", "sbjs_migrations", "sbjs_current", "sbjs_first", "sbjs_udata"],
                accepted: () => {
                   console.log("PULSE PIXEL ACTIVE");
                },

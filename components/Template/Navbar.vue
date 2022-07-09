@@ -97,6 +97,8 @@
             </div>
           </div>
         </div>
+
+        <TemplateCookie />
       </div>
     </div>
 
