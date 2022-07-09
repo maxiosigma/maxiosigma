@@ -41,10 +41,15 @@
             />
           </div>
 
+          <!-- `https://source.unsplash.com/random/300x200?sig=${i}` -->
+          <!-- https://source.unsplash.com/random/300x200?sig=${Math.random()} -->
+          <!-- https://picsum.photos/300/200?random=${i} -->
+          <!-- https://source.unsplash.com/random/300x200?sig=${countPages * 2 - i * 2 + 1} -->
+          <!-- 'https://picsum.photos/1024/1024?nocache='.microtime() -->
           <ItemImgStrapiBg
             v-else
             class="sentences-image"
-            :src="`https://source.unsplash.com/random/300x200?sig=${i * intRandom(1, countPages)}`"
+            :src="`https://picsum.photos/300/200?random=${i}`"
           ></ItemImgStrapiBg>
 
           <!--<div class="-right-5 -bottom-5 z-20 tags absolute">

@@ -44,13 +44,13 @@ export default {
     }
   }
   &__ControlButton {
-    @apply md:(h-8 w-8) ;
-    @apply flex-center h-4 m-0 min-h-0 min-w-0 py-2 px-2 inset-0 w-4 relative #{!important};
+    //@apply md:(h-8 w-8) ;
+    @apply flex-center h-0 m-0 mb-1 min-h-0 min-w-0 py-0 inset-0 w-0 relative #{!important};
 
     & svg,
     & > svg {
-      @apply md:(h-5 w-5) hover:text-cyan-300 ;
-      @apply h-5 min-h-0 min-w-0 w-5 absolute #{!important};
+      @apply hover:text-cyan-300;
+      @apply h-4.5 min-h-0 min-w-0 w-4.5 absolute #{!important};
     }
   }
 }

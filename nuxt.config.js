@@ -191,7 +191,7 @@ function cookie() {
                },
                initialState: true,
                async: false,
-               cookies: ["_sp_id.0295", "_sp_id", "ugid"],
+               cookies: [], // "_sp_id.0295", "_sp_id", "ugid"
                accepted: () => {
                   console.log("OTHER COOKIE ACTIVE");
                },

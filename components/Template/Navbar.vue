@@ -69,7 +69,7 @@
         <div :class="['nav-bar-cont-text']">
           <div
             :class="[
-              'nav-bar-link group',
+              'nav-bar-link order-1 group',
               link.parent && parent
                 ? { hidden: link.parent.title !== parent.title }
                 : { hidden: link.parent !== parent.title },
@@ -96,9 +96,9 @@
               {{ link.title }}
             </div>
           </div>
-        </div>
 
-        <TemplateCookie />
+          <TemplateCookie :class="[{ '!hidden': parent.title }, 'order-0 sm:order-2']" />
+        </div>
       </div>
     </div>
 
@@ -236,8 +236,8 @@ export default {
       }
 
       &-text {
-        // flex-wrap py-1
-        @apply flex max-w-full mt-0.5 ml-1 px-1 overflow-hidden items-center <sm:(justify-end);
+        // flex-wrap py-1 overflow-hidden
+        @apply flex max-w-full mt-0.5 ml-1 px-1 items-center <sm:(justify-end);
       }
 
       &-arrow {
