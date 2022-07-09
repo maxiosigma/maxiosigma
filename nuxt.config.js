@@ -497,7 +497,7 @@ function custom() {
                   }, 250);
                },
                declined: () => {
-                  cookie.ga.map((it) => browser.cookies.remove(it));
+                  cookie.ga.map((it) => window.$nuxt.$cookies.remove(it));
                },
             },
             {
@@ -544,7 +544,7 @@ function custom() {
                   }, 250);
                },
                declined: () => {
-                  cookie.ym.map((it) => browser.cookies.remove(it));
+                  cookie.ym.map((it) => window.$nuxt.$cookies.remove(it));
                },
             },
             {
@@ -579,7 +579,7 @@ function custom() {
                   console.log("VK PIXEL ACTIVE");
                },
                declined: () => {
-                  cookie.vk.map((it) => browser.cookies.remove(it));
+                  cookie.vk.map((it) => window.$nuxt.$cookies.remove(it));
                },
             },
          ],
