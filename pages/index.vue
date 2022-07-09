@@ -39,11 +39,11 @@ export default {
       description: this.link?.description,
     }
   },
-  async beforeMount() {
-    await this.vkPixel()
+  //async beforeMount() {
+  //  //await this.vkPixel()
 
-    console.log(this.$cookies)
-  },
+  //  //console.log(this.$cookies.consent)
+  //},
   mounted() {
     const route = this.$route
     const query = Object.keys(route?.query)?.[0] || route?.hash?.replace("#", "")
@@ -52,7 +52,7 @@ export default {
 
     //console.log(this.lang)
 
-    if (!query) {
+    if (!query && this.$cookies?.consent) {
       //if (!this.LCG("about")) this.routeLight("about")
       //else this.routeLight("sentences")
       //console.log(document.cookie)
@@ -61,7 +61,8 @@ export default {
       //!localStorage.getItem('about') || localStorage.getItem('about') === 0 ? this.routeLight('about') : this.routeLight('about')
       //: !localStorage.getItem('business') || localStorage.getItem('business') === 0
       //? this.routeLight('business')
-    } else {
+    } else if (query) {
+      console.log("bbb")
       //this.link = this.links?.filter((ln) => ln?.short === query)[0]
       //if (this.link?.href) setTimeout(() => (location.href = this.link?.href), 1500)
       //if (this.link?.alt) setTimeout(() => (location.href = this.link?.alt), 3000)
@@ -69,6 +70,16 @@ export default {
       //  window.open("#mw")
       //  setTimeout(() => (location.href = "/about"), 1000)
       //}
+    } else {
+      setTimeout(
+        () =>
+          this.$toast.show("Выберите и примите файлы cookie", {
+            theme: "outline",
+            position: "top-center",
+            duration: 60000,
+          }),
+        1000
+      )
     }
 
     //setTimeout(() => this.routeLight("about"), 4500)

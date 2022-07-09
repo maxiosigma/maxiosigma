@@ -60,7 +60,7 @@ function server() {
    return {
       server: {
          // port: app_config.port,
-         // host: '0.0.0.0',
+         host: "0.0.0.0",
          // host: process.env.NUXT_ENV_HOST_0 ? '0.0.0.0' : 'localhost',
       },
    };
@@ -444,7 +444,7 @@ function custom() {
                   ru: "Используются для управления файлами cookie",
                   en: "Used for cookie control",
                },
-               cookies: ["cookie_control_consent", "cookie_control_enabled_cookies", "strapi_jwt", "lang"],
+               cookies: ["cookie_control_consent", "cookie_control_enabled_cookies", "lang"],
             },
          ],
          optional: [
@@ -551,7 +551,8 @@ function custom() {
             locale: {
                ru: {
                   barTitle: "Файлы сookie",
-                  barDescription: "Мы используем собственные файлы cookie и сторонние...",
+                  barDescription:
+                     "Сайт использут cookie и локальное хранилище данных. Это позволяет анализировать взаимодействие посетителей с сайтом и делать его лучше по всем правилам закона 152-ФЗ «О персональных данных». Продолжая пользоваться сайтом, вы соглашаетесь с использованием файлов cookie и политикой конфиденциальности. В ином случае, вы будете возвращаться обратно на эту страницу.",
                   acceptAll: "Принять все",
                   declineAll: "Удалить все",
                   manageCookies: "Управление файлами cookie",

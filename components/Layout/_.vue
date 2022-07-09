@@ -71,6 +71,9 @@ export default {
     }
   },
   mounted() {
+    //if (!this.$cookies?.consent && this.mainPath()) this.routeLight("")
+    //console.log(!this.$cookies?.consent && this.mainPath())
+
     if (!this.redirect)
       setTimeout(() => {
         this.preload = false

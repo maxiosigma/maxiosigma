@@ -36,19 +36,18 @@ Vue.mixin({
       isLangGlobal() {
          return this.$i18n?.locale?.split("-")?.[0] ?? "ru";
       },
+      mainPath() {
+         return this.$route.fullPath !== "/";
+      },
       lightRedirect() {
          const light = this.isLight();
          const isMobile = this.$ua.deviceType() !== "pc" && !light;
          const isDesktop = this.$ua.deviceType() === "pc" && light;
-         const checkNoLink =
-            app_config.excluded?.filter((it) => this.$route.path.indexOf("/" + it + "/") !== -1 || this.$route.path.indexOf("/") !== -1).length >
-            0;
+         const checkNoLink = app_config.excluded?.filter((it) => this.$route.path.indexOf("/" + it + "/") !== -1).length > 0 || !this.mainPath();
 
          isMobile && !checkNoLink ? (location.href = this.switchLocalePath(this.loke(true))) : null;
 
          isDesktop && !checkNoLink ? (location.href = this.switchLocalePath(this.loke(false))) : null;
-
-         // console.log(light);
 
          return (isMobile && !checkNoLink) || (isDesktop && !checkNoLink);
       },
