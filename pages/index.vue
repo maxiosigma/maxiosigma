@@ -1,5 +1,6 @@
 <template>
-  <Layout :bodyStyle="'index'">
+  <!--  :bodyStyle="'index'" -->
+  <Layout>
     <template v-slot:head>
       <TemplateHead />
     </template>
@@ -45,15 +46,14 @@ export default {
     //console.log(document.location)
     //document.domain
 
+    //console.log(this.lang)
+
     if (!query) {
       //if (!this.LCG("about")) this.routeLight("about")
       //else this.routeLight("sentences")
-
-      console.log(document.cookie)
-
+      //console.log(document.cookie)
       //console.log(window.localStorage.getItem("about"), localStorage.getItem("about"))
       //console.log(!!this.LCG("about"))
-
       //!localStorage.getItem('about') || localStorage.getItem('about') === 0 ? this.routeLight('about') : this.routeLight('about')
       //: !localStorage.getItem('business') || localStorage.getItem('business') === 0
       //? this.routeLight('business')

@@ -4,6 +4,8 @@
       <TemplateHead />
     </slot>
 
+    <CookieControl :locale="lang"> </CookieControl>
+
     <slot name="wrapper-before"></slot>
 
     <slot name="nav"></slot>
@@ -57,6 +59,7 @@ export default {
       active: false,
       redirect: false,
       preload_redirect: false,
+      lang: this.isLangGlobal(),
     }
   },
   beforeMount() {

@@ -36,6 +36,9 @@ Vue.mixin({
       // || this.$ua.deviceType() !== "desktop"
       return this.$ua.deviceType() !== "pc";
     },
+    isLangGlobal() {
+      return this.$i18n?.locale?.split("-")?.[0] ?? "ru";
+    },
     lightRedirect() {
       const light = this.isLight();
       const isMobile = this.$ua.deviceType() !== "pc" && !light;
