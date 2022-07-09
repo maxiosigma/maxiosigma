@@ -421,13 +421,6 @@ function includes() {
 //}
 
 function custom() {
-   const cke = {
-      orig: ["cookie_control_consent", "cookie_control_enabled_cookies", "strapi_jwt", "lang"],
-      ga: ["_ga", "_gat", "_gid"],
-      ym: ["_ym_d", "_ym_isad", "_ym_uid", "_ym_visorc", "metrika_enabled"],
-      vk: ["remixir"],
-   };
-
    return {
       target: "static",
       loading: false,
@@ -436,17 +429,9 @@ function custom() {
       globals: {
          id: `app`,
       },
-      //googleAnalytics: {
-      //  id: "UA-176733004-3",
-      //},
-      //gtm: {
-      //  id: "GTM-MSJZ4PT",
-      //},
-      //strapi: {
-      //	// Options
-      //},
       cookies: {
          locales: ["ru", "en"],
+         barPosition: "bottom-right",
          //barPosition: "bottom-full",
          //dashInDescription: true,
          necessary: [
@@ -562,23 +547,23 @@ function custom() {
                },
             },
          ],
-      },
-      text: {
-         locale: {
-            ru: {
-               barTitle: "Файлы сookie",
-               barDescription: "Мы используем собственные файлы cookie и сторонние...",
-               acceptAll: "Принять все",
-               declineAll: "Удалить все",
-               manageCookies: "Управление файлами cookie",
-               unsaved: "У вас есть несохраненные настройки",
-               close: "Закрыть",
-               save: "Сохранить",
-               necessary: "Необходимые файлы cookie",
-               optional: "Необязательные файлы cookie",
-               functional: "Функциональные файлы cookie",
-               blockedIframe: "Чтобы увидеть это, включите функциональные файлы cookie",
-               here: "здесь",
+         text: {
+            locale: {
+               ru: {
+                  barTitle: "Файлы сookie",
+                  barDescription: "Мы используем собственные файлы cookie и сторонние...",
+                  acceptAll: "Принять все",
+                  declineAll: "Удалить все",
+                  manageCookies: "Управление файлами cookie",
+                  unsaved: "У вас есть несохраненные настройки",
+                  close: "Закрыть",
+                  save: "Сохранить",
+                  necessary: "Необходимые файлы cookie",
+                  optional: "Необязательные файлы cookie",
+                  functional: "Функциональные файлы cookie",
+                  blockedIframe: "Чтобы увидеть это, включите функциональные файлы cookie",
+                  here: "здесь",
+               },
             },
          },
          colors: {

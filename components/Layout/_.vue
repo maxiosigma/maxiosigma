@@ -4,9 +4,7 @@
       <TemplateHead />
     </slot>
 
-    <TemplateCookie />
-
-    <slot name="wrapper-before"></slot>
+    <slot name="wrapper-before"> </slot>
 
     <slot name="nav"></slot>
     <slot name="navbar"></slot>
@@ -24,6 +22,8 @@
       :isnt="preload"
       :redirect="preload_redirect"
     />
+
+    <TemplateCookie />
   </div>
 </template>
 
