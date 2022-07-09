@@ -53,8 +53,8 @@ export default {
     //console.log(this.lang)
 
     if (!query && this.$cookies?.consent) {
-      //if (!this.LCG("about")) this.routeLight("about")
-      //else this.routeLight("sentences")
+      if (!this.LCG("about")) this.routeLight("about")
+      else this.routeLight("sentences")
       //console.log(document.cookie)
       //console.log(window.localStorage.getItem("about"), localStorage.getItem("about"))
       //console.log(!!this.LCG("about"))
@@ -62,14 +62,13 @@ export default {
       //: !localStorage.getItem('business') || localStorage.getItem('business') === 0
       //? this.routeLight('business')
     } else if (query) {
-      console.log("bbb")
-      //this.link = this.links?.filter((ln) => ln?.short === query)[0]
-      //if (this.link?.href) setTimeout(() => (location.href = this.link?.href), 1500)
-      //if (this.link?.alt) setTimeout(() => (location.href = this.link?.alt), 3000)
-      //if (!this.link) {
-      //  window.open("#mw")
-      //  setTimeout(() => (location.href = "/about"), 1000)
-      //}
+      this.link = this.links?.filter((ln) => ln?.short === query)[0]
+      if (this.link?.href) setTimeout(() => (location.href = this.link?.href), 1500)
+      if (this.link?.alt) setTimeout(() => (location.href = this.link?.alt), 3000)
+      if (!this.link) {
+        window.open("#mw")
+        setTimeout(() => (location.href = "/about"), 1000)
+      }
     } else {
       setTimeout(
         () =>

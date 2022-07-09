@@ -444,7 +444,7 @@ function custom() {
                   ru: "Используются для управления файлами cookie",
                   en: "Used for cookie control",
                },
-               cookies: ["cookie_control_consent", "cookie_control_enabled_cookies", "lang"],
+               cookies: ["cookie_control_consent", "cookie_control_enabled_cookies", "i18n_redirected", "strapi_jwt", "lang"],
             },
          ],
          optional: [
@@ -544,6 +544,23 @@ function custom() {
                },
                declined: () => {
                   window.$nuxt.$cookies.remove("vk");
+               },
+            },
+            {
+               name: "PULSE PIXEL",
+               identifier: "pp",
+               description: {
+                  ru: "VK PIXEL",
+                  en: "VK PIXEL",
+               },
+               initialState: true,
+               async: true,
+               cookies: ["sbjs_current", "sbjs_current_add", "sbjs_first", "sbjs_first", "sbjs_migrations", "sbjs_udata"],
+               accepted: () => {
+                  console.log("PULSE PIXEL ACTIVE");
+               },
+               declined: () => {
+                  window.$nuxt.$cookies.remove("pp");
                },
             },
          ],
