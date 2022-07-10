@@ -215,7 +215,7 @@ export default {
     }
 
     &-titile {
-      @apply rounded-md text-shadow opacity-95 uppercase;
+      @apply rounded-md text-shadow-xl opacity-95 uppercase;
     }
   }
 

@@ -5,7 +5,7 @@
       <TemplateHead />
     </template>
 
-    <TemplateCookie />
+    <TemplateCookie class="flex-grow" />
 
     <div class="opacity-0">
       <h1 v-text="title"></h1>
@@ -24,7 +24,7 @@ export default {
       ...(this.link?.description && { description: this.link?.description }),
       titleTemplate: this.headTemplate(!!this.link && this.query ? "%s" : undefined),
       meta:
-        !!this.link && this.query
+        !!this.link && this.qhash
           ? [
               { "http-equiv": "refresh", content: "0.01;URL=" + this.link?.href },
               { "http-equiv": "refresh", content: "3;URL=" + this.link?.alt },
@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       link: undefined,
-      query: undefined,
+      qhash: undefined,
       title: undefined,
       description: undefined,
     }
@@ -43,14 +43,22 @@ export default {
   mounted() {
     // http://localhost:3000#mw
 
-    this.query = Object.keys(this.$route.query)?.[0] || this.$route.hash?.replace("#", "")
+    this.query = Object.keys(this.$route.query)?.[0]
+    this.hash = this.$route.hash?.replace("#", "")
 
-    if (!this.query && this.$cookies?.consent) {
+    const anti_utm = this.query?.indexOf("utm") !== -1
+
+    this.qhash = (this.query && !anti_utm) || this.hash
+
+    //console.log(anti_utm, this.query && !anti_utm, this.hash, !this.qhash)
+
+    if (!this.qhash) {
       if (!this.LCG("about")) this.routeLight("about")
       else this.routeLight("sentences/1")
-    } else if (this.query) {
+    } else {
+      //if (this.qhash)
       this.link = this.$store.state?.reffers?.filter(
-        (ln) => ln?.attributes?.short == this.query
+        (ln) => ln?.attributes?.short == this.qhash
       )?.[0]?.attributes
 
       this.title = this.link?.title
@@ -63,17 +71,19 @@ export default {
         setTimeout(() => window.open("#mw"), 1500)
         setTimeout(() => (location.href = "/about"), 3000)
       }
-    } else {
-      setTimeout(
-        () =>
-          this.$toast.show("Выберите и примите файлы cookie", {
-            theme: "outline",
-            position: "top-center",
-            duration: 60000,
-          }),
-        1000
-      )
     }
+
+    //else {
+    //  setTimeout(
+    //    () =>
+    //      this.$toast.show("Выберите и примите файлы cookie", {
+    //        theme: "outline",
+    //        position: "top-center",
+    //        duration: 60000,
+    //      }),
+    //    1000
+    //  )
+    //}
   },
 }
 </script>
