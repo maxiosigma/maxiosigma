@@ -54,7 +54,17 @@
 
           <div class="sentences-tags">
             <div class="sentences-tags-field">
-              <div class="sentences-tags-container" v-for="(tag, j) in it.tags" :key="j">
+              <div
+                class="sentences-tags-container"
+                v-for="(tag, j) in it.tags"
+                :key="j"
+                v-anime="{
+                  loop: false,
+                  translateX: [500, 0],
+                  duration: 500,
+                  delay: (j + 1) * 150 + (i + 1) * 500 + 1500,
+                }"
+              >
                 <div class="sentences-tags-titile">{{ tag }}</div>
               </div>
             </div>
@@ -204,18 +214,24 @@ export default {
   }
 
   &-tags {
-    @apply bg-transparent font-black text-white text-right tracking-widest grid right-1 bottom-1 text-8px z-50 gap-1 uppercase absolute justify-end place-items-end;
+    //justify-items-end items-end justify-end place-items-end
+    @apply bg-transparent font-black text-white text-right tracking-widest grid pl-2 right-1 bottom-1 text-8px z-50 gap-1 justify-end uppercase absolute;
 
     &-field {
-      @apply auto-cols-auto grid grid-flow-col gap-1 grid-rows-1;
+      //justify-items-end justify-end place-items-end items-end grid-flow-row-dense grid-cols-5 grid-rows-2
+      @apply grid grid-flow-col-dense gap-1 place-items-center;
+      //grid-flow-col grid-flow-col-dense
+
+      //grid-template-columns: repeat(1, minmax(0, 1fr));
+      //grid-template-columns: repeat(5, 1fr);
     }
 
     &-container {
-      @apply rounded-md bg-opacity-85 bg-indigo-700 py-1 px-2 elevation-1;
+      @apply rounded-md flex-center bg-opacity-85 bg-indigo-700 border-indigo-600 border-1 border-opacity-50 py-1 px-2 transition duration-300 elevation-1 hover:bg-indigo-600;
     }
 
     &-titile {
-      @apply rounded-md text-shadow-xl opacity-95 uppercase;
+      @apply rounded-md text-shadow-xl text-center opacity-95 uppercase;
     }
   }
 
