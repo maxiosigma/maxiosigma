@@ -24,7 +24,7 @@
         :key="i"
         v-anime="animateBlock({ dl: 1.5 + 0.1 * intRandom(1, i) + i * 0.05, dr: 1.75 })"
       >
-        <div class="sentences-image-container">
+        <div class="sentences-image-container relative">
           <div v-if="it.images.length > 0" class="relative">
             <ItemImgStrapiBg
               v-for="(img, j) in it.images"
@@ -52,8 +52,10 @@
             :src="`https://picsum.photos/300/200?random=${i}`"
           ></ItemImgStrapiBg>
 
-          <div class="-right-5 -bottom-5 z-20 tags absolute">
-            <div class="">TAG</div>
+          <div class="sentences-tags">
+            <div class="sentences-tags-container">
+              <div class="sentences-tags-titile">TAG</div>
+            </div>
           </div>
         </div>
 
@@ -190,6 +192,18 @@ export default {
   &-container {
     // place-content-start min-h-200vh h-200vh
     @apply container mx-auto mt-auto grid p-5 text-light-200 gap-5 grid-cols-1 relative justify-between place-content-center place-items-stretch sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4;
+  }
+
+  &-tags {
+    @apply bg-transparent font-black text-white text-right tracking-wider opacity-85 auto-cols-auto grid grid-flow-col right-1 bottom-1 text-[10px] z-50 grid-rows-1 uppercase absolute;
+
+    &-container {
+      @apply rounded-md bg-indigo-600 py-1 px-2;
+    }
+
+    &-titile {
+      @apply;
+    }
   }
 
   &-image {
