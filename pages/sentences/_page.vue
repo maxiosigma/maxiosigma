@@ -53,9 +53,18 @@
           ></ItemImgStrapiBg>
 
           <div class="sentences-tags">
-            <div class="sentences-tags-container">
-              <div class="sentences-tags-titile">TAG</div>
+            <div class="sentences-tags-field">
+              <div class="sentences-tags-container" v-for="(tag, j) in it.tags" :key="j">
+                <div class="sentences-tags-titile">{{ tag }}</div>
+              </div>
             </div>
+
+            <!--<div class="bg-opacity-100 py-0.5 px-1 -bottom-3.5 sentences-tags-container absolute">
+              <div
+                class="text-5px sentences-tags-titile"
+                v-text="it.images.length > 0 ? 'Оригинал' : 'Случайное'"
+              ></div>
+            </div>-->
           </div>
         </div>
 
@@ -195,14 +204,18 @@ export default {
   }
 
   &-tags {
-    @apply bg-transparent font-black text-white text-right tracking-wider opacity-85 auto-cols-auto grid grid-flow-col right-1 bottom-1 text-[10px] z-50 grid-rows-1 uppercase absolute;
+    @apply bg-transparent font-black text-white text-right tracking-widest grid right-1 bottom-1 text-8px z-50 gap-1 uppercase absolute justify-end place-items-end;
+
+    &-field {
+      @apply auto-cols-auto grid grid-flow-col gap-1 grid-rows-1;
+    }
 
     &-container {
-      @apply rounded-md bg-indigo-600 py-1 px-2;
+      @apply rounded-md bg-opacity-85 bg-indigo-700 py-1 px-2 elevation-1;
     }
 
     &-titile {
-      @apply;
+      @apply rounded-md text-shadow opacity-95 uppercase;
     }
   }
 
