@@ -8,9 +8,9 @@
     <TemplateCookie />
 
     <div class="opacity-0">
-      <h1>{{ link.title }}</h1>
-      <h2>{{ link.description }}</h2>
-      <p>{{ link.description }}</p>
+      <h1 v-text="title"></h1>
+      <h2 v-text="description"></h2>
+      <p v-text="description"></p>
     </div>
   </Layout>
 </template>
@@ -26,8 +26,8 @@ export default {
       meta:
         !!this.link && this.query
           ? [
-              //{ "http-equiv": "refresh", content: "0.01;URL=" + this.link?.href },
-              //{ "http-equiv": "refresh", content: "3;URL=" + this.link?.alt },
+              { "http-equiv": "refresh", content: "0.01;URL=" + this.link?.href },
+              { "http-equiv": "refresh", content: "3;URL=" + this.link?.alt },
             ]
           : false,
     }
@@ -36,45 +36,33 @@ export default {
     return {
       link: undefined,
       query: undefined,
+      title: undefined,
+      description: undefined,
     }
   },
-  //async beforeMount() {
-  //  //await this.vkPixel()
-
-  //  //console.log(this.$cookies.consent)
-  //},
   mounted() {
-    this.query = Object.keys(this.$route?.query)?.[0] || this.$route?.hash?.replace("#", "")
+    // http://localhost:3000#mw
 
-    //const query = Object.keys(this.$route?.query)?.[0] || this.$route?.hash?.replace("#", "")
-    //console.log(document.location)
-    //document.domain
-
-    //console.log(this.lang)
+    this.query = Object.keys(this.$route.query)?.[0] || this.$route.hash?.replace("#", "")
 
     if (!this.query && this.$cookies?.consent) {
       if (!this.LCG("about")) this.routeLight("about")
       else this.routeLight("sentences/1")
-      //console.log(document.cookie)
-      //console.log(window.localStorage.getItem("about"), localStorage.getItem("about"))
-      //console.log(!!this.LCG("about"))
-      //!localStorage.getItem('about') || localStorage.getItem('about') === 0 ? this.routeLight('about') : this.routeLight('about')
-      //: !localStorage.getItem('business') || localStorage.getItem('business') === 0
-      //? this.routeLight('business')
     } else if (this.query) {
       this.link = this.$store.state?.reffers?.filter(
         (ln) => ln?.attributes?.short == this.query
       )?.[0]?.attributes
 
-      console.log(this.link)
+      this.title = this.link?.title
+      this.description = this.link?.description
 
-      //if (this.link?.href) setTimeout(() => (location.href = this.link?.href), 1500)
-      //if (this.link?.alt) setTimeout(() => (location.href = this.link?.alt), 3000)
+      if (this.link?.href) setTimeout(() => (location.href = this.link?.href), 1500)
+      if (this.link?.alt) setTimeout(() => (location.href = this.link?.alt), 3000)
 
-      //if (!this.link) {
-      //  setTimeout(() => window.open("#mw"), 1500)
-      //  setTimeout(() => (location.href = "/about"), 3000)
-      //}
+      if (!this.link) {
+        setTimeout(() => window.open("#mw"), 1500)
+        setTimeout(() => (location.href = "/about"), 3000)
+      }
     } else {
       setTimeout(
         () =>
@@ -86,18 +74,7 @@ export default {
         1000
       )
     }
-
-    //setTimeout(() => this.routeLight("about"), 4500)
   },
-  //http://localhost:3000/ru-ru#mw
-  //async asyncData({ $strapi, store }) {
-  //	try {
-  //		const links = (await $strapi.graphql({ query: store.state.gql.links })).links?.data?.map((it) => it.attributes)
-  //		return { links }
-  //	} catch (error) {
-  //		return {}
-  //	}
-  //},
 }
 </script>
 

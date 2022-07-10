@@ -35,8 +35,8 @@
               v-anime="{
                 loop: true,
                 opacity: 1,
-                duration: (j + 1) * 6000 + i * 200,
-                delay: (j + 1) * 3000 + i * 200,
+                duration: (j + 1) * 6000 + i * 400,
+                delay: (j + 1) * 3000 + i * 400,
               }"
             />
           </div>
@@ -52,9 +52,9 @@
             :src="`https://picsum.photos/300/200?random=${i}`"
           ></ItemImgStrapiBg>
 
-          <!--<div class="-right-5 -bottom-5 z-20 tags absolute">
+          <div class="-right-5 -bottom-5 z-20 tags absolute">
             <div class="">TAG</div>
-          </div>-->
+          </div>
         </div>
 
         <div

@@ -4,7 +4,7 @@ import plugin from "windicss/plugin";
 import { defineConfig, transform } from "windicss/helpers";
 
 export default defineConfig({
-   //attributify: false,
+   attributify: false,
    shortcuts: shortcuts(),
    theme: {
       //...themeBase(),
@@ -35,6 +35,7 @@ function safelist() {
       range(30).map((i) => `animate-delay-${((i + 1) * 3) / 10}s`),
       range(30).map((i) => `animate-delay-${((i + 1) * 5) / 10}s`),
       range(30).map((i) => `animate-duration-${((i + 1) * 5) / 10}s`),
+      range(30).map((i) => `hue-rotate-${(i + 1) * 5}`),
    ];
 }
 
@@ -223,6 +224,11 @@ function plugins() {
                textAlign: "center",
                color: "#fefefe",
                textShadow: "#e7e7e7 3px 5px 0, #999 4px 6px 3px, #ccc 8px 11px 10px",
+            },
+            massHueRotate: {
+               ...range(30).map((i) => {
+                  return { filter: `hue-rotate(${(i + 1) * 5}deg)` };
+               }),
             },
          });
       }),

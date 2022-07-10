@@ -90,11 +90,13 @@ function cookie() {
                      })(window, document, "script", "dataLayer", "GTM-MSJZ4PT");
 
                      console.log("GTM PIXEL ACTIVE");
+                     //window.location.reload(true);
                   }, 250);
                },
                declined: () => {
                   //console.log(window.$nuxt.$cookies);
                   window.$nuxt.$cookies.remove("ga");
+                  //window.location.reload(true);
                },
             },
             {
