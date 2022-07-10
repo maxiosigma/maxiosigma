@@ -8,9 +8,9 @@
     <TemplateCookie />
 
     <div class="opacity-0">
-      <h1>{{ title }}</h1>
-      <h2>{{ description }}</h2>
-      <p>{{ description }}</p>
+      <h1>{{ link.title }}</h1>
+      <h2>{{ link.description }}</h2>
+      <p>{{ link.description }}</p>
     </div>
   </Layout>
 </template>
@@ -20,23 +20,22 @@ export default {
   nuxtI18n: false,
   head() {
     return {
-      title: this.title,
-      ...(this.description && { description: this.description }),
-      titleTemplate: this.headTemplate(this.link ? "%s" : undefined),
-      meta: !!this.link
-        ? [
-            //{ "http-equiv": "refresh", content: "0.01;URL=" + this.link?.href },
-            //{ "http-equiv": "refresh", content: "3;URL=" + this.link?.alt },
-          ]
-        : false,
+      title: this.link?.title ?? "Главная",
+      ...(this.link?.description && { description: this.link?.description }),
+      titleTemplate: this.headTemplate(!!this.link && this.query ? "%s" : undefined),
+      meta:
+        !!this.link && this.query
+          ? [
+              //{ "http-equiv": "refresh", content: "0.01;URL=" + this.link?.href },
+              //{ "http-equiv": "refresh", content: "3;URL=" + this.link?.alt },
+            ]
+          : false,
     }
   },
   data() {
     return {
       link: undefined,
-      links: this.$store.state?.reffers,
-      title: this.link?.title ?? "Главная",
-      description: this.link?.description,
+      query: undefined,
     }
   },
   //async beforeMount() {
@@ -45,14 +44,15 @@ export default {
   //  //console.log(this.$cookies.consent)
   //},
   mounted() {
-    const route = this.$route
-    const query = Object.keys(route?.query)?.[0] || route?.hash?.replace("#", "")
+    this.query = Object.keys(this.$route?.query)?.[0] || this.$route?.hash?.replace("#", "")
+
+    //const query = Object.keys(this.$route?.query)?.[0] || this.$route?.hash?.replace("#", "")
     //console.log(document.location)
     //document.domain
 
     //console.log(this.lang)
 
-    if (!query && this.$cookies?.consent) {
+    if (!this.query && this.$cookies?.consent) {
       if (!this.LCG("about")) this.routeLight("about")
       else this.routeLight("sentences/1")
       //console.log(document.cookie)
@@ -61,14 +61,20 @@ export default {
       //!localStorage.getItem('about') || localStorage.getItem('about') === 0 ? this.routeLight('about') : this.routeLight('about')
       //: !localStorage.getItem('business') || localStorage.getItem('business') === 0
       //? this.routeLight('business')
-    } else if (query) {
-      this.link = this.links?.filter((ln) => ln?.short === query)[0]
-      if (this.link?.href) setTimeout(() => (location.href = this.link?.href), 1500)
-      if (this.link?.alt) setTimeout(() => (location.href = this.link?.alt), 3000)
-      if (!this.link) {
-        window.open("#mw")
-        setTimeout(() => (location.href = "/about"), 1000)
-      }
+    } else if (this.query) {
+      this.link = this.$store.state?.reffers?.filter(
+        (ln) => ln?.attributes?.short == this.query
+      )?.[0]?.attributes
+
+      console.log(this.link)
+
+      //if (this.link?.href) setTimeout(() => (location.href = this.link?.href), 1500)
+      //if (this.link?.alt) setTimeout(() => (location.href = this.link?.alt), 3000)
+
+      //if (!this.link) {
+      //  setTimeout(() => window.open("#mw"), 1500)
+      //  setTimeout(() => (location.href = "/about"), 3000)
+      //}
     } else {
       setTimeout(
         () =>
