@@ -8,7 +8,8 @@
    "type": "module",
    "scripts": {
       "dev": "nuxt --open",
-      "strapi-dev": "cd ../strapi/ && yarn strapi develop --watch-admin",
+      "strapi-dev": "cd ../strapi/ && yarn strapi develop",
+      "strapi-dev-admin": "cd ../strapi/ && yarn strapi develop --watch-admin",
       "generate-start": "yarn generate && yarn start --open",
       "generate": "nuxt generate",
       "start": "SET NUXT_ENV_HOST_0=true & nuxt start",

@@ -1,6 +1,18 @@
 <template>
   <LayoutPage>
-    <div></div>
+    <div class="text-white py-15 designer">
+      <div
+        class="font-vetka font-black text-shadow-lg text-center text-5xl tracking-[5px] uppercase"
+      >
+        Дизайнерские работы
+      </div>
+
+      <div class="mt-15 content">
+        <div class="" v-for="(it, i) in content" :key="i">
+          {{ it.title }}
+        </div>
+      </div>
+    </div>
   </LayoutPage>
 </template>
 
@@ -12,17 +24,10 @@ export default {
     }
   },
   async asyncData({ store, $strapi, app }) {
-    //const paginaton = app.router.app.isLight() ? 5 : 12
-    //const countLinks = store.state.links.length
-    //const countPages = Math.ceil(countLinks / paginaton)
-    //return { countPages }
-
     const gql = store.state.gql.designerWorks
-    const content = (await $strapi.graphql({ query: gql })).designerWorks.data
-
-    console.log(content)
-
-    //const content = store.state
+    const content = (await $strapi.graphql({ query: gql })).designerWorks?.data?.map(
+      (it) => it.attributes
+    )
 
     return { content }
   },
