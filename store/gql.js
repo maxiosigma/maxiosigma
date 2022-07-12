@@ -1,17 +1,17 @@
 //import gql from 'graphql-tag'
 
 export const state = () => ({
-  developerWorks: developerWorks(),
-  designerWorks: designerWorks(),
-  portfolio: portfolio(),
-  links: links(),
-  menu: menu(),
+   developerWorks: developerWorks(),
+   designerWorks: designerWorks(),
+   portfolio: portfolio(),
+   links: links(),
+   menu: menu(),
 });
 
 function designerWorks(page = 1, limit = 200) {
-  return `
+   return `
 		query designerWork {
-			designerWorks(pagination: { page: ${page}, limit: ${limit} }) {
+			designerWorks(pagination: { limit: ${limit} }) {
 				data {
 					attributes {
 						title
@@ -63,7 +63,7 @@ function designerWorks(page = 1, limit = 200) {
 }
 
 function developerWorks(page = 1, limit = 200) {
-  return `
+   return `
 		query developerWorks {
 			developerWorks(pagination: { page: ${page}, limit: ${limit} }) {
 				data {
@@ -118,7 +118,7 @@ function developerWorks(page = 1, limit = 200) {
 
 // page: ${page},
 function links(page = 1, limit = 2000) {
-  return `
+   return `
 		query {
 			links(pagination: { limit: 200 }, sort: "top:DESC") {
 				data {
@@ -159,7 +159,7 @@ function links(page = 1, limit = 2000) {
 }
 
 function portfolio() {
-  return `
+   return `
 		query {
 			page (id: 1) {
 				data{
@@ -185,7 +185,7 @@ function portfolio() {
 }
 
 function menu() {
-  return `
+   return `
 		query {
 			menusMenus{
 				data {
