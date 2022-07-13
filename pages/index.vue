@@ -5,7 +5,7 @@
       <TemplateHead />
     </template>
 
-    <TemplateCookie class="flex-grow" />
+    <!--<TemplateCookie class="flex-grow" />-->
 
     <div class="opacity-0">
       <h1 v-text="title"></h1>
@@ -40,36 +40,36 @@ export default {
       description: undefined,
     }
   },
-  async mounted() {
-    // http://localhost:3000#mw
+  async beforeMount() {
+    await this.loadPage()
+  },
+  methods: {
+    loadPage() {
+      this.query = Object.keys(this.$route.query)?.[0]
+      this.hash = this.$route.hash?.replace("#", "")
+      const anti_utm = this.query?.indexOf("utm") !== -1
+      this.qhash = (this.query && !anti_utm) || this.hash
 
-    this.query = Object.keys(this.$route.query)?.[0]
-    this.hash = this.$route.hash?.replace("#", "")
+      if (!this.qhash) {
+        if (!this.LCG("about")) this.routeLight("about")
+        else this.routeLight("sentences/1")
+      } else {
+        this.link = this.$store.state?.reffers?.filter(
+          (ln) => ln?.attributes?.short == this.qhash
+        )?.[0]?.attributes
 
-    const anti_utm = this.query?.indexOf("utm") !== -1
+        this.title = this.link?.title
+        this.description = this.link?.description
 
-    this.qhash = (this.query && !anti_utm) || this.hash
+        if (this.link?.href) setTimeout(() => (location.href = this.link?.href), 1500)
+        if (this.link?.alt) setTimeout(() => (location.href = this.link?.alt), 3000)
 
-    if (!this.qhash) {
-      if (!this.LCG("about")) this.routeLight("about")
-      else this.routeLight("sentences/1")
-    } else {
-      //if (this.qhash)
-      this.link = this.$store.state?.reffers?.filter(
-        (ln) => ln?.attributes?.short == this.qhash
-      )?.[0]?.attributes
-
-      this.title = this.link?.title
-      this.description = this.link?.description
-
-      if (this.link?.href) setTimeout(() => (location.href = this.link?.href), 1500)
-      if (this.link?.alt) setTimeout(() => (location.href = this.link?.alt), 3000)
-
-      if (!this.link) {
-        setTimeout(() => window.open("#mw"), 1500)
-        setTimeout(() => (location.href = "/about"), 3000)
+        if (!this.link) {
+          setTimeout(() => window.open("#mw"), 1500)
+          setTimeout(() => (location.href = "/about"), 3000)
+        }
       }
-    }
+    },
   },
 }
 </script>
