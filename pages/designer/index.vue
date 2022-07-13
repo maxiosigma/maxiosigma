@@ -27,9 +27,22 @@ export default {
   },
   async asyncData({ store, $strapi, app }) {
     const gql = store.state.gql.designerWorks
-    const content = (await $strapi.graphql({ query: gql })).designerWorks?.data?.map(
-      (it) => it.attributes
-    )
+    const content = (await $strapi.graphql({ query: gql })).designerWorks?.data
+      ?.map((it) => it.attributes)
+      .map((it) => {
+        return {
+          date: it.date,
+          link: it.link,
+          title: it.title,
+          description: it.description,
+          technologies: it.assets?.technologies.data?.map((tl) => tl?.attributes),
+          fonts: it.assets?.fonts?.data.map((ft) => ft?.attributes),
+          models: it.assets?.models?.data.map((ml) => ml?.attributes),
+          media: it.media?.data.map((md) => md?.attributes),
+
+          //it: it,
+        }
+      })
 
     console.log(content)
 
