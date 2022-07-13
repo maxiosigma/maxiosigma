@@ -446,17 +446,17 @@ function build() {
          ...(!app_config.isDev && {
             extractCSS: true,
             filenames: {
-               app: "scripts/[chunkhash:5].js",
-               chunk: "scripts/[chunkhash:5].js",
-               vendor: "scripts/[chunkhash:5].js",
-               manifest: "manifest.[hash:5].js",
-               css: "styles/[contenthash:5].css",
+               app: "scripts/[chunkhash:8].js",
+               chunk: "scripts/[chunkhash:8].js",
+               vendor: "scripts/[chunkhash:8].js",
+               manifest: "manifest.[hash:8].js",
+               css: "styles/[contenthash:8].css",
                //[path]
-               img: "images/img_[hash:5].[ext]",
+               img: "images/img_[hash:8].[ext]",
                //[path]
-               font: "fonts/font_[name]_[hash:5].[ext]",
+               font: "fonts/font_[name]_[hash:8].[ext]",
                //[path]
-               video: "video/vio_[hash:5].[ext]",
+               video: "video/vio_[hash:8].[ext]",
             },
          }),
          extend(config, ctx) {

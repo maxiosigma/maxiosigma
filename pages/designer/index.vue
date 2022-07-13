@@ -9,18 +9,8 @@
 
       <div class="mt-15 content">
         <div class="" v-for="(it, i) in content" :key="i">
-          {{ it.title }}
-
-          {{ it.media.data[0].attributes.url }}
-
-          {{ it.assets }}
-
-          <!--{{ it.assets.technologies }}-->
-
-          <!--{{ it.assets.models.data.attributes }}-->
-
           <div class="my-2">
-            {{ it }}
+            <!--{{ it }}-->
           </div>
         </div>
       </div>
@@ -42,6 +32,12 @@ export default {
     const content = (await $strapi.graphql({ query: gql })).designerWorks?.data?.map(
       (it) => it.attributes
     )
+
+    // it.title
+    // it.media.data[0].attributes.url
+    // it.assets
+    // it.assets.technologies
+    // it.assets.models.data.attributes
 
     return { content }
   },
