@@ -7,15 +7,13 @@
         Дизайнерские работы
       </div>
 
-      <div class="mt-15 content">
-        <div class="" v-for="(it, i) in content" :key="i">
-          <div class="my-2">
-            <!--{{ it }}-->
-          </div>
-        </div>
+      <div class="mt-15 designer-content">
+        <ItemTimeline :content="content"></ItemTimeline>
+        <!--<div class="" v-for="(it, i) in content" :key="i">
+        </div>-->
       </div>
 
-      <div></div>
+      <!--<div></div>-->
     </div>
   </LayoutPage>
 </template>
@@ -32,6 +30,8 @@ export default {
     const content = (await $strapi.graphql({ query: gql })).designerWorks?.data?.map(
       (it) => it.attributes
     )
+
+    console.log(content)
 
     // it.title
     // it.media.data[0].attributes.url

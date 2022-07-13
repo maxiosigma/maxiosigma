@@ -16,14 +16,30 @@ export default {
           .join("_"),
     }
   },
-  async mounted() {
-    if (!this.isLinkSite(this.src))
-      import(`../../../../../strapi/public/uploads/${this.src.replace("/uploads/", "")}`).then(
-        (it) => {
-          this.loadStyleImg(it.default)
-        }
-      )
-    else this.loadStyleImg(this.src)
+  mounted() {
+    if (!this.isLinkSite(this.src)) {
+      //import(`../../../../../strapi/public/uploads/${this.src.replace("/uploads/", "")}`).then(
+      //  (it) => {
+      //    this.loadStyleImg(it.default)
+      //  }
+      //)
+      //const img = require(
+      //  `../../../../../strapi/public/uploads/${this.src.replace("/uploads/", "")}`
+      //)
+      //console.log(preUrl)
+      //const url = require.context(dir, true, /\.png$/)
+      //console.log(url)
+      //this.loadStyleImg(url)
+
+      const dir = "../../../../../strapi/public/uploads"
+      const preUrl = `${dir}/${this.src.replace("/uploads/", "")}`
+      const url = require(`../../../../../strapi/public/uploads/${this.src.replace(
+        "/uploads/",
+        ""
+      )}`)
+
+      this.loadStyleImg(url)
+    } else this.loadStyleImg(this.src)
   },
   methods: {
     loadStyleImg(img) {

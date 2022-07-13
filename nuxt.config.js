@@ -567,6 +567,7 @@ function includes() {
          "nuxt-fontagon",
          //"@vueuse/nuxt",
          "@/plugins/active/GSR",
+         //"@nuxtjs/imagemin",
          //'nuxt-resolve-url-loader',
          //'nuxt-alias',
          //'@nuxtjs/prismic',

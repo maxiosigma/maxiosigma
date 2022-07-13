@@ -104,7 +104,6 @@ Vue.mixin({
          console.log(locale);
          return this.$ua.deviceType() === "pc" ? locale + "-amp" : locale.replace("-amp", "");
       },
-
       headTemplate(template = app_config.head.titleTemplate) {
          return template;
       },
@@ -149,6 +148,9 @@ Vue.mixin({
          }, false);
 
          return sum ? true : false;
+      },
+      isVideo(ext) {
+         return ext === ".mp4" || ext === "webm" || ext === "ogv";
       },
       animateBlock({ dl = 1, dr = 1, sc = 1, sk = 1, tx = 0, lp = false, rn = 1 }) {
          return {
