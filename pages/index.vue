@@ -40,7 +40,7 @@ export default {
       description: undefined,
     }
   },
-  mounted() {
+  async mounted() {
     // http://localhost:3000#mw
 
     this.query = Object.keys(this.$route.query)?.[0]
@@ -49,8 +49,6 @@ export default {
     const anti_utm = this.query?.indexOf("utm") !== -1
 
     this.qhash = (this.query && !anti_utm) || this.hash
-
-    //console.log(anti_utm, this.query && !anti_utm, this.hash, !this.qhash)
 
     if (!this.qhash) {
       if (!this.LCG("about")) this.routeLight("about")
@@ -72,18 +70,6 @@ export default {
         setTimeout(() => (location.href = "/about"), 3000)
       }
     }
-
-    //else {
-    //  setTimeout(
-    //    () =>
-    //      this.$toast.show("Выберите и примите файлы cookie", {
-    //        theme: "outline",
-    //        position: "top-center",
-    //        duration: 60000,
-    //      }),
-    //    1000
-    //  )
-    //}
   },
 }
 </script>
