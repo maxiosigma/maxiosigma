@@ -193,50 +193,7 @@ function menu() {
 						title
 						slug
 						items(pagination: { limit: 50}) {
-							data {
-								attributes {
-									title
-									target
-									url
-									order
-									parent {
-										data {
-											attributes {
-												title
-												target
-												url
-												order
-												parent {
-													data {
-														attributes {
-																title
-																target
-																url
-																order
-																parent {
-																	data {
-																		attributes {
-																			parent {
-																				data {
-																					attributes {
-																						title
-																						target
-																						url
-																						order
-																					}
-																				}
-																			}
-																		}
-																	}
-																}
-														}
-													}
-												}
-											}
-										}
-									}
-								}
-							}
+							${parentMenu()}
 						}
 					}
 				}
@@ -244,3 +201,70 @@ function menu() {
 		}
 	`;
 }
+
+function parentMenu(count = 1, depth = 3) {
+   const child = depth !== count ? parentMenu((count += 1)) : null;
+
+   return `
+			data {
+				attributes {
+					url
+					title
+					order
+					target
+					hidden
+					footer
+					class
+					${!!child ? `parent { ${child} }` : ""}
+			  }
+			}
+		`;
+}
+
+//data {
+//	attributes {
+//		title
+//		target
+//		url
+//		order
+//		hidden
+//		footer
+//		class
+//		parent {
+//			data {
+//				attributes {
+//					title
+//					target
+//					url
+//					order
+//					parent {
+//						data {
+//							attributes {
+//									title
+//									target
+//									url
+//									order
+//									parent {
+//										data {
+//											attributes {
+//												parent {
+//													data {
+//														attributes {
+//															title
+//															target
+//															url
+//															order
+//														}
+//													}
+//												}
+//											}
+//										}
+//									}
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
+//	}
+//}
