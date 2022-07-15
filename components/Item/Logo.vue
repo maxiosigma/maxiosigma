@@ -35,7 +35,7 @@ export default {}
     }
 
     &-text {
-      @apply font-black text-shadow-md text-lg leading-none ml-1.5 tracking-3px pointer-events-none sm:text-xl;
+      @apply font-black text-shadow-md text-lg text-white leading-none ml-1.5 tracking-3px pointer-events-none sm:text-xl;
     }
   }
 }

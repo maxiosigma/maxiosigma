@@ -5,7 +5,8 @@ export const state = () => ({
    designerWorks: designerWorks(),
    portfolio: portfolio(),
    links: links(),
-   menu: menu(),
+   navbar: menu(1),
+   footbar: menu(2),
 });
 
 function designerWorks(page = 1, limit = 200) {
@@ -184,15 +185,15 @@ function portfolio() {
 	`;
 }
 
-function menu() {
+function menu(id = 1, limit = 50) {
    return `
 		query {
-			menusMenus{
+			menusMenu(id: ${id}) {
 				data {
 					attributes {
 						title
 						slug
-						items(pagination: { limit: 50}) {
+						items(pagination: { limit: ${limit}}) {
 							${parentMenu()}
 						}
 					}
@@ -212,8 +213,7 @@ function parentMenu(count = 1, depth = 3) {
 					title
 					order
 					target
-					navbar
-					footer
+					hidden
 					class
 					${!!child ? `parent { ${child} }` : ""}
 			  }

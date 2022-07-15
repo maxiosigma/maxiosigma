@@ -98,7 +98,7 @@ export default {
 }
 
 .footer {
-  @apply flex-grow-0 flex-shrink-0 z-10 relative;
+  @apply flex-grow-0 flex-shrink-0 z-20 relative;
 }
 .preload {
   &-show {

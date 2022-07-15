@@ -1,13 +1,13 @@
 <template>
   <div
     v-scroll="getScroll"
-    :class="['nav-bar', { '!min-h-none !h-auto': scroll == 1 || scroll == 2 }]"
+    :class="['nav-bar', scroll == 1 || scroll == 2 ? '!min-h-none !h-auto' : '']"
   >
     <div
       :class="[
         'nav-bar-cont',
-        { 'cont-scroll': scroll == 1 || scroll == 2 },
-        { bottom: scroll == 2 },
+        scroll == 1 || scroll == 2 ? 'cont-scroll' : '',
+        scroll == 2 ? 'bottom' : '',
       ]"
     >
       <client-only>
@@ -15,8 +15,8 @@
           :height="isMobile() ? '3px' : '5px'"
           :class="[
             'nav-bar-indicator',
-            { '!opacity-0': scroll == 0 },
-            { '!opacity-100': scroll == 1 || scroll == 2 },
+            scroll == 0 ? '!opacity-0' : '',
+            scroll == 1 || scroll == 2 ? '!opacity-100' : '',
           ]"
           color="#00ffe6"
           background="#0e7490"
@@ -28,7 +28,7 @@
 
         <div :class="['nav-bar-cont-text']">
           <div
-            :class="['nav-bar-cont-arrow', { hidden: parent.title === undefined }]"
+            :class="['nav-bar-cont-arrow', parent.title === undefined ? '!hidden' : '']"
             @click="handleClickPrev()"
           >
             ←
@@ -36,7 +36,7 @@
 
           <div
             :class="[
-              link.navbar ? 'nav-bar-link group' : 'hidden',
+              'nav-bar-link group',
               link.parent && parent
                 ? { hidden: link.parent.title !== parent.title }
                 : { hidden: link.parent !== parent.title },
@@ -55,7 +55,7 @@
             <div
               :class="[
                 'nav-bar-link-hover',
-                link.navbar && isActive(link.title) ? 'border-b-2 border-b-yellow-500' : '',
+                isActive(link.title) ? 'border-b-2 border-b-yellow-500' : '',
               ]"
             >
               {{ link.title }}
@@ -66,15 +66,15 @@
     </div>
 
     <!--<div
-			//v-if="crumbs.length > 1"
-			//:class="['nav-bar-crumbs', scroll ? crumbScroll : '', $store.state.mainMenu == 1 ? crumbScroll : '']">
-			//<div class="nav-bar-crumbs-container">
-			//	<span class="group" v-for="(crumb, i) in crumbs" :key="i">
-			//		<ItemLink v-if="i !== crumbs.length - 1" class="nav-bar-crumbs-link" :href="'/' + crumb.l">{{ crumb.t }}</ItemLink>
-			//		<span class="nav-bar-crumbs-title" v-if="i === crumbs.length - 1">{{ crumb.t }}</span>
-			//		<span class="nav-bar-crumbs-delimetr" v-if="i !== crumbs.length - 1">/</span>
-			//	</span>
-			//</div>
+	    v-if="crumbs.length > 1"
+	    :class="['nav-bar-crumbs', scroll ? crumbScroll : '', $store.state.mainMenu == 1 ? crumbScroll : '']">
+	    <div class="nav-bar-crumbs-container">
+	    	<span class="group" v-for="(crumb, i) in crumbs" :key="i">
+	    		<ItemLink v-if="i !== crumbs.length - 1" class="nav-bar-crumbs-link" :href="'/' + crumb.l">{{ crumb.t }}</ItemLink>
+	    		<span class="nav-bar-crumbs-title" v-if="i === crumbs.length - 1">{{ crumb.t }}</span>
+	    		<span class="nav-bar-crumbs-delimetr" v-if="i !== crumbs.length - 1">/</span>
+	    	</span>
+	    </div>
 		</div>-->
   </div>
 </template>
@@ -85,7 +85,7 @@ export default {
   data() {
     return {
       //menu: [],
-      links: this.$store.state.menu,
+      links: this.$store.state.navbar.filter((it) => !it.hidden),
       //crumbs: this.getCrumbs(),
       isRoute: this.$route.fullPath
         ?.replace(this?.localePath("/") + "/", "")
@@ -96,17 +96,17 @@ export default {
     }
   },
   mounted() {
-    console.log(this.links)
-
+    //console.log(this.links)
     this.getActive()
   },
   methods: {
-    isActive(arg) {
-      return this.active?.indexOf(arg) !== -1
-    },
     getActive(arg = undefined) {
       if (!arg) {
-        arg = this.links?.filter((it) => it.url.indexOf(this.isRoute) !== -1)[0]
+        const rt = this.isRoute?.split("/")[0]
+        arg = this.links?.filter((it) => it.url.indexOf(rt) !== -1)[0]
+
+        //console.log(this.isRoute?.split("/")[0])
+
         this.active.push(arg?.title)
       } else {
         arg = this.links?.filter((it) => it.title === arg)[0]
@@ -118,6 +118,9 @@ export default {
         this.active.push(title)
         this.getActive(title)
       }
+    },
+    isActive(arg) {
+      return this.active?.indexOf(arg) !== -1
     },
     handleClickNext({ parent = undefined, url = undefined, target = undefined }) {
       url

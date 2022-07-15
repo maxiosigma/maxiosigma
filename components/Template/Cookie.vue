@@ -23,7 +23,7 @@ export default {
 
 <style lang="scss">
 .cookieControl {
-  @apply flex-center;
+  @apply flex-center relative;
 
   &__Bar {
     @apply bg-cyan-700 bg-opacity-95;
@@ -52,6 +52,9 @@ export default {
       @apply hover:text-cyan-300;
       @apply h-4.5 min-h-0 min-w-0 w-4.5 absolute #{!important};
     }
+  }
+  &__Modal {
+    //@apply z-9999 #{!important};
   }
 }
 </style>

@@ -9,7 +9,8 @@ export const state = () => ({
    //	discount: false,
    //},
    //slides: [],
-   menu: [],
+   navbar: [],
+   footbar: [],
    reffers: [],
    links: [],
 });
@@ -55,30 +56,15 @@ export const mutations = {
 
 export const actions = {
    async nuxtServerInit(ctx) {
-      const menu = (
-         await this.$strapi.graphql({
-            query: ctx.state.gql.menu,
-         })
-      )?.menusMenus?.data[0]?.attributes?.items?.data
-         .map((it) => it?.attributes)
-         .map((it) => {
-            return {
-               url: it.url,
-               title: it.title,
-               order: it.order,
-               target: it.target,
-               parent: it.parent.data?.attributes,
-               navbar: it.navbar,
-               footer: it.footer,
-               class: it.class,
-            };
-         });
-      //.filter((it) => it?.hidden !== "true");
+      const navbarQuery = await this.$strapi.graphql({ query: ctx.state.gql.navbar });
+      const navbarResult = menu(navbarQuery);
+      ctx.commit("uploadStrapi", { key: "navbar", payload: navbarResult });
 
-      ctx.commit("uploadStrapi", { key: "menu", payload: menu });
+      const footbarQuery = await this.$strapi.graphql({ query: ctx.state.gql.footbar });
+      const footbarResult = menu(footbarQuery);
+      ctx.commit("uploadStrapi", { key: "footbar", payload: footbarResult });
 
       const reffers = (await this.$strapi.graphql({ query: ctx.state.gql.links })).links?.data;
-
       ctx.commit("uploadStrapi", { key: "reffers", payload: reffers });
 
       const links = reffers?.reduce((sum, it) => {
@@ -101,13 +87,23 @@ export const actions = {
          //console.log(it?.tag);
          return sum;
       }, []);
-      //.sort((hot, normal) => (hot.top < normal.top ? 1 : -1));
-
       ctx.commit("uploadStrapi", { key: "links", payload: links });
 
-      //console.log(ctx.$strapi)
-      //console.log(ctx)
-      //await dispatch('links/getLinks', { prismic: $prismic })
+      function menu(obj) {
+         return obj?.menusMenu?.data?.attributes?.items?.data
+            .map((it) => it?.attributes)
+            .map((it) => {
+               return {
+                  url: it.url,
+                  title: it.title,
+                  order: it.order,
+                  target: it.target,
+                  parent: it.parent.data?.attributes,
+                  hidden: it.hidden,
+                  class: it.class,
+               };
+            });
+      }
    },
 };
 
