@@ -5,9 +5,7 @@
         <!--<ItemLogo></ItemLogo>-->
 
         <div class="footer-menu">
-          <!-- .filter((it) => !it.parent) -->
           <div class="footer-menu-cont">
-            <!-- .filter((it) => !it.parent) -->
             <div
               class="footer-menu-item"
               :key="i"
@@ -20,22 +18,22 @@
                 {{ it.title }}
               </div>
 
-              <!-- .filter((sit) => sit.parent.title === it.title) -->
-              <div
-                class="footer-menu-subitem"
-                :key="j"
-                v-for="(sit, j) in links.filter((sit) =>
-                  sit.parent ? sit.parent.title === it.title : false
-                )"
-              >
+              <div class="footer-menu-subcont">
                 <div
-                  class="footer-menu-link"
-                  @click="handleClickNext({ target: sit.target, url: sit.url })"
+                  :class="['footer-menu-subitem']"
+                  :key="j"
+                  v-for="(sit, j) in links.filter((sit) =>
+                    sit.parent ? sit.parent.title === it.title : false
+                  )"
                 >
-                  {{ sit.title }}
+                  <div
+                    class="footer-menu-link"
+                    @click="handleClickNext({ target: sit.target, url: sit.url })"
+                  >
+                    {{ sit.title }}
+                  </div>
                 </div>
               </div>
-              <!--  ? link.parent.title == link.title : false -->
             </div>
           </div>
         </div>
@@ -85,11 +83,14 @@ export default {
     &-cont {
       @apply grid grid-flow-col gap-4;
     }
+    &-subcont {
+      @apply grid grid-flow-col gap-4;
+    }
     &-item {
-      @apply grid gap-1;
+      @apply grid gap-1  place-items-center;
     }
     &-subitem {
-      @apply grid gap-1;
+      @apply flex;
     }
     &-link {
       @apply cursor-pointer;
