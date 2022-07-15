@@ -212,7 +212,7 @@ function parentMenu(count = 1, depth = 3) {
 					title
 					order
 					target
-					hidden
+					navbar
 					footer
 					class
 					${!!child ? `parent { ${child} }` : ""}

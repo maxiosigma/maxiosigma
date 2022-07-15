@@ -61,8 +61,9 @@
                 v-anime="{
                   loop: false,
                   translateX: [500, 0],
+                  scale: [0, 1],
                   duration: 500,
-                  delay: (j + 1) * 150 + (i + 1) * 500 + 1500,
+                  delay: (it.tags.length - (j + 1)) * 150 + (i + 1) * 500 + 1500,
                 }"
               >
                 <div class="sentences-tags-titile">{{ tag }}</div>
@@ -210,7 +211,7 @@ export default {
 .sentences {
   &-container {
     // place-content-start min-h-200vh h-200vh
-    @apply container mx-auto mt-auto grid p-5 text-light-200 gap-5 grid-cols-1 relative justify-between place-content-center place-items-stretch sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4;
+    @apply container mx-auto mt-auto grid p-5 text-light-200 gap-5 grid-cols-1 relative justify-between place-content-center place-items-stretch sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
   }
 
   &-tags {
@@ -219,7 +220,8 @@ export default {
 
     &-field {
       //justify-items-end justify-end place-items-end items-end grid-flow-row-dense grid-cols-5 grid-rows-2
-      @apply grid grid-flow-col-dense gap-1 place-items-center;
+      @apply grid gap-1 place-items-end;
+      // grid-flow-col-dense place-items-center
       //grid-flow-col grid-flow-col-dense
 
       //grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -256,11 +258,11 @@ export default {
   }
 
   &-content {
-    @apply flex-grow flex-center flex-col m-auto bg-cyan-700 bg-opacity-50 bg-hero-rain-white-30 bg-0.25r text-center w-full py-4 px-4  sm:(hover:(transition duration-700 bg-green-700 bg-opacity-85));
+    @apply flex-grow flex-center flex-col m-auto bg-cyan-700 bg-opacity-50 bg-hero-rain-white-30 bg-0.25r text-center w-full py-4 px-4  sm:(hover:(transition duration-700 bg-green-700 bg-opacity-85)) ;
   }
 
   &-button {
-    @apply font-bold bg-cyan-700 bg-opacity-25 bg-hero-rain-white-30 bg-0.25r mt-1 text-xs text-center tracking-widest w-full py-2 uppercase sm:(duration-700  transition hover:(bg-orange-700 bg-opacity-85));
+    @apply font-bold bg-cyan-700 bg-opacity-25 bg-hero-rain-white-30 bg-0.25r mt-1 text-xs text-center tracking-widest w-full py-2 uppercase sm:(duration-700  transition hover:(bg-orange-700 bg-opacity-85))  ;
   }
 
   &-link {
@@ -270,13 +272,13 @@ export default {
 
     &-title {
       //<sm:uppercase md:(text-base max-w-1/4 py-4 absolute) lg:max-w-1/5 xl:max-w-1/8 2xl:max-w-1/10 pb-2 px-10  text-[2vmin]
-      @apply flex-center font-semibold h-auto text-center text-base tracking-widest opacity-100 transition-all duration-500 delay-200 overflow-hidden relative <sm:(uppercase text-base mb-2);
+      @apply flex-center font-semibold h-auto text-center text-base tracking-widest opacity-100 transition-all duration-500 delay-200 overflow-hidden relative <sm:(uppercase text-base mb-2) ;
       // @apply lg:group-hover:(h-0 opacity-0) ;
     }
 
     &-description {
       //text-[1.5vmin]
-      @apply flex-center mt-3 text-center text-sm <sm:(text-xs mt-1 text-center);
+      @apply flex-center mt-3 text-center text-sm <sm:(text-xs mt-1 text-center) ;
       // md:(h-0 opacity-0 text-[1.5vmin] text-left transition-all duration-500 delay-300 overflow-hidden)
       //@apply lg:group-hover:(h-auto opacity-100) ;
     }

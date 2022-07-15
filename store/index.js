@@ -9,7 +9,7 @@ export const state = () => ({
    //	discount: false,
    //},
    //slides: [],
-   navbar: [],
+   menu: [],
    reffers: [],
    links: [],
 });
@@ -63,26 +63,19 @@ export const actions = {
          .map((it) => it?.attributes)
          .map((it) => {
             return {
-               url: it.url?.split("?")?.[0],
+               url: it.url,
                title: it.title,
                order: it.order,
                target: it.target,
                parent: it.parent.data?.attributes,
-               ...it.url
-                  ?.split("?")?.[1]
-                  ?.split("&")
-                  ?.reduce((s, it) => {
-                     s = {
-                        ...s,
-                        [it.split("=")[0]]: it.split("=")[1],
-                     };
-                     return s;
-                  }, {}),
+               navbar: it.navbar,
+               footer: it.footer,
+               class: it.class,
             };
-         })
-         .filter((it) => it?.hidden !== "true");
+         });
+      //.filter((it) => it?.hidden !== "true");
 
-      ctx.commit("uploadStrapi", { key: "navbar", payload: menu });
+      ctx.commit("uploadStrapi", { key: "menu", payload: menu });
 
       const reffers = (await this.$strapi.graphql({ query: ctx.state.gql.links })).links?.data;
 
@@ -97,7 +90,7 @@ export const actions = {
                description: link?.description,
                images: link?.imgs?.data.map((img) => img?.attributes),
                short: link?.short,
-               tags: link?.tags?.data?.map((tag) => tag?.attributes?.title),
+               tags: link?.tags?.data?.map((tag) => tag?.attributes?.title)?.sort((a, b) => (a?.length > b?.length ? 1 : -1)),
                top: link?.top,
 
                //self: {

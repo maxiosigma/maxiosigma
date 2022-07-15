@@ -45,7 +45,7 @@ export default {
   }
   &__ControlButton {
     //@apply md:(h-8 w-8) ;
-    @apply flex-center h-0 m-0 mb-1 min-h-0 min-w-0 py-0 inset-0 w-0 relative #{!important};
+    @apply flex-center h-0 m-0 my-3 min-h-0 min-w-0 py-0 inset-0 w-0 relative #{!important};
 
     & svg,
     & > svg {

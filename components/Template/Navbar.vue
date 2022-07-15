@@ -11,7 +11,6 @@
       ]"
     >
       <client-only>
-        <!--<div class="nav-indicator">-->
         <vue-scroll-indicator
           :height="isMobile() ? '3px' : '5px'"
           :class="[
@@ -22,54 +21,22 @@
           color="#00ffe6"
           background="#0e7490"
         />
-        <!--</div>-->
       </client-only>
 
       <div class="nav-bar-cont-main justify-around sm:justify-between">
-        <div class="nav-bar-menu relative">
-          <div class="flex-center nav-bar-logo group">
-            <div :class="['nav-bar-logo-cont mb-0.5', { 'scroll-logo-cont': scroll }]">
-              <div class="hidden">{{ scroll }}</div>
-              <LazyItemImgBg
-                class="
-                  bg-contain bg-center
-                  h-7
-                  w-7
-                  duration-3000
-                  animate-duration-3000
-                  group-hover:(animate-spin)
-                "
-                src="/logo.svg"
-              />
-            </div>
-
-            <div
-              class="
-                font-black
-                text-shadow-md text-lg
-                leading-none
-                ml-1.5
-                tracking-3px
-                pointer-events-none
-                sm:text-xl
-              "
-            >
-              {{ $config.app.name }}
-            </div>
-          </div>
-        </div>
-
-        <div
-          :class="['nav-bar-cont-arrow', { hidden: parent.title === undefined }]"
-          @click="handleClickPrev()"
-        >
-          ←
-        </div>
+        <ItemLogo></ItemLogo>
 
         <div :class="['nav-bar-cont-text']">
           <div
+            :class="['nav-bar-cont-arrow', { hidden: parent.title === undefined }]"
+            @click="handleClickPrev()"
+          >
+            ←
+          </div>
+
+          <div
             :class="[
-              'nav-bar-link order-1 group',
+              link.navbar ? 'nav-bar-link group' : 'hidden',
               link.parent && parent
                 ? { hidden: link.parent.title !== parent.title }
                 : { hidden: link.parent !== parent.title },
@@ -86,45 +53,39 @@
             "
           >
             <div
-              class="nav-bar-link-hover"
               :class="[
-                { 'border-b-2 border-b-yellow-500': isActive(link.title) },
-                //{ '<sm:(!text-[7px] !mb-1)': scroll == 1 },
-                link.class,
+                'nav-bar-link-hover',
+                link.navbar && isActive(link.title) ? 'border-b-2 border-b-yellow-500' : '',
               ]"
             >
               {{ link.title }}
             </div>
           </div>
-
-          <TemplateCookie :class="[{ '!hidden': parent.title }, 'order-0 sm:order-2']" />
         </div>
       </div>
     </div>
 
     <!--<div
-			v-if="crumbs.length > 1"
-			:class="['nav-bar-crumbs', scroll ? crumbScroll : '', $store.state.mainMenu == 1 ? crumbScroll : '']">
-			<div class="nav-bar-crumbs-container">
-				<span class="group" v-for="(crumb, i) in crumbs" :key="i">
-					<ItemLink v-if="i !== crumbs.length - 1" class="nav-bar-crumbs-link" :href="'/' + crumb.l">{{ crumb.t }}</ItemLink>
-					<span class="nav-bar-crumbs-title" v-if="i === crumbs.length - 1">{{ crumb.t }}</span>
-					<span class="nav-bar-crumbs-delimetr" v-if="i !== crumbs.length - 1">/</span>
-				</span>
-			</div>
+			//v-if="crumbs.length > 1"
+			//:class="['nav-bar-crumbs', scroll ? crumbScroll : '', $store.state.mainMenu == 1 ? crumbScroll : '']">
+			//<div class="nav-bar-crumbs-container">
+			//	<span class="group" v-for="(crumb, i) in crumbs" :key="i">
+			//		<ItemLink v-if="i !== crumbs.length - 1" class="nav-bar-crumbs-link" :href="'/' + crumb.l">{{ crumb.t }}</ItemLink>
+			//		<span class="nav-bar-crumbs-title" v-if="i === crumbs.length - 1">{{ crumb.t }}</span>
+			//		<span class="nav-bar-crumbs-delimetr" v-if="i !== crumbs.length - 1">/</span>
+			//	</span>
+			//</div>
 		</div>-->
   </div>
 </template>
 
 <script>
-import nav from "~/assets/json/nav.json"
-
 export default {
   props: ["openMenu", "items", "subitems"],
   data() {
     return {
       //menu: [],
-      links: this.$store.state.navbar || nav,
+      links: this.$store.state.menu,
       //crumbs: this.getCrumbs(),
       isRoute: this.$route.fullPath
         ?.replace(this?.localePath("/") + "/", "")
@@ -135,6 +96,8 @@ export default {
     }
   },
   mounted() {
+    console.log(this.links)
+
     this.getActive()
   },
   methods: {
@@ -228,9 +191,6 @@ export default {
         }
       }
 
-      &-indicator {
-      }
-
       &-main {
         @apply container flex items-center justify-between;
       }
@@ -317,28 +277,6 @@ export default {
         &.exact {
           @apply text-stroke-1 text-stroke-light-300;
         }
-      }
-    }
-
-    &-menu {
-      // cursor-pointer
-      @apply flex flex-grow items-center justify-between;
-
-      &-text {
-        @apply font-thin mt-0.75 text-lg tracking-wide uppercase pointer-events-none;
-      }
-    }
-
-    &-logo {
-      // pointer-events-none
-      @apply transition-all duration-2000;
-
-      &-cont {
-        @apply rounded-full flex-center h-6 transition-all w-6 duration-500 relative filter drop-shadow-md sm: h-8 sm:w-8 ;
-      }
-
-      &-img {
-        @apply h-full w-full;
       }
     }
 
