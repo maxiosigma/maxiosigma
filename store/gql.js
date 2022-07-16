@@ -7,6 +7,7 @@ export const state = () => ({
    links: links(),
    navbar: menu(1),
    footbar: menu(2),
+   social: menu(3),
 });
 
 function designerWorks(page = 1, limit = 200) {
@@ -215,6 +216,7 @@ function parentMenu(count = 1, depth = 3) {
 					target
 					hidden
 					class
+					icon
 					${!!child ? `parent { ${child} }` : ""}
 			  }
 			}

@@ -1,7 +1,7 @@
 <template>
   <footer>
     <slot>
-      <div class="footer-container">
+      <div class="footer-cont">
         <!--<ItemLogo></ItemLogo>-->
 
         <div class="footer-menu">
@@ -18,7 +18,7 @@
                 {{ it.title }}
               </div>
 
-              <div class="footer-menu-subcont">
+              <!--<div class="footer-menu-subcont">
                 <div
                   :class="['footer-menu-subitem']"
                   :key="j"
@@ -30,15 +30,32 @@
                     class="footer-menu-link"
                     @click="handleClickNext({ target: sit.target, url: sit.url })"
                   >
-                    {{ sit.title }}
+                    <div v-if="!sit.icon">{{ sit.title }}</div>
+                    <span
+                      v-if="sit.icon"
+                      :class="[
+                        sit.icon,
+                        'm-auto transition border-light-200 border-5 bg-light-200 h-8 w-8 rounded-full',
+                      ]"
+                    ></span>
                   </div>
                 </div>
-              </div>
+              </div>-->
             </div>
           </div>
+
+          <TemplateCookie></TemplateCookie>
         </div>
 
-        <TemplateCookie class=""></TemplateCookie>
+        <div class="grid grid-flow-col-dense gap-2 justify-self-center items-center footer-social">
+          <div class="flex-center" :key="i" v-for="(it, i) in social.filter((it) => it.icon)">
+            <span :class="[it.icon, 'transform scale-100']"></span>
+          </div>
+
+          <!--<div class="flex-center" :key="i" v-for="(it, i) in social.filter((it) => !it.icon)">
+              <div :class="it.class">{{ it.title }}</div>
+            </div>-->
+        </div>
       </div>
     </slot>
   </footer>
@@ -48,7 +65,8 @@
 export default {
   data() {
     return {
-      links: this.$store.state.footbar.filter((it) => !it.hidden),
+      links: this.$store.state.footbar,
+      social: this.$store.state.social,
     }
   },
   mounted() {
@@ -70,18 +88,19 @@ export default {
 .footer {
   //bg-cool-gray-900 bg-hero-wiggle-chocolate-30
 
-  @apply bg-self-main bg-hero-circuit-board-white-10 bg-5r w-full py-4 px-4;
+  @apply bg-self-main bg-hero-circuit-board-white-10 bg-5r w-full py-5 px-4;
   // elevation-5
 
-  &-container {
+  &-cont {
     //sm:justify-between
-    @apply container flex flex-wrap mx-auto w-full text-light-400 justify-between items-center;
+    @apply container mx-auto w-full grid text-light-400 gap-2 items-center;
   }
+
   &-menu {
-    @apply;
+    @apply flex text-sm justify-end items-center;
 
     &-cont {
-      @apply grid grid-flow-col gap-4;
+      @apply grid grid-flow-col gap-4 justify-end;
     }
     &-subcont {
       @apply grid grid-flow-col gap-4;
@@ -90,10 +109,10 @@ export default {
       @apply grid gap-1  place-items-center;
     }
     &-subitem {
-      @apply flex;
+      @apply flex-center;
     }
     &-link {
-      @apply cursor-pointer;
+      @apply cursor-pointer flex-center tracking-wider transition-all duration-200 uppercase hover:(tracking-widest text-yellow-500) ;
     }
   }
   //&-link {

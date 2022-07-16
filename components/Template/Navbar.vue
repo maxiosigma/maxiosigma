@@ -85,7 +85,7 @@ export default {
   data() {
     return {
       //menu: [],
-      links: this.$store.state.navbar.filter((it) => !it.hidden),
+      links: this.$store.state.navbar,
       //crumbs: this.getCrumbs(),
       isRoute: this.$route.fullPath
         ?.replace(this?.localePath("/") + "/", "")

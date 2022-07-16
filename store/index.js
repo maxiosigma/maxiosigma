@@ -11,6 +11,7 @@ export const state = () => ({
    //slides: [],
    navbar: [],
    footbar: [],
+   social: [],
    reffers: [],
    links: [],
 });
@@ -64,6 +65,10 @@ export const actions = {
       const footbarResult = menu(footbarQuery);
       ctx.commit("uploadStrapi", { key: "footbar", payload: footbarResult });
 
+      const socialQuery = await this.$strapi.graphql({ query: ctx.state.gql.social });
+      const socialResult = menu(socialQuery);
+      ctx.commit("uploadStrapi", { key: "social", payload: socialResult });
+
       const reffers = (await this.$strapi.graphql({ query: ctx.state.gql.links })).links?.data;
       ctx.commit("uploadStrapi", { key: "reffers", payload: reffers });
 
@@ -92,6 +97,7 @@ export const actions = {
       function menu(obj) {
          return obj?.menusMenu?.data?.attributes?.items?.data
             .map((it) => it?.attributes)
+            .filter((it) => !it.hidden)
             .map((it) => {
                return {
                   url: it.url,
@@ -99,8 +105,8 @@ export const actions = {
                   order: it.order,
                   target: it.target,
                   parent: it.parent.data?.attributes,
-                  hidden: it.hidden,
                   class: it.class,
+                  icon: it.icon,
                };
             });
       }
