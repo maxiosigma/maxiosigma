@@ -54,6 +54,8 @@ function themeExtend() {
       },
       colors: {
          self: {
+            main: "#0e7490", // cyan-700
+            "main-light": "#06b6d4", // cyan-500
             purpure: "#bc66a0",
             dark: "#0c1c49",
             red: "#d3072a",
@@ -225,11 +227,11 @@ function plugins() {
                color: "#fefefe",
                textShadow: "#e7e7e7 3px 5px 0, #999 4px 6px 3px, #ccc 8px 11px 10px",
             },
-            massHueRotate: {
-               ...range(30).map((i) => {
-                  return { filter: `hue-rotate(${(i + 1) * 5}deg)` };
-               }),
-            },
+            //massHueRotate: {
+            //   ...range(30).map((i) => {
+            //      return { filter: `hue-rotate(${(i + 1) * 5}deg)` };
+            //   }),
+            //},
          });
       }),
    ];

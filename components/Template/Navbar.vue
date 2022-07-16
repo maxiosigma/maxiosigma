@@ -183,7 +183,8 @@ export default {
     @apply flex-center flex-col text-white w-full py-0 transition-all duration-700;
 
     &-cont {
-      @apply bg-repeat flex-center bg-cyan-700 bg-hero-wiggle-white-10 bg-2r mb-1.5 min-h-12 min-h-10 w-full opacity-100 px-4 transition-opacity duration-500 sm:h-16;
+      //bg-hero-wiggle-white-10 bg-5r
+      @apply bg-repeat bg-self-main flex-center bg-hero-circuit-board-white-10 bg-5r mb-1.5 min-h-12 min-h-10 w-full opacity-100 px-4 transition-opacity duration-500 sm:h-16;
 
       &.cont-scroll {
         //animation: OPeS 2s;
@@ -223,7 +224,7 @@ export default {
     }
 
     &-crumbs {
-      @apply flex-center bg-opacity-90 bg-cyan-700 bg-hero-wiggle-white-10 bg-2r w-full opacity-100 transition-all duration-800 delay-200 overflow-hidden;
+      @apply bg-self-main flex-center bg-opacity-90 bg-hero-wiggle-white-10 bg-2r w-full opacity-100 transition-all duration-800 delay-200 overflow-hidden;
 
       &.crumb-scroll {
         @apply mb-5 opacity-0;

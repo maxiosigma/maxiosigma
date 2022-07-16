@@ -26,7 +26,7 @@ export default {
   @apply flex-center relative;
 
   &__Bar {
-    @apply bg-cyan-700 bg-opacity-95;
+    @apply bg-self-main bg-opacity-95;
   }
   &__BarContainer {
     @apply flex-center;
@@ -39,7 +39,7 @@ export default {
     @apply grid gap-2 justify-center items-center;
 
     & > button {
-      @apply border-transparent bg-cyan-600 bg-opacity-95 border-2 w-full transition duration-300 hover:(bg-cyan-500 border-cyan-600) ;
+      @apply border-transparent bg-cyan-600 bg-opacity-95 border-2 w-full transition duration-300 hover:(bg-cyan-500 border-cyan-600);
       @apply ml-0 #{!important};
     }
   }

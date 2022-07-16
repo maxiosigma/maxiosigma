@@ -253,16 +253,16 @@ export default {
     @apply mx-auto mb-auto mt-4;
 
     &-container {
-      @apply rounded-md flex-center font-black font-vetka bg-cyan-700 text-white text-xl mb-4 tracking-wide px-4 pt-1 pb-2;
+      @apply rounded-md flex-center font-black font-vetka bg-self-main text-white text-xl mb-4 tracking-wide px-4 pt-1 pb-2;
     }
   }
 
   &-content {
-    @apply flex-grow flex-center flex-col m-auto bg-cyan-700 bg-opacity-50 bg-hero-rain-white-30 bg-0.25r text-center w-full py-4 px-4  sm:(hover:(transition duration-700 bg-green-700 bg-opacity-85)) ;
+    @apply flex-grow flex-center flex-col m-auto bg-self-main bg-opacity-50 bg-hero-rain-white-30 bg-0.25r text-center w-full py-4 px-4  sm:(hover:(transition duration-700 bg-green-700 bg-opacity-85));
   }
 
   &-button {
-    @apply font-bold bg-cyan-700 bg-opacity-25 bg-hero-rain-white-30 bg-0.25r mt-1 text-xs text-center tracking-widest w-full py-2 uppercase sm:(duration-700  transition hover:(bg-orange-700 bg-opacity-85))  ;
+    @apply font-bold bg-self-main bg-opacity-25 bg-hero-rain-white-30 bg-0.25r mt-1 text-xs text-center tracking-widest w-full py-2 uppercase sm:(duration-700  transition hover:(bg-orange-700 bg-opacity-85));
   }
 
   &-link {
@@ -272,13 +272,13 @@ export default {
 
     &-title {
       //<sm:uppercase md:(text-base max-w-1/4 py-4 absolute) lg:max-w-1/5 xl:max-w-1/8 2xl:max-w-1/10 pb-2 px-10  text-[2vmin]
-      @apply flex-center font-semibold h-auto text-center text-base tracking-widest opacity-100 transition-all duration-500 delay-200 overflow-hidden relative <sm:(uppercase text-base mb-2) ;
+      @apply flex-center font-semibold h-auto text-center text-base tracking-widest opacity-100 transition-all duration-500 delay-200 overflow-hidden relative <sm:(uppercase text-base mb-2);
       // @apply lg:group-hover:(h-0 opacity-0) ;
     }
 
     &-description {
       //text-[1.5vmin]
-      @apply flex-center mt-3 text-center text-sm <sm:(text-xs mt-1 text-center) ;
+      @apply flex-center mt-3 text-center text-sm <sm:(text-xs mt-1 text-center);
       // md:(h-0 opacity-0 text-[1.5vmin] text-left transition-all duration-500 delay-300 overflow-hidden)
       //@apply lg:group-hover:(h-auto opacity-100) ;
     }

@@ -6,7 +6,7 @@
 	{{{src}}};
 }
 
-.font-{{classPrefix}} {
+.font-{{classPrefix}}, *[class^=font-{{classPrefix}}] {
 	align-items: center;
 	direction: ltr;
 	display: inline-block;
@@ -36,5 +36,5 @@
 }
 
 {{#each codepoints}}
-.{{../classPrefix}}-{{@key}}:before { content: "\\{{this}}"; }
+.font-{{../classPrefix}}-{{@key}}:before { content: "\\{{this}}"; }
 {{/each}}

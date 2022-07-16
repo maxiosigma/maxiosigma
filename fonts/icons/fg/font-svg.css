@@ -8,7 +8,7 @@ url("font-svg.woff2?ed9319ff40a707360768c0a7fa1a9420") format("woff2"),
 url("font-svg.woff?ed9319ff40a707360768c0a7fa1a9420") format("woff");
 }
 
-.font-ft {
+.font-ft, *[class^=font-ft] {
 	align-items: center;
 	direction: ltr;
 	display: inline-block;
@@ -37,17 +37,17 @@ url("font-svg.woff?ed9319ff40a707360768c0a7fa1a9420") format("woff");
 	-ms-user-select: none;
 }
 
-.ft-ameba:before { content: "\f101"; }
-.ft-arrow-right-1:before { content: "\f102"; }
-.ft-ins:before { content: "\f103"; }
-.ft-meta:before { content: "\f104"; }
-.ft-ok:before { content: "\f105"; }
-.ft-pikachu:before { content: "\f106"; }
-.ft-telegram:before { content: "\f107"; }
-.ft-tiktok:before { content: "\f108"; }
-.ft-tumblr:before { content: "\f109"; }
-.ft-twitter:before { content: "\f10a"; }
-.ft-vk:before { content: "\f10b"; }
-.ft-youtube-1:before { content: "\f10c"; }
-.ft-youtube:before { content: "\f10d"; }
-.ft-zyan:before { content: "\f10e"; }
+.font-ft-ameba:before { content: "\f101"; }
+.font-ft-arrow-right-1:before { content: "\f102"; }
+.font-ft-ins:before { content: "\f103"; }
+.font-ft-meta:before { content: "\f104"; }
+.font-ft-ok:before { content: "\f105"; }
+.font-ft-pikachu:before { content: "\f106"; }
+.font-ft-telegram:before { content: "\f107"; }
+.font-ft-tiktok:before { content: "\f108"; }
+.font-ft-tumblr:before { content: "\f109"; }
+.font-ft-twitter:before { content: "\f10a"; }
+.font-ft-vk:before { content: "\f10b"; }
+.font-ft-youtube-1:before { content: "\f10c"; }
+.font-ft-youtube:before { content: "\f10d"; }
+.font-ft-zyan:before { content: "\f10e"; }

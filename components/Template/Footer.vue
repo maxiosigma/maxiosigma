@@ -70,7 +70,7 @@ export default {
 .footer {
   //bg-cool-gray-900 bg-hero-wiggle-chocolate-30
 
-  @apply bg-cyan-700 bg-hero-wiggle-white-10 bg-2r w-full py-4 px-4;
+  @apply bg-self-main bg-hero-circuit-board-white-10 bg-5r w-full py-4 px-4;
   // elevation-5
 
   &-container {
