@@ -184,7 +184,7 @@ export default {
 
     &-cont {
       //bg-hero-wiggle-white-10 bg-5r
-      @apply bg-repeat bg-self-main flex-center bg-hero-circuit-board-white-10 bg-5r mb-1.5 min-h-12 min-h-10 w-full opacity-100 px-4 transition-opacity duration-500 sm:h-16;
+      @apply bg-repeat bg-self-main flex-center bg-opacity-85 bg-hero-circuit-board-white-10 bg-5r mb-1.5 min-h-12 min-h-10 w-full opacity-100 px-4 transition-opacity duration-500 sm:h-16;
 
       &.cont-scroll {
         //animation: OPeS 2s;

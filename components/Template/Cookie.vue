@@ -39,13 +39,13 @@ export default {
     @apply grid gap-2 justify-center items-center;
 
     & > button {
-      @apply border-transparent bg-cyan-600 bg-opacity-95 border-2 w-full transition duration-300 hover:(bg-cyan-500 border-cyan-600);
+      @apply border-transparent bg-cyan-600 bg-opacity-95 border-2 w-full transition duration-300 hover:(bg-cyan-500 border-cyan-600) ;
       @apply ml-0 #{!important};
     }
   }
   &__ControlButton {
-    //@apply md:(h-8 w-8) ;
-    @apply flex-center h-0 m-0 my-3 min-h-0 min-w-0 py-0 inset-0 w-0 relative #{!important};
+    //@apply md:(h-8 w-8) ; flex-center
+    @apply h-0 m-0 my-3 min-h-0 min-w-0 py-0 inset-0 w-0 relative hidden #{!important};
 
     & svg,
     & > svg {

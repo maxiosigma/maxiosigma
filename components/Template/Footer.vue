@@ -42,9 +42,25 @@
                 </div>
               </div>-->
             </div>
-          </div>
 
-          <TemplateCookie></TemplateCookie>
+            <div class="flex-center footer-cookie">
+              <TemplateCookie></TemplateCookie>
+              <div
+                class="
+                  cursor-pointer
+                  tracking-wider
+                  transition-all
+                  duration-200
+                  uppercase
+                  hover:(tracking-widest
+                  text-yellow-500)
+                  "
+                @click="$cookies.modal = true"
+              >
+                Cookie файлы
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="grid grid-flow-col-dense gap-2 justify-self-center items-center footer-social">
@@ -88,7 +104,7 @@ export default {
 .footer {
   //bg-cool-gray-900 bg-hero-wiggle-chocolate-30
 
-  @apply bg-self-main bg-hero-circuit-board-white-10 bg-5r w-full py-5 px-4;
+  @apply bg-self-main bg-opacity-85 bg-hero-circuit-board-white-10 bg-5r w-full py-5 px-4;
   // elevation-5
 
   &-cont {
@@ -97,10 +113,10 @@ export default {
   }
 
   &-menu {
-    @apply flex text-sm justify-end items-center;
+    @apply flex text-xs justify-end items-center;
 
     &-cont {
-      @apply grid grid-flow-col gap-4 justify-end;
+      @apply grid grid-flow-col gap-4;
     }
     &-subcont {
       @apply grid grid-flow-col gap-4;
