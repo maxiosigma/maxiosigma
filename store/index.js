@@ -18,7 +18,7 @@ export const state = () => ({
 
 export const mutations = {
    uploadStrapi(state, { key, payload }) {
-      state[key] = payload;
+      state[key] = payload ?? [];
    },
    setUploadCdn(state) {
       state.uploadCdn = true;
@@ -106,6 +106,7 @@ export const actions = {
                   target: it.target,
                   parent: it.parent.data?.attributes,
                   class: it.class,
+                  order: it.order,
                   icon: it.icon,
                };
             });

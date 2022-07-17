@@ -1,10 +1,10 @@
 <template>
   <LayoutPage>
     <div class="subs">
-      <script
+      <!--<script
         src="//web.webformscr.com/apps/fc3/build/loader.js"
         sp-form-id="60ee992dc90ad2cba4e870779b6fdc4a052729011c13e6d2bb3c81444d92838d"
-      ></script>
+      ></script>-->
     </div>
   </LayoutPage>
 </template>

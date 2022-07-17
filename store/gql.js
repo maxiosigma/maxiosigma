@@ -216,6 +216,7 @@ function parentMenu(count = 1, depth = 3) {
 					target
 					hidden
 					class
+					order
 					icon
 					${!!child ? `parent { ${child} }` : ""}
 			  }

@@ -85,7 +85,7 @@ export default {
   data() {
     return {
       //menu: [],
-      links: this.$store.state.navbar,
+      links: this.$store.state?.navbar,
       //crumbs: this.getCrumbs(),
       isRoute: this.$route.fullPath
         ?.replace(this?.localePath("/") + "/", "")
@@ -191,7 +191,7 @@ export default {
         @apply min-h-none h-6 mb-0 opacity-85 py-2 transition-all top-0 duration-300 delay-250 sm:h-10;
 
         &.bottom {
-          @apply h-auto min-h-7vh opacity-100 transition-all duration-300 delay-250 #{!important};
+          @apply h-auto min-h-7vh opacity-85 transition-all duration-300 delay-250 #{!important};
         }
       }
 

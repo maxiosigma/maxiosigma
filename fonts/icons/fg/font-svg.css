@@ -1,14 +1,14 @@
 @font-face {
 	font-family: 'font-svg';
 	src: 
-	url('font-svg.ttf') format("truetype"),
-	url('font-svg.svg') format("svg"),
-	url("font-svg.eot?ed9319ff40a707360768c0a7fa1a9420?#iefix") format("embedded-opentype"),
+		url('font-svg.ttf') format("truetype"),
+		url('font-svg.svg') format("svg"),
+		url("font-svg.eot?ed9319ff40a707360768c0a7fa1a9420?#iefix") format("embedded-opentype"),
 url("font-svg.woff2?ed9319ff40a707360768c0a7fa1a9420") format("woff2"),
 url("font-svg.woff?ed9319ff40a707360768c0a7fa1a9420") format("woff");
 }
 
-.font-ft, *[class^=font-ft] {
+.font-ft {
 	align-items: center;
 	direction: ltr;
 	display: inline-block;

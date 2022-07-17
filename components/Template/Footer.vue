@@ -17,34 +17,11 @@
               >
                 {{ it.title }}
               </div>
-
-              <!--<div class="footer-menu-subcont">
-                <div
-                  :class="['footer-menu-subitem']"
-                  :key="j"
-                  v-for="(sit, j) in links.filter((sit) =>
-                    sit.parent ? sit.parent.title === it.title : false
-                  )"
-                >
-                  <div
-                    class="footer-menu-link"
-                    @click="handleClickNext({ target: sit.target, url: sit.url })"
-                  >
-                    <div v-if="!sit.icon">{{ sit.title }}</div>
-                    <span
-                      v-if="sit.icon"
-                      :class="[
-                        sit.icon,
-                        'm-auto transition border-light-200 border-5 bg-light-200 h-8 w-8 rounded-full',
-                      ]"
-                    ></span>
-                  </div>
-                </div>
-              </div>-->
             </div>
 
             <div class="flex-center footer-cookie">
               <TemplateCookie></TemplateCookie>
+
               <div
                 class="
                   cursor-pointer
@@ -57,20 +34,37 @@
                   "
                 @click="$cookies.modal = true"
               >
-                Cookie файлы
+                Cookie
               </div>
             </div>
           </div>
         </div>
 
-        <div class="grid grid-flow-col-dense gap-2 justify-self-center items-center footer-social">
-          <div class="flex-center" :key="i" v-for="(it, i) in social.filter((it) => it.icon)">
-            <span :class="[it.icon, 'transform scale-100']"></span>
+        <div
+          class="mt-3 grid grid-flow-col-dense gap-1 footer-social filter drop-shadow-sm sm:mt-0"
+        >
+          <div
+            class="cursor-pointer flex-center h-5 transform w-5 scale-50"
+            :class="`order-${it.order}`"
+            :key="i"
+            v-for="(it, i) in social"
+            v-tooltip="
+              isMobile()
+                ? {}
+                : {
+                    content: `<div class='text-center'>${it.title}</div>`,
+                    html: true,
+                    distance: 20,
+                    delay: {
+                      show: 200,
+                      hide: 150,
+                    },
+                  }
+            "
+            @click="handleClickNext({ url: it.url, target: 'blank' })"
+          >
+            <span :class="['font-ft', `font-ft-${it.icon}`, 'text-current text-light-800']"></span>
           </div>
-
-          <!--<div class="flex-center" :key="i" v-for="(it, i) in social.filter((it) => !it.icon)">
-              <div :class="it.class">{{ it.title }}</div>
-            </div>-->
         </div>
       </div>
     </slot>
@@ -81,8 +75,8 @@
 export default {
   data() {
     return {
-      links: this.$store.state.footbar,
-      social: this.$store.state.social,
+      links: this.$store.state?.footbar,
+      social: this.$store.state?.social.filter((it) => it.icon).filter((it) => it.url),
     }
   },
   mounted() {
@@ -91,7 +85,7 @@ export default {
   methods: {
     handleClickNext({ url = undefined, target = undefined }) {
       url
-        ? target === "blank"
+        ? target == "blank"
           ? window.open(url)
           : (location.href = "/" + this.$i18n.locale + url)
         : null
@@ -104,25 +98,25 @@ export default {
 .footer {
   //bg-cool-gray-900 bg-hero-wiggle-chocolate-30
 
-  @apply bg-self-main bg-opacity-85 bg-hero-circuit-board-white-10 bg-5r w-full py-5 px-4;
+  @apply bg-self-main bg-opacity-85 bg-hero-circuit-board-white-10 bg-5r w-full py-3 px-4 sm:py-2;
   // elevation-5
 
   &-cont {
     //sm:justify-between
-    @apply container mx-auto w-full grid text-light-400 gap-2 items-center;
+    @apply container flex mx-auto w-full text-light-400 justify-between items-center <sm:(flex-col justify-center ) ;
   }
 
   &-menu {
-    @apply flex text-xs justify-end items-center;
+    @apply flex text-[10px] justify-end items-center;
 
     &-cont {
-      @apply grid grid-flow-col gap-4;
+      @apply grid gap-x-4 gap-y-3 sm:(grid-flow-col);
     }
     &-subcont {
       @apply grid grid-flow-col gap-4;
     }
     &-item {
-      @apply grid gap-1  place-items-center;
+      @apply grid gap-1 place-items-center;
     }
     &-subitem {
       @apply flex-center;
