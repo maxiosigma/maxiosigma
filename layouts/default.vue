@@ -40,7 +40,7 @@ export default {
 //  @apply cursor-pointer transition duration-200;
 //}
 
-.font-ft {
+.ft {
   &-vk {
     @apply text-4xl hover:text-blue-500;
   }
@@ -48,10 +48,10 @@ export default {
     @apply text-3xl hover:text-yellow-500;
   }
   &-meta {
-    @apply mb-0.25 text-38px hover:text-green-500;
+    @apply text-38px hover:text-green-500;
   }
   &-twitter {
-    @apply mt-1 ml-2 text-3xl hover:text-blue-400;
+    @apply text-3xl hover:text-blue-400;
   }
   &-telegram {
     @apply text-4xl hover:text-indigo-500;
@@ -66,15 +66,27 @@ export default {
     @apply text-3xl hover:text-green-500;
   }
   &-zyan {
-    @apply mt-0.5 text-3xl hover:text-yellow-500;
+    @apply text-3xl hover:text-yellow-500;
   }
   &-youtube {
-    @apply mt-0.5 text-3xl hover:text-red-500;
+    @apply text-3xl hover:text-red-500;
   }
   &-tumblr {
-    @apply mr-0.5 text-3xl hover:text-blue-500;
+    @apply text-3xl hover:text-blue-500;
   }
   &-ok {
+    @apply text-4xl hover:text-yellow-500;
+  }
+  &-whatsapp {
+    @apply text-4xl hover:text-green-500;
+  }
+  &-avito {
+    @apply text-4xl hover:text-blue-500;
+  }
+  &-discord {
+    @apply text-4xl hover:text-indigo-500;
+  }
+  &-mixi {
     @apply text-4xl hover:text-yellow-500;
   }
 }

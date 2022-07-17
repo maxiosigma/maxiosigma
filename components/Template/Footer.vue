@@ -43,9 +43,12 @@
         <div
           class="mt-3 grid grid-flow-col-dense gap-1 footer-social filter drop-shadow-sm sm:mt-0"
         >
+          <!-- transform scale-50          
+     
+            cursor-pointer flex h-5 w-5
+            -->
           <div
-            class="cursor-pointer flex-center h-5 transform w-5 scale-50"
-            :class="`order-${it.order}`"
+            class="cursor-pointer flex-center h-8 w-8 overflow-hidden"
             :key="i"
             v-for="(it, i) in social"
             v-tooltip="
@@ -63,7 +66,8 @@
             "
             @click="handleClickNext({ url: it.url, target: 'blank' })"
           >
-            <span :class="['font-ft', `font-ft-${it.icon}`, 'text-current text-light-800']"></span>
+            <!-- transform scale-100 -->
+            <i :class="['font-ft', `ft-${it.icon}`, 'transform scale-50 flex-center text-light-400']"></i>
           </div>
         </div>
       </div>
@@ -103,7 +107,7 @@ export default {
 
   &-cont {
     //sm:justify-between
-    @apply container flex mx-auto w-full text-light-400 justify-between items-center <sm:(flex-col justify-center ) ;
+    @apply container flex mx-auto w-full text-light-400 justify-between items-center <sm:(flex-col justify-center) ;
   }
 
   &-menu {

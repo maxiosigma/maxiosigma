@@ -1,53 +1,94 @@
 @font-face {
 	font-family: 'font-svg';
-	src: 
+	src:
 		url('font-svg.ttf') format("truetype"),
 		url('font-svg.svg') format("svg"),
-		url("font-svg.eot?ed9319ff40a707360768c0a7fa1a9420?#iefix") format("embedded-opentype"),
-url("font-svg.woff2?ed9319ff40a707360768c0a7fa1a9420") format("woff2"),
-url("font-svg.woff?ed9319ff40a707360768c0a7fa1a9420") format("woff");
+		url("font-svg.eot?5b5824e0876f11e25bff00cf352c1fac?#iefix") format("embedded-opentype"),
+url("font-svg.woff2?5b5824e0876f11e25bff00cf352c1fac") format("woff2"),
+url("font-svg.woff?5b5824e0876f11e25bff00cf352c1fac") format("woff");
 }
 
 .font-ft {
-	align-items: center;
-	direction: ltr;
-	display: inline-block;
-	display: inline-flex;
-	fill: currentColor;
-	font-family: 'font-svg';
-	font-feature-settings: 'liga';
-	font-style: normal;
-	font-weight: normal;
-	height: 1em;
-	justify-content: center;
-	letter-spacing: normal;
-	line-height: 1;
-	position: relative;
-	text-rendering: optimizeLegibility;
-	text-transform: none;
-	user-select: none;
-	vertical-align: middle;
-	white-space: nowrap;
-	width: 1em;
-	word-wrap: normal;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	vertical-align: middle;
+
+	width: 1em;
+	height: 1em;
+	position: relative;
+	fill: currentColor;
+
+	font-family: 'font-svg';
+	font-weight: normal;
+	font-style: normal;
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	-moz-osx-font-smoothing: grayscale;
+	font-feature-settings: 'liga';
 }
 
-.font-ft-ameba:before { content: "\f101"; }
-.font-ft-arrow-right-1:before { content: "\f102"; }
-.font-ft-ins:before { content: "\f103"; }
-.font-ft-meta:before { content: "\f104"; }
-.font-ft-ok:before { content: "\f105"; }
-.font-ft-pikachu:before { content: "\f106"; }
-.font-ft-telegram:before { content: "\f107"; }
-.font-ft-tiktok:before { content: "\f108"; }
-.font-ft-tumblr:before { content: "\f109"; }
-.font-ft-twitter:before { content: "\f10a"; }
-.font-ft-vk:before { content: "\f10b"; }
-.font-ft-youtube-1:before { content: "\f10c"; }
-.font-ft-youtube:before { content: "\f10d"; }
-.font-ft-zyan:before { content: "\f10e"; }
+	.ft-ameba:before { 
+		content: "\f101";
+	}
+	.ft-arrow-right-1:before { 
+		content: "\f102";
+	}
+	.ft-avito:before { 
+		content: "\f103";
+	}
+	.ft-discord:before { 
+		content: "\f104";
+	}
+	.ft-ins:before { 
+		content: "\f105";
+	}
+	.ft-meta:before { 
+		content: "\f106";
+	}
+	.ft-mixi:before { 
+		content: "\f107";
+	}
+	.ft-ok:before { 
+		content: "\f108";
+	}
+	.ft-pikachu:before { 
+		content: "\f109";
+	}
+	.ft-telegram:before { 
+		content: "\f10a";
+	}
+	.ft-tiktok:before { 
+		content: "\f10b";
+	}
+	.ft-tumblr:before { 
+		content: "\f10c";
+	}
+	.ft-twitter:before { 
+		content: "\f10d";
+	}
+	.ft-vk:before { 
+		content: "\f10e";
+	}
+	.ft-whatsapp:before { 
+		content: "\f10f";
+	}
+	.ft-youtube:before { 
+		content: "\f110";
+	}
+	.ft-zyan:before { 
+		content: "\f111";
+	}
+

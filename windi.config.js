@@ -35,7 +35,7 @@ function safelist() {
       range(30).map((i) => `animate-delay-${((i + 1) * 3) / 10}s`),
       range(30).map((i) => `animate-delay-${((i + 1) * 5) / 10}s`),
       range(30).map((i) => `animate-duration-${((i + 1) * 5) / 10}s`),
-      range(30).map((i) => `hue-rotate-${(i + 1) * 5}`),
+      //range(30).map((i) => `hue-rotate-${(i + 1) * 5}`),
    ];
 }
 
@@ -256,17 +256,17 @@ function extract() {
          "**/**/**/*.{vue, js}",
          "**/**/**/**/*.{vue, js}",
 
-         //'./components/**/*.vue',
-         //'./components/**/**/*.vue',
-         //'./components/**/**/**/*.vue',
-         //'./pages/*.vue',
-         //'./pages/**/*.vue',
-         //'./pages/**/**/*.vue',
-         //'./layouts/*.vue',
-         //'./plugins/**/*.js',
-         //'./content/*.md',
-         //'./content/**/*.md',
-         //'./content/**/**/*.md',
+         "./components/**/*.vue",
+         "./components/**/**/*.vue",
+         "./components/**/**/**/*.vue",
+         "./pages/*.vue",
+         "./pages/**/*.vue",
+         "./pages/**/**/*.vue",
+         "./layouts/*.vue",
+         "./plugins/**/*.js",
+         "./content/*.md",
+         "./content/**/*.md",
+         "./content/**/**/*.md",
       ],
       exclude: ["node_modules", "dist", ".nuxt", ".vscode", ".github", ".git", "z"],
    };

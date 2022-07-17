@@ -7,35 +7,40 @@
 }
 
 .font-{{classPrefix}} {
+	position: relative;
+
+	display: inline-flex;
+	align-items: baseline;
+	justify-content: center;
+
+	fill: currentColor;
+	stroke: currentColor;
+
+	font-family: '{{fontName}}';
+	font-feature-settings: 'liga';
+	font-style: normal;
+	font-weight: normal;
+
+	letter-spacing: normal;
+	line-height: 1;
+
+	text-rendering: optimizeLegibility;
+	text-transform: none;
+	user-select: none;
+
+	vertical-align: middle;
+	white-space: nowrap;
+
+	direction: ltr;
+	word-wrap: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
-	user-select: none;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	vertical-align: middle;
 
-	width: 1em;
 	height: 1em;
-	position: relative;
-	fill: currentColor;
-
-	font-family: '{{fontName}}';
-	font-weight: normal;
-	font-style: normal;
-	display: inline-block;
-	line-height: 1;
-	text-transform: none;
-	letter-spacing: normal;
-	word-wrap: normal;
-	white-space: nowrap;
-	direction: ltr;
-
-	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
-	-moz-osx-font-smoothing: grayscale;
-	font-feature-settings: 'liga';
+	width: 1em;
 }
 
 {{#each codepoints}}
@@ -43,4 +48,3 @@
 		content: "\\{{this}}";
 	}
 {{/each}}
-
