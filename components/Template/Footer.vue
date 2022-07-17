@@ -19,36 +19,21 @@
               </div>
             </div>
 
-            <div class="flex-center footer-cookie">
+            <div class="footer-cookie">
               <TemplateCookie></TemplateCookie>
 
-              <div
-                class="
-                  cursor-pointer
-                  tracking-wider
-                  transition-all
-                  duration-200
-                  uppercase
-                  hover:(tracking-widest
-                  text-yellow-500)
-                  "
-                @click="$cookies.modal = true"
-              >
-                Cookie
-              </div>
+              <div class="footer-cookie-btn" @click="$cookies.modal = true">Cookie</div>
             </div>
           </div>
         </div>
 
-        <div
-          class="mt-3 grid grid-flow-col-dense gap-1 footer-social filter drop-shadow-sm sm:mt-0"
-        >
+        <div class="footer-social">
           <!-- transform scale-50          
      
             cursor-pointer flex h-5 w-5
             -->
           <div
-            class="cursor-pointer flex-center h-8 w-8 overflow-hidden"
+            class="footer-social-item"
             :key="i"
             v-for="(it, i) in social"
             v-tooltip="
@@ -67,7 +52,7 @@
             @click="handleClickNext({ url: it.url, target: 'blank' })"
           >
             <!-- transform scale-100 -->
-            <i :class="['font-ft', `ft-${it.icon}`, 'transform scale-50 flex-center text-light-400']"></i>
+            <i :class="['footer-social-link font-ft', `ft-${it.icon}`]"></i>
           </div>
         </div>
       </div>
@@ -129,15 +114,26 @@ export default {
       @apply cursor-pointer flex-center tracking-wider transition-all duration-200 uppercase hover:(tracking-widest text-yellow-500) ;
     }
   }
-  //&-link {
-  //  @apply cursor-default order-3 text-sm leading-none transition text-light-400 duration-300 inline-flex items-center sm:order-1;
+  &-cookie {
+    @apply flex-center;
 
-  //  &-name {
-  //    @apply mr-1.5 text-green-400 text-3xl;
-  //  }
-  //}
-  //&-chat {
-  //  @apply order-3 min-w-5 min-h-1 <sm:(order-2 my-1) ;
-  //}
+    &-btn {
+      @apply cursor-pointer tracking-wider transition-all duration-200 uppercase hover:(tracking-widest text-yellow-500) ;
+    }
+  }
+
+  &-social {
+    @apply flex flex-wrap mt-3 filter drop-shadow-sm sm:mt-0 <sm:max-w-56;
+
+    &-item {
+      @apply cursor-pointer flex-center h-8 w-8 overflow-hidden;
+    }
+
+    &-link {
+      @apply flex-center transform text-light-400 scale-50;
+    }
+  }
+
+  // &-{@apply;}
 }
 </style>
