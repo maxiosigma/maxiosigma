@@ -101,7 +101,7 @@ Vue.mixin({
       },
       toogleLoke() {
          const locale = this.$i18n.locale;
-         console.log(locale);
+         //console.log(locale);
          return this.$ua.deviceType() === "pc" ? locale + "-amp" : locale.replace("-amp", "");
       },
       headTemplate(template = app_config.head.titleTemplate) {

@@ -4,7 +4,7 @@ import plugin from "windicss/plugin";
 import { defineConfig, transform } from "windicss/helpers";
 
 export default defineConfig({
-   attributify: false,
+   //attributify: false,
    shortcuts: shortcuts(),
    theme: {
       //...themeBase(),
@@ -156,10 +156,13 @@ function plugins() {
       }),
       require("@windicss/plugin-heropatterns")({
          patterns: [
+            "jigsaw",
             "polka-dots",
             "leaf",
             "aztec",
             "bubbles",
+            "autumn",
+            "stamp-collection",
             "falling-triangles",
             "floating-cogs",
             "wiggle",

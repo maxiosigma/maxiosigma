@@ -44,7 +44,7 @@ export default {
         }
       })
 
-    console.log(content)
+    //console.log(content)
 
     // it.title
     // it.media.data[0].attributes.url

@@ -40,7 +40,7 @@ export default {
         class: this?.$style?.html || "html",
         lang: this.lang,
         prefix: "og: https://ogp.me/ns#",
-        ...(this.isLight && { amp: "true" }),
+        ...(this.isMobile() && { amp: "true" }),
       },
       headAttrs: {
         class: this?.$style?.head ?? "head",

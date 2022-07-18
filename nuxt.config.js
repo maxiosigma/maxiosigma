@@ -318,7 +318,7 @@ function generate() {
          dir: "dist",
          interval: 0,
          fallback: true,
-         nojekyll: false,
+         nojekyll: true,
          concurrency: 5000,
          subFolders: false,
          devtools: app_config.isDev ? true : false,
@@ -594,6 +594,7 @@ function includes() {
          "nuxt-cookie-control",
          //'@nuxt/content',
          "@nuxtjs/toast",
+         "@nuxtjs/robots",
          //['cookie-universal-nuxt', { path: '/', maxAge: 604800, sameSite: 'lax' }], // МЕШАЕТ STRAPI
          //'nuxt-parallel-middleware',
          "@nuxtjs/strapi",
@@ -643,6 +644,20 @@ function custom() {
             startFromStaticDir: false,
             options: {},
          },
+      },
+      robots: () => {
+         return [
+            {
+               UserAgent: "*",
+               Disallow: ["/test"],
+               Allow: "/public/images/",
+               Sitemap: "/sitemap.xml",
+            },
+            {
+               UserAgent: "Googlebot",
+               Disallow: ["/user"],
+            },
+         ];
       },
       storybook: {
          // Options

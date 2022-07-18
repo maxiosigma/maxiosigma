@@ -1,13 +1,10 @@
 <template>
-		<LayoutPage></LayoutPage>
+  <LayoutPage></LayoutPage>
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
 
 <style lang="scss">
-
 </style>

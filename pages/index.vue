@@ -1,16 +1,21 @@
 <template>
   <!--  :bodyStyle="'index'" -->
   <Layout>
-    <template v-slot:head>
+    <!--<template v-slot:head>
       <TemplateHead />
-    </template>
+    </template>-->
 
     <!--<TemplateCookie class="flex-grow" />-->
 
     <div class="opacity-0">
-      <h1 v-text="title"></h1>
-      <h2 v-text="description"></h2>
-      <p v-text="description"></p>
+      <h1>{{ title }}</h1>
+      <h2>{{ title }}</h2>
+      <h3>{{ title }}</h3>
+      <h4>{{ title }}</h4>
+      <h5>{{ title }}</h5>
+      <h6>{{ title }}</h6>
+      <p>{{ description }}</p>
+      <ItemLink href="about">Автор</ItemLink>
     </div>
   </Layout>
 </template>
@@ -20,16 +25,19 @@ export default {
   nuxtI18n: false,
   head() {
     return {
-      title: this.link?.title ?? "Главная",
-      ...(this.link?.description && { description: this.link?.description }),
+      title: !this.isRedirect() && !this.link?.title ? "Добро пожаловать" : this.link?.title,
+      description:
+        !this.isRedirect() && !this.link?.description
+          ? "Общедоступная платформа Макса для предложений и всецелого получения полезностей"
+          : this.link?.description,
+      //...(this.link?.description && { description: this.link?.description }),
       titleTemplate: this.headTemplate(!!this.link && this.query ? "%s" : undefined),
-      meta:
-        !!this.link && this.qhash
-          ? [
-              { "http-equiv": "refresh", content: "0.01;URL=" + this.link?.href },
-              { "http-equiv": "refresh", content: "3;URL=" + this.link?.alt },
-            ]
-          : false,
+      meta: this.isRedirect()
+        ? [
+            { "http-equiv": "refresh", content: "0.5;URL=" + this.link?.href },
+            { "http-equiv": "refresh", content: "3;URL=" + this.link?.alt },
+          ]
+        : false,
     }
   },
   data() {
@@ -51,8 +59,10 @@ export default {
       this.qhash = (this.query && !anti_utm) || this.hash
 
       if (!this.qhash) {
-        if (!this.LCG("about")) this.routeLight("about")
-        else this.routeLight("sentences/1")
+        setTimeout(() => {
+          if (!this.LCG("about")) this.routeLight("about")
+          else this.routeLight("sentences/1")
+        }, 500)
       } else {
         this.link = this.$store.state?.reffers?.filter(
           (ln) => ln?.attributes?.short == this.qhash
@@ -69,6 +79,9 @@ export default {
           setTimeout(() => (location.href = "/about"), 3000)
         }
       }
+    },
+    isRedirect() {
+      return !!this.link && this.qhash
     },
   },
 }

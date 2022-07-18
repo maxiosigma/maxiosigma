@@ -11,12 +11,14 @@
               :key="i"
               v-for="(it, i) in links.filter((it) => !it.parent)"
             >
-              <div
+              <ItemLink
+                :href="it.url"
+                :nolang="!it.url"
                 class="footer-menu-link"
                 @click="handleClickNext({ target: it.target, url: it.url })"
               >
                 {{ it.title }}
-              </div>
+              </ItemLink>
             </div>
 
             <div class="footer-cookie">
@@ -28,11 +30,9 @@
         </div>
 
         <div class="footer-social">
-          <!-- transform scale-50          
-     
-            cursor-pointer flex h-5 w-5
-            -->
-          <div
+          <ItemLink
+            :href="it.url"
+            :blank="it.blank"
             class="footer-social-item"
             :key="i"
             v-for="(it, i) in social"
@@ -49,11 +49,10 @@
                     },
                   }
             "
-            @click="handleClickNext({ url: it.url, target: 'blank' })"
+            @click.native.prevent="handleClickNext({ url: it.url, target: 'blank' })"
           >
-            <!-- transform scale-100 -->
             <i :class="['footer-social-link font-ft', `ft-${it.icon}`]"></i>
-          </div>
+          </ItemLink>
         </div>
       </div>
     </slot>
@@ -65,7 +64,7 @@ export default {
   data() {
     return {
       links: this.$store.state?.footbar,
-      social: this.$store.state?.social.filter((it) => it.icon).filter((it) => it.url),
+      social: this.$store.state?.social?.filter((it) => it.icon)?.filter((it) => it.url),
     }
   },
   mounted() {

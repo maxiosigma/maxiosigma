@@ -39,7 +39,7 @@ export default { ...data, ...head() };
 function head() {
    return {
       head: {
-         titleTemplate: `${data.name} ${data.isDev ? "||" : "|"} %s`,
+         titleTemplate: `${data.name} ${data.isDev ? "||" : ":"} %s`,
          links: links(),
          meta: meta(),
       },

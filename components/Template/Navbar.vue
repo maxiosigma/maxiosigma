@@ -34,7 +34,9 @@
             ←
           </div>
 
-          <div
+          <ItemLink
+            :href="link.url"
+            :nolang="!link.url"
             :class="[
               'nav-bar-link group',
               link.parent && parent
@@ -44,7 +46,7 @@
             ]"
             :key="i"
             v-for="(link, i) in links"
-            @click="
+            @click.native.prevent="
               handleClickNext({
                 parent: { title: link.title, order: link.order },
                 target: link.target,
@@ -60,7 +62,7 @@
             >
               {{ link.title }}
             </div>
-          </div>
+          </ItemLink>
         </div>
       </div>
     </div>
