@@ -3,6 +3,7 @@
     :href="link"
     :target="onBlank ? '_blank' : false"
     :rel="onBlank && !self ? 'noopener noreferrer' : false"
+    itemprop="url"
   >
     <nuxt-link class="hidden" v-if="false" :to="link"></nuxt-link>
     <slot>{{ $config.baseUrl }}</slot>

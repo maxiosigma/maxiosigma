@@ -1,5 +1,5 @@
 <template>
-  <div :class="[id, 'img-bg-mod']" :title="title" :alt="alt">
+  <div :class="[id, 'img-bg-mod']" :title="title" :alt="alt" itemprop="image">
     <slot></slot>
   </div>
 </template>

@@ -2,7 +2,7 @@
   <LayoutPage>
     <!--@touchstart="touchStart"
       @touchEndMethod="touchEnd"-->
-    <div class="sentences-container">
+    <div class="sentences-container" itemscope>
       <!-- -->
       <ItemLink
         self

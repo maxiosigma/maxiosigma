@@ -1,9 +1,9 @@
 <template>
-  <div class="site-logo">
+  <div class="site-logo" itemscope>
     <div class="site-logo-cont group">
       <!-- , { 'scroll-logo-cont': scroll } -->
       <div :class="['site-logo-img-cont']">
-        <LazyItemImgBg class="site-logo-img" src="/logo.svg" />
+        <ItemImgBg class="site-logo-img" src="/logo.svg" itemprop="image" />
       </div>
 
       <div class="site-logo-text">

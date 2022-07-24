@@ -650,12 +650,17 @@ function custom() {
             {
                UserAgent: "*",
                Disallow: ["/test"],
-               Allow: "/public/images/",
-               Sitemap: "/sitemap.xml",
+               Allow: ["/public/images/", "/public/audio/", "/public/video/"],
+               Sitemap: [app_config.host + "/sitemap.xml"],
             },
             {
                UserAgent: "Googlebot",
-               Disallow: ["/user"],
+            },
+            {
+               UserAgent: "YandexCalendar",
+            },
+            {
+               UserAgent: "YandexMobileBot",
             },
          ];
       },

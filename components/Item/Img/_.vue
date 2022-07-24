@@ -8,6 +8,7 @@
     :aria-label="title ? title : 'img'"
     :class="[id, 'img-render']"
     v-if="getImg"
+    itemprop="image"
   />
 </template>
 

@@ -104,8 +104,8 @@ Vue.mixin({
          //console.log(locale);
          return this.$ua.deviceType() === "pc" ? locale + "-amp" : locale.replace("-amp", "");
       },
-      headTemplate(template = app_config.head.titleTemplate) {
-         return template;
+      headTemplate(template = `${app_config.name}${app_config.isDev ? " || " : " : "}%s${this.isLight() ? " : amp" : ""}`) {
+         return template; // titleTemplate
       },
       headMeta(meta) {
          return meta ? app_config.head.meta.push(meta) : app_config.head.meta;
