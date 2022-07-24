@@ -23,25 +23,29 @@ export default {
     this.isSubs = document.cookie.indexOf("sbjs") !== -1
 
     if (this.isSubs) {
-      setTimeout(
-        () =>
-          this.$toast.show("Вы подписаны, подарки скоро будут, ожидайте push-уведомления", {
-            theme: "outline",
-            position: "top-center",
-            duration: 10000,
-          }),
-        1500
-      )
+      setTimeout(() => {
+        this.$toast.show("Вы подписаны, подарки скоро будут, ожидайте (push | email) уведомления", {
+          theme: "outline",
+          position: "top-center",
+          duration: 10000,
+        })
+      }, 1500)
+
+      setTimeout(() => {
+        this.routeLight("sentences")
+      }, 10500)
     } else {
-      setTimeout(
-        () =>
-          this.$toast.show("Вы не подписаны, поэтому вы не можете получить подарки", {
-            theme: "outline",
-            position: "top-center",
-            duration: 10000,
-          }),
-        1500
-      )
+      setTimeout(() => {
+        this.$toast.show("Вы не подписаны, поэтому вы не можете получить подарки", {
+          theme: "outline",
+          position: "top-center",
+          duration: 10000,
+        })
+      }, 1500)
+
+      setTimeout(() => {
+        this.routeLight("subs")
+      }, 10500)
     }
   },
   //methods: {

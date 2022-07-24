@@ -26,6 +26,14 @@ export default {
     }
   },
   mounted() {
+    setTimeout(() => {
+      const formed = document.querySelector("form[class^='sp']")
+
+      formed?.addEventListener("submit", function (evt) {
+        !this.$cookies.get("sbjs") ? this.$cookies.set({ name: "sbjs", value: true }) : null
+      })
+    }, 1500)
+
     //document.querySelector("sp-button").addEventListener("click", function () {
     //  alert("Вы нажали на кнопку")
     //})
