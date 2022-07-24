@@ -109,7 +109,8 @@ export const actions = {
                   order: it.order,
                   icon: it.icon,
                };
-            });
+            })
+            ?.sort((a, b) => (a?.order > b?.order ? 1 : -1));
       }
    },
 };

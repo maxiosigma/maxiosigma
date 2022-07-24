@@ -26,6 +26,9 @@ export default {
     }
   },
   mounted() {
+    //document.querySelector("sp-button").addEventListener("click", function () {
+    //  alert("Вы нажали на кнопку")
+    //})
     //localStorage.getItem('subs-push') ? this.routeLight('community/programs') : localStorage.setItem('subs-push', true)
     ////ANCHOR
     //document.getElementById('sp-9286be14-1cec-44f8-bff4-b1e53b0e96d3').addEventListener('click', function (e) {

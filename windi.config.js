@@ -156,26 +156,27 @@ function plugins() {
       }),
       require("@windicss/plugin-heropatterns")({
          patterns: [
-            "jigsaw",
-            "polka-dots",
-            "leaf",
-            "aztec",
-            "bubbles",
-            "autumn",
-            "stamp-collection",
-            "falling-triangles",
-            "floating-cogs",
-            "wiggle",
             "circuit-board",
-            "charlie-brown",
-            "bamboo",
-            "hexagons",
-            "bank-note",
-            "flipped-diamonds",
-            "texture",
-            "rain",
-            "topography",
+            "floating-cogs",
             "i-like-food",
+            "bank-note",
+            "hexagons",
+            "wiggle",
+            "rain",
+
+            //"jigsaw",
+            //"polka-dots",
+            //"leaf",
+            //"aztec",
+            //"bubbles",
+            //"autumn",
+            //"stamp-collection",
+            //"falling-triangles",
+            //"charlie-brown",
+            //"bamboo",
+            //"flipped-diamonds",
+            //"texture",
+            //"topography",
          ],
          colors: {
             default: "#eeeeee",
@@ -248,30 +249,28 @@ function extract() {
    return {
       include: [
          "./assets/index.scss",
+         "./assets/scss/*.scss",
+
          "./fonts/**/index.css",
-         "./config/head/index.js",
+         "./fonts/**/**/index.css",
+
          "./plugins/passive/*.js",
+
          "./store/**/*.js",
          "./store/*.js",
 
-         "**/*.{vue, js}",
-         "**/**/*.{vue, js}",
-         "**/**/**/*.{vue, js}",
-         "**/**/**/**/*.{vue, js}",
-
+         "./components/*.vue",
          "./components/**/*.vue",
          "./components/**/**/*.vue",
          "./components/**/**/**/*.vue",
+
          "./pages/*.vue",
          "./pages/**/*.vue",
          "./pages/**/**/*.vue",
+
          "./layouts/*.vue",
-         "./plugins/**/*.js",
-         "./content/*.md",
-         "./content/**/*.md",
-         "./content/**/**/*.md",
       ],
-      exclude: ["node_modules", "dist", ".nuxt", ".vscode", ".github", ".git", "z"],
+      exclude: ["node_modules", "dist", ".nuxt", ".firebase", ".vercel", ".vscode", ".github", ".git", "z"],
    };
 }
 

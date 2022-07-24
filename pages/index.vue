@@ -1,20 +1,19 @@
 <template>
-  <!--  :bodyStyle="'index'" -->
   <Layout>
     <!--<template v-slot:head>
       <TemplateHead />
     </template>-->
 
-    <!--<TemplateCookie class="flex-grow" />-->
-
-    <div class="opacity-0">
+    <div class="flex-grow flex-center opacity-5">
       <h1>{{ title }}</h1>
       <h2>{{ title }}</h2>
       <h3>{{ title }}</h3>
       <h4>{{ title }}</h4>
       <h5>{{ title }}</h5>
       <h6>{{ title }}</h6>
+
       <p>{{ description }}</p>
+
       <ItemLink href="about">Автор</ItemLink>
     </div>
   </Layout>
@@ -30,7 +29,6 @@ export default {
         !this.isRedirect() && !this.link?.description
           ? "Общедоступная платформа Макса для предложений и всецелого получения полезностей"
           : this.link?.description,
-      //...(this.link?.description && { description: this.link?.description }),
       titleTemplate: this.headTemplate(!!this.link && this.query ? "%s" : undefined),
       meta: this.isRedirect()
         ? [
