@@ -64,7 +64,10 @@ export default {
   data() {
     return {
       links: this.$store.state?.footbar,
-      social: this.$store.state?.social?.filter((it) => it.icon)?.filter((it) => it.url),
+      social: this.$store.state?.social
+        ?.filter((it) => it.icon)
+        .filter((it) => it.url)
+        .filter((it) => it.top),
     }
   },
   mounted() {

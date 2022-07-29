@@ -83,13 +83,8 @@ export const actions = {
                short: link?.short,
                tags: link?.tags?.data?.map((tag) => tag?.attributes?.title)?.sort((a, b) => (a?.length > b?.length ? 1 : -1)),
                top: link?.top,
-
-               //self: {
-               //  ...it,
-               //},
             });
 
-         //console.log(it?.tag);
          return sum;
       }, []);
       ctx.commit("uploadStrapi", { key: "links", payload: links });
@@ -108,6 +103,7 @@ export const actions = {
                   class: it.class,
                   order: it.order,
                   icon: it.icon,
+                  top: it.top,
                };
             })
             ?.sort((a, b) => (a?.order > b?.order ? 1 : -1));

@@ -24,7 +24,7 @@
         :key="i"
         v-anime="animateBlock({ dl: 1.5 + 0.1 * intRandom(1, i) + i * 0.05, dr: 1.75 })"
       >
-        <div class="sentences-image-container relative">
+        <div class="sentences-image-container relative group">
           <div v-if="it.images.length > 0" class="relative">
             <ItemImgStrapiBg
               v-for="(img, j) in it.images"
@@ -54,12 +54,8 @@
 
           <div class="sentences-tags">
             <div class="sentences-tags-field">
-              <div>
-                <div class="font-ft text-yellow-500 text-3xl ft-fire">1</div>
-              </div>
-
               <div
-                class="sentences-tags-container"
+                class="flex-col sentences-tags-container"
                 v-for="(tag, j) in it.tags"
                 :key="j"
                 v-anime="{
@@ -70,6 +66,32 @@
                   delay: (it.tags.length - (j + 1)) * 150 + (i + 1) * 500 + 1500,
                 }"
               >
+                <div
+                  v-if="it.top && j == 0"
+                  v-anime="{
+                    loop: false,
+                    scale: [0, 1],
+                    duration: 1000,
+                    delay: it.tags.length * 150 + (i + 1) * 1000 + 2500,
+                  }"
+                  class="
+                    font-ft
+                    text-xl
+                    bottom-[135%]
+                    text-stroke-orange-400 text-indigo-500 text-stroke-1
+                    sentences-top
+                    ft-fire
+                    sm:(
+                    transition-all
+                    text-opacity-25
+                    opacity-50
+                    duration-300
+                    group-hover:(text-opacity-100
+                    opacity-100))
+                    !absolute
+                    "
+                ></div>
+
                 <div class="sentences-tags-titile">{{ tag }}</div>
               </div>
             </div>
@@ -164,7 +186,10 @@ export default {
     const from = page === 1 ? 0 : (page - 1) * paginaton
     const to = page === countPages ? countLinks : page * paginaton - 1
 
-    const links = reffers.filter((it, i) => i >= from && i <= to)
+    const links = reffers
+      .filter((it, i) => i >= from && i <= to)
+      .map((value) => ({ ...value, sorter: Math.random() }))
+      .sort((a, b) => a.sorter - b.sorter)
 
     return { links, countPages, page }
   },

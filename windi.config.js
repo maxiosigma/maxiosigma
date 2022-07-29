@@ -242,7 +242,11 @@ function plugins() {
 }
 
 function shortcuts() {
-   return {};
+   return {
+      "text-shadow-white-1": {
+         color: "white",
+      },
+   };
 }
 
 function extract() {

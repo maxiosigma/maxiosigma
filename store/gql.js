@@ -218,6 +218,7 @@ function parentMenu(count = 1, depth = 3) {
 					class
 					order
 					icon
+					top
 					${!!child ? `parent { ${child} }` : ""}
 			  }
 			}
