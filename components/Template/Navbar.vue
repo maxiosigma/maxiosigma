@@ -180,13 +180,14 @@ export default {
 .v-scroll--indicator-wrapper {
   @apply opacity-0 transition-opacity duration-1500 delay-50;
 }
+
 .nav {
   &-bar {
     @apply flex-center flex-col text-white w-full py-0 transition-all duration-700;
 
     &-cont {
       //bg-hero-wiggle-white-10 bg-5r
-      @apply bg-repeat bg-self-main flex-center bg-opacity-85 bg-hero-circuit-board-white-10 bg-5r mb-1.5 min-h-12 min-h-10 w-full opacity-100 px-4 transition-opacity duration-500 sm:h-16;
+      @apply bg-repeat bg-self-main flex-center bg-opacity-85 bg-hero-circuit-board-white-10 bg-5r mb-1.5 min-h-10 w-full opacity-100 px-4 transition-opacity duration-500 sm:h-12;
 
       &.cont-scroll {
         //animation: OPeS 2s;
@@ -225,66 +226,66 @@ export default {
       }
     }
 
-    &-crumbs {
-      @apply bg-self-main flex-center bg-opacity-90 bg-hero-wiggle-white-10 bg-2r w-full opacity-100 transition-all duration-800 delay-200 overflow-hidden;
+    //&-crumbs {
+    //  @apply bg-self-main flex-center bg-opacity-90 bg-hero-wiggle-white-10 bg-2r w-full opacity-100 transition-all duration-800 delay-200 overflow-hidden;
 
-      &.crumb-scroll {
-        @apply mb-5 opacity-0;
-      }
+    //  &.crumb-scroll {
+    //    @apply mb-5 opacity-0;
+    //  }
 
-      &-container {
-        @apply container text-sm py-2 px-4 lg:text-xs lg:py-1;
-      }
+    //  &-container {
+    //    @apply container text-sm py-2 px-4 lg:text-xs lg:py-1;
+    //  }
 
-      &-link {
-        @apply transition-all duration-500 group-hover:(text-yellow-300 tracking-wider) ;
-      }
+    //  &-link {
+    //    @apply transition-all duration-500 group-hover:(text-yellow-300 tracking-wider) ;
+    //  }
 
-      &-title {
-        @apply text-cyan-200 pointer-events-none;
-      }
+    //  &-title {
+    //    @apply text-cyan-200 pointer-events-none;
+    //  }
 
-      &-delimetr {
-        @apply mr-2 ml-1 pointer-events-none;
-      }
-    }
+    //  &-delimetr {
+    //    @apply mr-2 ml-1 pointer-events-none;
+    //  }
+    //}
 
-    &-dropdown {
-      @apply grid grid-flow-col gap-2 grid-rows-1 items-center;
+    //&-dropdown {
+    //  @apply grid grid-flow-col gap-2 grid-rows-1 items-center;
 
-      &-cont {
-        @apply text-sm text-center min-w-24 grid top-50px gap-y-1 absolute;
-      }
+    //  &-cont {
+    //    @apply text-sm text-center min-w-24 grid top-50px gap-y-1 absolute;
+    //  }
 
-      &-icon {
-        @apply cursor-pointer text-current transition text-light-200 duration-300 icon-md hover:(text-black text-shadow-lg) ;
-      }
+    //  &-icon {
+    //    @apply cursor-pointer text-current transition text-light-200 duration-300 icon-md hover:(text-black text-shadow-lg) ;
+    //  }
 
-      &-links {
-        @apply mr-5 grid grid-flow-col gap-x-4 grid-rows-1;
-      }
+    //  &-links {
+    //    @apply mr-5 grid grid-flow-col gap-x-4 grid-rows-1;
+    //  }
 
-      &-link {
-        @apply font-semibold transition text-light-200 duration-300 hover:(text-black);
+    //  &-link {
+    //    @apply font-semibold transition text-light-200 duration-300 hover:(text-black);
 
-        &.exact {
-          @apply text-stroke-1 text-stroke-light-300;
-        }
-      }
+    //    &.exact {
+    //      @apply text-stroke-1 text-stroke-light-300;
+    //    }
+    //  }
 
-      &-sublinks {
-        @apply flex relative justify-end;
-      }
+    //  &-sublinks {
+    //    @apply flex relative justify-end;
+    //  }
 
-      &-sublink {
-        @apply cursor-pointer bg-orange-600 border-1 border-opacity-0 border-orange-600 shadow-md p-0.5 transition-all shadow-orange-600 text-light-200 duration-300;
-        @apply hover:(bg-light-200 text-black border-opacity-25 rounded) ;
+    //  &-sublink {
+    //    @apply cursor-pointer bg-orange-600 border-1 border-opacity-0 border-orange-600 shadow-md p-0.5 transition-all shadow-orange-600 text-light-200 duration-300;
+    //    @apply hover:(bg-light-200 text-black border-opacity-25 rounded) ;
 
-        &.exact {
-          @apply text-stroke-1 text-stroke-light-300;
-        }
-      }
-    }
+    //    &.exact {
+    //      @apply text-stroke-1 text-stroke-light-300;
+    //    }
+    //  }
+    //}
 
     &-btn {
       @apply flex-center mx-3 transition-all w-6 duration-500 pointer-events-none;

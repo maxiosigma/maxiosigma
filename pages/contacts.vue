@@ -1,5 +1,7 @@
 <template>
-  <LayoutPage></LayoutPage>
+  <LayoutPage>
+    <!--<div class="flex-grow flex-center"></div>-->
+  </LayoutPage>
 </template>
 
 <script>

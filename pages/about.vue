@@ -217,10 +217,13 @@ export default {
     },
     handleClick(url) {
       this.visible += 0.5
+
       setTimeout(() => {
         this.visible += 0.5
         url ? (location.href = url) : null
       }, 3000)
+
+      document.body.scrollIntoView()
     },
     //animateBlock({ dl = 1, dr = 1, sc = 1, sk = 1, tx = 0, lp = false, rn = 1 }) {
     //  return {

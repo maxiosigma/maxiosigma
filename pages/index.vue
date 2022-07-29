@@ -51,6 +51,9 @@ export default {
   },
   methods: {
     loadPage() {
+      // https://172.27.240.1:3000?mw
+      // https://172.27.240.1:3000#mw
+
       this.query = Object.keys(this.$route.query)?.[0]
       this.hash = this.$route.hash?.replace("#", "")
       const anti_utm = this.query?.indexOf("utm") !== -1
@@ -62,9 +65,10 @@ export default {
           else this.routeLight("sentences/1")
         }, 500)
       } else {
-        this.link = this.$store.state?.reffers?.filter(
-          (ln) => ln?.attributes?.short == this.qhash
-        )?.[0]?.attributes
+        this.link = this.$store.state?.reffers?.filter((ln) => {
+          const short = ln?.attributes?.short
+          return short == this.query || short == this.hash
+        })?.[0]?.attributes
 
         this.title = this.link?.title
         this.description = this.link?.description
@@ -73,8 +77,8 @@ export default {
         if (this.link?.alt) setTimeout(() => (location.href = this.link?.alt), 3000)
 
         if (!this.link) {
-          setTimeout(() => window.open("#mw"), 1500)
-          setTimeout(() => (location.href = "/about"), 3000)
+          //setTimeout(() => window.open("#mw"), 1500)
+          setTimeout(() => this.routeLight("about"), 3000)
         }
       }
     },

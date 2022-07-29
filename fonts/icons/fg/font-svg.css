@@ -3,9 +3,9 @@
 	src:
 		url('font-svg.ttf') format("truetype"),
 		url('font-svg.svg') format("svg"),
-		url("font-svg.eot?5b5824e0876f11e25bff00cf352c1fac?#iefix") format("embedded-opentype"),
-url("font-svg.woff2?5b5824e0876f11e25bff00cf352c1fac") format("woff2"),
-url("font-svg.woff?5b5824e0876f11e25bff00cf352c1fac") format("woff");
+		url("font-svg.eot?a7969b9389a266825a1662bce8a96686?#iefix") format("embedded-opentype"),
+url("font-svg.woff2?a7969b9389a266825a1662bce8a96686") format("woff2"),
+url("font-svg.woff?a7969b9389a266825a1662bce8a96686") format("woff");
 }
 
 .font-ft {
@@ -52,43 +52,46 @@ url("font-svg.woff?5b5824e0876f11e25bff00cf352c1fac") format("woff");
 	.ft-discord:before { 
 		content: "\f104";
 	}
-	.ft-ins:before { 
+	.ft-fire:before { 
 		content: "\f105";
 	}
-	.ft-meta:before { 
+	.ft-ins:before { 
 		content: "\f106";
 	}
-	.ft-mixi:before { 
+	.ft-meta:before { 
 		content: "\f107";
 	}
-	.ft-ok:before { 
+	.ft-mixi:before { 
 		content: "\f108";
 	}
-	.ft-pikachu:before { 
+	.ft-ok:before { 
 		content: "\f109";
 	}
-	.ft-telegram:before { 
+	.ft-pikachu:before { 
 		content: "\f10a";
 	}
-	.ft-tiktok:before { 
+	.ft-telegram:before { 
 		content: "\f10b";
 	}
-	.ft-tumblr:before { 
+	.ft-tiktok:before { 
 		content: "\f10c";
 	}
-	.ft-twitter:before { 
+	.ft-tumblr:before { 
 		content: "\f10d";
 	}
-	.ft-vk:before { 
+	.ft-twitter:before { 
 		content: "\f10e";
 	}
-	.ft-whatsapp:before { 
+	.ft-vk:before { 
 		content: "\f10f";
 	}
-	.ft-youtube:before { 
+	.ft-whatsapp:before { 
 		content: "\f110";
 	}
-	.ft-zyan:before { 
+	.ft-youtube:before { 
 		content: "\f111";
+	}
+	.ft-zyan:before { 
+		content: "\f112";
 	}
 

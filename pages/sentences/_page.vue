@@ -54,6 +54,10 @@
 
           <div class="sentences-tags">
             <div class="sentences-tags-field">
+              <div>
+                <div class="font-ft text-yellow-500 text-3xl ft-fire">1</div>
+              </div>
+
               <div
                 class="sentences-tags-container"
                 v-for="(tag, j) in it.tags"
@@ -211,7 +215,7 @@ export default {
 .sentences {
   &-container {
     // place-content-start min-h-200vh h-200vh
-    @apply container mx-auto mt-auto grid p-5 text-light-200 gap-5 grid-cols-1 relative justify-between place-content-center place-items-stretch sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+    @apply container mx-auto mt-auto grid p-5 text-light-200 gap-5 grid-cols-1 relative justify-between place-content-center place-items-stretch sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6;
   }
 
   &-tags {
@@ -253,7 +257,7 @@ export default {
     @apply mx-auto mb-auto mt-4;
 
     &-container {
-      @apply bg-self-main rounded-md flex-center font-black font-vetka text-white text-xl mb-4 tracking-wide px-4 pt-1 pb-2;
+      @apply bg-self-main rounded-md flex-center font-black font-vetka text-white text-xl mb-8 tracking-wide px-4 pt-1 pb-2;
     }
   }
 

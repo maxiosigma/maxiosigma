@@ -29,9 +29,24 @@ export default {
     setTimeout(() => {
       const formed = document.querySelector("form[class^='sp']")
 
-      formed?.addEventListener("submit", function (evt) {
+      formed?.addEventListener("submit", function () {
         !this.$cookies.get("sbjs") ? this.$cookies.set({ name: "sbjs", value: true }) : null
+
+        setTimeout(() => {
+          this.routeLight("presents")
+        }, 1500)
       })
+
+      const btned = document.querySelector(".sp-button")
+      const btned_promt = document.querySelector(".sp-prompt-btn")
+
+      btned?.addEventListener("click", () =>
+        !this.$cookies.get("sbjs") ? this.$cookies.set({ name: "sbjs", value: true }) : null
+      )
+
+      btned_promt?.addEventListener("click", () =>
+        !this.$cookies.get("sbjs") ? this.$cookies.set({ name: "sbjs", value: true }) : null
+      )
     }, 1500)
 
     //document.querySelector("sp-button").addEventListener("click", function () {
