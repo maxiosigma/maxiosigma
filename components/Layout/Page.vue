@@ -100,6 +100,7 @@ export default {
 .footer {
   @apply flex-grow-0 flex-shrink-0 z-20 relative;
 }
+
 .preload {
   &-show {
     @apply max-h-none opacity-100 transition-all duration-250 delay-250;

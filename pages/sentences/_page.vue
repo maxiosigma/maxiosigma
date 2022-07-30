@@ -25,7 +25,10 @@
         v-anime="animateBlock({ dl: 1.5 + 0.1 * intRandom(1, i) + i * 0.05, dr: 1.75 })"
       >
         <div class="sentences-image-container relative group">
-          <div v-if="it.images.length > 0" class="relative">
+          <div
+            v-if="it.images.length > 0"
+            class="transition-all duration-300 relative group-hover:opacity-25"
+          >
             <ItemImgStrapiBg
               v-for="(img, j) in it.images"
               :src="img.url"
@@ -48,14 +51,14 @@
           <!-- 'https://picsum.photos/1024/1024?nocache='.microtime() -->
           <ItemImgStrapiBg
             v-else
-            class="sentences-image"
+            class="transition-all duration-300 sentences-image group-hover:opacity-25"
             :src="`https://picsum.photos/300/200?random=${i}`"
           ></ItemImgStrapiBg>
 
           <div class="sentences-tags">
             <div class="sentences-tags-field">
               <div
-                class="flex-col sentences-tags-container"
+                class="flex-col sentences-tags-container group"
                 v-for="(tag, j) in it.tags"
                 :key="j"
                 v-anime="{
@@ -74,22 +77,11 @@
                     duration: 1000,
                     delay: it.tags.length * 150 + (i + 1) * 1000 + 2500,
                   }"
-                  class="
-                    font-ft
-                    text-xl
-                    bottom-[135%]
-                    text-stroke-orange-400 text-indigo-500 text-stroke-1
-                    sentences-top
-                    ft-fire
-                    sm:(
-                    transition-all
-                    text-opacity-25
-                    opacity-50
-                    duration-300
-                    group-hover:(text-opacity-100
-                    opacity-100))
-                    !absolute
-                    "
+                  :class="[
+                    'sentences-top !absolute font-ft ft-fire  text-xl bottom-[135%]',
+                    'text-stroke-indigo-700 text-yellow-400 text-stroke-1',
+                    'sm:(transition-all opacity-25 duration-300 group-hover:opacity-100)',
+                  ]"
                 ></div>
 
                 <div class="sentences-tags-titile">{{ tag }}</div>

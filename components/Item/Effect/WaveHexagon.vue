@@ -9,8 +9,8 @@ export default {
       const properties = {
         spaceDiameter: 16, //диаметр пространства точки
         dotDiameter: 5, //диаметр самой точки
-        wavelength: Math.max(innerWidth, innerHeight) / 2, //длинна волны
-        velocity: 0.05, //скорость по умолчанию .02
+        wavelength: Math.max(innerWidth, innerHeight) / 3, //длинна волны
+        velocity: 0.015, //скорость по умолчанию .02
         direction: -1, //направление (1: из центра, -1: в центр)
         displacement: 1, //смещение (0: отключить, 1: включить)
       }

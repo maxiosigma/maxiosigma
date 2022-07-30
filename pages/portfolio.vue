@@ -1,6 +1,5 @@
 <template>
   <LayoutPage>
-    <!--<div></div>-->
     <!--<div class="flex-center flex-col flex-grow portfolio">
       <div class="canvas-container">
         <canvas class="list-1 canvas-list"></canvas>

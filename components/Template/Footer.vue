@@ -4,6 +4,15 @@
       <div class="footer-cont">
         <!--<ItemLogo></ItemLogo>-->
 
+        <div class="footer-lang">
+          <ItemLink
+            class="footer-menu-link"
+            href="https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb?hl=ru"
+            :blank="true"
+            >Русский</ItemLink
+          >
+        </div>
+
         <div class="footer-menu">
           <div class="footer-menu-cont">
             <div
@@ -98,7 +107,7 @@ export default {
   }
 
   &-menu {
-    @apply flex text-[10px] justify-end items-center;
+    @apply flex justify-end items-center;
 
     &-cont {
       @apply grid gap-x-4 gap-y-3 sm:(grid-flow-col);
@@ -113,14 +122,15 @@ export default {
       @apply flex-center;
     }
     &-link {
-      @apply cursor-pointer flex-center tracking-wider transition-all duration-200 uppercase hover:(tracking-widest text-yellow-500) ;
+      @apply cursor-pointer flex-center tracking-wider transition-all text-[10px] duration-200 uppercase hover:(tracking-widest text-yellow-500) ;
     }
   }
+
   &-cookie {
     @apply flex-center;
 
     &-btn {
-      @apply cursor-pointer tracking-wider transition-all duration-200 uppercase hover:(tracking-widest text-yellow-500) ;
+      @apply cursor-pointer  tracking-wider transition-all text-[10px] duration-200 uppercase hover:(tracking-widest text-yellow-500) ;
     }
   }
 
@@ -134,6 +144,10 @@ export default {
     &-link {
       @apply flex-center transform text-light-400 scale-50;
     }
+  }
+
+  &-lang {
+    @apply rounded-sm py-2 px-3 elevation-5;
   }
 
   // &-{@apply;}

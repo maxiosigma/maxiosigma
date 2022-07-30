@@ -7,7 +7,7 @@
    },
    "type": "module",
    "scripts": {
-      "dev": "nuxt",
+      "dev": "nuxt --open",
       "strapi-dev": "cd ../strapi/ && yarn strapi develop",
       "strapi-dev-admin": "cd ../strapi/ && yarn strapi develop --watch-admin",
       "generate-start": "yarn generate && yarn start --open",
