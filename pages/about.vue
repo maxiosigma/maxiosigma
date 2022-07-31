@@ -78,7 +78,7 @@
             ]"
             :key="i"
             v-anime="animateBlock({ dl: 2 + i * 0.2 })"
-            :class="['py-0.5', i % 2 == 0 ? 'text-light-900' : '']"
+            :class="['py-0.5', i % 2 == 0 ? 'text-yellow-100' : '']"
           >
             {{ it }}
           </div>

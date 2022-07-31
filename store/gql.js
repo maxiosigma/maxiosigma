@@ -4,10 +4,11 @@ export const state = () => ({
    developerWorks: developerWorks(),
    designerWorks: designerWorks(),
    portfolio: portfolio(),
-   links: links(),
-   navbar: menu(1),
+   publics: publics(),
    footbar: menu(2),
+   navbar: menu(1),
    social: menu(3),
+   links: links(),
 });
 
 function designerWorks(page = 1, limit = 200) {
@@ -111,6 +112,23 @@ function developerWorks(page = 1, limit = 200) {
 							}
 						}
 						date
+					}
+				}
+			}
+		}
+	`;
+}
+
+function publics() {
+   return `
+		query {
+			publicateds(pagination:{limit: 2000}) {
+				data {
+					attributes {
+						title
+						description
+						keywords
+						slug
 					}
 				}
 			}

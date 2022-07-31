@@ -635,7 +635,7 @@ export default {
   @apply flex-grow flex-center flex-col px-5 pt-10 text-light-400 sm:pt-20;
 
   &-content {
-    @apply mx-auto max-w-xl text-sm w-full break-all hyphens-auto;
+    @apply mx-auto max-w-xl text-sm w-full pl-6 break-all hyphens-auto sm:px-4;
   }
   &-title {
     @apply font-black max-w-lg text-center text-xl mb-8 sm:mb-14 sm:text-3xl;

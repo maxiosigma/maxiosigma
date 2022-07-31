@@ -6,11 +6,15 @@
 export default {
   head() {
     const i18nHead = this.$nuxtI18nHead({ addSeoAttributes: true })
+    const canonical = `${this.$config.baseUrl}${this.$route.path.toLowerCase().replace(/\/$/, "")}`
+    //$config.baseUrl
+
+    console.log(canonical)
 
     return {
       titleTemplate: this.headTemplate(),
       meta: [...this.headMeta(), ...i18nHead.meta],
-      link: [...this.headLinks(), ...i18nHead.link],
+      link: [...this.headLinks(), ...i18nHead.link, { rel: "canonical", href: canonical }],
       htmlAttrs: { ...i18nHead.htmlAttrs },
     }
   },

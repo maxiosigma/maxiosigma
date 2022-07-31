@@ -29,6 +29,7 @@ const data = {
    login: "maxiosigma",
    chat: "maxiecon",
    url: "/",
+   domain: "maxiosigma.web.app",
    host: "https://maxiosigma.web.app",
    audio: "/public/audio/",
    video: "/public/video/",

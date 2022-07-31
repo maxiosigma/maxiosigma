@@ -141,12 +141,13 @@ export default {
    sitemap: {
       hostname: app_config.host,
       cacheTime: 300000,
-      gzip: false,
+      gzip: true,
       defaults: {
          changefreq: "daily",
          priority: 1,
          lastmod: new Date(),
       },
+      routes: ["", "/"],
    },
    router: {
       fallback: true,
@@ -451,6 +452,10 @@ export default {
    pwa: {
       icon: false,
       icons: false,
+
+      manifest: {
+         display: "browser",
+      },
    },
    buildModules: [
       "nuxt-windicss",

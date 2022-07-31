@@ -243,6 +243,8 @@ function plugins() {
 
 function shortcuts() {
    return {
+      "smoothly-200": "transition-all duration-200",
+      "smoothly-300": "transition-all duration-300",
       "text-shadow-white-1": {
          color: "white",
       },

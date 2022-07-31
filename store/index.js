@@ -14,6 +14,7 @@ export const state = () => ({
    social: [],
    reffers: [],
    links: [],
+   publics: [],
 });
 
 export const mutations = {
@@ -68,6 +69,10 @@ export const actions = {
       const socialQuery = await this.$strapi.graphql({ query: ctx.state.gql.social });
       const socialResult = menu(socialQuery);
       ctx.commit("uploadStrapi", { key: "social", payload: socialResult });
+
+      const publicsQuery = await this.$strapi.graphql({ query: ctx.state.gql.publics });
+      const publicsResult = publicsQuery.publicateds.data.map((it) => it.attributes);
+      ctx.commit("uploadStrapi", { key: "publics", payload: publicsResult });
 
       const reffers = (await this.$strapi.graphql({ query: ctx.state.gql.links })).links?.data;
       ctx.commit("uploadStrapi", { key: "reffers", payload: reffers });

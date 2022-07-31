@@ -1,6 +1,7 @@
 <template>
   <a
     :href="link"
+    :hreflang="isLangGlobal()"
     :target="onBlank ? '_blank' : false"
     :rel="onBlank && !self ? 'noopener noreferrer' : false"
     itemprop="url"

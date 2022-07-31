@@ -103,7 +103,7 @@ export default {
 
   &-cont {
     //sm:justify-between
-    @apply container flex mx-auto w-full text-light-400 justify-between items-center <sm:(flex-col justify-center);
+    @apply container flex mx-auto w-full text-light-400 justify-between items-center <sm:(flex-col justify-center) ;
   }
 
   &-menu {
@@ -122,7 +122,7 @@ export default {
       @apply flex-center;
     }
     &-link {
-      @apply cursor-pointer flex-center tracking-wider transition-all text-[10px] duration-200 uppercase hover:(tracking-widest text-yellow-500);
+      @apply cursor-pointer flex-center tracking-wider transition-all text-[10px] leading-[0.5] duration-200 uppercase hover:(tracking-widest text-yellow-500) ;
     }
   }
 
@@ -130,7 +130,7 @@ export default {
     @apply flex-center;
 
     &-btn {
-      @apply cursor-pointer  tracking-wider transition-all text-[10px] duration-200 uppercase hover:(tracking-widest text-yellow-500);
+      @apply cursor-pointer  tracking-wider transition-all text-[10px] duration-200 uppercase hover:(tracking-widest text-yellow-500) ;
     }
   }
 
@@ -147,7 +147,7 @@ export default {
   }
 
   &-lang {
-    @apply rounded-sm py-2 px-3 elevation-5;
+    @apply rounded-sm mb-3.5 py-2 px-3 elevation-3 sm:mb-0;
   }
 
   // &-{@apply;}

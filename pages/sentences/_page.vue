@@ -24,35 +24,34 @@
         :key="i"
         v-anime="animateBlock({ dl: 1.5 + 0.1 * intRandom(1, i) + i * 0.05, dr: 1.75 })"
       >
-        <div class="sentences-image-container relative group">
+        <div class="sentences-image-container relative">
           <!-- transition-all duration-300 group-hover:opacity-25 -->
-          <div v-if="it.images.length > 1" class="relative">
-            <ItemImgStrapiBg
-              v-for="(img, j) in it.images"
-              :src="img.url"
-              class="sentences-image group-image"
-              :key="j"
-              v-anime.set="{ opacity: 0 }"
-              v-anime="{
-                count: 5,
-                opacity: 1,
-                duration: (j + 1) * 6000 + i * 400,
-                delay: (j + 1) * 3000 + i * 400,
-              }"
-            />
+          <div v-if="it.images.length > 0" class="relative">
+            <div v-for="(img, j) in it.images" :key="j">
+              <LazyItemImgStrapiBg
+                :src="img.url"
+                class="sentences-image group-image smoothly-300 group-hover:opacity-85"
+                v-anime.set="it.images.length === 1 ? {} : { scale: 2, opacity: 0 }"
+                v-anime="
+                  it.images.length === 1
+                    ? {}
+                    : {
+                        loop: 2,
+                        scale: 1.05,
+                        opacity: 2,
+                        duration: (j + 1) * 3000 + i * 400,
+                        delay: (j + 1) * 3100 + i * 400,
+                      }
+                "
+              />
+            </div>
           </div>
 
-          <ItemImgStrapiBg
-            v-else-if="it.images.length === 1"
-            class="sentences-image"
-            :src="it.images[0]"
-          ></ItemImgStrapiBg>
-
-          <ItemImgStrapiBg
+          <LazyItemImgStrapiBg
             v-else
-            class="sentences-image"
+            class="sentences-image smoothly-300 group-hover:opacity-85"
             :src="`https://picsum.photos/300/200?random=${i}`"
-          ></ItemImgStrapiBg>
+          ></LazyItemImgStrapiBg>
 
           <div class="sentences-tags">
             <div class="sentences-tags-field">
@@ -96,8 +95,9 @@
           </div>
         </div>
 
+        <!-- group-hover:bg-indigo-600 -->
         <div
-          class="sentences-content"
+          class="sentences-content smoothly-300"
           v-tooltip="
             isMobile()
               ? {}
@@ -190,7 +190,7 @@ export default {
   },
   methods: {
     handleOpen(short) {
-      window.open("/#" + short, "_blank")
+      window.open("/?" + short, "_blank")
     },
     toNext() {
       const nxt = this.page - 1 + 2
@@ -249,7 +249,7 @@ export default {
     }
 
     &-container {
-      @apply rounded-md flex-center bg-opacity-85 bg-indigo-700 border-indigo-600 border-1 border-opacity-50 py-1 px-2 transition duration-300 elevation-1 hover:bg-indigo-600;
+      @apply rounded-md flex-center bg-opacity-85 bg-indigo-700 border-indigo-600 border-1 border-opacity-50 py-1 px-2 transition duration-300 elevation-1;
     }
 
     &-titile {
@@ -265,7 +265,7 @@ export default {
     }
 
     &-container {
-      @apply bg-cyan-800 w-full min-h-60 md:min-h-40;
+      @apply bg-cyan-800 w-full min-h-60 overflow-hidden md:min-h-40;
     }
   }
 
@@ -278,11 +278,11 @@ export default {
   }
 
   &-content {
-    @apply bg-self-main flex-grow flex-center flex-col m-auto bg-hero-bank-note-white-5 bg-opacity-50 bg-3r text-center w-full py-4 px-4 sm:(hover:(transition duration-700 bg-green-700 bg-opacity-85)) ;
+    @apply bg-self-main flex-grow flex-center flex-col m-auto bg-hero-bank-note-white-5 bg-opacity-50 bg-3r text-center w-full py-4 px-4 sm:(group-hover:(transition duration-700 bg-green-700 bg-opacity-85)) ;
   }
 
   &-button {
-    @apply bg-self-main font-bold bg-opacity-25 bg-hero-bank-note-white-5 bg-3r mt-1 text-xs text-center tracking-widest w-full py-2 uppercase sm:(duration-700 transition hover:(bg-orange-700 bg-opacity-85)) ;
+    @apply bg-self-main font-bold bg-opacity-25 bg-hero-bank-note-white-5 bg-3r mt-1 text-xs text-center tracking-widest w-full py-2 uppercase sm:(duration-700 transition group-hover:(bg-orange-700 bg-opacity-85)) ;
   }
 
   &-link {
