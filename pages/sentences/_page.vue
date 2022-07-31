@@ -25,10 +25,8 @@
         v-anime="animateBlock({ dl: 1.5 + 0.1 * intRandom(1, i) + i * 0.05, dr: 1.75 })"
       >
         <div class="sentences-image-container relative group">
-          <div
-            v-if="it.images.length > 0"
-            class="transition-all duration-300 relative group-hover:opacity-25"
-          >
+          <!-- transition-all duration-300 group-hover:opacity-25 -->
+          <div v-if="it.images.length > 1" class="relative">
             <ItemImgStrapiBg
               v-for="(img, j) in it.images"
               :src="img.url"
@@ -36,7 +34,7 @@
               :key="j"
               v-anime.set="{ opacity: 0 }"
               v-anime="{
-                loop: true,
+                count: 5,
                 opacity: 1,
                 duration: (j + 1) * 6000 + i * 400,
                 delay: (j + 1) * 3000 + i * 400,
@@ -44,14 +42,15 @@
             />
           </div>
 
-          <!-- `https://source.unsplash.com/random/300x200?sig=${i}` -->
-          <!-- https://source.unsplash.com/random/300x200?sig=${Math.random()} -->
-          <!-- https://picsum.photos/300/200?random=${i} -->
-          <!-- https://source.unsplash.com/random/300x200?sig=${countPages * 2 - i * 2 + 1} -->
-          <!-- 'https://picsum.photos/1024/1024?nocache='.microtime() -->
+          <ItemImgStrapiBg
+            v-else-if="it.images.length === 1"
+            class="sentences-image"
+            :src="it.images[0]"
+          ></ItemImgStrapiBg>
+
           <ItemImgStrapiBg
             v-else
-            class="transition-all duration-300 sentences-image group-hover:opacity-25"
+            class="sentences-image"
             :src="`https://picsum.photos/300/200?random=${i}`"
           ></ItemImgStrapiBg>
 
