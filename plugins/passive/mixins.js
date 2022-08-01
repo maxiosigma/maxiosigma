@@ -43,13 +43,16 @@ Vue.mixin({
          const light = this.isLight();
          const isMobile = this.$ua.deviceType() !== "pc" && !light;
          const isDesktop = this.$ua.deviceType() === "pc" && light;
-         const checkNoLink = app_config.excluded?.filter((it) => this.$route.path.indexOf("/" + it + "/") !== -1).length > 0 || !this.mainPath();
+         const checkNoLink = app_config.excluded?.filter((it) => this.$route.path.indexOf("/" + it + "/") !== -1).length > 0;
 
-         isMobile && !checkNoLink ? (location.href = this.switchLocalePath(this.loke(true))) : null;
+         !this.mainPath()
+            ? () => {
+                 isMobile && !checkNoLink ? (location.href = this.switchLocalePath(this.loke(true))) : null;
+                 isDesktop && !checkNoLink ? (location.href = this.switchLocalePath(this.loke(false))) : null;
+              }
+            : null;
 
-         isDesktop && !checkNoLink ? (location.href = this.switchLocalePath(this.loke(false))) : null;
-
-         return (isMobile && !checkNoLink) || (isDesktop && !checkNoLink);
+         return !this.mainPath() ? (isMobile && !checkNoLink) || (isDesktop && !checkNoLink) : false;
       },
       menuRedirect(link) {
          this.$store.commit("checkMenu");

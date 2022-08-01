@@ -9,7 +9,7 @@ export default {
     const canonical = `${this.$config.baseUrl}${this.$route.path.toLowerCase().replace(/\/$/, "")}`
     //$config.baseUrl
 
-    console.log(canonical)
+    //console.log(canonical)
 
     return {
       titleTemplate: this.headTemplate(),
