@@ -58,41 +58,30 @@ export default {
       this.title = this.link?.title
       this.description = this.link?.description
 
-      //this.link?.href ? (location.href = this.link?.href) : null
-      //this.link?.alt ? setTimeout(() => (location.href = this.link?.alt), 3500) : null
+      location.href = this.link?.href
+      setTimeout(() => (location.href = this.link?.alt), 3500)
     },
     Routed() {
       // https://172.27.240.1:3000?mw
       // https://172.27.240.1:3000#mw
 
-      //this.findutm || this.findgtm ? this.routeLight("about") : null
+      //console.log(this.query && !this.findutm && !this.findgtm)
 
-      console.log(this.query, !this.findutm, !this.findgtm, this.hash)
-
-      //this.query && (!this.findutm || !this.findgtm)
-      //  ? this.Redirected()
-      //  : this.hash
-      //  ? this.Redirected()
-      //  : (() => {
-      //      if (!this.LCG("about")) this.routeLight("about")
-      //      else this.routeLight("sentences/1")
-      //    })()
-
-      //this.query && (!this.findutm || !this.findgtm)
-      //  ? ""
-      //  : this.hash
-      //  ? ""
-      //  : setTimeout(() => {
-      //      if (!this.LCG("about")) this.routeLight("about")
-      //      else this.routeLight("sentences/1")
-      //    }, 500)
+      this.query && !this.findutm && !this.findgtm
+        ? this.Redirected()
+        : this.hash
+        ? this.Redirected()
+        : (() => {
+            if (!this.LCG("about")) this.routeLight("about")
+            else this.routeLight("sentences/1")
+          })()
     },
     loadLink() {
       this.query = Object.keys(this.$route.query)?.[0]
       this.hash = this.$route.hash?.replace("#", "")
 
       this.findutm = this.query?.indexOf("utm") !== -1
-      this.findgtm = this.query?.indexOf("utm") !== -1
+      this.findgtm = this.query?.indexOf("gtm") !== -1
 
       this.link = this.$store.state.reffers?.filter(
         (ln) => ln?.attributes?.short == this.query || ln?.attributes?.short == this.hash

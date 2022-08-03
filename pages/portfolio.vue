@@ -1,13 +1,13 @@
 <template>
   <LayoutPage>
-    <!--<div class="flex-center flex-col flex-grow portfolio">
+    <div class="flex-center flex-col flex-grow portfolio">
       <div class="canvas-container">
         <canvas class="list-1 canvas-list"></canvas>
         <canvas class="list-2 canvas-list"></canvas>
         <canvas class="list-3 canvas-list"></canvas>
       </div>
 
-      <div class="relative">
+      <div class="flex-center relative">
         <div
           class="
             h-full
@@ -29,7 +29,7 @@
           </div>
         </div>
       </div>
-    </div>-->
+    </div>
   </LayoutPage>
 </template>
 
@@ -180,11 +180,11 @@ export default {
 <style lang="scss">
 .canvas {
   &-container {
-    @apply mr-[10vmin] mb-[15vmin] absolute drop-shadow-2xl;
+    @apply h-0 mr-[10vmin] mb-[15vmin] w-0 absolute drop-shadow-2xl;
   }
 
   &-list {
-    @apply max-w-screen text-current transform origin-left text-hex-0e9090 w-[25vmin] absolute filter;
+    @apply max-w-screen text-current text-shadow-xl transform origin-left text-hex-0e9090 w-[25vmin] absolute filter;
 
     &.list {
       &-1 {

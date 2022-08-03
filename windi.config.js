@@ -231,6 +231,7 @@ function plugins() {
                color: "#fefefe",
                textShadow: "#e7e7e7 3px 5px 0, #999 4px 6px 3px, #ccc 8px 11px 10px",
             },
+            ...textShadows(),
             //massHueRotate: {
             //   ...range(30).map((i) => {
             //      return { filter: `hue-rotate(${(i + 1) * 5}deg)` };
@@ -239,6 +240,31 @@ function plugins() {
          });
       }),
    ];
+}
+
+function textShadows() {
+   const colors = ["white", "black", "orange", "blue"];
+   const custom_base = range(10).reduce((sum, it, i) => {
+      colors.map((color) => {
+         sum = {
+            ...sum,
+            [`shadow-custom-${it}-${color}`]: {
+               textShadow: `0 0 ${it * 5}px $color`,
+            },
+         };
+      });
+
+      return sum;
+   });
+
+   console.log(custom_base);
+
+   return {
+      neon: {
+         textShadow:
+            "0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18, 2px 2px 2px rgba(255,255,255,0)",
+      },
+   };
 }
 
 function shortcuts() {
