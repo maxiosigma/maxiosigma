@@ -61,6 +61,32 @@ export default {
          devtools: app_config.isDev,
       },
    },
+   proxy: {
+      "/api": {
+         target: "http://localhost:1337",
+         changeOrigin: true,
+         pathRewrite: { "^/api": "/" },
+      },
+   },
+   axios: { proxy: true },
+   image: {
+      //provider: "static",
+      //domains: ["images.unsplash.com", "picsum.photos"],
+      //alias: {
+      //   unsplash: "https://images.unsplash.com",
+      //   pixum: "https://picsum.photos",
+      //},
+      strapi: {
+         baseURL: "http://localhost:1337/", // uploads/
+      },
+      //dir: "../strapi/public/uploads",
+      //providers: {
+      //   stepi: {
+      //      provider: "~/./../strapi/public/uploads/Avatarka_Seller_a115c2f47f_2102ded582_79cc2bfa62_98d921f3f9.png",
+      //      options: {},
+      //   },
+      //},
+   },
    content: {
       prism: {
          theme: false,
@@ -495,9 +521,25 @@ export default {
       "@/plugins/active/GSR",
       "@nuxtjs/sitemap",
       "nuxt-animejs",
+      "@nuxt/image",
       "@nuxtjs/pwa",
    ],
-   modules: ["@nuxtjs/i18n", "@nuxtjs/axios", "nuxt-cookie-control", "@nuxtjs/toast", "@nuxtjs/robots", "@nuxtjs/strapi"],
+   modules: [
+      "@nuxtjs/i18n",
+      "@nuxtjs/axios",
+      "nuxt-cookie-control",
+      "@nuxtjs/toast",
+      "@nuxtjs/robots",
+      "@nuxtjs/strapi",
+      [
+         "nuxt-image-extractor",
+         {
+            baseUrl: "http://localhost:1337/",
+            path: "/public/images",
+            extensions: ["jpg", "jpeg", "gif", "png", "webp", "svg"],
+         },
+      ],
+   ],
    plugins: [
       "@plugins/passive/mixins",
       "@plugins/passive/directives",
