@@ -155,7 +155,7 @@ Vue.mixin({
       isVideo(ext) {
          return ext === ".mp4" || ext === "webm" || ext === "ogv";
       },
-      animateBlock({ dl = 1, dr = 1, sc = 1, sk = 1, tx = 0, lp = false, rn = 1 }) {
+      animateAnimeBlock({ dl = 1, dr = 1, sc = 1, sk = 1, tx = 0, lp = false, rn = 1 }) {
          return {
             //round: rn,
             loop: lp,

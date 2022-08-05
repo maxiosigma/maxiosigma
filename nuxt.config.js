@@ -346,6 +346,35 @@ export default {
          checkboxDisabledCircleBackground: "#fff",
       },
    },
+   //pageTransition: {
+   //   name: "page",
+   //   mode: "out-in",
+   //   css: false,
+   //   beforeEnter(el) {
+   //      this.$gsap.set(el, {
+   //         opacity: 0,
+   //         scale: 0,
+   //      });
+   //   },
+   //   enter(el, done) {
+   //      this.$gsap.to(el, {
+   //         scale: 1,
+   //         opacity: 1,
+   //         duration: 10.5,
+   //         ease: "power2.inOut",
+   //         onComplete: done,
+   //      });
+   //   },
+   //   leave(el, done) {
+   //      this.$gsap.to(el, {
+   //         scale: 0,
+   //         opacity: 0,
+   //         duration: 10.5,
+   //         ease: "power2.inOut",
+   //         onComplete: done,
+   //      });
+   //   },
+   //},
    server: {
       host: "0.0.0.0",
    },
@@ -460,6 +489,7 @@ export default {
    buildModules: [
       "nuxt-windicss",
       "@luxdamore/nuxt-apis-to-file",
+      "nuxt-gsap-module",
       "nuxt-user-agent",
       "nuxt-fontagon",
       "@/plugins/active/GSR",

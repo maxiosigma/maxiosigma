@@ -3,11 +3,16 @@
     <!--@touchstart="touchStart"
       @touchEndMethod="touchEnd"-->
     <div class="sentences-container" itemscope>
-      <!-- -->
+      <!-- v-gsap.fromTo="[
+          { scale: 0, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 1.75, delay: 1.5 + 0.1 * intRandom(1, i) + i * 0.05 },
+        ]" -->
       <ItemLink
         self
+        nolang
+        blank
         @click.native.prevent="handleOpen(it.short)"
-        :href="'/about'"
+        :href="'?' + it.short"
         :class="[
           'sentences-link group',
           stringRandom([
@@ -22,7 +27,7 @@
         ]"
         v-for="(it, i) in links"
         :key="i"
-        v-anime="animateBlock({ dl: 1.5 + 0.1 * intRandom(1, i) + i * 0.05, dr: 1.75 })"
+        v-anime="animateAnimeBlock({ dl: 1.5 + 0.1 * intRandom(1, i) + i * 0.05, dr: 1.75 })"
       >
         <div class="sentences-image-container relative">
           <!-- transition-all duration-300 group-hover:opacity-25 -->

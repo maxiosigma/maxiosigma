@@ -1,93 +1,94 @@
 <template>
-  <LayoutPage>
-    <div class="flex-center flex-col flex-grow portfolio">
-      <div class="canvas-container">
-        <canvas class="list-1 canvas-list"></canvas>
-        <canvas class="list-2 canvas-list"></canvas>
-        <canvas class="list-3 canvas-list"></canvas>
-      </div>
+   <LayoutPage>
+      <!--  flex-col -->
+      <div class="portfolio">
+         <!--<div class="canvas-container">
+            <canvas class="list-1 canvas-list"></canvas>
+            <canvas class="list-2 canvas-list"></canvas>
+            <canvas class="list-3 canvas-list"></canvas>
+         </div>-->
 
-      <div class="flex-center relative">
-        <div
-          class="
-            h-full
-            text-white
-            w-full
-            transform
-            -translate-x-[0vmin]
-            translate-y-[27vmin]
-            absolute
-          "
-        >
-          <div class="flex-center mr-[0.5vmin]">
-            <div class="text-[10vmin] text-green-200">П</div>
+         <!--<div class="flex-center relative">-->
+         <!--<div :class="['portfolio-block-container', `block-${i + 1}`]" v-for="(it, i) in items" :key="i">
+               <div :class="['flex-center mr-[0.5vmin]', { 'flex-row-reverse rtl ml-[0.5vmin] mr-0': i === 2 }]">
+                  <div class="text-[10vmin] text-green-200">{{ it.s1 }}</div>
 
-            <div class="-mt-1 tracking-[2px]">
-              <div class="text-[4.5vmin] text-indigo-200">редпри</div>
-              <div class="text-[4.5vmin] text-indigo-200">ниматель</div>
-            </div>
-          </div>
-        </div>
+                  <div class="-mt-1 tracking-[2px]">
+                     <div class="text-[4.5vmin] text-indigo-200">{{ it.s2 }}</div>
+                     <div class="text-[4.5vmin] text-indigo-200">{{ it.s3 }}</div>
+                  </div>
+               </div>
+            </div>-->
+         <!--</div>-->
+
+         <ItemLink :href="'/' + it.l" :class="['portfolio-block-container', `block-${i + 1}`]" v-for="(it, i) in items" :key="i">
+            <div>{{ it.s1 }}{{ it.s2 }}{{ it.s3 }}</div>
+         </ItemLink>
       </div>
-    </div>
-  </LayoutPage>
+   </LayoutPage>
 </template>
 
 <script>
 export default {
-  head() {
-    return {
-      title: "Портфолио",
-    }
-  },
-  data() {
-    return {
-      properties: {
-        developer: 0,
-        designer: 0,
-        entrepreneur: 0,
+   head() {
+      return {
+         title: "Портфолио",
+      };
+   },
+   data() {
+      return {
+         items: [
+            { s1: "Р", s2: "азра", s3: "ботчик", l: "developer" },
+            { s1: "П", s2: "редпри", s3: "ниматель", l: "entrepreneur" },
+            { s1: "Д", s2: "иза", s3: "йнер", l: "designer" },
+         ],
+         properties: {
+            developer: 0,
+            designer: 0,
+            entrepreneur: 0,
+         },
+      };
+   },
+   async asyncData({ $strapi, store }) {
+      const portfolio = store.state.gql.portfolio;
+      const data = (
+         await $strapi.graphql({
+            query: portfolio,
+         })
+      )?.page?.data?.attributes;
+
+      return {
+         data,
+      };
+   },
+   mounted() {
+      console.log(this.data);
+      this.canvasList();
+   },
+   methods: {
+      redirect(url) {
+         location.href = "/" + url;
       },
-    }
-  },
-  async asyncData({ $strapi, store }) {
-    const portfolio = store.state.gql.portfolio
-    const data = (
-      await $strapi.graphql({
-        query: portfolio,
-      })
-    )?.page?.data?.attributes
+      canvasList() {
+         //const obj = this.$refs.canvasList
+         const arr = document.querySelectorAll(".canvas-list");
+         //console.log(arr.forEach((it) => it))
+         arr?.forEach((obj, i) => {
+            const ctx = obj?.getContext("2d");
 
-    return {
-      data,
-    }
-  },
-  mounted() {
-    this.canvasList()
-  },
-  methods: {
-    redirect(url) {
-      location.href = "/" + url
-    },
-    canvasList() {
-      //const obj = this.$refs.canvasList
-      const arr = document.querySelectorAll(".canvas-list")
-      //console.log(arr.forEach((it) => it))
-      arr?.forEach((obj, i) => {
-        const ctx = obj?.getContext("2d")
+            ctx.beginPath();
 
-        ctx.beginPath()
+            ctx.moveTo(0, 25);
+            ctx.bezierCurveTo(0, 25, 150, 0, 300, 25);
+            ctx.moveTo(0, 25);
+            ctx.bezierCurveTo(0, 25, 150, 50, 300, 25);
 
-        ctx.moveTo(0, 25)
-        ctx.bezierCurveTo(0, 25, 150, 0, 300, 25)
-        ctx.moveTo(0, 25)
-        ctx.bezierCurveTo(0, 25, 150, 50, 300, 25)
-
-        ctx.fillStyle = "#0e9090"
-        ctx.fill()
-      })
-    },
-  },
-}
+            ctx.fillStyle = "#0e9090";
+            ctx.fill();
+         });
+      },
+   },
+};
 //setTimeout(() => this.setAnimation(), 500)
 //<!--<div class="flex-grow filter drop-shadow-lg lg:(grid grid-cols-3) <lg:(flex flex-col) ">-->
 //  <!-- , { 'elevation-10': i == 2 } ДОБАВИТЬ ТЕНИ ПО БОКАМ -->
@@ -178,25 +179,63 @@ export default {
 </script>
 
 <style lang="scss">
-.canvas {
-  &-container {
-    @apply h-0 mr-[10vmin] mb-[15vmin] w-0 absolute drop-shadow-2xl;
-  }
+.portfolio {
+   @apply flex-center flex-grow text-center;
 
-  &-list {
-    @apply max-w-screen text-current text-shadow-xl transform origin-left text-hex-0e9090 w-[25vmin] absolute filter;
+   &-block {
+      &-container {
+         // transform absolute w-full h-full
+         @apply rounded-md cursor-pointer flex-center flex-grow font-vetka font-black bg-orange-600 bg-hero-bank-note-white-20 bg-3r text-white min-h-1/3 max-w-4 px-[6vmin] py-[4vmin] transform transition-all text-[2.5vmin] duration-900 break-all uppercase elevation-10;
+         @apply hover:(elevation-15 rotate-y-0 scale-100 filter hue-rotate-270) #{!important};
 
-    &.list {
-      &-1 {
-        @apply -rotate-30 translate-x-[8vmin] translate-y-[2vmin];
+         &.block-1 {
+            @apply ml-auto leading-[1.7] rotate-y-30 bg-purple-600;
+            box-shadow: 5px 0 15px rgba(255, 255, 255, 0.15);
+            //@apply -translate-x-[0vmin] translate-y-[27vmin];
+         }
+
+         &.block-2 {
+            @apply mx-auto leading-[1.5] scale-95 bg-orange-600;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+            //@apply -rotate-30 translate-x-[33vmin] -translate-y-[27vmin];
+         }
+
+         &.block-3 {
+            @apply mr-auto leading-[2.3] -rotate-y-30 bg-green-600;
+            box-shadow: -5px 0 15px rgba(255, 255, 255, 0.15);
+            //@apply rotate-30 -translate-x-[33vmin] -translate-y-[27vmin];
+         }
       }
-      &-2 {
-        @apply rotate-90;
-      }
-      &-3 {
-        @apply rotate-210 translate-x-[4vmin] -translate-y-[5.5vmin];
-      }
-    }
-  }
+   }
 }
+
+.canvas {
+   &-container {
+      @apply h-0 mr-[10vmin] mb-[15vmin] w-0 absolute drop-shadow-2xl;
+   }
+
+   &-list {
+      @apply max-w-screen text-current transform origin-left text-hex-0e9090 w-[25vmin] absolute filter;
+      @apply text-shadow-custom-orange-15px;
+
+      &.list {
+         &-1 {
+            @apply -rotate-30 translate-x-[8vmin] translate-y-[2vmin];
+         }
+
+         &-2 {
+            @apply rotate-90;
+         }
+
+         &-3 {
+            @apply rotate-210 translate-x-[4vmin] -translate-y-[5.5vmin];
+         }
+      }
+   }
+}
+
+// blob:https://dasreda.ru/fa761a60-210b-4753-a5ca-f1393c0f5cbe
+//<a href="blob:https://dasreda.ru/fa761a60-210b-4753-a5ca-f1393c0f5cbe" download="filename">Скачать</a>
+//https://cdn.dasreda.ru/video-data/.213cc2e0-50e1-4bf4-b215-72c5d8580a43/video_640x360.mp4/index-v1-a1.m3u8
+// ffmpeg -i "https://cdn.dasreda.ru/video-data/.213cc2e0-50e1-4bf4-b215-72c5d8580a43/video_640x360.mp4/index-v1-a1.m3u8" -c copy -bsf:a aac_adtstoasc "output.mp4"
 </style>

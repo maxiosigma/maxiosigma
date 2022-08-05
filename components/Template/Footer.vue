@@ -5,12 +5,10 @@
         <!--<ItemLogo></ItemLogo>-->
 
         <div class="footer-lang">
-          <ItemLink
-            class="footer-menu-link"
-            href="https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb?hl=ru"
-            :blank="true"
-            >Русский</ItemLink
-          >
+          <!-- href="https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb?hl=ru" -->
+          <ItemLink class="footer-menu-link" href="?translate" nolang self blank>
+            Translate
+          </ItemLink>
         </div>
 
         <div class="footer-menu">

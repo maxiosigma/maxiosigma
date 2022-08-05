@@ -1,5 +1,6 @@
 <template>
-  <LayoutPage bodyStyle="contacts">
+  <!--  bodyStyle="contacts" -->
+  <LayoutPage>
     <ItemEffectWaveHexagon />
 
     <div
