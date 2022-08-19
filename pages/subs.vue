@@ -1,96 +1,100 @@
 <template>
-  <LayoutPage>
-    <div class="subs">
-      <script
-        src="//web.webformscr.com/apps/fc3/build/loader.js"
-        sp-form-id="60ee992dc90ad2cba4e870779b6fdc4a052729011c13e6d2bb3c81444d92838d"
-      ></script>
-    </div>
-  </LayoutPage>
+   <LayoutPage :title="title" :description="description">
+      <div class="subs">
+         <script
+            src="//web.webformscr.com/apps/fc3/build/loader.js"
+            sp-form-id="60ee992dc90ad2cba4e870779b6fdc4a052729011c13e6d2bb3c81444d92838d"
+         ></script>
+      </div>
+   </LayoutPage>
 </template>
 
 <script>
 export default {
-  head() {
-    return {
-      title: "Подписка",
-      //script: [
-      //  {
-      //    hid: "sps",
-      //    charset: "UTF-8",
-      //    src: "//web.webformscr.com/apps/fc3/build/loader.js",
-      //    "sp-form-id": "60ee992dc90ad2cba4e870779b6fdc4a052729011c13e6d2bb3c81444d92838d",
-      //    async: false,
-      //  },
-      //],
-    }
-  },
-  mounted() {
-    setTimeout(() => {
-      const formed = document.querySelector("form[class^='sp']")
+   head() {
+      return {
+         title: this.title,
+         description: this.description,
+         //script: [
+         //  {
+         //    hid: "sps",
+         //    charset: "UTF-8",
+         //    src: "//web.webformscr.com/apps/fc3/build/loader.js",
+         //    "sp-form-id": "60ee992dc90ad2cba4e870779b6fdc4a052729011c13e6d2bb3c81444d92838d",
+         //    async: false,
+         //  },
+         //],
+      };
+   },
+   data() {
+      return {
+         title: "Подписка",
+         description: "Полезные уведомления и подарки !!!",
+         isSubs: false,
+      };
+   },
+   mounted() {
+      setTimeout(() => {
+         const formed = document.querySelector("form[class^='sp']");
 
-      formed?.addEventListener("submit", function () {
-        !this.$cookies.get("sbjs") ? this.$cookies.set({ name: "sbjs", value: true }) : null
+         formed?.addEventListener("submit", function () {
+            !this.$cookies.get("sbjs") ? this.$cookies.set({ name: "sbjs", value: true }) : null;
 
-        setTimeout(() => {
-          this.routeLight("presents")
-        }, 1500)
-      })
+            setTimeout(() => {
+               this.routeLight("presents");
+            }, 1500);
+         });
 
-      const btned = document.querySelector(".sp-button")
-      const btned_promt = document.querySelector(".sp-prompt-btn")
+         const btned = document.querySelector(".sp-button");
+         const btned_promt = document.querySelector(".sp-prompt-btn");
 
-      btned?.addEventListener("click", () =>
-        !this.$cookies.get("sbjs") ? this.$cookies.set({ name: "sbjs", value: true }) : null
-      )
+         btned?.addEventListener("click", () => (!this.$cookies.get("sbjs") ? this.$cookies.set({ name: "sbjs", value: true }) : null));
 
-      btned_promt?.addEventListener("click", () =>
-        !this.$cookies.get("sbjs") ? this.$cookies.set({ name: "sbjs", value: true }) : null
-      )
-    }, 1500)
+         btned_promt?.addEventListener("click", () => (!this.$cookies.get("sbjs") ? this.$cookies.set({ name: "sbjs", value: true }) : null));
+      }, 1500);
 
-    //document.querySelector("sp-button").addEventListener("click", function () {
-    //  alert("Вы нажали на кнопку")
-    //})
-    //localStorage.getItem('subs-push') ? this.routeLight('community/programs') : localStorage.setItem('subs-push', true)
-    ////ANCHOR
-    //document.getElementById('sp-9286be14-1cec-44f8-bff4-b1e53b0e96d3').addEventListener('click', function (e) {
-    //	//	e = e || window.event
-    //	//	var target = e.target || e.srcElement
-    //	//	if (target.id == 'btn') alert('Клик по дочернему!')
-    //})
-  },
-}
+      //document.querySelector("sp-button").addEventListener("click", function () {
+      //  alert("Вы нажали на кнопку")
+      //})
+      //localStorage.getItem('subs-push') ? this.routeLight('community/programs') : localStorage.setItem('subs-push', true)
+      ////ANCHOR
+      //document.getElementById('sp-9286be14-1cec-44f8-bff4-b1e53b0e96d3').addEventListener('click', function (e) {
+      //	//	e = e || window.event
+      //	//	var target = e.target || e.srcElement
+      //	//	if (target.id == 'btn') alert('Клик по дочернему!')
+      //})
+   },
+};
 </script>
 
 <style lang="scss">
 .subs {
-  //bg-light-600 fixed opacity-75 pointer-events-none
-  @apply flex-grow flex-center w-screen px-5 pt-5 pb-10;
+   //bg-light-600 fixed opacity-75 pointer-events-none
+   @apply flex-grow flex-center w-screen px-5 pt-5 pb-10;
 
-  //&-back {
-  //  @apply pl-2 inline-flex items-center;
-  //}
+   //&-back {
+   //  @apply pl-2 inline-flex items-center;
+   //}
 }
 
 a.sp-link {
-  @apply hidden #{!important};
+   @apply hidden #{!important};
 }
 
 .sp-form-outer {
-  //@apply border-none flex-grow flex-center h-full min-h-full bg-15r bg-gray-900 bg-hero-i-like-food-skyblue-15 border-0 inset-0 z-0 overflow-x-hidden overflow-y-auto relative;
+   //@apply border-none flex-grow flex-center h-full min-h-full bg-15r bg-gray-900 bg-hero-i-like-food-skyblue-15 border-0 inset-0 z-0 overflow-x-hidden overflow-y-auto relative;
 
-  & > div.sp-form {
-    //@apply border-none max-h-full border-0 rounded-2xl my-20 mx-4 w-full w-sm  #{!important};
-    //@apply md:(w-md);
+   & > div.sp-form {
+      //@apply border-none max-h-full border-0 rounded-2xl my-20 mx-4 w-full w-sm  #{!important};
+      //@apply md:(w-md);
 
-    & > .sp-form-fields-wrapper > .sp-link-wrapper > .sp-link {
-      @apply hidden #{!important};
-    }
+      & > .sp-form-fields-wrapper > .sp-link-wrapper > .sp-link {
+         @apply hidden #{!important};
+      }
 
-    & > div {
-      @apply border-none #{!important};
-    }
-  }
+      & > div {
+         @apply border-none #{!important};
+      }
+   }
 }
 </style>

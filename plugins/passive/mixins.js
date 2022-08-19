@@ -9,7 +9,7 @@ Vue.mixin({
          return localStorage.getItem(name) || window.localStorage.getItem(name);
       },
       LCS(name, payload) {
-         return localStorage.setItem(name, payload) ?? window.localStorage.setItem(name, payload);
+         return localStorage.setItem(name, payload) || window.localStorage.setItem(name, payload);
       },
       LCST(name, payload, time = 1500) {
          setTimeout(() => this.LCS(name, payload), time);
@@ -30,14 +30,13 @@ Vue.mixin({
          window.open(this.localePath("/" + link), "_blank");
       },
       isMobile() {
-         // || this.$ua.deviceType() !== "desktop"
          return this.$ua.deviceType() !== "pc";
       },
       isLangGlobal() {
          return this.$i18n?.locale?.split("-")?.[0] ?? "ru";
       },
       mainPath() {
-         return this.$route.fullPath !== "/";
+         return this.$route.fullPath === "/";
       },
       lightRedirect() {
          const light = this.isLight();
@@ -46,13 +45,18 @@ Vue.mixin({
          const checkNoLink = app_config.excluded?.filter((it) => this.$route.path.indexOf("/" + it + "/") !== -1).length > 0;
 
          !this.mainPath()
-            ? () => {
-                 isMobile && !checkNoLink ? (location.href = this.switchLocalePath(this.loke(true))) : null;
-                 isDesktop && !checkNoLink ? (location.href = this.switchLocalePath(this.loke(false))) : null;
-              }
+            ? !checkNoLink
+               ? isMobile
+                  ? (location.href = this.switchLocalePath(this.loke(true)))
+                  : isDesktop
+                  ? (location.href = this.switchLocalePath(this.loke(false)))
+                  : null
+               : null
             : null;
 
-         return !this.mainPath() ? (isMobile && !checkNoLink) || (isDesktop && !checkNoLink) : false;
+         const check = !this.mainPath() && !checkNoLink ? isMobile || isDesktop : false;
+
+         return check;
       },
       menuRedirect(link) {
          this.$store.commit("checkMenu");

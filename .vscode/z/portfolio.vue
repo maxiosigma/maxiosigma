@@ -1,52 +1,17 @@
 <template>
-   <!--<LayoutPage :title="title" :description="description">
-      <div>1</div>
-   </LayoutPage>-->
-
-   <!-- document.referrer -->
-   <Layout :bodyStyle="'portfolio'" :title="title" :description="description">
-      <div class="flex-grow relative">
-         <ItemBack
-            class="absolute cursor-pointer border-b-3 border-r-3 border-orange-500 rounded-xl pt-1.5 pr-2.5 pb-2 left-5 top-5 group hover:(bg-bg-light-200)"
+   <LayoutPage :title="title" :description="description">
+      <div class="portfolio">
+         <ItemLink
+            :href="'/' + it.l"
+            @click.native.prevent="handleClick('/' + it.l)"
+            :class="['portfolio-block-container', `block-${i + 1}`, { 'block-effect': active }]"
+            v-for="(it, i) in items"
+            :key="i"
          >
-            ← Назад
-         </ItemBack>
+            <div>{{ it.s1 }}{{ it.s2 }}{{ it.s3 }}</div>
+         </ItemLink>
       </div>
-
-      <div class="flex-grow">
-         <div class="flex-center">
-            <ItemImg class="w-auto h-96 object-contain object-center" :src="'portfolio/bg_4.png'" />
-         </div>
-
-         <div class="flex-center flex-col p-5 bg-black text-white">
-            <!--<h2 class="font-robotoslab mb-2 tracking-widest font-black uppercase"></h2>-->
-
-            <h2 class="inline-flex-center flex-col font-thin uppercase gap-2 grid-rows-1">
-               <div>
-                  <span>Вам нужен :</span>
-                  <span>Дизайнер</span>
-                  <span class="font-black mx-1 text-cyan-200">|</span>
-                  <span>Разработчик</span>
-                  <span class="font-black text-xl text-indigo-600"> ?</span>
-               </div>
-
-               <div>
-                  <span class="font-black text-xl text-yellow-600">!</span>
-                  <span class="mx-1">Тогда вы по адресу</span>
-                  <span class="font-black text-xl text-yellow-600">!</span>
-               </div>
-            </h2>
-         </div>
-
-         <div class="bg-indigo-900 min-h-screen"></div>
-
-         <!--<div>1111</div>-->
-
-         <!--<ItemPortfolioBlock :black="true"></ItemPortfolioBlock>-->
-
-         <!--<ItemPortfolioBlock></ItemPortfolioBlock>-->
-      </div>
-   </Layout>
+   </LayoutPage>
 </template>
 
 <script>
@@ -61,17 +26,17 @@ export default {
       return {
          title: "Портфолио",
          description: "Работы Макса, посмотрите обязательно !!!",
-         //items: [
-         //   { s1: "Р", s2: "азра", s3: "ботчик", l: "developer" },
-         //   { s1: "П", s2: "редпри", s3: "ниматель", l: "entrepreneur" },
-         //   { s1: "Д", s2: "иза", s3: "йнер", l: "designer" },
-         //],
-         //properties: {
-         //   developer: 0,
-         //   designer: 0,
-         //   entrepreneur: 0,
-         //},
-         //active: false,
+         items: [
+            { s1: "Р", s2: "азра", s3: "ботчик", l: "developer" },
+            { s1: "П", s2: "редпри", s3: "ниматель", l: "entrepreneur" },
+            { s1: "Д", s2: "иза", s3: "йнер", l: "designer" },
+         ],
+         properties: {
+            developer: 0,
+            designer: 0,
+            entrepreneur: 0,
+         },
+         active: false,
       };
    },
    //async asyncData({ $strapi, store }) {
@@ -88,26 +53,29 @@ export default {
    //},
    mounted() {
       //this.canvasList();
-      //console.log(this.$route);
    },
    methods: {
-      //handleClick(url) {
-      //   this.active = true;
-      //   setTimeout(() => {
-      //      location.href = url;
-      //   }, 2500);
-      //},
+      handleClick(url) {
+         this.active = true;
+
+         setTimeout(() => {
+            location.href = url;
+         }, 2500);
+      },
       //canvasList() {
       //   //const obj = this.$refs.canvasList
       //   const arr = document.querySelectorAll(".canvas-list");
       //   //console.log(arr.forEach((it) => it))
       //   arr?.forEach((obj, i) => {
       //      const ctx = obj?.getContext("2d");
+
       //      ctx.beginPath();
+
       //      ctx.moveTo(0, 25);
       //      ctx.bezierCurveTo(0, 25, 150, 0, 300, 25);
       //      ctx.moveTo(0, 25);
       //      ctx.bezierCurveTo(0, 25, 150, 50, 300, 25);
+
       //      ctx.fillStyle = "#0e9090";
       //      ctx.fill();
       //   });
@@ -118,8 +86,7 @@ export default {
 
 <style lang="scss">
 .portfolio {
-   // flex-center flex-grow text-center
-   @apply bg-light-900;
+   @apply flex-center flex-grow text-center;
 
    &-block {
       &-container {

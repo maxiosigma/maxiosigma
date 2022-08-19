@@ -1,25 +1,25 @@
 {
-	"hosting": {
-		"public": "dist",
-		"cleanUrls": true,
-		"trailingSlash": false,
-		"appAssociation": "AUTO",
-		"ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
-		"headers": [
-			{
-				"source": "**",
-				"headers": [
-					{
-						"key": "Cache-Control",
-						"value": "max-age=0"
-					}
-				]
-			}
-		]
-	},
-	"emulators": {
-		"hosting": {
-			"port": 5000
-		}
-	}
+   "hosting": {
+      "public": "dist",
+      "cleanUrls": true,
+      "trailingSlash": false,
+      "appAssociation": "AUTO",
+      "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+      "headers": [
+         {
+            "source": "**",
+            "headers": [
+               {
+                  "key": "Cache-Control",
+                  "value": "max-age=600000"
+               }
+            ]
+         }
+      ]
+   },
+   "emulators": {
+      "hosting": {
+         "port": 5000
+      }
+   }
 }

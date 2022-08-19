@@ -22,25 +22,6 @@ export default {
          options: {},
       },
    },
-   robots: () => {
-      return [
-         {
-            UserAgent: "*",
-            Disallow: ["/test"],
-            Allow: ["/public/images/", "/public/audio/", "/public/video/"],
-            Sitemap: [app_config.host + "/sitemap.xml"],
-         },
-         {
-            UserAgent: "Googlebot",
-         },
-         {
-            UserAgent: "YandexCalendar",
-         },
-         {
-            UserAgent: "YandexMobileBot",
-         },
-      ];
-   },
    storybook: {},
    nuxtAlias: {
       rootDir: ["../strapi"],
@@ -61,14 +42,19 @@ export default {
          devtools: app_config.isDev,
       },
    },
-   proxy: {
-      "/api": {
-         target: "http://localhost:1337",
-         changeOrigin: true,
-         pathRewrite: { "^/api": "/" },
-      },
+   render: {
+      // csp: true
+      //injectScripts: false,
+      //resourceHints: false,
    },
-   axios: { proxy: true },
+   //proxy: {
+   //   "/api": {
+   //      target: "http://localhost:1337",
+   //      changeOrigin: true,
+   //      pathRewrite: { "^/api": "/" },
+   //   },
+   //},
+   //axios: { proxy: true },
    image: {
       //provider: "static",
       //domains: ["images.unsplash.com", "picsum.photos"],
@@ -165,15 +151,69 @@ export default {
       exclude: [/^\/test/, /^\/z/, ...exd()],
    },
    sitemap: {
+      lastmod: new Date(),
       hostname: app_config.host,
       cacheTime: 300000,
+      path: "/sitemap/main.xml",
       gzip: true,
+      //i18n: true,
       defaults: {
          changefreq: "daily",
          priority: 1,
          lastmod: new Date(),
       },
       routes: ["", "/"],
+      //sitemaps: [
+      //   {
+      //      path: "/sitemap.txt",
+      //      routes: ["", "/", "/*"],
+      //      gzip: true,
+      //   },
+      //   {
+      //      path: "/sitemapindex.xml",
+      //      routes: ["", "/", "/*"],
+      //      gzip: true,
+      //   },
+      //   {
+      //      path: "/sitemap/1.xml",
+      //      routes: ["", "/", "/*"],
+      //      gzip: true,
+      //   },
+      //   {
+      //      path: "/sitemap/1.txt",
+      //      routes: ["", "/", "/*"],
+      //      gzip: true,
+      //   },
+      //],
+   },
+   robots: () => {
+      return [
+         {
+            UserAgent: "*",
+            //Disallow: ["/test"],
+            Allow: [
+               "/public/images/",
+               "/public/audio/",
+               "/public/video/",
+               "https://web.webpushs.com/js/push/46fa602925d7fdd1dc9e5b2a55a05967_1.js",
+            ],
+         },
+         {
+            UserAgent: "Googlebot",
+            Allow: ["/"],
+         },
+         {
+            UserAgent: "YandexCalendar",
+            Allow: ["/"],
+         },
+         {
+            UserAgent: "YandexMobileBot",
+            Allow: ["/"],
+         },
+         {
+            Sitemap: [app_config.host + "/sitemap/main.xml"],
+         },
+      ];
    },
    router: {
       fallback: true,
@@ -506,7 +546,7 @@ export default {
    css: ["~/assets/index.scss"],
    pwa: {
       icon: false,
-      icons: false,
+      meta: false,
 
       manifest: {
          display: "browser",

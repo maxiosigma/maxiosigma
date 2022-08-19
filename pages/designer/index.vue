@@ -1,21 +1,18 @@
 <template>
    <LayoutPage>
-      <div class="text-white py-15 designer">
+      <!--<div class="text-white py-15 designer">
          <div class="font-vetka font-black text-shadow-lg text-center text-5xl tracking-[5px] uppercase">Дизайнерские работы</div>
 
          <div class="mt-15 designer-content">
             <ItemTimeline :content="content"></ItemTimeline>
-            <!--<div class="" v-for="(it, i) in content" :key="i">
-            </div>-->
          </div>
-
-         <!--<div></div>-->
-      </div>
+      </div>-->
    </LayoutPage>
 </template>
 
 <script>
 export default {
+   payload: false,
    head() {
       return {
          title: "Дизайнер",

@@ -239,12 +239,23 @@ function plugins() {
 
 function textShadows() {
    const colors = ["white", "black", "orange", "blue"];
+   //const opacity = ["0", "25"];
+
    const custom_base = range(10).reduce((sum, it, i) => {
       colors.map((color) => {
          sum = {
             ...sum,
             [`.text-shadow-custom-${color}-${it * 5}px`]: {
                "text-shadow": `0 0 ${it * 5}px ${color}`,
+            },
+         };
+      });
+
+      colors.map((color) => {
+         sum = {
+            ...sum,
+            [`.shadow-custom-${color}-${it * 5}px`]: {
+               "box-shadow": `0 0 ${it * 5}px ${color}`,
             },
          };
       });

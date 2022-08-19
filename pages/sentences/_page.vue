@@ -1,5 +1,5 @@
 <template>
-   <LayoutPage>
+   <LayoutPage :title="title" :description="description">
       <!--@touchstart="touchStart"
       @touchEndMethod="touchEnd"-->
       <div class="sentences-container" itemscope>
@@ -147,11 +147,12 @@
 export default {
    head() {
       return {
-         title: "Предложения",
-         description: "Предложения-" + this.page,
+         title: this.title,
+         description: this.description,
       };
    },
-   async asyncData({ store, app, params }) {
+
+   asyncData({ store, app, params }) {
       const page = params.page;
       const paginaton = app.router.app.isLight() ? 5 : 12;
 
@@ -168,11 +169,17 @@ export default {
          .map((value) => ({ ...value, sorter: Math.random() }))
          .sort((a, b) => a.sorter - b.sorter);
 
-      return { links, countPages, page };
+      const title = "Предложения : " + page;
+      const description =
+         links
+            .map((it) => it?.description.slice(0, 15))
+            .join(", ")
+            .slice(0, 157) + "...";
+
+      return { links, countPages, page, title, description };
    },
    mounted() {
       if (this.page > this.countPages || this.page == 0) this.routeLight("sentences/1");
-      //console.log(this.links, this.countPages, this.page)
    },
    methods: {
       handleOpen(short) {
@@ -188,26 +195,6 @@ export default {
          if (prv !== 0) this.routeLight(`sentences/${prv}`);
          else alert("Вы на первой странице");
       },
-      //touchStart(touchEvent) {
-      //  if (touchEvent.changedTouches.length !== 1) {
-      //    return
-      //  }
-      //  const posXStart = touchEvent.changedTouches[0].clientX
-      //  addEventListener("touchend", (touchEvent) => this.touchEnd(touchEvent, posXStart), {
-      //    once: true,
-      //  })
-      //},
-      //touchEnd(touchEvent, posXStart) {
-      //  if (touchEvent.changedTouches.length !== 1) {
-      //    return
-      //  }
-      //  const posXEnd = touchEvent.changedTouches[0].clientX
-      //  if (posXStart < posXEnd) {
-      //    this.toPrev()
-      //  } else if (posXStart > posXEnd) {
-      //    this.toNext()
-      //  }
-      //},
    },
 };
 </script>

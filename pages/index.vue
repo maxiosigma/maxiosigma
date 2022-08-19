@@ -1,94 +1,84 @@
 <template>
-  <Layout>
-    <!--<template v-slot:head>
+   <Layout :title="title" :description="description">
+      <!--<template v-slot:head>
       <TemplateHead />
     </template>-->
 
-    <div class="flex-grow flex-center opacity-5">
-      <h1>{{ title }}</h1>
-      <h2>{{ title }}</h2>
-      <h3>{{ title }}</h3>
-      <h4>{{ title }}</h4>
-      <h5>{{ title }}</h5>
-      <h6>{{ title }}</h6>
+      <div class="flex-grow flex-center opacity-5">
+         <h1>{{ title }}</h1>
+         <h2>{{ title }}</h2>
+         <h3>{{ title }}</h3>
+         <h4>{{ title }}</h4>
+         <h5>{{ title }}</h5>
+         <h6>{{ title }}</h6>
 
-      <p>{{ description }}</p>
+         <p>{{ description }}</p>
 
-      <ItemLink href="about">Автор</ItemLink>
-    </div>
-  </Layout>
+         <ItemLink href="about">Автор</ItemLink>
+      </div>
+   </Layout>
 </template>
 
 <script>
 export default {
-  nuxtI18n: false,
-  head() {
-    return {
-      title: !this.link?.title ? "Добро пожаловать" : this.link?.title,
-      description: !this.link?.description
-        ? "Общедоступная платформа Макса для предложений и всецелого получения полезностей"
-        : this.link?.description,
-      titleTemplate: this.headTemplate(!!this.link && this.query ? "%s" : undefined),
-      //meta: this.isRedirect()
-      //  ? [
-      //      { "http-equiv": "refresh", content: "0.5;URL=" + this.link?.href },
-      //      { "http-equiv": "refresh", content: "3;URL=" + this.link?.alt },
-      //    ]
-      //  : false,
-    }
-  },
-  data() {
-    return {
-      link: undefined,
-      qhash: undefined,
-      title: undefined,
-      description: undefined,
-      findutm: undefined,
-      findgtm: undefined,
-    }
-  },
-  beforeMount() {
-    this.loadLink()
-  },
-  mounted() {
-    this.Routed()
-  },
-  methods: {
-    Redirected() {
-      this.title = this.link?.title
-      this.description = this.link?.description
+   nuxtI18n: false,
+   head() {
+      return {
+         title: !this.link?.title ? this.title : this.link?.title,
+         description: !this.link?.description ? this.description : this.link?.description,
+         titleTemplate: this.headTemplate(!!this.link && this.query ? "%s" : undefined),
+      };
+   },
+   data() {
+      return {
+         link: undefined,
+         qhash: undefined,
+         title: "Добро пожаловать",
+         description: "Общедоступная платформа Макса для предложений и всецелого получения полезностей",
+         findutm: undefined,
+         findgtm: undefined,
+      };
+   },
+   beforeMount() {
+      this.loadLink();
+   },
+   mounted() {
+      this.Routed();
+   },
+   methods: {
+      Redirected() {
+         this.title = this.link?.title;
+         this.description = this.link?.description;
 
-      location.href = this.link?.href
-      setTimeout(() => (location.href = this.link?.alt), 3500)
-    },
-    Routed() {
-      // https://172.27.240.1:3000?mw
-      // https://172.27.240.1:3000#mw
+         location.href = this.link?.href;
+         setTimeout(() => (location.href = this.link?.alt), 3500);
+      },
+      Routed() {
+         // https://172.27.240.1:3000?mw
+         // https://172.27.240.1:3000#mw
 
-      //console.log(this.query && !this.findutm && !this.findgtm)
+         this.query && !this.findutm && !this.findgtm
+            ? this.Redirected()
+            : this.hash
+            ? this.Redirected()
+            : (() => {
+                 if (!this.LCG("about")) this.routeLight("about");
+                 else this.routeLight("sentences/1");
+              })();
+      },
+      loadLink() {
+         this.query = Object.keys(this.$route.query)?.[0];
+         this.hash = this.$route.hash?.replace("#", "");
 
-      this.query && !this.findutm && !this.findgtm
-        ? this.Redirected()
-        : this.hash
-        ? this.Redirected()
-        : (() => {
-            if (!this.LCG("about")) this.routeLight("about")
-            else this.routeLight("sentences/1")
-          })()
-    },
-    loadLink() {
-      this.query = Object.keys(this.$route.query)?.[0]
-      this.hash = this.$route.hash?.replace("#", "")
+         this.findutm = this.query?.indexOf("utm") !== -1;
+         this.findgtm = this.query?.indexOf("gtm") !== -1;
 
-      this.findutm = this.query?.indexOf("utm") !== -1
-      this.findgtm = this.query?.indexOf("gtm") !== -1
-
-      this.link = this.$store.state.reffers?.filter(
-        (ln) => ln?.attributes?.short == this.query || ln?.attributes?.short == this.hash
-      )?.[0]?.attributes
-    },
-  },
-}
+         this.link = this.$store.state.reffers?.filter(
+            (ln) => ln?.attributes?.short == this.query || ln?.attributes?.short == this.hash
+         )?.[0]?.attributes;
+      },
+   },
+};
 
 //if (!this.qhash) {
 //  setTimeout(() => {
@@ -122,6 +112,6 @@ export default {
 
 <style lang="scss">
 .index {
-  @apply bg-black flex-grow inset-0 fixed;
+   @apply bg-black flex-grow inset-0 fixed;
 }
 </style>

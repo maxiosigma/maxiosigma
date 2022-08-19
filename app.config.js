@@ -1,6 +1,6 @@
 const data = {
    port: Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000,
-   excluded: ["test", "l"],
+   excluded: ["test", "sitemap", "l"],
    prefix: "",
    netlyConfig: netlyConfig(),
    MAINTENANCE_PAGE: "/techworks",
@@ -75,6 +75,10 @@ function meta() {
       { name: "google-site-verification", content: data.verification.google },
 
       { name: "theme-color", content: "#000000" },
+
+      { name: "robots", content: "all" },
+      { name: "googlebot", content: "all" },
+      { name: "googlebot-news", content: "all" },
 
       { name: "keywords", content: data.keywords },
       { name: "copyright", content: data.copyright },
