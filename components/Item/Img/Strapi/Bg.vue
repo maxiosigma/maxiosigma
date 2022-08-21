@@ -1,9 +1,11 @@
 <template>
-   <div :class="[id, 'img-bg-mod']" :title="title" :alt="alt" itemprop="image">
+   <div v-if="src" :class="[id, 'img-bg-mod']" :title="title" :alt="alt" itemprop="image">
       <slot>
-         <nuxt-img class="hidden" :src="src" format="webp" provider="strapi"></nuxt-img>
+         <nuxt-img v-if="src" class="hidden" :src="src" format="webp" provider="strapi"></nuxt-img>
       </slot>
    </div>
+
+   <div v-else>Изображение не найдено</div>
 </template>
 
 <script>

@@ -584,6 +584,7 @@ export default {
       "@plugins/passive/mixins",
       "@plugins/passive/directives",
       "@plugins/active/VueScrollIndicator.client.js",
+      //"@plugins/active/VueAwesomeSwiper",
       "@plugins/active/VueTypedJs",
       "@plugins/active/VueKinesis",
       "@plugins/active/VueTooltip",

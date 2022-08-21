@@ -38,6 +38,15 @@ Vue.mixin({
       mainPath() {
          return this.$route.fullPath === "/";
       },
+      routeReffer() {
+         return (
+            "/" +
+            document.referrer
+               .split("/")
+               .filter((it, i) => i > 2)
+               .join("/")
+         );
+      },
       lightRedirect() {
          const light = this.isLight();
          const isMobile = this.$ua.deviceType() !== "pc" && !light;

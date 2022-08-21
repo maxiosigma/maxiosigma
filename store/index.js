@@ -15,6 +15,8 @@ export const state = () => ({
    reffers: [],
    links: [],
    publics: [],
+   developerWorks: [],
+   designerWorks: [],
 });
 
 export const mutations = {
@@ -73,6 +75,21 @@ export const actions = {
       const publicsQuery = await this.$strapi.graphql({ query: ctx.state.gql.publics });
       const publicsResult = publicsQuery.publicateds.data.map((it) => it.attributes);
       ctx.commit("uploadStrapi", { key: "publics", payload: publicsResult });
+
+      const developerWorksQuery = await this.$strapi.graphql({ query: ctx.state.gql.developerWorks });
+      const developerWorksResult = developerWorksQuery.developerWorks.data.map((it) => it.attributes);
+      ctx.commit("uploadStrapi", { key: "developerWorks", payload: developerWorksResult });
+
+      const designerWorksQuery = await this.$strapi.graphql({ query: ctx.state.gql.designerWorks });
+      const designerWorksResult = designerWorksQuery.designerWorks.data
+         .map((it) => it.attributes)
+         .map((it) => {
+            return {
+               ...it,
+               media: it.media.data.map((att) => att.attributes),
+            };
+         });
+      ctx.commit("uploadStrapi", { key: "designerWorks", payload: designerWorksResult });
 
       const reffers = (await this.$strapi.graphql({ query: ctx.state.gql.links })).links?.data;
       ctx.commit("uploadStrapi", { key: "reffers", payload: reffers });

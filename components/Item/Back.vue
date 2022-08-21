@@ -1,4 +1,5 @@
 <template>
+   <!-- LazyItemRundomString -->
    <div @click="handleClick()">
       <slot></slot>
    </div>
@@ -8,8 +9,8 @@
 export default {
    methods: {
       handleClick() {
-         // location.href = this.LCG("page_visit_prev");
-         location.href = "/";
+         //console.log(this.LCG("page_visit_prev"));
+         location.href = this.LCG("page_visit_prev") ?? "/";
       },
    },
 };

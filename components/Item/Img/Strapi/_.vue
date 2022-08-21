@@ -1,5 +1,17 @@
 <template>
-   <nuxt-img :src="src" provider="strapi" format="webp" :class="[id]" loading="lazy" :title="title" :alt="alt" itemprop="image"></nuxt-img>
+   <nuxt-img
+      v-if="src"
+      :src="src"
+      provider="strapi"
+      format="webp"
+      :class="[id]"
+      loading="lazy"
+      :title="title"
+      :alt="alt"
+      itemprop="image"
+   ></nuxt-img>
+
+   <div v-else>Изображение не найдено</div>
 </template>
 
 <script>

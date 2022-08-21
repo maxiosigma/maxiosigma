@@ -7,20 +7,20 @@
    <Layout :bodyStyle="'portfolio'" :title="title" :description="description">
       <div class="flex-grow relative">
          <ItemBack
-            class="absolute cursor-pointer border-b-3 border-r-3 border-orange-500 rounded-xl pt-1.5 pr-2.5 pb-2 left-5 top-5 group hover:(bg-bg-light-200)"
+            class="absolute cursor-pointer opacity-25 uppercase text-sm font-medium border-b-3 transition duration-700 border-r-3 border-orange-500 rounded-xl pt-1.5 pr-2.5 pb-2 left-5 top-5 hover:(opacity-95)"
          >
-            ← Назад
+            <span class="text-indigo-900"> ← </span>
+            <!-- LazyItemRundomString -->
+            <div class="inline text-xs text-indigo-900">Обратно</div>
          </ItemBack>
       </div>
 
       <div class="flex-grow">
-         <div class="flex-center">
-            <ItemImg class="w-auto h-96 object-contain object-center" :src="'portfolio/bg_4.png'" />
+         <div class="flex-center h-96">
+            <!--<ItemImg class="w-auto h-full object-contain object-center" :src="'portfolio/bg_4.png'" />-->
          </div>
 
-         <div class="flex-center flex-col p-5 bg-black text-white">
-            <!--<h2 class="font-robotoslab mb-2 tracking-widest font-black uppercase"></h2>-->
-
+         <!--<div class="flex-center flex-col p-5 bg-black text-white">
             <h2 class="inline-flex-center flex-col font-thin uppercase gap-2 grid-rows-1">
                <div>
                   <span>Вам нужен :</span>
@@ -36,13 +36,18 @@
                   <span class="font-black text-xl text-yellow-600">!</span>
                </div>
             </h2>
-         </div>
+         </div>-->
+
+         <ItemPortfolioBlock :black="true" :data="{ first: designerWorksFirst, second: designerWorksSecond }">
+            <template v-slot:title> Дизайнер </template>
+            <template v-slot:description> Описание </template>
+         </ItemPortfolioBlock>
+
+         <!--<ItemPortfolioBlock :black="true" :data="{ first: developerWorksFirst, second: developerWorksSecond }"></ItemPortfolioBlock>-->
 
          <div class="bg-indigo-900 min-h-screen"></div>
 
          <!--<div>1111</div>-->
-
-         <!--<ItemPortfolioBlock :black="true"></ItemPortfolioBlock>-->
 
          <!--<ItemPortfolioBlock></ItemPortfolioBlock>-->
       </div>
@@ -57,73 +62,35 @@ export default {
          description: this.description,
       };
    },
+   async asyncData({ store }) {
+      const developerWorksFirst = store.state.developerWorks.filter((it, i) => i <= 5);
+      const developerWorksSecond = store.state.developerWorks.filter((it, i) => i > 5);
+      const designerWorksFirst = store.state.designerWorks.filter((it, i) => i <= 5);
+      const designerWorksSecond = store.state.designerWorks.filter((it, i) => i > 5);
+
+      //console.log(developerWorksFirst, developerWorksSecond, designerWorksFirst, designerWorksSecond);
+
+      return { developerWorksFirst, developerWorksSecond, designerWorksFirst, designerWorksSecond };
+   },
    data() {
       return {
          title: "Портфолио",
          description: "Работы Макса, посмотрите обязательно !!!",
-         //items: [
-         //   { s1: "Р", s2: "азра", s3: "ботчик", l: "developer" },
-         //   { s1: "П", s2: "редпри", s3: "ниматель", l: "entrepreneur" },
-         //   { s1: "Д", s2: "иза", s3: "йнер", l: "designer" },
-         //],
-         //properties: {
-         //   developer: 0,
-         //   designer: 0,
-         //   entrepreneur: 0,
-         //},
-         //active: false,
+         developer: {},
+         designer: {},
       };
    },
-   //async asyncData({ $strapi, store }) {
-   //   const portfolio = store.state.gql.portfolio;
-   //   const data = (
-   //      await $strapi.graphql({
-   //         query: portfolio,
-   //      })
-   //   )?.page?.data?.attributes;
-
-   //   return {
-   //      data,
-   //   };
-   //},
-   mounted() {
-      //this.canvasList();
-      //console.log(this.$route);
-   },
-   methods: {
-      //handleClick(url) {
-      //   this.active = true;
-      //   setTimeout(() => {
-      //      location.href = url;
-      //   }, 2500);
-      //},
-      //canvasList() {
-      //   //const obj = this.$refs.canvasList
-      //   const arr = document.querySelectorAll(".canvas-list");
-      //   //console.log(arr.forEach((it) => it))
-      //   arr?.forEach((obj, i) => {
-      //      const ctx = obj?.getContext("2d");
-      //      ctx.beginPath();
-      //      ctx.moveTo(0, 25);
-      //      ctx.bezierCurveTo(0, 25, 150, 0, 300, 25);
-      //      ctx.moveTo(0, 25);
-      //      ctx.bezierCurveTo(0, 25, 150, 50, 300, 25);
-      //      ctx.fillStyle = "#0e9090";
-      //      ctx.fill();
-      //   });
-      //},
-   },
+   mounted() {},
+   methods: {},
 };
 </script>
 
 <style lang="scss">
 .portfolio {
-   // flex-center flex-grow text-center
    @apply bg-light-900;
 
    &-block {
       &-container {
-         // transform absolute w-full h-full
          @apply rounded-md cursor-pointer flex-center flex-grow font-vetka font-black bg-orange-600 bg-hero-bank-note-white-20 bg-3r text-white min-h-1/3 max-w-4 px-[6vmin] py-[4vmin] transform transition-all text-[2.5vmin] duration-900 break-all uppercase elevation-10;
          @apply hover:(elevation-15 rotate-y-0 scale-100 filter hue-rotate-270) #{!important};
 
@@ -131,18 +98,15 @@ export default {
             &-1 {
                @apply ml-auto leading-[1.7] rotate-y-30 bg-purple-600;
                box-shadow: 5px 0 15px rgba(255, 255, 255, 0.15);
-               //@apply -translate-x-[0vmin] translate-y-[27vmin];
             }
             &-2 {
                @apply mx-auto leading-[1.5] scale-95 bg-orange-600;
                box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
-               //@apply -rotate-30 translate-x-[33vmin] -translate-y-[27vmin];
             }
 
             &-3 {
                @apply mr-auto leading-[2.3] -rotate-y-30 bg-green-600;
                box-shadow: -5px 0 15px rgba(255, 255, 255, 0.15);
-               //@apply rotate-30 -translate-x-[33vmin] -translate-y-[27vmin];
             }
 
             &-effect {

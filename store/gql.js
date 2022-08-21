@@ -11,7 +11,7 @@ export const state = () => ({
    links: links(),
 });
 
-function designerWorks(page = 1, limit = 200) {
+function designerWorks(limit = 200) {
    return `
 		query designerWork {
 			designerWorks(pagination: { limit: ${limit} }) {
@@ -65,10 +65,10 @@ function designerWorks(page = 1, limit = 200) {
 	`;
 }
 
-function developerWorks(page = 1, limit = 200) {
+function developerWorks(limit = 200) {
    return `
 		query developerWorks {
-			developerWorks(pagination: { page: ${page}, limit: ${limit} }) {
+			developerWorks(pagination: { limit: ${limit} }) {
 				data {
 					attributes {
 						title
@@ -242,6 +242,37 @@ function parentMenu(count = 1, depth = 3) {
 			}
 		`;
 }
+
+function uiMenu(slug = "nav-bar") {
+   return {};
+}
+
+/*
+query {
+	 renderNavigation(
+    navigationIdOrSlug: "nav-bar"
+    type: FLAT
+    menuOnly: false
+  ){
+    title
+    path
+    type
+    order
+    externalPath
+    uiRouterKey
+    menuAttached
+    parent {
+      uiRouterKey
+	  parent{
+         uiRouterKey
+         parent{
+        	uiRouterKey
+      	 }
+      }
+    }
+  }
+}
+*/
 
 //data {
 //	attributes {

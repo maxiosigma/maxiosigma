@@ -73,7 +73,12 @@ export default {
    //   },
    //},
    beforeMount() {
-      //document.referrer
+      //console.log(this.routeReffer(), this.$route.path);
+
+      this.routeReffer() !== this.$route.path ? this.LCS("page_visit_prev", this.routeReffer()) : null;
+
+      this.LCS("page_visit", this.$route.path);
+
       //this.$route.path !== this.LCG("page_visit") ? this.LCS("page_visit", this.$route.path) : null;
       //this.LCG("page_visit_prev") !== this.LCG("page_visit") ? null : this.LCS("page_visit_prev", this.LCG("page_visit") ?? "/");
       //console.log(this.LCG("page_visit_prev"), this.LCG("page_visit"));
