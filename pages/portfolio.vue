@@ -38,10 +38,10 @@
             </h2>
          </div>-->
 
-         <ItemPortfolioBlock :black="true" :data="{ first: designerWorksFirst, second: designerWorksSecond }">
+         <ItemPortfolioSection :black="true" :data="{ first: designerWorksFirst, second: designerWorksSecond }">
             <template v-slot:title> Дизайнер </template>
             <template v-slot:description> Описание </template>
-         </ItemPortfolioBlock>
+         </ItemPortfolioSection>
 
          <!--<ItemPortfolioBlock :black="true" :data="{ first: developerWorksFirst, second: developerWorksSecond }"></ItemPortfolioBlock>-->
 

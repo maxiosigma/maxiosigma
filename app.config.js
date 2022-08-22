@@ -19,6 +19,7 @@ const data = {
    update: process.env.NODE_ENV == "production" ? String(Math.random()) : "0.7559774425759966",
    verification: {
       yandex: "cb213dea7621a4e2",
+      yandex2: "93454d256c0b0346",
       google: "ZoLbftcsmf7qpf4CyVJvt8P-45PpBncITlCUyWTnu2M",
    },
    lang: "ru-RU",
@@ -72,6 +73,7 @@ function meta() {
       },
 
       { name: "yandex-verification", content: data.verification.yandex },
+      { name: "yandex-verification", content: data.verification.yandex2 },
       { name: "google-site-verification", content: data.verification.google },
 
       { name: "theme-color", content: "#000000" },

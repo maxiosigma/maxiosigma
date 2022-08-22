@@ -14,7 +14,7 @@ export const state = () => ({
 function designerWorks(limit = 200) {
    return `
 		query designerWork {
-			designerWorks(pagination: { limit: ${limit} }) {
+			designerWorks(pagination: { limit: ${limit} }, sort: "top:DESC") {
 				data {
 					attributes {
 						title
@@ -68,7 +68,7 @@ function designerWorks(limit = 200) {
 function developerWorks(limit = 200) {
    return `
 		query developerWorks {
-			developerWorks(pagination: { limit: ${limit} }) {
+			developerWorks(pagination: { limit: ${limit} }, sort: "top:DESC") {
 				data {
 					attributes {
 						title
