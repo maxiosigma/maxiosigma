@@ -51,20 +51,36 @@
          <ItemPortfolioSection :black="true" :reverse="false" :data="{ first: designerWorksFirst, second: designerWorksSecond }">
             <template v-slot:title> Дизайнер </template>
             <template v-slot:description>
-               <div>▬ Очень креативен</div>
-               <div>▬ В основе: тренды текущего года, яркие тона, геометрия, нег. пространство</div>
-               <div>▬ Инструменты: Figma</div>
+               <div
+                  v-for="(it, i) in [
+                     'Очень креативен',
+                     'В основе: тренды текущего года, яркие тона, геометрия, нег. пространство',
+                     'Инструменты: Figma',
+                  ]"
+                  :key="i"
+               >
+                  <div class="sm:(inline mr-1)">▬</div>
+                  {{ it }}
+               </div>
             </template>
          </ItemPortfolioSection>
 
          <ItemPortfolioSection :black="false" :reverse="true" :data="{ first: developerWorksFirst, second: designerWorksSecond }">
             <template v-slot:title> Разработчик </template>
             <template v-slot:description>
-               <div>▬ Создаю проекты на Nuxt JS = полностью статичный сайт и Windi CSS = более быстрый и функциональный аналог tailwind</div>
-               <div>▬ Начинал с webpack, laravel-mix и освоения разных фреймворков</div>
-               <div>▬ Знаю, но обычно не работаю с CMS: Tilda, Wordpress, October</div>
-               <div>▬ Знаю и обычно работаю с CMS: Strapi, Firebase, Contentfull, Prismic</div>
-               <div>▬ Используемые хостинги: Firebase, Netlify, Vercel</div>
+               <div
+                  v-for="(it, i) in [
+                     'Создаю проекты на Nuxt JS = полностью статичный сайт и Windi CSS = более быстрый и функциональный аналог tailwind',
+                     'Начинал с webpack, laravel-mix и освоения разных фреймворков',
+                     'Знаю, но обычно не работаю с CMS: Tilda, Wordpress, October',
+                     'Знаю и обычно работаю с CMS: Strapi, Firebase, Contentfull, Prismic',
+                     'Используемые хостинги: Firebase, Netlify, Vercel',
+                  ]"
+                  :key="i"
+               >
+                  <div class="sm:(inline mr-1)">▬</div>
+                  {{ it }}
+               </div>
             </template>
          </ItemPortfolioSection>
 

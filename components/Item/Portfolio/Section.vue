@@ -1,18 +1,20 @@
 <template>
    <div class="portfolio-block" :class="[`block-${section}`, black ? 'bg-black text-light-200' : 'bg-light-900 text-indigo-900']">
-      <div class="grid container mx-auto grid-cols-12 grid-rows-1">
-         <div class="p-4 col-span-6" :class="[reverse ? 'order-2' : 'order-1']">
+      <div class="grid container mx-auto sm:grid-cols-12 grid-rows-1">
+         <div class="p-4 sm:col-span-6" :class="[reverse ? 'sm:order-2' : 'sm:order-1']">
             <VueSlickCarousel class="pointer-events-none" v-bind="{ ...slider.common, ...slider.top }">
                <div class="flex rounded-xl overflow-hidden" v-for="(it, i) in data.first" :key="i">
-                  <!--{{ it.media }}-->
-                  <LazyItemImgStrapiBg
+                  <ItemImgStrapiBg
                      class="bg-contain flex-grow bg-center rounded-xl min-h-60 bg-transparent w-full h-full"
                      :src="it.media[0].url"
                   />
                </div>
             </VueSlickCarousel>
 
-            <VueSlickCarousel class="mt-5 max-w-80 pointer-events-none mx-auto group" v-bind="{ ...slider.common, ...slider.bootom }">
+            <VueSlickCarousel
+               class="mt-5 max-w-40 sm:max-w-80 pointer-events-none mx-auto group"
+               v-bind="{ ...slider.common, ...slider.bootom }"
+            >
                <div class="flex-center" v-for="(it, i) in data.first" :key="i">
                   <div
                      class="text-lg tracking-widest inline-flex items-center uppercase"
@@ -33,10 +35,13 @@
             </VueSlickCarousel>
          </div>
 
-         <div class="grid gap-6 col-span-6 place-items-start place-content-start px-4 py-6" :class="[reverse ? 'order-1' : 'order-2']">
+         <div
+            class="grid gap-6 sm:col-span-6 place-items-start place-content-start px-4 py-6 <sm:(place-items-center text-center)"
+            :class="[reverse ? 'sm:order-1' : 'sm:order-2']"
+         >
             <!-- LazyItemRundomString -->
             <div
-               class="text-5xl pb-4 px-2 uppercase tracking-[5px]"
+               class="text-2xl sm:text-5xl pb-4 px-2 uppercase tracking-[5px]"
                :class="[
                   black
                      ? 'text-shadow-custom-green-5px border-b-6 border-orange-500'
@@ -126,7 +131,7 @@ export default {
 .portfolio {
    &-block {
       //my-10
-      @apply px-4 py-4 min-h-32 bg-opacity-85 relative;
+      @apply px-4 py-4 min-h-32 max-w-screen break-world bg-opacity-85 relative;
    }
 }
 </style>
