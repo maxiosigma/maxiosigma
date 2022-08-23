@@ -77,7 +77,14 @@ export const actions = {
       ctx.commit("uploadStrapi", { key: "publics", payload: publicsResult });
 
       const developerWorksQuery = await this.$strapi.graphql({ query: ctx.state.gql.developerWorks });
-      const developerWorksResult = developerWorksQuery.developerWorks.data.map((it) => it.attributes);
+      const developerWorksResult = developerWorksQuery.developerWorks.data
+         .map((it) => it.attributes)
+         .map((it) => {
+            return {
+               ...it,
+               media: it.media.data.map((att) => att.attributes),
+            };
+         });
       ctx.commit("uploadStrapi", { key: "developerWorks", payload: developerWorksResult });
 
       const designerWorksQuery = await this.$strapi.graphql({ query: ctx.state.gql.designerWorks });

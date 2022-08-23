@@ -239,15 +239,14 @@ function plugins() {
 }
 
 function textShadows() {
-   const colors = ["white", "black", "orange", "blue"];
-   //const opacity = ["0", "25"];
+   const colors = ["white", "black", "green", "orange", "blue"];
 
    const custom_base = range(10).reduce((sum, it, i) => {
       colors.map((color) => {
          sum = {
             ...sum,
-            [`.text-shadow-custom-${color}-${it * 5}px`]: {
-               "text-shadow": `0 0 ${it * 5}px ${color}`,
+            [`.text-shadow-custom-${color}-${it * 1}px`]: {
+               "text-shadow": `0 0 ${it * 1}px ${color}`,
             },
          };
       });
@@ -255,14 +254,16 @@ function textShadows() {
       colors.map((color) => {
          sum = {
             ...sum,
-            [`.shadow-custom-${color}-${it * 5}px`]: {
-               "box-shadow": `0 0 ${it * 5}px ${color}`,
+            [`.shadow-custom-${color}-${(it - 1) * 5}px`]: {
+               "box-shadow": `0 0 ${(it - 1) * 5}px ${color}`,
             },
          };
       });
 
       return sum;
    }, {});
+
+   console.log(custom_base);
 
    return {
       ".text-shadow-neon": {
@@ -301,6 +302,7 @@ function extract() {
          "./components/**/*.vue",
          "./components/**/**/*.vue",
          "./components/**/**/**/*.vue",
+         "./components/**/**/**/**/*.vue",
 
          "./pages/*.vue",
          "./pages/**/*.vue",

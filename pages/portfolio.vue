@@ -1,57 +1,5 @@
 <template>
-   <!--<LayoutPage :title="title" :description="description">
-      <div>1</div>
-   </LayoutPage>-->
-
-   <!-- document.referrer -->
-   <Layout :bodyStyle="'portfolio'" :title="title" :description="description">
-      <div class="flex-grow relative">
-         <ItemBack
-            class="absolute cursor-pointer opacity-25 uppercase text-sm font-medium border-b-3 transition duration-700 border-r-3 border-orange-500 rounded-xl pt-1.5 pr-2.5 pb-2 left-5 top-5 hover:(opacity-95)"
-         >
-            <span class="text-indigo-900"> ← </span>
-            <!-- LazyItemRundomString -->
-            <div class="inline text-xs text-indigo-900">Обратно</div>
-         </ItemBack>
-      </div>
-
-      <div class="flex-grow">
-         <div class="flex-center h-96">
-            <!--<ItemImg class="w-auto h-full object-contain object-center" :src="'portfolio/bg_4.png'" />-->
-         </div>
-
-         <!--<div class="flex-center flex-col p-5 bg-black text-white">
-            <h2 class="inline-flex-center flex-col font-thin uppercase gap-2 grid-rows-1">
-               <div>
-                  <span>Вам нужен :</span>
-                  <span>Дизайнер</span>
-                  <span class="font-black mx-1 text-cyan-200">|</span>
-                  <span>Разработчик</span>
-                  <span class="font-black text-xl text-indigo-600"> ?</span>
-               </div>
-
-               <div>
-                  <span class="font-black text-xl text-yellow-600">!</span>
-                  <span class="mx-1">Тогда вы по адресу</span>
-                  <span class="font-black text-xl text-yellow-600">!</span>
-               </div>
-            </h2>
-         </div>-->
-
-         <ItemPortfolioSection :black="true" :data="{ first: designerWorksFirst, second: designerWorksSecond }">
-            <template v-slot:title> Дизайнер </template>
-            <template v-slot:description> Описание </template>
-         </ItemPortfolioSection>
-
-         <!--<ItemPortfolioBlock :black="true" :data="{ first: developerWorksFirst, second: developerWorksSecond }"></ItemPortfolioBlock>-->
-
-         <div class="bg-indigo-900 min-h-screen"></div>
-
-         <!--<div>1111</div>-->
-
-         <!--<ItemPortfolioBlock></ItemPortfolioBlock>-->
-      </div>
-   </Layout>
+   <LayoutPage :title="title" :description="description"></LayoutPage>
 </template>
 
 <script>
@@ -62,16 +10,14 @@ export default {
          description: this.description,
       };
    },
-   async asyncData({ store }) {
-      const developerWorksFirst = store.state.developerWorks.filter((it, i) => i <= 5);
-      const developerWorksSecond = store.state.developerWorks.filter((it, i) => i > 5);
-      const designerWorksFirst = store.state.designerWorks.filter((it, i) => i <= 5);
-      const designerWorksSecond = store.state.designerWorks.filter((it, i) => i > 5);
+   //async asyncData({ store }) {
+   //   const developerWorksFirst = store.state.developerWorks.filter((it, i) => i <= 5);
+   //   const developerWorksSecond = store.state.developerWorks.filter((it, i) => i > 5);
+   //   const designerWorksFirst = store.state.designerWorks.filter((it, i) => i <= 5);
+   //   const designerWorksSecond = store.state.designerWorks.filter((it, i) => i > 5);
 
-      //console.log(developerWorksFirst, developerWorksSecond, designerWorksFirst, designerWorksSecond);
-
-      return { developerWorksFirst, developerWorksSecond, designerWorksFirst, designerWorksSecond };
-   },
+   //   return { developerWorksFirst, developerWorksSecond, designerWorksFirst, designerWorksSecond };
+   //},
    data() {
       return {
          title: "Портфолио",
@@ -80,8 +26,8 @@ export default {
          designer: {},
       };
    },
-   mounted() {},
-   methods: {},
+   //mounted() {},
+   //methods: {},
 };
 </script>
 
