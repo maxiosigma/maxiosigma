@@ -1,7 +1,8 @@
 <template>
    <div v-if="src" :class="[id, 'img-bg-mod']" :title="title" :alt="alt" itemprop="image">
+      <!--  lazy-background="" -->
       <slot>
-         <nuxt-img v-if="src" class="hidden" :src="src" format="webp" provider="strapi"></nuxt-img>
+         <ItemMediaStrapi v-if="src" class="hidden" :src="src"></ItemMediaStrapi>
       </slot>
    </div>
 
@@ -10,7 +11,7 @@
 
 <script>
 export default {
-   props: ["src", "alt", "title"],
+   props: ["src", "alt", "title", "type"],
    data() {
       return {
          id:
@@ -35,8 +36,12 @@ export default {
    // },
    mounted() {
       if (!this.isLinkSite(this.src)) {
+         //console.log(this.src);
+         //console.log(this.$img(this.src, { format: "webp", quality: 75 }, { provider: "strapi" }));
+
          // const url = require(`../../../../../strapi/public/uploads/${this.src.replace("/uploads/", "")}`);
          const url = !this.$config.isDev ? `/public/images/uploads-${this.src.replace("/uploads/", "")}` : `http://localhost:1337${this.src}`;
+         //console.log(url);
          this.loadStyleImg(url);
       } else this.loadStyleImg(this.src);
    },

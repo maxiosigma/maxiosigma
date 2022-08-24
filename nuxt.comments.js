@@ -1733,7 +1733,7 @@ function other() {
 //<!--<div class="flex-grow filter drop-shadow-lg lg:(grid grid-cols-3) <lg:(flex flex-col) ">-->
 //  <!-- , { 'elevation-10': i == 2 } ДОБАВИТЬ ТЕНИ ПО БОКАМ -->
 //  <!-- 	@click.native.prevent="redirect(it.name)" -->
-//  <!--<ItemImgStrapiBg
+//  <!--<ItemMediaStrapiBg
 //      :class="[
 //        it.name,
 //        'flex-grow flex-center relative flex-col cursor-pointer text-light-200 relative bg-top bg-cover <lg:(bg-contain max-w-1/2 flex-shrink flex-grow-0 min-h-300px)',
@@ -1751,7 +1751,7 @@ function other() {
 //      :alt="data.Imgs.data[i].attributes.name"
 //    >
 //      <div class="text-center">{{ it.title }}</div>
-//    </ItemImgStrapiBg>-->
+//    </ItemMediaStrapiBg>-->
 
 //  <!--<div class="js-object-log"></div>
 //			<div class="">{{ properties[it.name] }}</div>

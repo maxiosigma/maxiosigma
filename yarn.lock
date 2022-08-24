@@ -8232,6 +8232,11 @@ internal-slot@^1.0.3:
     has "^1.0.3"
     side-channel "^1.0.4"
 
+intersection-observer@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/intersection-observer/-/intersection-observer-0.7.0.tgz#ee16bee978db53516ead2f0a8154b09b400bbdc9"
+  integrity sha512-Id0Fij0HsB/vKWGeBe9PxeY45ttRiBmhFyyt/geBdDHBYNctMRTE3dC1U3ujzz3lap+hVXlEcVaB56kZP/eEUg==
+
 io-ts-reporters@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/io-ts-reporters/-/io-ts-reporters-2.0.1.tgz#0154545aefd115f0f175a41743ed7327d19b1c34"
@@ -10988,6 +10993,14 @@ nuxt-image-extractor@^1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/nuxt-image-extractor/-/nuxt-image-extractor-1.1.4.tgz#f6fa4244fa703ba9dbb072eb0500c4cc20b849c2"
   integrity sha512-Ondz+pX4IrRrkCuOLFYG3Ct6NfHv6eeE+76W5zmpcw8u32MCcdxk+RhErS86O6QmF8AT4AdC95ALjusN/B5UfA==
+
+nuxt-lazy-load@^1.2.9:
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/nuxt-lazy-load/-/nuxt-lazy-load-1.2.9.tgz#cad74b0efbb106545d39c84c2277bc18841226aa"
+  integrity sha512-TB9k4s9d/M1k3hLasBQChkHFTSDlkov2AQNcE1d6vFuLuy4cjvVnoVO8VRHaVtIKPETbwmsDyc+mmi87LJZ7pg==
+  dependencies:
+    intersection-observer "^0.7.0"
+    string-replace-loader "^2.1.1"
 
 nuxt-parallel-middleware@^0.0.2:
   version "0.0.2"

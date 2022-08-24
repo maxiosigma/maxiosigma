@@ -4,12 +4,12 @@
       <div class="">{{ it }}</div>
 
       <div class="" v-if="isVideo(it.media.data[0].attributes.ext)"></div>
-       <ItemImgStrapiBg
+       <ItemMediaStrapiBg
         class="bg-contain bg-transparent !h-40 !w-40"
         :src="it.media.data[0].attributes.url"
         v-else
       >
-      </ItemImgStrapiBg>
+      </ItemMediaStrapiBg>
       {{ it.media.data[0].attributes }}
      </div>-->
 
@@ -42,12 +42,12 @@
                class="relative flex-center border-5 border-light-200/75 shadow-custom-orange-15px !min-w-30 !min-h-30 rounded-full overflow-hidden"
                :class="['', i % 2 === 0 ? 'mr-5' : 'ml-5']"
             >
-               <ItemImgStrapi
+               <ItemMediaStrapi
                   class="max-w-none object-center absolute w-full h-full object-cover"
                   v-for="(media, i) in it.media"
                   :key="i"
                   :src="media.url"
-               ></ItemImgStrapi>
+               ></ItemMediaStrapi>
             </div>
 
             <!--<div>{{ it.technologies }}</div>

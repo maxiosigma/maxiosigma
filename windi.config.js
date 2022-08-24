@@ -239,38 +239,28 @@ function plugins() {
 }
 
 function textShadows() {
-   const colors = ["white", "black", "green", "orange", "blue"];
-
-   const custom_base = range(10).reduce((sum, it, i) => {
-      colors.map((color) => {
-         sum = {
-            ...sum,
-            [`.text-shadow-custom-${color}-${it * 1}px`]: {
-               "text-shadow": `0 0 ${it * 1}px ${color}`,
-            },
-         };
-      });
-
-      colors.map((color) => {
-         sum = {
-            ...sum,
-            [`.shadow-custom-${color}-${(it - 1) * 5}px`]: {
-               "box-shadow": `0 0 ${(it - 1) * 5}px ${color}`,
-            },
-         };
-      });
-
-      return sum;
-   }, {});
-
-   console.log(custom_base);
+   //console.log(custom_base);
 
    return {
       ".text-shadow-neon": {
          "text-shadow":
             "0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18, 2px 2px 2px rgba(255,255,255,0)",
       },
-      ...custom_base,
+      ...range(20).reduce((sum, it, i) => {
+         ["white", "black", "indigo", "cyan", "green", "orange", "blue"].map((color) => {
+            sum = {
+               ...sum,
+               [`.text-shadow-custom-${color}-${it * 1}px`]: {
+                  "text-shadow": `0 0 ${it * 1}px ${color}`,
+               },
+               [`.shadow-custom-${color}-${(it - 1) * 5}px`]: {
+                  "box-shadow": `0 0 ${(it - 1) * 5}px ${color}`,
+               },
+            };
+         });
+
+         return sum;
+      }, {}),
    };
 }
 

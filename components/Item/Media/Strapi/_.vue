@@ -6,6 +6,7 @@
       format="webp"
       :class="[id]"
       loading="lazy"
+      quality="95"
       :title="title"
       :alt="alt"
       itemprop="image"

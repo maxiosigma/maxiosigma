@@ -4,33 +4,59 @@
          <div class="p-4 sm:col-span-6" :class="[reverse ? 'sm:order-2' : 'sm:order-1']">
             <VueSlickCarousel class="pointer-events-none" v-bind="{ ...slider.common, ...slider.top }">
                <div class="flex rounded-xl overflow-hidden" v-for="(it, i) in data.first" :key="i">
-                  <ItemImgStrapiBg
+                  <ItemMediaStrapiBg
                      class="bg-contain flex-grow bg-center rounded-xl min-h-60 bg-transparent w-full h-full"
                      :src="it.media[0].url"
                   />
                </div>
             </VueSlickCarousel>
 
-            <VueSlickCarousel
-               class="mt-5 max-w-40 sm:max-w-80 pointer-events-none mx-auto group"
-               v-bind="{ ...slider.common, ...slider.bootom }"
-            >
-               <div class="flex-center" v-for="(it, i) in data.first" :key="i">
+            <!-- pointer-events-none  -->
+            <VueSlickCarousel class="mt-5 px-5 pointer-events-none group" v-bind="{ ...slider.common, ...slider.bootom }">
+               <div class="grid gap-2 text-center" v-for="(it, i) in data.first" :key="i">
                   <div
-                     class="text-lg tracking-widest inline-flex items-center uppercase"
+                     v-if="it.link"
+                     class="font-mw mw-info m-3 text-opacity-50 transition duration-500 text-3xl"
+                     :class="[
+                        it.link ? 'cursor-pointer pointer-events-auto' : '',
+                        black ? 'text-green-500 text-shadow-custom-green-10px' : 'text-indigo-600 text-shadow-custom-indigo-1px',
+                        'group-hover:(!text-orange-400 !text-shadow-custom-orange-20px)',
+                     ]"
+                     @click="it.link ? handleClickLink(it.link) : false"
+                     v-tooltip="
+                        isMobile()
+                           ? {}
+                           : {
+                                content: `<div class='text-center'>Посмотреть работу <br> ${it.link}</div>`,
+                                html: true,
+                                distance: 20,
+                                delay: {
+                                   show: 200,
+                                   hide: 150,
+                                },
+                             }
+                     "
+                  ></div>
+
+                  <div
+                     class="text-lg tracking-widest items-center uppercase"
                      :class="[black ? 'text-shadow-custom-black-5px' : 'text-shadow-custom-black-1px']"
                   >
-                     <span>{{ it.title }}</span>
-
-                     <span
-                        v-if="it.link"
-                        class="font-mw mw-info transition duration-300 text-cyan-400 text-shadow-custom-green-10px text-2xl ml-1 mb-1 group-hover:(text-orange-400)"
-                        :class="[it.link ? 'cursor-pointer pointer-events-auto' : '']"
-                        @click="it.link ? handleClickLink(it.link) : false"
-                     ></span>
+                     {{ it.title }}
                   </div>
 
-                  <div class="text-lg font-medium tracking-wider font-vetka">{{ it.description }}</div>
+                  <div class="text-lg font-medium tracking-wider font-vetka">
+                     {{ it.description }}
+                  </div>
+
+                  <!--<div
+                     v-if="it.link"
+                     class="uppercase text-xs px-4 py-2 hover:(bg-orange-400)"
+                     :class="[it.link ? 'cursor-pointer pointer-events-auto' : '', black ? 'bg-green-500' : 'bg-indigo-900 text-white']"
+                     @click="it.link ? handleClickLink(it.link) : false"
+                  >
+                     Посмотреть
+                  </div>-->
                </div>
             </VueSlickCarousel>
          </div>
@@ -44,7 +70,7 @@
                class="text-2xl sm:text-5xl pb-4 px-2 uppercase tracking-[5px]"
                :class="[
                   black
-                     ? 'text-shadow-custom-green-5px border-b-6 border-orange-500'
+                     ? 'text-shadow-custom-green-10px border-b-6 border-orange-500'
                      : 'text-shadow-custom-blue-2px border-b-6 border-orange-500',
                ]"
             >
@@ -105,7 +131,8 @@ export default {
                pauseOnHover: false,
                swipe: false,
                touchMove: false,
-               speed: 3500,
+               speed: 1500,
+               autoplaySpeed: 7500,
             },
             top: {
                vertical: true,

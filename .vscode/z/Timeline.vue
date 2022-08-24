@@ -4,12 +4,12 @@
       <!--<div class="">{{ it }}</div>-->
 
       <!--<div class="" v-if="isVideo(it.media.data[0].attributes.ext)"></div>
-       <ItemImgStrapiBg
+       <ItemMediaStrapiBg
         class="bg-contain bg-transparent !h-40 !w-40"
         :src="it.media.data[0].attributes.url"
         v-else
       >
-      </ItemImgStrapiBg>-->
+      </ItemMediaStrapiBg>-->
       <!--{{ it.media.data[0].attributes }}-->
       <!--</div>-->
 

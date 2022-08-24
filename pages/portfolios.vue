@@ -16,7 +16,7 @@
 
       <div class="flex-grow">
          <!--<div class="flex-center bg-light-900 h-96">
-            <ItemImg class="w-auto h-full object-contain object-center" :src="'portfolio/bg_4.png'" />
+            <ItemMedia class="w-auto h-full object-contain object-center" :src="'portfolio/bg_4.png'" />
          </div>-->
 
          <!--<div class="flex-center flex-col p-5 bg-black text-white">

@@ -56,6 +56,8 @@ export default {
    //},
    //axios: { proxy: true },
    image: {
+      staticFilename: "[publicPath]/images/img_[hash:8].[ext]",
+
       //provider: "static",
       //domains: ["images.unsplash.com", "picsum.photos"],
       //alias: {
@@ -555,7 +557,7 @@ export default {
    buildModules: [
       "nuxt-windicss",
       "@luxdamore/nuxt-apis-to-file",
-      "nuxt-gsap-module",
+      //"nuxt-gsap-module",
       "nuxt-user-agent",
       "nuxt-fontagon",
       "@/plugins/active/GSR",
@@ -576,9 +578,18 @@ export default {
          {
             baseUrl: "http://localhost:1337/",
             path: "/public/images",
-            extensions: ["jpg", "jpeg", "gif", "png", "webp", "svg"],
+            extensions: ["jpg", "jpeg", "gif", "png", "webp", "svg", "mp4"],
          },
       ],
+      //[
+      //   "nuxt-lazy-load",
+      //   {
+      //      loadingClass: "lazy-loading",
+      //      loadedClass: "lazy-loaded",
+      //      appendClass: "lazy-load",
+      //      defaultImage: "/media/about/face_1.png",
+      //   },
+      //],
    ],
    plugins: [
       "@plugins/passive/mixins",

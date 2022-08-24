@@ -33,7 +33,7 @@
                <!-- transition-all duration-300 group-hover:opacity-25 -->
                <div v-if="it.images.length > 0" class="relative">
                   <div v-for="(img, j) in it.images" :key="j">
-                     <LazyItemImgStrapiBg
+                     <LazyItemMediaStrapiBg
                         :src="img.url"
                         class="sentences-image group-image smoothly-300 group-hover:opacity-85"
                         v-anime.set="it.images.length === 1 ? {} : { scale: 2, opacity: 0 }"
@@ -52,11 +52,11 @@
                   </div>
                </div>
 
-               <LazyItemImgStrapiBg
+               <LazyItemMediaStrapiBg
                   v-else
                   class="sentences-image smoothly-300 group-hover:opacity-85"
                   :src="`https://picsum.photos/300/200?random=${i}`"
-               ></LazyItemImgStrapiBg>
+               ></LazyItemMediaStrapiBg>
 
                <div class="sentences-tags">
                   <div class="sentences-tags-field">
