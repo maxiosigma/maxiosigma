@@ -4,4 +4,9 @@
 export default {};
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.portfolio {
+   &-block {
+   }
+}
+</style>

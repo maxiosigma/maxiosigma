@@ -17,9 +17,13 @@ export const state = () => ({
    publics: [],
    developerWorks: [],
    designerWorks: [],
+   visio: 0,
 });
 
 export const mutations = {
+   setVisio(state, value) {
+      state.visio = value;
+   },
    uploadStrapi(state, { key, payload }) {
       state[key] = payload ?? [];
    },

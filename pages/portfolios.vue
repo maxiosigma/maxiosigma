@@ -48,7 +48,13 @@
          → Внимание к мелочам
           -->
 
-         <ItemPortfolioSection :black="true" :reverse="false" :data="{ first: designerWorksFirst, second: designerWorksSecond }">
+         <ItemPortfolioSection
+            :class="noVisio([2]) ? 'portfolio-visio-no' : 'portfolio-visio'"
+            :visio="1"
+            :black="true"
+            :reverse="false"
+            :data="{ first: designerWorksFirst, second: designerWorksSecond }"
+         >
             <template v-slot:title> Дизайнер </template>
             <template v-slot:description>
                <div
@@ -65,7 +71,13 @@
             </template>
          </ItemPortfolioSection>
 
-         <ItemPortfolioSection :black="false" :reverse="true" :data="{ first: developerWorksFirst, second: designerWorksSecond }">
+         <ItemPortfolioSection
+            :class="noVisio([1]) ? 'portfolio-visio-no' : 'portfolio-visio'"
+            :visio="2"
+            :black="false"
+            :reverse="true"
+            :data="{ first: developerWorksFirst, second: designerWorksSecond }"
+         >
             <template v-slot:title> Разработчик </template>
             <template v-slot:description>
                <div
@@ -86,7 +98,7 @@
 
          <!--<ItemPortfolioBlock :black="true" :data="{ first: developerWorksFirst, second: developerWorksSecond }"></ItemPortfolioBlock>-->
 
-         <div class="bg-indigo-900 min-h-screen"></div>
+         <div class="bg-indigo-900 min-h-screen" :class="noVisio([1, 2]) ? 'portfolio-visio-no' : 'portfolio-visio'"></div>
 
          <!--<div>1111</div>-->
 
@@ -122,13 +134,25 @@ export default {
       };
    },
    mounted() {},
-   methods: {},
+   methods: {
+      noVisio(arr) {
+         return arr?.filter((it) => it === this.$store.state.visio).length > 0;
+      },
+   },
 };
 </script>
 
 <style lang="scss">
 .portfolio {
    @apply bg-light-900;
+
+   &-visio {
+      @apply h-auto;
+
+      &-no {
+         @apply h-0 max-h-0 min-h-0 p-0 m-0 overflow-hidden;
+      }
+   }
 
    &-block {
       &-container {
