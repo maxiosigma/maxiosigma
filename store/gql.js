@@ -9,6 +9,7 @@ export const state = () => ({
    navbar: menu(1),
    social: menu(3),
    links: links(),
+   uiMenu: (slug) => uiMenu(slug),
 });
 
 function designerWorks(limit = 200) {
@@ -243,8 +244,38 @@ function parentMenu(count = 1, depth = 3) {
 		`;
 }
 
+//console.log(uiMenu());
+// ${slug}
+
 function uiMenu(slug = "nav-bar") {
-   return {};
+   return `
+	query {
+		renderNavigation(
+		navigationIdOrSlug: "${slug}"
+		type: FLAT
+		menuOnly: false
+	){
+		title
+		path
+		type
+		order
+		externalPath
+		uiRouterKey
+		menuAttached
+		parent {
+		uiRouterKey
+		parent{
+			uiRouterKey
+			parent {
+				uiRouterKey
+				parent {
+				uiRouterKey
+				}
+			}
+		}
+	  }
+	}
+  }`;
 }
 
 /*

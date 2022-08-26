@@ -64,6 +64,10 @@ export const mutations = {
 
 export const actions = {
    async nuxtServerInit(ctx) {
+      const aaaaaa = await this.$strapi.graphql({ query: ctx.state.gql.uiMenu("social") });
+
+      console.log(aaaaaa);
+
       const navbarQuery = await this.$strapi.graphql({ query: ctx.state.gql.navbar });
       const navbarResult = menu(navbarQuery);
       ctx.commit("uploadStrapi", { key: "navbar", payload: navbarResult });
