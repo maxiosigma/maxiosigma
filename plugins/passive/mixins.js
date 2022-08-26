@@ -35,6 +35,9 @@ Vue.mixin({
       isLangGlobal() {
          return this.$i18n?.locale?.split("-")?.[0] ?? "ru";
       },
+      toogleBlack(black, reverse) {
+         return black ? (reverse ? "light" : "black") : reverse ? "black" : "light";
+      },
       mainPath() {
          return this.$route.fullPath === "/";
       },
