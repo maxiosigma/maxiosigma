@@ -1,8 +1,5 @@
 <template>
-   <!-- :class="[`section-${section}`]" -->
    <section class="portfolio-section">
-      <!--  -->
-
       <ItemPortfolioBlock :black="black" :reverse="reverse">
          <template v-slot:left>
             <VueSlickCarousel v-bind="{ ...slider.common, ...slider.top }">
@@ -11,8 +8,8 @@
                </div>
             </VueSlickCarousel>
 
-            <VueSlickCarousel class="portfolio-project-dsp" v-bind="{ ...slider.common, ...slider.bootom }">
-               <div class="portfolio-project-cont" v-for="(it, i) in data.first" :key="i">
+            <VueSlickCarousel class="portfolio-project-depiction" v-bind="{ ...slider.common, ...slider.bootom }">
+               <div class="portfolio-project-depiction-container" v-for="(it, i) in data.first" :key="i">
                   <div
                      v-if="it.link"
                      :class="['portfolio-project-link', toogleBlack(black), 'font-mw mw-info']"
@@ -21,45 +18,36 @@
                   ></div>
 
                   <div :class="['portfolio-project-title', toogleBlack(black)]">{{ it.title }}</div>
-
                   <div :class="['portfolio-project-description']">{{ it.description }}</div>
                </div>
             </VueSlickCarousel>
          </template>
 
          <template v-slot:right>
-            <div
-               class="grid gap-6 sm:col-span-6 place-items-start place-content-start px-4 py-6 <sm:(place-items-center text-center)"
-               :class="[reverse ? 'sm:order-1' : 'sm:order-2']"
-            >
-               <LazyItemRundomString
-                  class="text-2xl sm:text-5xl pb-4 px-2 uppercase tracking-[5px]"
-                  :class="[
-                     black
-                        ? 'text-shadow-custom-green-10px border-b-6 border-orange-500'
-                        : 'text-shadow-custom-blue-2px border-b-6 border-orange-500',
-                  ]"
-               >
+            <div class="portfolio-section-depiction">
+               <ItemRundomString :class="['portfolio-section-title ', toogleBlack(black)]" :no="true">
                   <slot name="title"></slot>
-               </LazyItemRundomString>
+               </ItemRundomString>
 
                <div class="text-base grid gap-4"><slot name="description"></slot></div>
 
-               <div
-                  class=""
-                  :class="[visio === $store.state.visio ? 'portfolio-block-no' : 'portfolio-block-btn', black ? 'black' : 'white']"
+               <!--  :text="['Все проекты', 'Свернуть']" -->
+               <ItemPortfolioButton :black="black" />
+               <!--  @click.native="$store.commit('setVisio', visio)" -->
+
+               <!--<div
+                  :class="[visio === $store.state.visio ? 'portfolio-block-no' : 'portfolio-block-btn', toogleBlack(black)]"
                   @click="$store.commit('setVisio', visio)"
                >
                   Все проекты
                </div>
 
                <div
-                  class=""
-                  :class="[visio === $store.state.visio ? 'portfolio-block-btn' : 'portfolio-block-no', black ? 'black' : 'white']"
+                  :class="[visio === $store.state.visio ? 'portfolio-block-btn' : 'portfolio-block-no', toogleBlack(black)]"
                   @click="$store.commit('setVisio', 0)"
                >
                   Свернуть
-               </div>
+               </div>-->
             </div>
          </template>
       </ItemPortfolioBlock>
@@ -67,19 +55,14 @@
       <client-only>
          <!-- v-if="visio === $store.state.visio" -->
 
-         <!--<div
-            class="portfolio-block"
+         <ItemPortfolioBlock
             :class="[visio === $store.state.visio ? '' : 'hidden', i % 2 == 0 ? toogleBlack(black, true) : toogleBlack(black)]"
             v-for="(it, i) in data.second"
             :key="i"
          >
-            {{ it }}
-         </div>-->
-
-         <!--<ItemPortfolioBlock>
-         <template v-slot:left></template>
-         <template v-slot:right></template>
-       </ItemPortfolioBlock>-->
+            <template v-slot:left>{{ it.title }}</template>
+            <template v-slot:right>{{ it.description }}</template>
+         </ItemPortfolioBlock>
       </client-only>
    </section>
 </template>
@@ -93,7 +76,6 @@ export default {
    props: ["black", "reverse", "data", "visio"],
    data() {
       return {
-         section: Math.random(),
          slider: {
             common: {
                accessibility: false,
@@ -121,21 +103,6 @@ export default {
             bootom: {
                fade: true,
             },
-         },
-         btnOps: {
-            type: "triangle",
-            //size: 1,
-            direction: "left",
-            canvasPadding: 10,
-            style: "stroke",
-            color: "#ffffff",
-            //color: () => {
-            //   return Math.random() < 0.5 ? "#000000" : "#ffffff";
-            //},
-            onComplete: () => {},
-            onBegin: () => {},
-            visible: true,
-            animating: false,
          },
       };
    },
@@ -168,6 +135,22 @@ export default {
 .portfolio {
    &-section {
       @apply relative;
+
+      &-depiction {
+         @apply grid gap-6 sm:col-span-6 place-items-start place-content-start px-4 py-6 <sm:(place-items-center text-center);
+      }
+
+      &-title {
+         @apply text-2xl sm:text-5xl pb-4 px-2 uppercase tracking-[5px];
+
+         &.black {
+            @apply text-shadow-custom-green-10px border-b-6 border-orange-500;
+         }
+
+         &.white {
+            @apply text-shadow-custom-blue-2px border-b-6 border-orange-500;
+         }
+      }
    }
 
    &-project {
@@ -179,12 +162,12 @@ export default {
          @apply bg-contain flex-grow bg-center rounded-xl min-h-60 bg-transparent w-full h-full;
       }
 
-      &-dsp {
+      &-depiction {
          @apply mt-5 px-5;
-      }
 
-      &-cont {
-         @apply grid gap-2 text-center;
+         &-container {
+            @apply grid gap-2 text-center;
+         }
       }
 
       &-link {
@@ -236,7 +219,7 @@ export default {
       &.black {
          @apply bg-black text-light-200;
       }
-      &.light {
+      &.white {
          @apply bg-light-900 text-indigo-900;
       }
    }
