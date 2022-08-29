@@ -7,9 +7,9 @@ export const state = () => ({
    publics: publics(),
    footbar: menu(2),
    navbar: menu(1),
-   social: menu(3),
+   social2: menu(3),
    links: links(),
-   uiMenu: (slug) => uiMenu(slug),
+   uiMenu: (item) => uiMenu(item),
 });
 
 function designerWorks(limit = 200) {
@@ -247,7 +247,7 @@ function parentMenu(count = 1, depth = 3) {
 //console.log(uiMenu());
 // ${slug}
 
-function uiMenu(slug = "nav-bar") {
+function uiMenu(slug) {
    return `
 	query {
 		renderNavigation(
@@ -269,7 +269,7 @@ function uiMenu(slug = "nav-bar") {
 			parent {
 				uiRouterKey
 				parent {
-				uiRouterKey
+					uiRouterKey
 				}
 			}
 		}

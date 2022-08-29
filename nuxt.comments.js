@@ -1444,6 +1444,8 @@ function other() {
 		 <meta http-equiv="refresh" :content="'0.005;url=' + url" />
 	 </noscript>
  </template>
+
+<!--<ItemNoScript v-if="!unscript && !idScript" :id="idScript || false" />-->
  
  asyncData({ app, redirect }) {
 	 if (!app.$cookies.get('openmw')) {

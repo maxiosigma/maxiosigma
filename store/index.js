@@ -18,6 +18,8 @@ export const state = () => ({
    developerWorks: [],
    designerWorks: [],
    visio: 0,
+
+   strapi: { navbar: [], fotbar: [], socbar: [] },
 });
 
 export const mutations = {
@@ -26,6 +28,9 @@ export const mutations = {
    },
    uploadStrapi(state, { key, payload }) {
       state[key] = payload ?? [];
+   },
+   uploadStrapiTo(state, { key, payload }) {
+      state.strapi[key] = payload ?? [];
    },
    setUploadCdn(state) {
       state.uploadCdn = true;
@@ -64,9 +69,11 @@ export const mutations = {
 
 export const actions = {
    async nuxtServerInit(ctx) {
-      const aaaaaa = await this.$strapi.graphql({ query: ctx.state.gql.uiMenu("social") });
-
-      console.log(aaaaaa);
+      ["nav-bar", "fot-bar", "soc-bar"].map(async (it) => {
+         const query = ctx.state.gql.uiMenu(it);
+         const result = (await this.$strapi.graphql({ query: query }))?.renderNavigation;
+         ctx.commit("uploadStrapiTo", { key: `${it.split("-").join("")}`, payload: result });
+      });
 
       const navbarQuery = await this.$strapi.graphql({ query: ctx.state.gql.navbar });
       const navbarResult = menu(navbarQuery);
@@ -76,7 +83,7 @@ export const actions = {
       const footbarResult = menu(footbarQuery);
       ctx.commit("uploadStrapi", { key: "footbar", payload: footbarResult });
 
-      const socialQuery = await this.$strapi.graphql({ query: ctx.state.gql.social });
+      const socialQuery = await this.$strapi.graphql({ query: ctx.state.gql.social2 });
       const socialResult = menu(socialQuery);
       ctx.commit("uploadStrapi", { key: "social", payload: socialResult });
 

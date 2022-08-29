@@ -107,6 +107,8 @@ export default {
       };
    },
    mounted() {
+      console.log(this.$store.state.strapi);
+
       if (!this.visio) this.visio = 0;
    },
    methods: {

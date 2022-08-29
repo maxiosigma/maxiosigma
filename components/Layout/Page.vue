@@ -42,7 +42,7 @@
 
       <template v-slot:wrapper-after>
          <slot name="wrapper-after"></slot>
-         <!--<ItemNoScript v-if="!unscript && !idScript" :id="idScript || false" />-->
+
       </template>
    </Layout>
 </template>
