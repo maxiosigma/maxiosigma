@@ -14,33 +14,48 @@
             <ItemLogo></ItemLogo>
 
             <div :class="['nav-bar-cont-text']">
-               <div :class="['nav-bar-cont-arrow', parent.uiRouterKey === undefined ? '!hidden' : '']" @click="handleClickPrev()">←</div>
+               <!-- parent.key === undefined -->
+               <div :class="['nav-bar-cont-arrow', !parent.key ? '!hidden' : '']" @click="handleClickPrev()">←</div>
 
                <ItemLink
                   :href="link.path"
-                  :nolang="link.path !== '/'"
+                  :nolang="link.path === '/'"
                   :class="[
                      'nav-bar-link group',
-                     link.parent && parent ? { hidden: link.parent.uiRouterKey !== parent.uiRouterKey } : {},
 
-                     // link.parent && parent
-                     //   ? { hidden: link.parent.uiRouterKey !== parent.uiRouterKey }
-                     //   : { hidden: link.parent.uiRouterKey !== parent.uiRouterKey },
+                     'opacity-0',
+                     !link.parent && !parent.key ? '!opacity-100' : {},
+                     link.parent && parent.key && link.parent.uiRouterKey === parent.key ? '!opacity-100' : {},
+
+                     //!link.parent && !parent.key ? '' : 'hidden',
+                     //link.parent && parent.key && link.parent.uiRouterKey === parent.key ? '' : 'hidden',
+
+                     // link.parent && parent ? { hidden: link.parent.title !== parent.title } : { hidden: link.parent !== parent.title },
+                     //link.parent && parent.key ? { hidden: link.parent.uiRouterKey !== parent.key } : '',
+                     //link.parent && !parent.key ? { hidden: link.parent !== parent.key } : '',
+
                      link.class,
                   ]"
                   :key="i"
                   v-for="(link, i) in links"
                   @click.native.prevent="
                      handleClickNext({
-                        parent: { title: link.title, order: link.order },
+                        parent: { key: link.uiRouterKey, order: link.order },
                         target: link.type,
                         url: link.path,
                      })
                   "
                >
-                  <div :class="['nav-bar-link-hover', isActive(link.title) ? 'border-b-2 border-b-yellow-500' : '']">
-                     {{ link.title }}
+                  <div :class="['nav-bar-link-hover', isActive(link.uiRouterKey) ? 'border-b-2 border-b-yellow-500' : '']">
+                     <!--{{ link.title }}-->
+                     {{ link.uiRouterKey }}
+                     <!--{{ parent.parent.uiRouterKey }}-->
+                     <!--{{ link.parent }} - {{ parent.key }}-->
+
+                     <!--- {{ link.parent }} - {{ parent.uiRouterKey }}-->
                   </div>
+
+                  <!--{{ parent.key }}-->
                </ItemLink>
             </div>
          </div>
@@ -67,24 +82,24 @@ export default {
       return {
          links: this.$store.state.strapi.navbar,
          isRoute: this.$route.fullPath?.replace(this?.localePath("/") + "/", "").replace("/" + this.loke() + "/", ""),
-         parent: { uiRouterKey: undefined, order: undefined },
+         parent: { key: undefined, order: undefined },
          scroll: 0,
          active: [],
       };
    },
    mounted() {
-      console.log(this.links);
+      //console.log(this.links);
       this.getActive();
-      console.log(this.active);
+      //console.log(this.active);
    },
    methods: {
       getActive(arg = undefined) {
          if (!arg) {
             const rt = this.isRoute?.split("/")[0];
             arg = this.links?.filter((it) => it.path.indexOf(rt) !== -1)[0];
-            this.active.push(arg?.title);
+            this.active.push(arg?.uiRouterKey);
          } else {
-            arg = this.links?.filter((it) => it.title === arg)[0];
+            arg = this.links?.filter((it) => it.uiRouterKey === arg)[0];
          }
 
          const key = arg?.parent?.uiRouterKey;
@@ -98,18 +113,35 @@ export default {
          return this.active?.indexOf(arg) !== -1;
       },
       handleClickNext({ parent = undefined, url = undefined, target = undefined }) {
-         url
-            ? !this.isLink(url)
-               ? target === "blank"
-                  ? window.open(url)
-                  : (location.href = "/" + this.$i18n.locale + url)
-               : null
-            : (this.parent = parent);
+         //console.log(url);
+
+         //this.parent.key = parent?.key;
+         //this.parent.order = parent?.order;
+
+         this.parent = parent;
+
+         //console.log(this.parent);
+
+         //url === "/" ? (this.parent = parent) : (location.href = "/" + this.$i18n.locale + "/" + url);
+
+         //url
+         //   ? !this.isLink(url)
+         //      ? target === "blank"
+         //         ? window.open(url)
+         //         : (location.href = "/" + this.$i18n.locale + "/" + url)
+         //      : null
+         //   : (this.parent = parent);
+
+         //console.log(this.parent);
+         //console.log(parent);
+
+         //return false;
       },
       handleClickPrev() {
-         const next = this.links?.filter((it) => it.order === this.parent.order && it.title === this.parent.uiRouterKey)?.[0];
-
-         this.parent = { title: next.parent?.uiRouterKey, order: next.parent?.order };
+         const next = this.links?.filter((it) => it.uiRouterKey === this.parent.key)?.[0];
+         const key = next.parent?.uiRouterKey ?? undefined;
+         const order = next.parent?.order ?? undefined;
+         this.parent = { key, order };
       },
       getScroll() {
          const dbd = document.body;
@@ -196,67 +228,6 @@ export default {
          }
       }
 
-      //&-crumbs {
-      //  @apply bg-self-main flex-center bg-opacity-90 bg-hero-wiggle-white-10 bg-2r w-full opacity-100 transition-all duration-800 delay-200 overflow-hidden;
-
-      //  &.crumb-scroll {
-      //    @apply mb-5 opacity-0;
-      //  }
-
-      //  &-container {
-      //    @apply container text-sm py-2 px-4 lg:text-xs lg:py-1;
-      //  }
-
-      //  &-link {
-      //    @apply transition-all duration-500 group-hover:(text-yellow-300 tracking-wider) ;
-      //  }
-
-      //  &-title {
-      //    @apply text-cyan-200 pointer-events-none;
-      //  }
-
-      //  &-delimetr {
-      //    @apply mr-2 ml-1 pointer-events-none;
-      //  }
-      //}
-
-      //&-dropdown {
-      //  @apply grid grid-flow-col gap-2 grid-rows-1 items-center;
-
-      //  &-cont {
-      //    @apply text-sm text-center min-w-24 grid top-50px gap-y-1 absolute;
-      //  }
-
-      //  &-icon {
-      //    @apply cursor-pointer text-current transition text-light-200 duration-300 icon-md hover:(text-black text-shadow-lg) ;
-      //  }
-
-      //  &-links {
-      //    @apply mr-5 grid grid-flow-col gap-x-4 grid-rows-1;
-      //  }
-
-      //  &-link {
-      //    @apply font-semibold transition text-light-200 duration-300 hover:(text-black);
-
-      //    &.exact {
-      //      @apply text-stroke-1 text-stroke-light-300;
-      //    }
-      //  }
-
-      //  &-sublinks {
-      //    @apply flex relative justify-end;
-      //  }
-
-      //  &-sublink {
-      //    @apply cursor-pointer bg-orange-600 border-1 border-opacity-0 border-orange-600 shadow-md p-0.5 transition-all shadow-orange-600 text-light-200 duration-300;
-      //    @apply hover:(bg-light-200 text-black border-opacity-25 rounded) ;
-
-      //    &.exact {
-      //      @apply text-stroke-1 text-stroke-light-300;
-      //    }
-      //  }
-      //}
-
       &-btn {
          @apply flex-center mx-3 transition-all w-6 duration-500 pointer-events-none;
       }
@@ -294,12 +265,6 @@ export default {
    }
 }
 
-//.anime-custom-opacity {
-//  animation: OPeS 1s ease-in-out;
-//  //animation-duration: 1000ms;
-//  //animation-fill-mode: both;
-//}
-
 @keyframes OPeS {
    0% {
       opacity: 0;
@@ -308,4 +273,71 @@ export default {
       opacity: 0.85;
    }
 }
+
+//.anime-custom-opacity {
+//  animation: OPeS 1s ease-in-out;
+//  //animation-duration: 1000ms;
+//  //animation-fill-mode: both;
+//}
+
+//&-crumbs {
+//  @apply bg-self-main flex-center bg-opacity-90 bg-hero-wiggle-white-10 bg-2r w-full opacity-100 transition-all duration-800 delay-200 overflow-hidden;
+
+//  &.crumb-scroll {
+//    @apply mb-5 opacity-0;
+//  }
+
+//  &-container {
+//    @apply container text-sm py-2 px-4 lg:text-xs lg:py-1;
+//  }
+
+//  &-link {
+//    @apply transition-all duration-500 group-hover:(text-yellow-300 tracking-wider) ;
+//  }
+
+//  &-title {
+//    @apply text-cyan-200 pointer-events-none;
+//  }
+
+//  &-delimetr {
+//    @apply mr-2 ml-1 pointer-events-none;
+//  }
+//}
+
+//&-dropdown {
+//  @apply grid grid-flow-col gap-2 grid-rows-1 items-center;
+
+//  &-cont {
+//    @apply text-sm text-center min-w-24 grid top-50px gap-y-1 absolute;
+//  }
+
+//  &-icon {
+//    @apply cursor-pointer text-current transition text-light-200 duration-300 icon-md hover:(text-black text-shadow-lg) ;
+//  }
+
+//  &-links {
+//    @apply mr-5 grid grid-flow-col gap-x-4 grid-rows-1;
+//  }
+
+//  &-link {
+//    @apply font-semibold transition text-light-200 duration-300 hover:(text-black);
+
+//    &.exact {
+//      @apply text-stroke-1 text-stroke-light-300;
+//    }
+//  }
+
+//  &-sublinks {
+//    @apply flex relative justify-end;
+//  }
+
+//  &-sublink {
+//    @apply cursor-pointer bg-orange-600 border-1 border-opacity-0 border-orange-600 shadow-md p-0.5 transition-all shadow-orange-600 text-light-200 duration-300;
+//    @apply hover:(bg-light-200 text-black border-opacity-25 rounded) ;
+
+//    &.exact {
+//      @apply text-stroke-1 text-stroke-light-300;
+//    }
+//  }
+//}
 </style>
