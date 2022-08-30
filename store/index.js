@@ -71,8 +71,10 @@ export const actions = {
    async nuxtServerInit(ctx) {
       ["nav-bar", "fot-bar", "soc-bar"].map(async (it) => {
          const query = ctx.state.gql.uiMenu(it);
-         const result = (await this.$strapi.graphql({ query: query }))?.renderNavigation;
-         ctx.commit("uploadStrapiTo", { key: `${it.split("-").join("")}`, payload: result });
+         const key = `${it.split("-").join("")}`;
+         const payload = (await this.$strapi.graphql({ query: query }))?.renderNavigation;
+
+         ctx.commit("uploadStrapiTo", { key, payload });
       });
 
       const navbarQuery = await this.$strapi.graphql({ query: ctx.state.gql.navbar });

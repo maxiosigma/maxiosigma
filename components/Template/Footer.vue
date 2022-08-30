@@ -16,10 +16,10 @@
                <div class="footer-menu-cont">
                   <div class="footer-menu-item" :key="i" v-for="(it, i) in links.filter((it) => !it.parent)">
                      <ItemLink
-                        :href="it.url"
-                        :nolang="!it.url"
+                        :href="it.path"
+                        :nolang="it.path == '/'"
                         class="footer-menu-link"
-                        @click="handleClickNext({ target: it.target, url: it.url })"
+                        @click="handleClickNext({ target: it.type, url: it.path })"
                      >
                         {{ it.title }}
                      </ItemLink>
@@ -35,8 +35,8 @@
 
             <div class="footer-social">
                <ItemLink
-                  :href="it.url"
-                  :blank="it.blank"
+                  :href="it.externalPath"
+                  :blank="'blank'"
                   class="footer-social-item"
                   :key="i"
                   v-for="(it, i) in social"
@@ -53,7 +53,7 @@
                              },
                           }
                   "
-                  @click.native.prevent="handleClickNext({ url: it.url, target: 'blank' })"
+                  @click.native.prevent="handleClickNext({ url: it.externalPath, target: 'blank' })"
                >
                   <i :class="['footer-social-link font-ft', `ft-${it.icon}`]"></i>
                </ItemLink>
@@ -67,15 +67,15 @@
 export default {
    data() {
       return {
-         links: this.$store.state?.footbar,
-         social: this.$store.state?.social
-            ?.filter((it) => it.icon)
-            .filter((it) => it.url)
+         links: this.$store.state.strapi.fotbar,
+         social: this.$store.state.strapi.socbar
+            .filter((it) => it.icon)
+            .filter((it) => it.externalPath)
             .filter((it) => it.top),
       };
    },
    mounted() {
-      //console.log(this.links)
+      //console.log(this.$store.state.strapi);
    },
    methods: {
       handleClickNext({ url = undefined, target = undefined }) {

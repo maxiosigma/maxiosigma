@@ -28,12 +28,12 @@
 
             <div class="mt-2 grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7">
                <ItemLink
-                  :href="it.url"
+                  :href="it.externalPath"
                   :blank="it.blank"
                   class="group"
                   :key="i"
                   v-for="(it, i) in social"
-                  @click.native.prevent="handleClickNext({ url: it.url, target: 'blank' })"
+                  @click.native.prevent="handleClickNext({ url: it.externalPath, target: 'blank' })"
                >
                   <div class="flex transition duration-200 items-center">
                      <div class="flex-center min-w-12 min-h-12">
@@ -75,10 +75,12 @@ export default {
                a: "maxiosigma@gmail.com",
             },
          ],
-         social: this.$store.state?.social?.filter((it) => it.url),
+         social: this.$store.state.strapi.socbar,
       };
    },
-   mounted() {},
+   mounted() {
+      //console.log(this.$store.state.strapi.socbar);
+   },
    methods: {
       handleClick(url) {
          window.open("mailto:" + url, "emailWindow");

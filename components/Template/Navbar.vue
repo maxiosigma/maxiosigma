@@ -1,73 +1,52 @@
 <template>
-  <div
-    v-scroll="getScroll"
-    :class="['nav-bar', scroll == 1 || scroll == 2 ? '!min-h-none !h-auto' : '']"
-  >
-    <div
-      :class="[
-        'nav-bar-cont',
-        scroll == 1 || scroll == 2 ? 'cont-scroll' : '',
-        scroll == 2 ? 'bottom' : '',
-      ]"
-    >
-      <client-only>
-        <vue-scroll-indicator
-          :height="isMobile() ? '3px' : '5px'"
-          :class="[
-            'nav-bar-indicator',
-            scroll == 0 ? '!opacity-0' : '',
-            scroll == 1 || scroll == 2 ? '!opacity-100' : '',
-          ]"
-          color="#00ffe6"
-          background="#0e7490"
-        />
-      </client-only>
+   <div v-scroll="getScroll" :class="['nav-bar', scroll == 1 || scroll == 2 ? '!min-h-none !h-auto' : '']">
+      <div :class="['nav-bar-cont', scroll == 1 || scroll == 2 ? 'cont-scroll' : '', scroll == 2 ? 'bottom' : '']">
+         <client-only>
+            <vue-scroll-indicator
+               :height="isMobile() ? '3px' : '5px'"
+               :class="['nav-bar-indicator', scroll == 0 ? '!opacity-0' : '', scroll == 1 || scroll == 2 ? '!opacity-100' : '']"
+               color="#00ffe6"
+               background="#0e7490"
+            />
+         </client-only>
 
-      <div class="nav-bar-cont-main justify-around sm:justify-between">
-        <ItemLogo></ItemLogo>
+         <div class="nav-bar-cont-main justify-around sm:justify-between">
+            <ItemLogo></ItemLogo>
 
-        <div :class="['nav-bar-cont-text']">
-          <div
-            :class="['nav-bar-cont-arrow', parent.title === undefined ? '!hidden' : '']"
-            @click="handleClickPrev()"
-          >
-            ←
-          </div>
+            <div :class="['nav-bar-cont-text']">
+               <div :class="['nav-bar-cont-arrow', parent.uiRouterKey === undefined ? '!hidden' : '']" @click="handleClickPrev()">←</div>
 
-          <ItemLink
-            :href="link.url"
-            :nolang="!link.url"
-            :class="[
-              'nav-bar-link group',
-              link.parent && parent
-                ? { hidden: link.parent.title !== parent.title }
-                : { hidden: link.parent !== parent.title },
-              link.class,
-            ]"
-            :key="i"
-            v-for="(link, i) in links"
-            @click.native.prevent="
-              handleClickNext({
-                parent: { title: link.title, order: link.order },
-                target: link.target,
-                url: link.url,
-              })
-            "
-          >
-            <div
-              :class="[
-                'nav-bar-link-hover',
-                isActive(link.title) ? 'border-b-2 border-b-yellow-500' : '',
-              ]"
-            >
-              {{ link.title }}
+               <ItemLink
+                  :href="link.path"
+                  :nolang="link.path !== '/'"
+                  :class="[
+                     'nav-bar-link group',
+                     link.parent && parent ? { hidden: link.parent.uiRouterKey !== parent.uiRouterKey } : {},
+
+                     // link.parent && parent
+                     //   ? { hidden: link.parent.uiRouterKey !== parent.uiRouterKey }
+                     //   : { hidden: link.parent.uiRouterKey !== parent.uiRouterKey },
+                     link.class,
+                  ]"
+                  :key="i"
+                  v-for="(link, i) in links"
+                  @click.native.prevent="
+                     handleClickNext({
+                        parent: { title: link.title, order: link.order },
+                        target: link.type,
+                        url: link.path,
+                     })
+                  "
+               >
+                  <div :class="['nav-bar-link-hover', isActive(link.title) ? 'border-b-2 border-b-yellow-500' : '']">
+                     {{ link.title }}
+                  </div>
+               </ItemLink>
             </div>
-          </ItemLink>
-        </div>
+         </div>
       </div>
-    </div>
 
-    <!--<div
+      <!--<div
 	    v-if="crumbs.length > 1"
 	    :class="['nav-bar-crumbs', scroll ? crumbScroll : '', $store.state.mainMenu == 1 ? crumbScroll : '']">
 	    <div class="nav-bar-crumbs-container">
@@ -78,250 +57,241 @@
 	    	</span>
 	    </div>
 		</div>-->
-  </div>
+   </div>
 </template>
 
 <script>
 export default {
-  props: ["openMenu", "items", "subitems"],
-  data() {
-    return {
-      //menu: [],
-      links: this.$store.state?.navbar,
-      //crumbs: this.getCrumbs(),
-      isRoute: this.$route.fullPath
-        ?.replace(this?.localePath("/") + "/", "")
-        .replace("/" + this.loke() + "/", ""),
-      parent: { title: undefined, order: undefined },
-      scroll: 0,
-      active: [],
-    }
-  },
-  mounted() {
-    //console.log(this.links)
-    this.getActive()
-  },
-  methods: {
-    getActive(arg = undefined) {
-      if (!arg) {
-        const rt = this.isRoute?.split("/")[0]
-        arg = this.links?.filter((it) => it.url.indexOf(rt) !== -1)[0]
+   props: ["openMenu", "items", "subitems"],
+   data() {
+      return {
+         links: this.$store.state.strapi.navbar,
+         isRoute: this.$route.fullPath?.replace(this?.localePath("/") + "/", "").replace("/" + this.loke() + "/", ""),
+         parent: { uiRouterKey: undefined, order: undefined },
+         scroll: 0,
+         active: [],
+      };
+   },
+   mounted() {
+      console.log(this.links);
+      this.getActive();
+      console.log(this.active);
+   },
+   methods: {
+      getActive(arg = undefined) {
+         if (!arg) {
+            const rt = this.isRoute?.split("/")[0];
+            arg = this.links?.filter((it) => it.path.indexOf(rt) !== -1)[0];
+            this.active.push(arg?.title);
+         } else {
+            arg = this.links?.filter((it) => it.title === arg)[0];
+         }
 
-        //console.log(this.isRoute?.split("/")[0])
+         const key = arg?.parent?.uiRouterKey;
 
-        this.active.push(arg?.title)
-      } else {
-        arg = this.links?.filter((it) => it.title === arg)[0]
-      }
+         if (key) {
+            this.active.push(key);
+            this.getActive(key);
+         }
+      },
+      isActive(arg) {
+         return this.active?.indexOf(arg) !== -1;
+      },
+      handleClickNext({ parent = undefined, url = undefined, target = undefined }) {
+         url
+            ? !this.isLink(url)
+               ? target === "blank"
+                  ? window.open(url)
+                  : (location.href = "/" + this.$i18n.locale + url)
+               : null
+            : (this.parent = parent);
+      },
+      handleClickPrev() {
+         const next = this.links?.filter((it) => it.order === this.parent.order && it.title === this.parent.uiRouterKey)?.[0];
 
-      const title = arg?.parent?.title || arg?.parent?.data?.attributes?.title
+         this.parent = { title: next.parent?.uiRouterKey, order: next.parent?.order };
+      },
+      getScroll() {
+         const dbd = document.body;
+         const bodyHeight = Math.max(dbd.scrollHeight, dbd.offsetHeight, dbd.clientHeight);
+         const scrollHeight = document.documentElement.clientHeight + window.scrollY;
+         const position = { top: 150, bottom: 150 };
 
-      if (title) {
-        this.active.push(title)
-        this.getActive(title)
-      }
-    },
-    isActive(arg) {
-      return this.active?.indexOf(arg) !== -1
-    },
-    handleClickNext({ parent = undefined, url = undefined, target = undefined }) {
-      url
-        ? !this.isLink(url)
-          ? target === "blank"
-            ? window.open(url)
-            : (location.href = "/" + this.$i18n.locale + url)
-          : null
-        : (this.parent = parent)
-    },
-    handleClickPrev() {
-      const next = this.links?.filter(
-        (it) => it.order === this.parent.order && it.title === this.parent.title
-      )?.[0]
+         if (window.scrollY < position.top) this.scroll = 0;
+         if (window.scrollY >= position.top) this.scroll = 1;
+         if (window.scrollY >= position.top && bodyHeight - scrollHeight <= position.bottom) this.scroll = 2;
+      },
+      isLink(url) {
+         return this.isRoute === url || this.isRoute === url + "/" || "/" + this.isRoute === url;
+      },
+      //getCrumbs() {
+      //	const fullPath = this.$route.fullPath,
+      //		params = fullPath
+      //			.replace('/' + this.$i18n.locale, '')
+      //			.replace('/amp', '')
+      //			.substring(1)
+      //			.split('/')
+      //			.filter((it) => it !== ''),
+      //		crumbs = []
 
-      this.parent = { title: next.parent?.title, order: next.parent?.order }
-    },
-    getScroll() {
-      const dbd = document.body
-      const bodyHeight = Math.max(dbd.scrollHeight, dbd.offsetHeight, dbd.clientHeight)
-      const scrollHeight = document.documentElement.clientHeight + window.scrollY
-      const position = { top: 150, bottom: 150 }
+      //	params.reduce((sum, it, i) => {
+      //		sum += it + '/'
+      //		crumbs.push({ l: sum, t: this.ucFirst(it) })
+      //		return sum
+      //	}, '')
 
-      if (window.scrollY < position.top) this.scroll = 0
-      if (window.scrollY >= position.top) this.scroll = 1
-      if (window.scrollY >= position.top && bodyHeight - scrollHeight <= position.bottom)
-        this.scroll = 2
-    },
-    isLink(url) {
-      return this.isRoute === url || this.isRoute === url + "/" || "/" + this.isRoute === url
-    },
-    //getCrumbs() {
-    //	const fullPath = this.$route.fullPath,
-    //		params = fullPath
-    //			.replace('/' + this.$i18n.locale, '')
-    //			.replace('/amp', '')
-    //			.substring(1)
-    //			.split('/')
-    //			.filter((it) => it !== ''),
-    //		crumbs = []
-
-    //	params.reduce((sum, it, i) => {
-    //		sum += it + '/'
-    //		crumbs.push({ l: sum, t: this.ucFirst(it) })
-    //		return sum
-    //	}, '')
-
-    //	return crumbs
-    //},
-  },
-}
+      //	return crumbs
+      //},
+   },
+};
 </script>
 
 <style lang="scss">
 .v-scroll--indicator-wrapper {
-  @apply opacity-0 transition-opacity duration-1500 delay-50;
+   @apply opacity-0 transition-opacity duration-1500 delay-50;
 }
 
 .nav {
-  &-bar {
-    @apply flex-center flex-col text-white w-full py-0 transition-all duration-700;
+   &-bar {
+      @apply flex-center flex-col text-white w-full py-0 transition-all duration-700;
 
-    &-cont {
-      //bg-hero-wiggle-white-10 bg-5r
-      @apply bg-repeat bg-self-main flex-center bg-opacity-85 bg-hero-circuit-board-white-10 bg-5r mb-1.5 min-h-10 w-full opacity-100 px-4 transition-opacity duration-500 sm:h-12;
+      &-cont {
+         //bg-hero-wiggle-white-10 bg-5r
+         @apply bg-repeat bg-self-main flex-center bg-opacity-85 bg-hero-circuit-board-white-10 bg-5r mb-1.5 min-h-10 w-full opacity-100 px-4 transition-opacity duration-500 sm:h-12;
 
-      &.cont-scroll {
-        //animation: OPeS 2s;
-        @apply min-h-none h-6 mb-0 opacity-85 py-2 transition-all top-0 duration-300 delay-250 sm:h-10;
+         &.cont-scroll {
+            //animation: OPeS 2s;
+            @apply min-h-none h-6 mb-0 opacity-85 py-2 transition-all top-0 duration-300 delay-250 sm:h-10;
 
-        &.bottom {
-          @apply h-auto min-h-7vh opacity-85 transition-all duration-300 delay-250 #{!important};
-        }
+            &.bottom {
+               @apply h-auto min-h-7vh opacity-85 transition-all duration-300 delay-250 #{!important};
+            }
+         }
+
+         &-main {
+            @apply container flex items-center justify-between;
+         }
+
+         &-text {
+            // flex-wrap py-1 overflow-hidden
+            @apply flex max-w-full mt-0.5 ml-1 px-1 items-center <sm:(justify-end);
+         }
+
+         &-arrow {
+            $forever-and-ever: -1;
+            @apply cursor-pointer text-lg text-shadow-md transition-all duration-300 md:(mb-1 mr-2.5) <md:(order-last ml-2.5 mt-0.5 transform rotate-180) hover:(text-yellow-300 tracking-3px text-shadow-lg);
+         }
       }
 
-      &-main {
-        @apply container flex items-center justify-between;
+      &-link {
+         // py-1
+         @apply cursor-pointer text-shadow-md tracking-wider transition-all text-[10px] duration-300 uppercase overflow-hidden sm:(text-xs tracking-wide) hover:(overflow-visible);
+
+         &-hover {
+            @apply my-auto min-w-3 py-0.5 transition-all duration-500 truncate pointer-events-none group-hover:(text-yellow-300 max-w-none tracking-widest overflow-clip overflow-visible text-shadow-lg);
+         }
+
+         &:nth-of-type(n + 1) {
+            @apply mr-1.5 sm: mr-2.5;
+         }
       }
 
-      &-text {
-        // flex-wrap py-1 overflow-hidden
-        @apply flex max-w-full mt-0.5 ml-1 px-1 items-center <sm:(justify-end);
+      //&-crumbs {
+      //  @apply bg-self-main flex-center bg-opacity-90 bg-hero-wiggle-white-10 bg-2r w-full opacity-100 transition-all duration-800 delay-200 overflow-hidden;
+
+      //  &.crumb-scroll {
+      //    @apply mb-5 opacity-0;
+      //  }
+
+      //  &-container {
+      //    @apply container text-sm py-2 px-4 lg:text-xs lg:py-1;
+      //  }
+
+      //  &-link {
+      //    @apply transition-all duration-500 group-hover:(text-yellow-300 tracking-wider) ;
+      //  }
+
+      //  &-title {
+      //    @apply text-cyan-200 pointer-events-none;
+      //  }
+
+      //  &-delimetr {
+      //    @apply mr-2 ml-1 pointer-events-none;
+      //  }
+      //}
+
+      //&-dropdown {
+      //  @apply grid grid-flow-col gap-2 grid-rows-1 items-center;
+
+      //  &-cont {
+      //    @apply text-sm text-center min-w-24 grid top-50px gap-y-1 absolute;
+      //  }
+
+      //  &-icon {
+      //    @apply cursor-pointer text-current transition text-light-200 duration-300 icon-md hover:(text-black text-shadow-lg) ;
+      //  }
+
+      //  &-links {
+      //    @apply mr-5 grid grid-flow-col gap-x-4 grid-rows-1;
+      //  }
+
+      //  &-link {
+      //    @apply font-semibold transition text-light-200 duration-300 hover:(text-black);
+
+      //    &.exact {
+      //      @apply text-stroke-1 text-stroke-light-300;
+      //    }
+      //  }
+
+      //  &-sublinks {
+      //    @apply flex relative justify-end;
+      //  }
+
+      //  &-sublink {
+      //    @apply cursor-pointer bg-orange-600 border-1 border-opacity-0 border-orange-600 shadow-md p-0.5 transition-all shadow-orange-600 text-light-200 duration-300;
+      //    @apply hover:(bg-light-200 text-black border-opacity-25 rounded) ;
+
+      //    &.exact {
+      //      @apply text-stroke-1 text-stroke-light-300;
+      //    }
+      //  }
+      //}
+
+      &-btn {
+         @apply flex-center mx-3 transition-all w-6 duration-500 pointer-events-none;
       }
 
-      &-arrow {
-        $forever-and-ever: -1;
-        @apply cursor-pointer text-lg text-shadow-md transition-all duration-300 md:(mb-1 mr-2.5) <md:(order-last ml-2.5 mt-0.5 transform rotate-180) hover:(text-yellow-300 tracking-3px text-shadow-lg) ;
+      &-icon {
+         &-menu {
+            @apply max-w-full text-white transition-all duration-500 icon-md pointer-events-none;
+         }
+
+         &-hotdog {
+            @apply max-w-0 transition-all text-yellow-200 duration-500 icon-md overflow-hidden pointer-events-none;
+         }
       }
-    }
-
-    &-link {
-      // py-1
-      @apply cursor-pointer text-shadow-md tracking-wider transition-all text-[10px] duration-300 uppercase overflow-hidden sm:(text-xs tracking-wide) hover:(overflow-visible) ;
-
-      &-hover {
-        @apply my-auto min-w-3 py-0.5 transition-all duration-500 truncate pointer-events-none group-hover:(text-yellow-300 max-w-none tracking-widest overflow-clip overflow-visible text-shadow-lg) ;
-      }
-
-      &:nth-of-type(n + 1) {
-        @apply mr-1.5 sm: mr-2.5 ;
-      }
-    }
-
-    //&-crumbs {
-    //  @apply bg-self-main flex-center bg-opacity-90 bg-hero-wiggle-white-10 bg-2r w-full opacity-100 transition-all duration-800 delay-200 overflow-hidden;
-
-    //  &.crumb-scroll {
-    //    @apply mb-5 opacity-0;
-    //  }
-
-    //  &-container {
-    //    @apply container text-sm py-2 px-4 lg:text-xs lg:py-1;
-    //  }
-
-    //  &-link {
-    //    @apply transition-all duration-500 group-hover:(text-yellow-300 tracking-wider) ;
-    //  }
-
-    //  &-title {
-    //    @apply text-cyan-200 pointer-events-none;
-    //  }
-
-    //  &-delimetr {
-    //    @apply mr-2 ml-1 pointer-events-none;
-    //  }
-    //}
-
-    //&-dropdown {
-    //  @apply grid grid-flow-col gap-2 grid-rows-1 items-center;
-
-    //  &-cont {
-    //    @apply text-sm text-center min-w-24 grid top-50px gap-y-1 absolute;
-    //  }
-
-    //  &-icon {
-    //    @apply cursor-pointer text-current transition text-light-200 duration-300 icon-md hover:(text-black text-shadow-lg) ;
-    //  }
-
-    //  &-links {
-    //    @apply mr-5 grid grid-flow-col gap-x-4 grid-rows-1;
-    //  }
-
-    //  &-link {
-    //    @apply font-semibold transition text-light-200 duration-300 hover:(text-black);
-
-    //    &.exact {
-    //      @apply text-stroke-1 text-stroke-light-300;
-    //    }
-    //  }
-
-    //  &-sublinks {
-    //    @apply flex relative justify-end;
-    //  }
-
-    //  &-sublink {
-    //    @apply cursor-pointer bg-orange-600 border-1 border-opacity-0 border-orange-600 shadow-md p-0.5 transition-all shadow-orange-600 text-light-200 duration-300;
-    //    @apply hover:(bg-light-200 text-black border-opacity-25 rounded) ;
-
-    //    &.exact {
-    //      @apply text-stroke-1 text-stroke-light-300;
-    //    }
-    //  }
-    //}
-
-    &-btn {
-      @apply flex-center mx-3 transition-all w-6 duration-500 pointer-events-none;
-    }
-
-    &-icon {
-      &-menu {
-        @apply max-w-full text-white transition-all duration-500 icon-md pointer-events-none;
-      }
-
-      &-hotdog {
-        @apply max-w-0 transition-all text-yellow-200 duration-500 icon-md overflow-hidden pointer-events-none;
-      }
-    }
-  }
+   }
 }
 
 .scroll {
-  &-logo-cont {
-    @apply h-6 w-6 #{!important};
-  }
+   &-logo-cont {
+      @apply h-6 w-6 #{!important};
+   }
 
-  &-bar-btn {
-    @apply mx-1 #{!important};
-  }
+   &-bar-btn {
+      @apply mx-1 #{!important};
+   }
 
-  &-icon {
-    &-menu,
-    &-hotdog {
-      @apply icon-sm #{!important};
-    }
-  }
+   &-icon {
+      &-menu,
+      &-hotdog {
+         @apply icon-sm #{!important};
+      }
+   }
 
-  &-menu-text {
-    @apply text-sm;
-  }
+   &-menu-text {
+      @apply text-sm;
+   }
 }
 
 //.anime-custom-opacity {
@@ -331,11 +301,11 @@ export default {
 //}
 
 @keyframes OPeS {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0.85;
-  }
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 0.85;
+   }
 }
 </style>

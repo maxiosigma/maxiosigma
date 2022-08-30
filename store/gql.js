@@ -251,31 +251,34 @@ function uiMenu(slug) {
    return `
 	query {
 		renderNavigation(
-		navigationIdOrSlug: "${slug}"
-		type: FLAT
-		menuOnly: false
-	){
-		title
-		path
-		type
-		order
-		externalPath
-		uiRouterKey
-		menuAttached
-		parent {
-		uiRouterKey
-		parent{
+			navigationIdOrSlug: "${slug}"
+			type: FLAT
+			menuOnly: false
+		){
+			title
+			class
+			order
+			path
+			type
+			icon
+			top
+			externalPath
 			uiRouterKey
+			menuAttached
 			parent {
+				uiRouterKey
+				parent{
 				uiRouterKey
 				parent {
 					uiRouterKey
+						parent {
+							uiRouterKey
+						}
+					}
 				}
 			}
 		}
-	  }
-	}
-  }`;
+	}`;
 }
 
 /*

@@ -1,5 +1,7 @@
 <template>
-   <LayoutPage :title="title" :description="description"></LayoutPage>
+   <LayoutPage :title="title" :description="description">
+      <div></div>
+   </LayoutPage>
 </template>
 
 <script>

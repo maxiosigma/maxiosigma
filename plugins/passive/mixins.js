@@ -94,7 +94,7 @@ Vue.mixin({
          return this.isLinkSite(link);
       },
       isLinkSite(link) {
-         return link.indexOf("http://") !== -1 || link.indexOf("https://") !== -1;
+         return link?.indexOf("http://") !== -1 || link?.indexOf("https://") !== -1;
       },
       formatDate(date, locale = "ru") {
          const options = { year: "numeric", month: "long", day: "numeric" };
