@@ -23,9 +23,11 @@
                   :class="[
                      'nav-bar-link group',
 
-                     'opacity-0',
-                     !link.parent && !parent.key ? '!opacity-100' : {},
-                     link.parent && parent.key && link.parent.uiRouterKey === parent.key ? '!opacity-100' : {},
+                     linkHidden(link) ? 'hidden' : '',
+
+                     //'opacity-0',
+                     //!link.parent && !parent.key ? '!opacity-100' : '',
+                     //link.parent && parent.key && link.parent.uiRouterKey === parent.key ? '!opacity-100' : '',
 
                      //!link.parent && !parent.key ? '' : 'hidden',
                      //link.parent && parent.key && link.parent.uiRouterKey === parent.key ? '' : 'hidden',
@@ -47,15 +49,8 @@
                   "
                >
                   <div :class="['nav-bar-link-hover', isActive(link.uiRouterKey) ? 'border-b-2 border-b-yellow-500' : '']">
-                     <!--{{ link.title }}-->
-                     {{ link.uiRouterKey }}
-                     <!--{{ parent.parent.uiRouterKey }}-->
-                     <!--{{ link.parent }} - {{ parent.key }}-->
-
-                     <!--- {{ link.parent }} - {{ parent.uiRouterKey }}-->
+                     {{ link.title }}
                   </div>
-
-                  <!--{{ parent.key }}-->
                </ItemLink>
             </div>
          </div>
@@ -82,7 +77,7 @@ export default {
       return {
          links: this.$store.state.strapi.navbar,
          isRoute: this.$route.fullPath?.replace(this?.localePath("/") + "/", "").replace("/" + this.loke() + "/", ""),
-         parent: { key: undefined, order: undefined },
+         parent: { key: null, order: null },
          scroll: 0,
          active: [],
       };
@@ -93,6 +88,13 @@ export default {
       //console.log(this.active);
    },
    methods: {
+      linkHidden(item) {
+         const check1 = !item.parent?.uiRouterKey && this.parent.key;
+         const check2 = item.parent?.uiRouterKey !== this.parent.key;
+         const check3 = item.parent !== this.parent.key;
+
+         return check2 ? check3 : check1;
+      },
       getActive(arg = undefined) {
          if (!arg) {
             const rt = this.isRoute?.split("/")[0];
@@ -113,29 +115,7 @@ export default {
          return this.active?.indexOf(arg) !== -1;
       },
       handleClickNext({ parent = undefined, url = undefined, target = undefined }) {
-         //console.log(url);
-
-         //this.parent.key = parent?.key;
-         //this.parent.order = parent?.order;
-
-         this.parent = parent;
-
-         //console.log(this.parent);
-
-         //url === "/" ? (this.parent = parent) : (location.href = "/" + this.$i18n.locale + "/" + url);
-
-         //url
-         //   ? !this.isLink(url)
-         //      ? target === "blank"
-         //         ? window.open(url)
-         //         : (location.href = "/" + this.$i18n.locale + "/" + url)
-         //      : null
-         //   : (this.parent = parent);
-
-         //console.log(this.parent);
-         //console.log(parent);
-
-         //return false;
+         url === "/" ? (this.parent = parent) : (location.href = "/" + this.$i18n.locale + "/" + url);
       },
       handleClickPrev() {
          const next = this.links?.filter((it) => it.uiRouterKey === this.parent.key)?.[0];
