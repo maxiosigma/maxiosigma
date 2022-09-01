@@ -1,28 +1,20 @@
 export const state = () => ({
-   //scroll: 0,
-   //scrollBlock: false,
-   //mainMenu: 0,
+   visio: 0,
    timeout: 1000,
-   //uploadCdn: false,
-   //animateKinesis: true,
-   //modal: {
-   //	discount: false,
-   //},
-   //slides: [],
-   navbar: [],
-   footbar: [],
-   social: [],
-   reffers: [],
-   links: [],
-   publics: [],
+   strapi: { navbar: [], fotbar: [], socbar: [] },
+   nav: { active: [] },
    developerWorks: [],
    designerWorks: [],
-   visio: 0,
-
-   strapi: { navbar: [], fotbar: [], socbar: [] },
+   publics: [],
+   reffers: [],
+   links: [],
+   works: [],
 });
 
 export const mutations = {
+   setNav(state, key, value) {
+      state.nav[key] = value;
+   },
    setVisio(state, value) {
       state.visio = value;
    },
@@ -77,17 +69,27 @@ export const actions = {
          ctx.commit("uploadStrapiTo", { key, payload });
       });
 
-      const navbarQuery = await this.$strapi.graphql({ query: ctx.state.gql.navbar });
-      const navbarResult = menu(navbarQuery);
-      ctx.commit("uploadStrapi", { key: "navbar", payload: navbarResult });
+      ctx.commit("uploadStrapi", {
+         key: "works",
+         payload: (await this.$strapi.graphql({ query: ctx.state.gql.works })).works.data.map((it) => {
+            const attr = it.attributes;
 
-      const footbarQuery = await this.$strapi.graphql({ query: ctx.state.gql.footbar });
-      const footbarResult = menu(footbarQuery);
-      ctx.commit("uploadStrapi", { key: "footbar", payload: footbarResult });
-
-      const socialQuery = await this.$strapi.graphql({ query: ctx.state.gql.social2 });
-      const socialResult = menu(socialQuery);
-      ctx.commit("uploadStrapi", { key: "social", payload: socialResult });
+            return {
+               ...attr,
+               assets: {
+                  fonts: attr.assets.fonts.data.map((as) => as.attributes.title),
+                  models: attr.assets.models.data.map((as) => as.attributes.title),
+                  technologies: attr.assets.technologies.data.map((as) => as.attributes.title),
+               },
+               media: attr.media.data.map((md) => {
+                  return {
+                     url: md.attributes.url,
+                     alt: md.attributes.alternativeText,
+                  };
+               }),
+            };
+         }),
+      });
 
       const publicsQuery = await this.$strapi.graphql({ query: ctx.state.gql.publics });
       const publicsResult = publicsQuery.publicateds.data.map((it) => it.attributes);
@@ -134,26 +136,6 @@ export const actions = {
          return sum;
       }, []);
       ctx.commit("uploadStrapi", { key: "links", payload: links });
-
-      function menu(obj) {
-         return obj?.menusMenu?.data?.attributes?.items?.data
-            .map((it) => it?.attributes)
-            .filter((it) => !it.hidden)
-            .map((it) => {
-               return {
-                  url: it.url,
-                  title: it.title,
-                  order: it.order,
-                  target: it.target,
-                  parent: it.parent.data?.attributes,
-                  class: it.class,
-                  order: it.order,
-                  icon: it.icon,
-                  top: it.top,
-               };
-            })
-            ?.sort((a, b) => (a?.order > b?.order ? 1 : -1));
-      }
    },
 };
 

@@ -3,13 +3,10 @@
 export const state = () => ({
    developerWorks: developerWorks(),
    designerWorks: designerWorks(),
-   portfolio: portfolio(),
    publics: publics(),
-   footbar: menu(2),
-   navbar: menu(1),
-   social2: menu(3),
    links: links(),
    uiMenu: (item) => uiMenu(item),
+   works: works(),
 });
 
 function designerWorks(limit = 200) {
@@ -137,115 +134,46 @@ function publics() {
 	`;
 }
 
-// page: ${page},
-function links(page = 1, limit = 2000) {
+function links(limit = 2000) {
    return `
 		query {
-			links(pagination: { limit: 200 }, sort: "top:DESC") {
+			links(pagination: { limit: ${limit} }, sort: "top:DESC") {
 				data {
 					attributes{
-            top
-            href
+            			top
+            			href
 						title
 						short
 						description
 						partnership
 						updatedAt
-            alt
-            imgs {
+            			alt
+            			imgs {
 							data {
-                attributes {
-                  name
-									alternativeText
-									width
-									height
-                  size
-									ext
-									url
-                }
-              }
-						}
-						tags {
-              data {
-                attributes {
-                  title
-                }
-              }
-            }
-					}
-				}
-			}
-		}
-	`;
-}
-
-function portfolio() {
-   return `
-		query {
-			page (id: 1) {
-				data{
-					attributes {
-						Title
-						Imgs {
-							data {
-								attributes {
-									name
-									width
-									height
-									ext
-									size
-									url
+            			    	attributes {
+            			     		 name
+									 alternativeText
+									 width
+									 height
+            			      		 size
+									 ext
+									 url
+            			    }
+            			  }
+									}
+									tags {
+            			  data {
+            			    attributes {
+            			      title
+            			    }
+            			  }
+            			}
 								}
 							}
 						}
-					}
-				}
-			}
 		}
 	`;
 }
-
-function menu(id = 1, limit = 50) {
-   return `
-		query {
-			menusMenu(id: ${id}) {
-				data {
-					attributes {
-						title
-						slug
-						items(pagination: { limit: ${limit}}) {
-							${parentMenu()}
-						}
-					}
-				}
-			}
-		}
-	`;
-}
-
-function parentMenu(count = 1, depth = 3) {
-   const child = depth !== count ? parentMenu((count += 1)) : null;
-
-   return `
-			data {
-				attributes {
-					url
-					title
-					order
-					target
-					hidden
-					class
-					order
-					icon
-					top
-					${!!child ? `parent { ${child} }` : ""}
-			  }
-			}
-		`;
-}
-
-//console.log(uiMenu());
-// ${slug}
 
 function uiMenu(slug) {
    return `
@@ -281,77 +209,51 @@ function uiMenu(slug) {
 	}`;
 }
 
-/*
-query {
-	 renderNavigation(
-    navigationIdOrSlug: "nav-bar"
-    type: FLAT
-    menuOnly: false
-  ){
-    title
-    path
-    type
-    order
-    externalPath
-    uiRouterKey
-    menuAttached
-    parent {
-      uiRouterKey
-	  parent{
-         uiRouterKey
-         parent{
-        	uiRouterKey
-      	 }
-      }
-    }
-  }
+function works() {
+   return `
+		query {
+			works (sort: "top:DESC", pagination: {limit: 2000}){
+		    data {
+		      attributes {
+		        title
+		        top
+		        type
+		        media {
+		          data {
+		            attributes {
+		              url
+		              alternativeText
+		            }
+		          }
+		        }
+		        description
+		        link
+		        date
+		        assets {
+		          technologies{
+		            data {
+		              attributes {
+		                title
+		              }
+		            }
+		          }
+		          fonts{
+		            data {
+		              attributes {
+		                title
+		              }
+		            }
+		          }
+		          models {
+		            data {
+		              attributes {
+		                title
+		              }
+		            }
+		          }
+		        }
+		      }
+		    }
+		  }
+		}`;
 }
-*/
-
-//data {
-//	attributes {
-//		title
-//		target
-//		url
-//		order
-//		hidden
-//		footer
-//		class
-//		parent {
-//			data {
-//				attributes {
-//					title
-//					target
-//					url
-//					order
-//					parent {
-//						data {
-//							attributes {
-//									title
-//									target
-//									url
-//									order
-//									parent {
-//										data {
-//											attributes {
-//												parent {
-//													data {
-//														attributes {
-//															title
-//															target
-//															url
-//															order
-//														}
-//													}
-//												}
-//											}
-//										}
-//									}
-//							}
-//						}
-//					}
-//				}
-//			}
-//		}
-//	}
-//}

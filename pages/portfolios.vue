@@ -53,7 +53,7 @@
             :visio="1"
             :black="true"
             :reverse="false"
-            :data="{ first: designerWorksFirst, second: designerWorksSecond }"
+            :data="design"
          >
             <template v-slot:title> Дизайнер </template>
             <template v-slot:description>
@@ -76,7 +76,7 @@
             :visio="2"
             :black="false"
             :reverse="true"
-            :data="{ first: developerWorksFirst, second: developerWorksSecond }"
+            :data="development"
          >
             <template v-slot:title> Разработчик </template>
             <template v-slot:description>
@@ -116,24 +116,41 @@ export default {
       };
    },
    async asyncData({ store }) {
-      const developerWorksFirst = store.state.developerWorks.filter((it, i) => i <= 5);
-      const developerWorksSecond = store.state.developerWorks.filter((it, i) => i > 5);
-      const designerWorksFirst = store.state.designerWorks.filter((it, i) => i <= 5);
-      const designerWorksSecond = store.state.designerWorks.filter((it, i) => i > 5);
+      //const developerWorksFirst = store.state.developerWorks.filter((it, i) => i <= 5);
+      //const developerWorksSecond = store.state.developerWorks.filter((it, i) => i > 5);
+      //const designerWorksFirst = store.state.designerWorks.filter((it, i) => i <= 5);
+      //const designerWorksSecond = store.state.designerWorks.filter((it, i) => i > 5);
 
-      //console.log(developerWorksFirst, developerWorksSecond, designerWorksFirst, designerWorksSecond);
+      const types = store.state.works.reduce(
+         (sum, it, i) => (sum.filter((type) => type === it.type)?.length > 0 ? sum : sum.push(it.type) && sum),
+         []
+      );
 
-      return { developerWorksFirst, developerWorksSecond, designerWorksFirst, designerWorksSecond };
+      return {
+         //developerWorksFirst,
+         //developerWorksSecond,
+         //designerWorksFirst,
+         //designerWorksSecond,
+
+         ...types.reduce((sum, type) => {
+            sum = { ...sum, [type]: store.state.works.filter((work) => work.type === type) };
+            return sum;
+         }, {}),
+      };
    },
    data() {
       return {
          title: "Портфолио",
          description: "Работы Макса, посмотрите обязательно !!!",
-         developer: {},
-         designer: {},
+         //developer: {},
+         //designer: {},
       };
    },
-   mounted() {},
+   mounted() {
+      //console.log(this.development);
+      //console.log(this.design);
+      //console.log(this.developerWorksFirst, this.developerWorksSecond, this.designerWorksFirst, this.designerWorksSecond);
+   },
    methods: {
       noVisio(arr) {
          return arr?.filter((it) => it === this.$store.state.visio).length > 0;

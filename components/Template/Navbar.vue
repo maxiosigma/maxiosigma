@@ -14,59 +14,25 @@
             <ItemLogo></ItemLogo>
 
             <div :class="['nav-bar-cont-text']">
-               <!-- parent.key === undefined -->
                <div :class="['nav-bar-cont-arrow', !parent.key ? '!hidden' : '']" @click="handleClickPrev()">←</div>
 
                <ItemLink
                   :href="link.path"
                   :nolang="link.path === '/'"
-                  :class="[
-                     'nav-bar-link group',
-
-                     linkHidden(link) ? 'hidden' : '',
-
-                     //'opacity-0',
-                     //!link.parent && !parent.key ? '!opacity-100' : '',
-                     //link.parent && parent.key && link.parent.uiRouterKey === parent.key ? '!opacity-100' : '',
-
-                     //!link.parent && !parent.key ? '' : 'hidden',
-                     //link.parent && parent.key && link.parent.uiRouterKey === parent.key ? '' : 'hidden',
-
-                     // link.parent && parent ? { hidden: link.parent.title !== parent.title } : { hidden: link.parent !== parent.title },
-                     //link.parent && parent.key ? { hidden: link.parent.uiRouterKey !== parent.key } : '',
-                     //link.parent && !parent.key ? { hidden: link.parent !== parent.key } : '',
-
-                     link.class,
-                  ]"
+                  :class="['nav-bar-link group', linkHidden(link) ? 'hidden' : '', link.class]"
                   :key="i"
                   v-for="(link, i) in links"
                   @click.native.prevent="
-                     handleClickNext({
-                        parent: { key: link.uiRouterKey, order: link.order },
-                        target: link.type,
-                        url: link.path,
-                     })
+                     handleClickNext({ parent: { key: link.uiRouterKey, order: link.order }, target: link.type, url: link.path })
                   "
                >
-                  <div :class="['nav-bar-link-hover', isActive(link.uiRouterKey) ? 'border-b-2 border-b-yellow-500' : '']">
+                  <div :class="['nav-bar-link-hover', isActive(link.uiRouterKey) ? 'active' : '']">
                      {{ link.title }}
                   </div>
                </ItemLink>
             </div>
          </div>
       </div>
-
-      <!--<div
-	    v-if="crumbs.length > 1"
-	    :class="['nav-bar-crumbs', scroll ? crumbScroll : '', $store.state.mainMenu == 1 ? crumbScroll : '']">
-	    <div class="nav-bar-crumbs-container">
-	    	<span class="group" v-for="(crumb, i) in crumbs" :key="i">
-	    		<ItemLink v-if="i !== crumbs.length - 1" class="nav-bar-crumbs-link" :href="'/' + crumb.l">{{ crumb.t }}</ItemLink>
-	    		<span class="nav-bar-crumbs-title" v-if="i === crumbs.length - 1">{{ crumb.t }}</span>
-	    		<span class="nav-bar-crumbs-delimetr" v-if="i !== crumbs.length - 1">/</span>
-	    	</span>
-	    </div>
-		</div>-->
    </div>
 </template>
 
@@ -76,16 +42,14 @@ export default {
    data() {
       return {
          links: this.$store.state.strapi.navbar,
-         isRoute: this.$route.fullPath?.replace(this?.localePath("/") + "/", "").replace("/" + this.loke() + "/", ""),
+         //isRoute: this.$route.fullPath?.replace(this?.localePath("/") + "/", "").replace("/" + this.loke() + "/", ""),
          parent: { key: null, order: null },
          scroll: 0,
          active: [],
       };
    },
    mounted() {
-      //console.log(this.links);
       this.getActive();
-      //console.log(this.active);
    },
    methods: {
       linkHidden(item) {
@@ -97,7 +61,7 @@ export default {
       },
       getActive(arg = undefined) {
          if (!arg) {
-            const rt = this.isRoute?.split("/")[0];
+            const rt = this.isRoute()?.split("/")?.[0];
             arg = this.links?.filter((it) => it.path.indexOf(rt) !== -1)[0];
             this.active.push(arg?.uiRouterKey);
          } else {
@@ -134,26 +98,8 @@ export default {
          if (window.scrollY >= position.top && bodyHeight - scrollHeight <= position.bottom) this.scroll = 2;
       },
       isLink(url) {
-         return this.isRoute === url || this.isRoute === url + "/" || "/" + this.isRoute === url;
+         return this.isRoute() === url || this.isRoute() === url + "/" || "/" + this.isRoute() === url;
       },
-      //getCrumbs() {
-      //	const fullPath = this.$route.fullPath,
-      //		params = fullPath
-      //			.replace('/' + this.$i18n.locale, '')
-      //			.replace('/amp', '')
-      //			.substring(1)
-      //			.split('/')
-      //			.filter((it) => it !== ''),
-      //		crumbs = []
-
-      //	params.reduce((sum, it, i) => {
-      //		sum += it + '/'
-      //		crumbs.push({ l: sum, t: this.ucFirst(it) })
-      //		return sum
-      //	}, '')
-
-      //	return crumbs
-      //},
    },
 };
 </script>
@@ -168,11 +114,9 @@ export default {
       @apply flex-center flex-col text-white w-full py-0 transition-all duration-700;
 
       &-cont {
-         //bg-hero-wiggle-white-10 bg-5r
          @apply bg-repeat bg-self-main flex-center bg-opacity-85 bg-hero-circuit-board-white-10 bg-5r mb-1.5 min-h-10 w-full opacity-100 px-4 transition-opacity duration-500 sm:h-12;
 
          &.cont-scroll {
-            //animation: OPeS 2s;
             @apply min-h-none h-6 mb-0 opacity-85 py-2 transition-all top-0 duration-300 delay-250 sm:h-10;
 
             &.bottom {
@@ -185,22 +129,29 @@ export default {
          }
 
          &-text {
-            // flex-wrap py-1 overflow-hidden
             @apply flex max-w-full mt-0.5 ml-1 px-1 items-center <sm:(justify-end);
          }
 
          &-arrow {
             $forever-and-ever: -1;
-            @apply cursor-pointer text-lg text-shadow-md transition-all duration-300 md:(mb-1 mr-2.5) <md:(order-last ml-2.5 mt-0.5 transform rotate-180) hover:(text-yellow-300 tracking-3px text-shadow-lg);
+            @apply cursor-pointer text-lg text-shadow-md transition-all duration-300 md:(mb-1 mr-2.5);
+            @apply <md:(order-last ml-2.5 mt-0.5 transform rotate-180);
+            @apply hover:(text-yellow-300 tracking-3px text-shadow-lg);
          }
       }
 
       &-link {
          // py-1
-         @apply cursor-pointer text-shadow-md tracking-wider transition-all text-[10px] duration-300 uppercase overflow-hidden sm:(text-xs tracking-wide) hover:(overflow-visible);
+         @apply cursor-pointer text-shadow-md tracking-wider transition-all text-[10px] duration-300 uppercase overflow-hidden;
+         @apply sm:(text-xs tracking-wide) hover:(overflow-visible);
 
          &-hover {
-            @apply my-auto min-w-3 py-0.5 transition-all duration-500 truncate pointer-events-none group-hover:(text-yellow-300 max-w-none tracking-widest overflow-clip overflow-visible text-shadow-lg);
+            @apply my-auto min-w-3 py-0.5 transition-all duration-500 truncate pointer-events-none;
+            @apply group-hover:(text-yellow-300 max-w-none tracking-widest overflow-clip overflow-visible text-shadow-lg);
+
+            &.active {
+               @apply border-b-2 border-b-yellow-500;
+            }
          }
 
          &:nth-of-type(n + 1) {
@@ -253,71 +204,4 @@ export default {
       opacity: 0.85;
    }
 }
-
-//.anime-custom-opacity {
-//  animation: OPeS 1s ease-in-out;
-//  //animation-duration: 1000ms;
-//  //animation-fill-mode: both;
-//}
-
-//&-crumbs {
-//  @apply bg-self-main flex-center bg-opacity-90 bg-hero-wiggle-white-10 bg-2r w-full opacity-100 transition-all duration-800 delay-200 overflow-hidden;
-
-//  &.crumb-scroll {
-//    @apply mb-5 opacity-0;
-//  }
-
-//  &-container {
-//    @apply container text-sm py-2 px-4 lg:text-xs lg:py-1;
-//  }
-
-//  &-link {
-//    @apply transition-all duration-500 group-hover:(text-yellow-300 tracking-wider) ;
-//  }
-
-//  &-title {
-//    @apply text-cyan-200 pointer-events-none;
-//  }
-
-//  &-delimetr {
-//    @apply mr-2 ml-1 pointer-events-none;
-//  }
-//}
-
-//&-dropdown {
-//  @apply grid grid-flow-col gap-2 grid-rows-1 items-center;
-
-//  &-cont {
-//    @apply text-sm text-center min-w-24 grid top-50px gap-y-1 absolute;
-//  }
-
-//  &-icon {
-//    @apply cursor-pointer text-current transition text-light-200 duration-300 icon-md hover:(text-black text-shadow-lg) ;
-//  }
-
-//  &-links {
-//    @apply mr-5 grid grid-flow-col gap-x-4 grid-rows-1;
-//  }
-
-//  &-link {
-//    @apply font-semibold transition text-light-200 duration-300 hover:(text-black);
-
-//    &.exact {
-//      @apply text-stroke-1 text-stroke-light-300;
-//    }
-//  }
-
-//  &-sublinks {
-//    @apply flex relative justify-end;
-//  }
-
-//  &-sublink {
-//    @apply cursor-pointer bg-orange-600 border-1 border-opacity-0 border-orange-600 shadow-md p-0.5 transition-all shadow-orange-600 text-light-200 duration-300;
-//    @apply hover:(bg-light-200 text-black border-opacity-25 rounded) ;
-
-//    &.exact {
-//      @apply text-stroke-1 text-stroke-light-300;
-//    }
-//  }
-//}
 </style>

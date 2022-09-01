@@ -232,6 +232,8 @@ function plugins() {
                color: "#fefefe",
                textShadow: "#e7e7e7 3px 5px 0, #999 4px 6px 3px, #ccc 8px 11px 10px",
             },
+            ".#{!important}": {},
+            "#{!important}": {},
             ...textShadows(),
          });
       }),
@@ -271,6 +273,7 @@ function shortcuts() {
       "text-shadow-white-1": {
          color: "white",
       },
+      "#{!important}": "",
    };
 }
 

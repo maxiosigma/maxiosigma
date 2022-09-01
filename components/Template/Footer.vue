@@ -14,14 +14,14 @@
 
             <div class="footer-menu">
                <div class="footer-menu-cont">
-                  <div class="footer-menu-item" :key="i" v-for="(it, i) in links.filter((it) => !it.parent)">
+                  <div class="footer-menu-item" :key="i" v-for="(link, i) in links.filter((link) => !link.parent)">
                      <ItemLink
-                        :href="it.path"
-                        :nolang="it.path == '/'"
-                        class="footer-menu-link"
-                        @click="handleClickNext({ target: it.type, url: it.path })"
+                        :href="link.path"
+                        :nolang="link.path == '/'"
+                        :class="['footer-menu-link', isActive(link.uiRouterKey) ? 'active' : '']"
+                        @click="handleClickNext({ target: link.type, url: link.path })"
                      >
-                        {{ it.title }}
+                        {{ link.title }}
                      </ItemLink>
                   </div>
 
@@ -67,6 +67,7 @@
 export default {
    data() {
       return {
+         active: [],
          links: this.$store.state.strapi.fotbar,
          social: this.$store.state.strapi.socbar
             .filter((it) => it.icon)
@@ -75,9 +76,28 @@ export default {
       };
    },
    mounted() {
-      //console.log(this.$store.state.strapi);
+      this.getActive();
    },
    methods: {
+      getActive(arg = undefined) {
+         if (!arg) {
+            const rt = this.isRoute()?.split("/")[0];
+            arg = this.links?.filter((it) => it.path.indexOf(rt) !== -1)[0];
+            this.active.push(arg?.uiRouterKey);
+         } else {
+            arg = this.links?.filter((it) => it.uiRouterKey === arg)[0];
+         }
+
+         const key = arg?.parent?.uiRouterKey;
+
+         if (key) {
+            this.active.push(key);
+            this.getActive(key);
+         }
+      },
+      isActive(arg) {
+         return this.active?.indexOf(arg) !== -1;
+      },
       handleClickNext({ url = undefined, target = undefined }) {
          url ? (target == "blank" ? window.open(url) : (location.href = "/" + this.$i18n.locale + url)) : null;
       },
@@ -118,6 +138,10 @@ export default {
       &-link {
          //tracking-widest
          @apply cursor-pointer flex-center tracking-wider transition-all text-[10px] leading-[0.5] duration-200 uppercase hover:(text-yellow-500);
+
+         &.active {
+            @apply text-yellow-400;
+         }
       }
    }
 

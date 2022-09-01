@@ -7,16 +7,8 @@
          :options="options"
          @click.native="handleClick()"
       >
-         <!--      :cls="[
-            'portfolio-section-button',
-            toogleBlack(black),
-         ]"   @click.native="handleClick()" -->
          {{ value }}
       </particle-btn>
-
-      <!--<h2>animating:{{ options.animating }}</h2>
-      <h2>visible:{{ options.visible }}</h2>
-      <button @click="options.visible = !options.visible">toggle</button>-->
    </client-only>
 </template>
 
@@ -41,19 +33,15 @@ export default {
          action: false,
          value: this.text[0],
          options: {
+            size: 1,
             visible: true,
             animating: true,
-
             style: "stroke",
             type: "triangle",
             direction: "left",
             canvasPadding: 100,
-
             onComplete: () => this.onCompleteBtn(),
-
             onBegin: () => {},
-
-            size: 1,
             //color: "#ffffff",
             //color: () => { return Math.random() <script 0.5 ? "#000000" : "#ffffff";},
          },
@@ -62,19 +50,26 @@ export default {
    methods: {
       handleClick() {
          this.action = !this.action;
-
-         //setTimeout(() => {
-         //   this.action = !this.action;
-         //}, 1000);
+         //this.$emit("action", this.action);
       },
       onCompleteBtn() {
-         if (this.action) {
-            //setTimeout(() => {
-            this.action = !this.action;
-            this.options.visible = !this.options.visible;
-            this.value === this.text[0] ? (this.value = this.text[1]) : (this.value = this.text[0]);
-            //}, 500);
-         }
+         //if (this.action) {
+
+         //this.action = this.value === this.text[0] ? !this.action : this.action;
+
+         this.options.visible = this.action ? !this.options.visible : this.options.visible;
+
+         this.value = this.value === this.text[0] ? this.text[1] : this.text[0];
+
+         //this.value === this.text[0] ? (this.value = this.text[1]) : (this.value = this.text[0]);
+         //setTimeout(() => (this.action = false), 1500);
+
+         this.action = this.options.visible ? !this.action : this.action;
+
+         this.$emit("action", !this.action);
+         //}
+
+         //this.$payloadURL(route)
       },
    },
 };

@@ -1,3 +1,6 @@
+// REGEX
+//"id": \w+,
+
 //function cookie() {
 //	return {
 //	   cookies: {

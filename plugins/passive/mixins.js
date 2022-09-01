@@ -41,6 +41,9 @@ Vue.mixin({
       mainPath() {
          return this.$route.fullPath === "/";
       },
+      isRoute() {
+         return this.$route.fullPath?.replace(this?.localePath("/") + "/", "").replace("/" + this.loke() + "/", "");
+      },
       routeReffer() {
          return (
             "/" +

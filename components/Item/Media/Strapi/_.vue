@@ -27,6 +27,12 @@ export default {
                .join("_"),
       };
    },
+   mounted() {
+      //const fw = this.src.replace("uploads", "uploads/f_webp");
+      //const webp = fw.split(".")?.[0] + ".webp";
+      //console.log(webp);
+      //+ '?format=webp'
+   },
 };
 </script>
 

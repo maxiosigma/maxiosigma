@@ -36,6 +36,7 @@ export default {
    // },
    mounted() {
       if (!this.isLinkSite(this.src)) {
+         //?format=webp
          //console.log(this.src);
          //console.log(this.$img(this.src, { format: "webp", quality: 75 }, { provider: "strapi" }));
 

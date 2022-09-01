@@ -3,13 +3,13 @@
       <ItemPortfolioBlock :black="black" :reverse="reverse">
          <template v-slot:left>
             <VueSlickCarousel v-bind="{ ...slider.common, ...slider.top }">
-               <div class="portfolio-project-images" v-for="(it, i) in data.first" :key="i">
+               <div class="portfolio-project-images" v-for="(it, i) in data.filter((it) => it.top)" :key="i">
                   <ItemMediaStrapiBg class="portfolio-project-image" :src="it.media[0].url" />
                </div>
             </VueSlickCarousel>
 
             <VueSlickCarousel class="portfolio-project-depiction" v-bind="{ ...slider.common, ...slider.bootom }">
-               <div class="portfolio-project-depiction-container" v-for="(it, i) in data.first" :key="i">
+               <div class="portfolio-project-depiction-container" v-for="(it, i) in data.filter((it) => it.top)" :key="i">
                   <div
                      v-if="it.link"
                      :class="['portfolio-project-link', toogleBlack(black), 'font-mw mw-info']"
@@ -31,23 +31,11 @@
 
                <div class="text-base grid gap-4"><slot name="description"></slot></div>
 
-               <!--  :text="['Все проекты', 'Свернуть']" -->
-               <ItemPortfolioButton :black="black" />
-               <!--  @click.native="$store.commit('setVisio', visio)" -->
+               <ItemPortfolioButton @action="setAction" :black="black" />
 
-               <!--<div
-                  :class="[visio === $store.state.visio ? 'portfolio-block-no' : 'portfolio-block-btn', toogleBlack(black)]"
-                  @click="$store.commit('setVisio', visio)"
-               >
-                  Все проекты
-               </div>
+               {{ action }}
 
-               <div
-                  :class="[visio === $store.state.visio ? 'portfolio-block-btn' : 'portfolio-block-no', toogleBlack(black)]"
-                  @click="$store.commit('setVisio', 0)"
-               >
-                  Свернуть
-               </div>-->
+               <!--  -->
             </div>
          </template>
       </ItemPortfolioBlock>
@@ -57,7 +45,7 @@
 
          <ItemPortfolioBlock
             :class="[visio === $store.state.visio ? '' : 'hidden', i % 2 == 0 ? toogleBlack(black, true) : toogleBlack(black)]"
-            v-for="(it, i) in data.second"
+            v-for="(it, i) in data.filter((it) => !it.top)"
             :key="i"
          >
             <template v-slot:left>{{ it.title }}</template>
@@ -76,6 +64,7 @@ export default {
    props: ["black", "reverse", "data", "visio"],
    data() {
       return {
+         action: false,
          slider: {
             common: {
                accessibility: false,
@@ -110,6 +99,9 @@ export default {
       if (!this.visio) this.visio = 0;
    },
    methods: {
+      setAction(action) {
+         this.action = action;
+      },
       handleClickLink(url) {
          window.open(url);
       },
@@ -141,7 +133,7 @@ export default {
       }
 
       &-title {
-         @apply text-2xl sm:text-5xl pb-4 px-2 uppercase tracking-[5px];
+         @apply text-2xl sm:text-[4.5vmin] pb-4 px-2 uppercase tracking-[5px];
 
          &.black {
             @apply text-shadow-custom-green-10px border-b-6 border-orange-500;
@@ -200,6 +192,10 @@ export default {
    }
 
    &-block {
+      &-side {
+         @apply max-w-full p-4;
+      }
+
       &-btn {
          @apply uppercase text-xs text-white px-4 py-2 transition duration-700 rounded-md cursor-pointer;
 
@@ -226,7 +222,7 @@ export default {
 
    & .slick {
       &-slide {
-         @apply pointer-events-none;
+         @apply pointer-events-none max-w-full px-4;
       }
 
       &-center {
