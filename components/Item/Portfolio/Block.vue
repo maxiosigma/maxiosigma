@@ -21,6 +21,7 @@ export default {
 <style lang="scss">
 .portfolio {
    &-block {
+      // container mx-auto  sm:rounded-b-xl
       @apply transition-all duration-500 px-4 py-4 min-h-32 max-w-screen break-words bg-opacity-85 relative;
 
       &-container {

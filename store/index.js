@@ -82,11 +82,12 @@ export const actions = {
                   technologies: attr.assets.technologies.data.map((as) => as.attributes.title),
                },
                media: attr.media.data.map((md) => {
-                  return {
-                     url: md.attributes.url,
-                     alt: md.attributes.alternativeText,
-                  };
+                  const alt = md.attributes.alternativeText;
+                  delete md.attributes.alternativeText;
+
+                  return { ...md.attributes, alt };
                }),
+               //.filter((md) => !md.alternativeText),
             };
          }),
       });

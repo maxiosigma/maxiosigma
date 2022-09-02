@@ -594,6 +594,7 @@ export default {
    plugins: [
       "@plugins/passive/mixins",
       "@plugins/passive/directives",
+      "@plugins/active/VueMasonry.client.js",
       "@plugins/active/ParticleEffectButton.client.js",
       "@plugins/active/VueScrollIndicator.client.js",
       //"@plugins/active/VueAwesomeSwiper",

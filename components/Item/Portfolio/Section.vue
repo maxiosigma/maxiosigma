@@ -1,6 +1,6 @@
 <template>
    <section class="portfolio-section">
-      <ItemPortfolioBlock :black="black" :reverse="reverse">
+      <!--<ItemPortfolioBlock :black="black" :reverse="reverse">
          <template v-slot:left>
             <VueSlickCarousel v-bind="{ ...slider.common, ...slider.top }">
                <div class="portfolio-project-images" v-for="(it, i) in data.filter((it) => it.top)" :key="i">
@@ -31,25 +31,22 @@
 
                <div class="text-base grid gap-4"><slot name="description"></slot></div>
 
-               <ItemPortfolioButton @action="setAction" :black="black" />
-
-               {{ action }}
-
-               <!--  -->
+               <ItemPortfolioButton @click.native="handleClick" :black="black" />
             </div>
          </template>
-      </ItemPortfolioBlock>
+      </ItemPortfolioBlock>-->
 
       <client-only>
-         <!-- v-if="visio === $store.state.visio" -->
+         <!-- action === true ? '' : 'hidden', v-if="visio === $store.state.visio"  -->
+         <ItemPortfolioBlock :black="i % 2 === 1 ? black : !black" :class="[]" :reverse="toogleIteration(i)" v-for="(it, i) in data" :key="i">
+            <template v-slot:left>
+               <div class="portfolio-project-images flex-center">
+                  <ItemMediaStrapiBg class="portfolio-project-image" v-for="(media, j) in it.media" :key="j" :src="media.url" :alt="media.alt" />
+                  <!--{{ media }}-->
+               </div>
+            </template>
 
-         <ItemPortfolioBlock
-            :class="[visio === $store.state.visio ? '' : 'hidden', i % 2 == 0 ? toogleBlack(black, true) : toogleBlack(black)]"
-            v-for="(it, i) in data.filter((it) => !it.top)"
-            :key="i"
-         >
-            <template v-slot:left>{{ it.title }}</template>
-            <template v-slot:right>{{ it.description }}</template>
+            <template v-slot:right>{{ it.title }} {{ it.description }}</template>
          </ItemPortfolioBlock>
       </client-only>
    </section>
@@ -99,11 +96,14 @@ export default {
       if (!this.visio) this.visio = 0;
    },
    methods: {
-      setAction(action) {
-         this.action = action;
+      handleClick() {
+         setTimeout(() => (this.action = !this.action), 2500);
       },
       handleClickLink(url) {
          window.open(url);
+      },
+      toogleIteration(i) {
+         return this.reverse ? i % 2 === 0 : i % 2 === 1;
       },
       tooltipLink(url) {
          return this.isMobile()
@@ -126,7 +126,7 @@ export default {
 <style lang="scss">
 .portfolio {
    &-section {
-      @apply relative;
+      @apply relative divide-green-500 divide-y-1;
 
       &-depiction {
          @apply grid gap-6 sm:col-span-6 place-items-start place-content-start px-4 py-6 <sm:(place-items-center text-center);
@@ -147,11 +147,15 @@ export default {
 
    &-project {
       &-images {
-         @apply flex rounded-xl pointer-events-none overflow-hidden;
+         @apply flex pointer-events-none;
       }
 
       &-image {
-         @apply bg-contain flex-grow bg-center rounded-xl min-h-60 bg-transparent w-full h-full;
+         @apply bg-contain flex-grow bg-center min-h-60 bg-transparent w-full h-full;
+
+         & > img {
+            @apply rounded-xl overflow-hidden #{!important};
+         }
       }
 
       &-depiction {
@@ -222,7 +226,7 @@ export default {
 
    & .slick {
       &-slide {
-         @apply pointer-events-none max-w-full px-4;
+         @apply pointer-events-none max-w-full px-4 border-transparent border-none border-[-1px];
       }
 
       &-center {
