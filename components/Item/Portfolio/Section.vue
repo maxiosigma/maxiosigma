@@ -38,10 +38,53 @@
 
       <client-only>
          <!-- action === true ? '' : 'hidden', v-if="visio === $store.state.visio"  -->
-         <ItemPortfolioBlock :black="i % 2 === 1 ? black : !black" :class="[]" :reverse="toogleIteration(i)" v-for="(it, i) in data" :key="i">
+         <ItemPortfolioBlock
+            :black="i % 2 === 1 ? black : !black"
+            :class="[]"
+            :reverse="toogleIteration(i)"
+            v-for="(it, i) in data.filter((it) => it.media.filter((media) => media.mime === 'video/mp4').length > 0)"
+            :key="i"
+         >
+            <!-- .filter((media) => media.mime === 'video/mp4').length > 0) -->
+
             <template v-slot:left>
-               <div class="portfolio-project-images flex-center">
-                  <ItemMediaStrapiBg class="portfolio-project-image" v-for="(media, j) in it.media" :key="j" :src="media.url" :alt="media.alt" />
+               <div class="portfolio-project-media flex-center">
+                  <!--    v-if="media.mime !== 'video/mp4'" -->
+                  <ItemMediaStrapiBg
+                     class="portfolio-project-image"
+                     v-for="(media, j) in it.media.filter((media) => media.mime !== 'video/mp4')"
+                     :key="`img-${i}${j}`"
+                     :src="media.url"
+                     :alt="media.alt"
+                  />
+
+                  <div v-for="(media, j) in it.media.filter((media) => media.mime === 'video/mp4')" :key="`media-${i}${j}`">
+                     <!--{{ "http://localhost:1337" + media.url }}-->
+                     <!--  :id="`${i}${j}`" -->
+                     <!--
+                     <video-player :src="'http://localhost:1337' + media.url" />-->
+
+                     <!--        @play="onPlayerPlay($event)"
+       @pause="onPlayerPause($event)"
+       @ready="playerReadied"
+       @statechanged="playerStateChanged($event)" -->
+                     <div
+                        class="video-player-box max-w-1/5 max-h-1/5"
+                        v-video-player:nox="{
+                           id: i,
+                           muted: true,
+                           playbackRates: [1.0],
+                           sources: [
+                              {
+                                 type: 'video/mp4',
+                                 src: 'http://localhost:1337' + media.url,
+                              },
+                           ],
+                           poster: 'http://localhost:1337' + it.media[0].url,
+                        }"
+                     ></div>
+                  </div>
+
                   <!--{{ media }}-->
                </div>
             </template>
@@ -94,6 +137,7 @@ export default {
    },
    mounted() {
       if (!this.visio) this.visio = 0;
+      //console.log("this is current videojs instance object", this.nox);
    },
    methods: {
       handleClick() {
@@ -237,5 +281,12 @@ export default {
          }
       }
    }
+}
+
+.video-js,
+//.vjs-poster,
+//.vjs-tech
+{
+   @apply max-h-24 max-w-36;
 }
 </style>

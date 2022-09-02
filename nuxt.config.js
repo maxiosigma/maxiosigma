@@ -598,6 +598,7 @@ export default {
       "@plugins/active/ParticleEffectButton.client.js",
       "@plugins/active/VueScrollIndicator.client.js",
       //"@plugins/active/VueAwesomeSwiper",
+      "@plugins/active/NuxtVideoPlayer",
       "@plugins/active/VueTypedJs",
       "@plugins/active/VueKinesis",
       "@plugins/active/VueTooltip",

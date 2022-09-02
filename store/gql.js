@@ -223,6 +223,12 @@ function works() {
 		            attributes {
 		              url
 		              alternativeText
+					  name
+					  height
+					  width
+					  hash
+					  ext
+					  mime
 		            }
 		          }
 		        }
