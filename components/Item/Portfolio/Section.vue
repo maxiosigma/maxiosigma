@@ -50,24 +50,15 @@
             <template v-slot:left>
                <div class="portfolio-project-media flex-center">
                   <!--    v-if="media.mime !== 'video/mp4'" -->
-                  <ItemMediaStrapiBg
+                  <!--<ItemMediaStrapiBg
                      class="portfolio-project-image"
                      v-for="(media, j) in it.media.filter((media) => media.mime !== 'video/mp4')"
                      :key="`img-${i}${j}`"
                      :src="media.url"
                      :alt="media.alt"
-                  />
+                  />-->
 
-                  <div v-for="(media, j) in it.media.filter((media) => media.mime === 'video/mp4')" :key="`media-${i}${j}`">
-                     <!--{{ "http://localhost:1337" + media.url }}-->
-                     <!--  :id="`${i}${j}`" -->
-                     <!--
-                     <video-player :src="'http://localhost:1337' + media.url" />-->
-
-                     <!--        @play="onPlayerPlay($event)"
-       @pause="onPlayerPause($event)"
-       @ready="playerReadied"
-       @statechanged="playerStateChanged($event)" -->
+                  <!--<div v-for="(media, j) in it.media.filter((media) => media.mime === 'video/mp4')" :key="`media-${i}${j}`">
                      <div
                         class="video-player-box max-w-1/5 max-h-1/5"
                         v-video-player:nox="{
@@ -83,9 +74,7 @@
                            poster: 'http://localhost:1337' + it.media[0].url,
                         }"
                      ></div>
-                  </div>
-
-                  <!--{{ media }}-->
+                  </div>-->
                </div>
             </template>
 

@@ -195,15 +195,15 @@ function uiMenu(slug) {
 			menuAttached
 			parent {
 				uiRouterKey
-				parent{
-				uiRouterKey
 				parent {
 					uiRouterKey
-						parent {
-							uiRouterKey
+					parent {
+						uiRouterKey
+							parent {
+								uiRouterKey
+							}
 						}
 					}
-				}
 			}
 		}
 	}`;
