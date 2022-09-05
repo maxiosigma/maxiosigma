@@ -4,6 +4,8 @@
       <slot>
          <ItemMediaStrapi v-if="src" class="hidden" :src="src"></ItemMediaStrapi>
       </slot>
+
+      <!--{{ $payloadURL(src) }}-->
    </div>
 
    <div v-else>Изображение не найдено</div>
@@ -12,6 +14,10 @@
 <script>
 export default {
    props: ["src", "alt", "title", "type"],
+   //async fetch() {
+   //   const res = await this.$axios.get("");
+   //   //console.log(res);
+   //},
    data() {
       return {
          id:

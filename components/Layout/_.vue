@@ -46,7 +46,7 @@ export default {
             class: this?.$style?.html || "html",
             lang: this.lang,
             prefix: "og: https://ogp.me/ns#",
-            ...(this.isMobile() && { amp: "true" }),
+            ...(this.isCustomMobile() && { amp: "true" }),
          },
          headAttrs: {
             class: this?.$style?.head ?? "head",

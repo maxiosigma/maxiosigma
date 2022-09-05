@@ -40,19 +40,17 @@
                   class="footer-social-item"
                   :key="i"
                   v-for="(it, i) in social"
-                  v-tooltip="
-                     isMobile()
-                        ? {}
-                        : {
-                             content: `<div class='text-center'>${it.title}</div>`,
-                             html: true,
-                             distance: 20,
-                             delay: {
-                                show: 200,
-                                hide: 150,
-                             },
-                          }
-                  "
+                  v-tooltip="{
+                     show: !isCustomMobile(),
+                     disabled: isCustomMobile(),
+                     content: `<div class='text-center'>${it.title}</div>`,
+                     html: true,
+                     distance: 20,
+                     delay: {
+                        show: 200,
+                        hide: 150,
+                     },
+                  }"
                   @click.native.prevent="handleClickNext({ url: it.externalPath, target: 'blank' })"
                >
                   <i :class="['footer-social-link font-ft', `ft-${it.icon}`]"></i>

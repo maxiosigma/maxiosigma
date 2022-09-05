@@ -29,8 +29,12 @@ Vue.mixin({
       routeLightBlank(link) {
          window.open(this.localePath("/" + link), "_blank");
       },
-      isMobile() {
-         return this.$ua.deviceType() !== "pc";
+      isCustomMobile() {
+         //return this.$ua.deviceType() !== "pc";
+
+         return !this.$ua.isFromPc();
+
+         //return false;
       },
       isLangGlobal() {
          return this.$i18n?.locale?.split("-")?.[0] ?? "ru";
@@ -55,13 +59,13 @@ Vue.mixin({
       },
       lightRedirect() {
          const light = this.isLight();
-         const isMobile = this.$ua.deviceType() !== "pc" && !light;
+         const isMoble = this.$ua.deviceType() !== "pc" && !light;
          const isDesktop = this.$ua.deviceType() === "pc" && light;
          const checkNoLink = app_config.excluded?.filter((it) => this.$route.path.indexOf("/" + it + "/") !== -1).length > 0;
 
          !this.mainPath()
             ? !checkNoLink
-               ? isMobile
+               ? isMoble
                   ? (location.href = this.switchLocalePath(this.loke(true)))
                   : isDesktop
                   ? (location.href = this.switchLocalePath(this.loke(false)))
@@ -69,7 +73,7 @@ Vue.mixin({
                : null
             : null;
 
-         const check = !this.mainPath() && !checkNoLink ? isMobile || isDesktop : false;
+         const check = !this.mainPath() && !checkNoLink ? isMoble || isDesktop : false;
 
          return check;
       },

@@ -103,24 +103,21 @@
             <!-- group-hover:bg-indigo-600 -->
             <div
                class="sentences-content smoothly-300"
-               v-tooltip="
-                  isMobile()
-                     ? {}
-                     : {
-                          //disabled: isMobile(),
-                          content: `<div class='text-center'>${it.description}</div>`,
-                          html: true,
-                          distance: 20,
-                          delay: {
-                             show: 200,
-                             hide: 150,
-                          },
-                       }
-               "
+               v-tooltip="{
+                  show: !isCustomMobile(),
+                  disabled: isCustomMobile(),
+                  content: `<div class='text-center'>${it.description}</div>`,
+                  html: true,
+                  distance: 20,
+                  delay: {
+                     show: 200,
+                     hide: 150,
+                  },
+               }"
             >
                <div class="sentences-link-title">{{ it.title }}</div>
 
-               <div :class="[isMobile() ? 'sentences-link-description' : 'sm:hidden <sm:sentences-link-description']">
+               <div :class="[isCustomMobile() ? 'sentences-link-description' : 'sm:hidden <sm:sentences-link-description']">
                   {{ it.description }}
                </div>
             </div>

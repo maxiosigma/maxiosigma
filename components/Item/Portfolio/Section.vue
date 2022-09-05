@@ -44,38 +44,54 @@
             :reverse="toogleIteration(i)"
             v-for="(it, i) in data.filter((it) => it.media.filter((media) => media.mime === 'video/mp4').length > 0)"
             :key="i"
+            @visible="(id) => (isVisible = id)"
+            :id="(i + 1) * 10"
          >
-            <!-- .filter((media) => media.mime === 'video/mp4').length > 0) -->
-
             <template v-slot:left>
-               <div class="portfolio-project-media flex-center">
-                  <!--    v-if="media.mime !== 'video/mp4'" -->
-                  <!--<ItemMediaStrapiBg
+               <div class="portfolio-project-media flex flex-grow">
+                  <!--  -->
+
+                  <div class="flex-grow w-full transition-all duration-700" :class="isVisible == (i + 1) * 10 ? 'opacity-100' : 'opacity-0'">
+                     <Splide :options="{ rewind: true }" aria-label="Vue Splide Example">
+                        <SplideSlide v-for="(media, j) in it.media.filter((media) => media.mime === 'video/mp4')" :key="`media-${i}${j}`">
+                           <ItemMediaStrapiVideoPlayer
+                              :title="it.title"
+                              :active="isVisible === (i + 1) * 10"
+                              :src="'http://localhost:1337' + media.url"
+                           >
+                              <div></div>
+                           </ItemMediaStrapiVideoPlayer>
+                        </SplideSlide>
+
+                        <SplideSlide v-for="(media, j) in it.media.filter((media) => media.mime !== 'video/mp4')" :key="`media-${i}${j}`">
+                           <ItemMediaStrapiBg class="portfolio-project-image" :src="media.url" :alt="media.alt" />
+                        </SplideSlide>
+                     </Splide>
+                  </div>
+
+                  <!--  :class="isVisible == (i + 1) * 10 ? 'opacity-100' : 'opacity-10'" -->
+                  <!--<ItemMediaStrapiVideoPlayer
+                     v-for="(media, j) in it.media.filter((media) => media.mime === 'video/mp4')"
+                     :key="`media-${i}${j}`"
+                     :title="it.title"
+                     :active="isVisible === (i + 1) * 10"
+                     :src="'http://localhost:1337' + media.url"
+                  >
+                     <div></div>
+                  </ItemMediaStrapiVideoPlayer>-->
+
+                  <!-- v-if="media.mime !== 'video/mp4'"
+                 <ItemMediaStrapiBg
                      class="portfolio-project-image"
                      v-for="(media, j) in it.media.filter((media) => media.mime !== 'video/mp4')"
                      :key="`img-${i}${j}`"
                      :src="media.url"
                      :alt="media.alt"
-                  />-->
-
-                  <!--<div v-for="(media, j) in it.media.filter((media) => media.mime === 'video/mp4')" :key="`media-${i}${j}`">
-                     <div
-                        class="video-player-box max-w-1/5 max-h-1/5"
-                        v-video-player:nox="{
-                           id: i,
-                           muted: true,
-                           playbackRates: [1.0],
-                           sources: [
-                              {
-                                 type: 'video/mp4',
-                                 src: 'http://localhost:1337' + media.url,
-                              },
-                           ],
-                           poster: 'http://localhost:1337' + it.media[0].url,
-                        }"
-                     ></div>
-                  </div>-->
+                  />
+                 w-100vw h-100vh max-w-full max-h-40vh -->
                </div>
+
+               {{ isVisible }} {{ (i + 1) * 10 }}
             </template>
 
             <template v-slot:right>{{ it.title }} {{ it.description }}</template>
@@ -85,6 +101,10 @@
 </template>
 
 <script>
+//import { Splide, SplideSlide } from "@splidejs/vue-splide/src/js/index";
+//import "@splidejs/vue-splide/css";
+//import "@splidejs/vue-splide/css/sea-green";
+
 import VueSlickCarousel from "vue-slick-carousel";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
 import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
@@ -93,6 +113,7 @@ export default {
    props: ["black", "reverse", "data", "visio"],
    data() {
       return {
+         isVisible: 0,
          action: false,
          slider: {
             common: {
@@ -126,6 +147,11 @@ export default {
    },
    mounted() {
       if (!this.visio) this.visio = 0;
+
+      //console.log(this.$payloadURL(this.route));
+
+      //console.log(this.$refs);
+      //console.log(this.$refs.video_50);
       //console.log("this is current videojs instance object", this.nox);
    },
    methods: {
@@ -139,20 +165,23 @@ export default {
          return this.reverse ? i % 2 === 0 : i % 2 === 1;
       },
       tooltipLink(url) {
-         return this.isMobile()
-            ? {}
-            : {
-                 content: `<div class='text-center'>Посмотреть работу <br> ${url}</div>`,
-                 html: true,
-                 distance: 20,
-                 delay: {
-                    show: 200,
-                    hide: 150,
-                 },
-              };
+         return {
+            show: !isCustomMobile(),
+            disabled: isCustomMobile(),
+            content: `<div class='text-center'>Посмотреть работу <br> ${url}</div>`,
+            html: true,
+            distance: 20,
+            delay: {
+               show: 200,
+               hide: 150,
+            },
+         };
       },
    },
-   components: { VueSlickCarousel },
+   components: {
+      VueSlickCarousel,
+      //Splide, SplideSlide
+   },
 };
 </script>
 
@@ -272,10 +301,15 @@ export default {
    }
 }
 
-.video-js,
-//.vjs-poster,
-//.vjs-tech
-{
+.video-js {
    @apply max-h-24 max-w-36;
+}
+
+.splide {
+   @apply w-full;
+
+   &__slide {
+      @apply px-0 py-8;
+   }
 }
 </style>

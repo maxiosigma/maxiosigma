@@ -69,6 +69,8 @@ export const actions = {
          ctx.commit("uploadStrapiTo", { key, payload });
       });
 
+      //console.log(this.route, this.$payloadURL);
+
       ctx.commit("uploadStrapi", {
          key: "works",
          payload: (await this.$strapi.graphql({ query: ctx.state.gql.works })).works.data.map((it) => {

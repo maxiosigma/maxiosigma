@@ -556,12 +556,12 @@ export default {
    },
    buildModules: [
       "nuxt-windicss",
+      "@nuxtjs/eslint-module",
       "@luxdamore/nuxt-apis-to-file",
-      //"nuxt-gsap-module",
-      "nuxt-user-agent",
-      "nuxt-fontagon",
       "@/plugins/active/GSR",
+      "nuxt-user-agent",
       "@nuxtjs/sitemap",
+      "nuxt-fontagon",
       "nuxt-animejs",
       "@nuxt/image",
       "@nuxtjs/pwa",
@@ -573,6 +573,7 @@ export default {
       "@nuxtjs/toast",
       "@nuxtjs/robots",
       "@nuxtjs/strapi",
+      "nuxt-payload-extractor",
       [
          "nuxt-image-extractor",
          {
@@ -581,29 +582,33 @@ export default {
             extensions: ["jpg", "jpeg", "gif", "png", "webp", "svg", "mp4"],
          },
       ],
-      //[
-      //   "nuxt-lazy-load",
-      //   {
-      //      loadingClass: "lazy-loading",
-      //      loadedClass: "lazy-loaded",
-      //      appendClass: "lazy-load",
-      //      defaultImage: "/media/about/face_1.png",
-      //   },
-      //],
    ],
    plugins: [
       "@plugins/passive/mixins",
       "@plugins/passive/directives",
-      "@plugins/active/VueMasonry.client.js",
-      "@plugins/active/ParticleEffectButton.client.js",
+
       "@plugins/active/VueScrollIndicator.client.js",
-      //"@plugins/active/VueAwesomeSwiper",
-      "@plugins/active/NuxtVideoPlayer.client.js",
+      "@plugins/active/ParticleEffectButton.client.js",
+      "@plugins/active/VueObserveVisibility.client.js",
+
+      "@plugins/active/VueSplide.client.js",
+
+      //"@plugins/active/VideoBackground.client.js",
+
+      //"@plugins/active/VuePlyr.client.js",
+      //"@plugins/active/VueCoreVideoPlayer.client.js",
+      //"@plugins/active/VueVideoPlayer",
+      //"@plugins/active/H5Video.client.js",
+
       "@plugins/active/VueTypedJs",
       "@plugins/active/VueKinesis",
       "@plugins/active/VueTooltip",
-      "@plugins/active/VueMasonry",
       "@plugins/active/QR.js",
+
+      //"@plugins/active/VueMasonry.client.js",
+      //"@plugins/active/VueAwesomeSwiper",
+      //"@plugins/active/NuxtVideoPlayer.client.js",
+      //"@plugins/active/VueMasonry",
    ],
 };
 

@@ -3,7 +3,7 @@
       <div :class="['nav-bar-cont', scroll == 1 || scroll == 2 ? 'cont-scroll' : '', scroll == 2 ? 'bottom' : '']">
          <client-only>
             <vue-scroll-indicator
-               :height="isMobile() ? '3px' : '5px'"
+               :height="isCustomMobile() ? '3px' : '5px'"
                :class="['nav-bar-indicator', scroll == 0 ? '!opacity-0' : '', scroll == 1 || scroll == 2 ? '!opacity-100' : '']"
                color="#00ffe6"
                background="#0e7490"
