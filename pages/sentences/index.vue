@@ -3,6 +3,9 @@
       <div class="programms-container">
          <!-- v-if="false"  -->
          <!-- ${$i18n.locale}/ -->
+
+         <!-- http://placehold.jp/ -->
+
          <nuxt-link class="hidden" :to="`/${$i18n.locale}/sentences/${i}`" v-for="i in countPages" :key="i"></nuxt-link>
       </div>
    </Layout>

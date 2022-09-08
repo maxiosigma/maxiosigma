@@ -51,11 +51,15 @@
                      />
                   </div>
                </div>
-
+               <!--  :src="`https://picsum.photos/300/200?random=${i}`" -->
+               <!-- http://placeimg.com/300/200/any -->
+               <!-- https://api.lorem.space/image/movie?w=150&h=220 -->
+               <!-- https://api.lorem.space/image/face?w=300&h=200 -->
+               <!-- https://api.lorem.space/image?w=300&h=200 -->
                <LazyItemMediaStrapiBg
                   v-else
                   class="sentences-image smoothly-300 group-hover:opacity-85"
-                  :src="`https://picsum.photos/300/200?random=${i}`"
+                  :src="`https://api.lorem.space/image?w=300&h=200`"
                ></LazyItemMediaStrapiBg>
 
                <div class="sentences-tags">
