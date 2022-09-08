@@ -221,6 +221,9 @@ function works() {
 		        media {
 		          data {
 		            attributes {
+					  provider
+					  provider_metadata
+					  formats
 		              url
 		              alternativeText
 					  name
