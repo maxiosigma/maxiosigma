@@ -75,6 +75,9 @@ export default {
    },
    mounted() {
       this.getActive();
+
+      //console.log({ style: this.$style });
+      //console.log({ style: this.styles });
    },
    methods: {
       getActive(arg = undefined) {
@@ -107,6 +110,7 @@ export default {
 </script>
 
 <style lang="scss">
+//module="styles"
 .footer {
    //bg-cool-gray-900 bg-hero-wiggle-chocolate-30
 

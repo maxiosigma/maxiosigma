@@ -22,6 +22,10 @@ export default {
          options: {},
       },
    },
+   vuetify: {
+      // customVariables: ['~/assets/variables.scss']
+      // optionsPath: './vuetify.options.js'
+   },
    storybook: {},
    nuxtAlias: {
       rootDir: ["../strapi"],
@@ -503,6 +507,7 @@ export default {
       }),
       extend(config, ctx) {
          ctx.loaders.scss.additionalData = '@use "sass:math";';
+
          config.module.rules.push({
             test: /\.ico$/,
             loader: "url-loader",
@@ -510,6 +515,7 @@ export default {
                name: "icons/favicon_[hash:8].[ext]",
             },
          });
+
          config.module.rules.push({
             test: /\.pdf$/,
             loader: "file-loader",
@@ -517,7 +523,29 @@ export default {
                name: "files/[name]_[hash:8].[ext]",
             },
          });
+
+         config.module.rules.push({
+            test: /\.scss$/,
+            use: [
+               {
+                  loader: "style-loader",
+               },
+               {
+                  loader: "css-loader",
+                  options: {
+                     modules: true,
+                     localIdentName: "[path][name]__[local]--[hash:base64:5]",
+                     sourceMap: true,
+                  },
+               },
+               {
+                  loader: "sass-loader",
+               },
+            ],
+         });
+
          config.module.rules.push({ test: /\.mjs$/, include: /node_modules/, type: "javascript/auto" });
+
          config.node = { fs: "empty" };
       },
    },
@@ -558,6 +586,7 @@ export default {
       "nuxt-windicss",
       "@nuxtjs/eslint-module",
       "@luxdamore/nuxt-apis-to-file",
+      "@nuxtjs/vuetify",
       "@/plugins/active/GSR",
       "nuxt-user-agent",
       "@nuxtjs/sitemap",

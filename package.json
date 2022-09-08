@@ -127,6 +127,7 @@
       "@graphql-cli/validate": "2.1.0",
       "@nuxt/image": "^0.7.1",
       "@nuxtjs/eslint-module": "^3.1.0",
+      "@nuxtjs/vuetify": "^1.12.3",
       "@vueuse/core": "^8.7.5",
       "@vueuse/nuxt": "^8.7.5",
       "babel-plugin-require-context-hook": "^1.0.0",
