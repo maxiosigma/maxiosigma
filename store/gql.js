@@ -1,7 +1,7 @@
-//import gql from 'graphql-tag'
+const menu = ["nav-bar", "fot-bar", "soc-bar"];
 
 export const state = () => ({
-   uiMenu: (item) => uiMenu(item),
+   uiMenu: menu.reduce((sum, it) => sum.push({ [`${it.split("-").join("")}`]: uiMenu(it) }) && sum, []),
    publics: publics(),
    links: links(),
    works: works(),
@@ -96,7 +96,8 @@ function uiMenu(slug) {
 					}
 			}
 		}
-	}`;
+	}
+	`;
 }
 
 function works() {

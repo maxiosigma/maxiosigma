@@ -1,6 +1,6 @@
 <template>
    <LayoutPage :title="title" :description="description">
-      <div></div>
+      <!--<div></div>-->
    </LayoutPage>
 </template>
 

@@ -119,7 +119,18 @@
             <template v-slot:right>
                <div>{{ it.title }}</div>
                <div>{{ it.description }}</div>
-               <div>{{ it }}</div>
+
+               <div class="" v-if="it.assets.fonts">
+                  Шрифты:
+                  <span class="inline-grid grid-flow-col-dense gap-1">
+                     <span v-for="(ft, i) in it.assets.fonts" :key="i">{{ ft }}</span>
+                  </span>
+               </div>
+
+               <div v-if="it.assets.models">{{ it.assets.models }}</div>
+               <div v-if="it.assets.technologies">{{ it.assets.technologies }}</div>
+
+               <!--<div>{{ it }}</div>-->
             </template>
          </ItemPortfolioBlock>
       </client-only>

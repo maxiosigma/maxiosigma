@@ -587,7 +587,7 @@ export default {
       "@nuxtjs/eslint-module",
       "@luxdamore/nuxt-apis-to-file",
       "@/plugins/active/GSR",
-      "@nuxtjs/vuetify",
+      //"@nuxtjs/vuetify",
       "nuxt-user-agent",
       "@nuxtjs/sitemap",
       "nuxt-fontagon",
@@ -602,7 +602,7 @@ export default {
       "@nuxtjs/toast",
       "@nuxtjs/robots",
       "@nuxtjs/strapi",
-      "nuxt-payload-extractor",
+      //"nuxt-payload-extractor",
       [
          "nuxt-image-extractor",
          {

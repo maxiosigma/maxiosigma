@@ -21,6 +21,7 @@ const data = {
       yandex: "cb213dea7621a4e2",
       yandex2: "93454d256c0b0346",
       google: "ZoLbftcsmf7qpf4CyVJvt8P-45PpBncITlCUyWTnu2M",
+      zen: "rMt5gLvNk3L2VpNBJWrbMygaZC8I0yQ1ZF1PiQr9vALlwvGxy0B3fg14OnwQBQJH",
    },
    lang: "ru-RU",
    locale: {
@@ -75,6 +76,7 @@ function meta() {
       { name: "yandex-verification", content: data.verification.yandex },
       { name: "yandex-verification", content: data.verification.yandex2 },
       { name: "google-site-verification", content: data.verification.google },
+      { name: "zen-verification", content: data.verification.zen },
 
       { name: "theme-color", content: "#000000" },
 

@@ -72,7 +72,7 @@ export default {
             @apply;
          }
          &.two {
-            @apply grid gap-4;
+            @apply grid gap-2;
          }
       }
    }

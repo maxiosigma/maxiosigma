@@ -59,15 +59,12 @@ export const mutations = {
 
 export const actions = {
    async nuxtServerInit(ctx) {
-      ["nav-bar", "fot-bar", "soc-bar"].map(async (it) => {
-         const query = ctx.state.gql.uiMenu(it);
-         const key = `${it.split("-").join("")}`;
-         const payload = (await this.$strapi.graphql({ query: query }))?.renderNavigation;
-
-         ctx.commit("uploadStrapiTo", { key, payload });
-      });
-
-      //console.log(this.route, this.$payloadURL);
+      ctx.state.gql.uiMenu.map(async (it) =>
+         Object.entries(it).map(async ([key, query]) => {
+            const payload = (await this.$strapi.graphql({ query: query }))?.renderNavigation;
+            ctx.commit("uploadStrapiTo", { key, payload });
+         })
+      );
 
       ctx.commit("uploadStrapi", {
          key: "works",
