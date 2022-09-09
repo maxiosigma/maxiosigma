@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueSplide from "@splidejs/vue-splide";
 import { Video } from "@splidejs/splide-extension-video";
+import { Grid } from "@splidejs/splide-extension-grid";
 
 //import "@splidejs/splide/dist/css/splide.min.css";
 //import "@splidejs/splide/dist/css/themes/splide-default.min.css";
@@ -9,5 +10,5 @@ import { Video } from "@splidejs/splide-extension-video";
 import "@splidejs/splide/dist/css/themes/splide-skyblue.min.css";
 
 Vue.use(VueSplide, {
-   extensions: { Video },
+   extensions: { Video, Grid },
 });

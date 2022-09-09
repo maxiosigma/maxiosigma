@@ -47,6 +47,7 @@
       "@prismicio/slice-simulator-vue": "^0.2.1",
       "@prismicio/vue": "^2.1.2",
       "@slicemachine/init": "^1.1.9",
+      "@splidejs/splide-extension-grid": "^0.4.1",
       "@splidejs/vue-splide": "0.3.5",
       "@vercel/static-build": "^1.0.1",
       "@videojs-player/vue": "^1.0.0",

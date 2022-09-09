@@ -1,5 +1,6 @@
 <template>
-   <video ref="videoPlayer" class="video-js">
+   <!-- vjs-default-skin  -->
+   <video ref="videoPlayer" class="video-js vjs-big-play-centered">
       <slot>
          <ItemMediaStrapi v-if="src" class="hidden" :src="src" />
       </slot>
@@ -116,7 +117,7 @@ export default {
    },
    beforeDestroy() {
       if (this.player) {
-         console.log(this.player);
+         //console.log(this.player);
          this.player.dispose();
       }
    },

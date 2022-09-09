@@ -1,17 +1,6 @@
 <template>
-   <nuxt-img
-      v-if="src"
-      :src="src"
-      provider="strapi"
-      format="webp"
-      :class="[id]"
-      loading="lazy"
-      quality="95"
-      :title="title"
-      :alt="alt"
-      itemprop="image"
-   ></nuxt-img>
-
+   <!-- format="webp" loading="lazy" quality="95" -->
+   <nuxt-img v-if="src" :src="src" provider="strapi" :class="[id]" :title="title" :alt="alt" itemprop="image"></nuxt-img>
    <div v-else>Изображение не найдено</div>
 </template>
 

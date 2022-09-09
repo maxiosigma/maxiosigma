@@ -18,13 +18,11 @@
             },
          }"
       >
-         <div class="portfolio-block-side" :class="[reverse ? 'sm:order-2' : 'sm:order-1']">
+         <div class="portfolio-block-side one" :class="[reverse ? 'right' : 'left']">
             <slot name="left"></slot>
-
-            <!--{{ id }}-->
          </div>
 
-         <div class="portfolio-block-side" :class="[reverse ? 'sm:order-1' : 'sm:order-2']">
+         <div class="portfolio-block-side two" :class="[reverse ? 'left' : 'right']">
             <slot name="right"></slot>
          </div>
       </div>
@@ -62,6 +60,20 @@ export default {
 
       &-side {
          @apply p-4 sm:col-span-6;
+
+         &.left {
+            @apply sm:order-1;
+         }
+         &.right {
+            @apply sm:order-2;
+         }
+
+         &.one {
+            @apply;
+         }
+         &.two {
+            @apply grid gap-4;
+         }
       }
    }
 }
