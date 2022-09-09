@@ -49,11 +49,13 @@
          >
             <template v-slot:left>
                <div class="portfolio-project-media flex flex-grow">
-                  <!--  -->
-
-                  <div class="flex-grow w-full transition-all duration-700" :class="isVisible == (i + 1) * 10 ? 'opacity-100' : 'opacity-0'">
+                  <!-- :class="isVisible == (i + 1) * 10 ? 'opacity-100' : 'opacity-0'" -->
+                  <div class="flex-grow w-full transition-all duration-700">
                      <Splide :options="{ rewind: true }" aria-label="Vue Splide Example">
-                        <SplideSlide v-for="(media, j) in it.media.filter((media) => media.mime === 'video/mp4')" :key="`media-${i}${j}`">
+                        <SplideSlide
+                           v-for="(media, j) in it.media.filter((media) => media.mime === 'video/mp4')"
+                           :key="`media-${i + 1}${j}${i}`"
+                        >
                            <ItemMediaStrapiVideoPlayer
                               :title="it.title"
                               :active="isVisible === (i + 1) * 10"
@@ -63,7 +65,10 @@
                            </ItemMediaStrapiVideoPlayer>
                         </SplideSlide>
 
-                        <SplideSlide v-for="(media, j) in it.media.filter((media) => media.mime !== 'video/mp4')" :key="`media-${i}${j}`">
+                        <SplideSlide
+                           v-for="(media, j) in it.media.filter((media) => media.mime !== 'video/mp4')"
+                           :key="`media-${j}${i}${j + 1}`"
+                        >
                            <ItemMediaStrapiBg class="portfolio-project-image" :src="media.url" :alt="media.alt" />
                         </SplideSlide>
                      </Splide>

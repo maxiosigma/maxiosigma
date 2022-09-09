@@ -24,7 +24,7 @@ export default {
    },
    vuetify: {
       // customVariables: ['~/assets/variables.scss']
-      // optionsPath: './vuetify.options.js'
+      optionsPath: "./vuetify.options.js",
    },
    storybook: {},
    nuxtAlias: {
@@ -524,25 +524,25 @@ export default {
             },
          });
 
-         config.module.rules.push({
-            test: /\.scss$/,
-            use: [
-               {
-                  loader: "style-loader",
-               },
-               {
-                  loader: "css-loader",
-                  options: {
-                     modules: true,
-                     localIdentName: "[path][name]__[local]--[hash:base64:5]",
-                     sourceMap: true,
-                  },
-               },
-               {
-                  loader: "sass-loader",
-               },
-            ],
-         });
+         //config.module.rules.push({
+         //   test: /\.scss$/,
+         //   use: [
+         //      {
+         //         loader: "style-loader",
+         //      },
+         //      {
+         //         loader: "css-loader",
+         //         options: {
+         //            modules: true,
+         //            localIdentName: "[path][name]__[local]--[hash:base64:5]",
+         //            sourceMap: true,
+         //         },
+         //      },
+         //      {
+         //         loader: "sass-loader",
+         //      },
+         //   ],
+         //});
 
          config.module.rules.push({ test: /\.mjs$/, include: /node_modules/, type: "javascript/auto" });
 
@@ -586,8 +586,8 @@ export default {
       "nuxt-windicss",
       "@nuxtjs/eslint-module",
       "@luxdamore/nuxt-apis-to-file",
-      "@nuxtjs/vuetify",
       "@/plugins/active/GSR",
+      "@nuxtjs/vuetify",
       "nuxt-user-agent",
       "@nuxtjs/sitemap",
       "nuxt-fontagon",

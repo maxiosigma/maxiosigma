@@ -59,7 +59,7 @@
                <LazyItemMediaStrapiBg
                   v-else
                   class="sentences-image smoothly-300 group-hover:opacity-85"
-                  :src="`https://api.lorem.space/image?w=300&h=200`"
+                  :src="`https://api.lorem.space/image?w=300&h=200&hash=${i}`"
                ></LazyItemMediaStrapiBg>
 
                <div class="sentences-tags">
