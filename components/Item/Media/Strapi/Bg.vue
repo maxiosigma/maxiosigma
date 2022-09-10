@@ -1,9 +1,9 @@
 <template>
    <div v-if="src" :class="[id, 'img-bg-mod']" :title="title" :alt="alt" itemprop="image">
       <!--  lazy-background="" -->
-      <slot>
+      <!--<slot>
          <ItemMediaStrapi class="hidden" :src="src"></ItemMediaStrapi>
-      </slot>
+      </slot>-->
 
       <!--{{ $payloadURL(src) }}-->
    </div>
@@ -44,12 +44,23 @@ export default {
       if (!this.isLinkSite(this.src)) {
          //?format=webp
          //console.log(this.src);
+
          //console.log(this.$img(this.src, { format: "webp", quality: 75 }, { provider: "strapi" }));
 
          // const url = require(`../../../../../strapi/public/uploads/${this.src.replace("/uploads/", "")}`);
-         const url = !this.$config.isDev ? `/public/images/uploads-${this.src.replace("/uploads/", "")}` : `http://localhost:1337${this.src}`;
+         //const url = !this.$config.isDev ? `/public/images/uploads-${this.src.replace("/uploads/", "")}` : `http://localhost:1337${this.src}`;
+
+         //const url = require(`~/media/cdn/${this.src.replace("/uploads/", "")}`);
+
+         //console.log(`cdn/${this.src.replace("/uploads/", "")}`);
+
+         // , {format: "webp", quality: 75}, { provider: "static" }
+         const img = this.$img(`cdn/${this.src.replace("/uploads/", "")}`, {}, { provider: "media" });
+
+         //console.log(img);
+
          //console.log(url);
-         this.loadStyleImg(url);
+         //this.loadStyleImg(url);
       } else this.loadStyleImg(this.src);
    },
    methods: {

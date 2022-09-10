@@ -1,9 +1,9 @@
 <template>
    <!-- vjs-default-skin  -->
    <video ref="videoPlayer" class="video-js vjs-big-play-centered">
-      <slot>
+      <!--<slot>
          <ItemMediaStrapi class="hidden" :src="src"></ItemMediaStrapi>
-      </slot>
+      </slot>-->
    </video>
 </template>
 

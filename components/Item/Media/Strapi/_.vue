@@ -19,10 +19,10 @@ export default {
          //path: this.src.replace("http://localhost:1337", ""),
       };
    },
-   async fetch() {
-      //this.url = await this.$http.$get(`http://localhost:1337${this.src.replace("http://localhost:1337", "")}`);
-      //console.log(this.url);
-   },
+   //async fetch() {
+   //   //this.url = await this.$http.$get(`http://localhost:1337${this.src.replace("http://localhost:1337", "")}`);
+   //   //console.log(this.url);
+   //},
    mounted() {
       //const fw = this.src.replace("uploads", "uploads/f_webp");
       //const webp = fw.split(".")?.[0] + ".webp";

@@ -71,6 +71,14 @@ export default {
       strapi: {
          baseURL: "http://localhost:1337/", // uploads/
       },
+      providers: {
+         media: {
+            name: "media", // optional value to overrider provider name
+            provider: "~/assets/providers/media", // Path to custom provider
+            options: {},
+         },
+      },
+
       //dir: "../strapi/public/uploads",
       //providers: {
       //   stepi: {
@@ -600,19 +608,20 @@ export default {
    modules: [
       "@nuxtjs/i18n",
       "@nuxtjs/axios",
+      "nuxt-ssr-cache",
       "nuxt-cookie-control",
       "@nuxtjs/toast",
       "@nuxtjs/robots",
       "@nuxtjs/strapi",
       //"nuxt-payload-extractor",
-      [
-         "nuxt-image-extractor",
-         {
-            baseUrl: "http://localhost:1337/",
-            path: "/public/images",
-            extensions: ["jpg", "jpeg", "gif", "png", "webp", "svg", "mp4"],
-         },
-      ],
+      //[
+      //   "nuxt-image-extractor",
+      //   {
+      //      baseUrl: "http://localhost:1337/",
+      //      path: "/public/images",
+      //      extensions: ["jpg", "jpeg", "gif", "png", "webp", "svg", "mp4"],
+      //   },
+      //],
    ],
    plugins: [
       "@plugins/passive/mixins",

@@ -82,6 +82,7 @@
       "nuxt-parallel-middleware": "^0.0.2",
       "nuxt-payload-extractor": "^1.1.1",
       "nuxt-sm": "^0.1.6",
+      "nuxt-ssr-cache": "^1.5.2",
       "nuxt-state-extractor": "^1.1.1",
       "nuxt-user-agent": "^1.2.2",
       "nuxt-video-player": "^1.0.17",
