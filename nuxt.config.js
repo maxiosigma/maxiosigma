@@ -148,10 +148,10 @@ export default {
    components: ["~/components"],
    generate: {
       dir: "dist",
-      interval: 0,
+      interval: 50,
       fallback: true,
       nojekyll: true,
-      concurrency: 5000,
+      concurrency: 1000,
       subFolders: false,
       devtools: app_config.isDev ? true : false,
       exclude: [/^\/test/, /^\/z/, ...exd()],
@@ -229,6 +229,8 @@ export default {
       linkActiveClass: "nav-item-active",
       linkExactActiveClass: "exact-active-link",
       linkPrefetchedClass: "link-prefetched",
+
+      middleware: "links",
    },
    cookies: {
       locales: ["ru", "en"],

@@ -2,7 +2,7 @@
    <!-- vjs-default-skin  -->
    <video ref="videoPlayer" class="video-js vjs-big-play-centered">
       <slot>
-         <ItemMediaStrapi v-if="src" class="hidden" :src="src" />
+         <ItemMediaStrapi class="hidden" :src="src"></ItemMediaStrapi>
       </slot>
    </video>
 </template>
@@ -38,7 +38,12 @@ export default {
             isFullscreen: true,
             playsinline: true,
             controls: true,
-            sources: [{ src: this.src, type: "video/mp4" }],
+            sources: [
+               {
+                  src: !this.$config.isDev ? `/public/video/uploads-${this.src.replace("/uploads/", "")}` : `http://localhost:1337${this.src}`,
+                  type: "video/mp4",
+               },
+            ],
          },
       };
    },

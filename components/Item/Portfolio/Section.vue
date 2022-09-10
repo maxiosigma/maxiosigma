@@ -69,9 +69,9 @@
                               class="rounded-md"
                               :title="it.title"
                               :active="isVisible === (i + 1) * 10"
-                              :src="'http://localhost:1337' + media.url"
+                              :src="media.url"
                            >
-                              <div></div>
+                              <!--<div class="hidden"></div>-->
                            </ItemMediaStrapiVideoPlayer>
                         </SplideSlide>
 
@@ -80,7 +80,9 @@
                            v-for="(media, j) in it.media.filter((media) => media.mime !== 'video/mp4')"
                            :key="`media-${j}${i}${j + 1}`"
                         >
-                           <ItemMediaStrapiBg class="portfolio-project-image rounded-md" :src="media.url" :alt="media.alt" />
+                           <ItemMediaStrapiBg class="portfolio-project-image rounded-md" :src="media.url" :alt="media.alt">
+                              <!--<div class="hidden"></div>-->
+                           </ItemMediaStrapiBg>
                         </SplideSlide>
                      </Splide>
 

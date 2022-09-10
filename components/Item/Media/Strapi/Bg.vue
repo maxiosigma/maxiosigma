@@ -2,7 +2,7 @@
    <div v-if="src" :class="[id, 'img-bg-mod']" :title="title" :alt="alt" itemprop="image">
       <!--  lazy-background="" -->
       <slot>
-         <ItemMediaStrapi v-if="src" class="hidden" :src="src"></ItemMediaStrapi>
+         <ItemMediaStrapi class="hidden" :src="src"></ItemMediaStrapi>
       </slot>
 
       <!--{{ $payloadURL(src) }}-->
