@@ -13,17 +13,17 @@ import "video.js/dist/video-js.css";
 export default {
    props: ["src", "alt", "title", "type", "poster", "active"],
    async fetch() {
-      const isGet = (await this.$axios?.get("http://localhost:1337/admin"))?.status === 200;
+      try {
+         const isGet = (await this.$axios?.get("http://localhost:1337/admin"))?.status === 200;
 
-      if (process.server && isGet && !this.$config.isDev && !this.isLinkSite(this.src)) {
-         console.log(process.server, isGet, !this.isLinkSite(this.src));
-
-         const { DownloaderHelper } = require("node-downloader-helper");
-         new DownloaderHelper(`http://localhost:1337${this.src}`, "./media/cdn", {
-            resumeIfFileExists: true,
-            override: "skip",
-         }).start();
-      }
+         if (process.server && isGet && !this.$config.isDev && !this.isLinkSite(this.src)) {
+            const { DownloaderHelper } = require("node-downloader-helper");
+            new DownloaderHelper(`http://localhost:1337${this.src}`, "./media/cdn", {
+               resumeIfFileExists: true,
+               override: "skip",
+            }).start();
+         }
+      } catch (error) {}
    },
    data() {
       return {

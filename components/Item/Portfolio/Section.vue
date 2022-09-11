@@ -2,13 +2,13 @@
    <section class="portfolio-section">
       <!--<ItemPortfolioBlock :black="black" :reverse="reverse">
          <template v-slot:left>
-            <VueSlickCarousel v-bind="{ ...slider.common, ...slider.top }">
+            <VueSlickCarousel v-bind="{ ...slick.common, ...slick.top }">
                <div class="portfolio-project-images" v-for="(it, i) in data.filter((it) => it.top)" :key="i">
                   <ItemMediaStrapiBg class="portfolio-project-image" :src="it.media[0].url" />
                </div>
             </VueSlickCarousel>
 
-            <VueSlickCarousel class="portfolio-project-depiction" v-bind="{ ...slider.common, ...slider.bootom }">
+            <VueSlickCarousel class="portfolio-project-depiction" v-bind="{ ...slick.common, ...slick.bootom }">
                <div class="portfolio-project-depiction-container" v-for="(it, i) in data.filter((it) => it.top)" :key="i">
                   <div
                      v-if="it.link"
@@ -36,8 +36,34 @@
          </template>
       </ItemPortfolioBlock>-->
 
-      <!--<client-only>-->
-      <!-- action === true ? '' : 'hidden', v-if="visio === $store.state.visio"  -->
+      <!--<Splide :options="{ ...splide.common, ...splide.thumbs }" :ref="`thumbs_${refs[i]}`">
+                        <SplideSlide v-for="(media, k) in it.media" :key="`media-${k}${i + 1}${k}`">
+                           {{ k }}
+                        </SplideSlide>
+                     </Splide>
+                :class="isVisible == (i + 1) * 10 ? 'opacity-100' : 'opacity-10'" 
+              <ItemMediaStrapiVideoPlayer
+                v-for="(media, j) in it.media.filter((media) => media.mime === 'video/mp4')"
+                     :key="`media-${i}${j}`"
+                     :title="it.title"
+                     :active="isVisible === (i + 1) * 10"
+                     :src="'http://localhost:1337' + media.url"
+                  >
+                     <div></div>
+                  </ItemMediaStrapiVideoPlayer>
+
+               v-if="media.mime !== 'video/mp4'"
+                 <ItemMediaStrapiBg
+                     class="portfolio-project-image"
+                     v-for="(media, j) in it.media.filter((media) => media.mime !== 'video/mp4')"
+                     :key="`img-${i}${j}`"
+                     :src="media.url"
+                     :alt="media.alt"
+                  />
+                 w-100vw h-100vh max-w-full max-h-40vh -->
+
+      <!-- ЗАМЕНИТЬ НА SLICK CARUSEL -->
+
       <ItemPortfolioBlock
          :black="i % 2 === 1 ? black : !black"
          :class="[]"
@@ -76,37 +102,8 @@
                         <ItemMediaStrapiBg class="portfolio-project-image rounded-md" :src="media.url" :alt="media.alt" />
                      </SplideSlide>
                   </Splide>
-
-                  <!--<Splide :options="{ ...splide.common, ...splide.thumbs }" :ref="`thumbs_${refs[i]}`">
-                        <SplideSlide v-for="(media, k) in it.media" :key="`media-${k}${i + 1}${k}`">
-                           {{ k }}
-                        </SplideSlide>
-                     </Splide>-->
                </div>
-
-               <!--  :class="isVisible == (i + 1) * 10 ? 'opacity-100' : 'opacity-10'" -->
-               <!--<ItemMediaStrapiVideoPlayer
-                     v-for="(media, j) in it.media.filter((media) => media.mime === 'video/mp4')"
-                     :key="`media-${i}${j}`"
-                     :title="it.title"
-                     :active="isVisible === (i + 1) * 10"
-                     :src="'http://localhost:1337' + media.url"
-                  >
-                     <div></div>
-                  </ItemMediaStrapiVideoPlayer>-->
-
-               <!-- v-if="media.mime !== 'video/mp4'"
-                 <ItemMediaStrapiBg
-                     class="portfolio-project-image"
-                     v-for="(media, j) in it.media.filter((media) => media.mime !== 'video/mp4')"
-                     :key="`img-${i}${j}`"
-                     :src="media.url"
-                     :alt="media.alt"
-                  />
-                 w-100vw h-100vh max-w-full max-h-40vh -->
             </div>
-
-            <!--{{ isVisible }} {{ (i + 1) * 10 }}-->
          </template>
 
          <template v-slot:right>
@@ -122,19 +119,12 @@
 
             <div v-if="it.assets.models">{{ it.assets.models }}</div>
             <div v-if="it.assets.technologies">{{ it.assets.technologies }}</div>
-
-            <!--<div>{{ it }}</div>-->
          </template>
       </ItemPortfolioBlock>
-      <!--</client-only>-->
    </section>
 </template>
 
 <script>
-//import { Splide, SplideSlide } from "@splidejs/vue-splide/src/js/index";
-//import "@splidejs/vue-splide/css";
-//import "@splidejs/vue-splide/css/sea-green";
-
 import VueSlickCarousel from "vue-slick-carousel";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
 import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
@@ -180,7 +170,7 @@ export default {
                updateOnMove: true,
             },
          },
-         slider: {
+         slick: {
             common: {
                accessibility: false,
                autoplay: true,

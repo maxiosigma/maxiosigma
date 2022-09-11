@@ -1,0 +1,100 @@
+@font-face {
+	font-family: 'font-svg';
+	src:
+		url('font-svg.ttf') format("truetype"),
+		url('font-svg.svg') format("svg"),
+		url("font-svg.eot?3e23824168933f8e30bb40761970947b?#iefix") format("embedded-opentype"),
+url("font-svg.woff2?3e23824168933f8e30bb40761970947b") format("woff2"),
+url("font-svg.woff?3e23824168933f8e30bb40761970947b") format("woff");
+}
+
+.font-ft {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	vertical-align: middle;
+
+	width: 1em;
+	height: 1em;
+	position: relative;
+	fill: currentColor;
+
+	font-family: 'font-svg';
+	font-weight: normal;
+	font-style: normal;
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	-moz-osx-font-smoothing: grayscale;
+	font-feature-settings: 'liga';
+}
+
+	.ft-ameba:before { 
+		content: "\f101";
+	}
+	.ft-arrow-right-1:before { 
+		content: "\f102";
+	}
+	.ft-avito:before { 
+		content: "\f103";
+	}
+	.ft-discord:before { 
+		content: "\f104";
+	}
+	.ft-fire:before { 
+		content: "\f105";
+	}
+	.ft-ins:before { 
+		content: "\f106";
+	}
+	.ft-kwork:before { 
+		content: "\f107";
+	}
+	.ft-meta:before { 
+		content: "\f108";
+	}
+	.ft-mixi:before { 
+		content: "\f109";
+	}
+	.ft-ok:before { 
+		content: "\f10a";
+	}
+	.ft-pikachu:before { 
+		content: "\f10b";
+	}
+	.ft-telegram:before { 
+		content: "\f10c";
+	}
+	.ft-tiktok:before { 
+		content: "\f10d";
+	}
+	.ft-tumblr:before { 
+		content: "\f10e";
+	}
+	.ft-twitter:before { 
+		content: "\f10f";
+	}
+	.ft-vk:before { 
+		content: "\f110";
+	}
+	.ft-whatsapp:before { 
+		content: "\f111";
+	}
+	.ft-youtube:before { 
+		content: "\f112";
+	}
+	.ft-zyan:before { 
+		content: "\f113";
+	}
+
