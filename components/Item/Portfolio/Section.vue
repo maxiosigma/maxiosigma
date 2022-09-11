@@ -36,65 +36,56 @@
          </template>
       </ItemPortfolioBlock>-->
 
-      <client-only>
-         <!-- action === true ? '' : 'hidden', v-if="visio === $store.state.visio"  -->
-         <ItemPortfolioBlock
-            :black="i % 2 === 1 ? black : !black"
-            :class="[]"
-            :reverse="toogleIteration(i)"
-            v-for="(it, i) in data.filter((it) => it.media.filter((media) => media.mime === 'video/mp4').length > 0)"
-            :key="i"
-            @visible="(id) => (isVisible = id)"
-            :id="(i + 1) * 10"
-         >
-            <template v-slot:left>
-               <div class="portfolio-project-media flex flex-grow">
-                  <!-- :class="isVisible == (i + 1) * 10 ? 'opacity-100' : 'opacity-0'" -->
-                  <div class="flex-grow w-full transition-all duration-700">
-                     <Splide
-                        :ref="`main_${refs[i]}`"
-                        :options="{
-                           ...splide.common,
-                           ...splide.main,
-                           interval: 5000 + i * 1200,
-                           pagination: it.media.length > 1 ? true : false,
-                        }"
+      <!--<client-only>-->
+      <!-- action === true ? '' : 'hidden', v-if="visio === $store.state.visio"  -->
+      <ItemPortfolioBlock
+         :black="i % 2 === 1 ? black : !black"
+         :class="[]"
+         :reverse="toogleIteration(i)"
+         v-for="(it, i) in data.filter((it) => it.media.filter((media) => media.mime === 'video/mp4').length > 0)"
+         :key="i"
+         @visible="(id) => (isVisible = id)"
+         :id="(i + 1) * 10"
+      >
+         <template v-slot:left>
+            <div class="portfolio-project-media flex flex-grow">
+               <!-- :class="isVisible == (i + 1) * 10 ? 'opacity-100' : 'opacity-0'" -->
+               <div class="flex-grow w-full transition-all duration-700">
+                  <Splide
+                     :ref="`main_${refs[i]}`"
+                     :options="{
+                        ...splide.common,
+                        ...splide.main,
+                        interval: 5000 + i * 1200,
+                        pagination: it.media.length > 1 ? true : false,
+                     }"
+                  >
+                     <SplideSlide
+                        class="cursor-pointer"
+                        v-for="(media, j) in it.media.filter((media) => media.mime === 'video/mp4')"
+                        :key="`media-${i + 1}${j}${i}`"
                      >
-                        <SplideSlide
-                           class="cursor-pointer"
-                           v-for="(media, j) in it.media.filter((media) => media.mime === 'video/mp4')"
-                           :key="`media-${i + 1}${j}${i}`"
-                        >
-                           <ItemMediaStrapiVideoPlayer
-                              class="rounded-md"
-                              :title="it.title"
-                              :active="isVisible === (i + 1) * 10"
-                              :src="media.url"
-                           >
-                              <!--<div class="hidden"></div>-->
-                           </ItemMediaStrapiVideoPlayer>
-                        </SplideSlide>
+                        <ItemMediaStrapiVideoPlayer class="rounded-md" :title="it.title" :active="isVisible === (i + 1) * 10" :src="media.url" />
+                     </SplideSlide>
 
-                        <SplideSlide
-                           class="cursor-pointer flex-center"
-                           v-for="(media, j) in it.media.filter((media) => media.mime !== 'video/mp4')"
-                           :key="`media-${j}${i}${j + 1}`"
-                        >
-                           <ItemMediaStrapiBg class="portfolio-project-image rounded-md" :src="media.url" :alt="media.alt">
-                              <!--<div class="hidden"></div>-->
-                           </ItemMediaStrapiBg>
-                        </SplideSlide>
-                     </Splide>
+                     <SplideSlide
+                        class="cursor-pointer flex-center"
+                        v-for="(media, j) in it.media.filter((media) => media.mime !== 'video/mp4')"
+                        :key="`media-${j}${i}${j + 1}`"
+                     >
+                        <ItemMediaStrapiBg class="portfolio-project-image rounded-md" :src="media.url" :alt="media.alt" />
+                     </SplideSlide>
+                  </Splide>
 
-                     <!--<Splide :options="{ ...splide.common, ...splide.thumbs }" :ref="`thumbs_${refs[i]}`">
+                  <!--<Splide :options="{ ...splide.common, ...splide.thumbs }" :ref="`thumbs_${refs[i]}`">
                         <SplideSlide v-for="(media, k) in it.media" :key="`media-${k}${i + 1}${k}`">
                            {{ k }}
                         </SplideSlide>
                      </Splide>-->
-                  </div>
+               </div>
 
-                  <!--  :class="isVisible == (i + 1) * 10 ? 'opacity-100' : 'opacity-10'" -->
-                  <!--<ItemMediaStrapiVideoPlayer
+               <!--  :class="isVisible == (i + 1) * 10 ? 'opacity-100' : 'opacity-10'" -->
+               <!--<ItemMediaStrapiVideoPlayer
                      v-for="(media, j) in it.media.filter((media) => media.mime === 'video/mp4')"
                      :key="`media-${i}${j}`"
                      :title="it.title"
@@ -104,7 +95,7 @@
                      <div></div>
                   </ItemMediaStrapiVideoPlayer>-->
 
-                  <!-- v-if="media.mime !== 'video/mp4'"
+               <!-- v-if="media.mime !== 'video/mp4'"
                  <ItemMediaStrapiBg
                      class="portfolio-project-image"
                      v-for="(media, j) in it.media.filter((media) => media.mime !== 'video/mp4')"
@@ -113,29 +104,29 @@
                      :alt="media.alt"
                   />
                  w-100vw h-100vh max-w-full max-h-40vh -->
-               </div>
+            </div>
 
-               <!--{{ isVisible }} {{ (i + 1) * 10 }}-->
-            </template>
+            <!--{{ isVisible }} {{ (i + 1) * 10 }}-->
+         </template>
 
-            <template v-slot:right>
-               <div>{{ it.title }}</div>
-               <div>{{ it.description }}</div>
+         <template v-slot:right>
+            <div>{{ it.title }}</div>
+            <div>{{ it.description }}</div>
 
-               <div class="" v-if="it.assets.fonts">
-                  Шрифты:
-                  <span class="inline-grid grid-flow-col-dense gap-1">
-                     <span v-for="(ft, i) in it.assets.fonts" :key="i">{{ ft }}</span>
-                  </span>
-               </div>
+            <div class="" v-if="it.assets.fonts">
+               Шрифты:
+               <span class="inline-grid grid-flow-col-dense gap-1">
+                  <span v-for="(ft, i) in it.assets.fonts" :key="i">{{ ft }}</span>
+               </span>
+            </div>
 
-               <div v-if="it.assets.models">{{ it.assets.models }}</div>
-               <div v-if="it.assets.technologies">{{ it.assets.technologies }}</div>
+            <div v-if="it.assets.models">{{ it.assets.models }}</div>
+            <div v-if="it.assets.technologies">{{ it.assets.technologies }}</div>
 
-               <!--<div>{{ it }}</div>-->
-            </template>
-         </ItemPortfolioBlock>
-      </client-only>
+            <!--<div>{{ it }}</div>-->
+         </template>
+      </ItemPortfolioBlock>
+      <!--</client-only>-->
    </section>
 </template>
 

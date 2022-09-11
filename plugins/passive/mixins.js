@@ -36,6 +36,12 @@ Vue.mixin({
 
          //return false;
       },
+      //preLoadImageUrl(url = null, folder = "./media/cdn") {
+      //   if (url) {
+      //      const { DownloaderHelper } = require("node-downloader-helper");
+      //      new DownloaderHelper(url, folder, { resumeIfFileExists: true, override: "skip" }).start();
+      //   }
+      //},
       isLangGlobal() {
          return this.$i18n?.locale?.split("-")?.[0] ?? "ru";
       },

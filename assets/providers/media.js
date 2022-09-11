@@ -6,7 +6,10 @@ export function getImage(src, { modifiers, baseURL } = {}, { options, nuxtContex
    const { width, height, format, fit, ...providerModifiers } = modifiers;
    const operationsString = [].join(",");
 
+   //const path = require(`~/media${src}`);
    const path = src;
+
+   console.log(path);
 
    try {
       //  path = import("~/media" + src);
@@ -16,7 +19,7 @@ export function getImage(src, { modifiers, baseURL } = {}, { options, nuxtContex
    }
 
    //   console.log(path);
-   //   console.log(joinURL(require("~/media/sdn/202207137172755_dac643ddef.webp"), "/"));
+   //   console.log(joinURL(require("~/media/cdn/202207137172755_dac643ddef.webp"), "/"));
 
    // process modifiers
 

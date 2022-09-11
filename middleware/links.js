@@ -13,7 +13,7 @@ export default async function ({ store, $strapi, $axios, redirect }) {
    //         ),
    //      ].map((ln, i) => {
    //         // if (i === 0) {
-   //         new DownloaderHelper(`http://localhost:1337${ln}`, "./media/sdn", {
+   //         new DownloaderHelper(`http://localhost:1337${ln}`, "./media/cdn", {
    //            resumeIfFileExists: true,
    //            override: "skip",
    //         }).start();

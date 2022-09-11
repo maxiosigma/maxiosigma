@@ -59,7 +59,11 @@ export default {
    //   },
    //},
    //axios: { proxy: true },
+   //serverMiddleware: {
+   //   "/_ipx": "~/server/middleware/ipx.js",
+   //},
    image: {
+      isStatic: true,
       staticFilename: "[publicPath]/images/img_[hash:8].[ext]",
 
       //provider: "static",
@@ -68,8 +72,19 @@ export default {
       //   unsplash: "https://images.unsplash.com",
       //   pixum: "https://picsum.photos",
       //},
+      domains: ["http://localhost:1337/"],
       strapi: {
          baseURL: "http://localhost:1337/", // uploads/
+      },
+      //static: {
+      //   baseURL: "media",
+      //},
+      ipx: {
+         isStatic: true,
+         //   baseURL: "media",
+      },
+      alias: {
+         strapi: "http://localhost:1337/",
       },
       providers: {
          media: {
@@ -142,10 +157,16 @@ export default {
       JWT_SECRET: process.env.JWT_SECRET,
    },
    alias: {
-      "~": resolve(__dirname, "./"),
-      "@": resolve(__dirname, "./"),
-      images: resolve(__dirname, "./images"),
+      //"~": resolve(__dirname, "./"),
+      //"@": resolve(__dirname, "./"),
+
       strapi: resolve(__dirname, "../strapi"),
+      media: resolve(__dirname, "./media"),
+      fonts: resolve(__dirname, "./fonts"),
+
+      //jstrapi: join(__dirname, "utils"),
+      //jmedia: join(__dirname, "media"),
+      //jfonts: join(__dirname, "fonts"),
    },
    strapi: {
       url: process.env.STRAPI_URL || "http://localhost:1337",
@@ -238,7 +259,7 @@ export default {
       linkExactActiveClass: "exact-active-link",
       linkPrefetchedClass: "link-prefetched",
 
-      middleware: "links",
+      //middleware: "links",
    },
    cookies: {
       locales: ["ru", "en"],
@@ -556,7 +577,11 @@ export default {
 
          config.module.rules.push({ test: /\.mjs$/, include: /node_modules/, type: "javascript/auto" });
 
-         config.node = { fs: "empty" };
+         //config.resolve.alias["~strapi"] = join(__dirname, "utils");
+         //config.resolve.alias["~media"] = join(__dirname, "media");
+         //config.resolve.alias["~fonts"] = join(__dirname, "fonts");
+
+         //config.node = { fs: "empty" };
       },
    },
    hooks: {},
@@ -608,7 +633,7 @@ export default {
    modules: [
       "@nuxtjs/i18n",
       "@nuxtjs/axios",
-      "nuxt-ssr-cache",
+      //"nuxt-ssr-cache",
       "nuxt-cookie-control",
       "@nuxtjs/toast",
       "@nuxtjs/robots",
