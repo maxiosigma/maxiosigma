@@ -1,6 +1,5 @@
 <template>
    <div v-if="src" :class="[id, 'img-bg-mod']" :title="title" :alt="alt" itemprop="image"></div>
-
    <div v-else>Изображение не найдено</div>
 </template>
 

@@ -51,15 +51,16 @@ export default {
 <style lang="scss">
 .portfolio {
    &-block {
-      // container mx-auto  sm:rounded-b-xl
-      @apply transition-all duration-500 px-4 py-10 min-h-32 max-w-screen break-words bg-opacity-85 relative;
+      // px-4 py-10
+      @apply transition-all py-8 duration-500 min-h-32 max-w-screen break-words bg-opacity-85 relative;
 
       &-container {
-         @apply grid container items-center mx-auto grid-rows-1 sm:grid-cols-12;
+         @apply grid container items-center mx-auto grid-rows-1 gap-5 sm:grid-cols-12;
       }
 
       &-side {
-         @apply p-4 sm:col-span-6;
+         //p-4
+         @apply sm:col-span-6;
 
          &.left {
             @apply sm:order-1;
@@ -71,8 +72,9 @@ export default {
          &.one {
             @apply;
          }
+
          &.two {
-            @apply grid gap-2;
+            @apply grid gap-2 mx-auto max-w-80;
          }
       }
    }

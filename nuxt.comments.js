@@ -3,6 +3,123 @@
 // REGEX
 //"id": \w+,
 
+
+//<!--<div class="flex-grow w-full transition-all duration-700">
+//<VueSlickCarousel class="m-auto flex-grow flex-center" v-bind="{ ...slick.common }">
+//   <ItemMediaStrapiBg
+//      class="portfolio-project-image rounded-md cursor-pointer"
+//      v-for="(media, j) in it.media.filter((media) => media.mime !== 'video/mp4')"
+//      :key="`media-${i + 1}${j}${i}`"
+//      :src="media.url"
+//      :alt="media.alt"
+//   />
+
+//   <ItemMediaStrapiVideoPlayer
+//      class="rounded-md cursor-pointer"
+//      v-for="(media, j) in it.media.filter((media) => media.mime === 'video/mp4')"
+//      :key="`media-${i + 1}${j}${i}`"
+//      :title="it.title"
+//      :active="isVisible === (i + 1) * 10"
+//      :src="media.url"
+//   />
+//</VueSlickCarousel>
+
+//<VueSlickCarousel class="m-auto flex-grow flex-center" v-bind="{ ...slick.common }">
+//   <div></div>
+//</VueSlickCarousel>
+//</div>-->
+
+//<Splide
+//   :ref="`main_${refs[i]}`"
+//   :options="{
+//      ...splide.common,
+//      ...splide.main,
+//      interval: 5000 + i * 1200,
+//      pagination: it.media.length > 1 ? true : false,
+//   }"
+//>
+//   <SplideSlide
+//      class="cursor-pointer"
+//      v-for="(media, j) in it.media.filter((media) => media.mime === 'video/mp4')"
+//      :key="`media-${i + 1}${j}${i}`"
+//   >
+//      <ItemMediaStrapiVideoPlayer class="rounded-md" :title="it.title" :active="isVisible === (i + 1) * 10" :src="media.url" />
+//   </SplideSlide>
+
+//   <SplideSlide
+//      class="cursor-pointer flex-center"
+//      v-for="(media, j) in it.media.filter((media) => media.mime !== 'video/mp4')"
+//      :key="`media-${j}${i}${j + 1}`"
+//   >
+//      <ItemMediaStrapiBg class="portfolio-project-image rounded-md" :src="media.url" :alt="media.alt" />
+//   </SplideSlide>
+//</Splide>
+//return this.data.map((it) => Math.random() * 1000000);
+//Splide, SplideSlide
+//splide: {
+//   common: {
+//      perPage: 1,
+//      speed: 1500,
+//      arrows: false,
+//   },
+//   main: {
+//      perMove: 1,
+//      type: "loop",
+//      wheel: true,
+//      rewind: true,
+//      preloadPages: 1,
+//      isNavigation: false,
+//      wheelMinThreshold: 0,
+//      padding: 0,
+//      paginationDirection: "ttb",
+//      direction: "ltr",
+//      autoplay: true,
+//      lazyLoad: true,
+//      gap: 25,
+//   },
+//   thumbs: {
+//      type: "slide",
+//      rewind: true,
+//      gap: "1rem",
+//      isNavigation: true,
+//      fixedWidth: 110,
+//      fixedHeight: 50,
+//      padding: "1rem",
+//      cover: true,
+//      focus: "center",
+//      updateOnMove: true,
+//   },
+//},
+//if (process.client) {
+//   console.log("refs", this.$refs);
+//   console.log(`main_${this.refs[0]}`);
+//   console.log("1", this.$refs[`main_${this.refs[0]}`]);
+//   console.log("2", this.$refs[`thumbs_${this.refs[0]}`]);
+//}
+
+//this.$nextTick(() => {
+//   const self = this;
+
+//   const thumbsSplide = self.$refs?.[`thumbs_${this.refs[0]}`]?.value?.splide;
+
+//   if (thumbsSplide) {
+//      self.$refs?.[`main_${this.refs[0]}`]?.[0]?.value?.sync(thumbsSplide);
+//   }
+
+//   console.log();
+//});
+
+//console.log(this.$refs);
+//console.log(this.$refs[0]);
+
+//console.log(this.$refs.splideThumbs);
+
+//console.log(this.$payloadURL(this.route));
+
+//console.log(this.$refs);
+//console.log(this.$refs.video_50);
+//console.log("this is current videojs instance object", this.nox);
+
 //function cookie() {
 //	return {
 //	   cookies: {

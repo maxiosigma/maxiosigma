@@ -11,7 +11,7 @@
                { '!hidden': visible >= 1 },
             ]"
          >
-            <ItemMedia class="about-img" src="about/face_1.png"></ItemMedia>
+            <ItemMedia class="about-img" src="about/face_1.webp"></ItemMedia>
          </div>
 
          <div

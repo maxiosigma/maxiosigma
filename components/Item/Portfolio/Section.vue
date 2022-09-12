@@ -62,63 +62,23 @@
                   />
                  w-100vw h-100vh max-w-full max-h-40vh -->
 
-      <!-- ЗАМЕНИТЬ НА SLICK CARUSEL -->
+      <!-- .filter((media) => media.mime === 'video/mp4').length > 0 -->
 
       <ItemPortfolioBlock
          :black="i % 2 === 1 ? black : !black"
          :class="[]"
          :reverse="toogleIteration(i)"
-         v-for="(it, i) in data.filter((it) => it.media.filter((media) => media.mime === 'video/mp4').length > 0)"
+         v-for="(it, i) in data.filter((it) => it.media)"
          :key="i"
          @visible="(id) => (isVisible = id)"
          :id="(i + 1) * 10"
       >
          <template v-slot:left>
-            <div class="portfolio-project-media flex flex-grow">
-               <!-- :class="isVisible == (i + 1) * 10 ? 'opacity-100' : 'opacity-0'" -->
-               <div class="flex-grow w-full transition-all duration-700">
-                  <Splide
-                     :ref="`main_${refs[i]}`"
-                     :options="{
-                        ...splide.common,
-                        ...splide.main,
-                        interval: 5000 + i * 1200,
-                        pagination: it.media.length > 1 ? true : false,
-                     }"
-                  >
-                     <SplideSlide
-                        class="cursor-pointer"
-                        v-for="(media, j) in it.media.filter((media) => media.mime === 'video/mp4')"
-                        :key="`media-${i + 1}${j}${i}`"
-                     >
-                        <ItemMediaStrapiVideoPlayer class="rounded-md" :title="it.title" :active="isVisible === (i + 1) * 10" :src="media.url" />
-                     </SplideSlide>
-
-                     <SplideSlide
-                        class="cursor-pointer flex-center"
-                        v-for="(media, j) in it.media.filter((media) => media.mime !== 'video/mp4')"
-                        :key="`media-${j}${i}${j + 1}`"
-                     >
-                        <ItemMediaStrapiBg class="portfolio-project-image rounded-md" :src="media.url" :alt="media.alt" />
-                     </SplideSlide>
-                  </Splide>
-               </div>
-            </div>
+            <ItemPortfolioMedia :reverse="toogleIteration(i)" :visible="isVisible" :data="it.media" :i="i" :options="{ slick }" />
          </template>
 
          <template v-slot:right>
-            <div>{{ it.title }}</div>
-            <div>{{ it.description }}</div>
-
-            <div class="" v-if="it.assets.fonts">
-               Шрифты:
-               <span class="inline-grid grid-flow-col-dense gap-1">
-                  <span v-for="(ft, i) in it.assets.fonts" :key="i">{{ ft }}</span>
-               </span>
-            </div>
-
-            <div v-if="it.assets.models">{{ it.assets.models }}</div>
-            <div v-if="it.assets.technologies">{{ it.assets.technologies }}</div>
+            <ItemPortfolioContent :reverse="toogleIteration(i)" :data="it" :i="i" />
          </template>
       </ItemPortfolioBlock>
    </section>
@@ -136,40 +96,6 @@ export default {
          isVisible: 0,
          action: false,
          refs: this.setRefs(),
-         splide: {
-            common: {
-               perPage: 1,
-               speed: 1500,
-               arrows: false,
-            },
-            main: {
-               perMove: 1,
-               type: "loop",
-               wheel: true,
-               rewind: true,
-               preloadPages: 1,
-               isNavigation: false,
-               wheelMinThreshold: 0,
-               padding: 0,
-               paginationDirection: "ttb",
-               direction: "ltr",
-               autoplay: true,
-               lazyLoad: true,
-               gap: 25,
-            },
-            thumbs: {
-               type: "slide",
-               rewind: true,
-               gap: "1rem",
-               isNavigation: true,
-               fixedWidth: 110,
-               fixedHeight: 50,
-               padding: "1rem",
-               cover: true,
-               focus: "center",
-               updateOnMove: true,
-            },
-         },
          slick: {
             common: {
                accessibility: false,
@@ -202,36 +128,6 @@ export default {
    },
    mounted() {
       if (!this.visio) this.visio = 0;
-
-      //if (process.client) {
-      //   console.log("refs", this.$refs);
-      //   console.log(`main_${this.refs[0]}`);
-      //   console.log("1", this.$refs[`main_${this.refs[0]}`]);
-      //   console.log("2", this.$refs[`thumbs_${this.refs[0]}`]);
-      //}
-
-      //this.$nextTick(() => {
-      //   const self = this;
-
-      //   const thumbsSplide = self.$refs?.[`thumbs_${this.refs[0]}`]?.value?.splide;
-
-      //   if (thumbsSplide) {
-      //      self.$refs?.[`main_${this.refs[0]}`]?.[0]?.value?.sync(thumbsSplide);
-      //   }
-
-      //   console.log();
-      //});
-
-      //console.log(this.$refs);
-      //console.log(this.$refs[0]);
-
-      //console.log(this.$refs.splideThumbs);
-
-      //console.log(this.$payloadURL(this.route));
-
-      //console.log(this.$refs);
-      //console.log(this.$refs.video_50);
-      //console.log("this is current videojs instance object", this.nox);
    },
    methods: {
       handleClick() {
@@ -258,13 +154,9 @@ export default {
       },
       setRefs() {
          return this.data.map((it, i) => Number(`${i}${this.visio * 100}`));
-         //return this.data.map((it) => Math.random() * 1000000);
       },
    },
-   components: {
-      VueSlickCarousel,
-      //Splide, SplideSlide
-   },
+   components: { VueSlickCarousel },
 };
 </script>
 
@@ -341,10 +233,6 @@ export default {
    }
 
    &-block {
-      &-side {
-         @apply max-w-full p-4;
-      }
-
       &-btn {
          @apply uppercase text-xs text-white px-4 py-2 transition duration-700 rounded-md cursor-pointer;
 
@@ -364,6 +252,7 @@ export default {
       &.black {
          @apply bg-black text-light-200;
       }
+
       &.white {
          @apply bg-light-900 text-indigo-900;
       }
@@ -371,7 +260,7 @@ export default {
 
    & .slick {
       &-slide {
-         @apply pointer-events-none max-w-full px-4 border-transparent border-none border-[-1px];
+         @apply pointer-events-none max-w-full max-h-full px-4 border-transparent border-none border-[-1px];
       }
 
       &-center {
