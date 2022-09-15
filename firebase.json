@@ -8,11 +8,42 @@
       "headers": [
          {
             "source": "**",
+            "headers": [{ "key": "Cache-Control", "value": "max-age=60000" }]
+         },
+         {
+            "source": "/",
+            "headers": [{ "key": "X-Frame-Options", "value": "SAMEORIGIN" }]
+         },
+         {
+            "source": "/**/*.html",
+            "headers": [{ "key": "Cache-Control", "value": "max-age=300" }]
+         },
+         {
+            "source": "/favicon.ico",
+            "headers": [{ "key": "Cache-Control", "value": "max-age=31536000" }]
+         },
+         {
+            "source": "/public/manifest.*.json",
+            "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+         },
+         {
+            "source": "/robots.txt",
+            "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+         },
+         {
+            "source": "/sw.js",
+            "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+         },
+         {
+            "source": "**/*",
+            "headers": [{ "key": "X-Content-Type-Options", "value": "nosniff" }]
+         },
+         {
+            "source": "/public/**",
             "headers": [
-               {
-                  "key": "Cache-Control",
-                  "value": "max-age=600000"
-               }
+               { "key": "Cache-Control", "value": "max-age=600000" },
+               { "key": "deny", "value": "all" },
+               { "key": "return", "value": "404" }
             ]
          }
       ]

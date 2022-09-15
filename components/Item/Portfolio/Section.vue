@@ -259,8 +259,12 @@ export default {
    }
 
    & .slick {
+      &-track {
+         @apply flex;
+      }
       &-slide {
-         @apply pointer-events-none max-w-full max-h-full px-4 border-transparent border-none border-[-1px];
+         @apply pointer-events-none max-w-full max-h-full h-full px-4 border-transparent border-none border-[-1px];
+         @apply flex-grow m-auto;
       }
 
       &-center {

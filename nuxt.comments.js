@@ -3,6 +3,13 @@
 // REGEX
 //"id": \w+,
 
+//{
+//   "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+//   "headers": [ {
+//      "key": "Access-Control-Allow-Origin",
+//      "value": "*"
+//   } ]
+//}
 
 //<!--<div class="flex-grow w-full transition-all duration-700">
 //<VueSlickCarousel class="m-auto flex-grow flex-center" v-bind="{ ...slick.common }">
