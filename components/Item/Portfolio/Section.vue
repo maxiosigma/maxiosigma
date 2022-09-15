@@ -1,6 +1,6 @@
 <template>
    <section class="portfolio-section">
-      <!--<ItemPortfolioBlock :black="black" :reverse="reverse">
+      <ItemPortfolioBlock :black="black" :reverse="reverse">
          <template v-slot:left>
             <VueSlickCarousel v-bind="{ ...slick.common, ...slick.top }">
                <div class="portfolio-project-images" v-for="(it, i) in data.filter((it) => it.top)" :key="i">
@@ -34,37 +34,9 @@
                <ItemPortfolioButton @click.native="handleClick" :black="black" />
             </div>
          </template>
-      </ItemPortfolioBlock>-->
+      </ItemPortfolioBlock>
 
-      <!--<Splide :options="{ ...splide.common, ...splide.thumbs }" :ref="`thumbs_${refs[i]}`">
-                        <SplideSlide v-for="(media, k) in it.media" :key="`media-${k}${i + 1}${k}`">
-                           {{ k }}
-                        </SplideSlide>
-                     </Splide>
-                :class="isVisible == (i + 1) * 10 ? 'opacity-100' : 'opacity-10'" 
-              <ItemMediaStrapiVideoPlayer
-                v-for="(media, j) in it.media.filter((media) => media.mime === 'video/mp4')"
-                     :key="`media-${i}${j}`"
-                     :title="it.title"
-                     :active="isVisible === (i + 1) * 10"
-                     :src="'http://localhost:1337' + media.url"
-                  >
-                     <div></div>
-                  </ItemMediaStrapiVideoPlayer>
-
-               v-if="media.mime !== 'video/mp4'"
-                 <ItemMediaStrapiBg
-                     class="portfolio-project-image"
-                     v-for="(media, j) in it.media.filter((media) => media.mime !== 'video/mp4')"
-                     :key="`img-${i}${j}`"
-                     :src="media.url"
-                     :alt="media.alt"
-                  />
-                 w-100vw h-100vh max-w-full max-h-40vh -->
-
-      <!-- .filter((media) => media.mime === 'video/mp4').length > 0 -->
-
-      <ItemPortfolioBlock
+      <!--<ItemPortfolioBlock
          :black="i % 2 === 1 ? black : !black"
          :class="[]"
          :reverse="toogleIteration(i)"
@@ -80,7 +52,7 @@
          <template v-slot:right>
             <ItemPortfolioContent :reverse="toogleIteration(i)" :data="it" :i="i" />
          </template>
-      </ItemPortfolioBlock>
+      </ItemPortfolioBlock>-->
    </section>
 </template>
 
@@ -98,23 +70,23 @@ export default {
          refs: this.setRefs(),
          slick: {
             common: {
-               accessibility: false,
-               autoplay: true,
-               centerMode: true,
-               centerPadding: "0px",
                dots: false,
                arrows: false,
                infinite: true,
+               autoplay: true,
                slidesToShow: 1,
+               centerMode: true,
                slidesToScroll: 1,
                swipeToSlide: false,
+               accessibility: false,
+               centerPadding: "0px",
                pauseOnDotsHover: false,
+               autoplaySpeed: 7500,
                pauseOnFocus: false,
                pauseOnHover: false,
-               swipe: false,
                touchMove: false,
+               swipe: false,
                speed: 1500,
-               autoplaySpeed: 7500,
             },
             top: {
                vertical: true,
@@ -141,8 +113,8 @@ export default {
       },
       tooltipLink(url) {
          return {
-            show: !isCustomMobile(),
-            disabled: isCustomMobile(),
+            show: !this.isCustomMobile(),
+            disabled: this.isCustomMobile(),
             content: `<div class='text-center'>Посмотреть работу <br> ${url}</div>`,
             html: true,
             distance: 20,
