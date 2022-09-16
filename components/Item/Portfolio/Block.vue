@@ -1,5 +1,6 @@
 <template>
-   <div :class="['portfolio-block', toogleBlack(black)]">
+   <!-- , visible ? 'h-auto visible' : 'h-0px invisible' -->
+   <div :class="['portfolio-block', toogleBlack(black)]" v-show-slide:2000:ease="visible">
       <div
          class="portfolio-block-container"
          v-observe-visibility="{
@@ -31,7 +32,7 @@
 
 <script>
 export default {
-   props: ["black", "reverse", "id"],
+   props: ["black", "reverse", "visible", "id"],
    data() {
       return {
          //id: this.intRandom(0, 1000000000000),
@@ -51,11 +52,13 @@ export default {
 <style lang="scss">
 .portfolio {
    &-block {
-      // px-4 py-10
-      @apply transition-all py-8 duration-500 min-h-32 max-w-screen break-words bg-opacity-85 relative;
+      // px-4 py-10 transition-all h-auto duration-1500 delay-200 overflow-hidden
+      @apply max-w-screen break-words bg-opacity-85 relative;
+      transition: height 2s ease 0s;
 
       &-container {
-         @apply grid container items-center mx-auto grid-rows-1 gap-5 sm:grid-cols-12;
+         // min-h-32 transition-all duration-2000 ease  min-h-32
+         @apply grid h-auto container py-8 items-center mx-auto grid-rows-1 gap-5 sm:grid-cols-12;
       }
 
       &-side {

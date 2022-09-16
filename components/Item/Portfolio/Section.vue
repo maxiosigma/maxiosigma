@@ -1,6 +1,6 @@
 <template>
    <section class="portfolio-section">
-      <ItemPortfolioBlock :black="black" :reverse="reverse">
+      <ItemPortfolioBlock :visible="visible" :black="black" :reverse="reverse">
          <template v-slot:left>
             <VueSlickCarousel v-bind="{ ...slick.common, ...slick.top }">
                <div class="portfolio-project-images" v-for="(it, i) in data.filter((it) => it.top)" :key="i">
@@ -36,9 +36,17 @@
          </template>
       </ItemPortfolioBlock>
 
-      <!--<ItemPortfolioBlock
+      <!--   :class="[action ? '' : 'hidden']" -->
+      <!--       v-show-slide:`${2000+i*2000}`="action" -->
+      <!--       :class="['transition-all duration-2000 ease', action ? 'max-h-auto' : 'max-h-0']" -->
+
+      <!-- v-show-slide:2000="action" -->
+      <!-- height: 0px; visibility: hidden; overflow: hidden; transition: height 2s ease 0s; -->
+      <!-- height: auto; visibility: visible; overflow: hidden; transition: height 2s ease 0s; -->
+      <!--   :class="['duration-2000', action ? 'max-h-10vh visible' : 'max-h-0 invisible']" -->
+      <LazyItemPortfolioBlock
+         :visible="action"
          :black="i % 2 === 1 ? black : !black"
-         :class="[]"
          :reverse="toogleIteration(i)"
          v-for="(it, i) in data.filter((it) => it.media)"
          :key="i"
@@ -52,7 +60,7 @@
          <template v-slot:right>
             <ItemPortfolioContent :reverse="toogleIteration(i)" :data="it" :i="i" />
          </template>
-      </ItemPortfolioBlock>-->
+      </LazyItemPortfolioBlock>
    </section>
 </template>
 
@@ -62,7 +70,7 @@ import "vue-slick-carousel/dist/vue-slick-carousel.css";
 import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 
 export default {
-   props: ["black", "reverse", "data", "visio"],
+   props: ["black", "reverse", "data", "visio", "visible"],
    data() {
       return {
          isVisible: 0,
@@ -74,6 +82,7 @@ export default {
                arrows: false,
                infinite: true,
                autoplay: true,
+               slidesPerRow: 1,
                slidesToShow: 1,
                centerMode: true,
                slidesToScroll: 1,
@@ -103,7 +112,10 @@ export default {
    },
    methods: {
       handleClick() {
-         setTimeout(() => (this.action = !this.action), 2500);
+         setTimeout(() => {
+            this.action = !this.action;
+            this.$store.commit("setVisio", this.action ? this.visio : 0);
+         }, 2500);
       },
       handleClickLink(url) {
          window.open(url);
@@ -231,12 +243,8 @@ export default {
    }
 
    & .slick {
-      &-track {
-         @apply flex;
-      }
       &-slide {
          @apply pointer-events-none max-w-full max-h-full h-full px-4 border-transparent border-none border-[-1px];
-         @apply flex-grow m-auto;
       }
 
       &-center {

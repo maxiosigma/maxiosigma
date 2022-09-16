@@ -17,16 +17,17 @@
       <div class="flex-grow">
          <!--<div class="flex-center bg-light-900 h-96">
             <ItemMedia class="w-auto h-full object-contain object-center" :src="'portfolio/bg_4.webp'" />
-         </div>-->
+         </div>
 
-         <!--<div class="flex-center flex-col p-5 bg-black text-white">
-            <h2 class="inline-flex-center flex-col font-thin uppercase gap-2 grid-rows-1">
+         <div class="flex-center flex-col p-5 bg-indigo-900 text-white">
+            <h2 class="inline-flex-center flex-col font-light text-lg tracking-wide uppercase gap-2 grid-rows-1">
                <div>
-                  <span>Вам нужен :</span>
+                  <span>Вам нужен</span>
+                  <span class="font-black mx-1 text-blue-300">:</span>
                   <span>Дизайнер</span>
-                  <span class="font-black mx-1 text-cyan-200">|</span>
+                  <span class="font-black mx-1 text-cyan-300">|</span>
                   <span>Разработчик</span>
-                  <span class="font-black text-xl text-indigo-600"> ?</span>
+                  <span class="font-black text-xl text-indigo-500"> ?</span>
                </div>
 
                <div>
@@ -48,13 +49,9 @@
          → Внимание к мелочам
           -->
 
-         <ItemPortfolioSection
-            :class="noVisio([2]) ? 'portfolio-visio-no' : 'portfolio-visio'"
-            :visio="1"
-            :black="true"
-            :reverse="false"
-            :data="design"
-         >
+         <!--:class="['', noVisio([2]) ? 'portfolio-visio-no' : 'portfolio-visio']"-->
+
+         <ItemPortfolioSection :visible="!noVisio([2])" :visio="1" :black="true" :reverse="false" :data="design">
             <template v-slot:title> Дизайнер </template>
             <template v-slot:description>
                <div
@@ -81,6 +78,7 @@
          <!--<v-btn value="home"> Home </v-btn>-->
 
          <ItemPortfolioSection
+            :visible="!noVisio([1])"
             :class="noVisio([1]) ? 'portfolio-visio-no' : 'portfolio-visio'"
             :visio="2"
             :black="false"
@@ -107,7 +105,7 @@
 
          <!--<ItemPortfolioBlock :black="true" :data="{ first: developerWorksFirst, second: developerWorksSecond }"></ItemPortfolioBlock>-->
 
-         <div class="bg-indigo-900 min-h-screen" :class="noVisio([1, 2]) ? 'portfolio-visio-no' : 'portfolio-visio'"></div>
+         <!--<div class="bg-indigo-900 min-h-screen" :class="noVisio([1, 2]) ? 'portfolio-visio-no' : 'portfolio-visio'"></div>-->
 
          <!--<div>1111</div>-->
 

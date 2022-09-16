@@ -656,7 +656,7 @@ export default {
       "@plugins/active/ParticleEffectButton.client.js",
       "@plugins/active/VueObserveVisibility.client.js",
 
-      "@plugins/active/VueSplide.client.js",
+      //"@plugins/active/VueSplide.client.js",
 
       //"@plugins/active/VideoBackground.client.js",
 
@@ -664,6 +664,8 @@ export default {
       //"@plugins/active/VueCoreVideoPlayer.client.js",
       //"@plugins/active/VueVideoPlayer",
       //"@plugins/active/H5Video.client.js",
+
+      "@plugins/active/VShowSlide",
 
       "@plugins/active/VueTypedJs",
       "@plugins/active/VueKinesis",

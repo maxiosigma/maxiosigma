@@ -122,8 +122,13 @@ export default {
    }
 
    & .slick {
+      &-track {
+         @apply flex;
+      }
+
       &-slide {
          @apply pointer-events-auto #{!important};
+         @apply flex-grow m-auto;
       }
 
       &-active {
