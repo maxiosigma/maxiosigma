@@ -1,6 +1,6 @@
 <template>
    <!-- , visible ? 'h-auto visible' : 'h-0px invisible' -->
-   <div :class="['portfolio-block', toogleBlack(black)]" v-show-slide:2000:ease="visible">
+   <div :class="['portfolio-block', toogleBlack(black)]" v-show-slide:3000:ease="visible">
       <div
          class="portfolio-block-container"
          v-observe-visibility="{
