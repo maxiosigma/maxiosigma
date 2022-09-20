@@ -26,14 +26,14 @@
          </VueSlickCarousel>
 
          <!-- h-20  mx-1/10  px-20 -->
-         <div class="mt-5 max-w-60 mx-auto relative">
-            <VueSlickCarousel
-               v-if="data.length > 1"
-               ref="thumbs"
-               class=""
-               v-bind="{ ...slick.common, ...slick.thumbs }"
-               @beforeChange="syncSliders"
-            >
+         <div
+            v-if="
+               data.length > 1 &&
+               data.filter((media) => media.mime !== 'video/mp4' && (media.formats.small || media.formats.thumbnail)).length > 1
+            "
+            class="mt-5 max-w-60 mx-auto relative"
+         >
+            <VueSlickCarousel ref="thumbs" class="" v-bind="{ ...slick.common, ...slick.thumbs }" @beforeChange="syncSliders">
                <LazyItemMedia
                   :class="['portfolio-project-media-thumbs', reverse ? 'bg-white' : 'bg-black']"
                   v-for="(media, j) in data.filter((media) => media.mime === 'video/mp4')"
@@ -42,11 +42,12 @@
                   @click.native="handleClick(j)"
                ></LazyItemMedia>
 
-               <LazyItemMediaStrapiBg
+               <!--|| media.formats.thumbnail.url-->
+               <ItemMediaStrapiBg
                   :class="['portfolio-project-media-thumbs', reverse ? 'bg-white' : 'bg-cyan-600']"
                   v-for="(media, j) in data.filter((media) => media.mime !== 'video/mp4')"
                   :key="`media-thumbs-photo-${i}${j}`"
-                  :src="media.formats.thumbnail.url"
+                  :src="media.formats.small ? media.formats.small.url : media.formats.thumbnail.url"
                   @click.native="handleClick(data.filter((media) => media.mime === 'video/mp4').length + j)"
                />
             </VueSlickCarousel>
@@ -70,6 +71,9 @@ export default {
                //infinite: false,
                //accessibility: false,
                //lazyLoad: "ondemand",
+
+               autoplay: true,
+               autoplaySpeed: 10000 + Math.random() * 1000,
             },
             main: {
                arrows: false,
@@ -81,13 +85,12 @@ export default {
             },
             thumbs: {
                //speed: 2500,
-               autoplay: true,
-               autoplaySpeed: 10000,
+
                //variableWidth: true,
 
                arrows: true,
                //centerMode: true,
-               slidesToScroll: 3,
+               slidesToScroll: 1,
                slidesToShow: 3,
                //centerPadding: "1px",
                asNavFor: this.$refs.main,
@@ -99,6 +102,9 @@ export default {
             },
          },
       };
+   },
+   mounted() {
+      //console.log(this.data.filter((media) => media.mime !== "video/mp4" && media.formats).length);
    },
    methods: {
       handleClick(i) {

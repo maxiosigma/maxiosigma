@@ -1,30 +1,39 @@
 <template>
    <div class="portfolio-project-content">
-      <div class="pb-1 border-b-2 border-orange-600">{{ data.title }}</div>
+      <!-- text-[4vmin] -->
+      <div class="font-vetka text-2xl leading-snug tracking-wider font-black pb-2 border-b-2 border-orange-600">{{ data.title }}</div>
       <div class="break-normal hyphens-auto">{{ data.description }}</div>
 
-      <div class="inline" v-for="(ast, i) in data.assets" v-if="ast.length > 0" :key="i">
-         <span v-if="i === 'fonts'" v-text="ast.length === 1 ? 'Шрифт:' : 'Шрифты:'"></span>
-         <span v-if="i === 'models'" v-text="ast.length === 1 ? 'Контент-модель:' : 'Контент-модели:'"></span>
-         <span v-if="i === 'technologies'" v-text="ast.length === 1 ? 'Технология:' : 'Технологии:'">:</span>
+      <div class="grid gap-1 mt-4 mb-5">
+         <div :class="['inline', ast.length > 0 ? '' : 'hidden']" v-for="(ast, i) in data.assets" :key="i">
+            <span v-if="i === 'fonts'" v-text="ast.length === 1 ? 'Шрифт:' : 'Шрифты:'"></span>
+            <span v-if="i === 'models'" v-text="ast.length === 1 ? 'Контент-модель:' : 'Контент-модели:'"></span>
+            <span v-if="i === 'technologies'" v-text="ast.length === 1 ? 'Технология:' : 'Технологии:'">:</span>
 
-         <span :class="['text-xs inline-flex flex-wrap place-content-start place-items-start', ast.length === 1 ? 'ml-1' : '']">
             <span
-               v-for="(st, j) in ast"
-               :key="j"
                :class="[
-                  'flex-center text-light-200 my-1 px-1.2 py-0.5 rounded-md cursor-pointer transition duration-300',
-                  reverse ? 'bg-indigo-600 hover:(bg-indigo-500)' : 'bg-green-600 hover:(bg-green-500)',
-                  j !== ast.length - 1 ? 'mr-1' : '',
+                  'text-xs flex-wrap place-content-start place-items-start sm:inline-flex',
+                  '<sm:(flex place-items-center place-content-center)',
+                  ast.length === 1 ? 'ml-1' : '',
                ]"
             >
-               {{ st }}
+               <span
+                  v-for="(st, j) in ast"
+                  :key="j"
+                  :class="[
+                     'flex-center text-light-200 my-1 px-1.2 py-0.5 rounded-md cursor-pointer transition duration-300',
+                     reverse ? 'bg-indigo-600 hover:(bg-indigo-500)' : 'bg-green-600 hover:(bg-green-500)',
+                     j !== ast.length - 1 ? 'mr-1' : '',
+                  ]"
+               >
+                  {{ st }}
+               </span>
             </span>
-         </span>
+         </div>
       </div>
 
       <ItemPortfolioButton
-         class="self-start justify-self-start mt-2"
+         class="sm:(self-start justify-self-start) mt-2"
          :black="reverse"
          v-if="data.link"
          @click.native.prevent="handleClick(data.link)"
@@ -71,6 +80,6 @@ export default {
 
 <style lang="scss">
 .portfolio-project-content {
-   @apply grid gap-y-2;
+   @apply grid mx-auto <sm:(px-5 text-center);
 }
 </style>

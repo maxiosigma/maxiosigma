@@ -4,7 +4,10 @@
          <template v-slot:left>
             <VueSlickCarousel v-bind="{ ...slick.common, ...slick.top }">
                <div class="portfolio-project-images" v-for="(it, i) in data.filter((it) => it.top)" :key="i">
-                  <ItemMediaStrapiBg class="portfolio-project-image" :src="it.media[0].url" />
+                  <ItemMediaStrapiBg
+                     class="portfolio-project-image"
+                     :src="it.media[0].mime === 'video/mp4' ? it.media[1].url : it.media[0].url"
+                  />
                </div>
             </VueSlickCarousel>
 
@@ -25,9 +28,10 @@
 
          <template v-slot:right>
             <div class="portfolio-section-depiction">
-               <ItemRundomString :class="['portfolio-section-title ', toogleBlack(black)]" :no="true">
+               <!-- ItemRundomString -->
+               <div :class="['portfolio-section-title ', toogleBlack(black)]" :no="true">
                   <slot name="title"></slot>
-               </ItemRundomString>
+               </div>
 
                <div class="text-base grid gap-4"><slot name="description"></slot></div>
 
@@ -47,7 +51,7 @@
       <LazyItemPortfolioBlock
          :visible="action"
          :black="i % 2 === 1 ? black : !black"
-         :reverse="toogleIteration(i)"
+         :reverse="toogleIteration(i + 1)"
          v-for="(it, i) in data.filter((it) => it.media)"
          :key="i"
          @visible="(id) => (isVisible = id)"
@@ -61,6 +65,21 @@
             <ItemPortfolioContent :reverse="toogleIteration(i)" :data="it" :i="i" />
          </template>
       </LazyItemPortfolioBlock>
+
+      <!--<div class="px-6 py-10 bg-black text-white w-full flex-center" v-show-slide:3000:ease="visible">-->
+
+      <ItemPortfolioBlock :black="data.filter((it) => it.media).length % 2 === 1 ? black : !black" :visible="action" :block="true">
+         <ItemPortfolioButton
+            class="col-span-2 sm:col-span-12"
+            cls="min-w-60 text-center"
+            @click.native="handleClick"
+            @visible="(id) => (isVisible = id)"
+            :black="black"
+            :text="['Свернуть', 'Свернуть']"
+         />
+      </ItemPortfolioBlock>
+
+      <!--</div>-->
    </section>
 </template>
 
@@ -147,10 +166,13 @@ export default {
 <style lang="scss">
 .portfolio {
    &-section {
-      @apply relative divide-green-500 divide-y-1;
+      @apply relative;
+
+      //divide-green-500 divide-y-1
 
       &-depiction {
-         @apply grid gap-6 sm:col-span-6 place-items-start place-content-start px-4 py-6 <sm:(place-items-center text-center);
+         //sm:col-span-6 px-4 py-6
+         @apply grid gap-6 place-items-start pl-4 place-content-start <sm:(place-items-center text-center);
       }
 
       &-title {
@@ -180,10 +202,11 @@ export default {
       }
 
       &-depiction {
-         @apply mt-5 px-5;
+         // px-5
+         @apply mt-5;
 
          &-container {
-            @apply grid gap-2 text-center;
+            @apply grid gap-2  text-center;
          }
       }
 
@@ -200,7 +223,7 @@ export default {
       }
 
       &-title {
-         @apply text-lg tracking-widest items-center uppercase pointer-events-none;
+         @apply text-lg  tracking-widest items-center uppercase pointer-events-none;
 
          &.black {
             @apply text-shadow-custom-black-5px;

@@ -2,7 +2,7 @@
    <client-only>
       <particle-btn
          :class="['group', classed ? toogleBlack(black) : 'pointer-events-none']"
-         :cls="['portfolio-section-button', toogleBlack(black)]"
+         :cls="['portfolio-section-button', cls, toogleBlack(black)]"
          :visible.sync="options.visible"
          :animating.sync="options.animating"
          :options="options"
@@ -27,6 +27,10 @@ export default {
       black: {
          type: Boolean,
          default: false,
+      },
+      cls: {
+         type: String,
+         default: "",
       },
    },
    data() {

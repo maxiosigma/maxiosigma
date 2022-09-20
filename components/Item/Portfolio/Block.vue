@@ -1,9 +1,7 @@
 <template>
-   <!-- , visible ? 'h-auto visible' : 'h-0px invisible' -->
-   <div :class="['portfolio-block', toogleBlack(black)]" v-show-slide:3000:ease="visible">
-      <div
-         class="portfolio-block-container"
-         v-observe-visibility="{
+   <!-- СДЕЛАТЬ МОКАПЫ -->
+
+   <!--        v-observe-visibility="{
             volume: 0,
             once: false,
             preload: 'none',
@@ -17,13 +15,17 @@
                rootMargin: '0px',
                threshold: 1.0,
             },
-         }"
-      >
-         <div class="portfolio-block-side one" :class="[reverse ? 'right' : 'left']">
+         }" -->
+   <!-- , visible ? 'h-auto visible' : 'h-0px invisible' -->
+   <div :class="['portfolio-block', toogleBlack(black)]" v-show-slide:3000:ease="visible">
+      <div class="portfolio-block-container">
+         <div v-if="!block" class="portfolio-block-side one" :class="[reverse ? 'right' : 'left']">
             <slot name="left"></slot>
          </div>
 
-         <div class="portfolio-block-side two" :class="[reverse ? 'left' : 'right']">
+         <slot></slot>
+
+         <div v-if="!block" class="portfolio-block-side two" :class="[reverse ? 'left' : 'right']">
             <slot name="right"></slot>
          </div>
       </div>
@@ -32,7 +34,7 @@
 
 <script>
 export default {
-   props: ["black", "reverse", "visible", "id"],
+   props: ["black", "reverse", "visible", "id", "block"],
    data() {
       return {
          //id: this.intRandom(0, 1000000000000),
@@ -57,13 +59,13 @@ export default {
       transition: height 2s ease 0s;
 
       &-container {
-         // min-h-32 transition-all duration-2000 ease  min-h-32
-         @apply grid h-auto container py-8 items-center mx-auto grid-rows-1 gap-5 sm:grid-cols-12;
+         // min-h-32 transition-all duration-2000 ease min-h-32  container mx-auto
+         @apply grid h-auto container mx-auto justify-center py-8 items-center grid-rows-1 gap-5 grid-cols-2 sm:grid-cols-12;
       }
 
       &-side {
-         //p-4
-         @apply sm:col-span-6;
+         //p-4 max-w-full overflow-hidden
+         @apply col-span-2 sm:col-span-6;
 
          &.left {
             @apply sm:order-1;
@@ -73,11 +75,11 @@ export default {
          }
 
          &.one {
-            @apply;
+            @apply px-4;
          }
-
          &.two {
-            @apply grid gap-2 mx-auto max-w-80;
+            // max-w-80  mx-auto
+            @apply grid gap-2 place-items-start sm:px-14;
          }
       }
    }

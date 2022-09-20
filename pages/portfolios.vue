@@ -52,7 +52,11 @@
          <!--:class="['', noVisio([2]) ? 'portfolio-visio-no' : 'portfolio-visio']"-->
 
          <ItemPortfolioSection :visible="!noVisio([2])" :visio="1" :black="true" :reverse="false" :data="design">
-            <template v-slot:title> Дизайнер </template>
+            <template v-slot:title>
+               Дизайнер
+               <!--1-->
+            </template>
+
             <template v-slot:description>
                <div
                   v-for="(it, i) in [
@@ -85,7 +89,11 @@
             :reverse="true"
             :data="development"
          >
-            <template v-slot:title> Разработчик </template>
+            <template v-slot:title>
+               Разработчик
+               <!--2-->
+            </template>
+
             <template v-slot:description>
                <div
                   v-for="(it, i) in [
@@ -110,6 +118,20 @@
          <!--<div>1111</div>-->
 
          <!--<ItemPortfolioBlock></ItemPortfolioBlock>-->
+
+         <!--    scroll == 1 || scroll == 2 ? 'cont-scroll' : '',
+               scroll == 2 ? 'bottom' : '', -->
+         <div
+            @click="up()"
+            v-scroll="getScroll"
+            :class="[
+               'fixed right-5 bottom-5 border-3 transition-all duration-500 delay-300 p-3 rounded-full border-orange-600/25 text-indigo-600/35 cursor-pointer transform -rotate-540 hover:(border-orange-500/75 text-indigo-600/65 rotate-360)',
+               scroll == 0 || scroll == 2 ? 'opacity-0 pointer-events-none' : '',
+            ]"
+         >
+            <span class="icon-arrow-up-o icon-md text-shadow-custom-cyan-5px pointer-events-none"></span>
+            <!--<span class="icon-arrows-exchange-alt-v icon-md text-shadow-custom-cyan-5px pointer-events-none"></span>-->
+         </div>
       </div>
    </Layout>
 </template>
@@ -147,6 +169,7 @@ export default {
    },
    data() {
       return {
+         scroll: 0,
          title: "Портфолио",
          description: "Работы Макса, посмотрите обязательно !!!",
          //developer: {},
@@ -159,6 +182,21 @@ export default {
       //console.log(this.developerWorksFirst, this.developerWorksSecond, this.designerWorksFirst, this.designerWorksSecond);
    },
    methods: {
+      up() {
+         document.body.scrollIntoView();
+      },
+      getScroll() {
+         const dbd = document.body;
+         const bodyHeight = Math.max(dbd.scrollHeight, dbd.offsetHeight, dbd.clientHeight);
+         const scrollHeight = document.documentElement.clientHeight + window.scrollY;
+         const position = { top: 150, bottom: 150 };
+
+         //console.log(window.scrollY);
+
+         if (window.scrollY < position.top) this.scroll = 0;
+         if (window.scrollY >= position.top) this.scroll = 1;
+         if (window.scrollY >= position.top && bodyHeight - scrollHeight <= position.bottom) this.scroll = 2;
+      },
       noVisio(arr) {
          return arr?.filter((it) => it === this.$store.state.visio).length > 0;
       },
