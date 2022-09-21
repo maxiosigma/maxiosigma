@@ -16,6 +16,7 @@ node_modules
 
 fonts/fg
 fonts/fg/*.*
+media/cdn
 storybook-static
 node_modules
 dist
