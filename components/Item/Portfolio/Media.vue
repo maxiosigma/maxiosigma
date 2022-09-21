@@ -1,57 +1,67 @@
 <template>
+   <!--<div v-if="mimeLength === 0"></div>-->
+   <!--|| media.formats.thumbnail.url-->
+   <!-- media.formats.small ? media.formats.small.url : media.formats.thumbnail.url -->
+   <!-- h-20  mx-1/10  px-20  v-if="lengthData > 1 && lengthSmTh > 1" -->
+   <!-- length > 1 && lengthSmTh > 1 &&  -->
+   <!-- :class="visible == (i + 1) * 10 ? 'opacity-100' : 'opacity-0'" -->
    <div class="portfolio-project-media flex flex-grow">
-      <!-- :class="visible == (i + 1) * 10 ? 'opacity-100' : 'opacity-0'" -->
+      <!-- Посмотреть при сборке -->
       <div :class="['flex-grow w-full transition-all duration-700']">
+         <!--<div>{{ data.map((media) => media.mime) }}</div>
+         <div>{{ lengthData }}</div>
+         <div>{{ data.filter((media) => media.mime == "video/mp4") }}</div>-->
+
          <VueSlickCarousel
             ref="main"
             class="m-auto flex-grow flex-center"
             v-bind="{ ...slick.common, ...slick.main }"
+            v-if="lengthData > 0"
             @beforeChange="syncSliders"
          >
-            <LazyItemMediaStrapiVideoPlayer
+            <ItemMediaStrapiVideoPlayer
                class="rounded-md cursor-pointer"
-               v-for="(media, j) in data.filter((media) => media.mime === 'video/mp4')"
+               v-for="(media, j) in mimeVideo"
                :key="`media-video-${i}${j}`"
                :src="media.url"
             />
-            <LazyItemMediaStrapiBg
+
+            <ItemMediaStrapiBg
                class="portfolio-project-image rounded-md cursor-pointer"
-               v-for="(media, j) in data.filter((media) => media.mime !== 'video/mp4')"
+               v-for="(media, j) in mimePhoto"
                :key="`media-photo-${i}${j}`"
                :src="media.url"
                :alt="media.alt"
             />
-
-            <!--  :title="it.title" -->
          </VueSlickCarousel>
 
-         <!-- h-20  mx-1/10  px-20 -->
-         <div
-            v-if="
-               data.length > 1 &&
-               data.filter((media) => media.mime !== 'video/mp4' && (media.formats.small || media.formats.thumbnail)).length > 1
-            "
-            class="mt-5 max-w-60 mx-auto relative"
-         >
-            <VueSlickCarousel ref="thumbs" class="" v-bind="{ ...slick.common, ...slick.thumbs }" @beforeChange="syncSliders">
-               <LazyItemMedia
+         <div class="mt-5 max-w-60 mx-auto relative">
+            <VueSlickCarousel
+               v-if="lengthData > 1"
+               ref="thumbs"
+               class=""
+               v-bind="{ ...slick.common, ...slick.thumbs }"
+               @beforeChange="syncSliders"
+            >
+               <ItemMedia
                   :class="['portfolio-project-media-thumbs', reverse ? 'bg-white' : 'bg-black']"
-                  v-for="(media, j) in data.filter((media) => media.mime === 'video/mp4')"
+                  v-for="(media, j) in mimeVideo"
                   :key="`media-thumbs-video-${i}${j}`"
                   src="portfolio/thumb_video_3.jpg"
-                  @click.native="handleClick(j)"
-               ></LazyItemMedia>
+                  @click.native.prevent="handleClick(j)"
+               ></ItemMedia>
 
-               <!--|| media.formats.thumbnail.url-->
                <ItemMediaStrapiBg
                   :class="['portfolio-project-media-thumbs', reverse ? 'bg-white' : 'bg-cyan-600']"
-                  v-for="(media, j) in data.filter((media) => media.mime !== 'video/mp4')"
+                  v-for="(media, j) in mimePhoto"
                   :key="`media-thumbs-photo-${i}${j}`"
-                  :src="media.formats.small ? media.formats.small.url : media.formats.thumbnail.url"
-                  @click.native="handleClick(data.filter((media) => media.mime === 'video/mp4').length + j)"
+                  :src="formats(media.formats)"
+                  @click.native.prevent="handleClick(mimeVideo.length + j)"
                />
             </VueSlickCarousel>
          </div>
+
+         <!--<div class="text-white">Mime: {{ lengthData }}</div>-->
       </div>
    </div>
 </template>
@@ -65,10 +75,20 @@ export default {
    props: ["visible", "reverse", "data", "options", "i"],
    data() {
       return {
+         lengthData: this.data?.length,
+         //&& (media.formats?.small || media.formats?.thumbnail)
+         //lengthSmTh: this.data?.filter((media) => media.mime != "video/mp4").length,
+         mimeVideo: this.data?.filter((media) => media.mime === "video/mp4"),
+         mimePhoto: this.data?.filter((media) => media.mime !== "video/mp4"),
+         //mimeLength: this.mimeVideo?.length + this.mimePhoto?.length,
+         //mimeVideoLength: this.mimeVideo?.length,
+         //mimePhotoLength: this.mimePhoto?.length,
+
          slick: {
+            // infinite
             common: {
                dots: false,
-               //infinite: false,
+               infinite: false,
                //accessibility: false,
                //lazyLoad: "ondemand",
 
@@ -107,6 +127,9 @@ export default {
       //console.log(this.data.filter((media) => media.mime !== "video/mp4" && media.formats).length);
    },
    methods: {
+      formats(value) {
+         return value?.small ? value?.small?.url || `https://api.lorem.space/image?w=300&h=200&hash=${Math.random()}` : value?.thumbnail?.url;
+      },
       handleClick(i) {
          this.$refs.main.goTo(i);
       },

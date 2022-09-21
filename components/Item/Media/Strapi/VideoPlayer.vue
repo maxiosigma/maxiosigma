@@ -12,19 +12,44 @@ import "video.js/dist/video-js.css";
 
 export default {
    props: ["src", "alt", "title", "type", "poster", "active"],
-   async fetch() {
-      try {
-         const isGet = (await this.$axios?.get("http://localhost:1337/admin"))?.status === 200;
-
-         if (process.server && isGet && !this.$config.isDev && !this.isLinkSite(this.src)) {
+   fetch(fth = false) {
+      if (process.server && !process.browser && !this.isLinkSite(this.src)) {
+         try {
             const { DownloaderHelper } = require("node-downloader-helper");
             new DownloaderHelper(`http://localhost:1337${this.src}`, "./media/cdn", {
                resumeIfFileExists: true,
                override: "skip",
             }).start();
-         }
-      } catch (error) {}
+
+            fth = true;
+         } catch (error) {}
+      }
+
+      if (process.server && !this.isLinkSite(this.src) && fth) {
+         this.video = require(`~/media/cdn/${this.src.replace("/uploads/", "")}`);
+      }
+
+      //if (process.server && !process.browser && !this.isLinkSite(this.src)) {
+      //   try {
+      //      const { DownloaderHelper } = require("node-downloader-helper");
+      //      new DownloaderHelper(`http://localhost:1337${this.src}`, "./media/cdn", {
+      //         resumeIfFileExists: true,
+      //         override: "skip",
+      //      }).start();
+      //   } catch (error) {}
+      //}
+      //try {
+      //   const isGet = (await this.$axios?.get("http://localhost:1337/admin"))?.status === 200;
+      //   if (process.server && isGet && !this.$config.isDev && !this.isLinkSite(this.src)) {
+      //      const { DownloaderHelper } = require("node-downloader-helper");
+      //      new DownloaderHelper(`http://localhost:1337${this.src}`, "./media/cdn", {
+      //         resumeIfFileExists: true,
+      //         override: "skip",
+      //      }).start();
+      //   }
+      //} catch (error) {}
    },
+   fetchOnServer: true,
    data() {
       return {
          id:
@@ -32,6 +57,7 @@ export default {
             String(Math.random() * ((Math.random() * 10000000) / 1.0))
                .split(".")
                .join("_"),
+         video: this.src,
          options: {
             loop: true,
             fill: true,
@@ -56,7 +82,10 @@ export default {
                ...this.options,
                sources: [
                   {
-                     src: !this.$config.isDev ? require(`~/media/cdn/${this.src.replace("/uploads/", "")}`) : `http://localhost:1337${this.src}`,
+                     src: this.video,
+                     //!this.$config.isDev ?
+                     //require(`~/media/cdn/${this.src.replace("/uploads/", "")}`),
+                     //: `http://localhost:1337${this.src}`
                      type: "video/mp4",
                   },
                ],

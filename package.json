@@ -137,7 +137,6 @@
       "@vueuse/nuxt": "^8.7.5",
       "babel-plugin-require-context-hook": "^1.0.0",
       "css-loader": "5.0.0",
-      "eslint": "^8.23.1",
       "graphql": "^16.5.0",
       "graphql-cli": "4.1.0",
       "json-loader": "^0.5.7",

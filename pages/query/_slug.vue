@@ -21,7 +21,7 @@ export default {
    },
    async asyncData({ store, params }) {
       const slug = params.slug;
-      const result = store.state.publics?.filter((it) => it.slug === slug)?.[0];
+      const result = store.state?.publics?.filter((it) => it.slug === slug)?.[0];
       //console.log(result)
       return {
          title: result?.title,

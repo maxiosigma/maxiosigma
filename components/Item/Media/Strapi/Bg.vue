@@ -6,19 +6,6 @@
 <script>
 export default {
    props: ["src", "alt", "title", "type"],
-   async fetch() {
-      try {
-         const isGet = (await this.$axios?.get("http://localhost:1337/admin"))?.status === 200;
-
-         if (process.server && isGet && !this.$config.isDev && !this.isLinkSite(this.src)) {
-            const { DownloaderHelper } = require("node-downloader-helper");
-            new DownloaderHelper(`http://localhost:1337${this.src}`, "./media/cdn", {
-               resumeIfFileExists: true,
-               override: "skip",
-            }).start();
-         }
-      } catch (error) {}
-   },
    data() {
       return {
          id:
@@ -26,17 +13,37 @@ export default {
             String(Math.random() * ((Math.random() * 10000000) / 1.0))
                .split(".")
                .join("_"),
-         path: null,
+         img: this.src,
+         //fth: false,
       };
    },
-   mounted() {
-      if (!this.isLinkSite(this.src)) {
+   fetch(fth = false) {
+      if (process.server && !process.browser && !this.isLinkSite(this.src)) {
          try {
-            this.loadStyleImg(
-               !this.$config.isDev ? require(`~/media/cdn/${this.src.replace("/uploads/", "")}`) : `http://localhost:1337${this.src}`
-            );
+            const { DownloaderHelper } = require("node-downloader-helper");
+            new DownloaderHelper(`http://localhost:1337${this.src}`, "./media/cdn", {
+               resumeIfFileExists: true,
+               override: "skip",
+            }).start();
+
+            fth = true;
          } catch (error) {}
-      } else this.loadStyleImg(this.src);
+      }
+
+      if (process.server && !this.isLinkSite(this.src) && fth) {
+         this.img = require(`~/media/cdn/${this.src.replace("/uploads/", "")}`);
+      }
+   },
+   fetchOnServer: true,
+   mounted() {
+      //if (this.fth && !this.isLinkSite(this.src))
+      //try {
+      this.loadStyleImg(this.img);
+      //   } catch (error) {}
+      //else if (!this.fth && this.isLinkSite(this.src)) this.loadStyleImg(this.src);
+
+      //!this.$config.isDev ?
+      //: `http://localhost:1337${this.src}`
    },
    methods: {
       loadStyleImg(img) {

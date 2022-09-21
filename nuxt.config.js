@@ -58,7 +58,10 @@ export default {
    //      pathRewrite: { "^/api": "/" },
    //   },
    //},
-   //axios: { proxy: true },
+   axios: {
+      retry: { retries: 0 },
+      //proxy: true
+   },
    //serverMiddleware: {
    //   "/_ipx": "~/server/middleware/ipx.js",
    //},
@@ -619,7 +622,7 @@ export default {
    },
    buildModules: [
       "nuxt-windicss",
-      "@nuxtjs/eslint-module",
+      //"@nuxtjs/eslint-module",
       "@luxdamore/nuxt-apis-to-file",
       "@/plugins/active/GSR",
       //"@nuxtjs/vuetify",

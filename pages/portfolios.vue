@@ -5,22 +5,22 @@
 
    <!-- document.referrer -->
    <Layout :bodyStyle="'portfolio'" :title="title" :description="description">
-      <!--<div class="flex-grow relative">
+      <div class="flex-grow relative" :class="noVisio([1, 2]) ? 'portfolio-visio-no' : 'portfolio-visio'">
          <ItemBack
             class="absolute cursor-pointer opacity-25 uppercase text-sm font-medium border-b-3 transition duration-700 border-r-3 border-orange-500 rounded-xl pt-1.5 pr-2.5 pb-2 left-5 top-5 hover:(opacity-95)"
          >
             <span class="text-indigo-900"> ← </span>
             <LazyItemRundomString class="inline text-xs text-indigo-900">Обратно</LazyItemRundomString>
          </ItemBack>
-      </div>-->
+      </div>
 
       <div class="flex-grow">
-         <!--<div class="flex-center bg-light-900 h-96">
-            <ItemMedia class="w-auto h-full object-contain object-center" :src="'portfolio/bg_4.webp'" />
+         <div class="flex-center bg-light-900" v-show-slide:3000:ease="!noVisio([1, 2])">
+            <ItemMedia class="w-auto h-96 max-h-96 object-contain object-center" :src="'portfolio/bg_4.webp'" />
          </div>
 
-         <div class="flex-center flex-col p-5 bg-indigo-900 text-white">
-            <h2 class="inline-flex-center flex-col font-light text-lg tracking-wide uppercase gap-2 grid-rows-1">
+         <div class="flex-center flex-col bg-indigo-900 text-white" v-show-slide:3000:ease="!noVisio([1, 2])">
+            <h2 class="inline-flex-center p-5 flex-col font-light text-lg tracking-wide uppercase gap-2 grid-rows-1">
                <div>
                   <span>Вам нужен</span>
                   <span class="font-black mx-1 text-blue-300">:</span>
@@ -36,7 +36,7 @@
                   <span class="font-black text-xl text-yellow-600">!</span>
                </div>
             </h2>
-         </div>-->
+         </div>
 
          <!-- 
          Ключевые характеристики / Вам симпотизируют
@@ -81,14 +81,8 @@
 
          <!--<v-btn value="home"> Home </v-btn>-->
 
-         <ItemPortfolioSection
-            :visible="!noVisio([1])"
-            :class="noVisio([1]) ? 'portfolio-visio-no' : 'portfolio-visio'"
-            :visio="2"
-            :black="false"
-            :reverse="true"
-            :data="development"
-         >
+         <!--  :class="noVisio([1]) ? 'portfolio-visio-no' : 'portfolio-visio'" -->
+         <ItemPortfolioSection :visible="!noVisio([1])" :visio="2" :black="false" :reverse="true" :data="development">
             <template v-slot:title>
                Разработчик
                <!--2-->
@@ -198,7 +192,7 @@ export default {
          if (window.scrollY >= position.top && bodyHeight - scrollHeight <= position.bottom) this.scroll = 2;
       },
       noVisio(arr) {
-         return arr?.filter((it) => it === this.$store.state.visio).length > 0;
+         return arr?.filter((it) => it === this.$store.state.visio)?.length > 0;
       },
    },
 };

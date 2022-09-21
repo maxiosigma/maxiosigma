@@ -2,17 +2,21 @@
    <section class="portfolio-section">
       <ItemPortfolioBlock :visible="visible" :black="black" :reverse="reverse">
          <template v-slot:left>
-            <VueSlickCarousel v-bind="{ ...slick.common, ...slick.top }">
-               <div class="portfolio-project-images" v-for="(it, i) in data.filter((it) => it.top)" :key="i">
-                  <ItemMediaStrapiBg
-                     class="portfolio-project-image"
-                     :src="it.media[0].mime === 'video/mp4' ? it.media[1].url : it.media[0].url"
-                  />
+            <VueSlickCarousel ref="images" v-bind="{ ...slick.common, ...slick.top }" v-if="dataTop.length">
+               <div class="portfolio-project-images" v-for="(it, i) in dataTop" :key="i">
+                  <ItemMediaStrapiBg class="portfolio-project-image" :src="mimes(it.media)" />
                </div>
+
+               <!--<div v-if="dataTop.length === 0"></div>-->
             </VueSlickCarousel>
 
-            <VueSlickCarousel class="portfolio-project-depiction" v-bind="{ ...slick.common, ...slick.bootom }">
-               <div class="portfolio-project-depiction-container" v-for="(it, i) in data.filter((it) => it.top)" :key="i">
+            <VueSlickCarousel
+               ref="depiction"
+               class="portfolio-project-depiction"
+               v-bind="{ ...slick.common, ...slick.bootom }"
+               v-if="dataTop.length"
+            >
+               <div class="portfolio-project-depiction-container" v-for="(it, i) in dataTop" :key="i">
                   <div
                      v-if="it.link"
                      :class="['portfolio-project-link', toogleBlack(black), 'font-mw mw-info']"
@@ -23,6 +27,8 @@
                   <div :class="['portfolio-project-title', toogleBlack(black)]">{{ it.title }}</div>
                   <div :class="['portfolio-project-description']">{{ it.description }}</div>
                </div>
+
+               <!--<div v-if="dataTop.length === 0"></div>-->
             </VueSlickCarousel>
          </template>
 
@@ -48,11 +54,13 @@
       <!-- height: 0px; visibility: hidden; overflow: hidden; transition: height 2s ease 0s; -->
       <!-- height: auto; visibility: visible; overflow: hidden; transition: height 2s ease 0s; -->
       <!--   :class="['duration-2000', action ? 'max-h-10vh visible' : 'max-h-0 invisible']" -->
-      <LazyItemPortfolioBlock
+      <!-- Lazy -->
+
+      <ItemPortfolioBlock
          :visible="action"
          :black="i % 2 === 1 ? black : !black"
          :reverse="toogleIteration(i + 1)"
-         v-for="(it, i) in data.filter((it) => it.media)"
+         v-for="(it, i) in dataMedia"
          :key="i"
          @visible="(id) => (isVisible = id)"
          :id="(i + 1) * 10"
@@ -64,11 +72,11 @@
          <template v-slot:right>
             <ItemPortfolioContent :reverse="toogleIteration(i)" :data="it" :i="i" />
          </template>
-      </LazyItemPortfolioBlock>
+      </ItemPortfolioBlock>
 
       <!--<div class="px-6 py-10 bg-black text-white w-full flex-center" v-show-slide:3000:ease="visible">-->
 
-      <ItemPortfolioBlock :black="data.filter((it) => it.media).length % 2 === 1 ? black : !black" :visible="action" :block="true">
+      <!--<ItemPortfolioBlock :black="data.filter((it) => it.media).length % 2 === 1 ? black : !black" :visible="action" :block="true">
          <ItemPortfolioButton
             class="col-span-2 sm:col-span-12"
             cls="min-w-60 text-center"
@@ -77,7 +85,7 @@
             :black="black"
             :text="['Свернуть', 'Свернуть']"
          />
-      </ItemPortfolioBlock>
+      </ItemPortfolioBlock>-->
 
       <!--</div>-->
    </section>
@@ -94,6 +102,8 @@ export default {
       return {
          isVisible: 0,
          action: false,
+         dataTop: this.data.filter((it) => it.top),
+         dataMedia: this.data.filter((it) => it.media),
          refs: this.setRefs(),
          slick: {
             common: {
@@ -130,6 +140,9 @@ export default {
       if (!this.visio) this.visio = 0;
    },
    methods: {
+      mimes(media) {
+         return media?.[0]?.mime === "video/mp4" ? media?.[1]?.url : media?.[0]?.url;
+      },
       handleClick() {
          setTimeout(() => {
             this.action = !this.action;

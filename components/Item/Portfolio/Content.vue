@@ -2,7 +2,7 @@
    <div class="portfolio-project-content">
       <!-- text-[4vmin] -->
       <div class="font-vetka text-2xl leading-snug tracking-wider font-black pb-2 border-b-2 border-orange-600">{{ data.title }}</div>
-      <div class="break-normal hyphens-auto">{{ data.description }}</div>
+      <div class="break-normal hyphens-auto mt-1.5">{{ data.description }}</div>
 
       <div class="grid gap-1 mt-4 mb-5">
          <div :class="['inline', ast.length > 0 ? '' : 'hidden']" v-for="(ast, i) in data.assets" :key="i">
@@ -80,6 +80,6 @@ export default {
 
 <style lang="scss">
 .portfolio-project-content {
-   @apply grid mx-auto <sm:(px-5 text-center);
+   @apply grid justify-center mx-auto <sm:(px-5 text-center);
 }
 </style>

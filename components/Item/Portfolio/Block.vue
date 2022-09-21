@@ -60,7 +60,7 @@ export default {
 
       &-container {
          // min-h-32 transition-all duration-2000 ease min-h-32  container mx-auto
-         @apply grid h-auto container mx-auto justify-center py-8 items-center grid-rows-1 gap-5 grid-cols-2 sm:grid-cols-12;
+         @apply grid h-auto container mx-auto py-8 justify-center items-center grid-rows-1 gap-5 grid-cols-2 sm:grid-cols-12;
       }
 
       &-side {
