@@ -3,12 +3,14 @@
 	src:
 		url('font-svg.ttf') format("truetype"),
 		url('font-svg.svg') format("svg"),
-		url("font-svg.eot?3e23824168933f8e30bb40761970947b?#iefix") format("embedded-opentype"),
-url("font-svg.woff2?3e23824168933f8e30bb40761970947b") format("woff2"),
-url("font-svg.woff?3e23824168933f8e30bb40761970947b") format("woff");
+		url("font-svg.eot?501575169dbad9416b8e914082d32185?#iefix") format("embedded-opentype"),
+url("font-svg.woff2?501575169dbad9416b8e914082d32185") format("woff2"),
+url("font-svg.woff?501575169dbad9416b8e914082d32185") format("woff");
 }
 
-.font-ft {
+.font-ft-ameba, .font-ft-arrow-right-1, .font-ft-art-cicle, .font-ft-avito, .font-ft-discord, .font-ft-fire, .font-ft-ins, .font-ft-kwork, .font-ft-meta, .font-ft-mixi, .font-ft-ok, .font-ft-pikachu, .font-ft-telegram, .font-ft-tiktok, .font-ft-tumblr, .font-ft-twitter, .font-ft-vk, .font-ft-whatsapp, .font-ft-youtube, .font-ft-zyan, 
+.font-ft
+ {
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -40,61 +42,84 @@ url("font-svg.woff?3e23824168933f8e30bb40761970947b") format("woff");
 	font-feature-settings: 'liga';
 }
 
-	.ft-ameba:before { 
-		content: "\f101";
-	}
-	.ft-arrow-right-1:before { 
-		content: "\f102";
-	}
-	.ft-avito:before { 
-		content: "\f103";
-	}
-	.ft-discord:before { 
-		content: "\f104";
-	}
-	.ft-fire:before { 
-		content: "\f105";
-	}
-	.ft-ins:before { 
-		content: "\f106";
-	}
-	.ft-kwork:before { 
-		content: "\f107";
-	}
-	.ft-meta:before { 
-		content: "\f108";
-	}
-	.ft-mixi:before { 
-		content: "\f109";
-	}
-	.ft-ok:before { 
-		content: "\f10a";
-	}
-	.ft-pikachu:before { 
-		content: "\f10b";
-	}
-	.ft-telegram:before { 
-		content: "\f10c";
-	}
-	.ft-tiktok:before { 
-		content: "\f10d";
-	}
-	.ft-tumblr:before { 
-		content: "\f10e";
-	}
-	.ft-twitter:before { 
-		content: "\f10f";
-	}
-	.ft-vk:before { 
-		content: "\f110";
-	}
-	.ft-whatsapp:before { 
-		content: "\f111";
-	}
-	.ft-youtube:before { 
-		content: "\f112";
-	}
-	.ft-zyan:before { 
-		content: "\f113";
-	}
+.ft-ameba:before,
+.font-ft-ameba:before { 
+	content: "\f101";
+}
+.ft-arrow-right-1:before,
+.font-ft-arrow-right-1:before { 
+	content: "\f102";
+}
+.ft-art-cicle:before,
+.font-ft-art-cicle:before { 
+	content: "\f103";
+}
+.ft-avito:before,
+.font-ft-avito:before { 
+	content: "\f104";
+}
+.ft-discord:before,
+.font-ft-discord:before { 
+	content: "\f105";
+}
+.ft-fire:before,
+.font-ft-fire:before { 
+	content: "\f106";
+}
+.ft-ins:before,
+.font-ft-ins:before { 
+	content: "\f107";
+}
+.ft-kwork:before,
+.font-ft-kwork:before { 
+	content: "\f108";
+}
+.ft-meta:before,
+.font-ft-meta:before { 
+	content: "\f109";
+}
+.ft-mixi:before,
+.font-ft-mixi:before { 
+	content: "\f10a";
+}
+.ft-ok:before,
+.font-ft-ok:before { 
+	content: "\f10b";
+}
+.ft-pikachu:before,
+.font-ft-pikachu:before { 
+	content: "\f10c";
+}
+.ft-telegram:before,
+.font-ft-telegram:before { 
+	content: "\f10d";
+}
+.ft-tiktok:before,
+.font-ft-tiktok:before { 
+	content: "\f10e";
+}
+.ft-tumblr:before,
+.font-ft-tumblr:before { 
+	content: "\f10f";
+}
+.ft-twitter:before,
+.font-ft-twitter:before { 
+	content: "\f110";
+}
+.ft-vk:before,
+.font-ft-vk:before { 
+	content: "\f111";
+}
+.ft-whatsapp:before,
+.font-ft-whatsapp:before { 
+	content: "\f112";
+}
+.ft-youtube:before,
+.font-ft-youtube:before { 
+	content: "\f113";
+}
+.ft-zyan:before,
+.font-ft-zyan:before { 
+	content: "\f114";
+}
 

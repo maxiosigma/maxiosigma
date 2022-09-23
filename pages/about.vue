@@ -146,23 +146,20 @@
                   </div>
                </div>
 
-               <div class="mt-5 inline-flex items-center" v-anime="animateAnimeBlock({ dl: 2.6, dr: 0.4 })">
-                  О профессиональной деятельности подробнее в
-
+               <div class="mt-5 inline-flex items-center <sm:(grid gap-2 text-center)" v-anime="animateAnimeBlock({ dl: 2.6, dr: 0.4 })">
+                  <div>Какие действия вы выбираете дальше, мы пойдём ...</div>
                   <div class="mt-2 ml-3 pb-2 about-btn" @click="handleClick('/' + $i18n.locale + '/portfolio')">Портфолио</div>
+                  <div class="mt-2 ml-3 pb-2 about-btn" @click="handleClick('/' + $i18n.locale + '/presents')">Подарки</div>
                </div>
             </div>
          </div>
       </div>
 
-      <!--<LazyItemCanvaBg />-->
       <ItemCanvaBg />
    </LayoutPage>
 </template>
 
 <script>
-//import Typed from "typed.js"
-
 export default {
    head() {
       return {
@@ -172,7 +169,7 @@ export default {
    },
    data() {
       return {
-         visible: 0,
+         visible: 2,
          size: { w: 0, h: 0 },
          title: "Автор",
          description: "Сайт Макса, почитайте обо мне",
@@ -261,7 +258,7 @@ export default {
    }
 
    &-text {
-      @apply font-bold font-vetka my-5 tracking-wider text-2xl;
+      @apply font-bold max-w-full font-vetka my-5 tracking-wider text-2xl break-all overflow-hidden;
    }
 }
 </style>

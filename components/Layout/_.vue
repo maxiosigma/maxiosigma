@@ -17,7 +17,7 @@
       <slot name="footer"></slot>
       <slot name="wrapper-after"></slot>
 
-      <TemplatePreload :class="[preload ? 'preload-show' : 'preload-hide']" :isnt="preload" :redirect="preload_redirect" />
+      <TemplatePreload v-if="preloader" :class="[preload ? 'preload-show' : 'preload-hide']" :isnt="preload" :redirect="preload_redirect" />
    </div>
 </template>
 
@@ -38,6 +38,11 @@ export default {
          type: String,
          required: false,
          default: undefined,
+      },
+      preloader: {
+         type: Boolean,
+         required: false,
+         default: true,
       },
    },
    head() {

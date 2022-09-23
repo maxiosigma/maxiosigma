@@ -6,7 +6,9 @@
 		{{{src}}};
 }
 
-.font-{{classPrefix}} {
+{{#each codepoints}}.font-{{../classPrefix}}-{{@key}}, {{/each}}
+.font-{{classPrefix}}
+ {
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -39,8 +41,9 @@
 }
 
 {{#each codepoints}}
-	.{{../classPrefix}}-{{@key}}:before { 
-		content: "\\{{this}}";
-	}
+.{{../classPrefix}}-{{@key}}:before,
+.font-{{../classPrefix}}-{{@key}}:before { 
+	content: "\\{{this}}";
+}
 {{/each}}
 

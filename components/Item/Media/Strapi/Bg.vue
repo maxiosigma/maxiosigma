@@ -17,7 +17,7 @@ export default {
          //fth: false,
       };
    },
-   fetch(fth = false) {
+   fetch() {
       if (process.server && !process.browser && !this.isLinkSite(this.src)) {
          try {
             const { DownloaderHelper } = require("node-downloader-helper");
@@ -25,14 +25,12 @@ export default {
                resumeIfFileExists: true,
                override: "skip",
             }).start();
-
-            fth = true;
          } catch (error) {}
       }
 
-      if (process.server && !this.isLinkSite(this.src) && fth) {
+      try {
          this.img = require(`~/media/cdn/${this.src.replace("/uploads/", "")}`);
-      }
+      } catch (error) {}
    },
    fetchOnServer: true,
    mounted() {

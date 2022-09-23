@@ -1,5 +1,5 @@
 <template>
-   <footer>
+   <footer class="footer">
       <slot>
          <div class="footer-cont">
             <!--<ItemLogo></ItemLogo>-->
@@ -109,7 +109,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 //module="styles"
 .footer {
    //bg-cool-gray-900 bg-hero-wiggle-chocolate-30

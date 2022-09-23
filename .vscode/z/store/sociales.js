@@ -5,7 +5,7 @@ export const state = () => [
    { icon: "font-ft text-3xl font-ft-twitter text-blue-400 ml-2 mt-1 ", href: "https://twitter.com/maxiosigma" },
    { icon: "font-ft text-4xl font-ft-telegram text-indigo-500", href: "https://t.me/maxiosigma" },
    { icon: "font-ft text-3xl font-ft-pikachu text-yellow-500", href: "https://sites.google.com/view/portfolio-maxio-sigma" },
-   { icon: "font-ft text-5xl font-ft-tiktok text-gray-400", href: "https://www.tiktok.com/@maxiosigma" },
+   { icon: "font-ft text-5xl font-ft-tiktok text-gray-400 mt-1", href: "https://www.tiktok.com/@maxiosigma" },
    { icon: "font-ft text-3xl font-ft-ameba text-green-500", href: "https://ameblo.jp/maxiosigma" },
    { icon: "font-ft text-3xl font-ft-zyan text-yellow-600 mt-0.5 ", href: "https://zen.yandex.ru/user/maxiosigma" },
    { icon: "font-ft text-3xl font-ft-youtube text-red-600 mt-0.5", href: "https://www.youtube.com/channel/UC23sONwCUL2dUY7IjcR-vhg" },

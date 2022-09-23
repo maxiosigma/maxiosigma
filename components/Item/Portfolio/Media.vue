@@ -88,7 +88,7 @@ export default {
             // infinite
             common: {
                dots: false,
-               infinite: false,
+               //infinite: false,
                //accessibility: false,
                //lazyLoad: "ondemand",
 

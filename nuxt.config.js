@@ -46,11 +46,11 @@ export default {
          devtools: app_config.isDev,
       },
    },
-   render: {
-      // csp: true
-      //injectScripts: false,
-      //resourceHints: false,
-   },
+   //render: {
+   // csp: true
+   //injectScripts: false,
+   //resourceHints: false,
+   //},
    //proxy: {
    //   "/api": {
    //      target: "http://localhost:1337",
@@ -58,10 +58,10 @@ export default {
    //      pathRewrite: { "^/api": "/" },
    //   },
    //},
-   axios: {
-      retry: { retries: 0 },
-      //proxy: true
-   },
+   //axios: {
+   //   retry: { retries: 1 },
+   //   //proxy: true
+   //},
    //serverMiddleware: {
    //   "/_ipx": "~/server/middleware/ipx.js",
    //},
@@ -180,10 +180,10 @@ export default {
    components: ["~/components"],
    generate: {
       dir: "dist",
-      interval: 50,
+      //interval: 150,
       fallback: true,
       nojekyll: true,
-      concurrency: 1000,
+      concurrency: 5000,
       subFolders: false,
       devtools: app_config.isDev ? true : false,
       exclude: [/^\/test/, /^\/z/, ...exd()],
@@ -623,7 +623,7 @@ export default {
    buildModules: [
       "nuxt-windicss",
       //"@nuxtjs/eslint-module",
-      "@luxdamore/nuxt-apis-to-file",
+      //"@luxdamore/nuxt-apis-to-file",
       "@/plugins/active/GSR",
       //"@nuxtjs/vuetify",
       "nuxt-user-agent",

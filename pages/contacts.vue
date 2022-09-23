@@ -26,7 +26,7 @@
                Официальные страницы для взаимодействия в социальных сетях представлены здесь
             </div>
 
-            <div class="mt-2 grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7">
+            <div class="mt-5 grid gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5">
                <ItemLink
                   :href="it.externalPath"
                   :blank="it.blank"
@@ -36,11 +36,21 @@
                   @click.native.prevent="handleClickNext({ url: it.externalPath, target: 'blank' })"
                >
                   <div class="flex transition duration-200 items-center">
-                     <div class="flex-center min-w-12 min-h-12">
-                        <i :class="['font-ft', `ft-${it.icon}`, 'group-hover:(text-yellow-500)']"></i>
+                     <div class="flex-center min-w-12 min-h-12 relative">
+                        <i
+                           :class="['flex-center', `font-ft-${it.icon}`, 'group-hover:(text-yellow-500)', it.icon == 'tiktok' ? 'mt-1.5' : '']"
+                        ></i>
+
+                        <i
+                           :class="[
+                              'font-ft-art-cicle text-stroke-1 text-stroke-indigo-500 text-58px -top-4.5 -left-4.5 !absolute group-hover:(text-stroke-yellow-500)',
+                           ]"
+                        ></i>
+
+                        <!--{{ it.icon }}-->
                      </div>
 
-                     <div class="text-base ml-1 inline group-hover:(text-indigo-300)">
+                     <div class="text-base ml-2.5 inline group-hover:(text-indigo-300)">
                         {{ it.title }}
                      </div>
                   </div>

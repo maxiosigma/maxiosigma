@@ -1,5 +1,5 @@
 <template>
-   <Layout :bodyStyle="bodyStyle" @active="(e) => (active = e)" @preload="(e) => (preload = e)">
+   <Layout :bodyStyle="bodyStyle" :preload="preloader" @active="(e) => (active = e)" @preload="(e) => (preload = e)">
       <!--<TemplateHead />-->
 
       <template v-slot:head>
@@ -12,20 +12,16 @@
          <slot name="wrapper-before"></slot>
       </template>
 
-      <!--<template v-slot:nav>
-			<TemplateNav>
-				<slot name="nav"></slot>
-			</TemplateNav>
-		</template>-->
-
-      <template v-slot:navbar>
-         <div class="nav-pre-bar"><div class="nav-pre-cont"></div></div>
-         <!-- :items="navBarItems" :subitems="navBarSubItems" -->
-         <TemplateNavbar :class="[preload ? 'preload-hide-nav-bar' : active ? '' : 'preload-show-nav-bar']"> </TemplateNavbar>
+      <template v-slot:navbar v-if="nav">
+         <slot name="navbar">
+            <div class="nav-pre-bar"><div class="nav-pre-cont"></div></div>
+            <!-- :items="navBarItems" :subitems="navBarSubItems" -->
+            <TemplateNavbar :class="[preload ? 'preload-hide-nav-bar' : active ? '' : 'preload-show-nav-bar']"> </TemplateNavbar>
+         </slot>
       </template>
 
-      <template v-slot:header>
-         <TemplateHeader class="header">
+      <template v-slot:header v-if="header">
+         <TemplateHeader :class="[preload ? 'preload-hide-nav-bar' : active ? '' : 'preload-show-nav-bar']">
             <slot name="header"></slot>
          </TemplateHeader>
       </template>
@@ -34,15 +30,14 @@
          <TemplateRedirect />
       </slot>
 
-      <template v-slot:footer>
-         <TemplateFooter class="footer" :class="[preload ? 'preload-hide-nav-bar' : active ? '' : 'preload-show-nav-bar']">
+      <template v-slot:footer v-if="footer">
+         <TemplateFooter :class="[preload ? 'preload-hide-nav-bar' : active ? '' : 'preload-show-nav-bar']">
             <slot name="footer"></slot>
          </TemplateFooter>
       </template>
 
       <template v-slot:wrapper-after>
          <slot name="wrapper-after"></slot>
-
       </template>
    </Layout>
 </template>
@@ -65,6 +60,26 @@ export default {
          type: String,
          required: false,
          default: undefined,
+      },
+      nav: {
+         type: Boolean,
+         required: false,
+         default: true,
+      },
+      header: {
+         type: Boolean,
+         required: false,
+         default: true,
+      },
+      footer: {
+         type: Boolean,
+         required: false,
+         default: true,
+      },
+      preloader: {
+         type: Boolean,
+         required: false,
+         default: true,
       },
    },
    head() {

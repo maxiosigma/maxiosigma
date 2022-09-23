@@ -12,7 +12,7 @@ import "video.js/dist/video-js.css";
 
 export default {
    props: ["src", "alt", "title", "type", "poster", "active"],
-   fetch(fth = false) {
+   fetch() {
       if (process.server && !process.browser && !this.isLinkSite(this.src)) {
          try {
             const { DownloaderHelper } = require("node-downloader-helper");
@@ -20,34 +20,12 @@ export default {
                resumeIfFileExists: true,
                override: "skip",
             }).start();
-
-            fth = true;
          } catch (error) {}
       }
 
-      if (process.server && !this.isLinkSite(this.src) && fth) {
+      try {
          this.video = require(`~/media/cdn/${this.src.replace("/uploads/", "")}`);
-      }
-
-      //if (process.server && !process.browser && !this.isLinkSite(this.src)) {
-      //   try {
-      //      const { DownloaderHelper } = require("node-downloader-helper");
-      //      new DownloaderHelper(`http://localhost:1337${this.src}`, "./media/cdn", {
-      //         resumeIfFileExists: true,
-      //         override: "skip",
-      //      }).start();
-      //   } catch (error) {}
-      //}
-      //try {
-      //   const isGet = (await this.$axios?.get("http://localhost:1337/admin"))?.status === 200;
-      //   if (process.server && isGet && !this.$config.isDev && !this.isLinkSite(this.src)) {
-      //      const { DownloaderHelper } = require("node-downloader-helper");
-      //      new DownloaderHelper(`http://localhost:1337${this.src}`, "./media/cdn", {
-      //         resumeIfFileExists: true,
-      //         override: "skip",
-      //      }).start();
-      //   }
-      //} catch (error) {}
+      } catch (error) {}
    },
    fetchOnServer: true,
    data() {
