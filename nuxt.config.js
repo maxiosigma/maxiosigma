@@ -500,6 +500,12 @@ export default {
          scss: {
             implementation: require("sass"),
          },
+         cssModules: {
+            modules: {
+               localIdentName: "[path][name]__[local]--[hash:base64:5]",
+               exportLocalsConvention: "camelCase",
+            },
+         },
       },
       postcss: {
          plugins: {
@@ -579,6 +585,10 @@ export default {
          //});
 
          config.module.rules.push({ test: /\.mjs$/, include: /node_modules/, type: "javascript/auto" });
+
+         //config.stylus = {
+         //   import: ["~stylus/common.styl"],
+         //};
 
          //config.resolve.alias["~strapi"] = join(__dirname, "utils");
          //config.resolve.alias["~media"] = join(__dirname, "media");

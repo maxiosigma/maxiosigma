@@ -1,41 +1,40 @@
 <template>
-   <footer :class="styles.footer">
-      <div :class="styles.footerCont">
+   <footer class="footer">
+      <div class="footer-cont">
          <!--<ItemLogo></ItemLogo>-->
 
-         <div :class="styles.footerLang">
+         <div class="footer-lang">
             <!-- href="https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb?hl=ru" -->
             <!-- https://chrome.google.com/webstore/detail/google-translate/aapbdbdomjkkjkaonfhkkikfgjllcleb?hl=ru -->
-            <ItemLink @click.native.prevent="openTranslate()" :class="styles.footerMenuLink" href="?translate" nolang self blank>
-               Translate
-            </ItemLink>
+            <ItemLink @click.native.prevent="openTranslate()" class="footer-menu-link" href="?translate" nolang self blank> Translate </ItemLink>
          </div>
 
-         <div :class="styles.footerMenu">
-            <div :class="styles.footerMenuCont">
-               <div :class="styles.footerMenuItem" :key="i" v-for="(link, i) in links.filter((link) => !link.parent)">
+         <div class="footer-menu">
+            <div class="footer-menu-cont">
+               <div class="footer-menu-item" :key="i" v-for="(link, i) in links.filter((link) => !link.parent)">
                   <ItemLink
                      :href="link.path"
                      :nolang="link.path == '/'"
-                     :class="[styles.footerMenuLink, isActive(link.uiRouterKey) ? 'active' : '']"
+                     :class="['footer-menu-link', isActive(link.uiRouterKey) ? 'active' : '']"
                      @click="handleClickNext({ target: link.type, url: link.path })"
                   >
                      {{ link.title }}
                   </ItemLink>
                </div>
 
-               <div :class="styles.footerCookie">
+               <div class="footer-cookie">
                   <TemplateCookie></TemplateCookie>
-                  <div :class="styles.footerCookieBtn" @click="$cookies.modal = true">Cookie</div>
+
+                  <div class="footer-cookie-btn" @click="$cookies.modal = true">Cookie</div>
                </div>
             </div>
          </div>
 
-         <div :class="styles.footerSocial">
+         <div class="footer-social">
             <ItemLink
                :href="it.externalPath"
                :blank="'blank'"
-               :class="styles.footerSocialItem"
+               class="footer-social-item"
                :key="i"
                v-for="(it, i) in social"
                v-tooltip="{
@@ -51,7 +50,7 @@
                }"
                @click.native.prevent="handleClickNext({ url: it.externalPath, target: 'blank' })"
             >
-               <i :class="[styles.footerSocialLink, 'font-ft', `ft-${it.icon}`]"></i>
+               <i :class="['footer-social-link font-ft', `ft-${it.icon}`]"></i>
             </ItemLink>
          </div>
       </div>
@@ -72,8 +71,6 @@ export default {
    },
    mounted() {
       this.getActive();
-
-      console.log(this.styles);
 
       //console.log({ style: this.$style });
       //console.log({ style: this.styles });
@@ -108,7 +105,7 @@ export default {
 };
 </script>
 
-<style lang="scss" module="styles">
+<style lang="scss" module>
 //module="styles"
 .footer {
    //bg-cool-gray-900 bg-hero-wiggle-chocolate-30
@@ -138,7 +135,7 @@ export default {
       }
       &-link {
          //tracking-widest
-         @apply cursor-pointer z-50 flex-center tracking-wider transition-all text-[10px] leading-[0.5] duration-200 uppercase hover:(text-yellow-500);
+         @apply cursor-pointer flex-center tracking-wider transition-all text-[10px] leading-[0.5] duration-200 uppercase hover:(text-yellow-500);
 
          &.active {
             @apply text-yellow-400;
@@ -151,7 +148,7 @@ export default {
 
       &-btn {
          //tracking-widest
-         @apply cursor-pointer z-50 pointer-events-auto tracking-wider transition-all text-[10px] duration-200 uppercase hover:(text-yellow-500);
+         @apply cursor-pointer tracking-wider transition-all text-[10px] duration-200 uppercase hover:(text-yellow-500);
       }
    }
 
@@ -168,7 +165,7 @@ export default {
    }
 
    &-lang {
-      @apply rounded-sm mb-3.5 py-2 px-3 elevation-3 sm:mb-0 z-50;
+      @apply rounded-sm mb-3.5 py-2 px-3 elevation-3 sm:mb-0;
    }
 
    // &-{@apply;}

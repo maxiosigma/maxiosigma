@@ -15,7 +15,7 @@
          </div>
       </template>
 
-      <div class="flex-center flex-col bg-indigo-900 text-white" v-show-slide:3000:ease="!noVisio([1, 2])">
+      <!--<div class="flex-center flex-col bg-indigo-900 text-white" v-show-slide:3000:ease="!noVisio([1, 2])">
          <h2 class="inline-flex-center p-5 flex-col font-light text-lg tracking-wide uppercase gap-2 grid-rows-1">
             <div class="text-center">
                <span class="">Вам нужен</span>
@@ -32,24 +32,19 @@
                <span class="font-black text-xl text-yellow-600">!</span>
             </div>
          </h2>
-      </div>
+      </div>-->
 
-      <!-- 
-         Ключевые характеристики / Вам симпотизируют
+      <!-- Ключевые характеристики / Вам симпотизируют
          — Харизматичность
          — Коммуникативность
          → В любой сети, без матов и негатива
          — Исполнительность
          → Взяв проект, делаю до конца
          — Дотошность
-         → Внимание к мелочам
-          -->
-      <ItemPortfolioSection :visible="!noVisio([2])" :visio="1" :black="true" :reverse="false" :data="design">
-         <template v-slot:title>
-            Дизайнер
-            <!--1-->
-         </template>
+         → Внимание к мелочам -->
 
+      <!--<ItemPortfolioSection :visible="!noVisio([2])" :visio="1" :black="true" :reverse="false" :data="design">
+         <template v-slot:title> Дизайнер </template>
          <template v-slot:description>
             <div
                v-for="(it, i) in [
@@ -66,11 +61,7 @@
       </ItemPortfolioSection>
 
       <ItemPortfolioSection :visible="!noVisio([1])" :visio="2" :black="false" :reverse="true" :data="development">
-         <template v-slot:title>
-            Разработчик
-            <!--2-->
-         </template>
-
+         <template v-slot:title> Разработчик </template>
          <template v-slot:description>
             <div
                v-for="(it, i) in [
@@ -86,10 +77,14 @@
                {{ it }}
             </div>
          </template>
-      </ItemPortfolioSection>
+      </ItemPortfolioSection>-->
+
+      <div>
+         <ItemCanvaStripes></ItemCanvaStripes>
+      </div>
 
       <template v-slot:footer>
-         <div class=""></div>
+         <!--<div class="">111</div>-->
          <div></div>
       </template>
 
@@ -177,7 +172,7 @@ export default {
 
 <style lang="scss">
 .portfolio {
-   @apply bg-light-900;
+   @apply bg-indigo-900;
 
    &-visio {
       @apply h-auto;

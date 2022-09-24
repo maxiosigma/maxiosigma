@@ -31,9 +31,9 @@
       </slot>
 
       <template v-slot:footer v-if="footer">
-         <TemplateFooter :class="[preload ? 'preload-hide-nav-bar' : active ? '' : 'preload-show-nav-bar']">
-            <slot name="footer"></slot>
-         </TemplateFooter>
+         <slot name="footer">
+            <TemplateFooter :class="[preload ? 'preload-hide-nav-bar' : active ? '' : 'preload-show-nav-bar']"> </TemplateFooter>
+         </slot>
       </template>
 
       <template v-slot:wrapper-after>

@@ -3,12 +3,12 @@
 	src:
 		url('font-svg.ttf') format("truetype"),
 		url('font-svg.svg') format("svg"),
-		url("font-svg.eot?501575169dbad9416b8e914082d32185?#iefix") format("embedded-opentype"),
-url("font-svg.woff2?501575169dbad9416b8e914082d32185") format("woff2"),
-url("font-svg.woff?501575169dbad9416b8e914082d32185") format("woff");
+		url("font-svg.eot?a79e4f356f3bfbaa89c6841f9554344d?#iefix") format("embedded-opentype"),
+url("font-svg.woff2?a79e4f356f3bfbaa89c6841f9554344d") format("woff2"),
+url("font-svg.woff?a79e4f356f3bfbaa89c6841f9554344d") format("woff");
 }
 
-.font-ft-ameba, .font-ft-arrow-right-1, .font-ft-art-cicle, .font-ft-avito, .font-ft-discord, .font-ft-fire, .font-ft-ins, .font-ft-kwork, .font-ft-meta, .font-ft-mixi, .font-ft-ok, .font-ft-pikachu, .font-ft-telegram, .font-ft-tiktok, .font-ft-tumblr, .font-ft-twitter, .font-ft-vk, .font-ft-whatsapp, .font-ft-youtube, .font-ft-zyan, 
+.font-ft-ameba, .font-ft-arrow-right-1, .font-ft-art-cicle, .font-ft-avito, .font-ft-basic_heart, .font-ft-basic_pencil_ruler, .font-ft-bird-calibri, .font-ft-discord, .font-ft-ecommerce_diamond, .font-ft-file-code-heart-1, .font-ft-fire, .font-ft-graphic-tablet-draw-1, .font-ft-graphic-tablet-pen, .font-ft-ins, .font-ft-kwork, .font-ft-meta, .font-ft-Meteorite_bg1, .font-ft-meteorite_stars, .font-ft-mixi, .font-ft-ok, .font-ft-phone-scroll, .font-ft-pikachu, .font-ft-rocket, .font-ft-single-neutral-search, .font-ft-software_paintroller, .font-ft-telegram, .font-ft-tiktok, .font-ft-tumblr, .font-ft-twitter, .font-ft-vk, .font-ft-whatsapp, .font-ft-youtube, .font-ft-zyan, 
 .font-ft
  {
 	-webkit-user-select: none;
@@ -58,68 +58,120 @@ url("font-svg.woff?501575169dbad9416b8e914082d32185") format("woff");
 .font-ft-avito:before { 
 	content: "\f104";
 }
+.ft-basic_heart:before,
+.font-ft-basic_heart:before { 
+	content: "\f105";
+}
+.ft-basic_pencil_ruler:before,
+.font-ft-basic_pencil_ruler:before { 
+	content: "\f106";
+}
+.ft-bird-calibri:before,
+.font-ft-bird-calibri:before { 
+	content: "\f107";
+}
 .ft-discord:before,
 .font-ft-discord:before { 
-	content: "\f105";
+	content: "\f108";
+}
+.ft-ecommerce_diamond:before,
+.font-ft-ecommerce_diamond:before { 
+	content: "\f109";
+}
+.ft-file-code-heart-1:before,
+.font-ft-file-code-heart-1:before { 
+	content: "\f10a";
 }
 .ft-fire:before,
 .font-ft-fire:before { 
-	content: "\f106";
+	content: "\f10b";
+}
+.ft-graphic-tablet-draw-1:before,
+.font-ft-graphic-tablet-draw-1:before { 
+	content: "\f10c";
+}
+.ft-graphic-tablet-pen:before,
+.font-ft-graphic-tablet-pen:before { 
+	content: "\f10d";
 }
 .ft-ins:before,
 .font-ft-ins:before { 
-	content: "\f107";
+	content: "\f10e";
 }
 .ft-kwork:before,
 .font-ft-kwork:before { 
-	content: "\f108";
+	content: "\f10f";
 }
 .ft-meta:before,
 .font-ft-meta:before { 
-	content: "\f109";
+	content: "\f110";
+}
+.ft-Meteorite_bg1:before,
+.font-ft-Meteorite_bg1:before { 
+	content: "\f111";
+}
+.ft-meteorite_stars:before,
+.font-ft-meteorite_stars:before { 
+	content: "\f112";
 }
 .ft-mixi:before,
 .font-ft-mixi:before { 
-	content: "\f10a";
+	content: "\f113";
 }
 .ft-ok:before,
 .font-ft-ok:before { 
-	content: "\f10b";
+	content: "\f114";
+}
+.ft-phone-scroll:before,
+.font-ft-phone-scroll:before { 
+	content: "\f115";
 }
 .ft-pikachu:before,
 .font-ft-pikachu:before { 
-	content: "\f10c";
+	content: "\f116";
+}
+.ft-rocket:before,
+.font-ft-rocket:before { 
+	content: "\f117";
+}
+.ft-single-neutral-search:before,
+.font-ft-single-neutral-search:before { 
+	content: "\f118";
+}
+.ft-software_paintroller:before,
+.font-ft-software_paintroller:before { 
+	content: "\f119";
 }
 .ft-telegram:before,
 .font-ft-telegram:before { 
-	content: "\f10d";
+	content: "\f11a";
 }
 .ft-tiktok:before,
 .font-ft-tiktok:before { 
-	content: "\f10e";
+	content: "\f11b";
 }
 .ft-tumblr:before,
 .font-ft-tumblr:before { 
-	content: "\f10f";
+	content: "\f11c";
 }
 .ft-twitter:before,
 .font-ft-twitter:before { 
-	content: "\f110";
+	content: "\f11d";
 }
 .ft-vk:before,
 .font-ft-vk:before { 
-	content: "\f111";
+	content: "\f11e";
 }
 .ft-whatsapp:before,
 .font-ft-whatsapp:before { 
-	content: "\f112";
+	content: "\f11f";
 }
 .ft-youtube:before,
 .font-ft-youtube:before { 
-	content: "\f113";
+	content: "\f120";
 }
 .ft-zyan:before,
 .font-ft-zyan:before { 
-	content: "\f114";
+	content: "\f121";
 }
 

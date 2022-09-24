@@ -146,16 +146,19 @@
                   </div>
                </div>
 
-               <div class="mt-5 inline-flex items-center <sm:(grid gap-2 text-center)" v-anime="animateAnimeBlock({ dl: 2.6, dr: 0.4 })">
-                  <div>Какие действия вы выбираете дальше, мы пойдём ...</div>
-                  <div class="mt-2 ml-3 pb-2 about-btn" @click="handleClick('/' + $i18n.locale + '/portfolio')">Портфолио</div>
-                  <div class="mt-2 ml-3 pb-2 about-btn" @click="handleClick('/' + $i18n.locale + '/presents')">Подарки</div>
+               <div class="mt-5 inline-flex items-center <sm:(grid gap-4 text-center)" v-anime="animateAnimeBlock({ dl: 2.6, dr: 0.4 })">
+                  <div class="text-xl">Какие действия вы выбираете дальше, мы пойдём ...</div>
+
+                  <div class="grid gap-2 mt-3 ml-3 text-center">
+                     <div class="about-btn" @click="handleClick('/' + $i18n.locale + '/presents')">Подарки</div>
+                     <div class="about-btn" @click="handleClick('/' + $i18n.locale + '/portfolio')">Портфолио</div>
+                  </div>
                </div>
             </div>
          </div>
       </div>
 
-      <ItemCanvaBg />
+      <ItemCanvaFiguresFlyApart />
    </LayoutPage>
 </template>
 
@@ -169,7 +172,7 @@ export default {
    },
    data() {
       return {
-         visible: 2,
+         visible: 0,
          size: { w: 0, h: 0 },
          title: "Автор",
          description: "Сайт Макса, почитайте обо мне",
@@ -237,7 +240,7 @@ export default {
    }
 
    &-btn {
-      @apply rounded-md cursor-pointer font-roboto font-bold bg-green-700 text-white text-sm py-2 px-4 transition-all tracking-[2px] duration-500 uppercase pointer-events-auto hover:(bg-yellow-600 px-6 text-base py-3 tracking-[3px] text-shadow);
+      @apply break-normal rounded-md cursor-pointer font-roboto font-bold bg-green-700 text-white text-sm py-2 px-4 transition-all tracking-[2px] duration-500 uppercase pointer-events-auto hover:(bg-yellow-600 px-6 text-base py-3 tracking-[3px] text-shadow);
    }
 
    &-field {
