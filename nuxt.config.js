@@ -1,6 +1,6 @@
 //import { apiEndpoint } from './sm.json'
 import { resolve, join } from "path";
-import app_config from "./app.config";
+import app_config from "./app.config.js";
 
 //const { plugins, buildModules, modules, transpile } = includes();
 
@@ -121,6 +121,9 @@ export default {
          svg: {
             normalize: true,
             fontHeight: 1000,
+
+            centerHorizontally: true,
+            centerVertically: true,
          },
       },
       styleTemplate: {
@@ -502,8 +505,30 @@ export default {
          },
          cssModules: {
             modules: {
-               localIdentName: "[path][name]__[local]--[hash:base64:5]",
-               exportLocalsConvention: "camelCase",
+               //boolean | "local" | "global" | "pure" | object
+               //[path][name]__
+               //[global]-[local]__[pure]_[icss]
+               //modules: true,
+               //localIdentContext: path.resolve(__dirname, "src"),
+               localIdentName: "[local]_[hash:base64:5]",
+               //getLocalIdent: (context, localIdentName, localName, options) => {
+               //   //return localIdentName.replace(/^./, string[0].toUpperCase());
+
+               //   //console.log(context);
+               //   //console.log(localIdentName);
+               //   //console.log(localName);
+               //   //console.log(options);
+
+               //   return localIdentName.replace(/^./, localIdentName[0].toUpperCase());
+               //},
+               //localIdentHashSalt: "my-custom-hash",
+               exportLocalsConvention: "camelCaseOnly",
+               //exportOnlyLocals: false,
+               //exportGlobals: true,
+               //namedExport: true,
+               //mode: "local",
+               //auto: true,
+               //sourceMap: true,
             },
          },
       },

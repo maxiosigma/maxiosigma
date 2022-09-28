@@ -5,8 +5,8 @@
          v-for="(it, i) in kinesis.count"
          :key="i"
          v-anime="{
-            translateX: (Math.cos((i * kinesis.count) / (Math.PI / 180)) * Math.max(size.w, size.h)) / intRandom(1.5, 4),
-            translateY: (Math.sin((i * kinesis.count) / (Math.PI / 180)) * Math.max(size.w, size.h)) / intRandom(2.5, 4),
+            translateX: (Math.cos((i * kinesis.count) / (Math.PI / 180)) * Math.max(windowSize.w, windowSize.h)) / intRandom(1.5, 4),
+            translateY: (Math.sin((i * kinesis.count) / (Math.PI / 180)) * Math.max(windowSize.w, windowSize.h)) / intRandom(2.5, 4),
             rotate: intRandom(0, 720),
             opacity: (intRandom(40, 60) + i * 0.1) / 100,
             duration: kinesis.duration,
@@ -32,23 +32,20 @@ export default {
             duration: 1700,
             delay: 1900,
          },
-         size: { w: 0, h: 0 },
+         windowSize: { w: 0, h: 0 },
          //deviceType: this.$ua.deviceType(),
       };
    },
    mounted() {
-      this.getSize();
+      this.getWindowSize();
       this.getCanvas();
       this.getKinesis();
 
       window.addEventListener("resize", () => {
-         this.getSize();
+         this.getWindowSize();
       });
    },
    methods: {
-      getSize() {
-         this.size = { w: document.body.clientHeight, h: document.body.clientWidth };
-      },
       getCanvas() {
          Object.keys(this.$refs)?.map((key) => {
             const obj = this.$refs?.[key]?.[0];
@@ -60,11 +57,6 @@ export default {
 
          if (!this.isCustomMobile())
             setTimeout(() => (this.kinesis.active = true), this.kinesis.delay + this.kinesis.count * this.kinesis.step + 1500);
-      },
-      isDraw(ref, callback) {
-         if (ref?.getContext) {
-            callback();
-         }
       },
       preDraw(obj) {
          const center = { x: (300 - 25) / 2, y: (150 - 25) / 2 };

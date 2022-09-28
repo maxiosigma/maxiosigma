@@ -42,6 +42,12 @@ Vue.mixin({
       //      new DownloaderHelper(url, folder, { resumeIfFileExists: true, override: "skip" }).start();
       //   }
       //},
+      getWindowSize() {
+         this.windowSize = { w: document.body.clientHeight, h: document.body.clientWidth };
+      },
+      isDraw(ref, callback) {
+         if (ref?.getContext) callback();
+      },
       isLangGlobal() {
          return this.$i18n?.locale?.split("-")?.[0] ?? "ru";
       },

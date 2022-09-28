@@ -73,7 +73,7 @@ export default {
    mounted() {
       this.getActive();
 
-      console.log(this.styles);
+      //console.log(this.styles);
 
       //console.log({ style: this.$style });
       //console.log({ style: this.styles });
