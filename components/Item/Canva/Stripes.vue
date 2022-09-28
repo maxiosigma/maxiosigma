@@ -2,6 +2,11 @@
    <!--  :width="scrim.w" :height="scrim.w" -->
 
    <div :class="styles.stripes">
+      <!-- 
++ (isCenter(i) ? -(countCenter(i) * scrim.step) / 2 : -(countCenter(i) * scrim.step) / 4)
++ (isCenter(i) ? -(countCenter(i) * scrim.step) / 2 : -(countCenter(i) * scrim.step) / 4)
+ -->
+
       <canvas
          :class="styles.stripe"
          :width="scrim.w"
@@ -10,11 +15,13 @@
          v-for="(it, i) in kinesis.count"
          :key="i"
          v-anime="{
-            translateX: -scrim.h / 2 + i * scrim.step + (isCenter(i) ? -(countCenter(i) * scrim.step) / 2 : -(countCenter(i) * scrim.step) / 4), //+ Math.max(windowSize.w, windowSize.h) / 5,
-            translateY: -i * scrim.step + (isCenter(i) ? -(countCenter(i) * scrim.step) / 2 : -(countCenter(i) * scrim.step) / 4), //+ Math.max(windowSize.w, windowSize.h) / 5,
+            translateX: i * scrim.step, //+ Math.max(windowSize.w, windowSize.h) / 5,
+            translateY: -i * scrim.step, //+ Math.max(windowSize.w, windowSize.h) / 5,
             rotate: 45,
-            duration: 100,
-            delay: 100 + i * 50,
+            // duration: 100,
+            // delay: 100 + i * 50,
+            duration: 0,
+            delay: 0,
          }"
       ></canvas>
    </div>
@@ -26,19 +33,13 @@ export default {
       return {
          kinesis: {
             step: 10,
-            count: 7,
+            count: 9,
             active: false,
             duration: 1700,
             delay: 1900,
          },
          windowSize: { w: 0, h: 0 },
-         scrim: {
-            w: 1000,
-            h: 2,
-            step: 20,
-            //center: { w: this.scrim.w / 2, h: this.scrim.h / 2 },
-         },
-         //deviceType: this.$ua.deviceType(),
+         scrim: { w: 1000, h: 2, step: 20 },
       };
    },
    mounted() {
@@ -64,10 +65,10 @@ export default {
          return this.isCenter(i) ? i : this.kinesis.count - i + 1;
       },
       preDraw(obj, i) {
-         //const center = { x: (300 - 25) / 2, y: (150 - 25) / 2 };
-         const center = { x: this.scrim.w / 2, y: this.scrim.h / 2 };
          const widthOne = this.scrim.w / (this.kinesis.count + 1);
          const wd = this.countCenter(i) * widthOne;
+
+         const center = { x: this.scrim.w / 2 - wd / 2, y: this.scrim.h / 2 };
 
          const ctx = obj?.getContext("2d");
 
@@ -75,30 +76,17 @@ export default {
             ctx.beginPath();
 
             if (i % 2 === 0) {
-               //ctx.moveTo(center.x, center.y);
-               //ctx.lineTo(center.x + this.countCenter(i) * widthOne, center.y);
+               ctx.moveTo(center.x, center.y);
+               ctx.lineTo(center.x + this.countCenter(i) * widthOne, center.y);
             } else {
-               //console.log(this.countCenter(i));
-
                for (let j = 0; j <= this.countCenter(i); j++) {
                   const oj = j !== 0;
                   const ij = j !== this.countCenter(i);
-
                   const mv = wd * (j / (this.countCenter(i) + 1));
                   const ln = (wd * (j + 1)) / (this.countCenter(i) + 1);
-
-                  //console.log(i, j, ij, wd, this.countCenter(i) + 1, mv, ln - (ij ? ln / 3 : 0));
-                  console.log(i, mv - (oj ? mv / 3 : 0) + (oj ? ln / 3 : 0), ln + mv / 3 - ln / 3);
-
                   ctx.moveTo(center.x + mv - (oj ? mv / 3 : 0) + (oj ? ln / 3 : 0), center.y);
                   ctx.lineTo(center.x + ln + (ij ? mv / 3 - ln / 3 : 0), center.y);
                }
-
-               //ctx.moveTo(center.x, center.y);
-               //ctx.lineTo(center.x + (this.countCenter(i) * widthOne) / 3, center.y);
-
-               //ctx.moveTo(center.x + (this.countCenter(i) * widthOne * 2) / 3, center.y);
-               //ctx.lineTo(center.x + this.countCenter(i) * widthOne, center.y);
             }
 
             ctx.closePath();
@@ -161,13 +149,7 @@ export default {
 
 <style lang="scss" module="styles">
 .stripe {
-   // transform rotate-45  pointer-events-none
-   // w-1000px w-auto h-auto
    @apply absolute transition duration-500;
-
-   //&:nth-child(1) {
-   //   @apply translate-x-10 -translate-y-10;
-   //}
 
    &s {
       @apply mx-auto w-auto flex-grow flex-center;
