@@ -147,7 +147,7 @@
                </div>
 
                <div class="mt-5 inline-flex items-center <sm:(grid gap-4 text-center)" v-anime="animateAnimeBlock({ dl: 2.6, dr: 0.4 })">
-                  <div class="text-xl">Какие действия вы выбираете дальше, мы пойдём ...</div>
+                  <div class="text-xl">Какие действия выбираете дальше, мы пойдём ...</div>
 
                   <div class="grid gap-2 mt-3 ml-3 text-center">
                      <div class="about-btn" @click="handleClick('/' + $i18n.locale + '/presents')">Подарки</div>

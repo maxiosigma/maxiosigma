@@ -85,11 +85,10 @@
             v-for="(it, i) in [
                { tl: 'nuxt', cl: '' },
                { tl: 'figma', cl: '' },
-               { tl: 'windi', cl: '' },
                { tl: 'nodejs', cl: '' },
-               { tl: 'firebase', cl: '' },
                { tl: 'gitlab', cl: '' },
-               { tl: 'nodejs', cl: '' },
+               { tl: 'firebase', cl: '' },
+               { tl: 'windi', cl: '' },
             ]"
             :key="i"
          ></div>
