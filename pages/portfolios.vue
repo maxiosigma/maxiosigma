@@ -1,7 +1,7 @@
 <template>
    <LayoutPage :bodyStyle="'portfolio'" :nav="false" :title="title" :description="description">
       <template v-slot:header>
-         <div class="flex-grow relative" :class="noVisio([1, 2]) ? 'portfolio-visio-no' : 'portfolio-visio'">
+         <div class="flex-grow relative z-10" :class="noVisio([1, 2]) ? 'portfolio-visio-no' : 'portfolio-visio'">
             <ItemBack
                class="absolute cursor-pointer opacity-25 uppercase text-sm font-medium border-b-3 transition duration-700 border-r-3 border-orange-500 rounded-xl pt-1.5 pr-2.5 pb-2 left-5 top-5 hover:(opacity-95)"
             >
@@ -11,15 +11,15 @@
          </div>
 
          <div class="flex-center relative bg-light-900 !overflow-hidden" v-show-slide:3000:ease="!noVisio([1, 2])">
-            <!-- translate-y-10 -translate-x-10 :step="30"-->
-            <ItemCanvaStripes
+            <!--<ItemCanvaStripes
                class="absolute transform -z-0"
                :count="9"
                :koef="1"
                :height="3"
                :opacity="0.35"
                :random="['#8A2BE2', '#008B8B', '#D2691E', '#8B008B', '#483D8B', '#4B0082']"
-            ></ItemCanvaStripes>
+            />-->
+
             <ItemMedia class="w-auto h-96 max-h-96 mt-auto object-contain object-bottom z-10" :src="'portfolio/bg_4.webp'" />
          </div>
       </template>
@@ -42,15 +42,6 @@
             </div>
          </h2>
       </div>-->
-
-      <!-- Ключевые характеристики / Вам симпотизируют
-         — Харизматичность
-         — Коммуникативность
-         → В любой сети, без матов и негатива
-         — Исполнительность
-         → Взяв проект, делаю до конца
-         — Дотошность
-         → Внимание к мелочам -->
 
       <!--<ItemPortfolioSection :visible="!noVisio([2])" :visio="1" :black="true" :reverse="false" :data="design">
          <template v-slot:title> Дизайнер </template>
@@ -88,9 +79,21 @@
          </template>
       </ItemPortfolioSection>-->
 
-      <!--<div class="flex-center flex-grow">
-        
-      </div>-->
+      <div class="grid-center grid-flow-col grid-rows-1 gap-x-4 sm:gap-x-8 md:gap-x-10 py-10">
+         <div
+            :class="['text-3xl sm:text-5xl lg:text-7xl text-light-200 font-ft', 'ft-' + it.tl, it.cl]"
+            v-for="(it, i) in [
+               { tl: 'nuxt', cl: '' },
+               { tl: 'figma', cl: '' },
+               { tl: 'windi', cl: '' },
+               { tl: 'nodejs', cl: '' },
+               { tl: 'firebase', cl: '' },
+               { tl: 'gitlab', cl: '' },
+               { tl: 'nodejs', cl: '' },
+            ]"
+            :key="i"
+         ></div>
+      </div>
 
       <template v-slot:footer>
          <!--<div class="">111</div>-->
