@@ -11,7 +11,7 @@
          </div>
 
          <div class="flex-center bg-light-900" v-show-slide:3000:ease="!noVisio([1, 2])">
-            <ItemMedia class="w-auto h-96 max-h-96 mt-auto object-contain object-bottom" :src="'portfolio/bg_4.webp'" />
+            <!--<ItemMedia class="w-auto h-96 max-h-96 mt-auto object-contain object-bottom" :src="'portfolio/bg_4.webp'" />-->
          </div>
       </template>
 

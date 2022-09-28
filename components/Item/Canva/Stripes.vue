@@ -1,5 +1,7 @@
 <template>
-   <div :class="styles.stripes" :width="scrim.w" :height="scrim.w">
+   <!--  :width="scrim.w" :height="scrim.w" -->
+
+   <div :class="styles.stripes">
       <canvas
          :class="styles.stripe"
          :width="scrim.w"
@@ -8,8 +10,8 @@
          v-for="(it, i) in kinesis.count"
          :key="i"
          v-anime="{
-            translateX: -80 + i * 20, //+ Math.max(windowSize.w, windowSize.h) / 5,
-            translateY: -50 + -i * 50, //+ Math.max(windowSize.w, windowSize.h) / 5,
+            translateX: -scrim.h / 2 + i * scrim.step + (isCenter(i) ? -(countCenter(i) * scrim.step) / 2 : -(countCenter(i) * scrim.step) / 4), //+ Math.max(windowSize.w, windowSize.h) / 5,
+            translateY: -i * scrim.step + (isCenter(i) ? -(countCenter(i) * scrim.step) / 2 : -(countCenter(i) * scrim.step) / 4), //+ Math.max(windowSize.w, windowSize.h) / 5,
             rotate: 45,
             duration: 100,
             delay: 100 + i * 50,
@@ -32,7 +34,8 @@ export default {
          windowSize: { w: 0, h: 0 },
          scrim: {
             w: 1000,
-            h: 200,
+            h: 2,
+            step: 20,
             //center: { w: this.scrim.w / 2, h: this.scrim.h / 2 },
          },
          //deviceType: this.$ua.deviceType(),
@@ -54,75 +57,102 @@ export default {
             this.preDraw(obj, i + 1);
          });
       },
+      isCenter(i) {
+         return i <= Math.floor(this.kinesis.count / 2);
+      },
+      countCenter(i) {
+         return this.isCenter(i) ? i : this.kinesis.count - i + 1;
+      },
       preDraw(obj, i) {
          //const center = { x: (300 - 25) / 2, y: (150 - 25) / 2 };
          const center = { x: this.scrim.w / 2, y: this.scrim.h / 2 };
-         //const color = this.stringRandom(["#FFA500", "#00ff2a", "#0084ff", "#9d00ff", "#ff0055"])
+         const widthOne = this.scrim.w / (this.kinesis.count + 1);
+         const wd = this.countCenter(i) * widthOne;
+
          const ctx = obj?.getContext("2d");
-         //obj.weight = 500;
-
-         const presets = [
-            (obj, triangle) => {
-               this.isDraw(obj, () => {
-                  //ctx.beginPath();
-                  //ctx.moveTo(center.x + 25, center.y + 25);
-                  //ctx.lineTo(center.x + 25, center.y + 9);
-                  //ctx.lineTo(center.x + 9, center.y + 25);
-                  //ctx.closePath();
-                  //ctx.strokeStyle = this.stringRandom(["#FFA500", "#00ff2a", "#0084ff", "#9d00ff", "#ff0055"]);
-                  //ctx.lineWidth = 3;
-                  //ctx.stroke();
-               });
-            },
-            (obj, square) => {
-               this.isDraw(obj, () => {
-                  //ctx.beginPath();
-                  //ctx.moveTo(center.x, center.y);
-                  //ctx.lineTo(center.x + 16, center.y);
-                  //ctx.lineTo(center.x + 16, center.y + 16);
-                  //ctx.lineTo(center.x, center.y + 16);
-                  //ctx.closePath();
-                  //ctx.strokeStyle = this.stringRandom(["#FFA500", "#00ff2a", "#0084ff", "#9d00ff", "#ff0055"]);
-                  //ctx.lineWidth = 3;
-                  //ctx.stroke();
-               });
-            },
-            (obj, arc) => {
-               this.isDraw(obj, () => {
-                  //ctx.beginPath();
-                  ////ctx.arc(center.x + 25, center.y + 25, 9, 0, Math.PI, true);
-                  ////ctx.strokeStyle = this.stringRandom(["#FFA500", "#00ff2a", "#0084ff", "#9d00ff", "#ff0055"]);
-                  //ctx.lineWidth = 3;
-                  //ctx.stroke();
-               });
-            },
-         ];
-
-         //const rand = this.intRandom(0, presets.length);
-
-         //return presets[rand](obj);
 
          this.isDraw(obj, () => {
-            //console.log(i);
-            //console.log(obj);
-
             ctx.beginPath();
 
-            //ctx.moveTo(center.x, center.y);
-            //ctx.lineTo(center.x + i * 50, center.y);
+            if (i % 2 === 0) {
+               //ctx.moveTo(center.x, center.y);
+               //ctx.lineTo(center.x + this.countCenter(i) * widthOne, center.y);
+            } else {
+               //console.log(this.countCenter(i));
 
-            ctx.moveTo(center.x, center.y);
-            ctx.lineTo(center.x + i * 50, center.y);
+               for (let j = 0; j <= this.countCenter(i); j++) {
+                  const oj = j !== 0;
+                  const ij = j !== this.countCenter(i);
 
-            const cnt = i <= Math.ceil(this.kinesis.count / 2) ? i : this.kinesis.count - i + 1; // floor ceil
-            console.log(cnt);
+                  const mv = wd * (j / (this.countCenter(i) + 1));
+                  const ln = (wd * (j + 1)) / (this.countCenter(i) + 1);
 
-            //console.log(this.kinesis.count - i + 1);
+                  //console.log(i, j, ij, wd, this.countCenter(i) + 1, mv, ln - (ij ? ln / 3 : 0));
+                  console.log(i, mv - (oj ? mv / 3 : 0) + (oj ? ln / 3 : 0), ln + mv / 3 - ln / 3);
+
+                  ctx.moveTo(center.x + mv - (oj ? mv / 3 : 0) + (oj ? ln / 3 : 0), center.y);
+                  ctx.lineTo(center.x + ln + (ij ? mv / 3 - ln / 3 : 0), center.y);
+               }
+
+               //ctx.moveTo(center.x, center.y);
+               //ctx.lineTo(center.x + (this.countCenter(i) * widthOne) / 3, center.y);
+
+               //ctx.moveTo(center.x + (this.countCenter(i) * widthOne * 2) / 3, center.y);
+               //ctx.lineTo(center.x + this.countCenter(i) * widthOne, center.y);
+            }
 
             ctx.closePath();
             ctx.strokeStyle = "#FFA500";
-            ctx.lineWidth = 3;
+            ctx.lineWidth = this.scrim.h;
             ctx.stroke();
+
+            //ctx.moveTo(center.x, center.y);
+            //ctx.lineTo(center.x + i * 50, center.y);
+            //const cnt = i <= Math.ceil(this.kinesis.count / 2) ? i : this.kinesis.count - i + 1; // floor ceil
+
+            //console.log(widthOne);
+            //const color = this.stringRandom(["#FFA500", "#00ff2a", "#0084ff", "#9d00ff", "#ff0055"])
+            //obj.weight = 500;
+
+            //const presets = [
+            //   (obj, triangle) => {
+            //      this.isDraw(obj, () => {
+            //         //ctx.beginPath();
+            //         //ctx.moveTo(center.x + 25, center.y + 25);
+            //         //ctx.lineTo(center.x + 25, center.y + 9);
+            //         //ctx.lineTo(center.x + 9, center.y + 25);
+            //         //ctx.closePath();
+            //         //ctx.strokeStyle = this.stringRandom(["#FFA500", "#00ff2a", "#0084ff", "#9d00ff", "#ff0055"]);
+            //         //ctx.lineWidth = 3;
+            //         //ctx.stroke();
+            //      });
+            //   },
+            //   (obj, square) => {
+            //      this.isDraw(obj, () => {
+            //         //ctx.beginPath();
+            //         //ctx.moveTo(center.x, center.y);
+            //         //ctx.lineTo(center.x + 16, center.y);
+            //         //ctx.lineTo(center.x + 16, center.y + 16);
+            //         //ctx.lineTo(center.x, center.y + 16);
+            //         //ctx.closePath();
+            //         //ctx.strokeStyle = this.stringRandom(["#FFA500", "#00ff2a", "#0084ff", "#9d00ff", "#ff0055"]);
+            //         //ctx.lineWidth = 3;
+            //         //ctx.stroke();
+            //      });
+            //   },
+            //   (obj, arc) => {
+            //      this.isDraw(obj, () => {
+            //         //ctx.beginPath();
+            //         ////ctx.arc(center.x + 25, center.y + 25, 9, 0, Math.PI, true);
+            //         ////ctx.strokeStyle = this.stringRandom(["#FFA500", "#00ff2a", "#0084ff", "#9d00ff", "#ff0055"]);
+            //         //ctx.lineWidth = 3;
+            //         //ctx.stroke();
+            //      });
+            //   },
+            //];
+
+            //const rand = this.intRandom(0, presets.length);
+            //return presets[rand](obj);
          });
       },
    },
