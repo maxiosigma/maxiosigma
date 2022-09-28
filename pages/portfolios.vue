@@ -79,9 +79,7 @@
          </template>
       </ItemPortfolioSection>-->
 
-      <div>
-         <ItemCanvaStripes></ItemCanvaStripes>
-      </div>
+      <ItemCanvaStripes></ItemCanvaStripes>
 
       <template v-slot:footer>
          <!--<div class="">111</div>-->
