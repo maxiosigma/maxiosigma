@@ -10,8 +10,17 @@
             </ItemBack>
          </div>
 
-         <div class="flex-center bg-light-900" v-show-slide:3000:ease="!noVisio([1, 2])">
-            <!--<ItemMedia class="w-auto h-96 max-h-96 mt-auto object-contain object-bottom" :src="'portfolio/bg_4.webp'" />-->
+         <div class="flex-center relative bg-light-900 !overflow-hidden" v-show-slide:3000:ease="!noVisio([1, 2])">
+            <!-- translate-y-10 -translate-x-10 :step="30"-->
+            <ItemCanvaStripes
+               class="absolute transform -z-0"
+               :count="9"
+               :koef="1"
+               :height="3"
+               :opacity="0.35"
+               :random="['#8A2BE2', '#008B8B', '#D2691E', '#8B008B', '#483D8B', '#4B0082']"
+            ></ItemCanvaStripes>
+            <ItemMedia class="w-auto h-96 max-h-96 mt-auto object-contain object-bottom z-10" :src="'portfolio/bg_4.webp'" />
          </div>
       </template>
 
@@ -79,7 +88,9 @@
          </template>
       </ItemPortfolioSection>-->
 
-      <ItemCanvaStripes></ItemCanvaStripes>
+      <!--<div class="flex-center flex-grow">
+        
+      </div>-->
 
       <template v-slot:footer>
          <!--<div class="">111</div>-->

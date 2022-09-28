@@ -14,14 +14,14 @@
          :ref="'canva_' + i"
          v-for="(it, i) in kinesis.count"
          :key="i"
+         v-anime.set="{ opacity: 0 }"
          v-anime="{
-            translateX: i * scrim.step, //+ Math.max(windowSize.w, windowSize.h) / 5,
-            translateY: -i * scrim.step, //+ Math.max(windowSize.w, windowSize.h) / 5,
-            rotate: 45,
-            // duration: 100,
-            // delay: 100 + i * 50,
-            duration: 0,
-            delay: 0,
+            duration: 100,
+            delay: 1000 + i * 100,
+            translateX: i * scrim.step - scrim.w / 8, // - Math.max(windowSize.w, windowSize.h) / 5,
+            translateY: -i * scrim.step + scrim.w / 8, // + Math.max(windowSize.w, windowSize.h) / 5,
+            opacity: opacity || intRandom(80, 100) / 100,
+            rotate: intRandom(44, 46),
          }"
       ></canvas>
    </div>
@@ -29,17 +29,26 @@
 
 <script>
 export default {
+   props: {
+      color: String,
+      random: { type: Array, default: false },
+      koef: { type: Number, default: 1 },
+      step: { type: Number, default: 30 },
+      count: { type: Number, default: 9 },
+      height: { type: Number, default: 2 },
+      opacity: { type: Number, default: false },
+   },
    data() {
       return {
          kinesis: {
             step: 10,
-            count: 9,
+            count: this.count,
             active: false,
             duration: 1700,
             delay: 1900,
          },
          windowSize: { w: 0, h: 0 },
-         scrim: { w: 1000, h: 2, step: 20 },
+         scrim: { w: 1000 * this.koef, h: this.height ?? 2 * this.koef, step: this.step },
       };
    },
    mounted() {
@@ -67,15 +76,13 @@ export default {
       preDraw(obj, i) {
          const widthOne = this.scrim.w / (this.kinesis.count + 1);
          const wd = this.countCenter(i) * widthOne;
-
          const center = { x: this.scrim.w / 2 - wd / 2, y: this.scrim.h / 2 };
-
          const ctx = obj?.getContext("2d");
 
          this.isDraw(obj, () => {
             ctx.beginPath();
 
-            if (i % 2 === 0) {
+            if (i % 2 === 1) {
                ctx.moveTo(center.x, center.y);
                ctx.lineTo(center.x + this.countCenter(i) * widthOne, center.y);
             } else {
@@ -90,7 +97,10 @@ export default {
             }
 
             ctx.closePath();
-            ctx.strokeStyle = "#FFA500";
+            ctx.strokeStyle =
+               this.random !== false
+                  ? this.stringRandom(this.random || ["#FFA500", "#00ff2a", "#0084ff", "#9d00ff", "#ff0055"])
+                  : this.color || "#FFA500";
             ctx.lineWidth = this.scrim.h;
             ctx.stroke();
 
@@ -149,10 +159,10 @@ export default {
 
 <style lang="scss" module="styles">
 .stripe {
-   @apply absolute transition duration-500;
+   @apply absolute transition duration-500 rounded-full;
 
    &s {
-      @apply mx-auto w-auto flex-grow flex-center;
+      @apply mx-auto transition duration-500 w-auto h-auto flex-grow-0 flex-shrink flex-center;
    }
 }
 </style>
