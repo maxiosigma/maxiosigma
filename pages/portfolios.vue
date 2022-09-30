@@ -89,6 +89,7 @@
                { tl: 'gitlab', cl: '' },
                { tl: 'firebase', cl: '' },
                { tl: 'windi', cl: '' },
+               { tl: 'strapi', cl: '' },
             ]"
             :key="i"
          ></div>
