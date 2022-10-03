@@ -377,12 +377,16 @@ export default {
             cookies: ["remixir"],
             accepted: () => {
                !(function () {
-                  var t = document.createElement("script");
+                  const t = document.createElement("script");
+                  const srt = "https://vk.com";
+                  const sqt = "/js/api/openapi.js?169";
+                  const pxl = "VK-RTRG-1455228-5lkj2";
+
                   (t.type = "text/javascript"),
                      (t.async = !0),
-                     (t.src = "https://vk.com/js/api/openapi.js?169"),
+                     (t.src = srt + sqt),
                      (t.onload = function () {
-                        VK.Retargeting.Init("VK-RTRG-1455228-5lkj2"), VK.Retargeting.Hit();
+                        VK.Retargeting.Init(pxl), VK.Retargeting.Hit();
                      }),
                      document.head.appendChild(t);
                })();

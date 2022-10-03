@@ -3,6 +3,8 @@ import plugin from "windicss/plugin";
 //import theme from 'windicss/defaultTheme'
 import { defineConfig, transform } from "windicss/helpers";
 
+import wd from "nuxt-windicss/dist/";
+
 export default defineConfig({
    //attributify: false,
    shortcuts: shortcuts(),
