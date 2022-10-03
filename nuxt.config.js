@@ -356,7 +356,6 @@ export default {
                   })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "margika");
 
                   margika(89264491, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });
-                  // aaaaaaaaaaa
 
                   console.log("YM PIXEL ACTIVE");
                }, 250);
