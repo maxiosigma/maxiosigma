@@ -2,6 +2,9 @@
 import { resolve, join } from "path";
 import app_config from "./app.config.js";
 
+//npm config set legacy-peer-deps true
+//npm install --force
+
 //const { plugins, buildModules, modules, transpile } = includes();
 
 export default {
@@ -326,22 +329,33 @@ export default {
             cookies: ["_ym_d", "_ym_isad", "_ym_uid", "_ym_visorc", "metrika_enabled"],
             accepted: () => {
                setTimeout(() => {
-                  (function (m, e, t, r, i, k, a) {
-                     m[i] =
-                        m[i] ||
-                        function () {
-                           (m[i].a = m[i].a || []).push(arguments);
-                        };
-                     m[i].l = 1 * new Date();
-                     (k = e.createElement(t)), (a = e.getElementsByTagName(t)[0]), (k.async = 1), (k.src = r), a.parentNode.insertBefore(k, a);
-                  })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+                  //(function (m, e, t, r, i, k, a) {
+                  //   m[i] =
+                  //      m[i] ||
+                  //      function () {
+                  //         (m[i].a = m[i].a || []).push(arguments);
+                  //      };
+                  //   m[i].l = 1 * new Date();
+                  //   (k = e.createElement(t)), (a = e.getElementsByTagName(t)[0]), (k.async = 1), (k.src = r), a.parentNode.insertBefore(k, a);
+                  //})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-                  ym(89264491, "init", {
-                     clickmap: true,
-                     trackLinks: true,
-                     accurateTrackBounce: true,
-                     webvisor: true,
-                  });
+                  //ym(89264491, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });
+
+                  (function (tk, ul, rp, pl, jl, lgh, atr, pbk, shn) {
+                     tk[jl] =
+                        tk[jl] ||
+                        function () {
+                           (tk[jl].a = tk[jl].a || []).push(arguments);
+                        };
+                     tk[jl].l = new Date() * 1 * 1;
+                     (lgh = ul.createElement(rp)),
+                        (atr = ul.getElementsByTagName(rp)[0]),
+                        (lgh.async = 1),
+                        (lgh.src = pl),
+                        atr.parentNode.insertBefore(lgh, atr);
+                  })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "margika");
+
+                  margika(89264491, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: true });
 
                   console.log("YM PIXEL ACTIVE");
                }, 250);
@@ -532,15 +546,25 @@ export default {
             },
          },
       },
-      postcss: {
-         plugins: {
-            "postcss-import": true,
-            "postcss-url": {},
-            ...(!app_config.isDev && {
-               autoprefixer: {},
-            }),
-         },
-      },
+      //postcss: null,
+      //postcss: {
+      //   //...(!app_config.isDev && {
+      //   //}),
+      //   plugins: {
+      //      "postcss-url": false,
+      //      //"postcss-url": {},
+      //      //"postcss-nested": {},
+      //      //"postcss-responsive-type": {},
+      //      //'postcss-hexrgba': {},
+      //      "postcss-import": true,
+      //      //autoprefixer: {},
+      //   },
+      //   preset: {
+      //      autoprefixer: {
+      //         grid: true,
+      //      },
+      //   },
+      //},
       splitChunks: {
          runtime: true,
          commons: true,
@@ -590,6 +614,14 @@ export default {
          });
 
          //config.module.rules.push({
+         //   test: /\.(ogg|mp3|wav|mpe?g)$/i,
+         //   loader: 'file-loader',
+         //   options: {
+         //     name: '[path][name].[ext]'
+         //   }
+         // })
+
+         //config.module.rules.push({
          //   test: /\.scss$/,
          //   use: [
          //      {
@@ -620,6 +652,10 @@ export default {
          //config.resolve.alias["~fonts"] = join(__dirname, "fonts");
 
          //config.node = { fs: "empty" };
+
+         //if (ctx.isClient) {
+         //   config.optimization.splitChunks.maxSize = 200000;
+         //}
       },
    },
    hooks: {},
@@ -661,6 +697,9 @@ export default {
       //"@luxdamore/nuxt-apis-to-file",
       "@/plugins/active/GSR",
       //"@nuxtjs/vuetify",
+
+      //"@nuxt/postcss8",
+
       "nuxt-user-agent",
       "@nuxtjs/sitemap",
       "nuxt-fontagon",
@@ -707,8 +746,8 @@ export default {
 
       "@plugins/active/VueTypedJs",
       "@plugins/active/VueKinesis",
-      "@plugins/active/VueTooltip",
-      "@plugins/active/QR.js",
+      "@plugins/active/FloatingVue", //VueTooltip
+      //"@plugins/active/QR.js",
 
       //"@plugins/active/VueMasonry.client.js",
       //"@plugins/active/VueAwesomeSwiper",

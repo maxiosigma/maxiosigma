@@ -8,9 +8,6 @@ import Vue from "vue";
 //import VTooltip from "v-tooltip";
 //Vue.use(VTooltip);
 
-//import FloatingVue from "floating-vue";
-//import { VTooltip, VClosePopper, Dropdown, Tooltip, Menu } from "floating-vue";
-import { VTooltip } from "floating-vue";
+import FloatingVue from "floating-vue";
 import "floating-vue/dist/style.css";
-//Vue.use(FloatingVue);
-Vue.directive("tooltip", VTooltip);
+Vue.use(FloatingVue);

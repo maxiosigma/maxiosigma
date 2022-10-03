@@ -1,3 +1,36 @@
+//A:\programs\Projects\maxiosigma>npm install --force
+//npm WARN using --force Recommended protections disabled.
+//      1 [main] sh 1142 dofork: child -1 - forked process 14496 died unexpectedly, retry 0, exit code 0xC0000142, errno 11
+//npm WARN EBADENGINE Unsupported engine {
+//npm WARN EBADENGINE   package: 'pkcs7@0.2.3',
+//npm WARN EBADENGINE   required: { npm: '^1.4.6', node: '^0.10' },
+//npm WARN EBADENGINE   current: { node: 'v16.15.1', npm: '8.11.0' }
+//npm WARN EBADENGINE }
+//npm WARN deprecated source-map-url@0.4.1: See https://github.com/lydell/source-map-url#deprecated
+//npm WARN deprecated stable@0.1.8: Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility
+//npm WARN deprecated flatten@1.0.3: flatten is deprecated in favor of utility frameworks such as lodash.
+//npm WARN deprecated tsml@1.0.1: no longer maintained
+//npm WARN deprecated urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
+//npm WARN deprecated har-validator@5.1.5: this library is no longer supported
+//npm WARN deprecated source-map-resolve@0.5.3: See https://github.com/lydell/source-map-resolve#deprecated
+//npm WARN deprecated chokidar@2.1.8: Chokidar 2 does not receive security updates since 2019. Upgrade to chokidar 3 with 15x fewer dependencies
+//npm WARN deprecated resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated
+//npm WARN deprecated async-cache@1.1.0: No longer maintained. Use [lru-cache](http://npm.im/lru-cache) version 7.6 or higher, and provide an asynchronous `fetchMethod` option.npm WARN deprecated xmldom@0.1.31: Deprecated due to CVE-2021-21366 resolved in 0.5.0
+//npm WARN deprecated sol-redis-pool@0.3.3: This package is no longer supported, use at your own risk.
+//npm WARN deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+//npm WARN deprecated uuid@3.4.0: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+//npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+//npm WARN deprecated querystring@0.2.0: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
+//npm WARN deprecated mkdirp@0.5.1: Legacy versions of mkdirp are no longer supported. Please update to mkdirp 1.x. (Note that the API surface has changed to use Promises in 1.x.)
+//npm WARN deprecated nuxt-i18n@6.28.1: Please use the @nuxtjs/i18n package going forward
+//npm WARN deprecated axios@0.20.0: Critical security vulnerability fixed in v0.21.1. For more information, see https://github.com/axios/axios/pull/3410
+//npm WARN deprecated svgo@0.7.2: This SVGO version is no longer supported. Upgrade to v2.x.x.
+//npm WARN deprecated svgo@1.3.2: This SVGO version is no longer supported. Upgrade to v2.x.x.
+//npm WARN deprecated core-js@2.6.12: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+//npm WARN deprecated core-js@2.6.12: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+//npm WARN deprecated core-js@2.6.12: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+//npm WARN deprecated core-js@2.6.12: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+
 // https://sdn-maxiosigma.netlify.app/public/uploads/4a06af8d28_1_920c04e514.png
 
 // REGEX
