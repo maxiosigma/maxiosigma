@@ -71,6 +71,7 @@
       "ipx": "^0.9.11",
       "lottie-web": "^5.9.6",
       "markdown-it": "^13.0.1",
+      "mysterium-vpn-js": "^25.5.0",
       "node-downloader-helper": "^2.1.4",
       "node-fetch": "<=2.6.1",
       "nodejs-file-downloader": "^4.10.2",

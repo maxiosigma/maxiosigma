@@ -3,8 +3,6 @@ import plugin from "windicss/plugin";
 //import theme from 'windicss/defaultTheme'
 import { defineConfig, transform } from "windicss/helpers";
 
-import wd from "nuxt-windicss/dist/";
-
 export default defineConfig({
    //attributify: false,
    shortcuts: shortcuts(),
@@ -12,21 +10,21 @@ export default defineConfig({
       //...themeBase(),
       extend: themeExtend(),
    },
-   variants: {
-      extend: {
-         //   backgroundColor: [
-         //      "group-focus-within",
-         //      "group-focus-visible",
-         //      "group-active",
-         //      "group-visited",
-         //      "group-disabled",
-         //      "hocus",
-         //      "group-hocus",
-         //      "can-hover",
-         //      "no-hover",
-         //   ],
-      },
-   },
+   //variants: {
+   //   extend: {
+   //      //   backgroundColor: [
+   //      //      "group-focus-within",
+   //      //      "group-focus-visible",
+   //      //      "group-active",
+   //      //      "group-visited",
+   //      //      "group-disabled",
+   //      //      "hocus",
+   //      //      "group-hocus",
+   //      //      "can-hover",
+   //      //      "no-hover",
+   //      //   ],
+   //   },
+   //},
    plugins: plugins(),
    safelist: safelist(),
    extract: extract(),

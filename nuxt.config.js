@@ -1,11 +1,9 @@
-//import { apiEndpoint } from './sm.json'
+import { mkdir, readdir } from "fs";
 import { resolve, join } from "path";
 import app_config from "./app.config.js";
 
-//npm config set legacy-peer-deps true
-//npm install --force
-
-//const { plugins, buildModules, modules, transpile } = includes();
+mkdir("media/cdn", { recursive: true }, (err) => (err ? console.log(err) : null));
+//readdir("media", { recursive: true }, (err, files) => (err ? console.log(err) : console.log("В папке находятся файлы:" + files)));
 
 export default {
    ssr: true,
@@ -299,16 +297,34 @@ export default {
             cookies: ["_ga", "_gat", "_gid", "_ga_X7YM5GJKXG"],
             accepted: () => {
                setTimeout(() => {
-                  (function (w, d, s, l, i) {
-                     w[l] = w[l] || [];
-                     w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-                     var f = d.getElementsByTagName(s)[0],
-                        j = d.createElement(s),
-                        dl = l != "dataLayer" ? "&l=" + l : "";
-                     j.async = true;
-                     j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-                     f.parentNode.insertBefore(j, f);
-                  })(window, document, "script", "dataLayer", "GTM-MSJZ4PT");
+                  //(function (w, d, s, l, i) {
+                  //   w[l] = w[l] || [];
+                  //   w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+                  //   var f = d.getElementsByTagName(s)[0],
+                  //      j = d.createElement(s),
+                  //      dl = l != "dataLayer" ? "&l=" + l : "";
+                  //   j.async = true;
+                  //   j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+                  //   f.parentNode.insertBefore(j, f);
+                  //})(window, document, "script", "dataLayer", "GTM-MSJZ4PT");
+
+                  const pxl = "GTM-MSJZ4PT";
+
+                  (function (jgh, tye, kas, aure, oper, ala, juu) {
+                     const hgf = "https://www.googletagmanager.com";
+                     const klj = "/gtm.js?id=";
+
+                     jgh[aure] = jgh[aure] || [];
+                     jgh[aure].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+
+                     const hat = tye.getElementsByTagName(kas)[0];
+                     const bet = tye.createElement(kas);
+                     const dl = aure != "dataLayer" ? "&l=" + aure : "";
+
+                     //bet.async = true;
+                     bet.src = hgf + klj + oper + dl;
+                     hat.parentNode.insertBefore(bet, hat);
+                  })(window, document, "script", "dataLayer", pxl);
 
                   console.log("GTM PIXEL ACTIVE");
                }, 250);
@@ -377,18 +393,19 @@ export default {
             cookies: ["remixir"],
             accepted: () => {
                !(function () {
-                  const t = document.createElement("script");
+                  const ltr = document.createElement("script");
                   const srt = "https://vk.com";
                   const sqt = "/js/api/openapi.js?169";
                   const pxl = "VK-RTRG-1455228-5lkj2";
 
-                  (t.type = "text/javascript"),
-                     (t.async = !0),
-                     (t.src = srt + sqt),
-                     (t.onload = function () {
+                  (ltr.type = "text/javascript"),
+                     //(t.async = !0),
+                     (ltr.src = srt + sqt),
+                     (ltr.onload = function () {
                         VK.Retargeting.Init(pxl), VK.Retargeting.Hit();
                      }),
-                     document.head.appendChild(t);
+                     //document.head.appendChild(t);
+                     document.body.appendChild(ltr);
                })();
 
                console.log("VK PIXEL ACTIVE");
@@ -777,3 +794,8 @@ function exd() {
       app_config.excluded?.reduce((sum, ex) => locales()?.map((lc) => sum.push(new RegExp("^/" + lc.code + "/" + ex + ""))) && sum, []) ?? []
    );
 }
+
+//npm config set legacy-peer-deps true
+//npm install --force
+
+//const { plugins, buildModules, modules, transpile } = includes();
