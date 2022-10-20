@@ -23,3 +23,7 @@ dist
 sw.*
 
 .vercel
+
+/.yarn/
+.pnp.cjs
+.pnp.loader.mjs

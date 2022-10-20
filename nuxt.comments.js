@@ -1,3 +1,29 @@
+//npm login
+//yarn config set registry https://registry.npmjs.org
+//rm yarn.lock
+//yarn cache clean
+//yarn install
+//yarn
+//yarn init -2
+
+// @nuxtjs/browserconfig
+// @nuxtjs/feed
+// @nuxtjs/redirect-module
+// @nuxtjs/amp
+// nuxt-imagemin
+
+//"postcss": "<=7.0.39",
+//"postcss-import": "<=13.0.0",
+//"postcss-loader": "<=4.2.0",
+//"postcss-url": "<=10.1.1",
+
+//"postcss": "<=7.0.39",
+//"postcss-import": "<=7.1.3",
+//"postcss-loader": "<=7.0.1",
+//"postcss-url": "<=7.3.2",
+
+//postcss postcss-import postcss-loader postcss-url
+
 //A:\programs\Projects\maxiosigma>npm install --force
 //npm WARN using --force Recommended protections disabled.
 //      1 [main] sh 1142 dofork: child -1 - forked process 14496 died unexpectedly, retry 0, exit code 0xC0000142, errno 11

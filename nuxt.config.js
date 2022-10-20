@@ -568,25 +568,24 @@ export default {
             },
          },
       },
-      //postcss: null,
-      //postcss: {
-      //   //...(!app_config.isDev && {
-      //   //}),
-      //   plugins: {
-      //      "postcss-url": false,
-      //      //"postcss-url": {},
-      //      //"postcss-nested": {},
-      //      //"postcss-responsive-type": {},
-      //      //'postcss-hexrgba': {},
-      //      "postcss-import": true,
-      //      //autoprefixer: {},
-      //   },
-      //   preset: {
-      //      autoprefixer: {
-      //         grid: true,
-      //      },
-      //   },
-      //},
+      postcss: {
+         plugins: [require("autoprefixer")],
+
+         //plugins: {
+         //   "postcss-import": true,
+         //   "postcss-url": {},
+         //   autoprefixer: {},
+
+         //   //"postcss-nested": {},
+         //   //"postcss-responsive-type": {},
+         //   //'postcss-hexrgba': {},
+         //},
+         //preset: {
+         //   autoprefixer: {
+         //      grid: true,
+         //   },
+         //},
+      },
       splitChunks: {
          runtime: true,
          commons: true,
@@ -704,11 +703,11 @@ export default {
       },
       locales: locales(),
    },
+   //, "virtual:windi.css", "virtual:windi-devtools"
    css: ["~/assets/index.scss"],
    pwa: {
       icon: false,
       meta: false,
-
       manifest: {
          display: "browser",
       },
@@ -746,6 +745,12 @@ export default {
       //      extensions: ["jpg", "jpeg", "gif", "png", "webp", "svg", "mp4"],
       //   },
       //],
+
+      //['nuxt-imagemin', {
+      //   plugins: [
+      //     imageminWebp({quality: 50})
+      //   ]
+      // }]
    ],
    plugins: [
       "@plugins/passive/mixins",
