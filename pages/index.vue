@@ -1,6 +1,9 @@
 <template>
-	<div>
-		<h1>Welcome to the homepage</h1>
-		<AppAlert> This is an auto-imported component </AppAlert>
-	</div>
+	<div class="w-screen h-screen bg-black"></div>
 </template>
+
+<script setup>
+	onMounted(async () => {});
+</script>
+
+<style lang="scss"></style>
