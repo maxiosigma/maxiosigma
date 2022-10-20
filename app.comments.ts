@@ -36,3 +36,22 @@
 //const url = useStrapiUrl()
 //const token = useStrapiToken()
 //const version = useStrapiVersion()
+
+//const { data: count } = await useFetch('/api/count')
+//Page visits: {{ count }}
+
+//const { pending, data: posts } = useLazyFetch('/api/posts')
+//watch(posts, (newPosts) => {
+//  // Because posts starts out null, you will not have access
+//  // to its contents immediately, but you can watch it.
+//})
+
+//const { data } = await useAsyncData('count', () => $fetch('/api/count'))
+//Page visits: {{ data }}
+
+//const { pending, data: count } = useLazyAsyncData('count', () => $fetch('/api/count'))
+//watch(count, (newCount) => {
+//  // Because count starts out null, you won't have access
+//  // to its contents immediately, but you can watch it.
+//})
+//{{ pending ? 'Loading' : count }}
