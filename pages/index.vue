@@ -1,11 +1,11 @@
-<template lang="pug">
-div(class="w-screen h-screen bg-black") 1111111
-	div(class="flex-center") 22223
+<template>
+	<div class="w-screen h-screen">11111111</div>
 </template>
 
-<style lang="stylus">
-	html
+<style lang="scss">
+	html {
 		@apply bg-black;
+	}
 </style>
 
 <script setup>

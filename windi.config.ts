@@ -11,15 +11,8 @@ import pluginAnimations from "@windicss/plugin-animations";
 import pluginHeropatterns from "@windicss/plugin-heropatterns";
 
 export default defineConfig({
-	//attributify: false,
+	attributify: false,
 	shortcuts: shortcuts(),
-	alias: {
-		hstack: "flex items-center",
-		vstack: "flex flex-col",
-		icon: "w-6 h-6 fill-current",
-		app: "text-red",
-		"app-border": "border-gray-200 dark:border-dark-300",
-	},
 	theme: {
 		//...themeBase(),
 		extend: themeExtend(),
@@ -42,14 +35,14 @@ export default defineConfig({
 	plugins: plugins(),
 	safelist: safelist(),
 	extract: extract(),
-	preflight: {
-		alias: {
-			// add nuxt aliases
-			"nuxt-link": "a",
-			// @nuxt/image module
-			"nuxt-img": "img",
-		},
-	},
+	//preflight: {
+	//	alias: {
+	//		// add nuxt aliases
+	//		"nuxt-link": "a",
+	//		// @nuxt/image module
+	//		"nuxt-img": "img",
+	//	},
+	//},
 });
 
 function safelist() {

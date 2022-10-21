@@ -1,12 +1,21 @@
 <template>
-	<div class="lang">
-		<AppHeader />
-		<slot />
-		<AppFooter />
-	</div>
+	<slot></slot>
 </template>
 
-<script setup></script>
+<script setup>
+	const title = ref("My App");
+	const description = ref("My App Description");
+
+	useHead({
+		title,
+		meta: [
+			{
+				name: "description",
+				content: description,
+			},
+		],
+	});
+</script>
 
 <style lang="scss">
 	.lang {

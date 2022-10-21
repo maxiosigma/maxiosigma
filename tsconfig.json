@@ -1,9 +1,3 @@
 {
-	"extends": "./.nuxt/tsconfig.json",
-	"compilerOptions": {
-		"types": ["@types/node", "@nuxtjs/axios"]
-	},
-	"vueCompilerOptions": {
-		"plugins": ["@volar/vue-language-plugin-pug"]
-	}
+	"extends": "./.nuxt/tsconfig.json"
 }

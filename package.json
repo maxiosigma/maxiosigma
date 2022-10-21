@@ -13,16 +13,13 @@
 		"@windicss/plugin-animations": "^1.0.9",
 		"@windicss/plugin-heropatterns": "^0.0.8",
 		"@windicss/plugin-icons": "^1.0.2",
+		"graphql-tag": "^2.12.6",
 		"nuxt": "3.0.0-rc.12",
 		"nuxt-windicss": "^2.5.2",
-		"pug": "^3.0.2",
-		"stylus": "^0.59.0",
-		"stylus-loader": "^7.1.0",
+		"sass": "^1.55.0",
 		"tailwindcss-elevation": "^1.0.1",
-		"vite-plugin-pug": "^0.3.1"
+		"vite-plugin-windicss": "^1.8.8",
+		"windicss": "^3.5.6"
 	},
-	"dependencies": {
-		"@nuxtjs/axios": "^5.13.6",
-		"vite-plugin-graphql": "^0.1.0"
-	}
+	"dependencies": {}
 }

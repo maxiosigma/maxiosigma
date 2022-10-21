@@ -46,7 +46,14 @@
 //  // to its contents immediately, but you can watch it.
 //})
 
-//"@nuxt/types",
+//"@nuxt/types", "@types/node", "@nuxtjs/axios"
+
+//"compilerOptions": {
+//	"types": []
+//},
+//"vueCompilerOptions": {
+//	"plugins": ["@volar/vue-language-plugin-pug"]
+//}
 
 //const { data } = await useAsyncData('count', () => $fetch('/api/count'))
 //Page visits: {{ data }}
