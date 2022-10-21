@@ -13,6 +13,13 @@ import pluginHeropatterns from "@windicss/plugin-heropatterns";
 export default defineConfig({
 	//attributify: false,
 	shortcuts: shortcuts(),
+	alias: {
+		hstack: "flex items-center",
+		vstack: "flex flex-col",
+		icon: "w-6 h-6 fill-current",
+		app: "text-red",
+		"app-border": "border-gray-200 dark:border-dark-300",
+	},
 	theme: {
 		//...themeBase(),
 		extend: themeExtend(),
@@ -322,6 +329,6 @@ function extract() {
 	};
 }
 
-function range(size, startAt = 1) {
+function range(size = 1, startAt = 1) {
 	return Array.from(Array(size).keys()).map((i) => i + startAt);
 }

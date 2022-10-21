@@ -1,11 +1,11 @@
 {
 	"private": true,
 	"scripts": {
-		"build": "nuxt build",
 		"dev": "nuxt dev",
 		"generate": "nuxt generate",
 		"preview": "nuxt preview",
-		"postinstall": "nuxt prepare"
+		"postinstall": "nuxt prepare",
+		"build": "nuxt build"
 	},
 	"devDependencies": {
 		"@nuxtjs/strapi": "^1.6.1",
@@ -15,10 +15,14 @@
 		"@windicss/plugin-icons": "^1.0.2",
 		"nuxt": "3.0.0-rc.12",
 		"nuxt-windicss": "^2.5.2",
+		"pug": "^3.0.2",
+		"stylus": "^0.59.0",
+		"stylus-loader": "^7.1.0",
 		"tailwindcss-elevation": "^1.0.1",
-		"vue-gtag-next": "^1.14.0"
+		"vite-plugin-pug": "^0.3.1"
 	},
 	"dependencies": {
-		"@nuxtjs/axios": "^5.13.6"
+		"@nuxtjs/axios": "^5.13.6",
+		"vite-plugin-graphql": "^0.1.0"
 	}
 }

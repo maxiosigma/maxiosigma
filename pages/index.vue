@@ -1,71 +1,22 @@
-<template>
-	<div class="w-screen h-screen bg-black"></div>
+<template lang="pug">
+div(class="w-screen h-screen bg-black") 1111111
+	div(class="flex-center") 22223
 </template>
 
+<style lang="stylus">
+	html
+		@apply bg-black;
+</style>
+
 <script setup>
-	onMounted(async () => {});
+	//import gqlWorks from "~/assets/gql/works.gql";
 
-	const graphql = useStrapiGraphQL();
+	//onMounted(async () => {});
 
-	const restaurant = await graphql(`
-		query {
-			works(sort: "top:DESC", pagination: { limit: 2000 }) {
-				data {
-					attributes {
-						title
-						top
-						type
-						media {
-							data {
-								attributes {
-									provider
-									provider_metadata
-									formats
-									caption
-									url
-									alternativeText
-									name
-									height
-									width
-									hash
-									ext
-									mime
-								}
-							}
-						}
-						description
-						link
-						date
-						assets {
-							technologies {
-								data {
-									attributes {
-										title
-									}
-								}
-							}
-							fonts {
-								data {
-									attributes {
-										title
-									}
-								}
-							}
-							models {
-								data {
-									attributes {
-										title
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	`);
+	//const graphql = useStrapiGraphQL();
+	//const works = await graphql(gqlWorks);
+	//console.log(works);
 
-	console.log(restaurant);
+	//const appConfig = useAppConfig();
+	//console.log(appConfig.title);
 </script>
-
-<style lang="scss"></style>

@@ -46,6 +46,8 @@
 //  // to its contents immediately, but you can watch it.
 //})
 
+//"@nuxt/types",
+
 //const { data } = await useAsyncData('count', () => $fetch('/api/count'))
 //Page visits: {{ data }}
 

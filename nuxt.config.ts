@@ -1,4 +1,6 @@
-import gql from "@rollup/plugin-graphql";
+import pug from "vite-plugin-pug";
+//import gql from "@rollup/plugin-graphql";
+import graphqlPlugin from "vite-plugin-graphql";
 import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
@@ -24,7 +26,7 @@ export default defineNuxtConfig({
 		//		},
 		//	},
 		//},
-		plugins: [gql()],
+		plugins: [graphqlPlugin, pug()],
 	},
 
 	strapi: {
