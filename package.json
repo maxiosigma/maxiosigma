@@ -2,24 +2,36 @@
 	"private": true,
 	"scripts": {
 		"dev": "nuxt dev",
+		"devo": "nuxt dev -o",
+		"strapi-dev": "cd ../strapi/ && yarn strapi develop",
 		"generate": "nuxt generate",
 		"preview": "nuxt preview",
-		"postinstall": "nuxt prepare",
+		"postinstall__": "nuxt prepare",
 		"build": "nuxt build"
 	},
 	"devDependencies": {
 		"@nuxtjs/strapi": "^1.6.1",
-		"@rollup/plugin-graphql": "^2.0.0",
+		"@rollup/plugin-graphql": "^2.0.1",
+		"@vueuse/core": "^9.3.1",
+		"@vueuse/nuxt": "^9.3.1",
 		"@windicss/plugin-animations": "^1.0.9",
 		"@windicss/plugin-heropatterns": "^0.0.8",
 		"@windicss/plugin-icons": "^1.0.2",
 		"graphql-tag": "^2.12.6",
 		"nuxt": "3.0.0-rc.12",
+		"nuxt-schema-org": "^1.1.0-beta.5",
 		"nuxt-windicss": "^2.5.2",
 		"sass": "^1.55.0",
+		"stylus": "^0.59.0",
+		"stylus-loader": "^7.1.0",
 		"tailwindcss-elevation": "^1.0.1",
 		"vite-plugin-windicss": "^1.8.8",
 		"windicss": "^3.5.6"
 	},
-	"dependencies": {}
+	"dependencies": {
+		"@vueuse/firebase": "^9.3.1",
+		"@vueuse/gesture": "^2.0.0-beta.1",
+		"@vueuse/motion": "^2.0.0-beta.12",
+		"firebase": "^9.12.1"
+	}
 }

@@ -318,7 +318,19 @@ function extract() {
 
 			"./layouts/*.vue",
 		],
-		exclude: ["node_modules", "dist", ".nuxt", ".firebase", ".vercel", ".vscode", ".github", ".git", "z"],
+		exclude: [
+			//
+			"node_modules",
+			"nuxt.config.ts",
+			"dist",
+			".nuxt",
+			".firebase",
+			".vercel",
+			".vscode",
+			".github",
+			".git",
+			"z",
+		],
 	};
 }
 
