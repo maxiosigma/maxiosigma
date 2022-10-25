@@ -16,7 +16,9 @@
 	//console.log(router.query);
 	//http://localhost:3000#mw
 
-	console.log(`/?${hash.replace("#", "")}`);
+	console.log(useStrapiLinks());
+
+	//console.log(`/?${hash.replace("#", "")}`);
 
 	//if (router.hash) router.redirectedFrom = { path: "/", query: router.hash.replace("#") };
 	if (hash) location.href = `/?${hash.replace("#", "")}`;

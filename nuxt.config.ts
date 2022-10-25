@@ -3,6 +3,7 @@
 //import graphqlPlugin from "vite-plugin-graphql";
 //import WindiCSS from "vite-plugin-windicss";
 import { defineNuxtConfig } from "nuxt/config";
+import graphql from "@rollup/plugin-graphql";
 
 export default defineNuxtConfig({
 	//ssr: true,
@@ -18,6 +19,16 @@ export default defineNuxtConfig({
 	//	//  routes: ['/user/1', '/user/2']
 	//	//}
 	//},
+
+	autoImports: {
+		dirs: ["assets/gql"], // Enable auto-discovery within given folders
+	},
+
+	runtimeConfig: {
+		public: {
+			graphqlUrl: "http://localhost:1337/graphql",
+		},
+	},
 
 	vite: {
 		//	//server: {
@@ -39,8 +50,7 @@ export default defineNuxtConfig({
 				},
 			},
 		},
-		//	//plugins: [WindiCSS()],
-		//	//graphqlPlugin,pug()
+		plugins: [graphql()],
 	},
 
 	strapi: {
