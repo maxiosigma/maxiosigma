@@ -1,3 +1,34 @@
+//<!--<NuxtLayout name="page">-->
+//<!--</NuxtLayout>-->
+
+//import gqlWorks from "~/assets/gql/works.gql";
+
+//onMounted(async () => {});
+
+//const graphql = useStrapiGraphQL();
+//const works = await graphql(gqlWorks);
+//console.log(works);
+
+//const appConfig = useAppConfig();
+//console.log(appConfig.title);
+
+//<Teleport to="body"> <div v-if="open" class="modal">
+//    <p>Hello from the modal!</p>
+//    <button @click="open = false">Close</button>
+//  </div></Teleport>
+
+//useSchemaOrg([
+//	// @todo Select Identity: https://vue-schema-org.netlify.app/guide/guides/identity
+//	defineWebSite({
+//		name: "My Awesome Website",
+//	}),
+//	defineWebPage(),
+//]);
+//const { idle, lastActive } = useIdle(5 * 60 * 1000) // 5 min
+//const title = useTitle('New Title')
+
+//const isLeft = usePageLeave(); // Подожди не уходи ...
+
 //runtimeConfig: частные или общедоступные токены, которые необходимо указать после сборки с использованием переменных среды.
 
 //app.config: общедоступные токены, которые определяются во время сборки, конфигурация веб-сайта, такая как вариант темы, заголовок и любая конфигурация проекта, которые не являются конфиденциальными.

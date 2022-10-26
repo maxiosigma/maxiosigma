@@ -36,8 +36,4 @@
 	});
 </script>
 
-<style lang="stylus">
-	.lang
-		&-ru
-			color red
-</style>
+<style lang="scss"></style>

@@ -38,16 +38,16 @@ export default defineNuxtConfig({
 		//	//		usePolling: true,
 		//	//	},
 		//	//},
-		css: {
-			preprocessorOptions: {
-				//scss: {
-				//	additionalData: '@use "@/assets/_colors.scss" as *;',
-				//},
-				stylus: {
-					use: [stylusApplyPlugin()],
-				},
-			},
-		},
+		//css: {
+		//	preprocessorOptions: {
+		//		//scss: {
+		//		//	additionalData: '@use "@/assets/_colors.scss" as *;',
+		//		//},
+		//		stylus: {
+		//			use: [stylusApplyPlugin()],
+		//		},
+		//	},
+		//},
 		plugins: [
 			//
 			graphql(),
@@ -81,58 +81,45 @@ export default defineNuxtConfig({
 	buildModules: [
 		//
 		"nuxt-windicss",
-		//"nuxt-fontagon",
 		//"@nuxt-hero-icons/outline/nuxt",
 		//"@nuxt-hero-icons/solid/nuxt",
 	],
 
 	modules: [
 		//
-		//"@vueuse/motion/nuxt",
-		//"nuxt-icon",
+		"nuxt-icon",
 		"@vueuse/nuxt",
-		//"@nuxtjs/svg-sprite",
+		//"@nuxtjs/i18n",
 		"nuxt-schema-org",
-		//"@intlify/nuxt3",
 		"@nuxtjs/strapi",
 	],
 
-	//typescript: {
-	//	strict: true,
-	//},
+	// AutoImport
+	// plugins: [] .server .client
 
 	schemaOrg: {
 		canonicalHost: "https://maxiosigma.web.app",
 	},
 
-	//intlify: {
-	//	localeDir: "assets/lang",
-	//	vueI18n: {
-	//		locale: "en-es",
-	//		fallbackLocale: "ru-ru",
-	//	},
-	//},
-
-	//svgSprite: {
-	//	input: "~/assets/svg/",
-	//	output: "~/assets/images/sprite/",
-	//},
-
 	nuxtIcon: {
-		size: "24px", // default <Icon> size applied
+		size: "24px",
 		aliases: {
 			nuxt: "logos:nuxt-icon",
 		},
 	},
+
+	i18n: {
+		/* module options */
+	},
 });
 
-import stylus from "stylus";
-function stylusApplyPlugin() {
-	// = { define: null }
-	return function (style) {
-		style.define("apply", function () {
-			const strings = Object.keys(arguments).map((key) => arguments[key].string);
-			return new stylus.nodes.String(`@apply ${strings.join(" ")};`, " ");
-		});
-	};
-}
+//import stylus from "stylus";
+//function stylusApplyPlugin() {
+//	// = { define: null }
+//	return function (style) {
+//		style.define("apply", function () {
+//			const strings = Object.keys(arguments).map((key) => arguments[key].string);
+//			return new stylus.nodes.String(`@apply ${strings.join(" ")};`, " ");
+//		});
+//	};
+//}
