@@ -1,4 +1,4 @@
-query {
+query Works {
 	works(sort: "top:DESC", pagination: { limit: 2000 }) {
 		data {
 			attributes {

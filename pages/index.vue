@@ -16,7 +16,8 @@
 	//console.log(router.query);
 	//http://localhost:3000#mw
 
-	console.log(useStrapiLinks());
+	//console.log();
+	useStrapiLinks();
 
 	//console.log(`/?${hash.replace("#", "")}`);
 

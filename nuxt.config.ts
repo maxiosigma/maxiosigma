@@ -1,7 +1,3 @@
-//import pug from "vite-plugin-pug";
-//import gql from "@rollup/plugin-graphql";
-//import graphqlPlugin from "vite-plugin-graphql";
-//import WindiCSS from "vite-plugin-windicss";
 import { defineNuxtConfig } from "nuxt/config";
 import graphql from "@rollup/plugin-graphql";
 
@@ -21,8 +17,10 @@ export default defineNuxtConfig({
 	//},
 
 	autoImports: {
-		dirs: ["assets/gql"], // Enable auto-discovery within given folders
+		dirs: ["assets/gql"],
 	},
+
+	//extends: ["./assets/xapi"],
 
 	runtimeConfig: {
 		public: {
@@ -50,11 +48,15 @@ export default defineNuxtConfig({
 				},
 			},
 		},
-		plugins: [graphql()],
+		plugins: [
+			//
+			graphql(),
+			//eslint(),
+		],
 	},
 
 	strapi: {
-		url: process.env.STRAPI_URL || "http://localhost:1337",
+		url: "http://localhost:1337",
 		prefix: "/api",
 		version: "v4",
 	},
@@ -76,13 +78,21 @@ export default defineNuxtConfig({
 	//	},
 	//},
 
-	buildModules: ["nuxt-windicss"],
+	buildModules: [
+		//
+		"nuxt-windicss",
+		//"nuxt-fontagon",
+		"@nuxt-hero-icons/outline/nuxt",
+		"@nuxt-hero-icons/solid/nuxt",
+	],
 
 	modules: [
 		//
-		"@vueuse/nuxt",
 		//"@vueuse/motion/nuxt",
+		"@vueuse/nuxt",
+		"@nuxtjs/svg-sprite",
 		"nuxt-schema-org",
+		"@intlify/nuxt3",
 		"@nuxtjs/strapi",
 	],
 
@@ -92,6 +102,19 @@ export default defineNuxtConfig({
 
 	schemaOrg: {
 		canonicalHost: "https://maxiosigma.web.app",
+	},
+
+	intlify: {
+		localeDir: "assets/lang",
+		vueI18n: {
+			locale: "en-es",
+			fallbackLocale: "ru-ru",
+		},
+	},
+
+	svgSprite: {
+		input: "~/assets/svg/",
+		output: "~/assets/images/sprite/",
 	},
 });
 
