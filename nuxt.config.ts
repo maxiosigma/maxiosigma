@@ -1,5 +1,5 @@
-import { defineNuxtConfig } from "nuxt/config";
 import graphql from "@rollup/plugin-graphql";
+import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
 	//ssr: true,
@@ -16,9 +16,9 @@ export default defineNuxtConfig({
 	//	//}
 	//},
 
-	autoImports: {
-		dirs: ["assets/gql"],
-	},
+	//autoImports: {
+	//	dirs: ["assets/gql"],
+	//},
 
 	//extends: ["./assets/xapi"],
 
@@ -63,7 +63,7 @@ export default defineNuxtConfig({
 
 	css: ["virtual:windi-base.css", "virtual:windi-components.css", "virtual:windi-utilities.css"],
 
-	build: {},
+	//build: {},
 
 	//windicss: {
 	//	analyze: true,
@@ -82,17 +82,18 @@ export default defineNuxtConfig({
 		//
 		"nuxt-windicss",
 		//"nuxt-fontagon",
-		"@nuxt-hero-icons/outline/nuxt",
-		"@nuxt-hero-icons/solid/nuxt",
+		//"@nuxt-hero-icons/outline/nuxt",
+		//"@nuxt-hero-icons/solid/nuxt",
 	],
 
 	modules: [
 		//
 		//"@vueuse/motion/nuxt",
+		//"nuxt-icon",
 		"@vueuse/nuxt",
-		"@nuxtjs/svg-sprite",
+		//"@nuxtjs/svg-sprite",
 		"nuxt-schema-org",
-		"@intlify/nuxt3",
+		//"@intlify/nuxt3",
 		"@nuxtjs/strapi",
 	],
 
@@ -104,17 +105,24 @@ export default defineNuxtConfig({
 		canonicalHost: "https://maxiosigma.web.app",
 	},
 
-	intlify: {
-		localeDir: "assets/lang",
-		vueI18n: {
-			locale: "en-es",
-			fallbackLocale: "ru-ru",
-		},
-	},
+	//intlify: {
+	//	localeDir: "assets/lang",
+	//	vueI18n: {
+	//		locale: "en-es",
+	//		fallbackLocale: "ru-ru",
+	//	},
+	//},
 
-	svgSprite: {
-		input: "~/assets/svg/",
-		output: "~/assets/images/sprite/",
+	//svgSprite: {
+	//	input: "~/assets/svg/",
+	//	output: "~/assets/images/sprite/",
+	//},
+
+	nuxtIcon: {
+		size: "24px", // default <Icon> size applied
+		aliases: {
+			nuxt: "logos:nuxt-icon",
+		},
 	},
 });
 

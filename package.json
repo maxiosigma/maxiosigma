@@ -5,7 +5,8 @@
 		"devo": "nuxt dev -o",
 		"strapi-dev": "cd ../strapi/ && yarn strapi develop",
 		"generate": "nuxt generate",
-		"_predev": ""
+		"test": "node ./assets/svg.ts",
+		"predev": ""
 	},
 	"devDependencies": {
 		"@intlify/nuxt3": "^0.2.4",
@@ -21,6 +22,7 @@
 		"@windicss/plugin-icons": "^1.0.2",
 		"graphql": "^16.6.0",
 		"nuxt": "3.0.0-rc.12",
+		"nuxt-icon": "^0.1.7",
 		"nuxt-schema-org": "^1.1.0-beta.5",
 		"nuxt-windicss": "^2.5.2",
 		"sass": "^1.55.0",
@@ -34,8 +36,6 @@
 		"@nuxt-hero-icons/outline": "^1.0.1",
 		"@nuxt-hero-icons/solid": "^1.0.1",
 		"@nuxtjs/svg": "^0.4.0",
-		"@nuxtjs/svg-sprite": "^0.5.2",
-		"firebase": "^9.12.1",
-		"pathe": "^0.3.9"
+		"firebase": "^9.12.1"
 	}
 }
