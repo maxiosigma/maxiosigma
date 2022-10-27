@@ -3,6 +3,10 @@
 
 //import gqlWorks from "~/assets/gql/works.gql";
 
+//const { x, y } = useMouse();
+//const isDark = usePreferredDark();
+//console.log(isDark.value);
+
 //onMounted(async () => {});
 
 //const graphql = useStrapiGraphQL();

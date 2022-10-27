@@ -2,9 +2,9 @@ import graphql from "@rollup/plugin-graphql";
 import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
-	//ssr: true,
+	ssr: true,
 	//mode: "ssr",
-	//target: "static",
+	target: "static",
 	//modern: "server",
 	//globalName: "app",
 

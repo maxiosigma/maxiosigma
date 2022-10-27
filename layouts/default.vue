@@ -3,17 +3,8 @@
 </template>
 
 <script setup>
-	const title = ref("My App");
-	const description = ref("My App Description");
-	//	<!--<NuxtPage page-key="static" />-->
-	useHead({
-		title,
-		titleTemplate: `%s`,
-		meta: [{ name: "description", content: description }],
-	});
-
 	const props = defineProps({
-		bodyStyle: {
+		bs: {
 			type: String,
 			required: false,
 			default: "body-bg",
@@ -34,6 +25,31 @@
 			default: true,
 		},
 	});
+
+	useHead({
+		titleTemplate: `%s`,
+		htmlAttrs: {
+			class: this.$style.html,
+			//lang: this.lang,
+			prefix: "og: https://ogp.me/ns#",
+			//...(this.isCustomMobile() && { amp: "true" }),
+		},
+		headAttrs: {
+			class: this.$style.head,
+		},
+		bodyAttrs: {
+			class: [this.$style.body ?? "body", this.bs || ""],
+			//...(!this.$config.app.isDev && { oncontextmenu: "return!0" }),
+		},
+		meta: [{}],
+	});
 </script>
 
-<style lang="scss"></style>
+<style lang="scss" module>
+	.html {
+	}
+	.head {
+	}
+	.body {
+	}
+</style>

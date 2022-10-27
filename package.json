@@ -5,6 +5,8 @@
 		"devo": "nuxt dev -o",
 		"strapi-dev": "cd ../strapi/ && yarn strapi develop",
 		"generate": "nuxt generate",
+		"preview": "nuxt preview",
+		"start": "nuxt start",
 		"test": "node ./assets/svg.ts",
 		"predev": ""
 	},
