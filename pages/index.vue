@@ -9,24 +9,13 @@
 	definePageMeta({ layout: "page" });
 
 	const { hash, query } = useRoute();
-	const { links, getApiDataLinks } = useStrapiLinks();
-	await getApiDataLinks();
+	const { push } = useRouter();
 
-	console.log(links.value);
+	//if (hash) location.href = `/link?${hash.replace("#", "")}`;
+	//if (useQueryLength() !== 0) location.href = `/link?${query}`;
 
-	//hash ? location.href = `/?${hash.replace("#", "")}`  : query ? {}: null
-
-	//console.log(links);
-	//const link = links.value?.filter((ln) => ln.short == Object.keys(query)?.[0])?.[0];
-
-	if (hash) location.href = `/?${hash.replace("#", "")}`;
-	else if (query) {
-		//.map((it) => it.short)
-		//console.log();
-		//links?.filter((ln) => ln.short === query).length != 0 ? console.log(query) : null;
-	}
-
-	//console.log(link);
+	if (hash) push({ path: "/link", query: { [hash.replace("#", "")]: true } });
+	if (useQueryLength() !== 0) push({ path: "/link", query });
 
 	//console.log(router.hash);
 	//console.log(router.query);

@@ -5,21 +5,22 @@ export default function () {
 	const getApiDataLinks = async () => {
 		try {
 			const graphql = useStrapiGraphQL();
-			const gql = (await graphql(query())).data.links.data.reduce((sum, it) => {
-				const link = it.attributes;
+			const gql = (await graphql(query())).data.links.data;
+			//.reduce((sum, it) => {
+			//	const link = it.attributes;
 
-				//if (!!link?.partnership && !!link?.title && !!link?.description && !!link?.short)
-				sum.push({
-					title: link?.title,
-					description: link?.description,
-					images: link?.imgs?.data.map((img) => img?.attributes),
-					short: link?.short,
-					tags: link?.tags?.data?.map((tag) => tag?.attributes?.title)?.sort((a, b) => (a?.length > b?.length ? 1 : -1)),
-					top: link?.top,
-				});
+			//	//if (!!link?.partnership && !!link?.title && !!link?.description && !!link?.short)
+			//	sum.push({
+			//		title: link?.title,
+			//		description: link?.description,
+			//		images: link?.imgs?.data.map((img) => img?.attributes),
+			//		short: link?.short,
+			//		tags: link?.tags?.data?.map((tag) => tag?.attributes?.title)?.sort((a, b) => (a?.length > b?.length ? 1 : -1)),
+			//		top: link?.top,
+			//	});
 
-				return sum;
-			}, []);
+			//	return sum;
+			//}, []);
 
 			links.value = gql;
 		} catch (error) {}
