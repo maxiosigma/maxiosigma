@@ -4,7 +4,7 @@
 		"dev": "nuxt dev",
 		"devo": "nuxt dev -o",
 		"strapi-dev": "cd ../strapi/ && yarn strapi develop",
-		"generate": "nuxt generate",
+		"generate": "nuxt generate && nuxt start",
 		"preview": "nuxt preview",
 		"start": "nuxt start",
 		"clean": "npx nuxi clean",

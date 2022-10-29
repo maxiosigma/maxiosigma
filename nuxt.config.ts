@@ -3,11 +3,11 @@ import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
 	ssr: true,
-	telemetry: false,
+	//telemetry: false,
 	//debug: true,
 
 	app: {
-		//buildAssetsDir: "/public/",
+		buildAssetsDir: "/public/",
 		//serverDir
 	},
 
@@ -82,7 +82,7 @@ export default defineNuxtConfig({
 
 	modules: [
 		//
-		"nuxt-icon",
+		//"nuxt-icon",
 		"@vueuse/nuxt",
 		//"@nuxtjs/i18n",
 		"nuxt-schema-org",
@@ -103,9 +103,9 @@ export default defineNuxtConfig({
 		},
 	},
 
-	i18n: {
-		/* module options */
-	},
+	//i18n: {
+	//	/* module options */
+	//},
 });
 
 //import stylus from "stylus";

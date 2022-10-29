@@ -1,22 +1,21 @@
 export default function () {
-	const links = ref();
-	//links.value = [];
-	const graphql = useStrapiGraphQL();
-
-	graphql(query()).then((qry) => {
-		const result = qry?.data?.links?.data?.map((it) => {
-			return {
-				ferd: useCripty(it?.attributes?.href),
-				sh: it?.attributes?.short,
-			};
-		});
-
-		links.value = result;
-	});
-
-	//console.log(links);
-
-	return useState("avocado", () => links || []);
+	//const links = [{ ferd: null, sh: null }];
+	////links.value = [];
+	////const graphql = useStrapiGraphQL();
+	////graphql(query()).then((qry) => {
+	////	const result = qry?.data?.links?.data?.map((it) => {
+	////		return {
+	////			ferd: useCripty(it?.attributes?.href),
+	////			sh: it?.attributes?.short,
+	////		};
+	////	});
+	////	links.push(result);
+	////});
+	////|| []
+	////console.log(links);
+	////const useX = () => useState('x')
+	//const result = useState("links", () => links);
+	//return result;
 }
 
 function query() {
