@@ -1,6 +1,7 @@
 <template>
 	<div class="page">
-		<NuxtPage page-key="static" />
+		<!--<NuxtPage page-key="static" />-->
+		<slot />
 	</div>
 </template>
 

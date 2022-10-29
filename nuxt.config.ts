@@ -2,14 +2,16 @@ import graphql from "@rollup/plugin-graphql";
 import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
-	ssr: true,
+	ssr: false,
+	//target: "static",
+	//mode: "ssr",
 	//telemetry: false,
 	//debug: true,
 
-	app: {
-		buildAssetsDir: "/public/",
-		//serverDir
-	},
+	//app: {
+	//	buildAssetsDir: "/public/",
+	//	//serverDir
+	//},
 
 	//alias: {
 	//	'images': fileURLToPath(new URL('./assets/images', import.meta.url)),
@@ -32,22 +34,22 @@ export default defineNuxtConfig({
 	//optimizeCSS: true,
 
 	experimental: {
-		//inlineSSRStyles: false,
+		inlineSSRStyles: false,
 	},
 
 	vite: {
-		css: {
-			//modules: {
-			//	//localIdentName: "[local]--[Frida]_[hash:base64:4]",
-			//	localsConvention: "camelCaseOnly",
-			//	//generateScopedName:((name: string, filename: string, css: string) => string)
-			//},
-			//preprocessorOptions: {
-			//	scss: {
-			//		//additionalData: '@use "@/assets/_colors.scss" as *;',
-			//	},
-			//},
-		},
+		//css: {
+		//	//modules: {
+		//	//	//localIdentName: "[local]--[Frida]_[hash:base64:4]",
+		//	//	localsConvention: "camelCaseOnly",
+		//	//	//generateScopedName:((name: string, filename: string, css: string) => string)
+		//	//},
+		//	//preprocessorOptions: {
+		//	//	scss: {
+		//	//		//additionalData: '@use "@/assets/_colors.scss" as *;',
+		//	//	},
+		//	//},
+		//},
 		plugins: [
 			//
 			graphql(),
@@ -87,6 +89,7 @@ export default defineNuxtConfig({
 		//"@nuxtjs/i18n",
 		"nuxt-schema-org",
 		"@nuxtjs/strapi",
+		//"nuxt-full-static",
 	],
 
 	// AutoImport

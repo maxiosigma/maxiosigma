@@ -1,6 +1,11 @@
 export default defineNuxtPlugin((nuxtApp) => {
-	if (process.server && !process.browser) {
-		// ...
+	// && !process.browser
+	if (process.server) {
+		return {
+			provide: {
+				hello: (msg: string) => `Hello ${msg}!`,
+			},
+		};
 	}
 });
 

@@ -1,6 +1,7 @@
 <template>
 	<div class="layout-default bg-black">
-		<NuxtPage></NuxtPage>
+		<!--<NuxtPage></NuxtPage>-->
+		<slot />
 	</div>
 </template>
 
