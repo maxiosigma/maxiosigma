@@ -1,34 +1,22 @@
 export default function () {
-	//if (process.server && !process.browser) {}
-	let links = ref([]);
+	const links = ref();
+	//links.value = [];
+	const graphql = useStrapiGraphQL();
 
-	const getApiDataLinks = async () => {
-		try {
-			const graphql = useStrapiGraphQL();
-			const gql = (await graphql(query())).data.links.data;
-			//.reduce((sum, it) => {
-			//	const link = it.attributes;
+	graphql(query()).then((qry) => {
+		const result = qry?.data?.links?.data?.map((it) => {
+			return {
+				ferd: useCripty(it?.attributes?.href),
+				sh: it?.attributes?.short,
+			};
+		});
 
-			//	//if (!!link?.partnership && !!link?.title && !!link?.description && !!link?.short)
-			//	sum.push({
-			//		title: link?.title,
-			//		description: link?.description,
-			//		images: link?.imgs?.data.map((img) => img?.attributes),
-			//		short: link?.short,
-			//		tags: link?.tags?.data?.map((tag) => tag?.attributes?.title)?.sort((a, b) => (a?.length > b?.length ? 1 : -1)),
-			//		top: link?.top,
-			//	});
+		links.value = result;
+	});
 
-			//	return sum;
-			//}, []);
+	//console.log(links);
 
-			links.value = gql;
-		} catch (error) {}
-	};
-
-	//return useState("treatment", () => gql);
-
-	return { links: useState(() => links), getApiDataLinks };
+	return useState("avocado", () => links || []);
 }
 
 function query() {
@@ -71,3 +59,73 @@ function query() {
 	  }
 	 `;
 }
+
+//const foo = ref(null);
+//someAsyncFn().then(value => foo.value = value);
+
+//const getApiDataLinks = async () => {
+//	try {
+//		const graphql = useStrapiGraphQL();
+
+//		graphql(query()).then((qry) => {
+//			console.log();
+
+//			links.value = qry?.data.links.data.map((it) => {
+//					return {
+//					ferd: useCripty(it.attributes?.href),
+//					sh: it.attributes?.short,
+//				};
+//			});
+
+//		});
+
+//		//const gql = (await graphql(query())).data.links.data;
+
+//		////console.log(gql);
+
+//		//links.value = gql.map((it) => {
+//		//	const link = it.attributes;
+
+//		//	return {
+//		//		ferd: useCripty(link?.href),
+//		//		sh: link?.short,
+//		//	};
+//		//});
+
+//		//.reduce((sum, it) => {
+//		//	const link = it.attributes;
+
+//		//	//if (!!link?.partnership && !!link?.title && !!link?.description && !!link?.short)
+//		//	sum.push({
+//		//		//title: link.title,
+//		//		//description: link.description,
+//		//		//images: link?.imgs.data.map((img) => img?.attributes),
+//		//		//tags: link?.tags?.data?.map((tag) => tag?.attributes?.title)?.sort((a, b) => (a?.length > b?.length ? 1 : -1)),
+//		//		//top: link?.top,
+
+//		//		link: useCripty(link?.href),
+//		//		short: link?.short,
+//		//	});
+
+//		//	return sum;
+//		//}, []);
+//	} catch (error) {}
+//};
+
+//if (process.server && !process.browser) {}
+//.reduce((sum, it) => {
+//	const link = it.attributes;
+
+//	//if (!!link?.partnership && !!link?.title && !!link?.description && !!link?.short)
+//	sum.push({
+//		title: link?.title,
+//		description: link?.description,
+//		images: link?.imgs?.data.map((img) => img?.attributes),
+//		short: link?.short,
+//		tags: link?.tags?.data?.map((tag) => tag?.attributes?.title)?.sort((a, b) => (a?.length > b?.length ? 1 : -1)),
+//		top: link?.top,
+//	});
+
+//	return sum;
+//}, []);
+//return useState("treatment", () => gql);

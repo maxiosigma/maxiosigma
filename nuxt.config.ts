@@ -3,12 +3,19 @@ import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
 	ssr: true,
-	//mode: "ssr",
-	target: "static",
-	//modern: "server",
-	//globalName: "app",
+	telemetry: false,
+	//debug: true,
 
-	//globals: { id: () => "app", nuxt: () => "app" },
+	app: {
+		//buildAssetsDir: "/public/",
+		//serverDir
+	},
+
+	//alias: {
+	//	'images': fileURLToPath(new URL('./assets/images', import.meta.url)),
+	//	'style': fileURLToPath(new URL('./assets/style', import.meta.url)),
+	//	'data': fileURLToPath(new URL('./assets/other/data', import.meta.url))
+	//}
 
 	//nitro: {
 	//	//prerender: {
@@ -16,42 +23,34 @@ export default defineNuxtConfig({
 	//	//}
 	//},
 
-	//autoImports: {
-	//	dirs: ["assets/gql"],
-	//},
-
-	//extends: ["./assets/xapi"],
-
 	runtimeConfig: {
 		public: {
 			graphqlUrl: "http://localhost:1337/graphql",
 		},
 	},
 
+	//optimizeCSS: true,
+
+	experimental: {
+		//inlineSSRStyles: false,
+	},
+
 	vite: {
-		//	//server: {
-		//	//	hmr: {
-		//	//		clientPort: 3000,
-		//	//		host: "0.0.0.0",
-		//	//	},
-		//	//	watch: {
-		//	//		usePolling: true,
-		//	//	},
-		//	//},
-		//css: {
-		//	preprocessorOptions: {
-		//		//scss: {
-		//		//	additionalData: '@use "@/assets/_colors.scss" as *;',
-		//		//},
-		//		stylus: {
-		//			use: [stylusApplyPlugin()],
-		//		},
-		//	},
-		//},
+		css: {
+			//modules: {
+			//	//localIdentName: "[local]--[Frida]_[hash:base64:4]",
+			//	localsConvention: "camelCaseOnly",
+			//	//generateScopedName:((name: string, filename: string, css: string) => string)
+			//},
+			//preprocessorOptions: {
+			//	scss: {
+			//		//additionalData: '@use "@/assets/_colors.scss" as *;',
+			//	},
+			//},
+		},
 		plugins: [
 			//
 			graphql(),
-			//eslint(),
 		],
 	},
 
@@ -64,10 +63,6 @@ export default defineNuxtConfig({
 	css: ["virtual:windi-base.css", "virtual:windi-components.css", "virtual:windi-utilities.css"],
 
 	//build: {},
-
-	//windicss: {
-	//	analyze: true,
-	//},
 
 	//runtimeConfig: {
 	//	// The private keys which are only available within server-side

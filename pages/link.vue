@@ -1,13 +1,12 @@
 <template>
-	<div></div>
+	<div>
+		<div v-for="link in links" :key="link.short">
+			{{ link.ferd }}
+		</div>
+	</div>
 </template>
 
 <script setup>
-	//const { links, getApiDataLinks } = useStrapiLinks();
-	//await getApiDataLinks();
-
-	//console.log(links.value);
-
 	//.map((it) => it.short)
 	//console.log();
 	//links?.filter((ln) => ln.short === query).length != 0 ? console.log(query) : null;
@@ -16,12 +15,15 @@
 	//const link = links.value?.filter((ln) => ln.short == Object.keys(query)?.[0])?.[0];
 	//console.log(link);
 
-	const { push } = useRouter();
-	useQueryLength() === 0 ? push({ path: "/" }) : null;
+	const links = useStrapiLinks();
+	//console.log(links);
 
-	//onBeforeMount(async () => {
-	//	useQueryLength() === 0 ? (location.href = "/") : null;
-	//});
+	onMounted(() => {
+		//useQueryLength() === 0 ? (location.href = "/") : null;
+	});
+
+	//const { push } = useRouter();
+	//useQueryLength() === 0 ? push({ path: "/" }) : null;
 </script>
 
 <style lang="scss"></style>

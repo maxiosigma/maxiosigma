@@ -1,6 +1,6 @@
 <template>
-	<div class="layout-default">
-		<NuxtPage />
+	<div class="layout-default bg-black">
+		<NuxtPage></NuxtPage>
 	</div>
 </template>
 
@@ -34,6 +34,7 @@
 	useHead({
 		titleTemplate: `%s`,
 		htmlAttrs: {
+			class: "html",
 			//class: this.$style.html,
 			//lang: this.lang,
 			//prefix: "og: https://ogp.me/ns#",
@@ -41,8 +42,10 @@
 		},
 		headAttrs: {
 			//class: this.$style.head,
+			class: "head",
 		},
 		bodyAttrs: {
+			class: "body",
 			//class: [this.$style.body ?? "body", this.bs || ""],
 			//...(!this.$config.app.isDev && { oncontextmenu: "return!0" }),
 		},
@@ -52,9 +55,12 @@
 
 <style lang="scss">
 	.html {
+		@apply bg-black;
 	}
+
 	.head {
 	}
+
 	.body {
 	}
 </style>

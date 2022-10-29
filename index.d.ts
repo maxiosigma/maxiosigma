@@ -9,3 +9,10 @@ declare module "*.gql" {
 	const value: DocumentNode;
 	export = value;
 }
+
+//declare module "vue/types/vue" {
+//	interface Vue {
+//		// $style: { [key: string]: string }
+//		$style: any;
+//	}
+//}
