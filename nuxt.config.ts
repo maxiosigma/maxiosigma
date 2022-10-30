@@ -4,15 +4,15 @@ import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
 	ssr: true,
-	//target: "static",
+	target: "static",
 	//mode: "ssr",
 	//telemetry: false,
 	//debug: true,
 
-	//app: {
-	//	buildAssetsDir: "/public/",
-	//	//serverDir
-	//},
+	app: {
+		buildAssetsDir: "/public/",
+		//serverDir
+	},
 
 	//alias: {
 	//	'images': fileURLToPath(new URL('./assets/images', import.meta.url)),
@@ -28,14 +28,14 @@ export default defineNuxtConfig({
 
 	runtimeConfig: {
 		public: {
-			graphqlUrl: "http://localhost:1337/graphql",
+			//graphqlUrl: "http://localhost:1337/graphql",
 		},
 	},
 
 	//optimizeCSS: true,
 
 	experimental: {
-		inlineSSRStyles: false,
+		//inlineSSRStyles: false,
 	},
 
 	builder: "webpack",
@@ -43,6 +43,32 @@ export default defineNuxtConfig({
 	webpack: {
 		extractCSS: true,
 		plugins: [new WindiCSSWebpackPlugin()],
+		//filenames: {
+		//	app:
+		//		() =>
+		//		({ isDev }) =>
+		//			isDev ? "[name].js" : "[id].[name].[contenthash].js",
+		//	chunk:
+		//		() =>
+		//		({ isDev }) =>
+		//			isDev ? "[name].js" : "[id].[name].[contenthash].js",
+		//	css:
+		//		() =>
+		//		({ isDev }) =>
+		//			isDev ? "[name].js" : "[id].[name].[contenthash].js",
+		//	img:
+		//		() =>
+		//		({ isDev }) =>
+		//			isDev ? "[name].js" : "[id].[name].[contenthash].js",
+		//	font:
+		//		() =>
+		//		({ isDev }) =>
+		//			isDev ? "[name].js" : "[id].[name].[contenthash].js",
+		//	video:
+		//		() =>
+		//		({ isDev }) =>
+		//			isDev ? "[name].js" : "[id].[name].[contenthash].js",
+		//},
 	},
 
 	//vite: {
@@ -64,11 +90,11 @@ export default defineNuxtConfig({
 	//	],
 	//},
 
-	strapi: {
-		url: "http://localhost:1337",
-		prefix: "/api",
-		version: "v4",
-	},
+	//strapi: {
+	//	url: "http://localhost:1337",
+	//	prefix: "/api",
+	//	version: "v4",
+	//},
 
 	css: [
 		//

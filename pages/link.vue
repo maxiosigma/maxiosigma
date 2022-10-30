@@ -2,10 +2,26 @@
 	<div class="text-light-200">
 		<!--{{ payload }}-->
 		<!--{{ data }}-->
+		<!--{{ links }}-->
 	</div>
 </template>
 
 <script setup>
+	//onServerPrefetch
+
+	onMounted(async () => {
+		//if (process.server) {
+		//const { links, getApiDataLinks } = useStrapiLinks();
+		//process.server ? await getApiDataLinks() : null;
+		////await getApiDataLinks();
+		//console.log(links);
+		////}
+
+		//if (process.server)
+		console.log(useNuxtApp().payload);
+		console.log(useNuxtApp().payload.data);
+	});
+
 	//const links = useState(() => []);
 
 	//if (process.server) {
@@ -17,16 +33,21 @@
 
 	//if (process.server) {
 
-	onMounted(async () => {
-		const gql = useStrapiGraphQL();
-		const query = await gql(gqlQuery());
-		useNuxtApp().payload.data = query;
+	//onMounted(async () => {
+	//	try {
+	//		const gql = useStrapiGraphQL();
+	//		const query = await gql(gqlQuery());
+	//		const test = useState(() => query);
+	//		const test2 = useAsyncData(() => query);
+	//		useNuxtApp().payload.data = query;
+	//		console.log(query);
+	//		console.log(test);
+	//		console.log(test2);
+	//	} catch (error) {}
 
-		console.log(query);
-
-		const payload = useNuxtApp().payload.data;
-		console.log(payload);
-	});
+	//	const payload = useNuxtApp().payload;
+	//	console.log(payload);
+	//});
 
 	//const { data, pending, error } = useAsyncData(
 	//	async () => {
@@ -63,47 +84,6 @@
 	//onMounted(() => {});
 
 	//console.log(links);
-
-	function gqlQuery() {
-		return `
-			query {
-				links(pagination: { limit: 1000 }, sort: "top:DESC") {
-				  data {
-					attributes {
-					  top
-					  href
-					  title
-					  short
-					  description
-					  partnership
-					  updatedAt
-					  alt
-					  imgs {
-						data {
-						  attributes {
-							name
-							alternativeText
-							width
-							height
-							size
-							ext
-							url
-						  }
-						}
-					  }
-					  tags {
-						data {
-						  attributes {
-							title
-						  }
-						}
-					  }
-					}
-				  }
-				}
-			  }
-			 `;
-	}
 	//.map((it) => it.short)
 	//console.log();
 	//links?.filter((ln) => ln.short === query).length != 0 ? console.log(query) : null;

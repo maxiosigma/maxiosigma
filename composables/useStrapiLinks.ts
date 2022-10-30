@@ -1,21 +1,30 @@
 export default function () {
-	//const links = [{ ferd: null, sh: null }];
-	////links.value = [];
-	////const graphql = useStrapiGraphQL();
-	////graphql(query()).then((qry) => {
-	////	const result = qry?.data?.links?.data?.map((it) => {
-	////		return {
-	////			ferd: useCripty(it?.attributes?.href),
-	////			sh: it?.attributes?.short,
-	////		};
-	////	});
-	////	links.push(result);
-	////});
-	////|| []
-	////console.log(links);
-	////const useX = () => useState('x')
-	//const result = useState("links", () => links);
-	//return result;
+	//{ ferd: null, sh: null }
+	const links = ref([]);
+
+	const getApiDataLinks = async () => {
+		try {
+			const graphql = useStrapiGraphQL() ?? null;
+			const qrd = await graphql(query());
+			const result = qrd.data.links.data.map((it) => {
+				return {
+					ferd: useCripty(it?.attributes?.href),
+					sh: it?.attributes?.short,
+				};
+			});
+
+			useNuxtApp().payload.data = {
+				...useNuxtApp().payload.data,
+				links: result,
+			};
+
+			links.value = useNuxtApp().payload.data?.links;
+		} catch (error) {
+			//links.value = useNuxtApp().payload.data?.links;
+		}
+	};
+
+	return { links: useState(() => links), getApiDataLinks };
 }
 
 function query() {
@@ -58,6 +67,21 @@ function query() {
 	  }
 	 `;
 }
+
+////links.value = [];
+////const graphql = useStrapiGraphQL();
+////graphql(query()).then((qry) => {
+////	const result = qry?.data?.links?.data?.map((it) => {
+////		return {
+////			ferd: useCripty(it?.attributes?.href),
+////			sh: it?.attributes?.short,
+////		};
+////	});
+////	links.push(result);
+////});
+////|| []
+////console.log(links);
+////const useX = () => useState('x')
 
 //const foo = ref(null);
 //someAsyncFn().then(value => foo.value = value);
