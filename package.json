@@ -27,11 +27,14 @@
 		"nuxt-schema-org": "^1.1.0-beta.5",
 		"nuxt-windicss": "^2.5.2",
 		"sass": "^1.55.0",
+		"sass-loader": "^7.3.1",
 		"tailwindcss-elevation": "^1.0.1",
 		"vite-plugin-windicss": "^1.8.8",
-		"windicss": "^3.5.6"
+		"windicss": "^3.5.6",
+		"windicss-webpack-plugin": "^1.7.7"
 	},
 	"dependencies": {
+		"@nuxt/webpack-builder": "^3.0.0-rc.12",
 		"@nuxtjs/i18n": "^7.3.0",
 		"@nuxtjs/svg": "^0.4.0",
 		"firebase": "^9.12.1",

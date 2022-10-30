@@ -1,6 +1,6 @@
 <template>
-	<div>
-		{{ payload }}
+	<div class="text-light-200">
+		<!--{{ payload }}-->
 		<!--{{ data }}-->
 	</div>
 </template>
@@ -16,13 +16,17 @@
 	//console.log(hydro);
 
 	//if (process.server) {
-	const gql = useStrapiGraphQL();
-	const query = await gql(gqlQuery());
-	useNuxtApp().payload.data = query;
-	//}
 
-	const payload = useNuxtApp().payload.data;
-	console.log(payload);
+	onMounted(async () => {
+		const gql = useStrapiGraphQL();
+		const query = await gql(gqlQuery());
+		useNuxtApp().payload.data = query;
+
+		console.log(query);
+
+		const payload = useNuxtApp().payload.data;
+		console.log(payload);
+	});
 
 	//const { data, pending, error } = useAsyncData(
 	//	async () => {
@@ -62,43 +66,43 @@
 
 	function gqlQuery() {
 		return `
-		query {
-			links(pagination: { limit: 1000 }, sort: "top:DESC") {
-			  data {
-				attributes {
-				  top
-				  href
-				  title
-				  short
-				  description
-				  partnership
-				  updatedAt
-				  alt
-				  imgs {
-					data {
-					  attributes {
-						name
-						alternativeText
-						width
-						height
-						size
-						ext
-						url
+			query {
+				links(pagination: { limit: 1000 }, sort: "top:DESC") {
+				  data {
+					attributes {
+					  top
+					  href
+					  title
+					  short
+					  description
+					  partnership
+					  updatedAt
+					  alt
+					  imgs {
+						data {
+						  attributes {
+							name
+							alternativeText
+							width
+							height
+							size
+							ext
+							url
+						  }
+						}
 					  }
-					}
-				  }
-				  tags {
-					data {
-					  attributes {
-						title
+					  tags {
+						data {
+						  attributes {
+							title
+						  }
+						}
 					  }
 					}
 				  }
 				}
 			  }
-			}
-		  }
-		 `;
+			 `;
 	}
 	//.map((it) => it.short)
 	//console.log();

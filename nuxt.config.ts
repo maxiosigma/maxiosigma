@@ -1,8 +1,9 @@
-import graphql from "@rollup/plugin-graphql";
+//import graphql from "@rollup/plugin-graphql";
+import WindiCSSWebpackPlugin from "windicss-webpack-plugin";
 import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
-	ssr: false,
+	ssr: true,
 	//target: "static",
 	//mode: "ssr",
 	//telemetry: false,
@@ -37,24 +38,31 @@ export default defineNuxtConfig({
 		inlineSSRStyles: false,
 	},
 
-	vite: {
-		//css: {
-		//	//modules: {
-		//	//	//localIdentName: "[local]--[Frida]_[hash:base64:4]",
-		//	//	localsConvention: "camelCaseOnly",
-		//	//	//generateScopedName:((name: string, filename: string, css: string) => string)
-		//	//},
-		//	//preprocessorOptions: {
-		//	//	scss: {
-		//	//		//additionalData: '@use "@/assets/_colors.scss" as *;',
-		//	//	},
-		//	//},
-		//},
-		plugins: [
-			//
-			graphql(),
-		],
+	builder: "webpack",
+
+	webpack: {
+		extractCSS: true,
+		plugins: [new WindiCSSWebpackPlugin()],
 	},
+
+	//vite: {
+	//	//css: {
+	//	//	//modules: {
+	//	//	//	//localIdentName: "[local]--[Frida]_[hash:base64:4]",
+	//	//	//	localsConvention: "camelCaseOnly",
+	//	//	//	//generateScopedName:((name: string, filename: string, css: string) => string)
+	//	//	//},
+	//	//	//preprocessorOptions: {
+	//	//	//	scss: {
+	//	//	//		//additionalData: '@use "@/assets/_colors.scss" as *;',
+	//	//	//	},
+	//	//	//},
+	//	//},
+	//	plugins: [
+	//		//
+	//		graphql(),
+	//	],
+	//},
 
 	strapi: {
 		url: "http://localhost:1337",
@@ -62,7 +70,12 @@ export default defineNuxtConfig({
 		version: "v4",
 	},
 
-	css: ["virtual:windi-base.css", "virtual:windi-components.css", "virtual:windi-utilities.css"],
+	css: [
+		//
+		//"virtual:windi-base.css",
+		// "virtual:windi-components.css",
+		//  "virtual:windi-utilities.css"
+	],
 
 	//build: {},
 
@@ -77,7 +90,7 @@ export default defineNuxtConfig({
 
 	buildModules: [
 		//
-		"nuxt-windicss",
+		//"nuxt-windicss",
 		//"@nuxt-hero-icons/outline/nuxt",
 		//"@nuxt-hero-icons/solid/nuxt",
 	],
