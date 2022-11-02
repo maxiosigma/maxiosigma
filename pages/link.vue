@@ -7,11 +7,12 @@
 	const { query } = useRoute();
 	const { links } = useNuxtApp().payload.data;
 
-	onMounted(async () => {
+	onMounted(() => {
 		if (Object.keys(query).length !== 0 && !useUtm(query)) {
 			const link = links?.filter((ln) => ln.sh == Object.keys(query)?.[0])?.[0]?.ferd;
+			const uns = useUncript(link);
 
-			if (link) location.href = useUncript(link);
+			if (link && uns) location.href = uns;
 			else push({ path: "/" });
 		} else {
 			push({ path: "/" });
