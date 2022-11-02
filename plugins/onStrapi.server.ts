@@ -1,64 +1,65 @@
+import graphql from "~/assets/index.graphql";
+
 export default defineNuxtPlugin(async (nuxtApp) => {
-	//try {
-	//} catch (error) {
-	//	console.log("Error: ", error);
-	//}
-	const graphql = useStrapiGraphQL() ?? null;
-	const qrd = await graphql(query());
-	const result = qrd.data.links.data.map((it) => {
+	useNuxtApp().payload.data = {
+		...useNuxtApp().payload.data,
+		links: await strapLinks(),
+		publics: await strapPublics(),
+		menu_footer: await strapMenuFooter(),
+		menu_social: await strapMenuNavSocial(),
+		menu_nav: await strapMenuNav(),
+		works: await strapWorks(),
+	};
+});
+
+async function strapPublics() {
+	const query = await useStrapiGraphQL()(graphql.publics());
+	return query.data.publicateds.data.map((it) => it.attributes);
+}
+
+async function strapLinks() {
+	const query = await useStrapiGraphQL()(graphql.links());
+	return query.data.links.data.map((it) => {
 		return {
 			ferd: useCripty(it?.attributes?.href),
 			sh: it?.attributes?.short,
 		};
 	});
+}
 
-	useNuxtApp().payload.data = {
-		...useNuxtApp().payload.data,
-		links: result,
-	};
+async function strapWorks() {
+	const query = await useStrapiGraphQL()(graphql.works());
+	return query.data.works.data.map((it) => {
+		const attr = it.attributes;
 
-	//useRuntimeConfig()
+		return {
+			...attr,
+			assets: {
+				fonts: attr.assets.fonts.data.map((as) => as.attributes.title),
+				models: attr.assets.models.data.map((as) => as.attributes.title),
+				technologies: attr.assets.technologies.data.map((as) => as.attributes.title),
+			},
+			media: attr.media.data.map((md) => {
+				const alt = md.attributes.alternativeText;
+				delete md.attributes.alternativeText;
 
-	return {};
-});
+				return { ...md.attributes, alt };
+			}),
+		};
+	});
+}
 
-function query() {
-	return `
-	query {
-		links(pagination: { limit: 1000 }, sort: "top:DESC") {
-		  data {
-			attributes {
-			  top
-			  href
-			  title
-			  short
-			  description
-			  partnership
-			  updatedAt
-			  alt
-			  imgs {
-				data {
-				  attributes {
-					name
-					alternativeText
-					width
-					height
-					size
-					ext
-					url
-				  }
-				}
-			  }
-			  tags {
-				data {
-				  attributes {
-					title
-				  }
-				}
-			  }
-			}
-		  }
-		}
-	  }
-	 `;
+async function strapMenuNav() {
+	const query = await useStrapiGraphQL()(graphql.menu("nav"));
+	return query.renderNavigation;
+}
+
+async function strapMenuFooter() {
+	const query = await useStrapiGraphQL()(graphql.menu("footer"));
+	return query.renderNavigation;
+}
+
+async function strapMenuNavSocial() {
+	const query = await useStrapiGraphQL()(graphql.menu("social"));
+	return query.renderNavigation;
 }
