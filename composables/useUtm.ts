@@ -1,4 +1,4 @@
-export default function (query) {
+export default function (query = {}) {
 	return (
 		["utm_", "gtm_"].reduce(
 			(sum, label) =>

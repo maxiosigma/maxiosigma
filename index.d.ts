@@ -10,6 +10,13 @@ declare module "*.gql" {
 	export = value;
 }
 
+declare module "vue/types/vue" {
+	interface Vue {
+		// $style: { [key: string]: string }
+		$style: any;
+	}
+}
+
 //declare module "vue/types/vue" {
 //	interface Vue {
 //		// $style: { [key: string]: string }

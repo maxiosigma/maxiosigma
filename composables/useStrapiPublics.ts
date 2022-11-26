@@ -1,6 +1,6 @@
 export default async function () {
 	const graphql = useStrapiGraphQL();
-	const gql = (await graphql(query())).data;
+	const gql = (await graphql(query()))?.data;
 	const result = gql.publicateds.data.map((it) => it.attributes);
 
 	return result;

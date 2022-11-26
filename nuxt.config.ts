@@ -6,7 +6,7 @@ import { defineNuxtConfig } from "nuxt/config";
 
 export default defineNuxtConfig({
 	ssr: true,
-	debug: true,
+	//debug: true,
 	telemetry: false,
 	app: {
 		rootId: "app",
@@ -24,13 +24,17 @@ export default defineNuxtConfig({
 		css: {
 			modules: {
 				localsConvention: "camelCaseOnly",
+				//generateScopedName: (name, filename, css) => `${name}_${css}`, // "[name]:[hash:10]"
+				//generateScopedName: "[hash:base64:10]",
+				generateScopedName: "▬[local]_[hash:base32:5]",
 			},
-			preprocessorOptions: {
-				scss: {},
-			},
+			//preprocessorOptions: {
+			//	scss: {},
+			//},
 		},
 		plugins: [],
 	},
+
 	build: {
 		transpile: ["animejs"], //, "windicss-webpack-plugin"
 	},

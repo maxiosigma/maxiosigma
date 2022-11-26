@@ -1,3 +1,6 @@
+//maxiosigma-nuxt-test.firebaseapp.com
+//firebase hosting:channel:deploy preview --expores 1h
+
 //<!--<NuxtLayout name="page">-->
 //<!--</NuxtLayout>-->
 

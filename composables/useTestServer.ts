@@ -1,7 +1,7 @@
 export default defineNuxtPlugin(async (nuxtApp) => {
 	const graphql = useStrapiGraphQL() ?? null;
 	const qrd = await graphql(query());
-	const result = qrd.data.links.data.map((it) => {
+	const result = qrd?.data?.links.data.map((it) => {
 		return {
 			ferd: useCripty(it?.attributes?.href),
 			sh: it?.attributes?.short,

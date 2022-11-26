@@ -1,6 +1,5 @@
 <template>
 	<div class="layout-default bg-black">
-		<!--<NuxtPage></NuxtPage>-->
 		<slot />
 	</div>
 </template>
@@ -8,6 +7,7 @@
 <script setup>
 	//<!-- page-key="static"  -->
 	//console.log(useStyleTag());
+	//		<!--<NuxtPage></NuxtPage>-->
 
 	const props = defineProps({
 		bs: {
@@ -25,31 +25,13 @@
 			required: false,
 			default: undefined,
 		},
-		preloader: {
-			type: Boolean,
-			required: false,
-			default: true,
-		},
 	});
 
 	useHead({
 		titleTemplate: `%s`,
-		htmlAttrs: {
-			class: "html",
-			//class: this.$style.html,
-			//lang: this.lang,
-			//prefix: "og: https://ogp.me/ns#",
-			//...(this.isCustomMobile() && { amp: "true" }),
-		},
-		headAttrs: {
-			//class: this.$style.head,
-			class: "head",
-		},
-		bodyAttrs: {
-			class: "body",
-			//class: [this.$style.body ?? "body", this.bs || ""],
-			//...(!this.$config.app.isDev && { oncontextmenu: "return!0" }),
-		},
+		htmlAttrs: { class: "html" },
+		headAttrs: { class: "head" },
+		bodyAttrs: { class: "body" },
 		meta: [{}],
 	});
 </script>

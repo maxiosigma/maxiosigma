@@ -1,15 +1,19 @@
 <template>
-	<div class="page">
-		<!--<NuxtPage page-key="static" />-->
-		<slot />
-	</div>
+	<NuxtLayout name="default">
+		<div :class="$style.page">
+			<slot />
+		</div>
+	</NuxtLayout>
 </template>
 
 <script setup>
-	definePageMeta({ layout: "default" });
+	//import styles from "$style";
+	//<!--<NuxtPage page-key="static" />-->
+
+	//console.log(useNuxtApp());
 
 	const props = defineProps({
-		bodyStyle: {
+		bs: {
 			type: String,
 			required: false,
 			default: "body-bg",
@@ -31,6 +35,12 @@
 		},
 	});
 </script>
+
+<style module scoped>
+	.page {
+		@apply text-white;
+	}
+</style>
 
 <style lang="scss">
 	.header {

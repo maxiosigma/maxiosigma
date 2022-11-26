@@ -1,6 +1,6 @@
 export default async function (slug = "nav") {
 	const graphql = useStrapiGraphQL();
-	const gql = (await graphql(query(slug))).data;
+	const gql = (await graphql(query(slug)))?.data;
 	const result = gql.renderNavigation;
 	return result;
 
