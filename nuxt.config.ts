@@ -1,153 +1,50 @@
 //import graphql from "@rollup/plugin-graphql";
-import WindiCSSWebpackPlugin from "windicss-webpack-plugin";
+//import WindiCSSWebpackPlugin from "windicss-webpack-plugin";
 import { defineNuxtConfig } from "nuxt/config";
+
+//const dev = process.env.
 
 export default defineNuxtConfig({
 	ssr: true,
-	target: "static",
-	//mode: "ssr",
-	//telemetry: false,
-	//debug: true,
-
+	debug: true,
+	telemetry: false,
 	app: {
+		rootId: "app",
+		rootTag: 'div class="wrapper"',
 		buildAssetsDir: "/public/",
-		//serverDir
+		layoutTransition: false,
+		pageTransition: false,
 	},
-
-	//alias: {
-	//	'images': fileURLToPath(new URL('./assets/images', import.meta.url)),
-	//	'style': fileURLToPath(new URL('./assets/style', import.meta.url)),
-	//	'data': fileURLToPath(new URL('./assets/other/data', import.meta.url))
-	//}
-
-	//nitro: {
-	//	//prerender: {
-	//	//  routes: ['/user/1', '/user/2']
-	//	//}
-	//},
-
-	runtimeConfig: {
-		public: {
-			//graphqlUrl: "http://localhost:1337/graphql",
-		},
-	},
-
-	//optimizeCSS: true,
-
 	experimental: {
-		//inlineSSRStyles: false,
+		inlineSSRStyles: false,
+		payloadExtraction: true,
+		treeshakeClientOnly: false,
 	},
-
-	builder: "webpack",
-
-	webpack: {
-		extractCSS: true,
-		plugins: [new WindiCSSWebpackPlugin()],
-		//filenames: {
-		//	app:
-		//		() =>
-		//		({ isDev }) =>
-		//			isDev ? "[name].js" : "[id].[name].[contenthash].js",
-		//	chunk:
-		//		() =>
-		//		({ isDev }) =>
-		//			isDev ? "[name].js" : "[id].[name].[contenthash].js",
-		//	css:
-		//		() =>
-		//		({ isDev }) =>
-		//			isDev ? "[name].js" : "[id].[name].[contenthash].js",
-		//	img:
-		//		() =>
-		//		({ isDev }) =>
-		//			isDev ? "[name].js" : "[id].[name].[contenthash].js",
-		//	font:
-		//		() =>
-		//		({ isDev }) =>
-		//			isDev ? "[name].js" : "[id].[name].[contenthash].js",
-		//	video:
-		//		() =>
-		//		({ isDev }) =>
-		//			isDev ? "[name].js" : "[id].[name].[contenthash].js",
-		//},
+	vite: {
+		css: {
+			modules: {
+				localsConvention: "camelCaseOnly",
+			},
+			preprocessorOptions: {
+				scss: {},
+			},
+		},
+		plugins: [],
 	},
-
-	//vite: {
-	//	//css: {
-	//	//	//modules: {
-	//	//	//	//localIdentName: "[local]--[Frida]_[hash:base64:4]",
-	//	//	//	localsConvention: "camelCaseOnly",
-	//	//	//	//generateScopedName:((name: string, filename: string, css: string) => string)
-	//	//	//},
-	//	//	//preprocessorOptions: {
-	//	//	//	scss: {
-	//	//	//		//additionalData: '@use "@/assets/_colors.scss" as *;',
-	//	//	//	},
-	//	//	//},
-	//	//},
-	//	plugins: [
-	//		//
-	//		graphql(),
-	//	],
-	//},
-
-	//strapi: {
-	//	url: "http://localhost:1337",
-	//	prefix: "/api",
-	//	version: "v4",
-	//},
-
-	css: [
-		//
-		//"virtual:windi-base.css",
-		// "virtual:windi-components.css",
-		//  "virtual:windi-utilities.css"
-	],
-
-	//build: {},
-
-	buildModules: [
-		//
-		//"nuxt-windicss",
-		//"@nuxt-hero-icons/outline/nuxt",
-		//"@nuxt-hero-icons/solid/nuxt",
-	],
-
+	build: {
+		transpile: ["animejs"], //, "windicss-webpack-plugin"
+	},
 	modules: [
-		//
-		//"nuxt-icon",
-		"@vueuse/nuxt",
-		//"@nuxtjs/i18n",
-		"nuxt-schema-org",
+		"nuxt-windicss",
 		"@nuxtjs/strapi",
+		"@vueuse/nuxt",
+
+		//"nuxt-icon",
+		//"@nuxtjs/i18n",
+		//"nuxt-schema-org",
 		//"nuxt-full-static",
 	],
-
-	// AutoImport
-	// plugins: [] .server .client
-
-	schemaOrg: {
-		canonicalHost: "https://maxiosigma.web.app",
-	},
-
-	nuxtIcon: {
-		size: "24px",
-		aliases: {
-			nuxt: "logos:nuxt-icon",
-		},
-	},
-
-	//i18n: {
-	//	/* module options */
-	//},
 });
 
-//import stylus from "stylus";
-//function stylusApplyPlugin() {
-//	// = { define: null }
-//	return function (style) {
-//		style.define("apply", function () {
-//			const strings = Object.keys(arguments).map((key) => arguments[key].string);
-//			return new stylus.nodes.String(`@apply ${strings.join(" ")};`, " ");
-//		});
-//	};
-//}
+// builder: "webpack",
+// 	css: [],
