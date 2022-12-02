@@ -10,7 +10,8 @@
 		"clean": "npx nuxi clean",
 		"test": "node ./assets/svg.ts",
 		"predev": "",
-		"serve": "nuxt serve"
+		"serve": "nuxt serve",
+		"f:preview": "firebase hosting:channel:deploy preview"
 	},
 	"devDependencies": {
 		"@nuxt/webpack-builder": "^3.0.0",

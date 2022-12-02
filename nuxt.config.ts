@@ -2,6 +2,8 @@
 //import WindiCSSWebpackPlugin from "windicss-webpack-plugin";
 import { defineNuxtConfig } from "nuxt/config";
 
+//firebase hosting:channel:deploy preview
+
 //const dev = process.env.
 
 export default defineNuxtConfig({
@@ -26,7 +28,7 @@ export default defineNuxtConfig({
 				localsConvention: "camelCaseOnly",
 				//generateScopedName: (name, filename, css) => `${name}_${css}`, // "[name]:[hash:10]"
 				//generateScopedName: "[hash:base64:10]",
-				generateScopedName: "▬[local]_[hash:base32:5]",
+				generateScopedName: "[local]_[hash:base32:5]",
 			},
 			//preprocessorOptions: {
 			//	scss: {},
