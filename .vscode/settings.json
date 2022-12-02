@@ -1,17 +1,17 @@
 {
 	"files.exclude": {
 		"README.md": true,
-		"package-lock.json": false,
-		"node_modules": false,
-		"dist": false,
+		"package-lock.json": true,
+		"node_modules": true,
+		"dist": true,
 		"**/Thumbs.db": true,
 		"**/CVS": true,
 		"**/.svn": true,
 		"**/.hg": true,
 		"**/.git": true,
 		"**/.DS_Store": true,
-		".netlify": false,
-		".gitignore": false
+		".netlify": true,
+		".gitignore": true
 	},
 	"explorerExclude.backup": null
 }
