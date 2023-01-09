@@ -47,6 +47,9 @@
 	},
 	"dependencies": {
 		"@vitalets/google-translate-api": "^9.0.0",
+		"@vueuse/integrations": "^9.10.0",
+		"@vueuse/motion": "^2.0.0-beta.12",
+		"@vueuse/router": "^9.10.0",
 		"google-translate-api-x": "^10.5.2",
 		"vite-plugin-inline-css-modules": "^0.0.7"
 	}

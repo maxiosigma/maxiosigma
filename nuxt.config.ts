@@ -43,7 +43,11 @@ export default defineNuxtConfig({
 	modules: [
 		"nuxt-windicss",
 		"@nuxtjs/strapi",
+
 		"@vueuse/nuxt",
+		//"@vueuse/motion/nuxt",
+		//"@vueuse/integrations",
+		//"@vueuse/router",
 
 		//"nuxt-icon",
 		//"@nuxtjs/i18n",
