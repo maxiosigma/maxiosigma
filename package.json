@@ -12,15 +12,11 @@
 		"test": "node ./assets/svg.ts",
 		"predev": "",
 		"serve": "nuxt serve",
-		"f:preview": "firebase hosting:channel:deploy preview",
-		"deploy_all": "",
-		"firebase:deploy": "",
-		"netlify:deploy": "",
-		"versel:deploy": ""
+		"f:preview": "firebase hosting:channel:deploy preview"
 	},
 	"devDependencies": {
 		"@nuxt/webpack-builder": "^3.0.0",
-		"@nuxtjs/i18n": "^7.3.1",
+		"@nuxtjs/i18n": "^8.0.0-beta.7",
 		"@nuxtjs/strapi": "^1.6.3",
 		"@nuxtjs/svg": "^0.4.0",
 		"@rollup/plugin-graphql": "^2.0.2",
@@ -46,6 +42,7 @@
 		"windicss-webpack-plugin": "^1.7.7"
 	},
 	"dependencies": {
+		"@nuxt/types": "^2.15.8",
 		"@vitalets/google-translate-api": "^9.0.0",
 		"@vueuse/integrations": "^9.10.0",
 		"@vueuse/motion": "^2.0.0-beta.12",

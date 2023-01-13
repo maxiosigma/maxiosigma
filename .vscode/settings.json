@@ -3,7 +3,6 @@
 		"README.md": true,
 		"package-lock.json": true,
 		"node_modules": true,
-		"dist": true,
 		"**/Thumbs.db": true,
 		"**/CVS": true,
 		"**/.svn": true,
@@ -11,6 +10,7 @@
 		"**/.git": true,
 		"**/.DS_Store": true,
 		".netlify": true,
+		".firebase": true,
 		".gitignore": true
 	},
 	"explorerExclude.backup": null

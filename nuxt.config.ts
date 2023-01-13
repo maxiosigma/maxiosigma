@@ -36,21 +36,31 @@ export default defineNuxtConfig({
 		},
 		plugins: [],
 	},
-
 	build: {
 		transpile: ["animejs"], //, "windicss-webpack-plugin"
 	},
+	i18n: {
+		lazy: false,
+		strategy: "prefix",
+		defaultLocale: "en",
+		vueI18n: {
+			fallbackLocale: ["ru"],
+		},
+		detectBrowserLanguage: {
+			useCookie: true,
+			cookieKey: "lang",
+		},
+		locales: locales(),
+	},
 	modules: [
+		"@nuxtjs/i18n",
 		"nuxt-windicss",
 		"@nuxtjs/strapi",
-
 		"@vueuse/nuxt",
-		//"@vueuse/motion/nuxt",
+		//"@vueuse/motion",
 		//"@vueuse/integrations",
 		//"@vueuse/router",
-
 		//"nuxt-icon",
-		//"@nuxtjs/i18n",
 		//"nuxt-schema-org",
 		//"nuxt-full-static",
 	],
@@ -58,3 +68,16 @@ export default defineNuxtConfig({
 
 // builder: "webpack",
 // 	css: [],
+
+function locales() {
+	const locales_pc = [
+		{ code: "en", iso: "en-ES", name: "English", file: "en-ES.js" },
+		{ code: "ru", iso: "ru-RU", name: "Русский", file: "ru-RU.js" },
+	];
+
+	const locales_mobile = locales_pc.map((locale) => {
+		return { ...locale, code: locale.code + "-amp" };
+	});
+
+	return [...locales_pc, ...locales_mobile];
+}
