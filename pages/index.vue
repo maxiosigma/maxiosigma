@@ -18,7 +18,7 @@ definePageMeta({ layout: "page" })
 
 <style lang="scss">
 html {
-    @apply bg-black;
+    @apply bg-self-1;
 }
 
 .mirror {

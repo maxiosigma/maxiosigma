@@ -1,98 +1,93 @@
 <template>
-	<NuxtLayout name="default">
-		<div :class="$style.page">
-			<slot />
-		</div>
-	</NuxtLayout>
+    <NuxtLayout name="default">
+        <div :class="$style.page">
+            <slot />
+        </div>
+    </NuxtLayout>
 </template>
 
 <script setup>
-	//import styles from "$style";
-	//<!--<NuxtPage page-key="static" />-->
-
-	//console.log(useNuxtApp());
-
-	const props = defineProps({
-		bs: {
-			type: String,
-			required: false,
-			default: "body-bg",
-		},
-		title: {
-			type: String,
-			required: false,
-			default: undefined,
-		},
-		description: {
-			type: String,
-			required: false,
-			default: undefined,
-		},
-		preloader: {
-			type: Boolean,
-			required: false,
-			default: true,
-		},
-	});
+const props = defineProps({
+    bs: {
+        type: String,
+        required: false,
+        default: "body-bg",
+    },
+    title: {
+        type: String,
+        required: false,
+        default: undefined,
+    },
+    description: {
+        type: String,
+        required: false,
+        default: undefined,
+    },
+    preloader: {
+        type: Boolean,
+        required: false,
+        default: true,
+    },
+})
 </script>
 
 <style module scoped>
-	.page {
-		@apply text-white;
-	}
+.page {
+    @apply text-white;
+}
 </style>
 
 <style lang="scss">
-	.header {
-		@apply flex-grow-0 flex-shrink-0 z-10 relative;
-	}
+.header {
+    @apply flex-grow-0 flex-shrink-0 z-10 relative;
+}
 
-	.nav {
-		@apply w-full z-20 relative;
+.nav {
+    @apply w-full z-20 relative;
 
-		&-bar {
-			@apply min-h-8vh top-0 z-20 fixed;
-		}
+    &-bar {
+        @apply min-h-8vh top-0 z-20 fixed;
+    }
 
-		&-pre {
-			&-bar {
-				@apply min-w-screen min-h-8vh z-0 relative;
-			}
+    &-pre {
+        &-bar {
+            @apply min-w-screen min-h-8vh z-0 relative;
+        }
 
-			&-cont {
-				@apply min-w-screen min-h-64px z-0 relative;
-			}
-		}
-	}
+        &-cont {
+            @apply min-w-screen min-h-64px z-0 relative;
+        }
+    }
+}
 
-	.footer {
-		@apply flex-grow-0 flex-shrink-0 z-20 relative;
-	}
+.footer {
+    @apply flex-grow-0 flex-shrink-0 z-20 relative;
+}
 
-	.preload {
-		&-show {
-			@apply max-h-none opacity-100 transition-all duration-250 delay-250;
+.preload {
+    &-show {
+        @apply max-h-none opacity-100 transition-all duration-250 delay-250;
 
-			&-nav-bar {
-				@apply opacity-100 transition-all duration-1000 delay-1000;
-			}
+        &-nav-bar {
+            @apply opacity-100 transition-all duration-1000 delay-1000;
+        }
 
-			&-header {
-				@apply h-auto opacity-100 transition-opacity duration-75;
-			}
-		}
+        &-header {
+            @apply h-auto opacity-100 transition-opacity duration-75;
+        }
+    }
 
-		&-hide {
-			@apply max-h-screen opacity-0 transition-all duration-250 delay-0 overflow-hidden pointer-events-none;
+    &-hide {
+        @apply max-h-screen opacity-0 transition-all duration-250 delay-0 overflow-hidden pointer-events-none;
 
-			&-nav-bar {
-				@apply opacity-0;
-				@apply hidden #{!important};
-			}
+        &-nav-bar {
+            @apply opacity-0;
+            @apply hidden #{!important};
+        }
 
-			&-header {
-				@apply h-0 opacity-0 transition-opacity overflow-hidden;
-			}
-		}
-	}
+        &-header {
+            @apply h-0 opacity-0 transition-opacity overflow-hidden;
+        }
+    }
+}
 </style>
