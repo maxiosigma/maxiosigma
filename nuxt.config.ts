@@ -1,10 +1,4 @@
-//import graphql from "@rollup/plugin-graphql";
-//import WindiCSSWebpackPlugin from "windicss-webpack-plugin";
 import { defineNuxtConfig } from "nuxt/config";
-
-//firebase hosting:channel:deploy preview
-
-//const dev = process.env.
 
 export default defineNuxtConfig({
 	ssr: true,
@@ -26,18 +20,13 @@ export default defineNuxtConfig({
 		css: {
 			modules: {
 				localsConvention: "camelCaseOnly",
-				//generateScopedName: (name, filename, css) => `${name}_${css}`, // "[name]:[hash:10]"
-				//generateScopedName: "[hash:base64:10]",
 				generateScopedName: "[local]_[hash:base32:5]",
 			},
-			//preprocessorOptions: {
-			//	scss: {},
-			//},
 		},
 		plugins: [],
 	},
 	build: {
-		transpile: ["animejs"], //, "windicss-webpack-plugin"
+		transpile: ["animejs"],
 	},
 	i18n: {
 		lazy: false,
@@ -65,9 +54,6 @@ export default defineNuxtConfig({
 		//"nuxt-full-static",
 	],
 });
-
-// builder: "webpack",
-// 	css: [],
 
 function locales() {
 	const locales_pc = [

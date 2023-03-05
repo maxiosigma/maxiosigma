@@ -18,6 +18,14 @@
 	//		push({ path: "/" });
 	//	}
 	//});
+
+	//const { hash, query } = useRoute();
+	//const { push } = useRouter();
+
+	//useNuxtApp().payload.data = {};
+
+	//if (hash && !useUtm(query)) push({ path: "/link", query: { [hash.replace("#", "")]: true } });
+	//if (useQueryLength() !== 0 && !useUtm(query)) push({ path: "/link", query });
 </script>
 
 <style lang="scss"></style>
