@@ -2,21 +2,27 @@
     <img
         v-if="getImage() && !bg"
         :src="getImage()"
-        :width="widthImg"
-        :height="heightImg"
+        :width="width"
+        :height="height"
+        :class="['img-render']"
         :alt="alt"
         :title="title"
         :aria-label="title"
-        :class="[id, 'img-render']"
+        :id="id"
         itemprop="image"
     />
 
-    <div v-if="getImage() && bg" :class="[id, 'img-bg-mod']" :title="title" :alt="alt" itemprop="image">
+    <div v-else-if="getImage() && bg" :id="id" :class="['img-render']" :title="title" :alt="alt" itemprop="image">
         <slot></slot>
     </div>
 </template>
 
 <script setup>
+// v-bind="$attrs"
+// v-bind="$attrs"
+// :class="[id, 'img-render']"
+//:class="[id, 'img-bg-mod']"
+
 const { src, alt, title, bg } = defineProps({
     src: { required: true, type: String },
     alt: { type: String, default: "img" },
@@ -24,9 +30,9 @@ const { src, alt, title, bg } = defineProps({
     bg: { type: Boolean, default: false },
 })
 
-const { widthImg, heightImg, id } = {
-    widthImg: "auto",
-    heightImg: "auto",
+const { width, height, id } = {
+    width: "auto",
+    height: "auto",
     id:
         "img_" +
         String(Math.random() * ((Math.random() * 10000000) / 1.0))
@@ -38,7 +44,7 @@ function getImage() {
     return useAssets(src)
 }
 
-if (bg) useHead({ style: [{ type: "text/css", async: true, innerHTML: `.${id} { background-image: url('${getImage()}'); }`, body: true }] })
+if (bg) useHead({ style: [{ type: "text/css", async: true, innerHTML: `#${id} { background-image: url('${getImage()}'); }`, body: true }] })
 </script>
 
 <style lang="scss">
