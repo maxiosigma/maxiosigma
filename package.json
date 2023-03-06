@@ -28,6 +28,7 @@
 		"@windicss/plugin-animations": "^1.0.9",
 		"@windicss/plugin-heropatterns": "^0.0.8",
 		"@windicss/plugin-icons": "^1.0.2",
+		"@windicss/plugin-question-mark": "^0.1.1",
 		"firebase": "^9.17.2",
 		"graphql": "^16.6.0",
 		"nuxt": "3.2.3",

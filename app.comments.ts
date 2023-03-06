@@ -1,3 +1,5 @@
+// SETTINGS Shared View State  New Window Dimensions
+
 //maxiosigma-nuxt-test.firebaseapp.com
 //firebase hosting:channel:deploy preview --expores 1h
 

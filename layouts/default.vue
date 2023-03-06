@@ -1,5 +1,5 @@
 <template>
-    <div class="layout-default bg-black">
+    <div class="layout-default">
         <slot />
     </div>
 </template>
@@ -34,12 +34,16 @@ useHead({
 
 <style lang="scss">
 .html {
-    @apply bg-black;
+    //@apply bg-self-1;
 }
 
 .head {
 }
 
 .body {
+}
+
+.layout-default {
+    @apply bg-self-1;
 }
 </style>
