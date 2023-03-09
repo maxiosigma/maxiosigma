@@ -165,6 +165,7 @@ function plugins() {
     return [
         pluginIcons,
         require("windicss/plugin/typography"),
+        require("windicss/plugin/aspect-ratio"),
         require("@windicss/plugin-question-mark"),
         pluginTypography,
         pluginLineClamp,

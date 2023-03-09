@@ -8,10 +8,10 @@
         </div>
 
         <div class="block-waves z-9000">
-            <ItemMediaImg v-if="wt" class="absolute top-0 mirror-vertical w-full h-auto" src="wave_2.webp"></ItemMediaImg>
-            <ItemMediaImg v-if="wb" class="absolute bottom-0 w-full h-auto" src="wave_2.webp"></ItemMediaImg>
-            <ItemMediaImg v-if="wl" class="absolute left-0 h-full w-auto" src="wave_1.webp"></ItemMediaImg>
-            <ItemMediaImg v-if="wr" class="absolute right-0 mirror-horizonal h-full w-auto" src="wave_1.webp"></ItemMediaImg>
+            <ItemMediaImg v-if="wl" class="absolute -left-1px h-full w-auto" src="wave_1.webp"></ItemMediaImg>
+            <ItemMediaImg v-if="wr" class="absolute -right-1px mirror-horizonal h-full w-auto" src="wave_1.webp"></ItemMediaImg>
+            <ItemMediaImg v-if="wt" class="absolute -top-1px mirror-vertical w-full h-auto" src="wave_2.webp"></ItemMediaImg>
+            <ItemMediaImg v-if="wb" class="absolute -bottom-1px w-full h-auto" src="wave_2.webp"></ItemMediaImg>
         </div>
     </div>
 </template>
@@ -29,7 +29,7 @@ const { wl, wr, wt, wb, wdl, wdr } = defineProps({
 
 <style lang="scss">
 .block {
-    @apply relative flex-center w-screen h-screen;
+    @apply relative flex-center w-screen h-screen max-w-full overflow-hidden;
     // flex-grow
 
     &-waves {

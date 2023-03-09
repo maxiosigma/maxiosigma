@@ -36,9 +36,7 @@ if (bg) useHead({ style: [{ type: "text/css", async: true, innerHTML: `#${id} { 
     &-render {
         @apply image-render-edge pointer-events-none;
     }
-}
 
-.img {
     &-bg {
         &-mod {
             @apply bg-no-repeat pointer-events-none;
