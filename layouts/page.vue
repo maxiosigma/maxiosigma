@@ -31,9 +31,12 @@ const props = defineProps({
 })
 </script>
 
-<style module scoped>
+<style module>
 .page {
-    @apply text-white;
+    @apply flex flex-col h-auto min-h-screen max-w-screen relative justify-between overflow-x-hidden;
+
+    /*min-height: 100%;
+    overflow: auto;*/
 }
 </style>
 
