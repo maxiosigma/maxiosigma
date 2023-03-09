@@ -1,16 +1,28 @@
 <template>
-    <TemplateIndexBlock wt wb>
-        <ItemMediaImg class="w-auto h-4/5" src="my_photo_2.webp"></ItemMediaImg>
+    <TemplateIndexBlock wt>
+        <LazyItemMediaImg class="object-contain w-auto h-7/8" src="my_photo_2.webp"></LazyItemMediaImg>
 
-        <div class="w-1/3 text-self-7">
-            <div>111111</div>
+        <div class="ml-10 w-1/3 text-self-7">
+            <div class="uppercase font-black text-3xl">Добро пожаловать</div>
+
+            <div>
+                <div v-for="(it, i) in data.slide2.text" :key="i">{{ it }}</div>
+            </div>
         </div>
+
+        <LazyItemMediaImg class="absolute object-contain mt-1/20 w-full h-auto" src="worldmaphexagon.webp"></LazyItemMediaImg>
     </TemplateIndexBlock>
+
+    <!--<TemplateIndexBlock wb></TemplateIndexBlock>-->
 </template>
 
 <script setup>
 const title = ref("Автор")
 const description = ref("")
+const data = {
+    slide2: { text: ["всегда рад вам помочь", "дизайнер | разработчик", "большой спектр услуг", "на связи постоянно", "по всему миру и рф"] },
+}
+
 definePageMeta({ layout: "page" })
 
 {

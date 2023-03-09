@@ -68,6 +68,14 @@ function themeExtend() {
             robotoslab: ["Roboto Slab"],
             futuranewbook: ["Futura New Book"],
         },
+        fontSize: {
+            h1: "64px",
+            h2: "48px",
+            h2_1: "164",
+            h3: "36",
+            h4: "32",
+            text: "20",
+        },
         colors: {
             self: {
                 //main: "#0e7490", // cyan-700
