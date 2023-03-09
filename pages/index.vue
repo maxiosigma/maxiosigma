@@ -1,14 +1,14 @@
 <template>
-    <div class="flex flex-grow w-screen h-screen overflow-hidden">
-        <div class="grid grid-cols-2">
-            <div class="relative flex-center h-full">
-                <ItemMediaImg class="bg-contain h-full w-50vw -mr-1/5 face_2_shadow_1" src="face_1.webp" bg></ItemMediaImg>
-                <ItemMediaImg class="absolute mirror-horizonal left-8/10 -mr-1/5 bg-contain h-full w-50vw face_2_shadow_2" src="face_1.webp" bg></ItemMediaImg>
+    <div class="flex-center flex-grow w-screen h-screen overflow-hidden">
+        <div class="flex flex-grow h-full">
+            <div class="flex-grow h-full">
+                <ItemMediaImg class="bg-cover h-full w-1/2 -mr-30px face_2_shadow_1" src="face_1.webp"></ItemMediaImg>
+                <!--<ItemMediaImg class="absolute mirror-horizonal left-8/10 -mr-1/5 bg-contain h-full w-50vw face_2_shadow_2" src="face_1.webp" bg></ItemMediaImg>-->
             </div>
 
-            <div class="relative flex-center h-full">
-                <ItemMediaImg class="bg-contain h-full w-50vw -ml-1/5 face_1_shadow_1" src="face_2.webp" bg></ItemMediaImg>
-                <ItemMediaImg class="absolute mirror-horizonal right-8/10 -ml-1/5 bg-contain h-full w-50vw face_1_shadow_2" src="face_2.webp" bg></ItemMediaImg>
+            <div class="flex-grow h-full">
+                <ItemMediaImg class="bg-cover h-full w-1/2 -ml-30px face_1_shadow_1" src="face_2.webp"></ItemMediaImg>
+                <!--<ItemMediaImg class="absolute mirror-horizonal right-8/10 -ml-1/5 bg-contain h-full w-50vw face_1_shadow_2" src="face_2.webp" bg></ItemMediaImg>-->
             </div>
         </div>
 
@@ -32,7 +32,6 @@ definePageMeta({ layout: "page" })
 .face {
     &_1_shadow {
         &_1 {
-            //filter: drop-shadow(10px -10px 10px #003366);
             filter: blur(1px) drop-shadow(10px -10px 10px #003366);
         }
 

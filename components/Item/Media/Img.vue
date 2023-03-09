@@ -1,18 +1,12 @@
 <template>
     <img v-if="getImage() && !bg" :src="getImage()" :width="width" :height="height" :class="['img-render']" :alt="alt" :aria-label="title" :id="id" itemprop="image" />
 
-    <div v-else-if="getImage() && bg" :id="id" :class="['img-render']" :title="title" :alt="alt" itemprop="image">
+    <div v-else-if="getImage() && bg" :id="id" :class="['img-bg-mod']" :title="title" :alt="alt" itemprop="image">
         <slot></slot>
     </div>
 </template>
 
 <script setup>
-// v-bind="$attrs"
-// v-bind="$attrs"
-// :class="[id, 'img-render']"
-// :class="[id, 'img-bg-mod']"
-// :title="title"
-
 const { src, alt, title, bg } = defineProps({
     src: { required: true, type: String },
     alt: { type: String, default: "img" },
@@ -47,7 +41,7 @@ if (bg) useHead({ style: [{ type: "text/css", async: true, innerHTML: `#${id} { 
 .img {
     &-bg {
         &-mod {
-            @apply bg-no-repeat w-full pointer-events-none;
+            @apply bg-no-repeat pointer-events-none;
         }
     }
 }
