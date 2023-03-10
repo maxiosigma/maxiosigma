@@ -2,11 +2,14 @@
     <TemplateIndexBlock wt>
         <LazyItemMediaImg class="object-contain w-auto h-7/8" src="my_photo_2.webp"></LazyItemMediaImg>
 
-        <div class="ml-10 w-1/3 text-self-7">
-            <div class="uppercase font-black text-3xl">Добро пожаловать</div>
+        <div class="ml-10 text-self-7 pt-10">
+            <div class="text-h1 font-black tracking-widest uppercase">Добро пожаловать</div>
 
-            <div>
-                <div v-for="(it, i) in data.slide2.text" :key="i">{{ it }}</div>
+            <div class="flex flex-col text-h3 all-small-caps pl-5">
+                <div class="flex items-center" :class="'pl-' + (data.slide2.text.length - i - 1) * 40 + 'px'" v-for="(it, i) in data.slide2.text" :key="i">
+                    <div class="w-6 h-6 mr-4 bg-self-4 rounded-sm"></div>
+                    <div class="mb-1">{{ it }}</div>
+                </div>
             </div>
         </div>
 
@@ -17,13 +20,14 @@
 </template>
 
 <script setup>
-const title = ref("Автор")
+const title = ref("~ MAIN ~")
 const description = ref("")
 const data = {
     slide2: { text: ["всегда рад вам помочь", "дизайнер | разработчик", "большой спектр услуг", "на связи постоянно", "по всему миру и рф"] },
 }
 
 definePageMeta({ layout: "page" })
+useHead({ title, description })
 
 {
     /*<TemplateIndexBlock wb wl wr wdl wdr>

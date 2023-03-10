@@ -46,6 +46,7 @@ export default defineNuxtConfig({
         "nuxt-windicss",
         "@nuxtjs/strapi",
         "@vueuse/nuxt",
+        //"@nuxtjs/fontaine",
         //"@vueuse/motion",
         //"@vueuse/integrations",
         //"@vueuse/router",
@@ -53,6 +54,7 @@ export default defineNuxtConfig({
         //"nuxt-schema-org",
         //"nuxt-full-static",
     ],
+    css: ["~/assets/index.scss"],
 })
 
 function locales() {

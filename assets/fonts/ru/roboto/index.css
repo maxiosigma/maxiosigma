@@ -1,0 +1,84 @@
+@font-face {
+    font-family: "Roboto";
+    src: local("Roboto Thin"), local("Roboto-Thin"), url("~/assets/fonts/ru/roboto/Robotothin.woff2") format("woff2"),
+        url("~/assets/fonts/ru/roboto/Robotothin.woff") format("woff"), url("~/assets/fonts/ru/roboto/Robotothin.ttf") format("truetype");
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Roboto";
+    src: local("Roboto Thin Italic"), local("Roboto-ThinItalic"), url("~/assets/fonts/ru/roboto/Robotothinitalic.woff2") format("woff2"),
+        url("~/assets/fonts/ru/roboto/Robotothinitalic.woff") format("woff"), url("~/assets/fonts/ru/roboto/Robotothinitalic.ttf") format("truetype");
+    font-weight: 100;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Roboto";
+    src: local("Roboto Light"), local("Roboto-Light"), url("~/assets/fonts/ru/roboto/Robotolight.woff2") format("woff2"),
+        url("~/assets/fonts/ru/roboto/Robotolight.woff") format("woff"), url("~/assets/fonts/ru/roboto/Robotolight.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Roboto";
+    src: local("Roboto Light Italic"), local("Roboto-LightItalic"), url("~/assets/fonts/ru/roboto/Robotolightitalic.woff2") format("woff2"),
+        url("~/assets/fonts/ru/roboto/Robotolightitalic.woff") format("woff"), url("~/assets/fonts/ru/roboto/Robotolightitalic.ttf") format("truetype");
+    font-weight: 300;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Roboto";
+    src: local("Roboto"), local("Roboto-Regular"), url("~/assets/fonts/ru/roboto/Roboto.woff2") format("woff2"), url("~/assets/fonts/ru/roboto/Roboto.woff") format("woff"),
+        url("~/assets/fonts/ru/roboto/Roboto.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Roboto";
+    src: local("Roboto Italic"), local("Roboto-Italic"), url("~/assets/fonts/ru/roboto/Robotoitalic.woff2") format("woff2"),
+        url("~/assets/fonts/ru/roboto/Robotoitalic.woff") format("woff"), url("~/assets/fonts/ru/roboto/Robotoitalic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Roboto";
+    src: local("Roboto Medium"), local("Roboto-Medium"), url("~/assets/fonts/ru/roboto/Robotomedium.woff2") format("woff2"),
+        url("~/assets/fonts/ru/roboto/Robotomedium.woff") format("woff"), url("~/assets/fonts/ru/roboto/Robotomedium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Roboto";
+    src: local("Roboto Medium Italic"), local("Roboto-MediumItalic"), url("~/assets/fonts/ru/roboto/Robotomediumitalic.woff2") format("woff2"),
+        url("~/assets/fonts/ru/roboto/Robotomediumitalic.woff") format("woff"), url("~/assets/fonts/ru/roboto/Robotomediumitalic.ttf") format("truetype");
+    font-weight: 500;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Roboto";
+    src: local("Roboto Bold"), local("Roboto-Bold"), url("~/assets/fonts/ru/roboto/Robotobold.woff2") format("woff2"),
+        url("~/assets/fonts/ru/roboto/Robotobold.woff") format("woff"), url("~/assets/fonts/ru/roboto/Robotobold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Roboto";
+    src: local("Roboto Bold Italic"), local("Roboto-BoldItalic"), url("~/assets/fonts/ru/roboto/Robotobolditalic.woff2") format("woff2"),
+        url("~/assets/fonts/ru/roboto/Robotobolditalic.woff") format("woff"), url("~/assets/fonts/ru/roboto/Robotobolditalic.ttf") format("truetype");
+    font-weight: 700;
+    font-style: italic;
+}
+@font-face {
+    font-family: "Roboto";
+    src: local("Roboto Black"), local("Roboto-Black"), url("~/assets/fonts/ru/roboto/Robotoblack.woff2") format("woff2"),
+        url("~/assets/fonts/ru/roboto/Robotoblack.woff") format("woff"), url("~/assets/fonts/ru/roboto/Robotoblack.ttf") format("truetype");
+    font-weight: 900;
+    font-style: normal;
+}
+@font-face {
+    font-family: "Roboto";
+    src: local("Roboto Black Italic"), local("Roboto-BlackItalic"), url("~/assets/fonts/ru/roboto/Robotoblackitalic.woff2") format("woff2"),
+        url("~/assets/fonts/ru/roboto/Robotoblackitalic.woff") format("woff"), url("~/assets/fonts/ru/roboto/Robotoblackitalic.ttf") format("truetype");
+    font-weight: 900;
+    font-style: italic;
+}

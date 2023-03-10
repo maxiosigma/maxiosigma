@@ -47,10 +47,12 @@ export default defineConfig({
 
 function safelist() {
     return [
-        range(50).map((i) => `order-${i}`),
-        range(30).map((i) => `animate-delay-${((i + 1) * 3) / 10}s`),
-        range(30).map((i) => `animate-delay-${((i + 1) * 5) / 10}s`),
-        range(30).map((i) => `animate-duration-${((i + 1) * 5) / 10}s`),
+        range(10).map((i) => `order-${i}`),
+        range(100).map((i) => `pl-${i * 5}px`),
+        //range(10).map((i) => `pl-${i * 3}`),
+        //range(30).map((i) => `animate-delay-${((i + 1) * 3) / 10}s`),
+        //range(30).map((i) => `animate-delay-${((i + 1) * 5) / 10}s`),
+        //range(30).map((i) => `animate-duration-${((i + 1) * 5) / 10}s`),
         //range(30).map((i) => `hue-rotate-${(i + 1) * 5}`),
     ]
 }
@@ -71,18 +73,13 @@ function themeExtend() {
         fontSize: {
             h1: "64px",
             h2: "48px",
-            h2_1: "164",
-            h3: "36",
-            h4: "32",
-            text: "20",
+            h2_1: "164px",
+            h3: "36px",
+            h4: "32px",
+            text: "20px",
         },
         colors: {
             self: {
-                //main: "#0e7490", // cyan-700
-                //"main-light": "#06b6d4", // cyan-500
-                //purpure: "#bc66a0",
-                //dark: "#0c1c49",
-                //red: "#d3072a",
                 1: "#0C2142",
                 2: "#003366",
                 3: "#F1860E",
@@ -100,7 +97,6 @@ function themeExtend() {
             "3px": "3px",
             "4px": "4px",
             "5px": "5px",
-
             "0.25r": "0.25rem",
             "0.5r": "0.5rem",
             "1r": "1rem",
@@ -112,36 +108,6 @@ function themeExtend() {
             "7r": "7rem",
             "8r": "8rem",
             "9r": "9rem",
-            //"10r": "10rem",
-            //"20r": "20rem",
-            //"30r": "30rem",
-            //"40r": "40rem",
-            //"50r": "50rem",
-            //"60r": "60rem",
-            //"70r": "70rem",
-            //"80r": "80rem",
-            //"90r": "90rem",
-            //"100r": "100rem",
-
-            //"1p": "1%",
-            //"2p": "2%",
-            //"3p": "3%",
-            //"4p": "4%",
-            //"5p": "5%",
-            //"6p": "6%",
-            //"7p": "7%",
-            //"8p": "8%",
-            //"9p": "9%",
-            //"10p": "10%",
-            //"20p": "20%",
-            //"30p": "30%",
-            //"40p": "40%",
-            //"50p": "50%",
-            //"60p": "60%",
-            //"70p": "70%",
-            //"80p": "80%",
-            //"90p": "90%",
-            //"100p": "100%",
         },
         animation: {
             "custom-wiggle": "wiggle 1s ease-in-out infinite",
@@ -149,18 +115,9 @@ function themeExtend() {
             "custom-opacity": "customOpacity 1s ease-in-out",
         },
         keyframes: {
-            wiggle: {
-                "0%, 100%": { transform: "rotate(-3deg)" },
-                "50%": { transform: "rotate(3deg)" },
-            },
-            worldRotate: {
-                "0%, 100%": { transform: "rotate3D(0, -1, 0, 360deg)" },
-                "50%": { transform: "rotate3D(0, 1, 0, 360deg)" },
-            },
-            customOpacity: {
-                from: { opacity: 0.0 },
-                to: { opacity: 0.85 },
-            },
+            wiggle: { "0%, 100%": { transform: "rotate(-3deg)" }, "50%": { transform: "rotate(3deg)" } },
+            worldRotate: { "0%, 100%": { transform: "rotate3D(0, -1, 0, 360deg)" }, "50%": { transform: "rotate3D(0, 1, 0, 360deg)" } },
+            customOpacity: { from: { opacity: 0.0 }, to: { opacity: 0.85 } },
         },
     }
 }
@@ -238,26 +195,13 @@ function plugins() {
         }),
         plugin(({ addUtilities, addComponents, addBase, theme }) => {
             addUtilities({
-                ".flex-center": {
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                },
-                ".inline-flex-center": {
-                    display: "inline-flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                },
-                ".grid-center": {
-                    display: "grid",
-                    alignItems: "center",
-                    justifyContent: "center",
-                },
-                ".inline-grid-center": {
-                    display: "inline-grid",
-                    alignItems: "center",
-                    justifyContent: "center",
-                },
+                ".flex-center": { display: "flex", alignItems: "center", justifyContent: "center" },
+                ".inline-flex-center": { display: "inline-flex", alignItems: "center", justifyContent: "center" },
+                ".grid-center": { display: "grid", alignItems: "center", justifyContent: "center" },
+                ".inline-grid-center": { display: "inline-grid", alignItems: "center", justifyContent: "center" },
+                ".all-small-caps": { fontVariantCaps: "all-small-caps" },
+                ".small-caps": { fontVariantCaps: "small-caps" },
+                ".normal-caps": { fontVariantCaps: "normal" },
                 ".text-3d": {
                     fontFamily: "helvetica",
                     textTransform: "uppercase",
