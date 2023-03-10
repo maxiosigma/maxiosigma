@@ -1,6 +1,7 @@
 <template>
     <NuxtLayout name="default">
         <div :class="$style.page">
+            <!-- Разрешение экрана меньше *** переключитесь на мобильный телефон -->
             <slot />
         </div>
     </NuxtLayout>

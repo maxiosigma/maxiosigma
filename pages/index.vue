@@ -1,13 +1,13 @@
 <template>
     <TemplateIndexBlock wt>
-        <LazyItemMediaImg class="object-contain w-auto h-7/8" src="my_photo_2.webp"></LazyItemMediaImg>
+        <LazyItemMediaImg class="object-contain w-auto h-9/10" src="my_photo_2.webp"></LazyItemMediaImg>
 
         <div class="ml-10 text-self-7 pt-10">
-            <div class="text-h1 font-black tracking-widest uppercase">Добро пожаловать</div>
+            <div class="font-black text-[4.5vmax] tracking-widest uppercase">Добро пожаловать</div>
 
-            <div class="flex flex-col text-h3 all-small-caps pl-5">
-                <div class="flex items-center" :class="'pl-' + (data.slide2.text.length - i - 1) * 40 + 'px'" v-for="(it, i) in data.slide2.text" :key="i">
-                    <div class="w-6 h-6 mr-4 bg-self-4 rounded-sm"></div>
+            <div class="flex flex-col text-[2.5vmax] all-small-caps tracking-wide pl-1/20 mt-1/30">
+                <div class="flex items-center py-1/100" :class="'pl-[' + (data.slide2.text.length - i - 1) * 5 + '%]'" v-for="(it, i) in data.slide2.text" :key="i">
+                    <div class="w-6 h-6 mr-1/30 bg-self-4 rounded-sm"></div>
                     <div class="mb-1">{{ it }}</div>
                 </div>
             </div>

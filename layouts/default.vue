@@ -28,7 +28,13 @@ useHead({
     htmlAttrs: { class: "html" },
     headAttrs: { class: "head" },
     bodyAttrs: { class: "body" },
-    meta: [{}],
+    meta: [{ charset: "utf-8" }, { name: "viewport", content: "width=768, initial-scale=1" }],
+})
+
+const { $viewport } = useNuxtApp()
+
+watch($viewport.breakpoint, (newBreakpoint, oldBreakpoint) => {
+    console.log("Breakpoint updated:", oldBreakpoint, "->", newBreakpoint)
 })
 </script>
 
@@ -43,7 +49,9 @@ useHead({
 
 .body {
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     -webkit-text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+    text-rendering: optimizeLegibility;
     @apply bg-self-1 font-roboto h-auto max-w-screen relative;
 }
 

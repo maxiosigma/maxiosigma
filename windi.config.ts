@@ -48,7 +48,7 @@ export default defineConfig({
 function safelist() {
     return [
         range(10).map((i) => `order-${i}`),
-        range(100).map((i) => `pl-${i * 5}px`),
+        range(20).map((i) => `pl-[${i}%]`),
         //range(10).map((i) => `pl-${i * 3}`),
         //range(30).map((i) => `animate-delay-${((i + 1) * 3) / 10}s`),
         //range(30).map((i) => `animate-delay-${((i + 1) * 5) / 10}s`),

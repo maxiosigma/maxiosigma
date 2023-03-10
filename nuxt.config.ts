@@ -46,6 +46,7 @@ export default defineNuxtConfig({
         "nuxt-windicss",
         "@nuxtjs/strapi",
         "@vueuse/nuxt",
+        "nuxt-viewport",
         //"@nuxtjs/fontaine",
         //"@vueuse/motion",
         //"@vueuse/integrations",
