@@ -1,5 +1,6 @@
 <template>
     <TemplateIndexBlock wt>
+        <!-- <lg:(absolute opacity-30) -->
         <LazyItemMediaImg class="object-contain w-auto h-9/10" src="my_photo_2.webp"></LazyItemMediaImg>
 
         <div class="ml-10 text-self-7 pt-10">
