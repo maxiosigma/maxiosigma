@@ -14,7 +14,7 @@
         </div>
     </TemplateIndexBlock>-->
 
-    <TemplateIndexSection wt sc="!overflow-y-hidden">
+    <!--<TemplateIndexSection wt sc="!overflow-y-hidden">
         <LazyItemMediaImg class="object-contain w-auto h-9/10 <lg:(absolute z-10 right-[50%] h-[200%] opacity-45)" src="my_photo_2.webp"></LazyItemMediaImg>
 
         <div class="ml-10 text-self-7 pt-10 relative z-20">
@@ -29,7 +29,7 @@
         </div>
 
         <LazyItemMediaImg class="absolute object-contain mt-1/20 w-full h-auto" src="worldmaphexagon.webp"></LazyItemMediaImg>
-    </TemplateIndexSection>
+    </TemplateIndexSection>-->
 
     <!--<TemplateIndexSection wb>
         <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 justify-around pt-8 pb-12">
@@ -50,6 +50,8 @@
             </div>
         </div>
     </TemplateIndexSection>-->
+
+    <TemplateIndexSection></TemplateIndexSection>
 </template>
 
 <script setup>
