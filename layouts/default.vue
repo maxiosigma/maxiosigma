@@ -28,13 +28,41 @@ useHead({
     htmlAttrs: { class: "html" },
     headAttrs: { class: "head" },
     bodyAttrs: { class: "body" },
-    meta: [{ charset: "utf-8" }, { name: "viewport", content: "width=768, initial-scale=1" }],
+    meta: [
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" },
+        { name: "HandheldFriendly", content: "true" },
+        { name: "MobileOptimized", content: "768" },
+        { name: "apple-mobile-web-app-capable", content: "yes" },
+        { name: "HandheldFriendly", content: "true" },
+        //{ name: "", content: "" }
+    ],
 })
 
-const { $viewport } = useNuxtApp()
+//const { $viewport } = useNuxtApp()
 
-watch($viewport.breakpoint, (newBreakpoint, oldBreakpoint) => {
-    console.log("Breakpoint updated:", oldBreakpoint, "->", newBreakpoint)
+//watch($viewport.breakpoint, (newBreakpoint, oldBreakpoint) => {
+//    console.log("Breakpoint updated:", oldBreakpoint, "->", newBreakpoint)
+//})
+
+onMounted(() => {
+    if (document.addEventListener) {
+        if ("onwheel" in document) {
+            document.addEventListener("wheel", document_wheel)
+        } else if ("onmousewheel" in document) {
+            document.addEventListener("mousewheel", document_wheel)
+        } else {
+            document.addEventListener("MozMousePixelScroll", document_wheel)
+        }
+
+        window.addEventListener("keydown", document_wheel, false)
+    } else {
+        document.attachEvent("onmousewheel", document_wheel)
+    }
+
+    function document_wheel(e) {
+        e.preventDefault()
+    }
 })
 </script>
 

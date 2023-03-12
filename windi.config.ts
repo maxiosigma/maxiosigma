@@ -69,6 +69,7 @@ function themeExtend() {
             futuranew: ["Futura New"],
             robotoslab: ["Roboto Slab"],
             futuranewbook: ["Futura New Book"],
+            oranienbaum: ["Oranienbaum"],
         },
         fontSize: {
             h1: "64px",
@@ -210,9 +211,32 @@ function plugins() {
                     textShadow: "#e7e7e7 3px 5px 0, #999 4px 6px 3px, #ccc 8px 11px 10px",
                 },
                 ...textShadows(),
+                ...clipPaths(),
             })
         }),
     ]
+}
+
+function clipPaths() {
+    const clips = [
+        {
+            name: "category",
+            path: "M2.18024 8.89913C-0.735744 5.52634 1.6411 0 6.09965 0H482.602C486.958 0 489.367 5.28809 486.656 8.69707C478.232 19.2914 465.568 37.3849 465.568 50.4167C465.568 63.3241 477.992 80.8332 486.414 91.2202C489.178 94.6284 486.776 100 482.388 100H6.33792C1.84632 100 -0.519536 94.3842 2.45056 91.0148C11.6278 80.6036 24.9939 63.2394 24.9939 50.4167C24.9939 37.4674 11.3629 19.5202 2.18024 8.89913Z",
+        },
+    ]
+
+    return {
+        ...clips.reduce(
+            (s, cl) =>
+                (s = {
+                    ...s,
+                    [`.clip-${cl.name}`]: {
+                        "clip-path": `path('${cl.path}')`,
+                    },
+                }) && s,
+            {}
+        ),
+    }
 }
 
 function textShadows() {

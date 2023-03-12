@@ -1,15 +1,13 @@
 <template>
-    <div class="block">
-        <div class="block-waves z-0">
+    <div class="section">
+        <div class="section-waves z-0">
             <LazyItemMediaImg v-if="wdr" class="absolute right-0 h-full w-auto" src="wave_3d_1.webp"></LazyItemMediaImg>
             <LazyItemMediaImg v-if="wdl" class="absolute left-0 mirror-horizonal h-full w-auto" src="wave_3d_1.webp"></LazyItemMediaImg>
         </div>
 
-        <div class="relative z-10">
-            <slot></slot>
-        </div>
+        <slot></slot>
 
-        <div class="block-waves z-20">
+        <div class="section-waves z-20">
             <ItemMediaImg v-if="wl" class="absolute -left-1px h-full w-auto" src="wave_1.webp"></ItemMediaImg>
             <ItemMediaImg v-if="wr" class="absolute -right-1px mirror-horizonal h-full w-auto" src="wave_1.webp"></ItemMediaImg>
             <ItemMediaImg v-if="wt" class="absolute -top-1px mirror-vertical w-full h-auto" src="wave_2.webp"></ItemMediaImg>
@@ -30,7 +28,7 @@ const { wl, wr, wt, wb, wdl, wdr } = defineProps({
 </script>
 
 <style lang="scss">
-.block {
+.section {
     @apply relative flex-center w-screen h-screen max-w-full overflow-hidden;
     // flex-grow
 
