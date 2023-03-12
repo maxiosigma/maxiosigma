@@ -5,7 +5,9 @@
             <LazyItemMediaImg v-if="wdl" class="absolute left-0 mirror-horizonal h-full w-auto" src="wave_3d_1.webp"></LazyItemMediaImg>
         </div>
 
-        <slot></slot>
+        <div class="section-content" :class="sc">
+            <slot></slot>
+        </div>
 
         <div class="section-waves z-20">
             <ItemMediaImg v-if="wl" class="absolute -left-1px h-full w-auto" src="wave_1.webp"></ItemMediaImg>
@@ -24,13 +26,17 @@ const { wl, wr, wt, wb, wdl, wdr } = defineProps({
     wb: { default: false, type: Boolean, required: false },
     wdl: { default: false, type: Boolean, required: false },
     wdr: { default: false, type: Boolean, required: false },
+    sc: { default: '', type: String, required: false },
 })
 </script>
 
 <style lang="scss">
 .section {
     @apply relative flex-center w-screen h-screen max-w-full overflow-hidden;
-    // flex-grow
+
+    &-content {
+        @apply flex-center flex-grow w-full h-full overflow-x-hidden overflow-y-auto;
+    }
 
     &-waves {
         @apply pointer-events-none absolute inset-0;

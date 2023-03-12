@@ -1,4 +1,5 @@
 <template>
+    <!-- v-if="PC" -->
     <!--<TemplateIndexBlock wb wl wr wdl wdr>
         <div class="flex flex-grow h-full">
             <div class="flex-grow h-full">
@@ -31,20 +32,53 @@
     </TemplateIndexSection>-->
 
     <TemplateIndexSection wb>
-        <div class="index-services-category">
-            <div class="absolute">Разработка</div>
+        <!--  place-items-center -->
+        <div class="flex flex-wrap justify-around">
+            <div class="index-services-category" v-for="(it, i) in data.slide3" :key="i">
+                <div class="flex-center self-start text-self-1">
+                    <div class="bg-self-7 w-500px h-100px min-w-500px min-h-100px clip-category"></div>
+                    <div class="absolute font-semibold tracking-widest text-5xl uppercase">{{ it.title }}</div>
+                </div>
+
+                <div class="mt-5 pl-10">
+                    <div class="flex items-center my-2" v-for="(st, j) in it.items" :key="j">
+                        <div class="w-[3vw] h-[0.75vw] bg-self-7 mr-[1vw]"></div>
+                        <div class="text-self-7 text-3xl uppercase">{{ st.title }}</div>
+                        <div class="bg-self-7 h-[2vw] w-2 mx-1"></div>
+                        <div class="text-self-4 text-3xl uppercase">{{ st.add }}</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </TemplateIndexSection>
 </template>
 
 <script setup>
-const title = ref("~ MAIN ~")
-const description = ref("")
+const title = ref('~ MAIN ~')
+const description = ref('')
 const data = {
-    slide2: { text: ["всегда рад вам помочь", "дизайнер | разработчик", "большой спектр услуг", "на связи постоянно", "по всему миру и рф"] },
+    slide2: { text: ['всегда рад вам помочь', 'дизайнер | разработчик', 'большой спектр услуг', 'на связи постоянно', 'по всему миру и рф'] },
+    slide3: [
+        {
+            title: 'Разработка',
+            items: [
+                { title: 'website', add: 'Nuxt 3 + CMS' },
+                { title: 'Integrations', add: 'Multy' },
+                { title: 'serverless', add: 'Node' },
+                { title: 'Parsing', add: 'Node' },
+                { title: 'API', add: 'Node' },
+                //{ title: '', add: '' },
+            ],
+        },
+        { title: 'Дизайн', items: [{ title: '', add: '' }] },
+        { title: '3D', items: [{ title: '', add: '' }] },
+        { title: 'Копирайт', items: [{ title: '', add: '' }] },
+        { title: 'Медиа', items: [{ title: '', add: '' }] },
+        { title: 'Поддержка', items: [{ title: '', add: '' }] },
+    ],
 }
 
-definePageMeta({ layout: "page" })
+definePageMeta({ layout: 'page' })
 useHead({ title, description })
 </script>
 
@@ -52,7 +86,7 @@ useHead({ title, description })
 .index {
     &-services {
         &-category {
-            @apply flex-center font-oranienbaum tracking-widest text-5xl uppercase bg-self-7 py-5 w-500px h-100px min-w-500px min-h-100px transform scale-50 sm:scale-60 xl:scale-70 clip-category relative;
+            @apply relative flex justify-start flex-col transform scale-50 font-oranienbaum mx-1 overflow-hidden sm:scale-60 xl:scale-70;
         }
     }
 }
