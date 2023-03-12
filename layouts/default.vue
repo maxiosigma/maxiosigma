@@ -9,7 +9,7 @@ const props = defineProps({
     bs: {
         type: String,
         required: false,
-        default: "body-bg",
+        default: 'body-bg',
     },
     title: {
         type: String,
@@ -25,16 +25,16 @@ const props = defineProps({
 
 useHead({
     titleTemplate: `%s`,
-    htmlAttrs: { class: "html" },
-    headAttrs: { class: "head" },
-    bodyAttrs: { class: "body" },
+    htmlAttrs: { class: 'html' },
+    headAttrs: { class: 'head' },
+    bodyAttrs: { class: 'body' },
     meta: [
-        { charset: "utf-8" },
-        { name: "viewport", content: "width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" },
-        { name: "HandheldFriendly", content: "true" },
-        { name: "MobileOptimized", content: "768" },
-        { name: "apple-mobile-web-app-capable", content: "yes" },
-        { name: "HandheldFriendly", content: "true" },
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no' },
+        { name: 'HandheldFriendly', content: 'true' },
+        { name: 'MobileOptimized', content: '768' },
+        { name: 'apple-mobile-web-app-capable', content: 'yes' },
+        { name: 'HandheldFriendly', content: 'true' },
         //{ name: "", content: "" }
     ],
 })
@@ -46,23 +46,21 @@ useHead({
 //})
 
 onMounted(() => {
-    if (document.addEventListener) {
-        if ("onwheel" in document) {
-            document.addEventListener("wheel", document_wheel)
-        } else if ("onmousewheel" in document) {
-            document.addEventListener("mousewheel", document_wheel)
-        } else {
-            document.addEventListener("MozMousePixelScroll", document_wheel)
-        }
-
-        window.addEventListener("keydown", document_wheel, false)
-    } else {
-        document.attachEvent("onmousewheel", document_wheel)
-    }
-
-    function document_wheel(e) {
-        e.preventDefault()
-    }
+    //if (document.addEventListener) {
+    //    if ('onwheel' in document) {
+    //        document.addEventListener('wheel', document_wheel)
+    //    } else if ('onmousewheel' in document) {
+    //        document.addEventListener('mousewheel', document_wheel)
+    //    } else {
+    //        document.addEventListener('MozMousePixelScroll', document_wheel)
+    //    }
+    //    window.addEventListener('keydown', document_wheel, false)
+    //} else {
+    //    document.attachEvent('onmousewheel', document_wheel)
+    //}
+    //function document_wheel(e) {
+    //    e.preventDefault()
+    //}
 })
 </script>
 

@@ -14,7 +14,7 @@
         </div>
     </TemplateIndexBlock>-->
 
-    <!--<TemplateIndexSection wt>
+    <TemplateIndexSection wt sc="!overflow-y-hidden">
         <LazyItemMediaImg class="object-contain w-auto h-9/10 <lg:(absolute z-10 right-[50%] h-[200%] opacity-45)" src="my_photo_2.webp"></LazyItemMediaImg>
 
         <div class="ml-10 text-self-7 pt-10 relative z-20">
@@ -29,28 +29,27 @@
         </div>
 
         <LazyItemMediaImg class="absolute object-contain mt-1/20 w-full h-auto" src="worldmaphexagon.webp"></LazyItemMediaImg>
-    </TemplateIndexSection>-->
+    </TemplateIndexSection>
 
-    <TemplateIndexSection wb>
-        <!--  place-items-center -->
-        <div class="flex flex-wrap justify-around">
+    <!--<TemplateIndexSection wb>
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 justify-around pt-8 pb-12">
             <div class="index-services-category" v-for="(it, i) in data.slide3" :key="i">
-                <div class="flex-center self-start text-self-1">
-                    <div class="bg-self-7 w-500px h-100px min-w-500px min-h-100px clip-category"></div>
-                    <div class="absolute font-semibold tracking-widest text-5xl uppercase">{{ it.title }}</div>
+                <div class="flex-center text-self-1">
+                    <div class="absolute z-10 font-semibold tracking-widest text-h5 sm:text-h5 xl:text-h4 uppercase">{{ it.title }}</div>
+                    <div class="relative z-0 bg-self-7 w-500px h-100px min-w-500px min-h-100px clip-category transform scale-50 sm:scale-60 xl:scale-70"></div>
                 </div>
 
-                <div class="mt-5 pl-10">
+                <div class="whitespace-nowrap tracking-wider">
                     <div class="flex items-center my-2" v-for="(st, j) in it.items" :key="j">
-                        <div class="w-[3vw] h-[0.75vw] bg-self-7 mr-[1vw]"></div>
-                        <div class="text-self-7 text-3xl uppercase">{{ st.title }}</div>
-                        <div class="bg-self-7 h-[2vw] w-2 mx-1"></div>
-                        <div class="text-self-4 text-3xl uppercase">{{ st.add }}</div>
+                        <div class="bg-self-4 border-1 border-self-7/25 min-w-30px min-h-8px mr-10px"></div>
+                        <div class="text-self-7/95 sm:text-h7 xl:text-h6 uppercase">{{ st.title }}</div>
+                        <div class="bg-self-7 border-1 border-self-4/25 min-h-14px min-w-3px mb-0.5 mx-1.5"></div>
+                        <div class="text-self-4/95 sm:text-h7 xl:text-h6 uppercase">{{ st.add }}</div>
                     </div>
                 </div>
             </div>
         </div>
-    </TemplateIndexSection>
+    </TemplateIndexSection>-->
 </template>
 
 <script setup>
@@ -70,11 +69,44 @@ const data = {
                 //{ title: '', add: '' },
             ],
         },
-        { title: 'Дизайн', items: [{ title: '', add: '' }] },
-        { title: '3D', items: [{ title: '', add: '' }] },
-        { title: 'Копирайт', items: [{ title: '', add: '' }] },
-        { title: 'Медиа', items: [{ title: '', add: '' }] },
-        { title: 'Поддержка', items: [{ title: '', add: '' }] },
+        {
+            title: 'Дизайн',
+            items: [
+                { title: 'фирменный стиль', add: 'figma' },
+                { title: 'прототипирование', add: 'figma' },
+                { title: 'Презентация', add: 'Multy' },
+                { title: 'редизайн', add: 'figma' },
+                { title: 'логотип', add: 'figma' },
+                { title: 'правки', add: 'Multy' },
+                { title: 'Баннер', add: 'figma' },
+                { title: 'сайт', add: 'figma' },
+            ],
+        },
+        { title: '3D', items: [{ title: 'Простые модели', add: 'Blender' }] },
+        {
+            title: 'Копирайт',
+            items: [
+                { title: 'описание к товарам', add: 'brain' },
+                { title: 'Продающий текст', add: 'Soul' },
+                { title: 'отзывы', add: 'Creative' },
+            ],
+        },
+        {
+            title: 'Медиа',
+            items: [
+                { title: 'обработка видео', add: 'Movavi' },
+                { title: 'обработка фото', add: 'Multy' },
+                { title: 'Нарезка видео', add: 'Multy' },
+            ],
+        },
+        {
+            title: 'Поддержка',
+            items: [
+                { title: 'программирование', add: 'совет' },
+                { title: 'видео-показ', add: 'помощь' },
+                { title: 'дизайн', add: 'совет' },
+            ],
+        },
     ],
 }
 
@@ -86,7 +118,7 @@ useHead({ title, description })
 .index {
     &-services {
         &-category {
-            @apply relative flex justify-start flex-col transform scale-50 font-oranienbaum mx-1 overflow-hidden sm:scale-60 xl:scale-70;
+            @apply relative flex justify-start items-center flex-col font-oranienbaum mx-1;
         }
     }
 }
