@@ -14,6 +14,7 @@
         </div>
     </TemplateIndexBlock>-->
 
+    <!--  :active="isActive" -->
     <!--<TemplateIndexSection wt sc="!overflow-y-hidden">
         <LazyItemMediaImg class="object-contain w-auto h-9/10 <lg:(absolute z-10 right-[50%] h-[200%] opacity-45)" src="my_photo_2.webp"></LazyItemMediaImg>
 
@@ -31,7 +32,7 @@
         <LazyItemMediaImg class="absolute object-contain mt-1/20 w-full h-auto" src="worldmaphexagon.webp"></LazyItemMediaImg>
     </TemplateIndexSection>-->
 
-    <!--<TemplateIndexSection wb>
+    <TemplateIndexSection wb>
         <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 justify-around pt-8 pb-12">
             <div class="index-services-category" v-for="(it, i) in data.slide3" :key="i">
                 <div class="flex-center text-self-1">
@@ -49,9 +50,9 @@
                 </div>
             </div>
         </div>
-    </TemplateIndexSection>-->
+    </TemplateIndexSection>
 
-    <TemplateIndexSection></TemplateIndexSection>
+    <!--<TemplateIndexSection></TemplateIndexSection>-->
 </template>
 
 <script setup>
@@ -111,6 +112,9 @@ const data = {
         },
     ],
 }
+
+const activeSlide = 1
+const isActive = (i) => activeSlide === i
 
 definePageMeta({ layout: 'page' })
 useHead({ title, description })

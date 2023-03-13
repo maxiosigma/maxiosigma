@@ -1,5 +1,5 @@
 <template>
-    <div class="section" :class="sc">
+    <div class="section" :class="[sc, active ? '' : 'section-no']">
         <div class="section-waves z-0">
             <LazyItemMediaImg v-if="wdr" class="absolute right-0 h-full w-auto" src="wave_3d_1.webp"></LazyItemMediaImg>
             <LazyItemMediaImg v-if="wdl" class="absolute left-0 mirror-horizonal h-full w-auto" src="wave_3d_1.webp"></LazyItemMediaImg>
@@ -19,7 +19,9 @@
 </template>
 
 <script setup>
-const { wl, wr, wt, wb, wdl, wdr } = defineProps({
+//const { active, wl, wr, wt, wb, wdl, wdr, scc, sc } =
+defineProps({
+    active: { default: false, type: Boolean, required: false },
     wl: { default: false, type: Boolean, required: false },
     wr: { default: false, type: Boolean, required: false },
     wt: { default: false, type: Boolean, required: false },
@@ -33,7 +35,8 @@ const { wl, wr, wt, wb, wdl, wdr } = defineProps({
 
 <style lang="scss">
 .section {
-    @apply relative flex h-screen min-h-full overflow-x-hidden overflow-y-auto;
+    //transition: height 2s;
+    @apply relative flex h-screen min-h-full overflow-x-hidden overflow-y-auto transition-all;
 
     &-content {
         @apply flex-center flex-grow;
@@ -41,6 +44,9 @@ const { wl, wr, wt, wb, wdl, wdr } = defineProps({
 
     &-waves {
         @apply pointer-events-none absolute inset-0;
+    }
+    &-no {
+        @apply !(h-0 min-h-0 max-h-0 overflow-y-hidden opacity-0);
     }
 }
 
