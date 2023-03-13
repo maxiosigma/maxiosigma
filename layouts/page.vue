@@ -5,32 +5,19 @@
             <slot />
         </div>
 
-        <!--<nav></nav>-->
+        <TemplateIndexNavbar v-if="route.name.includes('index')"></TemplateIndexNavbar>
     </NuxtLayout>
 </template>
 
 <script setup>
-const props = defineProps({
-    bs: {
-        type: String,
-        required: false,
-        default: "body-bg",
-    },
-    title: {
-        type: String,
-        required: false,
-        default: undefined,
-    },
-    description: {
-        type: String,
-        required: false,
-        default: undefined,
-    },
-    preloader: {
-        type: Boolean,
-        required: false,
-        default: true,
-    },
+const route = useRoute()
+
+defineProps({
+    bs: { type: String, required: false, default: 'body-bg' },
+    title: { type: String, required: false, default: undefined },
+    description: { type: String, required: false, default: undefined },
+    preloader: { type: Boolean, required: false, default: true },
+    navIntex: { type: Boolean, required: false, default: true },
 })
 </script>
 

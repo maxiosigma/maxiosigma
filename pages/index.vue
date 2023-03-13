@@ -1,6 +1,6 @@
-<template>
+<template :navIntex="true">
     <!-- v-if="PC" -->
-    <TemplateIndexBlock wb wl wr wdl wdr :active="isActive(1)">
+    <TemplateIndexSection wb wl wr wdl wdr :active="isActive(1)">
         <div class="flex flex-grow h-full">
             <div class="flex-grow h-full">
                 <ItemMediaImg class="bg-cover h-full w-1/2 -mr-30px face_2_shadow_1" src="face_1.webp"></ItemMediaImg>
@@ -12,9 +12,10 @@
                 <ItemMediaImg class="absolute mirror-horizonal right-8/10 -ml-1/5 bg-contain h-full w-50vw face_1_shadow_2" src="face_2.webp" bg></ItemMediaImg>
             </div>
         </div>
-    </TemplateIndexBlock>
+    </TemplateIndexSection>
 
-    <TemplateIndexSection wt sc="!overflow-y-hidden" :active="isActive(2)">
+    <!-- sc="!overflow-y-hidden"  -->
+    <TemplateIndexSection wt :active="isActive(2)">
         <LazyItemMediaImg class="object-contain w-auto h-9/10 <lg:(absolute z-10 right-[50%] h-[200%] opacity-45)" src="my_photo_2.webp"></LazyItemMediaImg>
 
         <div class="ml-10 text-self-7 pt-10 relative z-20">
@@ -68,7 +69,6 @@ const data = {
                 { title: 'serverless', add: 'Node' },
                 { title: 'Parsing', add: 'Node' },
                 { title: 'API', add: 'Node' },
-                //{ title: '', add: '' },
             ],
         },
         {
@@ -112,7 +112,7 @@ const data = {
     ],
 }
 
-const activeSlide = 2 // isPC = 1, 2
+const activeSlide = 3 // isPC = 1, 2
 const isActive = (i) => activeSlide === i
 
 definePageMeta({ layout: 'page' })
