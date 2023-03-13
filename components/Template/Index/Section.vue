@@ -36,7 +36,7 @@ defineProps({
 <style lang="scss">
 .section {
     //transition: height 2s;
-    @apply relative flex h-screen min-h-full overflow-x-hidden overflow-y-auto transition-all;
+    @apply relative flex h-screen min-h-full overflow-x-hidden overflow-y-auto transition-all delay-200 duration-1000;
 
     &-content {
         @apply flex-center flex-grow;

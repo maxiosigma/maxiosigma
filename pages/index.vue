@@ -1,6 +1,6 @@
 <template>
     <!-- v-if="PC" -->
-    <!--<TemplateIndexBlock wb wl wr wdl wdr>
+    <TemplateIndexBlock wb wl wr wdl wdr :active="isActive(1)">
         <div class="flex flex-grow h-full">
             <div class="flex-grow h-full">
                 <ItemMediaImg class="bg-cover h-full w-1/2 -mr-30px face_2_shadow_1" src="face_1.webp"></ItemMediaImg>
@@ -12,10 +12,9 @@
                 <ItemMediaImg class="absolute mirror-horizonal right-8/10 -ml-1/5 bg-contain h-full w-50vw face_1_shadow_2" src="face_2.webp" bg></ItemMediaImg>
             </div>
         </div>
-    </TemplateIndexBlock>-->
+    </TemplateIndexBlock>
 
-    <!--  :active="isActive" -->
-    <!--<TemplateIndexSection wt sc="!overflow-y-hidden">
+    <TemplateIndexSection wt sc="!overflow-y-hidden" :active="isActive(2)">
         <LazyItemMediaImg class="object-contain w-auto h-9/10 <lg:(absolute z-10 right-[50%] h-[200%] opacity-45)" src="my_photo_2.webp"></LazyItemMediaImg>
 
         <div class="ml-10 text-self-7 pt-10 relative z-20">
@@ -30,9 +29,9 @@
         </div>
 
         <LazyItemMediaImg class="absolute object-contain mt-1/20 w-full h-auto" src="worldmaphexagon.webp"></LazyItemMediaImg>
-    </TemplateIndexSection>-->
+    </TemplateIndexSection>
 
-    <TemplateIndexSection wb>
+    <TemplateIndexSection wb :active="isActive(3)">
         <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 justify-around pt-8 pb-12">
             <div class="index-services-category" v-for="(it, i) in data.slide3" :key="i">
                 <div class="flex-center text-self-1">
@@ -52,7 +51,7 @@
         </div>
     </TemplateIndexSection>
 
-    <!--<TemplateIndexSection></TemplateIndexSection>-->
+    <TemplateIndexSection :active="isActive(4)"></TemplateIndexSection>
 </template>
 
 <script setup>
@@ -113,7 +112,7 @@ const data = {
     ],
 }
 
-const activeSlide = 1
+const activeSlide = 2 // isPC = 1, 2
 const isActive = (i) => activeSlide === i
 
 definePageMeta({ layout: 'page' })
