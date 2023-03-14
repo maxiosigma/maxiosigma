@@ -2,7 +2,7 @@
     <!-- v-if="PC" -->
     <TemplateIndexSection wb wl wr wdl wdr :active="isActive(1)">
         <div class="flex flex-grow h-full">
-            <div class="flex-grow h-full">
+            <!--<div class="flex-grow h-full">
                 <ItemMediaImg class="bg-cover h-full w-1/2 -mr-30px face_2_shadow_1" src="face_1.webp"></ItemMediaImg>
                 <ItemMediaImg class="absolute mirror-horizonal left-8/10 -mr-1/5 bg-contain h-full w-50vw face_2_shadow_2" src="face_1.webp" bg></ItemMediaImg>
             </div>
@@ -10,12 +10,12 @@
             <div class="flex-grow h-full">
                 <ItemMediaImg class="bg-cover h-full w-1/2 -ml-30px face_1_shadow_1" src="face_2.webp"></ItemMediaImg>
                 <ItemMediaImg class="absolute mirror-horizonal right-8/10 -ml-1/5 bg-contain h-full w-50vw face_1_shadow_2" src="face_2.webp" bg></ItemMediaImg>
-            </div>
+            </div>-->
         </div>
     </TemplateIndexSection>
 
-    <!-- sc="!overflow-y-hidden"  -->
-    <TemplateIndexSection wt :active="isActive(2)">
+    <!--   -->
+    <TemplateIndexSection wt sc="!overflow-y-hidden" :active="isActive(2)">
         <LazyItemMediaImg class="object-contain w-auto h-9/10 <lg:(absolute z-10 right-[50%] h-[200%] opacity-45)" src="my_photo_2.webp"></LazyItemMediaImg>
 
         <div class="ml-10 text-self-7 pt-10 relative z-20">
@@ -53,11 +53,38 @@
     </TemplateIndexSection>
 
     <TemplateIndexSection :active="isActive(4)"></TemplateIndexSection>
+
+    <div class="index-nav">
+        <div class="index-nav-item group" v-for="(it, i) in sections" :key="i" @click="toActive(it.index)">
+            <!--{{ it.name }}-->
+
+            <Icon class="index-nav-icon" :class="[isActive(it.index) ? 'active' : '']" :name="it.icon" />
+        </div>
+    </div>
 </template>
 
 <script setup>
 const title = ref('~ MAIN ~')
 const description = ref('')
+
+const activeSlide = ref(9) // isPC = 1, 2
+
+const sections = [
+    { index: 1, name: 'Overflow', icon: 'ep:chrome-filled' },
+    { index: 2, name: 'Knowing', icon: 'ep:hot-water' },
+    { index: 3, name: 'Services', icon: 'ep:operation' },
+    { index: 4, name: 'Lastworks', icon: 'ep:goblet-square-full' },
+    { index: 5, name: 'Steps', icon: 'ep:loading' },
+    { index: 6, name: 'Steps', icon: 'ep:loading' },
+    { index: 7, name: 'FAQ', icon: 'ep:help' },
+    { index: 8, name: 'Brands', icon: 'ep:grape' },
+    { index: 9, name: 'Presents', icon: 'carbon:gift' },
+    { index: 10, name: 'Reviews', icon: '' },
+    { index: 11, name: 'Future', icon: '' },
+    { index: 12, name: 'Contacts', icon: 'quill:signature' },
+]
+//.filter(isPC => index > 1)
+
 const data = {
     slide2: { text: ['всегда рад вам помочь', 'дизайнер | разработчик', 'большой спектр услуг', 'на связи постоянно', 'по всему миру и рф'] },
     slide3: [
@@ -112,8 +139,8 @@ const data = {
     ],
 }
 
-const activeSlide = 3 // isPC = 1, 2
-const isActive = (i) => activeSlide === i
+const isActive = (i) => activeSlide.value === i
+const toActive = (i) => (activeSlide.value = i)
 
 definePageMeta({ layout: 'page' })
 useHead({ title, description })
@@ -124,6 +151,23 @@ useHead({ title, description })
     &-services {
         &-category {
             @apply relative flex justify-start items-center flex-col font-oranienbaum mx-1;
+        }
+    }
+
+    &-nav {
+        //auto-cols-max
+        @apply fixed z-30 w-1/2 h-auto bottom-[6.5%] grid-center grid-flow-col-dense;
+
+        &-item {
+            @apply flex-center bg-self-7 min-w-10 min-h-10 w-10 h-10 rounded-full mx-2 transition-all duration-300 cursor-pointer bg-opacity-10 border-3 elevation-1 border-transparent hover:(bg-opacity-100 border-self-5);
+        }
+
+        &-icon {
+            @apply w-6 h-6 transition duration-500 text-self-1 opacity-75 group-hover:(opacity-100);
+
+            &.active {
+                @apply text-self-5 opacity-100 group-hover:(opacity-100);
+            }
         }
     }
 }

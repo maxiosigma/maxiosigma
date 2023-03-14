@@ -5,7 +5,7 @@
             <LazyItemMediaImg v-if="wdl" class="absolute left-0 mirror-horizonal h-full w-auto" src="wave_3d_1.webp"></LazyItemMediaImg>
         </div>
 
-        <div class="section-content" :class="scc">
+        <div class="section-content" :class="[scc, active ? '' : 'section-content-no']">
             <slot></slot>
         </div>
 
@@ -36,17 +36,21 @@ defineProps({
 <style lang="scss">
 .section {
     //transition: height 2s;
-    @apply relative flex h-screen min-h-full overflow-x-hidden overflow-y-auto transition-all delay-200 duration-1000;
+    @apply relative flex h-screen min-h-full overflow-x-hidden overflow-y-auto transition duration-500;
 
     &-content {
-        @apply flex-center flex-grow;
+        @apply flex-center flex-grow transition-all delay-200 duration-2000;
+
+        &-no {
+            @apply !(h-0 min-h-0 max-h-0 w-0 min-w-0 max-w-0 overflow-y-hidden opacity-0);
+        }
     }
 
     &-waves {
         @apply pointer-events-none absolute inset-0;
     }
     &-no {
-        @apply !(h-0 min-h-0 max-h-0 overflow-y-hidden opacity-0);
+        @apply !(h-0 min-h-0 max-h-0 w-0 min-w-0 max-w-0 overflow-y-hidden opacity-0);
     }
 }
 

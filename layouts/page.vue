@@ -4,14 +4,10 @@
             <!-- Разрешение экрана меньше *** переключитесь на мобильный телефон -->
             <slot />
         </div>
-
-        <TemplateIndexNavbar v-if="route.name.includes('index')"></TemplateIndexNavbar>
     </NuxtLayout>
 </template>
 
 <script setup>
-const route = useRoute()
-
 defineProps({
     bs: { type: String, required: false, default: 'body-bg' },
     title: { type: String, required: false, default: undefined },
@@ -23,10 +19,7 @@ defineProps({
 
 <style module>
 .page {
-    @apply flex flex-col h-auto min-h-screen max-w-screen relative justify-between overflow-x-hidden;
-
-    /*min-height: 100%;
-    overflow: auto;*/
+    @apply flex flex-col h-auto min-h-full max-w-screen relative justify-between;
 }
 </style>
 

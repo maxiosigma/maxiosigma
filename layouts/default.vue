@@ -82,6 +82,6 @@ onMounted(() => {
 }
 
 .wrapper {
-    @apply h-full;
+    @apply h-full overflow-hidden;
 }
 </style>
