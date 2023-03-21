@@ -163,17 +163,17 @@ useHead({ title, description })
 
     &-nav {
         //auto-cols-max
-        @apply fixed z-30 w-1/2 h-auto bottom-[6.5%] grid-center grid-flow-col-dense;
+        @apply fixed self-center z-30 max-w-1/2 h-auto bottom-[6.5%] grid-center grid-flow-col-dense;
 
         &-item {
-            @apply flex-center bg-self-7 min-w-10 min-h-10 w-10 h-10 rounded-full mx-2 transition-all duration-300 cursor-pointer bg-opacity-10 border-3 elevation-1 border-transparent hover:(bg-opacity-100 border-self-5);
+            @apply flex-center bg-self-7 min-w-10 min-h-10 w-10 h-10 rounded-full mx-2 transition-all duration-300 cursor-pointer bg-opacity-10 border-3 elevation-1 border-transparent hover: (bg-opacity-100 border-self-5);
         }
 
         &-icon {
-            @apply w-6 h-6 transition duration-500 text-self-1 opacity-75 group-hover:(opacity-100);
+            @apply w-6 h-6 transition duration-500 text-self-1 opacity-75 group-hover: (opacity-100);
 
             &.active {
-                @apply text-self-5 opacity-100 group-hover:(opacity-100);
+                @apply text-self-5 opacity-100 group-hover: (opacity-100);
             }
         }
     }
@@ -199,16 +199,6 @@ useHead({ title, description })
         &_2 {
             filter: blur(250px) drop-shadow(0px 0px 1px #003366);
         }
-    }
-}
-
-.mirror {
-    &-horizonal {
-        transform: scale(-1, 1);
-    }
-
-    &-vertical {
-        transform: scale(1, -1);
     }
 }
 </style>

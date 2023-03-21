@@ -3,8 +3,8 @@
     <div class="section" :class="[sc, active ? 'section-to' : 'section-no']">
             <!-- section-no -->
         <div class="section-waves z-0">
-            <LazyItemMediaImg v-if="wdr" class="absolute right-0 h-full w-auto" src="wave_3d_1.webp"></LazyItemMediaImg>
-            <LazyItemMediaImg v-if="wdl" class="absolute left-0 mirror-horizonal h-full w-auto" src="wave_3d_1.webp"></LazyItemMediaImg>
+            <LazyItemMediaImg v-if="wdr" class="fixed right-0 h-full w-auto" src="wave_3d_1.webp"></LazyItemMediaImg>
+            <LazyItemMediaImg v-if="wdl" class="fixed left-0 mirror-horizonal h-full w-auto" src="wave_3d_1.webp"></LazyItemMediaImg>
         </div>
 
         <div class="section-content" :class="[scc, active ? 'section-content-to' : 'section-content-no']">
@@ -37,46 +37,23 @@ defineProps({
 
 <style lang="scss">
 .section {
-    //transition: height 2s;
-    @apply relative flex-center h-screen min-h-full w-full overflow-x-hidden overflow-y-auto transition-all duration-500;
+    @apply relative flex-center h-screen min-h-full w-full overflow-x-hidden overflow-y-auto transition-all duration-750;
 
     &-no {
         @apply !(h-0 min-h-0 min-w-screen overflow-y-hidden opacity-0);
     }
 
     &-content {
-        //flex-grow
-        @apply flex-center h-full w-0 transition-all duration-2000 overflow-hidden;
+        @apply flex-center h-full w-0 transition-all duration-1500 overflow-hidden;
 
         &-to {
             @apply w-full;
         }
-
-        //&-no {
-        //    // w-0 min-h-0 max-h-0 
-        //    //@apply !(opacity-100);
-        //    //@apply !(h-0 min-h-0 max-h-0 w-0 min-w-0 max-w-0 overflow-y-hidden opacity-0);
-        //    @apply absolute self-center !(h-auto w-0 transform translate-x-1/2);
-        //}
     }
 
     &-waves {
         @apply pointer-events-none absolute inset-0;
     }
 
-
-
-
-    //@apply !(h-0 min-h-0 max-h-0 w-0 min-w-0 max-w-0 overflow-y-hidden opacity-0);
-}
-
-.mirror {
-    &-horizonal {
-        transform: scale(-1, 1);
-    }
-
-    &-vertical {
-        transform: scale(1, -1);
-    }
 }
 </style>
