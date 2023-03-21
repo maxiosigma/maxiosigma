@@ -142,6 +142,13 @@ const data = {
 const isActive = (i) => activeSlide.value === i
 const toActive = (i) => (activeSlide.value = i)
 
+const { x, y, sourceType } = useMouse({ touch: false })
+const { isMobile } = useDevice()
+
+//if (sourceType === 'mouse')
+
+//console.log(useBreakpoints())
+
 definePageMeta({ layout: 'page' })
 useHead({ title, description })
 </script>

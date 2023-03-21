@@ -3,6 +3,23 @@
 //maxiosigma-nuxt-test.firebaseapp.com
 //firebase hosting:channel:deploy preview --expores 1h
 
+//$device.isDesktop
+//$device.isMobile
+//$device.isTablet
+//$device.isMobileOrTablet
+//$device.isDesktopOrTablet
+//$device.isIos
+//$device.isWindows
+//$device.isMacOS
+//$device.isApple
+//$device.isAndroid
+//$device.isFirefox
+//$device.isEdge
+//$device.isChrome
+//$device.isSafari
+//$device.isSamsung
+//$device.isCrawler
+
 //<!--<NuxtLayout name="page">-->
 //<!--</NuxtLayout>-->
 

@@ -17,6 +17,7 @@
     "devDependencies": {
         "@nuxt/image": "^0.7.1",
         "@nuxt/webpack-builder": "^3.3.1",
+        "@nuxtjs/device": "^3.1.0",
         "@nuxtjs/fontaine": "^0.2.4",
         "@nuxtjs/i18n": "^8.0.0-beta.10",
         "@nuxtjs/strapi": "^1.9.0",
@@ -30,7 +31,7 @@
         "@windicss/plugin-heropatterns": "^0.0.8",
         "@windicss/plugin-icons": "^1.0.2",
         "@windicss/plugin-question-mark": "^0.1.1",
-        "firebase": "^9.17.2",
+        "firebase": "^9.18.0",
         "graphql": "^16.6.0",
         "nuxt": "3.3.1",
         "nuxt-full-static": "^0.2.1",
@@ -39,13 +40,13 @@
         "nuxt-windicss": "^2.6.0",
         "pug": "^3.0.2",
         "pug-plain-loader": "^1.1.0",
-        "sass": "^1.59.2",
+        "sass": "^1.59.3",
         "tailwindcss-elevation": "^2.0.0",
         "vite-plugin-windicss": "^1.8.10",
         "windicss": "^3.5.6"
     },
     "dependencies": {
-        "@nuxt/types": "^2.16.0",
+        "@nuxt/types": "^2.16.3",
         "@vitalets/google-translate-api": "^9.1.0",
         "@vueuse/integrations": "^9.13.0",
         "@vueuse/motion": "^2.0.0-beta.27",

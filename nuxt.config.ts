@@ -49,11 +49,13 @@ export default defineNuxtConfig({
         },
     },
     modules: [
-        '@nuxtjs/i18n',
         'nuxt-windicss',
+
+        '@nuxtjs/i18n',
         '@nuxtjs/strapi',
         '@vueuse/nuxt',
-        'nuxt-viewport',
+        '@nuxtjs/device',
+        //'nuxt-viewport',
         //"@nuxtjs/fontaine",
         //"@vueuse/motion",
         //"@vueuse/integrations",
