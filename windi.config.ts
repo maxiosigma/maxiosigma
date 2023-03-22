@@ -287,6 +287,10 @@ function shortcuts() {
 function extract() {
     return {
         include: [
+            '**/*.{vue,js}',
+            '**/**/*.{vue,js}',
+            '**/**/**/*.{vue,js}',
+
             './assets/index.scss',
             './assets/scss/*.scss',
 

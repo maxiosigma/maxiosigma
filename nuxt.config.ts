@@ -1,3 +1,4 @@
+//import WindiCSS from 'vite-plugin-windicss'
 import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
@@ -48,6 +49,9 @@ export default defineNuxtConfig({
             nuxt: 'logos:nuxt-icon',
         },
     },
+    windicss: {
+        analyze: true,
+    },
     modules: [
         'nuxt-windicss',
 
@@ -65,6 +69,7 @@ export default defineNuxtConfig({
         //"nuxt-full-static",
     ],
     css: ['~/assets/index.scss'],
+    hooks: {},
 })
 
 function locales() {

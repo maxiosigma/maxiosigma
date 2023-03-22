@@ -54,15 +54,20 @@
 
     <TemplateIndexSection :active="isActive(4)"></TemplateIndexSection>
 
-    <div class="index-nav place-items-center place-content-center">
-        <div class="index-nav-item group relative flex-col" v-for="(it, i) in sections" :key="i" @click="toActive(it.index)">
+    <div class="index-nav">
+        <div class="index-nav-item group relative flex-col ransition-all duration-500" v-for="(it, i) in sections" :key="i" @click="toActive(it.index)">
             <!--{{ it.name }}-->
 
             <div class="bg-self-7 w-full min-w-8 min-h-4 rounded-t-full"></div>
-            <Icon class="index-nav-icon absolute z-10" :class="[isActive(it.index) ? 'active' : '']" :name="it.icon" />
-            <!--<div v-if="i === 2" class="flex-center flex-col bg-self-7 py-1 px-1 w-full break-all min-h-20 uppercase text-xs">
-                <span v-for="(s, j) in it.name" :key="j">{{ s }}</span>
-            </div>-->
+            <!--<Icon class="index-nav-icon absolute z-10" :class="[isActive(it.index) ? 'active' : '']" :name="it.icon" />-->
+
+            <!-- min-h-0 h-0 max-h-0 overflow-hidden group-hover:(h-full max-h-full my-0.5 py-1 px-1) -->
+            <div v-if="i === 3" class="flex-center flex-col bg-self-7 w-full break-all uppercase text-xs transition-all duration-500">
+                <!-- group-hover:(h-full max-h-full) -->
+                <div class="transition-all duration-500 min-h-0 h-0 overflow-hidden" v-for="(s, j) in it.name" :key="j">
+                    {{ s }}
+                </div>
+            </div>
             <div class="bg-self-7 w-full min-w-8 min-h-4 bottom-0 rounded-b-full"></div>
         </div>
     </div>
@@ -168,7 +173,7 @@ useHead({ title, description })
 
     &-nav {
         //auto-cols-max grid-cols-4 bg-self-2/50 rounded-lg
-        @apply fixed grid-center px-4 py-2 self-center z-30 max-w-1/2 h-auto bottom-[5.5%] grid-flow-col-dense grid-rows-3 sm:grid-rows-2 lg:grid-rows-1;
+        @apply fixed grid justify-center items-end px-4 py-2 self-center z-30 max-w-1/2 h-auto bottom-[5.5%] grid-flow-col-dense grid-rows-3 sm:grid-rows-2 lg:grid-rows-1;
 
         &-item {
             // bg-self-7

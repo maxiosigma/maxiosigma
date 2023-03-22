@@ -1,7 +1,11 @@
 {
 	"extends": "./.nuxt/tsconfig.json",
 	"compilerOptions": {
-		"types": ["@nuxtjs/i18n", "@nuxt/image"],
+		"types": [
+			"@nuxtjs/i18n",
+			"@nuxt/image",
+			"nuxt-windicss"
+		],
 		"allowJs": true
 	}
 }
