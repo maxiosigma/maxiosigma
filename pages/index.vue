@@ -59,12 +59,18 @@
             <!--{{ it.name }}-->
 
             <div class="bg-self-7 w-full min-w-8 min-h-4 rounded-t-full"></div>
-            <!--<Icon class="index-nav-icon absolute z-10" :class="[isActive(it.index) ? 'active' : '']" :name="it.icon" />-->
+            <Icon
+                class="index-nav-icon absolute z-10 transition-all delay-1250 opacity-100 group-hover:(!opacity-0 delay-300)"
+                :class="[isActive(it.index) ? 'active' : '']"
+                :name="it.icon"
+            />
 
             <!-- min-h-0 h-0 max-h-0 overflow-hidden group-hover:(h-full max-h-full my-0.5 py-1 px-1) -->
-            <div v-if="i === 3" class="flex-center flex-col bg-self-7 w-full break-all uppercase text-xs transition-all duration-500">
-                <!-- group-hover:(h-full max-h-full) -->
-                <div class="transition-all duration-500 min-h-0 h-0 overflow-hidden" v-for="(s, j) in it.name" :key="j">
+            <div
+                class="flex-center flex-col bg-self-7 w-full break-all uppercase text-xs transition-all delay-300 duration-1250 max-h-0 overflow-y-hidden group-hover:(max-h-screen)"
+            >
+                <!-- group-hover:(h-full max-h-full) transform scale-0 opacity-0 group-hover:(scale-100 opacity-100) -->
+                <div class="transition-all duration-1500" v-for="(s, j) in it.name" :key="j">
                     {{ s }}
                 </div>
             </div>
@@ -181,7 +187,7 @@ useHead({ title, description })
         }
 
         &-icon {
-            @apply w-6 h-6 transition duration-500 text-self-1 opacity-75 group-hover:(opacity-100);
+            @apply w-5 h-5 transition duration-500 text-self-1 opacity-75 group-hover:(opacity-100);
 
             &.active {
                 @apply text-self-5 opacity-100 group-hover:(opacity-100);

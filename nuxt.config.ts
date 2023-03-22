@@ -54,7 +54,6 @@ export default defineNuxtConfig({
     },
     modules: [
         'nuxt-windicss',
-
         '@nuxtjs/i18n',
         '@nuxtjs/strapi',
         '@vueuse/nuxt',
