@@ -54,11 +54,16 @@
 
     <TemplateIndexSection :active="isActive(4)"></TemplateIndexSection>
 
-    <div class="index-nav">
-        <div class="index-nav-item group" v-for="(it, i) in sections" :key="i" @click="toActive(it.index)">
+    <div class="index-nav place-items-center place-content-center">
+        <div class="index-nav-item group relative flex-col" v-for="(it, i) in sections" :key="i" @click="toActive(it.index)">
             <!--{{ it.name }}-->
 
-            <Icon class="index-nav-icon" :class="[isActive(it.index) ? 'active' : '']" :name="it.icon" />
+            <div class="bg-self-7 w-full min-w-8 min-h-4 rounded-t-full"></div>
+            <Icon class="index-nav-icon absolute z-10" :class="[isActive(it.index) ? 'active' : '']" :name="it.icon" />
+            <!--<div v-if="i === 2" class="flex-center flex-col bg-self-7 py-1 px-1 w-full break-all min-h-20 uppercase text-xs">
+                <span v-for="(s, j) in it.name" :key="j">{{ s }}</span>
+            </div>-->
+            <div class="bg-self-7 w-full min-w-8 min-h-4 bottom-0 rounded-b-full"></div>
         </div>
     </div>
 </template>
@@ -166,7 +171,8 @@ useHead({ title, description })
         @apply fixed grid-center px-4 py-2 self-center z-30 max-w-1/2 h-auto bottom-[5.5%] grid-flow-col-dense grid-rows-3 sm:grid-rows-2 lg:grid-rows-1;
 
         &-item {
-            @apply flex-center bg-self-7 min-w-10 min-h-10 w-10 h-10 max-w-10 max-h-10 rounded-full m-1 transition-all duration-300 cursor-pointer bg-opacity-10 border-3 elevation-1 border-transparent hover:(bg-opacity-100 border-self-5);
+            // bg-self-7
+            @apply flex-center rounded-full m-1 transition-all duration-300 cursor-pointer bg-opacity-10 border-3 elevation-1 border-transparent hover:(bg-opacity-100 border-self-5);
         }
 
         &-icon {
