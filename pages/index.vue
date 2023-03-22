@@ -58,23 +58,24 @@
         <div class="index-nav-item group relative flex-col ransition-all duration-500" v-for="(it, i) in sections" :key="i" @click="toActive(it.index)">
             <!--{{ it.name }}-->
 
-            <div class="bg-self-7 w-full min-w-8 min-h-4 rounded-t-full"></div>
+            <div class="bg-self-7 bg-opacity-10 w-full min-w-8 min-h-4 rounded-t-full transition-all delay-150 duration-1550 group-hover:(!bg-opacity-100)"></div>
             <Icon
-                class="index-nav-icon absolute z-10 transition-all delay-1250 opacity-100 group-hover:(!opacity-0 delay-300)"
+                class="index-nav-icon absolute z-10 transition-all delay-1050 duration-300 opacity-100 group-hover:(!opacity-0 delay-150)"
                 :class="[isActive(it.index) ? 'active' : '']"
                 :name="it.icon"
             />
 
             <!-- min-h-0 h-0 max-h-0 overflow-hidden group-hover:(h-full max-h-full my-0.5 py-1 px-1) -->
+            <!--  bg-opacity-10 hover:(bg-opacity-100 border-self-5) -->
             <div
-                class="flex-center flex-col bg-self-7 w-full break-all uppercase text-xs transition-all delay-300 duration-1250 max-h-0 overflow-y-hidden group-hover:(max-h-screen)"
+                class="flex-center flex-col bg-self-7 bg-opacity-10 w-full break-all uppercase text-xs transition-all delay-150 duration-1550 max-h-0 overflow-y-hidden group-hover:(max-h-screen !bg-opacity-100)"
             >
                 <!-- group-hover:(h-full max-h-full) transform scale-0 opacity-0 group-hover:(scale-100 opacity-100) -->
-                <div class="transition-all duration-1500" v-for="(s, j) in it.name" :key="j">
+                <div v-for="(s, j) in it.name" :key="j">
                     {{ s }}
                 </div>
             </div>
-            <div class="bg-self-7 w-full min-w-8 min-h-4 bottom-0 rounded-b-full"></div>
+            <div class="bg-self-7 bg-opacity-10 w-full min-w-8 min-h-4 bottom-0 rounded-b-full transition-all delay-150 duration-1550 group-hover:(!bg-opacity-100)"></div>
         </div>
     </div>
 </template>
@@ -95,8 +96,8 @@ const sections = [
     { index: 7, name: 'FAQ', icon: 'ep:help' },
     { index: 8, name: 'Brands', icon: 'ep:grape' },
     { index: 9, name: 'Presents', icon: 'carbon:gift' },
-    { index: 10, name: 'Reviews', icon: '' },
-    { index: 11, name: 'Future', icon: '' },
+    { index: 10, name: 'Reviews', icon: 'uil:comment-message' },
+    { index: 11, name: 'Future', icon: 'ci:settings-future' },
     { index: 12, name: 'Contacts', icon: 'quill:signature' },
 ]
 //.filter(isPC => index > 1)
