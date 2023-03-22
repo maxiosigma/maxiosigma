@@ -15,7 +15,7 @@
     </TemplateIndexSection>
 
     <!--   -->
-    <TemplateIndexSection wt sc="!overflow-y-hidden" :active="isActive(2)">
+    <TemplateIndexSection wt sc="!overflow-y-hidden !h-screen" :active="isActive(2)">
         <LazyItemMediaImg class="object-contain w-auto h-9/10 <lg:(absolute z-10 right-[50%] h-[200%] opacity-45)" src="my_photo_2.webp"></LazyItemMediaImg>
 
         <div class="ml-10 text-self-7 pt-10 relative z-20">
@@ -162,18 +162,18 @@ useHead({ title, description })
     }
 
     &-nav {
-        //auto-cols-max
-        @apply fixed self-center z-30 max-w-1/2 h-auto bottom-[6.5%] grid-center grid-flow-col-dense;
+        //auto-cols-max grid-cols-4 bg-self-2/50 rounded-lg
+        @apply fixed grid-center px-4 py-2 self-center z-30 max-w-1/2 h-auto bottom-[5.5%] grid-flow-col-dense grid-rows-3 sm:grid-rows-2 lg:grid-rows-1;
 
         &-item {
-            @apply flex-center bg-self-7 min-w-10 min-h-10 w-10 h-10 rounded-full mx-2 transition-all duration-300 cursor-pointer bg-opacity-10 border-3 elevation-1 border-transparent hover: (bg-opacity-100 border-self-5);
+            @apply flex-center bg-self-7 min-w-10 min-h-10 w-10 h-10 max-w-10 max-h-10 rounded-full m-1 transition-all duration-300 cursor-pointer bg-opacity-10 border-3 elevation-1 border-transparent hover:(bg-opacity-100 border-self-5);
         }
 
         &-icon {
-            @apply w-6 h-6 transition duration-500 text-self-1 opacity-75 group-hover: (opacity-100);
+            @apply w-6 h-6 transition duration-500 text-self-1 opacity-75 group-hover:(opacity-100);
 
             &.active {
-                @apply text-self-5 opacity-100 group-hover: (opacity-100);
+                @apply text-self-5 opacity-100 group-hover:(opacity-100);
             }
         }
     }

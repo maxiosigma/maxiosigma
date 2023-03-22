@@ -1,7 +1,6 @@
 <template>
-
     <div class="section" :class="[sc, active ? 'section-to' : 'section-no']">
-            <!-- section-no -->
+        <!-- section-no -->
         <div class="section-waves z-0">
             <LazyItemMediaImg v-if="wdr" class="fixed right-0 h-full w-auto" src="wave_3d_1.webp"></LazyItemMediaImg>
             <LazyItemMediaImg v-if="wdl" class="fixed left-0 mirror-horizonal h-full w-auto" src="wave_3d_1.webp"></LazyItemMediaImg>
@@ -37,14 +36,14 @@ defineProps({
 
 <style lang="scss">
 .section {
-    @apply relative flex-center h-screen min-h-full w-full overflow-x-hidden overflow-y-auto transition-all duration-750;
+    @apply relative flex-center h-full max-h-full w-full overflow-hidden transition-all duration-750;
 
     &-no {
         @apply !(h-0 min-h-0 min-w-screen overflow-y-hidden opacity-0);
     }
 
     &-content {
-        @apply flex-center h-full w-0 transition-all duration-1500 overflow-hidden;
+        @apply flex-center h-full w-0 transition-all duration-1500 overflow-x-hidden overflow-y-auto;
 
         &-to {
             @apply w-full;
@@ -54,6 +53,5 @@ defineProps({
     &-waves {
         @apply pointer-events-none absolute inset-0;
     }
-
 }
 </style>

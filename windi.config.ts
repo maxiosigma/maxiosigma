@@ -208,6 +208,8 @@ function plugins() {
                 '.all-small-caps': { fontVariantCaps: 'all-small-caps' },
                 '.small-caps': { fontVariantCaps: 'small-caps' },
                 '.normal-caps': { fontVariantCaps: 'normal' },
+                '.mirror-horizonal': { transform: 'scale(-1, 1)' },
+                '.mirror-vertical': { transform: 'scale(1, -1)' },
                 '.text-3d': {
                     fontFamily: 'helvetica',
                     textTransform: 'uppercase',
