@@ -78,10 +78,10 @@ onMounted(() => {
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
     text-rendering: optimizeLegibility;
-    @apply bg-self-1 font-roboto h-auto max-w-screen relative;
+    @apply bg-self-1 flex font-roboto h-auto min-h-screen max-w-screen relative;
 }
 
 .wrapper {
-    @apply h-full overflow-hidden;
+    @apply h-full flex flex-grow h-auto overflow-hidden;
 }
 </style>

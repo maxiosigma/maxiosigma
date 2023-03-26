@@ -70,6 +70,7 @@ function themeExtend() {
             robotoslab: ['Roboto Slab'],
             futuranewbook: ['Futura New Book'],
             oranienbaum: ['Oranienbaum'],
+            nanumpen: ['Nanum Pen', 'cursive'],
         },
         fontSize: {
             h1: '64px',

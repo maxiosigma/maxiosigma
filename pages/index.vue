@@ -55,8 +55,13 @@
     <TemplateIndexSection :active="isActive('Steps')"></TemplateIndexSection>
     <TemplateIndexSection :active="isActive('Steps')"></TemplateIndexSection>
 
-    <TemplateIndexSection :active="isActive('FAQ')">
-        <h2 class="text-h2_1 text-self-4">F.A.Q</h2>
+    <TemplateIndexSection scc="flex-col" :active="isActive('FAQ')">
+        <h2 class="text-h2_1 leading-[80%] text-self-4 font-nanumpen">F.A.Q</h2>
+        <div class="text-h2 text-self-5">Частые вопросы</div>
+
+        <div class="grid grid-cols-2">
+            <div v-for="(it, i) in sections.FAQ.items" :key="i"></div>
+        </div>
     </TemplateIndexSection>
 
     <TemplateIndexSection :active="isActive('Brands')"></TemplateIndexSection>
@@ -103,7 +108,7 @@
 const title = ref('~ MAIN ~')
 const description = ref('')
 
-const route = useRoute()
+//const route = useRoute()
 const activeSlide = ref('FAQ') // isPC = 1, 2
 
 const sections = {
@@ -168,7 +173,20 @@ const sections = {
     Lastworks: { icon: 'ep:goblet-square-full' },
     Start: { icon: 'ep:loading' },
     Complete: { icon: 'ep:loading' },
-    FAQ: { icon: 'ep:help' },
+    FAQ: {
+        icon: 'ep:help',
+        items: [
+            {
+                question: 'Сколько стоит работа ?',
+                answer: 'Каждая работа рассчитывается индивидуально, расценок за просто баннер не бывает, необходимо конкретизировать и давать полное понимание о проекте сразу',
+            },
+            { question: 'Вы умеете делать это ?', answer: 'Да, у меня имеется множество навыков не указанных на сайте в рамках предпочтительных работ' },
+            {
+                question: 'У меня горят сроки, сделаете быстрее ?',
+                answer: 'Как правило у меня несколько проектов в работе и даже за доп. плату я соблюдаю сроки оговорённые изначально, но если есть возможность ускоряю работу или нахожу иное решение проблемы',
+            },
+        ],
+    },
     Brands: { icon: 'ep:grape' },
     Presents: { icon: 'carbon:gift' },
     Reviews: { icon: 'uil:comment-message' },
