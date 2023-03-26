@@ -66,7 +66,7 @@ onMounted(() => {
 
 <style lang="scss">
 .html {
-    @apply h-auto max-w-screen relative;
+    @apply bg-self-1 h-auto max-w-screen relative;
 }
 
 .head {

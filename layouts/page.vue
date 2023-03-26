@@ -13,7 +13,7 @@ defineProps({
     title: { type: String, required: false, default: undefined },
     description: { type: String, required: false, default: undefined },
     preloader: { type: Boolean, required: false, default: true },
-    navIntex: { type: Boolean, required: false, default: true },
+    navIndex: { type: Boolean, required: false, default: true },
 })
 </script>
 
