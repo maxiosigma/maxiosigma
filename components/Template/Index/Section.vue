@@ -43,7 +43,7 @@ defineProps({
     }
 
     &-content {
-        @apply flex-center h-full w-0 transition-all duration-1500 overflow-x-hidden overflow-y-auto pb-20;
+        @apply flex-center h-full w-0 transition-all duration-1500 overflow-hidden pb-30;
 
         &-to {
             @apply w-full;

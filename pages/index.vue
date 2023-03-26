@@ -55,12 +55,17 @@
     <TemplateIndexSection :active="isActive('Steps')"></TemplateIndexSection>
     <TemplateIndexSection :active="isActive('Steps')"></TemplateIndexSection>
 
+    <!-- wt wb  -->
     <TemplateIndexSection scc="flex-col" :active="isActive('FAQ')">
-        <h2 class="text-h2_1 leading-[80%] text-self-4 font-nanumpen">F.A.Q</h2>
-        <div class="text-h2 text-self-5">Частые вопросы</div>
+        <h2 class="text-h2_1 leading-[100%] tracking-widest font-black text-self-4 font-nanumpen uppercase mt-10">F.A.Q</h2>
+        <div class="text-h2 text-self-5 font-bold tracking-wider pr-[2.5%] uppercase">Частые вопросы</div>
 
-        <div class="grid grid-cols-2">
-            <div v-for="(it, i) in sections.FAQ.items" :key="i"></div>
+        <!-- grid-cols-2 -->
+        <div class="grid place-items-center items-start gap-8 mt-8">
+            <div class="grid gap-3 max-w-2/3" v-for="(it, i) in sections.FAQ.items" :key="i">
+                <div class="text-h4 leading-[100%] text-self-7 font-bold"><span class=""></span> {{ it.question }}</div>
+                <div class="text-h6 leading-[120%] text-self-4 font-light tracking-wide"><span class=""></span>{{ it.answer }}</div>
+            </div>
         </div>
     </TemplateIndexSection>
 
@@ -178,12 +183,15 @@ const sections = {
         items: [
             {
                 question: 'Сколько стоит работа ?',
-                answer: 'Каждая работа рассчитывается индивидуально, расценок за просто баннер не бывает, необходимо конкретизировать и давать полное понимание о проекте сразу',
+                answer: 'Каждая работа рассчитывается индивидуально, расценок за «просто баннер» не бывает, необходимо конкретизировать и предоставить полное техническое задание о проекте сразу.',
             },
-            { question: 'Вы умеете делать это ?', answer: 'Да, у меня имеется множество навыков не указанных на сайте в рамках предпочтительных работ' },
+            {
+                question: 'Вы умеете делать это ?',
+                answer: 'Да, у меня имеется множество навыков не указанных на сайте в рамках предпочтительных работ.',
+            },
             {
                 question: 'У меня горят сроки, сделаете быстрее ?',
-                answer: 'Как правило у меня несколько проектов в работе и даже за доп. плату я соблюдаю сроки оговорённые изначально, но если есть возможность ускоряю работу или нахожу иное решение проблемы',
+                answer: 'Как правило у меня несколько проектов в работе и даже за доп. плату я соблюдаю сроки оговорённые изначально, но если есть возможность, ускоряю работу или нахожу иное решение проблемы.',
             },
         ],
     },
