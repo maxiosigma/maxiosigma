@@ -1,16 +1,16 @@
 //import graphql from "~/assets/index.graphql";
 
 export default defineNuxtPlugin(async (nuxtApp) => {
-	//nuxtApp.payload.data = {
-	//	...useNuxtApp().payload.data,
-	//	links: await strapLinks(),
-	//	publics: await strapPublics(),
-	//	menu_footer: await strapMenuFooter(),
-	//	menu_social: await strapMenuNavSocial(),
-	//	menu_nav: await strapMenuNav(),
-	//	works: await strapWorks(),
-	//};
-});
+    //nuxtApp.payload.data = {
+    //	...useNuxtApp().payload.data,
+    //	links: await strapLinks(),
+    //	publics: await strapPublics(),
+    //	menu_footer: await strapMenuFooter(),
+    //	menu_social: await strapMenuNavSocial(),
+    //	menu_nav: await strapMenuNav(),
+    //	works: await strapWorks(),
+    //};
+})
 
 //async function strapPublics() {
 //	const query = await useStrapiGraphQL()(graphql.publics());

@@ -20,6 +20,9 @@
 //$device.isSamsung
 //$device.isCrawler
 
+//if (sourceType === 'mouse')
+//console.log(useBreakpoints())
+
 //<!--<NuxtLayout name="page">-->
 //<!--</NuxtLayout>-->
 

@@ -1,7 +1,18 @@
 <template>
-    <img v-if="getImage() && !bg" :src="getImage()" :width="width" :height="height" :class="['img-render']" :alt="alt" :aria-label="title" :id="id" itemprop="image" />
+    <img
+        v-if="getImage() && !bg"
+        :src="getImage()"
+        :width="width"
+        :height="height"
+        :class="['img-render']"
+        :alt="alt"
+        :aria-label="title"
+        :id="id"
+        onabort="aborted()"
+        itemprop="image"
+    />
 
-    <div v-else-if="getImage() && bg" :id="id" :class="['img-bg-mod']" :title="title" :alt="alt" itemprop="image">
+    <div v-else-if="getImage() && bg" :id="id" :class="['img-bg-mod']" :title="title" :alt="alt" itemprop="image" onabort="aborted()">
         <slot></slot>
     </div>
 </template>
@@ -9,26 +20,30 @@
 <script setup>
 const { src, alt, title, bg } = defineProps({
     src: { required: true, type: String },
-    alt: { type: String, default: "img" },
-    title: { type: String, default: "img" },
+    alt: { type: String, default: 'img' },
+    title: { type: String, default: 'img' },
     bg: { type: Boolean, default: false },
 })
 
 const { width, height, id } = {
-    width: "auto",
-    height: "auto",
+    width: 'auto',
+    height: 'auto',
     id:
-        "img_" +
+        'img_' +
         String(Math.random() * ((Math.random() * 10000000) / 1.0))
-            .split(".")
-            .join("_"),
+            .split('.')
+            .join('_'),
 }
 
 function getImage() {
     return useAssets(src)
 }
 
-if (bg) useHead({ style: [{ type: "text/css", async: true, innerHTML: `#${id} { background-image: url('${getImage()}'); }`, body: true }] })
+function aborted(e) {
+    console.log(e)
+}
+
+if (bg) useHead({ style: [{ type: 'text/css', async: true, innerHTML: `#${id} { background-image: url('${getImage()}'); }`, body: true }] })
 </script>
 
 <style lang="scss">

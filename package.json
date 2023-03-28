@@ -46,6 +46,7 @@
         "windicss": "^3.5.6"
     },
     "dependencies": {
+        "@dewib/xhr-cache": "^3.3.0",
         "@nuxt/types": "^2.16.3",
         "@vitalets/google-translate-api": "^9.1.0",
         "@vueuse/integrations": "^9.13.0",

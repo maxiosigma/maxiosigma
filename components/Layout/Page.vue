@@ -1,7 +1,8 @@
 <template>
     <NuxtLayout name="default">
-        <div :class="$style.page">
-            <!-- Разрешение экрана меньше *** переключитесь на мобильный телефон -->
+        <div :class="[$style.page, view ? '' : '!hidden']">
+            {{ view }}
+
             <slot />
         </div>
     </NuxtLayout>
@@ -13,8 +14,10 @@ defineProps({
     title: { type: String, required: false, default: undefined },
     description: { type: String, required: false, default: undefined },
     preloader: { type: Boolean, required: false, default: true },
-    navIndex: { type: Boolean, required: false, default: true },
+    view: { type: Boolean, required: false, default: true },
 })
+
+// <!-- Разрешение экрана меньше *** переключитесь на мобильный телефон -->
 </script>
 
 <style module>

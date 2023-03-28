@@ -3,9 +3,13 @@
 </template>
 
 <script setup>
-//const { push } = useRouter();
-//const { query } = useRoute();
-//const { links } = useNuxtApp().payload.data;
+const { push } = useRouter()
+const { hash, query } = useRoute()
+const { links } = useNuxtApp().payload.data
+
+push({ hash: '', query })
+
+console.log(links)
 
 //onMounted(() => {
 //	if (Object.keys(query).length !== 0 && !useUtm(query)) {

@@ -63,6 +63,7 @@ export default defineNuxtConfig({
         //"@vueuse/motion",
         //"@vueuse/integrations",
         //"@vueuse/router",
+        //'@dewib/xhr-cache',
         'nuxt-icon',
         //"nuxt-schema-org",
         //"nuxt-full-static",
