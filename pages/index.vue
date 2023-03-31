@@ -56,12 +56,10 @@
         <TemplateIndexSection :active="isActive('Steps')"></TemplateIndexSection>
         <TemplateIndexSection :active="isActive('Steps')"></TemplateIndexSection>
 
-        <!-- wt wb  -->
-        <TemplateIndexSection scc="flex-col" :active="isActive('FAQ')">
+        <TemplateIndexSection wt wb scc="flex-col" :active="isActive('FAQ')">
             <h2 class="text-h2_1 leading-[100%] tracking-widest font-black text-self-4 font-nanumpen uppercase mt-10">F.A.Q</h2>
-            <div class="text-h2 text-self-5 font-bold tracking-wider pr-[2.5%] uppercase">Частые вопросы</div>
+            <div class="text-h2 text-self-5 font-bold tracking-wider pr-[2.5%] uppercase whitespace-nowrap">Частые вопросы</div>
 
-            <!-- grid-cols-2 -->
             <div class="grid place-items-center items-start gap-8 mt-8">
                 <div class="grid gap-3 w-2/3" v-for="(it, i) in sections.FAQ.items" :key="i">
                     <div class="text-h4 leading-[100%] text-self-7 font-bold"><span class=""></span> {{ it.question }}</div>
