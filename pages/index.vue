@@ -19,7 +19,7 @@
             <LazyItemMediaImg class="object-contain w-auto h-9/10 <lg:(absolute z-10 right-[50%] h-[200%] opacity-45)" src="my_photo_2.webp"></LazyItemMediaImg>
 
             <div class="ml-10 text-self-7 pt-10 relative z-20">
-                <div class="font-black text-[4.5vmax] tracking-widest uppercase">Добро пожаловать</div>
+                <div class="font-black text-[4.5vmax] tracking-widest uppercase">{{ t('dobro-pozhalovat') }}</div>
 
                 <div class="flex flex-col text-[2.5vmax] all-small-caps tracking-wide pl-1/20 mt-1/30">
                     <div class="flex items-center py-1/100" :class="'pl-[' + (sections.Welcome.text.length - i - 1) * 5 + '%]'" v-for="(it, i) in sections.Welcome.text" :key="i">
@@ -52,13 +52,15 @@
             </div>
         </TemplateIndexSection>
 
+        <!--{{ t('title') }}-->
+
         <TemplateIndexSection :active="isActive('Lastworks')"></TemplateIndexSection>
         <TemplateIndexSection :active="isActive('Steps')"></TemplateIndexSection>
         <TemplateIndexSection :active="isActive('Steps')"></TemplateIndexSection>
 
         <TemplateIndexSection wt wb scc="flex-col" :active="isActive('FAQ')">
             <h2 class="text-h2_1 leading-[100%] tracking-widest font-black text-self-4 font-nanumpen uppercase mt-10">F.A.Q</h2>
-            <div class="text-h2 text-self-5 font-bold tracking-wider pr-[2.5%] uppercase whitespace-nowrap">Частые вопросы</div>
+            <div class="text-h2 text-self-5 font-bold tracking-wider pr-[2.5%] uppercase whitespace-nowrap">{{ t('chastye-voprosy') }}</div>
 
             <div class="grid place-items-center items-start gap-8 mt-8">
                 <div class="grid gap-3 w-2/3" v-for="(it, i) in sections.FAQ.items" :key="i">

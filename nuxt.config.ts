@@ -44,15 +44,16 @@ export default defineNuxtConfig({
         pages: {
             link: false,
         },
+        langDir: 'locales',
         locales: locales(),
     },
-    nuxtIcon: {
-        size: '32px',
-        class: 'icon',
-        aliases: {
-            nuxt: 'logos:nuxt-icon',
-        },
-    },
+    //nuxtIcon: {
+    //    size: '32px',
+    //    class: 'icon',
+    //    aliases: {
+    //        nuxt: 'logos:nuxt-icon',
+    //    },
+    //},
     windicss: {
         analyze: true,
     },
