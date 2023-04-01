@@ -3,17 +3,30 @@ import data from '~/assets/index.graphql'
 export default defineNuxtPlugin(async (nuxtApp) => {
     const graphql = useStrapiGraphQL()
 
+    const publics = (await graphql(data.publics()))?.data.publicateds.data.map((it) => it.attributes)
+
     const links = (await graphql(data.links()))?.data.links.data.map((it) => ({
         ferd: useCripty(it?.attributes.href),
         sh: it?.attributes.short,
     }))
 
-    const publics = (await graphql(data.publics()))?.data.publicateds.data.map((it) => it.attributes)
+    const works = (await graphql(data.works()))?.data.works.data
+        .map(({ attributes }) => ({
+            ...attributes,
+            assets: {
+                fonts: attributes.assets.fonts.data.map((as) => as.attributes.title),
+                models: attributes.assets.models.data.map((as) => as.attributes.title),
+                technologies: attributes.assets.technologies.data.map((as) => as.attributes.title),
+            },
+            media: attributes.media.data.map((md) => {
+                const alt = md.attributes.alternativeText
+                delete md.attributes.alternativeText
+                return { ...md.attributes, alt }
+            }),
+        }))
+        .reverse()
 
-    //const gql = (await graphql(query()))?.data;
-    //const result = gql.publicateds.data.map((it) => it.attributes);
-
-    nuxtApp.payload.data = { links, publics }
+    nuxtApp.payload.data = { links, publics, works }
 
     //nuxtApp.payload.data = {
     //    ...useNuxtApp().payload.data,

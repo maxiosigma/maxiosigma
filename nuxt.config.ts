@@ -79,8 +79,8 @@ export default defineNuxtConfig({
 
 function locales() {
     const locales_pc = [
-        { code: 'en', iso: 'en-ES', name: 'English', file: 'en-ES.js' },
-        { code: 'ru', iso: 'ru-RU', name: 'Русский', file: 'ru-RU.js' },
+        { code: 'en', iso: 'en-ES', name: 'English', file: 'en.json' },
+        { code: 'ru', iso: 'ru-RU', name: 'Русский', file: 'ru.json' },
     ]
 
     const locales_mobile = locales_pc.map((locale) => {
