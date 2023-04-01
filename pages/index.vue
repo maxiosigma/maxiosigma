@@ -114,6 +114,9 @@ const { query } = useRoute()
 const { x, y, sourceType } = useMouse({ touch: false })
 const { isMobile } = useDevice()
 
+const { t } = useI18n()
+const localePath = useLocalePath()
+
 const title = ref('~ MAIN ~')
 const description = ref('')
 

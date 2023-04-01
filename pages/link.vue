@@ -3,13 +3,18 @@
 </template>
 
 <script setup>
+defineI18nRoute(false)
+
 const { push } = useRouter()
 const { hash, query } = useRoute()
-const { links } = useNuxtApp().payload.data
+const { links, publics } = useNuxtApp().payload.data
 
 push({ hash: '', query })
 
-console.log(links)
+//const graphql = useStrapiGraphQL()
+//console.log(graphql)
+
+console.log(publics)
 
 //onMounted(() => {
 //	if (Object.keys(query).length !== 0 && !useUtm(query)) {

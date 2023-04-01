@@ -1,5 +1,5 @@
 export default {
-	links: () => `
+    links: () => `
 		query {
 			links(pagination: { limit: 1000 }, sort: "top:DESC") {
 				data {
@@ -37,7 +37,7 @@ export default {
 			}
 		}
 	`,
-	publics: () => `
+    publics: () => `
 		query {
 			publicateds(pagination:{limit: 2000}) {
 				data {
@@ -51,7 +51,7 @@ export default {
 			}
 		}
 	`,
-	menu: (slug) => `
+    menu: (slug = '') => `
 		query {
 			renderNavigation(
 				navigationIdOrSlug: "${slug}"
@@ -83,7 +83,7 @@ export default {
 			}
 		}
 	`,
-	works: () => `
+    works: () => `
 		query {
 			works (sort: "top:DESC", pagination: {limit: 2000}){
 				data {
@@ -139,4 +139,4 @@ export default {
 			}
 		}
 	`,
-};
+}

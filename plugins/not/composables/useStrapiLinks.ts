@@ -1,34 +1,38 @@
 export default function () {
-	//{ ferd: null, sh: null }
-	const links = ref([]);
+    //{ ferd: null, sh: null }
+    const links = ref([])
+    //const graphql = useStrapiGraphQL()
+    //const qrd = graphql(query())
+    //console.log(graphql)
 
-	const getApiDataLinks = async () => {
-		try {
-			const graphql = useStrapiGraphQL() ?? null;
-			const qrd = await graphql(query());
-			const result = qrd.data.links.data.map((it) => {
-				return {
-					ferd: useCripty(it?.attributes?.href),
-					sh: it?.attributes?.short,
-				};
-			});
+    const getApiDataLinks = async () => {
+        try {
+            const graphql = useStrapiGraphQL()
+            const qrd = await graphql(query())
 
-			useNuxtApp().payload.data = {
-				...useNuxtApp().payload.data,
-				links: result,
-			};
+            const result = qrd.data.links.data.map((it) => {
+                return {
+                    ferd: useCripty(it?.attributes?.href),
+                    sh: it?.attributes?.short,
+                }
+            })
 
-			links.value = useNuxtApp().payload.data?.links;
-		} catch (error) {
-			//links.value = useNuxtApp().payload.data?.links;
-		}
-	};
+            useNuxtApp().payload.data = {
+                ...useNuxtApp().payload.data,
+                links: result,
+            }
 
-	return { links: useState(() => links), getApiDataLinks };
+            links.value = useNuxtApp().payload.data?.links
+        } catch (error) {
+            //links.value = useNuxtApp().payload.data?.links;
+        }
+    }
+
+    return { links: useState(() => links), getApiDataLinks }
 }
 
 function query() {
-	return `
+    return `
 	query {
 		links(pagination: { limit: 1000 }, sort: "top:DESC") {
 		  data {
@@ -65,7 +69,7 @@ function query() {
 		  }
 		}
 	  }
-	 `;
+	 `
 }
 
 ////links.value = [];

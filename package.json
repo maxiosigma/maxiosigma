@@ -15,6 +15,7 @@
         "f:preview": "firebase hosting:channel:deploy preview"
     },
     "devDependencies": {
+        "@nuxt/devtools": "^0.3.1",
         "@nuxt/image": "^0.7.1",
         "@nuxt/webpack-builder": "^3.3.1",
         "@nuxtjs/device": "^3.1.0",

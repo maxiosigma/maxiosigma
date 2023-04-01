@@ -31,7 +31,7 @@ export default defineNuxtConfig({
     },
     i18n: {
         lazy: false,
-        strategy: 'prefix',
+        strategy: 'prefix_and_default',
         defaultLocale: 'en',
         vueI18n: {
             fallbackLocale: ['ru'],
@@ -39,6 +39,10 @@ export default defineNuxtConfig({
         detectBrowserLanguage: {
             useCookie: true,
             cookieKey: 'lang',
+        },
+        customRoutes: 'config',
+        pages: {
+            link: false,
         },
         locales: locales(),
     },
@@ -67,6 +71,7 @@ export default defineNuxtConfig({
         'nuxt-icon',
         //"nuxt-schema-org",
         //"nuxt-full-static",
+        //'@nuxt/devtools',
     ],
     css: ['~/assets/index.scss'],
     hooks: {},
