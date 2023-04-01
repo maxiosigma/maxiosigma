@@ -17,5 +17,6 @@
     "workbench.activityBar.visible": true,
     "workbench.panel.defaultLocation": "bottom",
     "zenMode.centerLayout": true,
-    "explorerExclude.backup": null
+    "explorerExclude.backup": null,
+    "i18n-ally.localesPaths": "locales"
 }
