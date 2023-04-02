@@ -1,7 +1,7 @@
 <template>
     <NuxtLayout name="default">
         <div :class="[$style.page, view ? '' : '!hidden']">
-            {{ view }}
+            <!--{{ view }}-->
 
             <slot />
         </div>

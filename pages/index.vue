@@ -21,10 +21,10 @@
             <div class="ml-10 text-self-7 pt-10 relative z-20">
                 <div class="font-black text-[4.5vmax] tracking-widest uppercase">{{ t('dobro-pozhalovat') }}</div>
 
-                <div class="flex flex-col text-[2.5vmax] all-small-caps tracking-wide pl-1/20 mt-1/30">
+                <div class="flex flex-col text-[2.5vmax] all-small-caps tracking-wide pl-1/20 mt-1/30" :class="[lp.name !== 'ru' ? 'text-[2.5vmax]' : '']">
                     <div class="flex items-center py-1/100" :class="'pl-[' + (sections.Welcome.text.length - i - 1) * 5 + '%]'" v-for="(it, i) in sections.Welcome.text" :key="i">
-                        <div class="w-6 h-6 mr-1/30 bg-self-4 rounded-sm"></div>
-                        <div class="mb-1">{{ it }}</div>
+                        <div class="min-w-6 min-h-6 mr-1/30 bg-self-4 rounded-sm"></div>
+                        <div class="mb-1 whitespace-nowrap">{{ it }}</div>
                     </div>
                 </div>
             </div>
@@ -52,15 +52,13 @@
             </div>
         </TemplateIndexSection>
 
-        <!--{{ t('title') }}-->
-
         <TemplateIndexSection :active="isActive('Lastworks')"></TemplateIndexSection>
         <TemplateIndexSection :active="isActive('Steps')"></TemplateIndexSection>
         <TemplateIndexSection :active="isActive('Steps')"></TemplateIndexSection>
 
         <TemplateIndexSection wt wb scc="flex-col" :active="isActive('FAQ')">
-            <h2 class="text-h2_1 leading-[100%] tracking-widest font-black text-self-4 font-nanumpen uppercase mt-10">F.A.Q</h2>
-            <div class="text-h2 text-self-5 font-bold tracking-wider pr-[2.5%] uppercase whitespace-nowrap">{{ t('chastye-voprosy') }}</div>
+            <h2 class="text-[12vmax] leading-[100%] tracking-widest font-black text-self-4 font-nanumpen uppercase mt-10">F.A.Q</h2>
+            <div class="text-[3.5vmax] text-self-5 font-bold tracking-wider pr-[2.5%] uppercase whitespace-nowrap">{{ t('chastye-voprosy') }}</div>
 
             <div class="grid place-items-center items-start gap-8 mt-8">
                 <div class="grid gap-3 w-2/3" v-for="(it, i) in sections.FAQ.items" :key="i">
@@ -118,6 +116,10 @@ const { isMobile } = useDevice()
 
 const { t } = useI18n()
 const localePath = useLocalePath()
+//const locale = usePreferredLanguages()
+//const locale = useNavigatorLanguage()
+
+const { localeProperties: lp } = useI18n()
 
 const title = ref('~ MAIN ~')
 const description = ref('')
@@ -133,57 +135,57 @@ const sections = {
     Overflow: { icon: 'ep:chrome-filled' },
     Welcome: {
         icon: 'ep:hot-water',
-        text: ['всегда рад вам помочь', 'дизайнер | разработчик', 'большой спектр услуг', 'на связи постоянно', 'по всему миру и рф'],
+        text: [t('vsegda-rad-vam-pomoch'), t('dizainer-or-razrabotchik'), t('bolshoi-spektr-uslug'), t('na-svyazi-postoyanno'), t('po-vsemu-miru-i-rf')],
     },
     Services: {
         icon: 'ep:operation',
         items: [
             {
-                title: 'Разработка',
+                title: t('razrabotka'),
                 items: [
-                    { title: 'website', add: 'Nuxt 3 + CMS' },
+                    { title: 'Website', add: 'Nuxt 3 + CMS' },
                     { title: 'Integrations', add: 'Multy' },
-                    { title: 'serverless', add: 'Node' },
+                    { title: 'Serverless', add: 'Node' },
                     { title: 'Parsing', add: 'Node' },
                     { title: 'API', add: 'Node' },
                 ],
             },
             {
-                title: 'Дизайн',
+                title: t('dizain'),
                 items: [
-                    { title: 'фирменный стиль', add: 'figma' },
-                    { title: 'прототипирование', add: 'figma' },
-                    { title: 'Презентация', add: 'Multy' },
-                    { title: 'редизайн', add: 'figma' },
-                    { title: 'логотип', add: 'figma' },
-                    { title: 'правки', add: 'Multy' },
-                    { title: 'Баннер', add: 'figma' },
-                    { title: 'сайт', add: 'figma' },
+                    { title: t('firmennyi-stil'), add: 'Figma' },
+                    { title: t('prototipirovanie'), add: 'Figma' },
+                    { title: t('prezentaciya'), add: 'Multy' },
+                    { title: t('redizain'), add: 'Figma' },
+                    { title: t('logotip'), add: 'Figma' },
+                    { title: t('pravki'), add: 'Multy' },
+                    { title: t('banner'), add: 'Figma' },
+                    { title: t('sait'), add: 'Figma' },
                 ],
             },
-            { title: '3D', items: [{ title: 'Простые модели', add: 'Blender' }] },
+            { title: '3D', items: [{ title: t('prostye-modeli'), add: 'Blender' }] },
             {
-                title: 'Копирайт',
+                title: t('kopirait'),
                 items: [
-                    { title: 'описание к товарам', add: 'brain' },
-                    { title: 'Продающий текст', add: 'Soul' },
-                    { title: 'отзывы', add: 'Creative' },
-                ],
-            },
-            {
-                title: 'Медиа',
-                items: [
-                    { title: 'обработка видео', add: 'Movavi' },
-                    { title: 'обработка фото', add: 'Multy' },
-                    { title: 'Нарезка видео', add: 'Multy' },
+                    { title: t('opisanie-k-tovaram'), add: 'Brain' },
+                    { title: t('prodayushii-tekst'), add: 'Soul' },
+                    { title: t('otzyvy'), add: 'Creative' },
                 ],
             },
             {
-                title: 'Поддержка',
+                title: t('media'),
                 items: [
-                    { title: 'программирование', add: 'совет' },
-                    { title: 'видео-показ', add: 'помощь' },
-                    { title: 'дизайн', add: 'совет' },
+                    { title: t('obrabotka-video'), add: 'Movavi' },
+                    { title: t('obrabotka-foto'), add: 'Multy' },
+                    { title: t('narezka-video'), add: 'Multy' },
+                ],
+            },
+            {
+                title: t('podderzhka'),
+                items: [
+                    { title: t('programmirovanie'), add: t('sovet') },
+                    { title: t('video-pokaz'), add: t('pomosh') },
+                    { title: t('dizain'), add: t('sovet') },
                 ],
             },
         ],
@@ -195,16 +197,16 @@ const sections = {
         icon: 'ep:help',
         items: [
             {
-                question: 'Сколько стоит работа ?',
-                answer: 'Каждая работа рассчитывается индивидуально, расценок за «просто баннер» не бывает, необходимо конкретизировать и предоставить полное техническое задание о проекте сразу.',
+                question: t('skolko-stoit-rabota'),
+                answer: t('kazhdaya-rabota-rasschityvaets'),
             },
             {
-                question: 'Вы умеете делать это ?',
-                answer: 'Да, у меня имеется множество навыков не указанных на сайте в рамках предпочтительных работ.',
+                question: t('vy-umeete-delat-eto'),
+                answer: t('da-u-menya-imeetsya-mnozhestvo'),
             },
             {
-                question: 'У меня горят сроки, сделаете быстрее ?',
-                answer: 'Как правило у меня несколько проектов в работе и даже за доп. плату я соблюдаю сроки оговорённые изначально, но если есть возможность, ускоряю работу или нахожу иное решение проблемы.',
+                question: t('u-menya-goryat-sroki-sdelaete-'),
+                answer: t('kak-pravilo-u-menya-neskolko-p'),
             },
         ],
     },
@@ -230,8 +232,8 @@ useHead({ title, description })
     }
 
     &-nav {
-        //auto-cols-max grid-cols-4 bg-self-2/50 rounded-lg
-        @apply fixed grid justify-center items-end px-4 py-2 self-center z-30 max-w-1/2 h-auto bottom-[5.5%] grid-flow-col-dense grid-rows-3 sm:grid-rows-2 lg:grid-rows-1;
+        //auto-cols-max grid-cols-4 bg-self-2/50 rounded-lg  grid-rows-3 sm:grid-rows-2 lg:grid-rows-1
+        @apply fixed grid justify-center items-end px-4 py-2 self-center z-30 max-w-1/2 h-auto bottom-[5.5%] grid-flow-col-dense <sm:(hidden);
 
         &-item {
             // bg-self-7 border-self-5 border-3 border-transparent

@@ -82,7 +82,7 @@ function locales() {
     const locales_pc = [
         { code: 'en', iso: 'en-ES', name: 'English', file: 'en.json' },
         { code: 'ru', iso: 'ru-RU', name: 'Русский', file: 'ru.json' },
-    ]
+    ].map((it) => ({ ...it, name: it.code }))
 
     const locales_mobile = locales_pc.map((locale) => {
         return { ...locale, code: locale.code + '-amp' }

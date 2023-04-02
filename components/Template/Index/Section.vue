@@ -11,10 +11,10 @@
         </div>
 
         <div class="section-waves z-20">
-            <ItemMediaImg v-if="wl" class="fixed -left-1px h-full w-auto" src="wave_1.webp"></ItemMediaImg>
-            <ItemMediaImg v-if="wr" class="fixed -right-1px mirror-horizonal h-full w-auto" src="wave_1.webp"></ItemMediaImg>
-            <ItemMediaImg v-if="wt" class="fixed -top-1px mirror-vertical w-full h-auto" src="wave_2.webp"></ItemMediaImg>
-            <ItemMediaImg v-if="wb" class="fixed -bottom-1px w-full h-auto" src="wave_2.webp"></ItemMediaImg>
+            <ItemMediaImg v-if="wl" class="absolute -left-1px h-full w-auto" src="wave_1.webp"></ItemMediaImg>
+            <ItemMediaImg v-if="wr" class="absolute -right-1px mirror-horizonal h-full w-auto" src="wave_1.webp"></ItemMediaImg>
+            <ItemMediaImg v-if="wt" class="absolute -top-1px mirror-vertical w-full h-auto" src="wave_2.webp"></ItemMediaImg>
+            <ItemMediaImg v-if="wb" class="absolute -bottom-1px w-full h-auto" src="wave_2.webp"></ItemMediaImg>
         </div>
     </div>
 </template>
@@ -43,7 +43,7 @@ defineProps({
     }
 
     &-content {
-        @apply flex-center h-full w-0 transition-all duration-1500 overflow-hidden pb-30;
+        @apply flex-center h-full w-0 transition-all duration-1500 overflow-hidden pt-10 pb-30;
 
         &-to {
             @apply w-full;
