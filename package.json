@@ -10,6 +10,7 @@
         "start": "nuxt start",
         "clean": "npx nuxi clean",
         "test": "node ./assets/svg.ts",
+        "sync-translation-files": "node sync-translation-files.js",
         "predev": "",
         "serve": "nuxt serve",
         "f:preview": "firebase hosting:channel:deploy preview"
@@ -57,6 +58,9 @@
         "google-translate-api-x": "^10.5.4",
         "nuxt-viewport": "^2.0.3",
         "stylus": "^0.59.0",
-        "vite-plugin-inline-css-modules": "^0.0.7"
+        "sync-translation-files": "^1.0.3",
+        "translation-files": "^0.1.5",
+        "vite-plugin-inline-css-modules": "^0.0.7",
+        "vue-translation-manager": "^1.2.0"
     }
 }

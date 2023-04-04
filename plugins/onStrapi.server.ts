@@ -27,14 +27,14 @@ export default defineNuxtPlugin(async (nuxtApp) => {
         .reverse()
 
     nuxtApp.payload.data = { links, publics, works }
-
-    //nuxtApp.payload.data = {
-    //    ...useNuxtApp().payload.data,
-    //    links: await strapLinks(),
-    //    publics: await strapPublics(),
-    //    menu_footer: await strapMenuFooter(),
-    //    menu_social: await strapMenuNavSocial(),
-    //    menu_nav: await strapMenuNav(),
-    //    works: await strapWorks(),
-    //}
 })
+
+//nuxtApp.payload.data = {
+//    ...useNuxtApp().payload.data,
+//    links: await strapLinks(),
+//    publics: await strapPublics(),
+//    menu_footer: await strapMenuFooter(),
+//    menu_social: await strapMenuNavSocial(),
+//    menu_nav: await strapMenuNav(),
+//    works: await strapWorks(),
+//}

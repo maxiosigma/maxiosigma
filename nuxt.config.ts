@@ -39,6 +39,7 @@ export default defineNuxtConfig({
         detectBrowserLanguage: {
             useCookie: true,
             cookieKey: 'lang',
+            redirectOn: 'root',
         },
         customRoutes: 'config',
         pages: {
