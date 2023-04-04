@@ -1,6 +1,6 @@
 {
     "banner": "Баннер",
-    "bolshoi-spektr-uslug": "большой спектр услуг",
+    "bolshoi-spektr-uslug": "Большой спектр услуг",
     "chastye-voprosy": "Частые вопросы",
     "da-u-menya-imeetsya-mnozhestvo": "Да, у меня имеется множество навыков не указанных на сайте в рамках предпочтительных работ.",
     "dizain": "Дизайн",
@@ -12,13 +12,13 @@
     "kopirait": "Копирайт",
     "logotip": "Логотип",
     "media": "Медиа",
-    "na-svyazi-postoyanno": "на связи постоянно",
+    "na-svyazi-postoyanno": "На связи постоянно",
     "narezka-video": "Нарезка видео",
     "obrabotka-foto": "Обработка фото",
     "obrabotka-video": "Обработка видео",
     "opisanie-k-tovaram": "Описание к товарам",
     "otzyvy": "Отзывы",
-    "po-vsemu-miru-i-rf": "по всему миру и рф",
+    "po-vsemu-miru-i-rf": "По всему миру и рф",
     "podderzhka": "Поддержка",
     "pomosh": "Помощь",
     "pravki": "Правки",
@@ -34,8 +34,6 @@
     "sovet": "Совет",
     "u-menya-goryat-sroki-sdelaete-": "У меня горят сроки, сделаете быстрее ?",
     "video-pokaz": "Видео-показ",
-    "vsegda-rad-vam-pomoch": "всегда рад вам помочь",
-    "vy-umeete-delat-eto": "Вы умеете делать это ?",
-    "test": ["Один", "Два"],
-    "test2": { "1": "Один", "2": "Два" }
+    "vsegda-rad-vam-pomoch": "Всегда рад вам помочь",
+    "vy-umeete-delat-eto": "Вы умеете делать это ?"
 }

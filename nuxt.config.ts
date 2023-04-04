@@ -81,8 +81,9 @@ export default defineNuxtConfig({
 
 function locales() {
     const locales_pc = [
-        { code: 'en', iso: 'en-ES', name: 'English', file: 'en.json' },
-        { code: 'ru', iso: 'ru-RU', name: 'Русский', file: 'ru.json' },
+        { code: 'en', iso: 'en-ES', name: 'English', file: 'en/index.json' },
+        { code: 'ru', iso: 'ru-RU', name: 'Русский', file: 'ru/index.json' },
+        { code: 'zh', iso: 'zh-CN', name: '中國人', file: 'zh/index.json' },
     ].map((it) => ({ ...it, name: it.code }))
 
     const locales_mobile = locales_pc.map((locale) => {

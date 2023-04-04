@@ -12,3 +12,4 @@ reviews:
             type: approve
             comment: ''
             time: '2023-04-01T23:23:34.846Z'
+            resolved: true
