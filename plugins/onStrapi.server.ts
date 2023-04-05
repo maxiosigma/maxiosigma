@@ -4,8 +4,6 @@ import data from '~/assets/index.graphql'
 import { resolve } from 'path'
 import axios from 'axios'
 
-//import { translate } from 'free-translate'
-
 const write = (name = '', data = []) => {
     const fileName = resolve(__dirname, `../assets/data/${name}.json`)
     if (!existsSync(fileName)) writeFileSync(fileName, JSON.stringify(data))
@@ -23,66 +21,98 @@ const translate = async (text = '', lang = { from: 'ru', to: 'en' }) => {
 
 export default defineNuxtPlugin(async (nuxtApp) => {
     const graphql = useStrapiGraphQL()
-    const publics = (await graphql(data.publics()))?.data.publicateds.data.map((it) => it.attributes) ?? []
+    const { asyncReduceArray } = useFunctions()
 
-    const links =
-        (await graphql(data.links()))?.data.links.data.map((it) => ({
-            ferd: useCripty(it?.attributes.href),
-            sh: it?.attributes.short,
-        })) ?? []
+    const ru = {
+        works:
+            (await graphql(data.works()))?.data.works.data
+                .map(({ attributes }) => ({
+                    ...attributes,
+                    assets: {
+                        fonts: attributes.assets.fonts.data.map((as) => as.attributes.title),
+                        models: attributes.assets.models.data.map((as) => as.attributes.title),
+                        technologies: attributes.assets.technologies.data.map((as) => as.attributes.title),
+                    },
+                    media: attributes.media.data.map((md) => {
+                        const alt = md.attributes.alternativeText
+                        delete md.attributes.alternativeText
+                        return { ...md.attributes, alt }
+                    }),
+                }))
+                .reverse() || [],
+        links:
+            (await graphql(data.links()))?.data.links.data.map((it) => ({
+                ferd: useCripty(it?.attributes.href),
+                sh: it?.attributes.short,
+            })) || [],
 
-    const works =
-        (await graphql(data.works()))?.data.works.data
-            .map(({ attributes }) => ({
-                ...attributes,
-                assets: {
-                    fonts: attributes.assets.fonts.data.map((as) => as.attributes.title),
-                    models: attributes.assets.models.data.map((as) => as.attributes.title),
-                    technologies: attributes.assets.technologies.data.map((as) => as.attributes.title),
-                },
-                media: attributes.media.data.map((md) => {
-                    const alt = md.attributes.alternativeText
-                    delete md.attributes.alternativeText
-                    return { ...md.attributes, alt }
-                }),
-            }))
-            .reverse() ?? []
+        publics: (await graphql(data.publics()))?.data.publicateds.data.map((it) => it.attributes) || [],
+    }
 
     const en = {
+        links: read('en/links') ?? ru.links,
         works:
             read('en/works') ??
-            (await works.reduce(async (sum, w, i) => {
-                const title = w.title ? await translate(w.title, { from: 'ru', to: 'en' }) : null
-                const description = w.description ? await translate(w.description, { from: 'ru', to: 'en' }) : null
-                return await sum.then(async (res) => {
-                    return [...res, { ...w, title, description }]
-                })
-            }, Promise.resolve([]))),
+            (await asyncReduceArray(ru.works, async (w, i) => {
+                return [
+                    {
+                        ...w,
+                        title: w.title ? await translate(w.title, { from: 'ru', to: 'en' }) : null,
+                        description: w.description ? await translate(w.description, { from: 'ru', to: 'en' }) : null,
+                    },
+                ]
+            })),
+        publics:
+            read('en/publics') ??
+            (await asyncReduceArray(ru.publics, async (w, i) => {
+                return [
+                    {
+                        ...w,
+                        title: w.title ? await translate(w.title, { from: 'ru', to: 'en' }) : null,
+                        description: w.description ? await translate(w.description, { from: 'ru', to: 'en' }) : null,
+                        keywords: w.keywords ? await translate(w.keywords, { from: 'ru', to: 'en' }) : null,
+                    },
+                ]
+            })),
     }
 
     const zh = {
+        links: read('zh/links') ?? ru.links,
         works:
             read('zh/works') ??
-            (await works.reduce(async (sum, w, i) => {
-                const title = w.title ? await translate(w.title, { from: 'ru', to: 'zh' }) : null
-                const description = w.description ? await translate(w.description, { from: 'ru', to: 'zh' }) : null
-                return await sum.then(async (res) => {
-                    return [...res, { ...w, title, description }]
-                })
-            }, Promise.resolve([]))),
+            (await asyncReduceArray(ru.works, async (w, i) => {
+                return [
+                    {
+                        ...w,
+                        title: w.title ? await translate(w.title, { from: 'ru', to: 'zh' }) : null,
+                        description: w.description ? await translate(w.description, { from: 'ru', to: 'zh' }) : null,
+                    },
+                ]
+            })),
+        publics:
+            read('zh/publics') ??
+            (await asyncReduceArray(ru.publics, async (w, i) => {
+                return [
+                    {
+                        ...w,
+                        title: w.title ? await translate(w.title, { from: 'ru', to: 'zh' }) : null,
+                        description: w.description ? await translate(w.description, { from: 'ru', to: 'zh' }) : null,
+                        keywords: w.keywords ? await translate(w.keywords, { from: 'ru', to: 'zh' }) : null,
+                    },
+                ]
+            })),
     }
 
-    //write('ru/links', links)
-    //write('ru/publics', publics)
-    //write('ru/works', works)
+    const result = { ru, en, zh }
 
-    //write('ru/works', works)
-    //   works.forEach((w) => ({ ...w, title: translate(w.title, 'en'), description: translate(w.description, 'en') }))
+    Object.values(result).map((it, i) => {
+        const l = Object.keys(result)[i]
+        write(`${l}/works`, it.works)
+        write(`${l}/links`, it.links)
+        write(`${l}/publics`, it.publics)
+    })
 
-    write('en/works', en.works)
-    write('zh/works', zh.works)
-
-    nuxtApp.payload.data = { links, publics, works }
+    nuxtApp.payload.data = { ru, en, zh }
 })
 
 //nuxtApp.payload.data = {
@@ -103,3 +133,11 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 //            : data
 //    )
 //)
+
+//   (await ru.works.reduce(async (sum, w, i) => {
+//        const title = w.title ? await translate(w.title, { from: 'ru', to: 'en' }) : null
+//        const description = w.description ? await translate(w.description, { from: 'ru', to: 'en' }) : null
+//        return await sum.then(async (res) => {
+//            return [...res, { ...w, title, description }]
+//        })
+//    }, Promise.resolve([]))),
