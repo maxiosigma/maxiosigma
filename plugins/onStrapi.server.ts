@@ -1,22 +1,28 @@
 import { writeFileSync, readFileSync, existsSync } from 'node:fs'
-import { resolve } from 'path'
+import { generateRequestUrl, normaliseResponse } from 'google-translate-api-browser'
 import data from '~/assets/index.graphql'
+import { resolve } from 'path'
+import axios from 'axios'
+
+//import { translate } from 'free-translate'
+
+const write = (name = '', data = []) => {
+    const fileName = resolve(__dirname, `../assets/data/${name}.json`)
+    if (!existsSync(fileName)) writeFileSync(fileName, JSON.stringify(data))
+}
+
+const read = (name = '') => {
+    const fileName = resolve(__dirname, `../assets/data/${name}.json`)
+    return existsSync(fileName) ? JSON.parse(readFileSync(fileName, { encoding: 'utf8' })) : undefined
+}
+
+const translate = async (text = '', lang = { from: 'ru', to: 'en' }) => {
+    const url = (await axios(generateRequestUrl(text, lang))) ?? {}
+    return normaliseResponse(url?.data)?.text
+}
 
 export default defineNuxtPlugin(async (nuxtApp) => {
-    const write = (name = '', data = []) => {
-        const fileName = resolve(__dirname, `../assets/data/${name}.json`)
-        writeFileSync(
-            fileName,
-            JSON.stringify(
-                existsSync(fileName)
-                    ? [...readFileSync(fileName), ...data.filter((d) => readFileSync(fileName).filter((r) => JSON.stringify(d) == JSON.stringify(r)).length === 0)]
-                    : data
-            )
-        )
-    }
-
     const graphql = useStrapiGraphQL()
-
     const publics = (await graphql(data.publics()))?.data.publicateds.data.map((it) => it.attributes) ?? []
 
     const links =
@@ -42,9 +48,39 @@ export default defineNuxtPlugin(async (nuxtApp) => {
             }))
             .reverse() ?? []
 
-    write('links', links)
-    write('publics', publics)
-    write('works', works)
+    const en = {
+        works:
+            read('en/works') ??
+            (await works.reduce(async (sum, w, i) => {
+                const title = w.title ? await translate(w.title, { from: 'ru', to: 'en' }) : null
+                const description = w.description ? await translate(w.description, { from: 'ru', to: 'en' }) : null
+                return await sum.then(async (res) => {
+                    return [...res, { ...w, title, description }]
+                })
+            }, Promise.resolve([]))),
+    }
+
+    const zh = {
+        works:
+            read('zh/works') ??
+            (await works.reduce(async (sum, w, i) => {
+                const title = w.title ? await translate(w.title, { from: 'ru', to: 'zh' }) : null
+                const description = w.description ? await translate(w.description, { from: 'ru', to: 'zh' }) : null
+                return await sum.then(async (res) => {
+                    return [...res, { ...w, title, description }]
+                })
+            }, Promise.resolve([]))),
+    }
+
+    //write('ru/links', links)
+    //write('ru/publics', publics)
+    //write('ru/works', works)
+
+    //write('ru/works', works)
+    //   works.forEach((w) => ({ ...w, title: translate(w.title, 'en'), description: translate(w.description, 'en') }))
+
+    write('en/works', en.works)
+    write('zh/works', zh.works)
 
     nuxtApp.payload.data = { links, publics, works }
 })
@@ -58,3 +94,12 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 //    menu_nav: await strapMenuNav(),
 //    works: await strapWorks(),
 //}
+
+//writeFileSync(
+//    fileName,
+//    JSON.stringify(
+//        existsSync(fileName)
+//            ? [...readFileSync(fileName), ...data.filter((d) => readFileSync(fileName).filter((r) => JSON.stringify(d) == JSON.stringify(r)).length === 0)]
+//            : data
+//    )
+//)
