@@ -21,7 +21,9 @@ const translate = async (text = '', lang = { from: 'ru', to: 'en' }) => {
 
 export default defineNuxtPlugin(async (nuxtApp) => {
     const graphql = useStrapiGraphQL()
-    const { asyncReduceArray } = useFunctions()
+    const { asyncReduceArray, asyncReduceObject } = useFunctions()
+
+    const navSlugs = ['nav', 'footer', 'social']
 
     const ru = {
         works:
@@ -45,8 +47,10 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                 ferd: useCripty(it?.attributes.href),
                 sh: it?.attributes.short,
             })) || [],
-
         publics: (await graphql(data.publics()))?.data.publicateds.data.map((it) => it.attributes) || [],
+        menu: await asyncReduceObject(navSlugs, async (it) => ({
+            [it]: (await graphql(data.menu(it)))?.data.renderNavigation,
+        })),
     }
 
     const en = {
@@ -74,6 +78,9 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                     },
                 ]
             })),
+        menu: await asyncReduceObject(Object.entries(ru.menu), async ([key, value]) => ({
+            [key]: await asyncReduceArray(value, async (v) => ({ ...v, title: v?.title ? await translate(v?.title, { from: 'ru', to: 'en' }) : null })),
+        })),
     }
 
     const zh = {
@@ -107,12 +114,18 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 
     Object.values(result).map((it, i) => {
         const l = Object.keys(result)[i]
-        write(`${l}/works`, it.works)
-        write(`${l}/links`, it.links)
-        write(`${l}/publics`, it.publics)
+        const k = Object.keys(it)
+
+        k.map((kit) => {
+            write(`${l}/${kit}`, it?.[kit])
+        })
+
+        //write(`${l}/works`, it.works)
+        //write(`${l}/links`, it.links)
+        //write(`${l}/publics`, it.publics)
     })
 
-    nuxtApp.payload.data = { ru, en, zh }
+    nuxtApp.payload.data = result
 })
 
 //nuxtApp.payload.data = {

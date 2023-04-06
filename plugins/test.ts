@@ -8,31 +8,10 @@
 
 //import { translate } from 'free-translate'
 
+//import data from '~/assets/index.graphql'
+
 export default defineNuxtPlugin(async () => {
-    //console.log(await translate('Я сьел чернику', { from: 'ru', to: 'en' }))
-    //const translate = async (text = '', lang = 'en') => {
-    //    const url = (await axios(generateRequestUrl(text, { to: lang }))) ?? {}
-    //    return normaliseResponse(url?.data)?.text
-    //}
-    //const read = (name = '') => {
-    //    const fileName = resolve(__dirname, `../assets/data/${name}.json`)
-    //    return existsSync(fileName) ? JSON.parse(readFileSync(fileName, { encoding: 'utf8' })) : []
-    //}
-    //const en = {
-    //    works: await asyncReduceArray(
-    //        read('ru/works').filter((w, i) => i < 2),
-    //        async (w) => {
-    //                 return [
-    //                {
-    //                    title: await translate(w.title, 'en'),
-    //                    description: await translate(w.description, 'en'),
-    //                },
-    //            ]
-    //        }
-    //    ),
-    //}
-    //console.log(en.works)
-    //console.log(await translate('Сегодня пьём чай', 'zh'))
+    //if (process.server) {}
 })
 
 //const translate = async (text = '', lang = 'en') => normaliseResponse((await axios(generateRequestUrl(text, { to: lang }))).data).text
@@ -56,3 +35,39 @@ export default defineNuxtPlugin(async () => {
 //		hello: (msg: string) => `Hello ${msg}!`,
 //	},
 //};
+//console.log(await translate('Я сьел чернику', { from: 'ru', to: 'en' }))
+//const translate = async (text = '', lang = 'en') => {
+//    const url = (await axios(generateRequestUrl(text, { to: lang }))) ?? {}
+//    return normaliseResponse(url?.data)?.text
+//}
+//const read = (name = '') => {
+//    const fileName = resolve(__dirname, `../assets/data/${name}.json`)
+//    return existsSync(fileName) ? JSON.parse(readFileSync(fileName, { encoding: 'utf8' })) : []
+//}
+//const en = {
+//    works: await asyncReduceArray(
+//        read('ru/works').filter((w, i) => i < 2),
+//        async (w) => {
+//                 return [
+//                {
+//                    title: await translate(w.title, 'en'),
+//                    description: await translate(w.description, 'en'),
+//                },
+//            ]
+//        }
+//    ),
+//}
+//console.log(en.works)
+//console.log(await translate('Сегодня пьём чай', 'zh'))
+
+//    const graphql = useStrapiGraphQL()
+//    const { asyncReduceObject } = useFunctions()
+//    const menu = await asyncReduceObject(['nav', 'footer', 'social'], async (it) => ({
+//        [it]: (await graphql(data.menu(it)))?.data.renderNavigation,
+//    }))
+//    //['nav', 'footer', 'social'].reduce(async (sum, it) => {
+//    //    const gql = (await graphql(data.menu(it)))?.data.renderNavigation
+//    //    sum = Object.assign(await sum, { [it]: gql })
+//    //    return sum
+//    //}, {})
+//    console.log(menu)

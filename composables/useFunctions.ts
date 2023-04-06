@@ -10,5 +10,20 @@ export default function () {
             })
         }, Promise.resolve([]))
 
-    return { asyncReduceArray }
+    const asyncReduceObject = async (arr, predicate, timeout = 150) =>
+        arr.reduce(async (sum, it, i) => {
+            await sleep(timeout * i)
+            const result = (await predicate(it, i)) ?? {}
+            return await sum.then(async (res) => {
+                return { ...res, ...(result || {}) }
+            })
+        }, Promise.resolve({}))
+
+    const asyncFilter = async (arr, predicate, timeout = 150) =>
+        arr.reduce(async (memo, e, i) => {
+            await sleep(timeout * i)
+            return [...(await memo), ...((await predicate(e, i)) ? [e] : [])]
+        }, [])
+
+    return { asyncReduceArray, asyncReduceObject, asyncFilter }
 }
