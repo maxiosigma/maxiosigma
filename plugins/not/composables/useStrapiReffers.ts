@@ -1,33 +1,33 @@
 export default function () {
-	//let links = ref([]);
-	//const getApiDataLinks = async () => {
-	//	try {
-	//		const graphql = useStrapiGraphQL();
-	//		const gql = (await graphql(query())).data.links.data;
-	//		links.value = gql.reduce((sum, it) => {
-	//			const link = it.attributes;
+    //let links = ref([]);
+    //const getApiDataLinks = async () => {
+    //	try {
+    //		const graphql = useStrapiGraphQL();
+    //		const gql = (await graphql(query())).data.links.data;
+    //		links.value = gql.reduce((sum, it) => {
+    //			const link = it.attributes;
 
-	//			if (!!link?.partnership && !!link?.title && !!link?.description && !!link?.short)
-	//				sum.push({
-	//					title: link?.title,
-	//					description: link?.description,
-	//					images: link?.imgs?.data.map((img) => img?.attributes),
-	//					short: link?.short,
-	//					tags: link?.tags?.data?.map((tag) => tag?.attributes?.title)?.sort((a, b) => (a?.length > b?.length ? 1 : -1)),
-	//					top: link?.top,
-	//				});
+    //			if (!!link?.partnership && !!link?.title && !!link?.description && !!link?.short)
+    //				sum.push({
+    //					title: link?.title,
+    //					description: link?.description,
+    //					images: link?.imgs?.data.map((img) => img?.attributes),
+    //					short: link?.short,
+    //					tags: link?.tags?.data?.map((tag) => tag?.attributes?.title)?.sort((a, b) => (a?.length > b?.length ? 1 : -1)),
+    //					top: link?.top,
+    //				});
 
-	//			return sum;
-	//		}, []);
-	//	} catch (error) {}
-	//};
+    //			return sum;
+    //		}, []);
+    //	} catch (error) {}
+    //};
 
-	return 0;
-	//return { links: useState(() => links), getApiDataLinks };
+    return 0
+    //return { links: useState(() => links), getApiDataLinks };
 }
 
 function query() {
-	return `
+    return `
 	query {
 		links(pagination: { limit: 1000 }, sort: "top:DESC") {
 		  data {
@@ -64,5 +64,5 @@ function query() {
 		  }
 		}
 	  }
-	 `;
+	 `
 }

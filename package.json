@@ -51,6 +51,7 @@
     "dependencies": {
         "@dewib/xhr-cache": "^3.3.0",
         "@nuxt/types": "^2.16.3",
+        "@nuxtjs/toast": "^3.3.1",
         "@vitalets/google-translate-api": "^9.1.0",
         "@vueuse/integrations": "^9.13.0",
         "@vueuse/motion": "^2.0.0-beta.27",
