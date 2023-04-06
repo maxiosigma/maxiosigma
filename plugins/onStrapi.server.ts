@@ -78,8 +78,8 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                     },
                 ]
             })),
-        menu: await asyncReduceObject(Object.entries(ru.menu), async ([key, value]) => ({
-            [key]: await asyncReduceArray(value, async (v) => ({ ...v, title: v?.title ? await translate(v?.title, { from: 'ru', to: 'en' }) : null })),
+        menu: await asyncReduceObject(Object.entries(ru.menu), async ([key, values]) => ({
+            [key]: await asyncReduceArray(values, async (v) => [{ ...v, title: v?.title ? await translate(v?.title, { from: 'ru', to: 'en' }) : null }]),
         })),
     }
 

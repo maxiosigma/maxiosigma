@@ -6,7 +6,7 @@ export default function () {
             await sleep(timeout * i)
             const result = (await predicate(it, i)) ?? []
             return await sum.then(async (res) => {
-                return [...res, ...(result || [])]
+                return [...res, ...(result ?? [])]
             })
         }, Promise.resolve([]))
 
@@ -15,7 +15,7 @@ export default function () {
             await sleep(timeout * i)
             const result = (await predicate(it, i)) ?? {}
             return await sum.then(async (res) => {
-                return { ...res, ...(result || {}) }
+                return { ...res, ...(result ?? {}) }
             })
         }, Promise.resolve({}))
 
