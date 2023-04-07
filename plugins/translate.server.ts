@@ -28,9 +28,9 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     const langs = ['ru', 'en', 'zh']
 
     const fieldTranslate = async (field = '', lang = '') => (lang === defaultLang || !field ? field : await translate(field, { from: 'ru', to: lang }))
-    const getGql = async (data, field) => (await graphql(data))?.data[field].data.map((it) => it.attributes)
+    const getGql = async (data, field) => (await graphql(data))?.data?.[field]?.data?.map((it) => it?.attributes)
 
-    const content = await asyncReduceArray(langs, async (lang = '') => {
+    const content = await asyncReduceObject(langs, async (lang = '') => {
         const links = read(`${lang}/links`) ?? (await getGql(data.links(), 'links')).map((link) => ({ ferd: useCripty(link?.href), sh: link?.short }))
 
         const reffers =
@@ -73,22 +73,39 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 
         const publics =
             read(`${lang}/publics`) ??
-            (await asyncReduceArray(await getGql(data.publics(), 'publicateds'), async (it) => {
-                return [
-                    {
-                        ...it,
-                        title: await fieldTranslate(it?.title, lang),
-                        description: await fieldTranslate(it?.description, lang),
-                        keywords: await fieldTranslate(it?.keywords, lang),
-                    },
-                ]
-            }))
+            (await asyncReduceArray(await getGql(data.publics(), 'publicateds'), async (it) => [
+                {
+                    ...it,
+                    title: await fieldTranslate(it?.title, lang),
+                    description: await fieldTranslate(it?.description, lang),
+                    keywords: await fieldTranslate(it?.keywords, lang),
+                },
+            ]))
+
+        const menu = await asyncReduceArray(navSlugs, async (nav) => [
+            {
+                [`menu_${nav}`]:
+                    read(`${lang}/menu_${nav}`) ??
+                    (await asyncReduceArray((await graphql(data.menu(nav)))?.data?.renderNavigation, async (it) => [
+                        {
+                            ...it,
+                            title: await fieldTranslate(it?.title, lang),
+                        },
+                    ])),
+            },
+        ])
 
         write(`${lang}/links`, links)
         write(`${lang}/reffers`, reffers)
         write(`${lang}/publics`, publics)
         write(`${lang}/works`, works)
+
+        menu.map((it) => Object.entries(it).map(([key, val]) => write(`${lang}/${key}`, val)))
+
+        return { [lang]: { links, reffers, works, publics, ...menu } }
     })
+
+    return content
 })
 
 //const en = {
