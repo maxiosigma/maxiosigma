@@ -28,14 +28,16 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     const langs = ['ru', 'en', 'zh']
 
     const fieldTranslate = async (field = '', lang = '') => (lang === defaultLang || !field ? field : await translate(field, { from: 'ru', to: lang }))
+    const getGql = async (data, field) => (await graphql(data))?.data[field].data.map((it) => it.attributes)
 
     const content = await asyncReduceArray(langs, async (lang = '') => {
-        const links = read(`${lang}/links`) ?? (await graphql(data.links()))?.data.links.data.map(({ attributes: link = {} }) => ({ ferd: useCripty(link?.href), sh: link?.short }))
+        const links = read(`${lang}/links`) ?? (await getGql(data.links(), 'links')).map((link) => ({ ferd: useCripty(link?.href), sh: link?.short }))
+
         const reffers =
             read(`${lang}/reffers`) ??
             (await asyncReduceArray(
-                (await graphql(data.links()))?.data.links.data.filter(({ attributes: link = {} }) => !!link?.partnership && !!link?.title && !!link?.description && !!link?.short),
-                async ({ attributes: link = {} }) => [
+                (await getGql(data.links(), 'links')).filter((link) => !!link?.partnership && !!link?.title && !!link?.description && !!link?.short),
+                async (link) => [
                     {
                         title: await fieldTranslate(link?.title, lang),
                         description: await fieldTranslate(link?.description, lang),
@@ -50,7 +52,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
         const works =
             read(`${lang}/works`) ??
             (
-                await asyncReduceArray((await graphql(data.works()))?.data.works.data, async ({ attributes: work }) => [
+                await asyncReduceArray(await getGql(data.works(), 'works'), async (work) => [
                     {
                         ...work,
                         title: await fieldTranslate(work?.title, lang),
@@ -69,8 +71,22 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                 ])
             )?.reverse()
 
+        const publics =
+            read(`${lang}/publics`) ??
+            (await asyncReduceArray(await getGql(data.publics(), 'publicateds'), async (it) => {
+                return [
+                    {
+                        ...it,
+                        title: await fieldTranslate(it?.title, lang),
+                        description: await fieldTranslate(it?.description, lang),
+                        keywords: await fieldTranslate(it?.keywords, lang),
+                    },
+                ]
+            }))
+
         write(`${lang}/links`, links)
         write(`${lang}/reffers`, reffers)
+        write(`${lang}/publics`, publics)
         write(`${lang}/works`, works)
     })
 })
