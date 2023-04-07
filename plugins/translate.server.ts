@@ -23,7 +23,7 @@ const translate = async (text = '', lang = { from: 'ru', to: 'en' }) => {
     return normaliseResponse(url?.data)?.text
 }
 
-export default defineNuxtPlugin(async () => {
+export default defineNuxtPlugin(async (nuxtApp) => {
     const graphql = useStrapiGraphQL()
     const { asyncReduceArray, asyncReduceObject } = useFunctions()
 
@@ -115,7 +115,7 @@ export default defineNuxtPlugin(async () => {
         return { [lang]: { links, reffers, works, publics, ...menu } }
     })
 
-    return content
+    nuxtApp.payload.data = content
 })
 
 //const en = {

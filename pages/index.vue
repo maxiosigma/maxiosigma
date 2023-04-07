@@ -130,6 +130,10 @@ const isActive = (i) => activeSlide.value === i
 const toActive = (i) => (activeSlide.value = i)
 const toLink = (link) => (location.href = `/${link}`)
 
+const payload = useNuxtApp().payload.data
+
+console.log(payload)
+
 const sections = {
     Overflow: { icon: 'ep:chrome-filled' },
     Welcome: {
@@ -229,7 +233,6 @@ const sections = {
 // Сделать всё без разделения на блоки
 
 if (isQuery) navigateTo({ path: '/link', query })
-
 useHead({ title, description })
 </script>
 
