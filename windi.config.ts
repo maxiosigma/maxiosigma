@@ -314,6 +314,8 @@ function extract() {
             './pages/**/**/*.vue',
 
             './layouts/*.vue',
+
+            'node_modules/tailvue/dist/tailvue.es.js',
         ],
         exclude: [
             //

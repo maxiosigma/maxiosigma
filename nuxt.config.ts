@@ -74,9 +74,19 @@ export default defineNuxtConfig({
         //"nuxt-schema-org",
         //"nuxt-full-static",
         //'@nuxt/devtools',
+
+        //'@tailvue/nuxt',
+        //'nuxt-og-image',
+        //'nuxt-vue3-google-signin',
+        //'@nuxtjs/robots',
+        //'@nuxtjs/toast',
+        //'nuxt-xstate',
     ],
     css: ['~/assets/index.scss'],
     hooks: {},
+    robots: {
+        /* module options */
+    },
 })
 
 function locales() {
