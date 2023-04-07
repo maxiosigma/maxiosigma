@@ -14,12 +14,16 @@ const read = (name = '') => {
     return existsSync(fileName) ? JSON.parse(readFileSync(fileName, { encoding: 'utf8' })) : undefined
 }
 
+const comparison = (name = '', data = []) => {
+    return !!read(name) && read(name).length === data.length ? read(name) : undefined
+}
+
 const translate = async (text = '', lang = { from: 'ru', to: 'en' }) => {
     const url = (await axios(generateRequestUrl(text, lang))) ?? {}
     return normaliseResponse(url?.data)?.text
 }
 
-export default defineNuxtPlugin(async (nuxtApp) => {
+export default defineNuxtPlugin(async () => {
     const graphql = useStrapiGraphQL()
     const { asyncReduceArray, asyncReduceObject } = useFunctions()
 
@@ -31,28 +35,30 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     const getGql = async (data, field) => (await graphql(data))?.data?.[field]?.data?.map((it) => it?.attributes)
 
     const content = await asyncReduceObject(langs, async (lang = '') => {
-        const links = read(`${lang}/links`) ?? (await getGql(data.links(), 'links')).map((link) => ({ ferd: useCripty(link?.href), sh: link?.short }))
+        const getLinks = await getGql(data.links(), 'links')
+        const getLinksFilter = getLinks.filter((link) => !!link?.partnership && !!link?.title && !!link?.description && !!link?.short)
+        const getWorks = await getGql(data.works(), 'works')
+        const getPublics = await getGql(data.publics(), 'publicateds')
+
+        const links = comparison(`${lang}/links`, getLinks) ?? getLinks.map((link) => ({ ferd: useCripty(link?.href), sh: link?.short }))
 
         const reffers =
-            read(`${lang}/reffers`) ??
-            (await asyncReduceArray(
-                (await getGql(data.links(), 'links')).filter((link) => !!link?.partnership && !!link?.title && !!link?.description && !!link?.short),
-                async (link) => [
-                    {
-                        title: await fieldTranslate(link?.title, lang),
-                        description: await fieldTranslate(link?.description, lang),
-                        images: link?.imgs?.data?.map(({ attributes }) => attributes),
-                        short: link?.short,
-                        tags: link?.tags?.data?.map(({ attributes: { title } }) => title)?.sort((a, b) => (a?.length > b?.length ? 1 : -1)),
-                        top: link?.top,
-                    },
-                ]
-            ))
+            comparison(`${lang}/links`, getLinks) ??
+            (await asyncReduceArray(getLinksFilter, async (link) => [
+                {
+                    title: await fieldTranslate(link?.title, lang),
+                    description: await fieldTranslate(link?.description, lang),
+                    images: link?.imgs?.data?.map(({ attributes }) => attributes),
+                    short: link?.short,
+                    tags: link?.tags?.data?.map(({ attributes: { title } }) => title)?.sort((a, b) => (a?.length > b?.length ? 1 : -1)),
+                    top: link?.top,
+                },
+            ]))
 
         const works =
-            read(`${lang}/works`) ??
+            comparison(`${lang}/works`, getWorks) ??
             (
-                await asyncReduceArray(await getGql(data.works(), 'works'), async (work) => [
+                await asyncReduceArray(getWorks, async (work) => [
                     {
                         ...work,
                         title: await fieldTranslate(work?.title, lang),
@@ -72,8 +78,8 @@ export default defineNuxtPlugin(async (nuxtApp) => {
             )?.reverse()
 
         const publics =
-            read(`${lang}/publics`) ??
-            (await asyncReduceArray(await getGql(data.publics(), 'publicateds'), async (it) => [
+            comparison(`${lang}/publics`, getPublics) ??
+            (await asyncReduceArray(getPublics, async (it) => [
                 {
                     ...it,
                     title: await fieldTranslate(it?.title, lang),
@@ -82,18 +88,22 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                 },
             ]))
 
-        const menu = await asyncReduceArray(navSlugs, async (nav) => [
-            {
-                [`menu_${nav}`]:
-                    read(`${lang}/menu_${nav}`) ??
-                    (await asyncReduceArray((await graphql(data.menu(nav)))?.data?.renderNavigation, async (it) => [
-                        {
-                            ...it,
-                            title: await fieldTranslate(it?.title, lang),
-                        },
-                    ])),
-            },
-        ])
+        const menu = await asyncReduceArray(navSlugs, async (nav) => {
+            const getNav = await graphql(data.menu(nav))
+
+            return [
+                {
+                    [`menu_${nav}`]:
+                        comparison(`${lang}/menu_${nav}`, getNav) ??
+                        (await asyncReduceArray(getNav?.data?.renderNavigation, async (it) => [
+                            {
+                                ...it,
+                                title: await fieldTranslate(it?.title, lang),
+                            },
+                        ])),
+                },
+            ]
+        })
 
         write(`${lang}/links`, links)
         write(`${lang}/reffers`, reffers)
