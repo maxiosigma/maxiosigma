@@ -130,10 +130,6 @@ const isActive = (i) => activeSlide.value === i
 const toActive = (i) => (activeSlide.value = i)
 const toLink = (link) => (location.href = `/${link}`)
 
-const payload = useNuxtApp().payload.data
-
-console.log(payload)
-
 const sections = {
     Overflow: { icon: 'ep:chrome-filled' },
     Welcome: {

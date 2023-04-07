@@ -28,23 +28,23 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     const { asyncReduceArray, asyncReduceObject } = useFunctions()
 
     const navSlugs = ['nav', 'footer', 'social']
-    const defaultLang = 'ru'
     const langs = ['ru', 'en', 'zh']
+    const defaultLang = 'ru'
 
     const fieldTranslate = async (field = '', lang = '') => (lang === defaultLang || !field ? field : await translate(field, { from: 'ru', to: lang }))
     const getGql = async (data, field) => (await graphql(data))?.data?.[field]?.data?.map((it) => it?.attributes)
 
     const content = await asyncReduceObject(langs, async (lang = '') => {
         const getLinks = await getGql(data.links(), 'links')
-        const getLinksFilter = getLinks.filter((link) => !!link?.partnership && !!link?.title && !!link?.description && !!link?.short)
+        const getReffers = getLinks.filter((link) => !!link?.partnership && !!link?.title && !!link?.description && !!link?.short)
         const getWorks = await getGql(data.works(), 'works')
         const getPublics = await getGql(data.publics(), 'publicateds')
 
-        const links = comparison(`${lang}/links`, getLinks) ?? getLinks.map((link) => ({ ferd: useCripty(link?.href), sh: link?.short }))
+        const links = comparison(`links`, getLinks) ?? getLinks.map((link) => ({ ferd: useCripty(link?.href), sh: link?.short }))
 
         const reffers =
-            comparison(`${lang}/links`, getLinks) ??
-            (await asyncReduceArray(getLinksFilter, async (link) => [
+            comparison(`${lang}/reffers`, getReffers) ??
+            (await asyncReduceArray(getReffers, async (link) => [
                 {
                     title: await fieldTranslate(link?.title, lang),
                     description: await fieldTranslate(link?.description, lang),
@@ -105,14 +105,14 @@ export default defineNuxtPlugin(async (nuxtApp) => {
             ]
         })
 
-        write(`${lang}/links`, links)
+        write(`links`, links)
         write(`${lang}/reffers`, reffers)
         write(`${lang}/publics`, publics)
         write(`${lang}/works`, works)
 
         menu.map((it) => Object.entries(it).map(([key, val]) => write(`${lang}/${key}`, val)))
 
-        return { [lang]: { links, reffers, works, publics, ...menu } }
+        return { [lang]: { reffers, works, publics, ...menu.reduce((s, it) => (s = { ...s, ...it }) && s, {}) }, links }
     })
 
     nuxtApp.payload.data = content
