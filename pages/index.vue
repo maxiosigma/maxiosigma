@@ -217,17 +217,6 @@ const sections = {
     Next: { icon: 'material-symbols:arrow-right-alt-rounded', href: 'site' },
 }
 
-//https://www.npmjs.com/package/vue-toast-notification
-
-//https://vueuse.org/core/useWebNotification/#usewebnotification
-//https://vueuse.org/integrations/useSortable/
-//https://vueuse.org/core/useStepper/
-//https://vueuse.org/core/useOffsetPagination/
-
-//https://vueschool.io/articles/vuejs-tutorials/7-awesome-vue-js-3-plugins-and-libraries-to-know-in-2023/
-
-// Сделать всё без разделения на блоки
-
 if (isQuery) navigateTo({ path: '/link', query })
 useHead({ title, description })
 </script>
