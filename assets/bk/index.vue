@@ -1,46 +1,24 @@
 <template>
     <LayoutPage :view="!isQuery">
         <!-- v-if="PC" -->
-
-        <TemplateIndexSection
-            :wt="itemIsArray(k, ['Welcome', 'FAQ'])"
-            :wb="itemIsArray(k, ['Overflow', 'Services', 'FAQ'])"
-            :wl="itemIsArray(k, ['Overflow'])"
-            :wr="itemIsArray(k, ['Overflow'])"
-            :wdl="itemIsArray(k, ['Overflow'])"
-            :wdr="itemIsArray(k, ['Overflow'])"
-            v-for="([k, v], i) in Object.entries(sections).filter((it, i) => itemIsArray(i, [1, 2]))"
-            :key="i"
-            :active="isActive(k)"
-            :sc="[
-                //
-                { 'max-h-screen': k === 'Welcome' },
-            ]"
-            :scc="[
-                //
-                { '!pb-0': k === 'Welcome' },
-                { 'flex-col': k === 'FAQ' },
-            ]"
-        >
-            <div v-if="k === 'Overflow'" class="flex flex-grow h-full">
+        <TemplateIndexSection wb wl wr wdl wdr :active="isActive('Overflow')">
+            <div class="flex flex-grow h-full">
                 <!--<div class="flex-grow h-full">
-                    <ItemMediaImg class="bg-cover h-full w-1/2 -mr-30px face_2_shadow_1" src="face_1.webp"></ItemMediaImg>
-                    <ItemMediaImg class="absolute mirror-horizonal left-8/10 -mr-1/5 bg-contain h-full w-50vw face_2_shadow_2" src="face_1.webp" bg></ItemMediaImg>
-                </div>
-
-                <div class="flex-grow h-full">
-                    <ItemMediaImg class="bg-cover h-full w-1/2 -ml-30px face_1_shadow_1" src="face_2.webp"></ItemMediaImg>
-                    <ItemMediaImg class="absolute mirror-horizonal right-8/10 -ml-1/5 bg-contain h-full w-50vw face_1_shadow_2" src="face_2.webp" bg></ItemMediaImg>
-                </div>-->
+                <ItemMediaImg class="bg-cover h-full w-1/2 -mr-30px face_2_shadow_1" src="face_1.webp"></ItemMediaImg>
+                <ItemMediaImg class="absolute mirror-horizonal left-8/10 -mr-1/5 bg-contain h-full w-50vw face_2_shadow_2" src="face_1.webp" bg></ItemMediaImg>
             </div>
 
-            <LazyItemMediaImg
-                v-if="k === 'Welcome'"
-                class="object-contain w-auto h-95vh <lg:(absolute z-10 right-[50%] h-[200%] opacity-45)"
-                src="my_photo_2.webp"
-            ></LazyItemMediaImg>
+            <div class="flex-grow h-full">
+                <ItemMediaImg class="bg-cover h-full w-1/2 -ml-30px face_1_shadow_1" src="face_2.webp"></ItemMediaImg>
+                <ItemMediaImg class="absolute mirror-horizonal right-8/10 -ml-1/5 bg-contain h-full w-50vw face_1_shadow_2" src="face_2.webp" bg></ItemMediaImg>
+            </div>-->
+            </div>
+        </TemplateIndexSection>
 
-            <div v-if="k === 'Welcome'" class="ml-10 text-self-7 pt-10 relative z-20">
+        <TemplateIndexSection wt sc="!overflow-hidden !h-screen" scc="!pb-0 !overflow-hidden" :active="isActive('Welcome')">
+            <LazyItemMediaImg class="object-contain w-auto h-9/10 <lg:(absolute z-10 right-[50%] h-[200%] opacity-45)" src="my_photo_2.webp"></LazyItemMediaImg>
+
+            <div class="ml-10 text-self-7 pt-10 relative z-20">
                 <div class="font-black text-[4.5vmax] tracking-widest uppercase">{{ t('dobro-pozhalovat') }}</div>
 
                 <div class="flex flex-col text-[2.5vmax] all-small-caps tracking-wide pl-1/20 mt-1/30" :class="[lp.name !== 'ru' ? 'text-[2.5vmax]' : '']">
@@ -51,10 +29,12 @@
                 </div>
             </div>
 
-            <LazyItemMediaImg v-if="k === 'Welcome'" class="absolute object-contain mt-1/20 w-full h-auto" src="worldmaphexagon.webp"></LazyItemMediaImg>
+            <LazyItemMediaImg class="absolute object-contain mt-1/20 w-full h-auto" src="worldmaphexagon.webp"></LazyItemMediaImg>
+        </TemplateIndexSection>
 
-            <div v-if="k === 'Services'" class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 justify-around pt-8 pb-12">
-                <div class="index-services-category" v-for="(it, i) in v.items" :key="i">
+        <TemplateIndexSection wb :active="isActive('Services')">
+            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 justify-around pt-8 pb-12">
+                <div class="index-services-category" v-for="(it, i) in sections.Services.items" :key="i">
                     <div class="flex-center text-self-1">
                         <div class="absolute z-10 font-semibold tracking-widest text-h5 sm:text-h5 xl:text-h4 uppercase">{{ it.title }}</div>
                         <div class="relative z-0 bg-self-7 w-500px h-100px min-w-500px min-h-100px clip-category transform scale-50 sm:scale-60 xl:scale-70"></div>
@@ -70,27 +50,29 @@
                     </div>
                 </div>
             </div>
+        </TemplateIndexSection>
 
-            <div v-if="k === 'Lastworks'"></div>
-            <div v-if="k === 'Steps'"></div>
-            <div v-if="k === 'Steps'"></div>
+        <TemplateIndexSection :active="isActive('Lastworks')"></TemplateIndexSection>
+        <TemplateIndexSection :active="isActive('Steps')"></TemplateIndexSection>
+        <TemplateIndexSection :active="isActive('Steps')"></TemplateIndexSection>
 
-            <h2 v-if="k === 'FAQ'" class="text-[12vmax] leading-[100%] tracking-widest font-black text-self-4 font-nanumpen uppercase mt-16">F.A.Q</h2>
-            <div v-if="k === 'FAQ'" class="text-[3.5vmax] text-self-5 font-bold tracking-wider pr-[2.5%] uppercase whitespace-nowrap">{{ t('chastye-voprosy') }}</div>
+        <TemplateIndexSection wt wb scc="flex-col" :active="isActive('FAQ')">
+            <h2 class="text-[12vmax] leading-[100%] tracking-widest font-black text-self-4 font-nanumpen uppercase mt-10">F.A.Q</h2>
+            <div class="text-[3.5vmax] text-self-5 font-bold tracking-wider pr-[2.5%] uppercase whitespace-nowrap">{{ t('chastye-voprosy') }}</div>
 
-            <div v-if="k === 'FAQ'" class="grid place-items-center items-start gap-8 mt-8 mb-20">
+            <div class="grid place-items-center items-start gap-8 mt-8">
                 <div class="grid gap-3 w-2/3" v-for="(it, i) in sections.FAQ.items" :key="i">
                     <div class="text-h4 leading-[100%] text-self-7 font-bold"><span class=""></span> {{ it.question }}</div>
                     <div class="text-h6 leading-[120%] text-self-4 font-light tracking-wide"><span class=""></span>{{ it.answer }}</div>
                 </div>
             </div>
-
-            <div v-if="k === 'Brands'"></div>
-            <div v-if="k === 'Presents'"></div>
-            <div v-if="k === 'Reviews'"></div>
-            <div v-if="k === 'Future'"></div>
-            <div v-if="k === 'Contacts'"></div>
         </TemplateIndexSection>
+
+        <TemplateIndexSection :active="isActive('Brands')"></TemplateIndexSection>
+        <TemplateIndexSection :active="isActive('Presents')"></TemplateIndexSection>
+        <TemplateIndexSection :active="isActive('Reviews')"></TemplateIndexSection>
+        <TemplateIndexSection :active="isActive('Future')"></TemplateIndexSection>
+        <TemplateIndexSection :active="isActive('Contacts')"></TemplateIndexSection>
 
         <!--<div class="index-nav">
             <div
@@ -130,7 +112,6 @@
 <script setup>
 const { query } = useRoute()
 const { x, y, sourceType } = useMouse({ touch: false })
-const { itemIsArray } = useFunctions()
 const { isMobile } = useDevice()
 
 const { t } = useI18n()

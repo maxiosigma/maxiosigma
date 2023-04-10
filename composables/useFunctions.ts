@@ -25,5 +25,9 @@ export default function () {
             return [...(await memo), ...((await predicate(e, i)) ? [e] : [])]
         }, [])
 
-    return { asyncReduceArray, asyncReduceObject, asyncFilter }
+    const itemIsArray = (it, arr) => arr?.filter((a) => a === it).length !== 0
+
+    const objectIsArray = (it, arr) => arr?.filter((a) => JSON.stringify(a) === JSON.stringify(it)).length !== 0
+
+    return { asyncReduceArray, asyncReduceObject, asyncFilter, itemIsArray, objectIsArray }
 }

@@ -1,0 +1,176 @@
+/* Group 35 */
+
+position: absolute;
+width: 1920px;
+height: 1920px;
+left: 0px;
+top: 0px;
+
+/* Frame 34 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 1920px;
+height: 69px;
+left: 0px;
+top: 1851px;
+
+/* Vector */
+
+width: 6715px;
+height: 49px;
+
+background: #d9d9d9;
+transform: matrix(1, 0, 0, -1, 0, 0);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+/* Rectangle 3301 */
+
+width: 1920px;
+height: 20px;
+
+background: #d9d9d9;
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+/* Frame 35 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 1920px;
+height: 69px;
+left: 1920px;
+top: 69px;
+
+transform: rotate(-180deg);
+
+/* Vector */
+
+width: 6715px;
+height: 49px;
+
+background: #d9d9d9;
+transform: matrix(-1, 0, 0, 1, 0, 0);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+/* Rectangle 3301 */
+
+width: 1920px;
+height: 20px;
+
+background: #d9d9d9;
+transform: rotate(-180deg);
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+/* Frame 36 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 1920px;
+height: 69px;
+left: 1851px;
+top: 1920px;
+
+transform: rotate(-90deg);
+
+/* Vector */
+
+width: 6715px;
+height: 49px;
+
+background: #d9d9d9;
+transform: matrix(0, -1, -1, 0, 0, 0);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+/* Rectangle 3301 */
+
+width: 1920px;
+height: 20px;
+
+background: #d9d9d9;
+transform: rotate(-90deg);
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
+
+/* Frame 37 */
+
+/* Auto layout */
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: center;
+padding: 0px;
+
+position: absolute;
+width: 1920px;
+height: 69px;
+left: 69px;
+top: 0px;
+
+transform: rotate(90deg);
+
+/* Vector */
+
+width: 6715px;
+height: 49px;
+
+background: #d9d9d9;
+transform: matrix(0, 1, 1, 0, 0, 0);
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 1;
+
+/* Rectangle 3301 */
+
+width: 1920px;
+height: 20px;
+
+background: #d9d9d9;
+transform: rotate(90deg);
+
+/* Inside auto layout */
+flex: none;
+order: 1;
+flex-grow: 0;
