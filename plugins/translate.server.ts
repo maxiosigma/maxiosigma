@@ -63,11 +63,11 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                         ...work,
                         title: await fieldTranslate(work?.title, lang),
                         description: await fieldTranslate(work?.description, lang),
-                        assets: {
-                            fonts: work?.assets.fonts.data.map((it) => it?.attributes.title),
-                            models: work?.assets.models.data.map((it) => it?.attributes.title),
-                            technologies: work?.assets.technologies.data.map((it) => it?.attributes.title),
-                        },
+                        //assets: {
+                        //    fonts: work?.assets.fonts.data.map((it) => it?.attributes.title),
+                        //    models: work?.assets.models.data.map((it) => it?.attributes.title),
+                        //    technologies: work?.assets.technologies.data.map((it) => it?.attributes.title),
+                        //},
                         media: work?.media.data.map((it) => {
                             const alt = it?.attributes.alternativeText
                             delete it.attributes.alternativeText

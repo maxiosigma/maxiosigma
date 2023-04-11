@@ -3,6 +3,10 @@
 //maxiosigma-nuxt-test.firebaseapp.com
 //firebase hosting:channel:deploy preview --expores 1h
 
+// ПКМ → ИЗМЕНИТЬ WHEN
+//{ "key":"ctrl+right",       "command":"cursorWordStartRight",       "when":"editorTextFocus" }
+//{ "key":"ctrl+shift+right", "command":"cursorWordStartRightSelect", "when":"editorTextFocus" }
+
 //$device.isDesktop
 //$device.isMobile
 //$device.isTablet
