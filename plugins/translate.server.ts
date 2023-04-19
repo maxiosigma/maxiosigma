@@ -40,6 +40,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
         const getWorks = await getGql(data.works(), 'works')
         const getPublics = await getGql(data.publics(), 'publicateds')
 
+        // СВЯЗАТЬ С WORKS и REFFERS
         //const getWorkTypes =
         //const getWorkTags =
         //const getWorkCategories =
@@ -54,7 +55,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                     description: await fieldTranslate(link?.description, lang),
                     images: link?.imgs?.data?.map(({ attributes }) => attributes),
                     short: link?.short,
-                    tags: link?.tags?.data?.map(({ attributes: { title } }) => title)?.sort((a, b) => (a?.length > b?.length ? 1 : -1)),
+                    //tags: link?.tags?.data?.map(({ attributes: { title } }) => title)?.sort((a, b) => (a?.length > b?.length ? 1 : -1)),
                     top: link?.top,
                 },
             ]))
