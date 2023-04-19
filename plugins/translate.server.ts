@@ -40,6 +40,10 @@ export default defineNuxtPlugin(async (nuxtApp) => {
         const getWorks = await getGql(data.works(), 'works')
         const getPublics = await getGql(data.publics(), 'publicateds')
 
+        //const getWorkTypes =
+        //const getWorkTags =
+        //const getWorkCategories =
+
         const links = comparison(`links`, getLinks) ?? getLinks.map((link) => ({ ferd: useCripty(link?.href), sh: link?.short }))
 
         const reffers =
@@ -63,11 +67,13 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                         ...work,
                         title: await fieldTranslate(work?.title, lang),
                         description: await fieldTranslate(work?.description, lang),
-                        //assets: {
-                        //    fonts: work?.assets.fonts.data.map((it) => it?.attributes.title),
-                        //    models: work?.assets.models.data.map((it) => it?.attributes.title),
-                        //    technologies: work?.assets.technologies.data.map((it) => it?.attributes.title),
-                        //},
+                        assets: {
+                            technologies: work?.assets.work_technologies.data.map((it) => it?.attributes.title),
+                            categories: work?.assets.work_categories.data.map((it) => it?.attributes.title),
+                            fonts: work?.assets.work_fonts.data.map((it) => it?.attributes.title),
+                            tags: work?.assets.work_tags.data.map((it) => it?.attributes.title),
+                            type: work?.assets.work_type.data.attributes.title,
+                        },
                         media: work?.media.data.map((it) => {
                             const alt = it?.attributes.alternativeText
                             delete it.attributes.alternativeText

@@ -25,11 +25,12 @@ export default {
 								}
 							}
 						}
-						tags {
+						tags(pagination: { limit: 1000 }, sort: "top:DESC") {
 							data {
-								attributes {
-									title
-								}
+							  attributes{
+								title
+								slug
+							  }
 							}
 						}
 					}
@@ -84,59 +85,78 @@ export default {
 		}
 	`,
     works: () => `
-		query {
-			works (sort: "top:DESC", pagination: {limit: 2000}){
+	query {
+		works(sort: "top:DESC", pagination: { limit: 2000 }) {
+		  data {
+			attributes {
+			  title
+			  top
+			  type
+			  media {
 				data {
-					attributes {
-							title
-							top
-							type
-							media {
-							data {
-								attributes {
-									provider
-									provider_metadata
-									formats
-									url
-									alternativeText
-									name
-									height
-									width
-									hash
-									ext
-									mime
-								}
-							}
-						}
-						description
-						link
-						date
-						assets {
-							technologies{
-								data {
-									attributes {
-										title
-									}
-								}
-							}
-							fonts{
-								data {
-									attributes {
-										title
-									}
-								}
-							}
-							models {
-								data {
-									attributes {
-										title
-									}
-								}
-							}
-						}
-					}
+				  attributes {
+					provider
+					provider_metadata
+					formats
+					url
+					alternativeText
+					name
+					height
+					width
+					hash
+					ext
+					mime
+				  }
 				}
+			  }
+			  description
+			  link
+			  date
+			  assets {
+				work_type {
+				  data {
+					attributes {
+					  title
+					  slug
+					}
+				  }
+				}
+				work_categories {
+				  data {
+					attributes {
+					  title
+					  slug
+					}
+				  }
+				}
+				work_technologies {
+				  data {
+					attributes {
+					  title
+					  slug
+					}
+				  }
+				}
+				work_fonts {
+				  data {
+					attributes {
+					  title
+					  slug
+					}
+				  }
+				}
+				work_tags {
+				  data {
+					attributes {
+					  title
+					  slug
+					}
+				  }
+				}
+			  }
 			}
+		  }
 		}
+	  }	  
 	`,
 }
