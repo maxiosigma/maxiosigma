@@ -13,7 +13,11 @@
         "sync-translation-files": "node sync-translation-files.js",
         "predev": "",
         "serve": "nuxt serve",
-        "f:preview": "firebase hosting:channel:deploy preview"
+        "f:preview": "firebase hosting:channel:deploy preview",
+        "postinstall": "link-module-alias"
+    },
+    "_moduleAliases": {
+        "@maxiosigma_libs": "../maxiosigma-libs/src/index.js"
     },
     "devDependencies": {
         "@nuxt/devtools": "^0.3.1",

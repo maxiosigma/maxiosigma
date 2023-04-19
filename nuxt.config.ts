@@ -84,9 +84,9 @@ export default defineNuxtConfig({
     ],
     css: ['~/assets/index.scss'],
     hooks: {},
-    robots: {
-        /* module options */
-    },
+    //robots: {
+    //    /* module options */
+    //},
 })
 
 function locales() {
