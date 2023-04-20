@@ -28,10 +28,10 @@
                     <ItemMediaImg class="absolute mirror-horizonal left-8/10 -mr-1/5 bg-contain h-full w-50vw face_2_shadow_2" src="face_1.webp" bg></ItemMediaImg>
                 </div>
 
-                <div class="flex-grow h-full">
+                <!--<div class="flex-grow h-full">
                     <ItemMediaImg class="bg-cover h-full w-1/2 -ml-30px face_1_shadow_1" src="face_2.webp"></ItemMediaImg>
                     <ItemMediaImg class="absolute mirror-horizonal right-8/10 -ml-1/5 bg-contain h-full w-50vw face_1_shadow_2" src="face_2.webp" bg></ItemMediaImg>
-                </div>
+                </div>-->
             </div>
 
             <LazyItemMediaImg
