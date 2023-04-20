@@ -44,6 +44,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
         //const getWorkTypes =
         //const getWorkTags =
         //const getWorkCategories =
+        //const getWorkTechnologies =
 
         const links = comparison(`links`, getLinks) ?? getLinks.map((link) => ({ ferd: useCripty(link?.href), sh: link?.short }))
 

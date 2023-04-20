@@ -1,7 +1,7 @@
 export default {
     links: () => `
 		query {
-			links(pagination: { limit: 1000 }, sort: "top:DESC") {
+			links(pagination: { limit: 10000 }, sort: "top:DESC") {
 				data {
 					attributes {
 						top
@@ -40,7 +40,7 @@ export default {
 	`,
     publics: () => `
 		query {
-			publicateds(pagination:{limit: 2000}) {
+			publicateds(pagination:{limit: 10000}) {
 				data {
 					attributes {
 						title
@@ -86,7 +86,7 @@ export default {
 	`,
     works: () => `
 	query {
-		works(sort: "top:DESC", pagination: { limit: 2000 }) {
+		works(sort: "top:DESC", pagination: { limit: 10000 }) {
 		  data {
 			attributes {
 			  title
@@ -158,5 +158,53 @@ export default {
 		  }
 		}
 	  }	  
+	`,
+    workTypes: () => `
+	query {
+		workTypes(sort: "top:DESC", pagination: { limit: 10000 }) {
+		  data {
+			attributes {
+			  title
+			  slug
+			}
+		  }
+		}
+	  }
+	`,
+    workTags: () => `
+	query {
+		workTags(sort: "top:DESC", pagination: { limit: 10000 }) {
+		  data {
+			attributes {
+			  title
+			  slug
+			}
+		  }
+		}
+	  }
+	`,
+    workCategories: () => `
+	query {
+		workCategories(sort: "top:DESC", pagination: { limit: 10000 }) {
+		  data {
+			attributes {
+			  title
+			  slug
+			}
+		  }
+		}
+	  }
+	`,
+    workTechnologies: () => `
+	query {
+		workTechnologies(sort: "top:DESC", pagination: { limit: 10000 }) {
+		  data {
+			attributes {
+			  title
+			  slug
+			}
+		  }
+		}
+	  }
 	`,
 }
