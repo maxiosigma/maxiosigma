@@ -3,6 +3,7 @@ import { generateRequestUrl, normaliseResponse } from 'google-translate-api-brow
 import data from '~/assets/index.graphql'
 import { resolve } from 'path'
 import axios from 'axios'
+import { DocumentNode } from 'graphql'
 
 const write = (name = '', data = []) => {
     const fileName = resolve(__dirname, `../assets/data/${name}.json`)
@@ -19,28 +20,32 @@ const comparison = (name = '', data = []) => {
 }
 
 const translate = async (text = '', lang = { from: 'ru', to: 'en' }) => {
-    const url = (await axios(generateRequestUrl(text, lang))) ?? {}
-    return normaliseResponse(url?.data)?.text
+    //const url = (await axios(generateRequestUrl(text, lang))) ?? {}
+    //return normaliseResponse(url?.data)?.text
+    return text
 }
 
 export default defineNuxtPlugin(async (nuxtApp) => {
     const graphql = useStrapiGraphQL()
-    const { asyncReduceArray, asyncReduceObject } = useFunctions()
+    const { asyncReduceArray, asyncReduceObject, itemIsArray } = useFunctions()
 
     const navSlugs = ['nav', 'footer', 'social']
     const langs = ['ru', 'en', 'zh']
     const defaultLang = 'ru'
 
-    const fieldTranslate = async (field = '', lang = '') => (lang === defaultLang || !field ? field : await translate(field, { from: 'ru', to: lang }))
-    const getGql = async (data, field) => (await graphql(data))?.data?.[field]?.data?.map((it) => it?.attributes)
+    const fieldTranslate = async (field = '', lang = '', origin = [defaultLang], from = undefined) =>
+        itemIsArray(lang, origin) || !field ? field : await translate(field, { from: from || defaultLang, to: lang })
 
-    const content = await asyncReduceObject(langs, async (lang = '') => {
+    const getGql = async (data: string | DocumentNode, field: string) => (await graphql(data))?.data?.[field]?.data?.map((it) => it?.attributes)
+
+    const content = await asyncReduceObject(langs, async (lang: string | undefined) => {
         const getLinks = await getGql(data.links(), 'links')
-        const getReffers = getLinks.filter((link) => !!link?.partnership && !!link?.title && !!link?.description && !!link?.short)
+        const getReffers = getLinks.filter(
+            (link: { partnership: any; title: any; description: any; short: any }) => !!link?.partnership && !!link?.title && !!link?.description && !!link?.short
+        )
         const getWorks = await getGql(data.works(), 'works')
         const getPublics = await getGql(data.publics(), 'publicateds')
 
-        // СВЯЗАТЬ С WORKS и REFFERS
         const getWorkTypes = await getGql(data.workTypes(), 'workTypes')
         const getWorkTags = await getGql(data.workTags(), 'workTags')
         const getWorkCategories = await getGql(data.workCategories(), 'workCategories')
@@ -48,71 +53,96 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 
         const work_types =
             comparison(`${lang}/work_types`, getWorkTypes) ??
-            (await asyncReduceArray(getWorkTypes, async ({ title, slug }) => [
+            (await asyncReduceArray(getWorkTypes, async (it) => [
                 {
-                    title: await fieldTranslate(title, lang),
-                    slug,
+                    title: await fieldTranslate(it?.title, lang),
+                    slug: it?.slug,
                 },
             ]))
+
+        write(`${lang}/work_types`, work_types)
+
+        const work_technologies =
+            comparison(`${lang}/work_technologies`, getWorkTechnologies) ??
+            (await asyncReduceArray(getWorkTechnologies, async (it) => [
+                {
+                    title: await fieldTranslate(it?.title, lang, ['ru', 'en'], 'en'),
+                    slug: it?.slug,
+                },
+            ]))
+
+        write(`${lang}/work_technologies`, work_technologies)
 
         const work_tags =
             comparison(`${lang}/work_tags`, getWorkTags) ??
-            (await asyncReduceArray(getWorkTags, async ({ title, slug }) => [
+            (await asyncReduceArray(getWorkTags, async (it) => [
                 {
-                    title: await fieldTranslate(title, lang),
-                    slug,
+                    title: await fieldTranslate(it?.title, lang),
+                    slug: it?.slug,
                 },
             ]))
+
+        write(`${lang}/work_tags`, work_tags)
 
         const work_categories =
             comparison(`${lang}/work_categories`, getWorkCategories) ??
-            (await asyncReduceArray(getWorkCategories, async ({ title, slug }) => [
+            (await asyncReduceArray(getWorkCategories, async (it) => [
                 {
-                    title: await fieldTranslate(title, lang),
-                    slug,
+                    title: await fieldTranslate(it?.title, lang),
+                    slug: it?.slug,
+                    type: work_types.filter(({ slug }) => slug === it?.work_type.data.attributes.slug)?.[0]?.title,
+                    technologies: it?.work_technologies?.data.map(({ attributes: { slug } }) => work_technologies?.filter((it) => it.slug === slug)?.[0]?.title),
                 },
             ]))
 
-        const work_technologies = comparison(`${lang}/work_technologies`, getWorkTechnologies) ?? getWorkTechnologies
+        write(`${lang}/work_categories`, work_categories)
 
         const links = comparison(`links`, getLinks) ?? getLinks.map((link) => ({ ferd: useCripty(link?.href), sh: link?.short }))
 
+        write(`links`, links)
+
         const reffers =
             comparison(`${lang}/reffers`, getReffers) ??
-            (await asyncReduceArray(getReffers, async (link) => [
+            (await asyncReduceArray(getReffers, async (it) => [
                 {
-                    title: await fieldTranslate(link?.title, lang),
-                    description: await fieldTranslate(link?.description, lang),
-                    images: link?.imgs?.data?.map(({ attributes }) => attributes),
-                    short: link?.short,
-                    //tags: link?.tags?.data?.map(({ attributes: { title } }) => title)?.sort((a, b) => (a?.length > b?.length ? 1 : -1)),
-                    top: link?.top,
+                    title: await fieldTranslate(it?.title, lang),
+                    description: await fieldTranslate(it?.description, lang),
+                    images: it?.imgs?.data?.map(({ attributes }) => attributes),
+                    short: it?.short,
+                    tags: it?.tags?.data
+                        ?.map(({ attributes: { slug } }) => work_tags?.filter(({ slug: slug_w }) => slug_w === slug)?.[0]?.title)
+                        ?.sort((a, b) => (a?.length > b?.length ? 1 : -1)),
+                    top: it?.top,
                 },
             ]))
+
+        write(`${lang}/reffers`, reffers)
 
         const works =
             comparison(`${lang}/works`, getWorks) ??
             (
-                await asyncReduceArray(getWorks, async (work) => [
+                await asyncReduceArray(getWorks, async (it) => [
                     {
-                        ...work,
-                        title: await fieldTranslate(work?.title, lang),
-                        description: await fieldTranslate(work?.description, lang),
+                        ...it,
+                        title: await fieldTranslate(it?.title, lang),
+                        description: await fieldTranslate(it?.description, lang),
                         assets: {
-                            technologies: work?.assets.work_technologies.data.map((it) => it?.attributes.title),
-                            categories: work?.assets.work_categories.data.map((it) => it?.attributes.title),
-                            fonts: work?.assets.work_fonts.data.map((it) => it?.attributes.title),
-                            tags: work?.assets.work_tags.data.map((it) => it?.attributes.title),
-                            type: work?.assets.work_type.data.attributes.title,
+                            technologies: it?.assets?.work_technologies?.data.map(({ attributes: { slug } }) => work_technologies?.filter((it) => it.slug === slug)?.[0]?.title),
+                            categories: it?.assets?.work_categories?.data.map(({ attributes: { slug } }) => work_categories?.filter((it) => it.slug === slug)?.[0]?.title),
+                            fonts: it?.assets?.work_fonts?.data.map(({ attributes: { title } }) => title),
+                            tags: it?.assets?.work_tags?.data.map(({ attributes: { slug } }) => work_tags?.filter((it) => it.slug === slug)?.[0]?.title),
+                            type: work_types?.filter(({ slug }) => slug === it?.assets.work_type.data.attributes.slug)?.[0]?.title,
                         },
-                        media: work?.media.data.map((it) => {
-                            const alt = it?.attributes.alternativeText
-                            delete it.attributes.alternativeText
-                            return { ...it?.attributes, alt }
+                        media: it?.media.data.map(({ attributes }) => {
+                            const alt = attributes.alternativeText
+                            delete attributes.alternativeText
+                            return { ...attributes, alt }
                         }),
                     },
                 ])
             )?.reverse()
+
+        write(`${lang}/works`, works)
 
         const publics =
             comparison(`${lang}/publics`, getPublics) ??
@@ -125,7 +155,9 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                 },
             ]))
 
-        const menu = await asyncReduceArray(navSlugs, async (nav) => {
+        write(`${lang}/publics`, publics)
+
+        const menu = await asyncReduceArray(navSlugs, async (nav: string | undefined) => {
             const getNav = await graphql(data.menu(nav))
 
             return [
@@ -141,16 +173,6 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                 },
             ]
         })
-
-        write(`links`, links)
-        write(`${lang}/reffers`, reffers)
-        write(`${lang}/publics`, publics)
-        write(`${lang}/works`, works)
-
-        write(`${lang}/work_types`, work_types)
-        write(`${lang}/work_tags`, work_tags)
-        write(`${lang}/work_categories`, work_categories)
-        write(`${lang}/work_technologies`, work_technologies)
 
         menu.map((it) => Object.entries(it).map(([key, val]) => write(`${lang}/${key}`, val)))
 

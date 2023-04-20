@@ -185,15 +185,31 @@ export default {
 	`,
     workCategories: () => `
 	query {
-		workCategories(sort: "top:DESC", pagination: { limit: 10000 }) {
+		workCategories {
 		  data {
 			attributes {
 			  title
 			  slug
+			  work_type {
+				data {
+				  attributes {
+					title
+					slug
+				  }
+				}
+			  }
+			  work_technologies {
+				data {
+				  attributes {
+					title
+					slug
+				  }
+				}
+			  }
 			}
 		  }
 		}
-	  }
+	  }	  
 	`,
     workTechnologies: () => `
 	query {
