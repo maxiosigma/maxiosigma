@@ -41,10 +41,39 @@ export default defineNuxtPlugin(async (nuxtApp) => {
         const getPublics = await getGql(data.publics(), 'publicateds')
 
         // СВЯЗАТЬ С WORKS и REFFERS
-        //const getWorkTypes =
-        //const getWorkTags =
-        //const getWorkCategories =
-        //const getWorkTechnologies =
+        const getWorkTypes = await getGql(data.workTypes(), 'workTypes')
+        const getWorkTags = await getGql(data.workTags(), 'workTags')
+        const getWorkCategories = await getGql(data.workCategories(), 'workCategories')
+        const getWorkTechnologies = await getGql(data.workTechnologies(), 'workTechnologies')
+
+        const work_types =
+            comparison(`${lang}/work_types`, getWorkTypes) ??
+            (await asyncReduceArray(getWorkTypes, async ({ title, slug }) => [
+                {
+                    title: await fieldTranslate(title, lang),
+                    slug,
+                },
+            ]))
+
+        const work_tags =
+            comparison(`${lang}/work_tags`, getWorkTags) ??
+            (await asyncReduceArray(getWorkTags, async ({ title, slug }) => [
+                {
+                    title: await fieldTranslate(title, lang),
+                    slug,
+                },
+            ]))
+
+        const work_categories =
+            comparison(`${lang}/work_categories`, getWorkCategories) ??
+            (await asyncReduceArray(getWorkCategories, async ({ title, slug }) => [
+                {
+                    title: await fieldTranslate(title, lang),
+                    slug,
+                },
+            ]))
+
+        const work_technologies = comparison(`${lang}/work_technologies`, getWorkTechnologies) ?? getWorkTechnologies
 
         const links = comparison(`links`, getLinks) ?? getLinks.map((link) => ({ ferd: useCripty(link?.href), sh: link?.short }))
 
@@ -117,6 +146,11 @@ export default defineNuxtPlugin(async (nuxtApp) => {
         write(`${lang}/reffers`, reffers)
         write(`${lang}/publics`, publics)
         write(`${lang}/works`, works)
+
+        write(`${lang}/work_types`, work_types)
+        write(`${lang}/work_tags`, work_tags)
+        write(`${lang}/work_categories`, work_categories)
+        write(`${lang}/work_technologies`, work_technologies)
 
         menu.map((it) => Object.entries(it).map(([key, val]) => write(`${lang}/${key}`, val)))
 
