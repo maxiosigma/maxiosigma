@@ -9,7 +9,7 @@
             :wr="itemIsArray(k, ['Overflow'])"
             :wdl="itemIsArray(k, ['Overflow'])"
             :wdr="itemIsArray(k, ['Overflow'])"
-            v-for="([k, v], i) in Object.entries(sections).filter((it, i) => itemIsArray(i, [1, 2]))"
+            v-for="([k, v], i) in Object.entries(sections).filter((it, i) => itemIsArray(i, [0]))"
             :key="i"
             :active="isActive(k)"
             :sc="[
@@ -23,7 +23,7 @@
             ]"
         >
             <div v-if="k === 'Overflow'" class="flex flex-grow h-full">
-                <!--<div class="flex-grow h-full">
+                <div class="flex-grow h-full">
                     <ItemMediaImg class="bg-cover h-full w-1/2 -mr-30px face_2_shadow_1" src="face_1.webp"></ItemMediaImg>
                     <ItemMediaImg class="absolute mirror-horizonal left-8/10 -mr-1/5 bg-contain h-full w-50vw face_2_shadow_2" src="face_1.webp" bg></ItemMediaImg>
                 </div>
@@ -31,7 +31,7 @@
                 <div class="flex-grow h-full">
                     <ItemMediaImg class="bg-cover h-full w-1/2 -ml-30px face_1_shadow_1" src="face_2.webp"></ItemMediaImg>
                     <ItemMediaImg class="absolute mirror-horizonal right-8/10 -ml-1/5 bg-contain h-full w-50vw face_1_shadow_2" src="face_2.webp" bg></ItemMediaImg>
-                </div>-->
+                </div>
             </div>
 
             <LazyItemMediaImg
@@ -65,7 +65,7 @@
                             <div class="bg-self-4 border-1 border-self-7/25 min-w-30px min-h-8px mr-10px"></div>
                             <div class="text-self-7/95 sm:text-h7 xl:text-h6 uppercase">{{ st.title }}</div>
                             <div class="bg-self-7 border-1 border-self-4/25 min-h-14px min-w-3px mb-0.5 mx-1.5"></div>
-                            <div class="text-self-4/95 sm:text-h7 xl:text-h6 uppercase">{{ st.add }}</div>
+                            <div class="text-self-4/95 sm:text-h7 xl:text-h6 uppercase">{{ st.technologies }}</div>
                         </div>
                     </div>
                 </div>
@@ -138,6 +138,7 @@ const localePath = useLocalePath()
 //const locale = usePreferredLanguages()
 //const locale = useNavigatorLanguage()
 const { localeProperties: lp } = useI18n()
+const lang = lp.value.name
 
 const title = ref('~ MAIN ~')
 const description = ref('')
@@ -149,6 +150,8 @@ const isActive = (i) => activeSlide.value === i
 const toActive = (i) => (activeSlide.value = i)
 const toLink = (link) => (location.href = `/${link}`)
 
+const { work_types, work_categories } = useNuxtApp().payload.data?.[lang]
+
 const sections = {
     Overflow: { icon: 'ep:chrome-filled' },
     Welcome: {
@@ -157,56 +160,17 @@ const sections = {
     },
     Services: {
         icon: 'ep:operation',
-        items: [
-            {
-                title: t('razrabotka'),
-                items: [
-                    { title: 'Website', add: 'Nuxt 3 + CMS' },
-                    { title: 'Integrations', add: 'Multy' },
-                    { title: 'Serverless', add: 'Node' },
-                    { title: 'Parsing', add: 'Node' },
-                    { title: 'API', add: 'Node' },
-                ],
-            },
-            {
-                title: t('dizain'),
-                items: [
-                    { title: t('firmennyi-stil'), add: 'Figma' },
-                    { title: t('prototipirovanie'), add: 'Figma' },
-                    { title: t('prezentaciya'), add: 'Multy' },
-                    { title: t('redizain'), add: 'Figma' },
-                    { title: t('logotip'), add: 'Figma' },
-                    { title: t('pravki'), add: 'Multy' },
-                    { title: t('banner'), add: 'Figma' },
-                    { title: t('sait'), add: 'Figma' },
-                ],
-            },
-            { title: '3D', items: [{ title: t('prostye-modeli'), add: 'Blender' }] },
-            {
-                title: t('kopirait'),
-                items: [
-                    { title: t('opisanie-k-tovaram'), add: 'Brain' },
-                    { title: t('prodayushii-tekst'), add: 'Soul' },
-                    { title: t('otzyvy'), add: 'Creative' },
-                ],
-            },
-            {
-                title: t('media'),
-                items: [
-                    { title: t('obrabotka-video'), add: 'Movavi' },
-                    { title: t('obrabotka-foto'), add: 'Multy' },
-                    { title: t('narezka-video'), add: 'Multy' },
-                ],
-            },
-            {
-                title: t('podderzhka'),
-                items: [
-                    { title: t('programmirovanie'), add: t('sovet') },
-                    { title: t('video-pokaz'), add: t('pomosh') },
-                    { title: t('dizain'), add: t('sovet') },
-                ],
-            },
-        ],
+        items: work_types.map((wt) => {
+            return {
+                title: wt?.title,
+                items: work_categories
+                    .filter((wc) => wt?.slug === wc?.type?.slug)
+                    .map(({ title, technologies }) => ({
+                        title,
+                        technologies: technologies?.join(' + '),
+                    })),
+            }
+        }),
     },
     Lastworks: { icon: 'ep:goblet-square-full' },
     Start: { icon: 'ep:loading' },

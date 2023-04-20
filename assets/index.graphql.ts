@@ -185,7 +185,7 @@ export default {
 	`,
     workCategories: () => `
 	query {
-		workCategories {
+		workCategories(sort: "top:DESC", pagination: { limit: 10000 }) {
 		  data {
 			attributes {
 			  title

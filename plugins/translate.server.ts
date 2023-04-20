@@ -1,18 +1,19 @@
-import { writeFileSync, readFileSync, existsSync } from 'node:fs'
+import { writeFileSync, readFileSync, existsSync, mkdirSync } from 'node:fs'
 import { generateRequestUrl, normaliseResponse } from 'google-translate-api-browser'
 import data from '~/assets/index.graphql'
 import { resolve } from 'path'
 import axios from 'axios'
 import { DocumentNode } from 'graphql'
 
+const dir = resolve(__dirname, '../assets/data')
+const fileName = (name) => `${dir}/${name}.json`
+
 const write = (name = '', data = []) => {
-    const fileName = resolve(__dirname, `../assets/data/${name}.json`)
-    if (!existsSync(fileName)) writeFileSync(fileName, JSON.stringify(data))
+    if (!existsSync(fileName(name))) writeFileSync(fileName(name), JSON.stringify(data))
 }
 
 const read = (name = '') => {
-    const fileName = resolve(__dirname, `../assets/data/${name}.json`)
-    return existsSync(fileName) ? JSON.parse(readFileSync(fileName, { encoding: 'utf8' })) : undefined
+    return existsSync(fileName(name)) ? JSON.parse(readFileSync(fileName(name), { encoding: 'utf8' })) : undefined
 }
 
 const comparison = (name = '', data = []) => {
@@ -20,9 +21,9 @@ const comparison = (name = '', data = []) => {
 }
 
 const translate = async (text = '', lang = { from: 'ru', to: 'en' }) => {
-    //const url = (await axios(generateRequestUrl(text, lang))) ?? {}
-    //return normaliseResponse(url?.data)?.text
-    return text
+    const url = (await axios(generateRequestUrl(text, lang))) ?? {}
+    return normaliseResponse(url?.data)?.text
+    //return text
 }
 
 export default defineNuxtPlugin(async (nuxtApp) => {
@@ -33,8 +34,10 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     const langs = ['ru', 'en', 'zh']
     const defaultLang = 'ru'
 
-    const fieldTranslate = async (field = '', lang = '', origin = [defaultLang], from = undefined) =>
-        itemIsArray(lang, origin) || !field ? field : await translate(field, { from: from || defaultLang, to: lang })
+    langs.filter((it) => !existsSync(`${dir}/${it}`)).map((it) => mkdirSync(`${dir}/${it}`))
+
+    const fieldTranslate = async (field = '', lang = '', origin = [defaultLang], from = '') =>
+        itemIsArray(lang, origin) || !field ? field : await translate(field, { from: from !== '' ? from : defaultLang, to: lang })
 
     const getGql = async (data: string | DocumentNode, field: string) => (await graphql(data))?.data?.[field]?.data?.map((it) => it?.attributes)
 
@@ -90,7 +93,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                 {
                     title: await fieldTranslate(it?.title, lang),
                     slug: it?.slug,
-                    type: work_types.filter(({ slug }) => slug === it?.work_type.data.attributes.slug)?.[0]?.title,
+                    type: { title: work_types?.filter(({ slug }) => slug === it?.work_type?.data.attributes.slug)?.[0]?.title, slug: it?.work_type?.data.attributes.slug },
                     technologies: it?.work_technologies?.data.map(({ attributes: { slug } }) => work_technologies?.filter((it) => it.slug === slug)?.[0]?.title),
                 },
             ]))
@@ -126,13 +129,13 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                         ...it,
                         title: await fieldTranslate(it?.title, lang),
                         description: await fieldTranslate(it?.description, lang),
-                        assets: {
-                            technologies: it?.assets?.work_technologies?.data.map(({ attributes: { slug } }) => work_technologies?.filter((it) => it.slug === slug)?.[0]?.title),
-                            categories: it?.assets?.work_categories?.data.map(({ attributes: { slug } }) => work_categories?.filter((it) => it.slug === slug)?.[0]?.title),
-                            fonts: it?.assets?.work_fonts?.data.map(({ attributes: { title } }) => title),
-                            tags: it?.assets?.work_tags?.data.map(({ attributes: { slug } }) => work_tags?.filter((it) => it.slug === slug)?.[0]?.title),
-                            type: work_types?.filter(({ slug }) => slug === it?.assets.work_type.data.attributes.slug)?.[0]?.title,
-                        },
+
+                        technologies: it?.assets?.work_technologies?.data.map(({ attributes: { slug } }) => work_technologies?.filter((it) => it.slug === slug)?.[0]?.title),
+                        categories: it?.assets?.work_categories?.data.map(({ attributes: { slug } }) => work_categories?.filter((it) => it.slug === slug)?.[0]?.title),
+                        fonts: it?.assets?.work_fonts?.data.map(({ attributes: { title } }) => title),
+                        tags: it?.assets?.work_tags?.data.map(({ attributes: { slug } }) => work_tags?.filter((it) => it.slug === slug)?.[0]?.title),
+                        type: work_types?.filter(({ slug }) => slug === it?.assets?.work_type?.data.attributes.slug)?.[0]?.title,
+
                         media: it?.media.data.map(({ attributes }) => {
                             const alt = attributes.alternativeText
                             delete attributes.alternativeText
@@ -176,7 +179,11 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 
         menu.map((it) => Object.entries(it).map(([key, val]) => write(`${lang}/${key}`, val)))
 
-        return { [lang]: { reffers, works, publics, ...menu.reduce((s, it) => (s = { ...s, ...it }) && s, {}) }, links }
+        const menus = menu.reduce((s, it) => (s = { ...s, ...it }) && s, {})
+
+        return {
+            [lang]: { links, reffers, works, publics, work_types, work_technologies, work_tags, work_categories, ...menus },
+        }
     })
 
     nuxtApp.payload.data = content
