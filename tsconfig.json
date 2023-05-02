@@ -6,6 +6,11 @@
 			"@nuxt/image",
 			"nuxt-windicss"
 		],
+		"paths": {
+			"maxiosigma_libs/*": [
+				"../global-libs/*.js"
+			]
+		},
 		"allowJs": true
 	}
 }

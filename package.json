@@ -15,6 +15,16 @@
         "serve": "nuxt serve",
         "f:preview": "firebase hosting:channel:deploy preview"
     },
+    "imports": {
+        "#maxiosigma_libs/*": "../global-libs/*.js"
+    },
+    "dependencies": {
+        "maxiosigma_libs": "file:../global-libs",
+        "axios": "^1.4.0",
+        "clip-path-polygon": "^0.1.14",
+        "google-translate-api-browser": "^3.0.1",
+        "sortablejs": "^1.15.0"
+    },
     "devDependencies": {
         "@nuxt/devtools": "^0.4.5",
         "@nuxt/image": "^0.7.1",
@@ -44,12 +54,5 @@
         "sass": "^1.59.3",
         "tailwindcss-elevation": "^2.0.0",
         "windicss": "^3.5.6"
-    },
-    "dependencies": {
-        "axios": "^1.4.0",
-        "clip-path-polygon": "^0.1.14",
-        "global_libs": "file:../global-libs",
-        "google-translate-api-browser": "^3.0.1",
-        "sortablejs": "^1.15.0"
     }
 }
