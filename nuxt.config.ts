@@ -31,11 +31,9 @@ export default defineNuxtConfig({
     },
     i18n: {
         lazy: false,
-        strategy: 'prefix_and_default',
         defaultLocale: 'en',
-        vueI18n: {
-            fallbackLocale: ['ru'],
-        },
+        strategy: 'prefix_and_default',
+        vueI18n: './i18n.config.ts',
         detectBrowserLanguage: {
             useCookie: true,
             cookieKey: 'lang',
@@ -55,11 +53,11 @@ export default defineNuxtConfig({
     //        nuxt: 'logos:nuxt-icon',
     //    },
     //},
-    windicss: {
-        analyze: true,
-    },
+    //windicss: {
+    //    analyze: true,
+    //},
     modules: [
-        'nuxt-windicss',
+        //'nuxt-windicss',
         '@nuxtjs/i18n',
         '@nuxtjs/strapi',
         '@vueuse/nuxt',

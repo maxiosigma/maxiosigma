@@ -22,16 +22,16 @@
                 { 'flex-col': k === 'FAQ' },
             ]"
         >
-            <div v-if="k === 'Overflow'" class="flex flex-grow h-full">
-                <div class="flex-grow h-full">
-                    <ItemMediaImg class="bg-cover h-full w-1/2 -mr-30px face_2_shadow_1" src="face_1.webp"></ItemMediaImg>
-                    <ItemMediaImg class="absolute mirror-horizonal left-8/10 -mr-1/5 bg-contain h-full w-50vw face_2_shadow_2" src="face_1.webp" bg></ItemMediaImg>
+            <div v-if="k === 'Overflow'" class="flex">
+                <!--  -mr-30px -->
+                <div class="flex-grow h-screen -mr-1/30">
+                    <ItemMediaImg class="object-cover object-right h-full w-full face_2_shadow_1" :class="['opacity-10']" src="face_1.webp"></ItemMediaImg>
                 </div>
 
-                <!--<div class="flex-grow h-full">
-                    <ItemMediaImg class="bg-cover h-full w-1/2 -ml-30px face_1_shadow_1" src="face_2.webp"></ItemMediaImg>
-                    <ItemMediaImg class="absolute mirror-horizonal right-8/10 -ml-1/5 bg-contain h-full w-50vw face_1_shadow_2" src="face_2.webp" bg></ItemMediaImg>
-                </div>-->
+                <!--  -ml-30px -->
+                <div class="flex-grow h-screen -ml-1/30">
+                    <ItemMediaImg class="object-cover object-left h-full w-full face_1_shadow_1" :class="['opacity-10']" src="face_2.webp"></ItemMediaImg>
+                </div>
             </div>
 
             <LazyItemMediaImg
