@@ -57,7 +57,7 @@ export default defineNuxtConfig({
     //    analyze: true,
     //},
     modules: [
-        //'nuxt-windicss',
+        'nuxt-windicss',
         '@nuxtjs/i18n',
         '@nuxtjs/strapi',
         '@vueuse/nuxt',

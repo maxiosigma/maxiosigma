@@ -15,9 +15,6 @@
         "serve": "nuxt serve",
         "f:preview": "firebase hosting:channel:deploy preview"
     },
-    "imports": {
-        "#maxiosigma_libs/*": "../global-libs/*.js"
-    },
     "dependencies": {
         "maxiosigma_libs": "file:../global-libs",
         "axios": "^1.4.0",
