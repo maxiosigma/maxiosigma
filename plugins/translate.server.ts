@@ -5,11 +5,14 @@ import { resolve, dirname } from 'path'
 import axios from 'axios'
 import { DocumentNode } from 'graphql'
 
-import url from 'url'
-const __filename = url.fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+//import url from 'url'
+//const __filename = url.fileURLToPath(import.meta.url)
+//const __dirname = dirname(__filename)
 
 const dir = resolve(__dirname, '../assets/data')
+//const dir = import('@data/')
+console.log(dir)
+
 const fileName = (name = '') => `${dir}/${name}.json`
 
 const write = (name = '', data = []) => {

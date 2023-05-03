@@ -1,6 +1,7 @@
 //import WindiCSS from 'vite-plugin-windicss'
+import { fileURLToPath, URL } from 'url'
 import { defineNuxtConfig } from 'nuxt/config'
-import { resolve } from 'path'
+//import { resolve } from 'path'
 
 export default defineNuxtConfig({
     ssr: true,
@@ -18,7 +19,12 @@ export default defineNuxtConfig({
         inlineSSRStyles: false,
         payloadExtraction: true,
         treeshakeClientOnly: false,
+
         renderJsonPayloads: true,
+        viewTransition: true,
+        //noVueServer: true,
+
+        watcher: 'parcel',
     },
     vite: {
         css: {
@@ -28,9 +34,8 @@ export default defineNuxtConfig({
             },
         },
         resolve: {
-            alias: {
-                '~data/': `${resolve(__dirname, './assets/data')}/`,
-            },
+            alias: [{ find: '@data', replacement: fileURLToPath(new URL('./assets/data', import.meta.url)) }],
+            //{ '~data': `${resolve(__dirname, './assets/data')}` },
         },
         plugins: [],
     },

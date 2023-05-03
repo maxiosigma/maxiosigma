@@ -9,6 +9,9 @@
 		"paths": {
 			"maxiosigma_libs/*": [
 				"../global-libs/*.js"
+			],
+			"@data": [
+				"./assets/data/*"
 			]
 		},
 		"allowJs": true
