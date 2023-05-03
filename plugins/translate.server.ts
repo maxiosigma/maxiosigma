@@ -1,12 +1,16 @@
 import { writeFileSync, readFileSync, existsSync, mkdirSync } from 'node:fs'
 import { generateRequestUrl, normaliseResponse } from 'google-translate-api-browser'
 import data from '~/assets/index.graphql'
-import { resolve } from 'path'
+import { resolve, dirname } from 'path'
 import axios from 'axios'
 import { DocumentNode } from 'graphql'
 
+import url from 'url'
+const __filename = url.fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
 const dir = resolve(__dirname, '../assets/data')
-const fileName = (name) => `${dir}/${name}.json`
+const fileName = (name = '') => `${dir}/${name}.json`
 
 const write = (name = '', data = []) => {
     if (!existsSync(fileName(name))) writeFileSync(fileName(name), JSON.stringify(data))

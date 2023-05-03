@@ -3,6 +3,13 @@
 //maxiosigma-nuxt-test.firebaseapp.com
 //firebase hosting:channel:deploy preview --expores 1h
 
+//"paths": {
+//	"maxiosigma_libs/*": [
+//		"../global-libs/index.js",
+//		"../global-libs/windi.js"
+//	]
+//},
+
 // ПКМ → ИЗМЕНИТЬ WHEN
 //{ "key":"ctrl+right",       "command":"cursorWordStartRight",       "when":"editorTextFocus" }
 //{ "key":"ctrl+shift+right", "command":"cursorWordStartRightSelect", "when":"editorTextFocus" }

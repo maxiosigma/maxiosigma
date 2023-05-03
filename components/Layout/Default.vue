@@ -74,11 +74,11 @@ onMounted(() => {
 }
 
 .body {
+    @apply bg-self-1 flex font-roboto h-auto min-h-screen max-w-screen relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
     text-rendering: optimizeLegibility;
-    @apply bg-self-1 flex font-roboto h-auto min-h-screen max-w-screen relative;
 }
 
 .wrapper {

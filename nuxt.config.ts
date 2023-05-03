@@ -1,9 +1,11 @@
 //import WindiCSS from 'vite-plugin-windicss'
 import { defineNuxtConfig } from 'nuxt/config'
+import { resolve } from 'path'
 
 export default defineNuxtConfig({
     ssr: true,
     //debug: true,
+    devtools: true,
     telemetry: false,
     app: {
         rootId: 'app',
@@ -16,12 +18,18 @@ export default defineNuxtConfig({
         inlineSSRStyles: false,
         payloadExtraction: true,
         treeshakeClientOnly: false,
+        renderJsonPayloads: true,
     },
     vite: {
         css: {
             modules: {
                 localsConvention: 'camelCaseOnly',
                 generateScopedName: '[local]_[hash:base32:5]',
+            },
+        },
+        resolve: {
+            alias: {
+                '~data/': `${resolve(__dirname, './assets/data')}/`,
             },
         },
         plugins: [],

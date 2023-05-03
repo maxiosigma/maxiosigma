@@ -1,11 +1,13 @@
 <template>
-    <NuxtLayout name="default">
+    <LayoutDefault>
+        <!--<NuxtLayout name="default">-->
         <div :class="[$style.page, view ? '' : '!hidden']">
             <!--{{ view }}-->
 
             <slot />
         </div>
-    </NuxtLayout>
+        <!--</NuxtLayout>-->
+    </LayoutDefault>
 </template>
 
 <script setup>
