@@ -6,6 +6,7 @@ import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
     ssr: true,
+    //ssr: false,
     //debug: true,
     //devtools: true,
     telemetry: false,
@@ -36,7 +37,7 @@ export default defineNuxtConfig({
             },
         },
         resolve: {
-            alias: [{ find: '@data', replacement: fileURLToPath(new URL('./assets/data', import.meta.url)) }],
+            //alias: [{ find: '@data', replacement: fileURLToPath(new URL('./assets/data', import.meta.url)) }],
             //{ '~data': `${resolve(__dirname, './assets/data')}` },
         },
         plugins: [],
@@ -44,6 +45,19 @@ export default defineNuxtConfig({
     build: {
         transpile: ['animejs'],
     },
+    //nitro: {
+    //    preset: 'node',
+    //    prerender: {
+    //        ignore: [
+    //            //        //
+    //            //        '/assets/data',
+    //            //        'assets/data/*.json',
+    //            //        'assets/data/**/*.json',
+    //            '**/*.json',
+    //        ],
+    //    },
+    //},
+    //ignore: ['assets/data/*.json', 'assets/data/**/*.json'],
     i18n: {
         lazy: false,
         defaultLocale: 'en',
@@ -71,6 +85,8 @@ export default defineNuxtConfig({
     //windicss: {
     //    analyze: true,
     //},
+    //pwa: {
+    //},
     modules: [
         'nuxt-windicss',
         '@nuxtjs/i18n',
@@ -83,6 +99,7 @@ export default defineNuxtConfig({
         //"@vueuse/integrations",
         //"@vueuse/router",
         //'@dewib/xhr-cache',
+        '@vite-pwa/nuxt',
         'nuxt-icon',
         //"nuxt-schema-org",
         //"nuxt-full-static",

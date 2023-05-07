@@ -138,7 +138,9 @@ const localePath = useLocalePath()
 //const locale = usePreferredLanguages()
 //const locale = useNavigatorLanguage()
 const { localeProperties: lp } = useI18n()
-const lang = lp.value.name
+//const lang = lp.value.name
+const lang = lp.value.code
+console.log(lang);
 
 const title = ref('~ MAIN ~')
 const description = ref('')
@@ -150,7 +152,7 @@ const isActive = (i) => activeSlide.value === i
 const toActive = (i) => (activeSlide.value = i)
 const toLink = (link) => (location.href = `/${link}`)
 
-const { work_types, work_categories } = useNuxtApp().payload.data?.[lang]
+const { data: { [lang]: { work_types, work_categories } } } = useNuxtApp().payload
 
 const sections = {
     Overflow: { icon: 'ep:chrome-filled' },

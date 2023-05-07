@@ -5,44 +5,25 @@ import { resolve } from 'path'
 import axios from 'axios'
 
 export default defineNuxtPlugin(async (nuxtApp) => {
-    const navSlugs = ['nav', 'footer', 'social']
-    const langs = ['ru', 'en', 'zh']
-    const defaultLang = 'ru'
-    const { asyncReduceArray, asyncReduceObject, itemIsArray, importAssetsData, getDataUrl } = useFunctions()
-
-    //const dir = resolve(__dirname, '../assets/data')
-    //const fileName = (name = '') => `${dir}/${name}.json`
-    //const readFile = (name = '') => (existsSync(fileName(name)) ? JSON.parse(readFileSync(fileName(name), { encoding: 'utf8' })) : undefined)
-
-    //const getArticles = async () => await import('~/assets/data/links.json').then((m) => m.default || m)
-
-    //console.log(JSON.parse(readFileSync('../assets/data/links.json', 'utf8')))
-
-    //console.log(await importAssetsData('links'))
-
-    //console.log('AAAAAAA', await import(getDataUrl('links.json').href))
-
-    //console.log(import.meta.glob('/assets/data/**', { eager: true }))
-    console.log(useAssetsData(`zn/publics.json`))
-
-    //console.log(await getArticles())
-
-    const content = await asyncReduceObject(langs, async (lang: string) => {
-        const links = useAssetsData('links.json')
-        const reffers = useAssetsData(`${lang}/reffers.json`)
-        const works = useAssetsData(`${lang}/works.json`)
-        const publics = useAssetsData(`${lang}/publics.json`)
-        const work_types = useAssetsData(`${lang}/work_types.json`)
-        const work_technologies = useAssetsData(`${lang}/work_technologies.json`)
-        const work_tags = useAssetsData(`${lang}/work_tags.json`)
-        const work_categories = useAssetsData(`${lang}/work_categories.json`)
-
-        return {
-            [lang]: { links, reffers, works, publics, work_types, work_technologies, work_tags, work_categories },
-        }
-    })
-
-    nuxtApp.payload.data = content
+    //const { asyncReduceArray, asyncReduceObject, itemIsArray, importAssetsData, getDataUrl } = useFunctions()
+    //const navSlugs = ['nav', 'footer', 'social']
+    //const langs = ['ru', 'en', 'zh']
+    //const defaultLang = 'ru'
+    //const isStatic = !process.env.STATIC
+    //const content = await asyncReduceObject(langs, async (lang: string) => {
+    //    const links = useAssetsData('links.json')
+    //    const reffers = useAssetsData(`${lang}/reffers.json`)
+    //    const works = useAssetsData(`${lang}/works.json`)
+    //    const publics = useAssetsData(`${lang}/publics.json`)
+    //    const work_types = useAssetsData(`${lang}/work_types.json`)
+    //    const work_technologies = useAssetsData(`${lang}/work_technologies.json`)
+    //    const work_tags = useAssetsData(`${lang}/work_tags.json`)
+    //    const work_categories = useAssetsData(`${lang}/work_categories.json`)
+    //    return {
+    //        [lang]: { links, reffers, works, publics, work_types, work_technologies, work_tags, work_categories },
+    //    }
+    //})
+    //nuxtApp.payload.data = content
 })
 
 //export default defineNuxtPlugin(async (nuxtApp) => {
@@ -217,3 +198,20 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 
 //    nuxtApp.payload.data = content
 //})
+
+//const dir = resolve(__dirname, '../assets/data')
+//const fileName = (name = '') => `${dir}/${name}.json`
+//const readFile = (name = '') => (existsSync(fileName(name)) ? JSON.parse(readFileSync(fileName(name), { encoding: 'utf8' })) : undefined)
+
+//const getArticles = async () => await import('~/assets/data/links.json').then((m) => m.default || m)
+
+//console.log(JSON.parse(readFileSync('../assets/data/links.json', 'utf8')))
+
+//console.log(await importAssetsData('links'))
+
+//console.log('AAAAAAA', await import(getDataUrl('links.json').href))
+
+//console.log(import.meta.glob('/assets/data/**', { eager: true }))
+//console.log(useAssetsData(`zn/reffers.json`))
+
+//console.log(await getArticles())
