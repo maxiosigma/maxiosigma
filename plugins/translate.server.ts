@@ -7,6 +7,8 @@ import axios from 'axios'
 export default defineNuxtPlugin(async (nuxtApp) => {
     const noStrapi = !process.env.STRAPI_TO
 
+    console.log('noStrapi', noStrapi)
+
     if (noStrapi) {
         const graphql = useStrapiGraphQL()
         const { asyncReduceArray, asyncReduceObject, itemIsArray } = useFunctions()

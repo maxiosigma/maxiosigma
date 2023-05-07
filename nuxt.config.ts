@@ -45,9 +45,7 @@ export default defineNuxtConfig({
     build: {
         transpile: ['animejs'],
     },
-    content: {
-    
-    },
+    content: {},
     //nitro: {
     //    preset: 'node',
     //    prerender: {

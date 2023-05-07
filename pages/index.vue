@@ -140,7 +140,7 @@ const localePath = useLocalePath()
 const { localeProperties: lp } = useI18n()
 const lang = lp.value.name
 //const lang = lp.value.code
-console.log(lang)
+//console.log(lang)
 
 const title = ref('~ MAIN ~')
 const description = ref('')
@@ -155,8 +155,6 @@ const toLink = (link) => (location.href = `/${link}`)
 const work_types = await useDataFile(`${lang}/work_types.json`)
 const work_categories = await useDataFile(`${lang}/work_categories.json`)
 
-console.log(work_types);
-
 const sections = {
     Overflow: { icon: 'ep:chrome-filled' },
     Welcome: {
@@ -165,10 +163,10 @@ const sections = {
     },
     Services: {
         icon: 'ep:operation',
-        items: work_types?.map((wt) => {
+        items: work_types.value?.map((wt) => {
             return {
                 title: wt?.title,
-                items: work_categories
+                items: work_categories.value
                     ?.filter((wc) => wt?.slug === wc?.type?.slug)
                     ?.map(({ title, technologies }) => ({
                         title,
