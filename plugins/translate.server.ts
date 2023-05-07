@@ -5,11 +5,10 @@ import { resolve } from 'path'
 import axios from 'axios'
 
 export default defineNuxtPlugin(async (nuxtApp) => {
-    const noStrapi = !process.env.STRAPI_TO
+    const toStrapi = process.env.STRAPI_TO
+    console.log('toStrapi', toStrapi)
 
-    console.log('noStrapi', noStrapi)
-
-    if (noStrapi) {
+    if (toStrapi) {
         const graphql = useStrapiGraphQL()
         const { asyncReduceArray, asyncReduceObject, itemIsArray } = useFunctions()
 
