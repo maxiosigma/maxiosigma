@@ -152,13 +152,10 @@ const isActive = (i) => activeSlide.value === i
 const toActive = (i) => (activeSlide.value = i)
 const toLink = (link) => (location.href = `/${link}`)
 
-const {
-    data: {
-        [lang]: { work_types, work_categories },
-    },
-} = useNuxtApp().payload
+const work_types = await useDataFile(`${lang}/work_types.json`)
+const work_categories = await useDataFile(`${lang}/work_categories.json`)
 
-
+console.log(work_types);
 
 const sections = {
     Overflow: { icon: 'ep:chrome-filled' },
