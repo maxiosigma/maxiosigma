@@ -45,6 +45,9 @@ export default defineNuxtConfig({
     build: {
         transpile: ['animejs'],
     },
+    content: {
+    
+    },
     //nitro: {
     //    preset: 'node',
     //    prerender: {
@@ -90,8 +93,8 @@ export default defineNuxtConfig({
     modules: [
         'nuxt-windicss',
         '@nuxtjs/i18n',
-        '@nuxtjs/strapi',
         '@vueuse/nuxt',
+        '@nuxtjs/strapi',
         '@nuxtjs/device',
         //'nuxt-viewport',
         //"@nuxtjs/fontaine",
@@ -100,6 +103,7 @@ export default defineNuxtConfig({
         //"@vueuse/router",
         //'@dewib/xhr-cache',
         '@vite-pwa/nuxt',
+        '@nuxt/content',
         'nuxt-icon',
         //"nuxt-schema-org",
         //"nuxt-full-static",
