@@ -36,7 +36,7 @@ const { width, height, id } = {
 }
 
 function getImage() {
-    return useAssets(src)
+    return useAssetsImages(src)
 }
 
 function aborted(e) {

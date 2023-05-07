@@ -5,7 +5,9 @@
         "devo": "nuxt dev -o",
         "strapi-dev": "cd ../strapi/ && yarn strapi develop",
         "strapi-build": "cd ../strapi/ && yarn strapi build",
-        "generate": "nuxt generate && nuxt start",
+        "generate": "cross-env STATIC_READ=true nuxt generate",
+        "generate-start": "nuxt generate && nuxt start",
+        "generate-strapi": "nuxt generate && nuxt start",
         "preview": "nuxt preview",
         "start": "nuxt start",
         "clean": "npx nuxi clean",
@@ -18,8 +20,10 @@
     "dependencies": {
         "axios": "^1.4.0",
         "clip-path-polygon": "^0.1.14",
+        "cross-env": "^7.0.3",
         "google-translate-api-browser": "^3.0.1",
         "maxiosigma_libs": "file:../global-libs",
+        "assets_data": "file:./assets/data",
         "sortablejs": "^1.15.0"
     },
     "devDependencies": {

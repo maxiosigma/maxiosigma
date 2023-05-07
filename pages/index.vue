@@ -160,12 +160,12 @@ const sections = {
     },
     Services: {
         icon: 'ep:operation',
-        items: work_types.map((wt) => {
+        items: work_types?.map((wt) => {
             return {
                 title: wt?.title,
                 items: work_categories
-                    .filter((wc) => wt?.slug === wc?.type?.slug)
-                    .map(({ title, technologies }) => ({
+                    ?.filter((wc) => wt?.slug === wc?.type?.slug)
+                    ?.map(({ title, technologies }) => ({
                         title,
                         technologies: technologies?.join(' + '),
                     })),
@@ -214,18 +214,18 @@ useHead({ title, description })
 
     &-nav {
         //auto-cols-max grid-cols-4 bg-self-2/50 rounded-lg  grid-rows-3 sm:grid-rows-2 lg:grid-rows-1
-        @apply fixed grid justify-center items-end px-4 py-2 self-center z-30 max-w-1/2 h-auto bottom-[5.5%] grid-flow-col-dense <sm:(hidden);
+        @apply fixed grid justify-center items-end px-4 py-2 self-center z-30 max-w-1/2 h-auto bottom-[5.5%] grid-flow-col-dense <sm: (hidden);
 
         &-item {
             // bg-self-7 border-self-5 border-3 border-transparent
-            @apply flex-center rounded-full m-1 transition-all duration-300 cursor-pointer bg-opacity-10 elevation-1 hover:(bg-opacity-100 );
+            @apply flex-center rounded-full m-1 transition-all duration-300 cursor-pointer bg-opacity-10 elevation-1 hover: (bg-opacity-100);
         }
 
         &-icon {
-            @apply w-5 h-5 transition duration-500 text-self-1 opacity-75 group-hover:(opacity-100);
+            @apply w-5 h-5 transition duration-500 text-self-1 opacity-75 group-hover: (opacity-100);
 
             &.active {
-                @apply text-self-5 opacity-100 group-hover:(opacity-100);
+                @apply text-self-5 opacity-100 group-hover: (opacity-100);
             }
         }
     }
