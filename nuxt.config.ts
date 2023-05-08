@@ -45,6 +45,12 @@ export default defineNuxtConfig({
     build: {
         transpile: ['animejs'],
     },
+    generate: {
+        //exclude: [],
+        //minify: {
+        //    collapseWhitespace: false,
+        //},
+    },
     content: {},
     //nitro: {
     //    preset: 'node',
@@ -100,7 +106,7 @@ export default defineNuxtConfig({
         //"@vueuse/integrations",
         //"@vueuse/router",
         //'@dewib/xhr-cache',
-        '@vite-pwa/nuxt',
+        //'@vite-pwa/nuxt',
         '@nuxt/content',
         'nuxt-icon',
         //"nuxt-schema-org",
