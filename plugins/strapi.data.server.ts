@@ -1,4 +1,7 @@
-export default defineNuxtPlugin(async (nuxtApp) => {})
+export default defineNuxtPlugin(async (nuxtApp) => {
+    //console.log(useI18n())
+    nuxtApp.$config.public.langs
+})
 
 //{
 //    order: 0,

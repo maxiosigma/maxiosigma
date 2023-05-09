@@ -94,6 +94,11 @@ export default defineNuxtConfig({
     //},
     //pwa: {
     //},
+    runtimeConfig: {
+        public: {
+            langs: locales(),
+        },
+    },
     modules: [
         'nuxt-windicss',
         '@nuxtjs/i18n',

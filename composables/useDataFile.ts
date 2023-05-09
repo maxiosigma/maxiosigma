@@ -1,4 +1,9 @@
 export default async function (name = '') {
-    const { data } = await useAsyncData(name, async () => await queryContent().where({ _file: name }).findOne())
-    return data.value?.body
+    // ref, useState
+    // await useAsyncData(name, async () => ) data.value? { data }
+
+    const content = await queryContent().where({ _file: name }).findOne()
+    const result = useState(() => content.body)
+
+    return result
 }

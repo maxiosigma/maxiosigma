@@ -163,10 +163,10 @@ const sections = {
     },
     Services: {
         icon: 'ep:operation',
-        items: work_types?.map((wt) => {
+        items: work_types.value?.map((wt) => {
             return {
                 title: wt?.title,
-                items: work_categories
+                items: work_categories.value
                     ?.filter((wc) => wt?.slug === wc?.type?.slug)
                     ?.map(({ title, technologies }) => ({
                         title,
