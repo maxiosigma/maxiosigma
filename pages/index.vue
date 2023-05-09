@@ -183,8 +183,8 @@ const isActive = (i) => activeSlide.value === i
 const toActive = (i) => (activeSlide.value = i)
 const toLink = (link) => (location.href = `/${link}`)
 
-const work_types = await useContentData(`${lang}/work_types.json`)
-const work_categories = await useContentData(`${lang}/work_categories.json`)
+const { body: work_types } = await useContentData(`${lang}/work_types.json`)
+const { body: work_categories } = await useContentData(`${lang}/work_categories.json`)
 
 const sections = {
     Overflow: { icon: 'ep:chrome-filled' },
@@ -200,10 +200,10 @@ const sections = {
     },
     Services: {
         icon: 'ep:operation',
-        items: work_types.value?.map((wt) => {
+        items: work_types?.map((wt) => {
             return {
                 title: wt?.title,
-                items: work_categories.value
+                items: work_categories
                     ?.filter((wc) => wt?.slug === wc?.type?.slug)
                     ?.map(({ title, technologies }) => ({
                         title,
