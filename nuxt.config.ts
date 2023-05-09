@@ -57,7 +57,7 @@ export default defineNuxtConfig({
         //    collapseWhitespace: false,
         //},
     },
-    content: {},
+
     //nitro: {
     //    preset: 'node',
     //    prerender: {
@@ -90,6 +90,10 @@ export default defineNuxtConfig({
         },
         langDir: 'locales',
         locales: i18n_config.locales,
+    },
+    content: {
+        //locales: i18n_config.locales.map((l) => l.code),
+        //defaultLocale: i18n_config.defaultLocale,
     },
     //nuxtIcon: {
     //    size: '32px',

@@ -183,8 +183,16 @@ const isActive = (i) => activeSlide.value === i
 const toActive = (i) => (activeSlide.value = i)
 const toLink = (link) => (location.href = `/${link}`)
 
-const { body: work_types } = await useContentData(`${lang}/work_types.json`)
-const { body: work_categories } = await useContentData(`${lang}/work_categories.json`)
+//const test = useNuxtApp().payload.data
+//console.log(test)
+
+//const { body: work_types } = await useContentData(`${lang}/work_types.json`)
+//const { body: work_categories } = await useContentData(`${lang}/work_categories.json`)
+
+const work_types = ref(await useContentData(`${lang}/work_types.json`))
+const work_categories = ref(await useContentData(`${lang}/work_categories.json`))
+
+//console.log(work_types.value)
 
 const sections = {
     Overflow: { icon: 'ep:chrome-filled' },
@@ -200,10 +208,10 @@ const sections = {
     },
     Services: {
         icon: 'ep:operation',
-        items: work_types?.map((wt) => {
+        items: work_types.value?.map((wt) => {
             return {
                 title: wt?.title,
-                items: work_categories
+                items: work_categories.value
                     ?.filter((wc) => wt?.slug === wc?.type?.slug)
                     ?.map(({ title, technologies }) => ({
                         title,
