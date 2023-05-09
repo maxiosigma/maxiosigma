@@ -1,1 +1,57 @@
-[{"title":"Website","slug":"veb-sajt","type":{"title":"Development","slug":"razrabotka"},"technologies":["Nuxt 3","CMS"]},{"title":"Integrations","slug":"integraczii","type":{"title":"Development","slug":"razrabotka"},"technologies":["Multi"]},{"title":"Serverless","slug":"besservernye","type":{"title":"Development","slug":"razrabotka"},"technologies":["Node"]},{"title":"Parsing","slug":"parsing","type":{"title":"Development","slug":"razrabotka"},"technologies":["Node"]},{"title":"api","slug":"api","type":{"title":"Development","slug":"razrabotka"},"technologies":["Node"]},{"title":"Form style","slug":"firmennyj-stil","type":{"title":"Design","slug":"dizajn"},"technologies":["Figma"]},{"title":"prototyping","slug":"prototipirovanie","type":{"title":"Design","slug":"dizajn"},"technologies":["Figma"]},{"title":"Presentation","slug":"prezentacziya","type":{"title":"Design","slug":"dizajn"},"technologies":["Multi"]},{"title":"Redesign","slug":"redizajn","type":{"title":"Design","slug":"dizajn"},"technologies":["Figma"]},{"title":"Logo","slug":"logotip","type":{"title":"Design","slug":"dizajn"},"technologies":["Figma"]},{"title":"Edits","slug":"pravki","type":{"title":"Design","slug":"dizajn"},"technologies":["Multi"]},{"title":"Banner","slug":"banner","type":{"title":"Design","slug":"dizajn"},"technologies":["Figma"]},{"title":"Website","slug":"sajt","type":{"title":"Design","slug":"dizajn"},"technologies":["Figma"]},{"title":"Simple Models","slug":"prostye-modeli","type":{"title":"ZD","slug":"3d"},"technologies":["Blender"]},{"title":"Description for goods","slug":"opisanie-k-tovaram","type":{"title":"Copyright","slug":"kopirajt"},"technologies":["Brain"]},{"title":"Selling text","slug":"prodayushhij-tekst","type":{"title":"Copyright","slug":"kopirajt"},"technologies":["Soul"]},{"title":"Reviews","slug":"otzyvy","type":{"title":"Copyright","slug":"kopirajt"},"technologies":["Creative"]},{"title":"Video processing","slug":"obrabotka","type":{"title":"Media","slug":"media"},"technologies":["Movavi"]},{"title":"Photo processing","slug":"obrabotka-foto","type":{"title":"Media","slug":"media"},"technologies":["Multi"]},{"title":"Video cutting","slug":"narezka-video","type":{"title":"Media","slug":"media"},"technologies":["Multi"]},{"title":"Programming","slug":"programmirovanie","type":{"title":"Support","slug":"podderzhka"},"technologies":["Advice"]},{"title":"Video show","slug":"video-pokaz","type":{"title":"Support","slug":"podderzhka"},"technologies":["Help"]},{"title":"Design","slug":"dizajn","type":{"title":"Support","slug":"podderzhka"},"technologies":["Advice"]}]
+{
+    "content": [
+        {
+            "title": "Website",
+            "slug": "veb-sajt",
+            "type": { "title": "Development", "slug": "razrabotka" },
+            "technologies": ["Nuxt 3", "CMS"]
+        },
+        {
+            "title": "Integrations",
+            "slug": "integraczii",
+            "type": { "title": "Development", "slug": "razrabotka" },
+            "technologies": ["Multi"]
+        },
+        {
+            "title": "Serverless",
+            "slug": "besservernye",
+            "type": { "title": "Development", "slug": "razrabotka" },
+            "technologies": ["Node"]
+        },
+        { "title": "Parsing", "slug": "parsing", "type": { "title": "Development", "slug": "razrabotka" }, "technologies": ["Node"] },
+        { "title": "api", "slug": "api", "type": { "title": "Development", "slug": "razrabotka" }, "technologies": ["Node"] },
+        { "title": "Form style", "slug": "firmennyj-stil", "type": { "title": "Design", "slug": "dizajn" }, "technologies": ["Figma"] },
+        { "title": "prototyping", "slug": "prototipirovanie", "type": { "title": "Design", "slug": "dizajn" }, "technologies": ["Figma"] },
+        { "title": "Presentation", "slug": "prezentacziya", "type": { "title": "Design", "slug": "dizajn" }, "technologies": ["Multi"] },
+        { "title": "Redesign", "slug": "redizajn", "type": { "title": "Design", "slug": "dizajn" }, "technologies": ["Figma"] },
+        { "title": "Logo", "slug": "logotip", "type": { "title": "Design", "slug": "dizajn" }, "technologies": ["Figma"] },
+        { "title": "Edits", "slug": "pravki", "type": { "title": "Design", "slug": "dizajn" }, "technologies": ["Multi"] },
+        { "title": "Banner", "slug": "banner", "type": { "title": "Design", "slug": "dizajn" }, "technologies": ["Figma"] },
+        { "title": "Website", "slug": "sajt", "type": { "title": "Design", "slug": "dizajn" }, "technologies": ["Figma"] },
+        { "title": "Simple Models", "slug": "prostye-modeli", "type": { "title": "ZD", "slug": "3d" }, "technologies": ["Blender"] },
+        {
+            "title": "Description for goods",
+            "slug": "opisanie-k-tovaram",
+            "type": { "title": "Copyright", "slug": "kopirajt" },
+            "technologies": ["Brain"]
+        },
+        {
+            "title": "Selling text",
+            "slug": "prodayushhij-tekst",
+            "type": { "title": "Copyright", "slug": "kopirajt" },
+            "technologies": ["Soul"]
+        },
+        { "title": "Reviews", "slug": "otzyvy", "type": { "title": "Copyright", "slug": "kopirajt" }, "technologies": ["Creative"] },
+        { "title": "Video processing", "slug": "obrabotka", "type": { "title": "Media", "slug": "media" }, "technologies": ["Movavi"] },
+        { "title": "Photo processing", "slug": "obrabotka-foto", "type": { "title": "Media", "slug": "media" }, "technologies": ["Multi"] },
+        { "title": "Video cutting", "slug": "narezka-video", "type": { "title": "Media", "slug": "media" }, "technologies": ["Multi"] },
+        {
+            "title": "Programming",
+            "slug": "programmirovanie",
+            "type": { "title": "Support", "slug": "podderzhka" },
+            "technologies": ["Advice"]
+        },
+        { "title": "Video show", "slug": "video-pokaz", "type": { "title": "Support", "slug": "podderzhka" }, "technologies": ["Help"] },
+        { "title": "Design", "slug": "dizajn", "type": { "title": "Support", "slug": "podderzhka" }, "technologies": ["Advice"] }
+    ]
+}

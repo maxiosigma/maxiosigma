@@ -1,1 +1,10 @@
-[{"title":"Разработка","slug":"razrabotka"},{"title":"Дизайн","slug":"dizajn"},{"title":"3D","slug":"3d"},{"title":"Копирайт","slug":"kopirajt"},{"title":"Медиа","slug":"media"},{"title":"Поддержка","slug":"podderzhka"}]
+{
+    "content": [
+        { "title": "Разработка", "slug": "razrabotka" },
+        { "title": "Дизайн", "slug": "dizajn" },
+        { "title": "3D", "slug": "3d" },
+        { "title": "Копирайт", "slug": "kopirajt" },
+        { "title": "Медиа", "slug": "media" },
+        { "title": "Поддержка", "slug": "podderzhka" }
+    ]
+}

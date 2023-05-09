@@ -1,1 +1,10 @@
-[{"title":"Development","slug":"razrabotka"},{"title":"Design","slug":"dizajn"},{"title":"ZD","slug":"3d"},{"title":"Copyright","slug":"kopirajt"},{"title":"Media","slug":"media"},{"title":"Support","slug":"podderzhka"}]
+{
+    "content": [
+        { "title": "Development", "slug": "razrabotka" },
+        { "title": "Design", "slug": "dizajn" },
+        { "title": "ZD", "slug": "3d" },
+        { "title": "Copyright", "slug": "kopirajt" },
+        { "title": "Media", "slug": "media" },
+        { "title": "Support", "slug": "podderzhka" }
+    ]
+}

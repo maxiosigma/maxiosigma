@@ -91,9 +91,13 @@ export default defineNuxtConfig({
         langDir: 'locales',
         locales: i18n_config.locales,
     },
+    sourcemap: {
+        server: false,
+        client: false,
+    },
     content: {
-        //locales: i18n_config.locales.map((l) => l.code),
-        //defaultLocale: i18n_config.defaultLocale,
+        locales: i18n_config.locales.map((l) => l.code),
+        defaultLocale: i18n_config.defaultLocale,
     },
     //nuxtIcon: {
     //    size: '32px',
