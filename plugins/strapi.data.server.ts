@@ -1,6 +1,6 @@
 export default defineNuxtPlugin(async (nuxtApp) => {
     //console.log(useI18n())
-    nuxtApp.$config.public.langs
+    //console.log(nuxtApp.$config.public.langs)
 })
 
 //{

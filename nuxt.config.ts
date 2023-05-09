@@ -4,6 +4,12 @@ import { fileURLToPath, URL } from 'url'
 import { defineNuxtConfig } from 'nuxt/config'
 //import { resolve } from 'path'
 
+const i18n_config = {
+    cookieKey: 'lang',
+    locales: locales(),
+    defaultLocale: 'en',
+}
+
 export default defineNuxtConfig({
     ssr: true,
     //ssr: false,
@@ -67,20 +73,23 @@ export default defineNuxtConfig({
     //ignore: ['assets/data/*.json', 'assets/data/**/*.json'],
     i18n: {
         lazy: false,
-        defaultLocale: 'en',
+        defaultLocale: i18n_config.defaultLocale,
         strategy: 'prefix_and_default',
         vueI18n: './i18n.config.ts',
         detectBrowserLanguage: {
             useCookie: true,
-            cookieKey: 'lang',
-            redirectOn: 'root',
+            cookieKey: i18n_config.cookieKey,
+            redirectOn: 'all',
+            cookieCrossOrigin: true,
+            alwaysRedirect: true,
+            fallbackLocale: 'ru',
         },
         customRoutes: 'config',
         pages: {
             link: false,
         },
         langDir: 'locales',
-        locales: locales(),
+        locales: i18n_config.locales,
     },
     //nuxtIcon: {
     //    size: '32px',
@@ -96,9 +105,21 @@ export default defineNuxtConfig({
     //},
     runtimeConfig: {
         public: {
-            langs: locales(),
+            i18n_config,
         },
     },
+    //toast: {
+    //    position: 'bottom-center',
+    //    register: [
+    //        {
+    //            name: 'Toast',
+    //            message: 'Oops...Something went wrong',
+    //            options: {
+    //                type: 'error',
+    //            },
+    //        },
+    //    ],
+    //},
     modules: [
         'nuxt-windicss',
         '@nuxtjs/i18n',
@@ -125,7 +146,7 @@ export default defineNuxtConfig({
         //'@nuxtjs/toast',
         //'nuxt-xstate',
     ],
-    css: ['~/assets/index.scss'],
+    css: ['~/assets/index.scss', 'vue-final-modal/style.css'],
     hooks: {},
     //robots: {
     //    /* module options */
@@ -134,9 +155,9 @@ export default defineNuxtConfig({
 
 function locales() {
     const locales_pc = [
-        { code: 'en', iso: 'en-ES', name: 'English', file: 'en.json' },
-        { code: 'ru', iso: 'ru-RU', name: 'Русский', file: 'ru.json' },
-        { code: 'zh', iso: 'zh-CN', name: '中國人', file: 'zh.json' },
+        { code: 'en', iso: 'en-ES', title: 'English', file: 'en.json' },
+        { code: 'ru', iso: 'ru-RU', title: 'Русский', file: 'ru.json' },
+        { code: 'zh', iso: 'zh-CN', title: '中國人', file: 'zh.json' },
     ].map((it) => ({ ...it, name: it.code }))
 
     const locales_mobile = locales_pc.map((locale) => {

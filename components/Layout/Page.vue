@@ -7,10 +7,45 @@
             <slot />
         </div>
         <!--</NuxtLayout>-->
+
+        <!--<div v-click-outside></div>-->
+
+        <div
+            :class="[modal ? 'fixed flex-center bg-self-1 bg-opacity-95 inset-0 w-full h-full z-99999' : '!hidden h-0 w-0 overflow-hidden']"
+        >
+            <div
+                class="flex-center flex-col flex-shrink m-auto inset-0 bg-self-2 w-4/5 px-4 py-10 max-w-sm h-auto min-h-40 max-h-none z-99999 text-white pointer-events-none"
+            >
+                <div class="uppercase border-b">Select language</div>
+
+                <div class="flex-center flex-col mt-2 pointer-events-auto">
+                    <div
+                        class="py-1 transition duration-150 cursor-pointer hover:(text-self-4 underline-light-200)"
+                        v-for="locale in locales.filter((it, i) => i < locales.length / 2)"
+                        :key="locale.code"
+                        @click="closeModal(locale.name)"
+                    >
+                        {{ locale.title }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="fixed w-full flex-center bottom-10 pointer-events-none group">
+            <div
+                class="flex-center transition duration-1000 pointer-events-auto cursor-pointer opacity-25 sm:(opacity-10) group-hover:opacity-75"
+                @click="openModal()"
+            >
+                <div class="absolute bg-self-7 rounded-full w-8 h-8"></div>
+                <Icon class="relative z-1 text-xl text-self-4" name="ooui:language"></Icon>
+            </div>
+        </div>
     </LayoutDefault>
 </template>
 
 <script setup>
+useSwitchLang()
+
 defineProps({
     bs: { type: String, required: false, default: 'body-bg' },
     title: { type: String, required: false, default: undefined },
@@ -19,7 +54,22 @@ defineProps({
     view: { type: Boolean, required: false, default: true },
 })
 
-// <!-- Разрешение экрана меньше *** переключитесь на мобильный телефон -->
+const { locales } = useI18n()
+const lang_check = useCookie('lang_check')
+const modal = ref(!lang_check.value)
+
+const openModal = () => {
+    lang_check.value = false
+    useCookieLang().value = undefined
+    modal.value = true
+}
+
+const closeModal = (code) => {
+    lang_check.value = true
+    useCookieLang().value = code
+    useSwitcherRedirect(code)
+    modal.value = false
+}
 </script>
 
 <style module>

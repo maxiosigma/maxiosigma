@@ -6,7 +6,7 @@ import axios from 'axios'
 
 export default defineNuxtPlugin(async (nuxtApp) => {
     const toStrapi = process.env.STRAPI_TO
-    console.log('toStrapi', toStrapi)
+    //console.log('toStrapi', toStrapi)
 
     if (toStrapi) {
         const graphql = useStrapiGraphQL()
