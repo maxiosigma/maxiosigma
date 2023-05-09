@@ -1,7 +1,7 @@
 export default function (code = '') {
     const { isMobile } = useDevice()
     const lang = isMobile ? `${code}-amp` : `${code}`
-    const path = useSwitchLocalePath()(lang)
-    const redirect = (!path.includes(code) ? `/${code}${path}` : path).replace(/^https?\:\/\/|\/$/gi, '')
+    const pathLang = useSwitchLocalePath()(lang)
+    const redirect = (!pathLang.includes(code) ? `/${code}${pathLang}` : pathLang).replace(/^https?\:\/\/|\/$/gi, '')
     window.location.href = redirect
 }

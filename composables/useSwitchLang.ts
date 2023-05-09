@@ -1,7 +1,7 @@
 export default function () {
     onBeforeMount(() => {
         const { isMobile } = useDevice()
-        const switchLocalePath = useSwitchLocalePath()
+        //const switchLocalePath = useSwitchLocalePath()
 
         const cookie = useCookieLang()
         const pathname = window.location.pathname
@@ -10,10 +10,14 @@ export default function () {
         if (!cookie.value) cookie.value = lang_nav
 
         const lang = isMobile ? `${cookie.value}-amp` : `${cookie.value}`
-        const pathLang = switchLocalePath(lang)
+        //const pathLang = switchLocalePath(lang)
+        const pathLang = useSwitchLocalePath()(lang)
+        const redirect = (!pathLang.includes(lang) ? `/${lang}${pathLang}` : pathLang).replace(/^https?\:\/\/|\/$/gi, '')
 
-        //if (pathname !== pathLang) window.location.href = switchLocalePath(lang)
+        //console.log(pathname, pathLang, redirect)
 
-        if (pathname !== pathLang) useSwitcherRedirect(`${cookie.value}`)
+        if (pathname !== redirect) window.location.href = redirect
+
+        //if (pathname !== pathLang) useSwitcherRedirect(`${cookie.value}`)
     })
 }
