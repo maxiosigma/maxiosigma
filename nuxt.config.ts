@@ -101,10 +101,10 @@ export default defineNuxtConfig({
         //api: {
         //    baseURL: '/contented', // '/api/_content'
         //},
-        //locales: i18n_config.locales.map((l) => l.code),
-        locales: ['en', 'ru', 'zh', 'en-amp', 'ru-amp', 'zh-amp'],
-        //defaultLocale: i18n_config.defaultLocale,
-        defaultLocale: 'zh',
+        locales: i18n_config.locales.map((l) => l.code),
+        //locales: ['en', 'ru', 'zh', 'en-amp', 'ru-amp', 'zh-amp'],
+        defaultLocale: i18n_config.defaultLocale,
+        //defaultLocale: 'en',
     },
     //nuxtIcon: {
     //    size: '32px',
