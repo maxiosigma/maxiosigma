@@ -31,6 +31,7 @@ export default defineNuxtConfig({
         payloadExtraction: true,
         treeshakeClientOnly: false,
         //renderJsonPayloads: true,
+
         //viewTransition: true,
         //noVueServer: true,
         //watcher: 'parcel',
@@ -96,8 +97,14 @@ export default defineNuxtConfig({
         client: false,
     },
     content: {
-        locales: i18n_config.locales.map((l) => l.code),
-        defaultLocale: i18n_config.defaultLocale,
+        //base: 'contented',
+        //api: {
+        //    baseURL: '/contented', // '/api/_content'
+        //},
+        //locales: i18n_config.locales.map((l) => l.code),
+        locales: ['en', 'ru', 'zh', 'en-amp', 'ru-amp', 'zh-amp'],
+        //defaultLocale: i18n_config.defaultLocale,
+        defaultLocale: 'zh',
     },
     //nuxtIcon: {
     //    size: '32px',
@@ -163,13 +170,13 @@ export default defineNuxtConfig({
 
 function locales() {
     const locales_pc = [
-        { code: 'en', iso: 'en-ES', title: 'English', file: 'en.json' },
-        { code: 'ru', iso: 'ru-RU', title: 'Русский', file: 'ru.json' },
-        { code: 'zh', iso: 'zh-CN', title: '中國人', file: 'zh.json' },
-    ].map((it) => ({ ...it, name: it.code }))
+        { code: 'en', iso: 'en-ES', name: 'English' },
+        { code: 'ru', iso: 'ru-RU', name: 'Русский' },
+        { code: 'zh', iso: 'zh-CN', name: '中國人' },
+    ].map((it) => ({ ...it, code_: it.code, file: it.code + '.json' }))
 
     const locales_mobile = locales_pc.map((locale) => {
-        return { ...locale, code: locale.code + '-amp' }
+        return { ...locale, code: locale.code + '-amp', file: locale.code + '-amp.json' }
     })
 
     return [...locales_pc, ...locales_mobile]

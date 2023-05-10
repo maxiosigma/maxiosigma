@@ -14,7 +14,7 @@
             :class="[modal ? 'fixed flex-center bg-self-1 bg-opacity-95 inset-0 w-full h-full z-99999' : '!hidden h-0 w-0 overflow-hidden']"
         >
             <div
-                class="flex-center flex-col flex-shrink m-auto inset-0 bg-self-2 w-4/5 px-4 py-10 max-w-sm h-auto min-h-40 max-h-none z-99999 text-white pointer-events-none"
+                class="flex-center flex-col flex-shrink rounded-md elevation-10 m-auto inset-0 bg-self-2 w-4/5 px-4 py-10 max-w-sm h-auto min-h-40 max-h-none z-99999 text-white pointer-events-none"
             >
                 <div class="uppercase border-b">Select language</div>
 
@@ -22,10 +22,10 @@
                     <div
                         class="py-1 transition duration-150 cursor-pointer hover:(text-self-4 underline-light-200)"
                         v-for="locale in locales.filter((it, i) => i < locales.length / 2)"
-                        :key="locale.code"
-                        @click="closeModal(locale.name)"
+                        :key="locale.code_"
+                        @click="closeModal(locale.code_)"
                     >
-                        {{ locale.title }}
+                        {{ locale.name }}
                     </div>
                 </div>
             </div>
@@ -55,17 +55,20 @@ defineProps({
 })
 
 const { locales } = useI18n()
-const lang_check = useCookie('lang_check')
-const modal = ref(!lang_check.value)
+const modal = ref(false)
+
+//https://content.nuxtjs.org/v1/getting-started/advanced#handling-hot-reload
+
+modal.value = !useCookie('lang_check').value
 
 const openModal = () => {
-    lang_check.value = false
+    useCookie('lang_check').value = undefined
     useCookieLang().value = undefined
     modal.value = true
 }
 
 const closeModal = (code) => {
-    lang_check.value = true
+    useCookie('lang_check').value = true
     useCookieLang().value = code
     useSwitcherRedirect(code)
     modal.value = false

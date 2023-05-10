@@ -1,0 +1,62 @@
+{
+    "content": [
+        { "title": "Cайт", "slug": "veb-sajt", "type": { "title": "Разработка", "slug": "razrabotka" }, "technologies": ["Nuxt 3", "CMS"] },
+        {
+            "title": "Интеграции",
+            "slug": "integraczii",
+            "type": { "title": "Разработка", "slug": "razrabotka" },
+            "technologies": ["Multi"]
+        },
+        {
+            "title": "Бессерверные",
+            "slug": "besservernye",
+            "type": { "title": "Разработка", "slug": "razrabotka" },
+            "technologies": ["Node"]
+        },
+        { "title": "Парсинг", "slug": "parsing", "type": { "title": "Разработка", "slug": "razrabotka" }, "technologies": ["Node"] },
+        { "title": "Апи", "slug": "api", "type": { "title": "Разработка", "slug": "razrabotka" }, "technologies": ["Node"] },
+        {
+            "title": "Фирменный стиль",
+            "slug": "firmennyj-stil",
+            "type": { "title": "Дизайн", "slug": "dizajn" },
+            "technologies": ["Figma"]
+        },
+        {
+            "title": "Прототипирование",
+            "slug": "prototipirovanie",
+            "type": { "title": "Дизайн", "slug": "dizajn" },
+            "technologies": ["Figma"]
+        },
+        { "title": "Презентация", "slug": "prezentacziya", "type": { "title": "Дизайн", "slug": "dizajn" }, "technologies": ["Multi"] },
+        { "title": "Редизайн", "slug": "redizajn", "type": { "title": "Дизайн", "slug": "dizajn" }, "technologies": ["Figma"] },
+        { "title": "Логотип", "slug": "logotip", "type": { "title": "Дизайн", "slug": "dizajn" }, "technologies": ["Figma"] },
+        { "title": "Правки", "slug": "pravki", "type": { "title": "Дизайн", "slug": "dizajn" }, "technologies": ["Multi"] },
+        { "title": "Баннер", "slug": "banner", "type": { "title": "Дизайн", "slug": "dizajn" }, "technologies": ["Figma"] },
+        { "title": "Сайт", "slug": "sajt", "type": { "title": "Дизайн", "slug": "dizajn" }, "technologies": ["Figma"] },
+        { "title": "Простые модели", "slug": "prostye-modeli", "type": { "title": "3D", "slug": "3d" }, "technologies": ["Blender"] },
+        {
+            "title": "Описание к товарам",
+            "slug": "opisanie-k-tovaram",
+            "type": { "title": "Копирайт", "slug": "kopirajt" },
+            "technologies": ["Brain"]
+        },
+        {
+            "title": "Продающий текст",
+            "slug": "prodayushhij-tekst",
+            "type": { "title": "Копирайт", "slug": "kopirajt" },
+            "technologies": ["Soul"]
+        },
+        { "title": "Отзывы", "slug": "otzyvy", "type": { "title": "Копирайт", "slug": "kopirajt" }, "technologies": ["Creative"] },
+        { "title": "Обработка видео", "slug": "obrabotka", "type": { "title": "Медиа", "slug": "media" }, "technologies": ["Movavi"] },
+        { "title": "Обработка фото", "slug": "obrabotka-foto", "type": { "title": "Медиа", "slug": "media" }, "technologies": ["Multi"] },
+        { "title": "Нарезка видео", "slug": "narezka-video", "type": { "title": "Медиа", "slug": "media" }, "technologies": ["Multi"] },
+        {
+            "title": "Программирование",
+            "slug": "programmirovanie",
+            "type": { "title": "Поддержка", "slug": "podderzhka" },
+            "technologies": ["Advice"]
+        },
+        { "title": "Видеопоказ", "slug": "video-pokaz", "type": { "title": "Поддержка", "slug": "podderzhka" }, "technologies": ["Help"] },
+        { "title": "Дизайн", "slug": "dizajn", "type": { "title": "Поддержка", "slug": "podderzhka" }, "technologies": ["Advice"] }
+    ]
+}

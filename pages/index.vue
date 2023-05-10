@@ -165,12 +165,12 @@ const { itemIsArray } = useFunctions()
 const { isMobile } = useDevice()
 
 const { t } = useI18n()
-const localePath = useLocalePath()
+//const localePath = useLocalePath()
 //const locale = usePreferredLanguages()
 //const locale = useNavigatorLanguage()
 const { localeProperties: lp } = useI18n()
-const lang = lp.value.name
-//const lang = lp.value.code
+//const lang = lp.value.name
+const lang = ref(lp.value.code)
 //console.log(lang)
 
 const title = ref('~ MAIN ~')
@@ -180,16 +180,35 @@ const activeSlide = ref('FAQ')
 const isQuery = useQueryLength() !== 0 && !useUtm(query)
 
 const isActive = (i) => activeSlide.value === i
-const toActive = (i) => (activeSlide.value = i)
-const toLink = (link) => (location.href = `/${link}`)
+//const toActive = (i) => (activeSlide.value = i)
+//const toLink = (link) => (location.href = `/${link}`)
 
-console.log(await queryContent().where({ _path: 'work_types' }).findOne())
+//console.log(await queryContent().where({ _path: 'work_types' }).findOne())
+
+//.where({ _locale: 'ru', _path: "/links", _extension: 'json' })
+//console.log((await useContentData(lang, 'work_types')).content)
 
 //const test = useNuxtApp().payload.data
 //console.log(test)
 
-//const { body: work_types } = await useContentData(`${lang}/work_types.json`)
-//const { body: work_categories } = await useContentData(`${lang}/work_categories.json`)
+//const { globals } = useContent()
+
+//console.log(globals)
+
+const { data } = useNuxtData()
+
+//data.value.work_types = await useContentData(lang, 'work_types')
+//data.value.work_categories = await useContentData(lang, 'work_categories')
+
+data.value = {
+    work_types: await useContentData(lang.value, 'work_types'),
+    work_categories: await useContentData(lang.value, 'work_categories'),
+}
+
+//const work_types = (await useContentData(lang, 'work_types')).content
+//const work_categories = (await useContentData(lang, 'work_categories')).content
+
+//console.log(work_types)
 
 //const work_types = ref(await useContentData(`${lang}/work_types.json`))
 //const work_categories = ref(await useContentData(`${lang}/work_categories.json`))
@@ -210,20 +229,17 @@ const sections = {
     },
     Services: {
         icon: 'ep:operation',
-        items:
-            //work_types.value?
-            [].map((wt) => {
-                return {
-                    title: wt?.title,
-                    items: [],
-                    //work_categories.value
-                    //    ?.filter((wc) => wt?.slug === wc?.type?.slug)
-                    //    ?.map(({ title, technologies }) => ({
-                    //        title,
-                    //        technologies: technologies?.join(' + '),
-                    //    })),
-                }
-            }),
+        items: data.value?.work_types?.content?.map((wt) => {
+            return {
+                title: wt?.title,
+                items: data.value?.work_categories?.content
+                    ?.filter((wc) => wt?.slug === wc?.type?.slug)
+                    ?.map(({ title, technologies }) => ({
+                        title,
+                        technologies: technologies?.join(' + '),
+                    })),
+            }
+        }),
     },
     Lastworks: { icon: 'ep:goblet-square-full' },
     Start: { icon: 'ep:loading' },

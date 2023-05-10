@@ -1,0 +1,28 @@
+{
+    "content": [
+        { "title": "infobusiness", "slug": "infobusiness" },
+        { "title": "Multilingual", "slug": "languages" },
+        { "title": "Sites", "slug": "sites" },
+        { "title": "Cloud", "slug": "cloud" },
+        { "title": "Sport", "slug": "sport" },
+        { "title": "Traffic", "slug": "traffic" },
+        { "title": "Advertising", "slug": "adv" },
+        { "title": "Marketplace", "slug": "marketplace" },
+        { "title": "Purchases", "slug": "purchases" },
+        { "title": "self-learning", "slug": "self-learning" },
+        { "title": "Exchange", "slug": "exchanges" },
+        { "title": "Bot", "slug": "bot" },
+        { "title": "Constructor", "slug": "constructor" },
+        { "title": "Psychology", "slug": "psychology" },
+        { "title": "Prototype", "slug": "prototype" },
+        { "title": "Corporate", "slug": "corporate" },
+        { "title": "Landing", "slug": "landing" },
+        { "title": "Business card", "slug": "cutaway" },
+        { "title": "Demo", "slug": "demo" },
+        { "title": "EBook", "slug": "e-book" },
+        { "title": "Sample", "slug": "pattern" },
+        { "title": "Logo", "slug": "logo" },
+        { "title": "Card", "slug": "card" },
+        { "title": "multipage", "slug": "multipage" }
+    ]
+}
