@@ -80,10 +80,10 @@ export default defineNuxtConfig({
         detectBrowserLanguage: {
             useCookie: true,
             cookieKey: i18n_config.cookieKey,
-            redirectOn: 'all',
-            cookieCrossOrigin: true,
-            alwaysRedirect: true,
-            fallbackLocale: 'ru',
+            redirectOn: 'root',
+            //cookieCrossOrigin: true,
+            //alwaysRedirect: true,
+            //fallbackLocale: 'ru',
         },
         customRoutes: 'config',
         pages: {
@@ -93,8 +93,8 @@ export default defineNuxtConfig({
         locales: i18n_config.locales,
     },
     sourcemap: {
-        server: false,
-        client: false,
+        server: true,
+        client: true,
     },
     content: {
         //base: 'contented',
