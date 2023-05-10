@@ -24,6 +24,7 @@
     },
     "dependencies": {
         "@kyvg/vue3-notification": "^2.9.0",
+        "@vue-final-modal/nuxt": "^1.0.0",
         "@vueuse/components": "^10.1.2",
         "assets_data": "file:./assets/data",
         "axios": "^1.4.0",
@@ -31,6 +32,7 @@
         "cross-env": "^7.0.3",
         "google-translate-api-browser": "^3.0.1",
         "maxiosigma_libs": "file:../global-libs",
+        "notiflix": "^3.2.6",
         "sortablejs": "^1.15.0",
         "vue-final-modal": "^4.4.2",
         "vue-toast-notification": "3.0"

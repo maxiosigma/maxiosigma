@@ -10,26 +10,30 @@
 
         <!--<div v-click-outside></div>-->
 
-        <div
-            :class="[modal ? 'fixed flex-center bg-self-1 bg-opacity-95 inset-0 w-full h-full z-99999' : '!hidden h-0 w-0 overflow-hidden']"
-        >
+        <ClientOnly>
             <div
-                class="flex-center flex-col flex-shrink rounded-md elevation-10 m-auto inset-0 bg-self-2 w-4/5 px-4 py-10 max-w-sm h-auto min-h-40 max-h-none z-99999 text-white pointer-events-none"
+                :class="[
+                    modal ? 'fixed flex-center bg-self-1 bg-opacity-95 inset-0 w-full h-full z-99999' : '!hidden h-0 w-0 overflow-hidden',
+                ]"
             >
-                <div class="uppercase border-b">Select language</div>
+                <div
+                    class="flex-center flex-col flex-shrink rounded-md elevation-10 m-auto inset-0 bg-self-2 w-4/5 px-4 py-10 max-w-sm h-auto min-h-40 max-h-none z-99999 text-white pointer-events-none"
+                >
+                    <div class="uppercase border-b">Select language</div>
 
-                <div class="flex-center flex-col mt-2 pointer-events-auto">
-                    <div
-                        class="py-1 transition duration-150 cursor-pointer hover:(text-self-4 underline-light-200)"
-                        v-for="locale in locales.filter((it, i) => i < locales.length / 2)"
-                        :key="locale.code_"
-                        @click="closeModal(locale.code_)"
-                    >
-                        {{ locale.name }}
+                    <div class="flex-center flex-col mt-2 pointer-events-auto">
+                        <div
+                            class="py-1 transition duration-150 cursor-pointer hover:(text-self-4 underline-light-200)"
+                            v-for="locale in locales.filter((it, i) => i < locales.length / 2)"
+                            :key="locale.code_"
+                            @click="closeModal(locale.code_)"
+                        >
+                            {{ locale.name }}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </ClientOnly>
 
         <div class="fixed w-full flex-center bottom-10 pointer-events-none group">
             <div
@@ -40,10 +44,14 @@
                 <Icon class="relative z-1 text-xl text-self-4" name="ooui:language"></Icon>
             </div>
         </div>
+
+        <!--<ModalsContainer />-->
     </LayoutDefault>
 </template>
 
 <script setup>
+//import { ModalsContainer } from 'vue-final-modal'
+
 useSwitchLang()
 
 defineProps({
@@ -55,24 +63,21 @@ defineProps({
 })
 
 const { locales } = useI18n()
-const modal = ref(false)
+const modal = useLocalStorage('lang_check', false)
+const first_entry = useLocalStorage('first_entry', false)
 
-//https://content.nuxtjs.org/v1/getting-started/advanced#handling-hot-reload
+if (!first_entry.value) modal.value = true
 
-modal.value = !useCookie('lang_check').value
-
-const openModal = () => {
-    useCookie('lang_check').value = undefined
-    useCookieLang().value = undefined
-    modal.value = true
-}
+const openModal = () => (modal.value = true)
 
 const closeModal = (code) => {
-    useCookie('lang_check').value = true
     useCookieLang().value = code
     useSwitcherRedirect(code)
+    first_entry.value = true
     modal.value = false
 }
+
+//https://content.nuxtjs.org/v1/getting-started/advanced#handling-hot-reload
 </script>
 
 <style module>
