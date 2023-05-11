@@ -45,12 +45,12 @@
             </div>
         </div>
 
-        <!--<ModalsContainer />-->
+        <ModalsContainer />
     </LayoutDefault>
 </template>
 
 <script setup>
-//import { ModalsContainer } from 'vue-final-modal'
+import { ModalsContainer } from 'vue-final-modal'
 
 useSwitchLang()
 
