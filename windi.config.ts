@@ -85,5 +85,8 @@ export default defineConfig({
             })
         }),
     ],
-    extract: extract.nuxt,
+    extract: {
+        include: [...extract.nuxt.include, 'node_modules/tailvue/dist/tailvue.es.js'],
+        exclude: extract.nuxt.exclude,
+    },
 })

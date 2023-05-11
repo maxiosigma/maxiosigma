@@ -40,7 +40,7 @@ export default defineNuxtConfig({
         css: {
             modules: {
                 localsConvention: 'camelCaseOnly',
-                generateScopedName: '[local]_[hash:base32:5]',
+                generateScopedName: '[local]-[hash:base32:5]',
             },
         },
         resolve: {
@@ -141,6 +141,8 @@ export default defineNuxtConfig({
         '@vueuse/nuxt',
         '@nuxtjs/strapi',
         '@nuxtjs/device',
+        '@tailvue/nuxt',
+
         //'nuxt-viewport',
         //"@nuxtjs/fontaine",
         //"@vueuse/motion",
@@ -148,20 +150,26 @@ export default defineNuxtConfig({
         //"@vueuse/router",
         //'@dewib/xhr-cache',
         //'@vite-pwa/nuxt',
+
+        //'@vee-validate/nuxt',
+
         '@nuxt/content',
         'nuxt-icon',
+
         //"nuxt-schema-org",
         //"nuxt-full-static",
         //'@nuxt/devtools',
 
-        //'@tailvue/nuxt',
         //'nuxt-og-image',
         //'nuxt-vue3-google-signin',
         //'@nuxtjs/robots',
         //'@nuxtjs/toast',
         //'nuxt-xstate',
     ],
-    css: ['~/assets/index.scss', 'vue-final-modal/style.css'],
+    css: [
+        '~/assets/index.scss',
+        //'vue-final-modal/style.css'
+    ],
     hooks: {},
     //robots: {
     //    /* module options */
