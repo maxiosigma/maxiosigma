@@ -9,7 +9,7 @@
         <!--</NuxtLayout>-->
 
         <!--<div v-click-outside></div>-->
-
+        <!--
         <ClientOnly>
             <div
                 :class="[
@@ -33,7 +33,7 @@
                     </div>
                 </div>
             </div>
-        </ClientOnly>
+        </ClientOnly>-->
 
         <div class="fixed w-full flex-center bottom-10 pointer-events-none group">
             <div
@@ -45,12 +45,13 @@
             </div>
         </div>
 
-        <ModalsContainer />
+        <!--<teleport to="body">-->
+        <!--</teleport>-->
     </LayoutDefault>
 </template>
 
 <script setup>
-import { ModalsContainer } from 'vue-final-modal'
+//import { VueFinalModal } from 'vue-final-modal'
 
 useSwitchLang()
 
@@ -62,7 +63,6 @@ defineProps({
     view: { type: Boolean, required: false, default: true },
 })
 
-const { locales } = useI18n()
 const modal = useLocalStorage('lang_check', false)
 const first_entry = useLocalStorage('first_entry', false)
 
@@ -78,6 +78,7 @@ const closeModal = (code) => {
 }
 
 //https://content.nuxtjs.org/v1/getting-started/advanced#handling-hot-reload
+//https://vuejs.org/api/built-in-components.html#teleport
 </script>
 
 <style module>
