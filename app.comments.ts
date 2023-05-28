@@ -575,3 +575,23 @@
 //function range(size = 1, startAt = 1) {
 //    return Array.from(Array(size).keys()).map((i) => i + startAt)
 //}
+
+//const router = useRouter()
+
+//console.log(user)
+
+//: 'github' | 'google' | 'gitlab' | 'bitbucket'
+//const login = async (provider) => {
+//    if (provider) {
+//        const { error } = await auth.signInWithOAuth({ provider, options })
+//        if (error) {
+//            return alert('Something went wrong !')
+//        }
+//    } else {
+//        console.log('Вход без провайдера')
+//        //const { error } = await client.auth.signInWithPassword({email, phone, password, options: { captchaToken }})
+//    }
+
+//    //router.push('/dashboard')
+//    //signInWithPassword
+//}

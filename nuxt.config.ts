@@ -75,12 +75,13 @@ export default defineNuxtConfig({
     i18n: {
         lazy: false,
         defaultLocale: i18n_config.defaultLocale,
-        strategy: 'prefix_and_default',
+        //strategy: 'prefix_and_default',
+        strategy: 'prefix',
         //vueI18n: './i18n.config.ts',
         detectBrowserLanguage: {
             useCookie: true,
             cookieKey: i18n_config.cookieKey,
-            redirectOn: 'root',
+            redirectOn: 'all',
             //cookieCrossOrigin: true,
             //alwaysRedirect: true,
             //fallbackLocale: 'ru',
@@ -152,7 +153,8 @@ export default defineNuxtConfig({
         //'@vite-pwa/nuxt',
 
         //'@vee-validate/nuxt',
-
+        '@formkit/nuxt',
+        '@nuxtjs/supabase',
         '@nuxt/content',
         'nuxt-icon',
 
@@ -171,6 +173,10 @@ export default defineNuxtConfig({
         //'vue-final-modal/style.css'
     ],
     hooks: {},
+    //supabase: {
+    //    redirect: { callback: '/auth' },
+    //    client: {},
+    //},
     //robots: {
     //    /* module options */
     //},
@@ -178,9 +184,9 @@ export default defineNuxtConfig({
 
 function locales() {
     const locales_pc = [
-        { code: 'en', iso: 'en-ES', name: 'English' },
-        { code: 'ru', iso: 'ru-RU', name: 'Русский' },
         { code: 'zh', iso: 'zh-CN', name: '中國人' },
+        { code: 'ru', iso: 'ru-RU', name: 'Русский' },
+        { code: 'en', iso: 'en-ES', name: 'English' },
     ].map((it) => ({ ...it, code_: it.code, file: it.code + '.json' }))
 
     const locales_mobile = locales_pc.map((locale) => {
