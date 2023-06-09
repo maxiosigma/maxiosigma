@@ -50,7 +50,7 @@ export default defineNuxtConfig({
         plugins: [],
     },
     build: {
-        transpile: ['animejs'],
+        transpile: ['animejs', 'primevue'],
     },
     generate: {
         //exclude: [],

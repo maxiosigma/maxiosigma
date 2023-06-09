@@ -8,10 +8,16 @@
                 validation="required|email"
                 validation-visibility="live"
             />-->
+
+        <PrimeButton class="" label="aaaaaaa" @click="showBottomRight"></PrimeButton>
     </LayoutPage>
 </template>
 
 <script setup>
+const showBottomRight = () => {
+    useToast().add({ severity: 'success', summary: 'Success Message', detail: 'Message Content', group: 'br', life: 3000 })
+}
+
 //const client = useSupabaseClient()
 //const { data: products, error } = await client.from('products').select('*')
 
