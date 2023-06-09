@@ -11,6 +11,22 @@
     </LayoutPage>
 </template>
 
-<script setup></script>
+<script setup>
+//const client = useSupabaseClient()
+//const { data: products, error } = await client.from('products').select('*')
+
+//const { data: products } = await useAsyncData('products', async () => {
+//    const { data, error } = await client.from('products').select('*')
+//    console.log(error)
+//    return data
+//})
+
+//console.log(products)
+
+//console.log(await client.from('guests').insert('8.9.9.1'))
+
+//const ip = (await useIP()).data.value
+//console.log(ip)
+</script>
 
 <style></style>

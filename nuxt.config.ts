@@ -173,10 +173,13 @@ export default defineNuxtConfig({
         //'vue-final-modal/style.css'
     ],
     hooks: {},
-    //supabase: {
-    //    redirect: { callback: '/auth' },
-    //    client: {},
-    //},
+    supabase: {
+        client: {
+            auth: {
+                //persistSession: false,
+            },
+        },
+    },
     //robots: {
     //    /* module options */
     //},

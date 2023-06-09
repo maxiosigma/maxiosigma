@@ -45,7 +45,7 @@ const { auth } = useSupabaseAuthClient()
 
 const meta = user.value?.user_metadata
 
-console.log(user.value)
+//console.log(user.value)
 
 const data = {
     //name: meta?.name,
