@@ -12,27 +12,9 @@
 </template>
 
 <script setup>
-const client = useSupabaseClient()
-//const { data: products, error } = await client.from('products').select('*')
+await useVerifyIp()
 
-//81.9.1.1
-
-const ipi = (await useFetch('http://icanhazip.com'))?.data?.value?.replace('\n', '')
-const ipr = (await client.from('guests').select('ip').eq('ip', `${ipi}`).single())?.data?.ip
-
-console.log(ipr, ipi, !ipr, !!ipi, !ipr && !!ipi)
-
-try {
-    if (!ipi) {
-        console.log('IP не верифицирован')
-    } else if (!ipr && !!ipi) {
-        console.log('IP не найден в базе')
-        const { data, error } = await client.from('guests').insert({ ip: `${ipi}` })
-        console.log(data, error)
-    }
-} catch (error) {
-    console.log('Ошибка доступа')
-}
+//console.log()
 </script>
 
 <style></style>
