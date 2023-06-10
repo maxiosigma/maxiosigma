@@ -142,7 +142,7 @@ export default defineNuxtConfig({
         '@vueuse/nuxt',
         '@nuxtjs/strapi',
         '@nuxtjs/device',
-        '@tailvue/nuxt',
+        //'@tailvue/nuxt',
 
         //'nuxt-viewport',
         //"@nuxtjs/fontaine",

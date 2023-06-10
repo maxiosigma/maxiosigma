@@ -1,23 +1,28 @@
 import PrimeVue from 'primevue/config'
-//import ToastService from 'primevue/toastservice'
+import ToastService from 'primevue/toastservice'
 
 import Button from 'primevue/button'
 import InputText from 'primevue/inputtext'
 import Toast from 'primevue/toast'
 
 export default defineNuxtPlugin((nuxtApp) => {
-    nuxtApp.vueApp.use(PrimeVue, { ripple: true })
-    //nuxtApp.vueApp.use(ToastService)
+    const { vueApp, provide } = nuxtApp
 
-    for (const [name, component] of [
-        ['PrimeButton', Button],
-        ['PrimeInputText', InputText],
-        ['PrimeToast', Toast],
-    ]) {
-        nuxtApp.vueApp.component(name, component)
-    }
+    vueApp.use(PrimeVue, { ripple: true })
+    vueApp.use(ToastService)
 
-    //nuxtApp.vueApp.component('Button', Button)
-    //nuxtApp.vueApp.component('InputText', InputText)
-    //nuxtApp.vueApp.component('Toast', Toast)
+    //for (const [name, component] of [
+    //    ['PrimeButton', Button],
+    //    ['PrimeInputText', InputText],
+    //    ['PrimeToast', Toast],
+    //]) {
+    //    vueApp.component(name, component)
+    //}
+
+    vueApp.component('PrimeButton', Button)
+    vueApp.component('PrimeInputText', InputText)
+    vueApp.component('Toast', Toast)
+
+    //provide('toast', vueApp.config.globalProperties.$toast)
+    //provide('$toast', vueApp.config.globalProperties.$toast)
 })
