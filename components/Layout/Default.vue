@@ -3,7 +3,7 @@
 </template>
 
 <script setup>
-// <div class="layout-default"> </div>
+//await useVerifyIp()
 
 const props = defineProps({
     bs: {

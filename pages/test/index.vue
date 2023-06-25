@@ -12,7 +12,6 @@
 </template>
 
 <script setup>
-await useVerifyIp()
 
 //console.log()
 </script>
