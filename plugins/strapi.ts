@@ -20,9 +20,9 @@ export default defineNuxtPlugin(async (nuxtApp) => {
             //    }))
             //)
 
-            //, await query_work_types('ru')
+            //, await query_work_types('ru') , title: 'work_types'
 
-            console.log(queryContent().where({ _locale: 'ru', title: 'work_types' }).findOne())
+            console.log(contentQuery('ru', 'work_types'), contentQuery('en', 'work_types'))
         } else {
             //console.log('Ошибка GQL Connect')
         }
@@ -31,21 +31,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     }
 })
 
-async function contentQuery(lang = '', file = '') {
+async function contentQuery(lang = '', path = '') {
     const qc = queryContent()
-
-    return await qc.where({ _file: `${lang}/${file}` }).findOne()
-    //.then((el) => el?.body)
-}
-
-async function query_work_types(lang = '') {
-    return await contentQuery(lang, 'work_types.json')
-}
-
-async function query_work_categories(lang = '') {
-    return await contentQuery(lang, 'work_categories.json')
-}
-
-async function contented(name = '') {
-    return (await queryContent().where({ _file: name }).findOne()).body
+    return (await qc.where({ _locale: lang, _path: `/${path}` }).findOne())?.content
 }
