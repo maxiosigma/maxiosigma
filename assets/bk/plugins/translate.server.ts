@@ -77,7 +77,10 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                     {
                         title: await fieldTranslate(it?.title, lang),
                         slug: it?.slug,
-                        type: { title: work_types?.filter(({ slug }) => slug === it?.work_type?.data.attributes.slug)?.[0]?.title, slug: it?.work_type?.data.attributes.slug },
+                        type: {
+                            title: work_types?.filter(({ slug }) => slug === it?.work_type?.data.attributes.slug)?.[0]?.title,
+                            slug: it?.work_type?.data.attributes.slug,
+                        },
                         technologies: it?.work_technologies?.data.map(({ attributes: { slug } }) => work_technologies?.filter((it) => it.slug === slug)?.[0]?.title),
                     },
                 ]))
