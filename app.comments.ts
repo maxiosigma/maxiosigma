@@ -1,6 +1,72 @@
 // SETTINGS Shared View State  New Window Dimensions
 
+//import WindiCSS from 'vite-plugin-windicss'
+//import { fileURLToPath, URL } from 'url'
+//import { resolve } from 'path'
+//ssr: false,
+//debug: true,
+//devtools: true,
 
+//renderJsonPayloads: true,
+
+//viewTransition: true,
+//noVueServer: true,
+//watcher: 'parcel',
+//alias: [{ find: '@data', replacement: fileURLToPath(new URL('./assets/data', import.meta.url)) }],
+//{ '~data': `${resolve(__dirname, './assets/data')}` },
+//exclude: [],
+//minify: {
+//    collapseWhitespace: false,
+//},
+
+//nitro: {
+//    preset: 'node',
+//    prerender: {
+//        ignore: [
+//            //        //
+//            //        '/assets/data',
+//            //        'assets/data/*.json',
+//            //        'assets/data/**/*.json',
+//            '**/*.json',
+//        ],
+//    },
+//},
+//ignore: ['assets/data/*.json', 'assets/data/**/*.json'],
+//strategy: 'prefix_and_default',
+//vueI18n: './i18n.config.ts',
+//cookieCrossOrigin: true,
+//alwaysRedirect: true,
+//fallbackLocale: 'ru',
+//base: 'contented',
+//api: {
+//    baseURL: '/contented', // '/api/_content'
+//},
+//locales: ['en', 'ru', 'zh', 'en-amp', 'ru-amp', 'zh-amp'],
+//defaultLocale: 'en',
+//nuxtIcon: {
+//    size: '32px',
+//    class: 'icon',
+//    aliases: {
+//        nuxt: 'logos:nuxt-icon',
+//    },
+//},
+//windicss: {
+//    analyze: true,
+//},
+//pwa: {
+//},
+//toast: {
+//    position: 'bottom-center',
+//    register: [
+//        {
+//            name: 'Toast',
+//            message: 'Oops...Something went wrong',
+//            options: {
+//                type: 'error',
+//            },
+//        },
+//    ],
+//},
 
 //maxiosigma-nuxt-test.firebaseapp.com
 //firebase hosting:channel:deploy preview --expores 1h

@@ -5,6 +5,9 @@
 <script setup>
 //await useVerifyIp()
 
+const { localeProperties: lp } = useI18n()
+const lang = ref(lp.value.code)
+
 const props = defineProps({
     bs: {
         type: String,
@@ -25,7 +28,7 @@ const props = defineProps({
 
 useHead({
     titleTemplate: `%s`,
-    htmlAttrs: { class: 'html' },
+    htmlAttrs: { class: 'html', lang: lang },
     headAttrs: { class: 'head' },
     bodyAttrs: { class: 'body' },
     meta: [
@@ -37,6 +40,25 @@ useHead({
         { name: 'HandheldFriendly', content: 'true' },
         //{ name: "", content: "" }
     ],
+    link: [
+        {
+            rel: 'icon',
+            type: 'image/png',
+            href: '/favicon.png',
+        },
+    ],
+})
+
+useSeoMeta({
+    description: '[description]',
+    ogTitle: '[og:title]',
+    ogDescription: '[og:description]',
+    ogImage: '[og:image]',
+    ogUrl: '[og:url]',
+    twitterTitle: '[twitter:title]',
+    twitterDescription: '[twitter:description]',
+    twitterImage: '[twitter:image]',
+    twitterCard: 'summary',
 })
 
 //const { $viewport } = useNuxtApp()

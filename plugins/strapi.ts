@@ -10,19 +10,22 @@ export default defineNuxtPlugin(async (nuxtApp) => {
             const getGql = async (data: string, field: string) => (await graphql(data).catch(() => null))?.data?.[field]?.data?.map((it: any) => it?.attributes)
 
             const locales = useRuntimeConfig().public.i18n_config.locales
+            const base_locales = locales.filter((it, i) => !it?.code?.includes('-amp'))
+            const add_locales = locales.filter((it, i) => it?.code?.includes('-amp'))
 
-            //const data = await Promise.all(
-            //    locales.map(async ({ code, name }: any) => ({
-            //        [code]: {
-            //            work_types: await query_work_types(name),
-            //            //work_categories: await query_work_categories(name),
-            //        },
-            //    }))
-            //)
+            const data = await Promise.all(
+                base_locales.map(async ({ code, name }: any) => [
+                    code,
+                    {
+                        work_types: await contentQuery(code, 'work_types'),
+                        work_categories: await contentQuery(code, 'work_categories'),
+                    },
+                ])
+            )
 
-            //, await query_work_types('ru') , title: 'work_types'
+            console.log(data)
 
-            console.log(contentQuery('ru', 'work_types'), contentQuery('en', 'work_types'))
+            //console.log(await contentQuery('ru', 'work_types'), await contentQuery('en', 'work_types'))
         } else {
             //console.log('Ошибка GQL Connect')
         }
@@ -35,3 +38,14 @@ async function contentQuery(lang = '', path = '') {
     const qc = queryContent()
     return (await qc.where({ _locale: lang, _path: `/${path}` }).findOne())?.content
 }
+
+//const data = await Promise.all(
+//    locales.map(async ({ code, name }: any) => ({
+//        [code]: {
+//            work_types: await query_work_types(name),
+//            //work_categories: await query_work_categories(name),
+//        },
+//    }))
+//)
+
+//, await query_work_types('ru') , title: 'work_types'

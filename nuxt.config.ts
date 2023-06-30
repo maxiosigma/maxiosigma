@@ -1,8 +1,5 @@
-//import WindiCSS from 'vite-plugin-windicss'
 import { resolve } from 'path'
-import { fileURLToPath, URL } from 'url'
 import { defineNuxtConfig } from 'nuxt/config'
-//import { resolve } from 'path'
 
 const i18n_config = {
     cookieKey: 'lang',
@@ -12,9 +9,6 @@ const i18n_config = {
 
 export default defineNuxtConfig({
     ssr: true,
-    //ssr: false,
-    //debug: true,
-    //devtools: true,
     telemetry: false,
     app: {
         rootId: 'app',
@@ -23,6 +17,13 @@ export default defineNuxtConfig({
         layoutTransition: false,
         pageTransition: false,
     },
+    devtools: {
+        enabled: true,
+        vscode: {},
+    },
+    strapi: {
+        devtools: true,
+    },
     alias: {
         'assets-data': resolve(__dirname, './assets/data'),
     },
@@ -30,11 +31,6 @@ export default defineNuxtConfig({
         inlineSSRStyles: false,
         payloadExtraction: true,
         treeshakeClientOnly: false,
-        //renderJsonPayloads: true,
-
-        //viewTransition: true,
-        //noVueServer: true,
-        //watcher: 'parcel',
     },
     vite: {
         css: {
@@ -43,48 +39,23 @@ export default defineNuxtConfig({
                 generateScopedName: '[local]-[hash:base32:5]',
             },
         },
-        resolve: {
-            //alias: [{ find: '@data', replacement: fileURLToPath(new URL('./assets/data', import.meta.url)) }],
-            //{ '~data': `${resolve(__dirname, './assets/data')}` },
-        },
+        resolve: {},
         plugins: [],
     },
     build: {
         transpile: ['animejs', 'primevue'],
     },
-    generate: {
-        //exclude: [],
-        //minify: {
-        //    collapseWhitespace: false,
-        //},
-    },
-
-    //nitro: {
-    //    preset: 'node',
-    //    prerender: {
-    //        ignore: [
-    //            //        //
-    //            //        '/assets/data',
-    //            //        'assets/data/*.json',
-    //            //        'assets/data/**/*.json',
-    //            '**/*.json',
-    //        ],
-    //    },
-    //},
-    //ignore: ['assets/data/*.json', 'assets/data/**/*.json'],
+    generate: {},
     i18n: {
         lazy: false,
         defaultLocale: i18n_config.defaultLocale,
-        //strategy: 'prefix_and_default',
+
         strategy: 'prefix',
-        //vueI18n: './i18n.config.ts',
+
         detectBrowserLanguage: {
             useCookie: true,
             cookieKey: i18n_config.cookieKey,
             redirectOn: 'all',
-            //cookieCrossOrigin: true,
-            //alwaysRedirect: true,
-            //fallbackLocale: 'ru',
         },
         customRoutes: 'config',
         pages: {
@@ -98,91 +69,31 @@ export default defineNuxtConfig({
         client: true,
     },
     content: {
-        //base: 'contented',
-        //api: {
-        //    baseURL: '/contented', // '/api/_content'
-        //},
         locales: i18n_config.locales.map((l) => l.code),
-        //locales: ['en', 'ru', 'zh', 'en-amp', 'ru-amp', 'zh-amp'],
         defaultLocale: i18n_config.defaultLocale,
-        //defaultLocale: 'en',
     },
-    //nuxtIcon: {
-    //    size: '32px',
-    //    class: 'icon',
-    //    aliases: {
-    //        nuxt: 'logos:nuxt-icon',
-    //    },
-    //},
-    //windicss: {
-    //    analyze: true,
-    //},
-    //pwa: {
-    //},
     runtimeConfig: {
-        public: {
-            i18n_config,
-        },
+        public: { i18n_config },
     },
-    //toast: {
-    //    position: 'bottom-center',
-    //    register: [
-    //        {
-    //            name: 'Toast',
-    //            message: 'Oops...Something went wrong',
-    //            options: {
-    //                type: 'error',
-    //            },
-    //        },
-    //    ],
-    //},
     modules: [
         'nuxt-windicss',
         '@nuxtjs/i18n',
         '@vueuse/nuxt',
         '@nuxtjs/strapi',
         '@nuxtjs/device',
-        //'@tailvue/nuxt',
-
-        //'nuxt-viewport',
-        //"@nuxtjs/fontaine",
-        //"@vueuse/motion",
-        //"@vueuse/integrations",
-        //"@vueuse/router",
-        //'@dewib/xhr-cache',
-        //'@vite-pwa/nuxt',
-
-        //'@vee-validate/nuxt',
+        '@nuxt/devtools',
         '@formkit/nuxt',
         '@nuxtjs/supabase',
         '@nuxt/content',
         'nuxt-icon',
-
-        //"nuxt-schema-org",
-        //"nuxt-full-static",
-        //'@nuxt/devtools',
-
-        //'nuxt-og-image',
-        //'nuxt-vue3-google-signin',
-        //'@nuxtjs/robots',
-        //'@nuxtjs/toast',
-        //'nuxt-xstate',
     ],
-    css: [
-        '~/assets/index.scss',
-        //'vue-final-modal/style.css'
-    ],
+    css: ['~/assets/index.scss'],
     hooks: {},
     supabase: {
         client: {
-            auth: {
-                //persistSession: false,
-            },
+            auth: {},
         },
     },
-    //robots: {
-    //    /* module options */
-    //},
 })
 
 function locales() {
@@ -198,3 +109,29 @@ function locales() {
 
     return [...locales_pc, ...locales_mobile]
 }
+
+//'@tailvue/nuxt',
+
+//'nuxt-viewport',
+//"@nuxtjs/fontaine",
+//"@vueuse/motion",
+//"@vueuse/integrations",
+//"@vueuse/router",
+//'@dewib/xhr-cache',
+//'@vite-pwa/nuxt',
+
+//'@vee-validate/nuxt',
+//"nuxt-schema-org",
+//"nuxt-full-static",
+//'@nuxt/devtools',
+
+//'nuxt-og-image',
+//'nuxt-vue3-google-signin',
+//'@nuxtjs/robots',
+//'@nuxtjs/toast',
+//'nuxt-xstate',
+//'vue-final-modal/style.css'
+//persistSession: false,
+//robots: {
+//    /* module options */
+//},
