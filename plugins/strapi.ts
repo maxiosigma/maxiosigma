@@ -13,30 +13,49 @@ export default defineNuxtPlugin(async (nuxtApp) => {
             const base_locales = locales.filter((it, i) => !it?.code?.includes('-amp'))
             const add_locales = locales.filter((it, i) => it?.code?.includes('-amp'))
 
+            //const links = await contentQuery('links')
+
             const data = await Promise.all(
                 base_locales.map(async ({ code, name }: any) => [
                     code,
                     {
-                        work_types: await contentQuery(code, 'work_types'),
-                        work_categories: await contentQuery(code, 'work_categories'),
+                        works: await contentQuery('works', code),
+                        work_types: await contentQuery('work_types', code),
+                        work_categories: await contentQuery('work_categories', code),
+                        work_technologies: await contentQuery('work_technologies', code),
+                        work_tags: await contentQuery('work_tags', code),
+                        publics: await contentQuery('publics', code),
+                        reffers: await contentQuery('reffers', code),
                     },
                 ])
             )
 
-            console.log(data)
+            //works
+            //publicateds
+            //workTags
+            //workTechnologies
+            //work_types
 
-            //console.log(await contentQuery('ru', 'work_types'), await contentQuery('en', 'work_types'))
-        } else {
-            //console.log('Ошибка GQL Connect')
+            //work_technologies
+            //work_tags
+
+            //reffers
+
+            console.log(data)
         }
-    } catch (error) {
-        //console.log('Ошибка GQL')
-    }
+    } catch (error) {}
 })
 
-async function contentQuery(lang = '', path = '') {
+async function contentQuery(path = '', lang = '') {
     const qc = queryContent()
-    return (await qc.where({ _locale: lang, _path: `/${path}` }).findOne())?.content
+    return (
+        (
+            await qc
+                .where({ ...(lang && { _locale: lang }), _path: `/${path}` })
+                .findOne()
+                .catch(() => {})
+        )?.content ?? []
+    )
 }
 
 //const data = await Promise.all(
