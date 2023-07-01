@@ -15,6 +15,12 @@
 			],
 			"assets_data/*": [
 				"./assets/data/*"
+			],
+			"assets/*": [
+				"./assets/*"
+			],
+			"~/*": [
+				"./*"
 			]
 		},
 	}

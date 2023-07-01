@@ -1,3 +1,4 @@
+import { writeFileSync, mkdirSync } from 'node:fs'
 import import_gql from '~/assets/index.graphql'
 
 export default defineNuxtPlugin(async (nuxtApp) => {
@@ -5,46 +6,46 @@ export default defineNuxtPlugin(async (nuxtApp) => {
         const { data } = await useFetch('http://localhost:1337/admin')
 
         if (!!data?.value) {
-            const dataGql: any = import_gql
-            const graphql = useStrapiGraphQL()
-            const getGql = async (data: string, field: string) => (await graphql(data).catch(() => null))?.data?.[field]?.data?.map((it: any) => it?.attributes)
+            const dataGql = import_gql
 
             const locales = useRuntimeConfig().public.i18n_config.locales
             const base_locales = locales.filter((it, i) => !it?.code?.includes('-amp'))
             const add_locales = locales.filter((it, i) => it?.code?.includes('-amp'))
 
-            //const links = await contentQuery('links')
+            const links_content = await contentQuery('links')
+            //const data_content = await Promise.all(
+            //    base_locales.map(async ({ code, name }: any) => [
+            //        code,
+            //        {
+            //            works: await contentQuery('works', code),
+            //            work_types: await contentQuery('work_types', code),
+            //            work_categories: await contentQuery('work_categories', code),
+            //            work_technologies: await contentQuery('work_technologies', code),
+            //            work_tags: await contentQuery('work_tags', code),
 
-            const data = await Promise.all(
-                base_locales.map(async ({ code, name }: any) => [
-                    code,
-                    {
-                        works: await contentQuery('works', code),
-                        work_types: await contentQuery('work_types', code),
-                        work_categories: await contentQuery('work_categories', code),
-                        work_technologies: await contentQuery('work_technologies', code),
-                        work_tags: await contentQuery('work_tags', code),
-                        publics: await contentQuery('publics', code),
-                        reffers: await contentQuery('reffers', code),
-                    },
-                ])
-            )
+            //            menu_nav: await contentQuery('menu_nav', code),
+            //            menu_social: await contentQuery('menu_social', code),
+            //            menu_footer: await contentQuery('menu_footer', code),
 
-            //works
-            //publicateds
-            //workTags
-            //workTechnologies
-            //work_types
+            //            publics: await contentQuery('publics', code),
+            //            reffers: await contentQuery('reffers', code),
+            //        },
+            //    ])
+            //)
 
-            //work_technologies
-            //work_tags
+            const links_strapi = (await getGql(dataGql.links(), 'links')).map((link) => ({ ferd: useCripty(link?.href), sh: link?.short }))
+            //const data_strapi = []
 
-            //reffers
+            //comparsionArray(links_content, links_strapi)
 
-            console.log(data)
+            console.log(comparsionArray(links_content, links_strapi))
         }
     } catch (error) {}
 })
+
+function comparsionArray(arr = [], arr_ = []) {
+    return arr.map((it) => JSON.stringify(it)).join('') === arr_.map((it) => JSON.stringify(it)).join('')
+}
 
 async function contentQuery(path = '', lang = '') {
     const qc = queryContent()
@@ -56,6 +57,16 @@ async function contentQuery(path = '', lang = '') {
                 .catch(() => {})
         )?.content ?? []
     )
+}
+
+async function getGql(data: string, field: string) {
+    const graphql = useStrapiGraphQL()
+    const result = (await graphql(data))?.data?.[field]?.data?.map((it) => it?.attributes)
+    return result
+}
+
+function write(data = [], name = '') {
+    return writeFileSync(name, JSON.stringify(data))
 }
 
 //const data = await Promise.all(
