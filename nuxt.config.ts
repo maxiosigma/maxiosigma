@@ -17,13 +17,13 @@ export default defineNuxtConfig({
         layoutTransition: false,
         pageTransition: false,
     },
-    devtools: {
-        enabled: true,
-        vscode: {},
-    },
-    strapi: {
-        devtools: true,
-    },
+    //devtools: {
+    //    enabled: true,
+    //    vscode: {},
+    //},
+    //strapi: {
+    //    devtools: true,
+    //},
     alias: {
         'assets-data': resolve(__dirname, './assets/data'),
     },

@@ -1,8 +1,11 @@
-import { writeFileSync, mkdirSync } from 'node:fs'
 import import_gql from '~/assets/index.graphql'
+import { writeFileSync } from 'node:fs'
+import { fileURLToPath } from 'url'
 
 export default defineNuxtPlugin(async (nuxtApp) => {
     try {
+        console.log('start spi')
+
         const { data } = await useFetch('http://localhost:1337/admin')
 
         if (!!data?.value) {
@@ -36,11 +39,13 @@ export default defineNuxtPlugin(async (nuxtApp) => {
             const links_strapi = (await getGql(dataGql.links(), 'links')).map((link) => ({ ferd: useCripty(link?.href), sh: link?.short }))
             //const data_strapi = []
 
-            //comparsionArray(links_content, links_strapi)
+            //!comparsionArray(links_content, links_strapi) ? write({ content: links_strapi }, 'links') : false
 
-            console.log(comparsionArray(links_content, links_strapi))
+            write({ content: links_strapi }, 'links')
         }
-    } catch (error) {}
+    } catch (error) {
+        console.log('error spi')
+    }
 })
 
 function comparsionArray(arr = [], arr_ = []) {
@@ -65,8 +70,10 @@ async function getGql(data: string, field: string) {
     return result
 }
 
-function write(data = [], name = '') {
-    return writeFileSync(name, JSON.stringify(data))
+function write(data = {}, name = '') {
+    console.log('write', name)
+    const path = fileURLToPath(new URL(`../content/${name}.json`, import.meta.url))
+    writeFileSync(path, JSON.stringify(data))
 }
 
 //const data = await Promise.all(
