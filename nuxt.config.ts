@@ -90,9 +90,12 @@ export default defineNuxtConfig({
     css: ['~/assets/index.scss'],
     hooks: {},
     supabase: {
-        client: {
-            auth: {},
-        },
+        //process.env.SUPABASE_URL
+        //process.env.SUPABASE_KEY
+        url: process.env.SUPABASE_URL,
+        //client: {
+        //    auth: {},
+        //},
     },
 })
 
