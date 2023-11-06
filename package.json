@@ -12,7 +12,7 @@
         "generate-strapi": "cross-env STRAPI_TO=true nuxt generate",
         "generate-start-strapi": "cross-env STRAPI_TO=true nuxt generate && nuxt start",
         "#2": "",
-        "strapi-dev": "cd ../strapi/ && yarn strapi develop",
+        "strapi-dev": "cd ../strapi/ && yarn strapi develop --watch-admin",
         "strapi-build": "cd ../strapi/ && yarn strapi build",
         "#3": "",
         "preview": "nuxt preview",
