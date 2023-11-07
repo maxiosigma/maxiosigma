@@ -1,39 +1,8 @@
 <template>
     <LayoutDefault>
-        <!--<NuxtLayout name="default">-->
         <div :class="[$style.page, view ? '' : '!hidden']">
-            <!--{{ view }}-->
-
             <slot />
         </div>
-        <!--</NuxtLayout>-->
-
-        <!--<div v-click-outside></div>-->
-        <!--
-        <ClientOnly>
-            <div
-                :class="[
-                    modal ? 'fixed flex-center bg-self-1 bg-opacity-95 inset-0 w-full h-full z-99999' : '!hidden h-0 w-0 overflow-hidden',
-                ]"
-            >
-                <div
-                    class="flex-center flex-col flex-shrink rounded-md elevation-10 m-auto inset-0 bg-self-2 w-4/5 px-4 py-10 max-w-sm h-auto min-h-40 max-h-none z-99999 text-white pointer-events-none"
-                >
-                    <div class="uppercase border-b">Select language</div>
-
-                    <div class="flex-center flex-col mt-2 pointer-events-auto">
-                        <div
-                            class="py-1 transition duration-150 cursor-pointer hover:(text-self-4 underline-light-200)"
-                            v-for="locale in locales.filter((it, i) => i < locales.length / 2)"
-                            :key="locale.code_"
-                            @click="closeModal(locale.code_)"
-                        >
-                            {{ locale.name }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </ClientOnly>-->
 
         <ItemModal :show="show">
             <div class="uppercase border-b">Select language</div>
@@ -56,9 +25,6 @@
                 <Icon class="relative z-1 text-xl text-self-4" name="ooui:language"></Icon>
             </div>
         </div>
-
-        <!--<teleport to="body">-->
-        <!--</teleport>-->
     </LayoutDefault>
 </template>
 
