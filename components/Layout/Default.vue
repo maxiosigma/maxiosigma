@@ -3,8 +3,6 @@
 </template>
 
 <script setup>
-//await useVerifyIp()
-
 const { localeProperties: lp } = useI18n()
 const lang = ref(lp.value.code)
 
@@ -61,29 +59,7 @@ useSeoMeta({
     twitterCard: 'summary',
 })
 
-//const { $viewport } = useNuxtApp()
-
-//watch($viewport.breakpoint, (newBreakpoint, oldBreakpoint) => {
-//    console.log("Breakpoint updated:", oldBreakpoint, "->", newBreakpoint)
-//})
-
-onMounted(() => {
-    //if (document.addEventListener) {
-    //    if ('onwheel' in document) {
-    //        document.addEventListener('wheel', document_wheel)
-    //    } else if ('onmousewheel' in document) {
-    //        document.addEventListener('mousewheel', document_wheel)
-    //    } else {
-    //        document.addEventListener('MozMousePixelScroll', document_wheel)
-    //    }
-    //    window.addEventListener('keydown', document_wheel, false)
-    //} else {
-    //    document.attachEvent('onmousewheel', document_wheel)
-    //}
-    //function document_wheel(e) {
-    //    e.preventDefault()
-    //}
-})
+onMounted(() => {})
 </script>
 
 <style lang="scss">

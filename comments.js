@@ -61,3 +61,26 @@
 //"f:preview": "firebase hosting:channel:deploy preview",
 //"#999": "",
 //"instale": "npm i -S --force"
+
+//const { $viewport } = useNuxtApp()
+//watch($viewport.breakpoint, (newBreakpoint, oldBreakpoint) => {
+//    console.log("Breakpoint updated:", oldBreakpoint, "->", newBreakpoint)
+//})
+
+//if (document.addEventListener) {
+//    if ('onwheel' in document) {
+//        document.addEventListener('wheel', document_wheel)
+//    } else if ('onmousewheel' in document) {
+//        document.addEventListener('mousewheel', document_wheel)
+//    } else {
+//        document.addEventListener('MozMousePixelScroll', document_wheel)
+//    }
+//    window.addEventListener('keydown', document_wheel, false)
+//} else {
+//    document.attachEvent('onmousewheel', document_wheel)
+//}
+//function document_wheel(e) {
+//    e.preventDefault()
+//}
+
+//await useVerifyIp()
