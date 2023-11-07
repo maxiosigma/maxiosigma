@@ -1,5 +1,6 @@
 import { resolve } from 'path'
 import { defineNuxtConfig } from 'nuxt/config'
+//import {  } from "fs"
 
 const i18n_config = {
     cookieKey: 'lang',

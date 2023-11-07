@@ -1,116 +1,38 @@
 <template>
-    <LayoutPage :view="!isQuery">
+    <!-- :view="!isQuery" -->
+    <LayoutPage>
+        <!--  -->
         <!--  -->
     </LayoutPage>
 </template>
 
 <script setup>
-const { query } = useRoute()
-const { x, y, sourceType } = useMouse({ touch: false })
-const { itemIsArray } = useFunctions()
-const { isMobile } = useDevice()
+//const { query } = useRoute()
+//const { x, y, sourceType } = useMouse({ touch: false })
+//const { itemIsArray } = useFunctions()
+//const { isMobile } = useDevice()
 
-const { t } = useI18n()
-//const localePath = useLocalePath()
-//const locale = usePreferredLanguages()
-//const locale = useNavigatorLanguage()
-const { localeProperties: lp } = useI18n()
-//const lang = lp.value.name
-const lang = ref(lp.value.code)
-//console.log(lang)
+//const { t } = useI18n()
+//const { localeProperties: lp } = useI18n()
+//const lang = ref(lp.value.code)
 
-const title = ref('~ MAIN ~')
-const description = ref('')
+//const title = ref('~ MAIN ~')
+//const description = ref('')
 
-const activeSlide = ref('FAQ')
-const isQuery = useQueryLength() !== 0 && !useUtm(query)
+//const activeSlide = ref('FAQ')
+//const isQuery = useQueryLength() !== 0 && !useUtm(query)
 
-const isActive = (i) => activeSlide.value === i
-//const toActive = (i) => (activeSlide.value = i)
-//const toLink = (link) => (location.href = `/${link}`)
+//const isActive = (i) => activeSlide.value === i
 
-//console.log(await queryContent().where({ _path: 'work_types' }).findOne())
+//const { data } = useNuxtData()
 
-//.where({ _locale: 'ru', _path: "/links", _extension: 'json' })
-//console.log((await useContentData(lang, 'work_types')).content)
+//data.value = {
+//    work_types: await useContentData(lang.value, 'work_types'),
+//    work_categories: await useContentData(lang.value, 'work_categories'),
+//}
 
-//const test = useNuxtApp().payload.data
-//console.log(test)
-
-//const { globals } = useContent()
-
-//console.log(globals)
-
-const { data } = useNuxtData()
-
-//data.value.work_types = await useContentData(lang, 'work_types')
-//data.value.work_categories = await useContentData(lang, 'work_categories')
-
-data.value = {
-    work_types: await useContentData(lang.value, 'work_types'),
-    work_categories: await useContentData(lang.value, 'work_categories'),
-}
-
-//const work_types = (await useContentData(lang, 'work_types')).content
-//const work_categories = (await useContentData(lang, 'work_categories')).content
-
-//console.log(work_types)
-
-//const work_types = ref(await useContentData(`${lang}/work_types.json`))
-//const work_categories = ref(await useContentData(`${lang}/work_categories.json`))
-
-//console.log(work_types.value)
-
-const sections = {
-    Overflow: { icon: 'ep:chrome-filled' },
-    Welcome: {
-        icon: 'ep:hot-water',
-        text: [t('vsegda-rad-vam-pomoch'), t('dizainer-or-razrabotchik'), t('bolshoi-spektr-uslug'), t('na-svyazi-postoyanno'), t('po-vsemu-miru-i-rf')],
-    },
-    Services: {
-        icon: 'ep:operation',
-        items: data.value?.work_types?.content?.map((wt) => {
-            return {
-                title: wt?.title,
-                items: data.value?.work_categories?.content
-                    ?.filter((wc) => wt?.slug === wc?.type?.slug)
-                    ?.map(({ title, technologies }) => ({
-                        title,
-                        technologies: technologies?.join(' + '),
-                    })),
-            }
-        }),
-    },
-    Lastworks: { icon: 'ep:goblet-square-full' },
-    Start: { icon: 'ep:loading' },
-    Complete: { icon: 'ep:loading' },
-    FAQ: {
-        icon: 'ep:help',
-        items: [
-            {
-                question: t('skolko-stoit-rabota'),
-                answer: t('kazhdaya-rabota-rasschityvaets'),
-            },
-            {
-                question: t('vy-umeete-delat-eto'),
-                answer: t('da-u-menya-imeetsya-mnozhestvo'),
-            },
-            {
-                question: t('u-menya-goryat-sroki-sdelaete-'),
-                answer: t('kak-pravilo-u-menya-neskolko-p'),
-            },
-        ],
-    },
-    Brands: { icon: 'ep:grape' },
-    Presents: { icon: 'carbon:gift' },
-    Reviews: { icon: 'uil:comment-message' },
-    Future: { icon: 'ci:settings-future' },
-    Contacts: { icon: 'quill:signature' },
-    Next: { icon: 'material-symbols:arrow-right-alt-rounded', href: 'site' },
-}
-
-if (isQuery) navigateTo({ path: '/link', query })
-useHead({ title, description })
+//if (isQuery) navigateTo({ path: '/link', query })
+//useHead({ title, description })
 </script>
 
 <style lang="scss">
