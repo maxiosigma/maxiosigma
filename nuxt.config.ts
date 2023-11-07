@@ -1,6 +1,6 @@
 import { resolve } from 'path'
 import { defineNuxtConfig } from 'nuxt/config'
-//import {  } from "fs"
+import { mkdirSync, writeFileSync, existsSync } from 'fs'
 
 const i18n_config = {
     cookieKey: 'lang',
@@ -98,5 +98,10 @@ function locales() {
         return { ...locale, code: locale.code + '-amp', file: locale.code + '-amp.json' }
     })
 
-    return [...locales_pc, ...locales_mobile]
+    const locales = [...locales_pc, ...locales_mobile]
+
+    if (!existsSync('./locales')) mkdirSync('./locales')
+    locales.map(({ file }) => (!existsSync(`./locales/${file}`) ? writeFileSync(`./locales/${file}`, '{}') : null))
+
+    return locales
 }
