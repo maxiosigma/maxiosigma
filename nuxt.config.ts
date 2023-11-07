@@ -2,11 +2,8 @@ import { resolve } from 'path'
 import { defineNuxtConfig } from 'nuxt/config'
 import { mkdirSync, writeFileSync, existsSync } from 'fs'
 
-const i18n_config = {
-    cookieKey: 'lang',
-    locales: locales(),
-    defaultLocale: 'en',
-}
+const isGenerateMode = process.argv.includes('generate')
+const i18n_config = { cookieKey: 'lang', locales: locales(), defaultLocale: 'en' }
 
 export default defineNuxtConfig({
     ssr: true,
@@ -43,7 +40,11 @@ export default defineNuxtConfig({
             'primevue',
         ],
     },
-    generate: {},
+    ...(isGenerateMode
+        ? {
+              ignore: ['**/api/**', '**/admin/**'],
+          }
+        : {}),
     i18n: {
         lazy: false,
         strategy: 'prefix',
@@ -76,9 +77,8 @@ export default defineNuxtConfig({
         'nuxt-windicss',
         '@nuxtjs/i18n',
         '@vueuse/nuxt',
-        '@nuxtjs/strapi',
         '@nuxtjs/device',
-        '@nuxt/devtools',
+        //'@nuxt/devtools',
         '@formkit/nuxt',
         '@nuxt/content',
         'nuxt-icon',
@@ -101,7 +101,12 @@ function locales() {
     const locales = [...locales_pc, ...locales_mobile]
 
     if (!existsSync('./locales')) mkdirSync('./locales')
-    locales.map(({ file }) => (!existsSync(`./locales/${file}`) ? writeFileSync(`./locales/${file}`, '{}') : null))
+    if (!existsSync('./content')) mkdirSync('./content')
+
+    locales.map(({ file, code }) => {
+        !existsSync(`./locales/${file}`) ? writeFileSync(`./locales/${file}`, '{}') : null
+        !existsSync(`./content/${code}`) ? mkdirSync(`./content/${code}`) : null
+    })
 
     return locales
 }
