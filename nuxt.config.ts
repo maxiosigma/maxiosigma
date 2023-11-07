@@ -17,13 +17,6 @@ export default defineNuxtConfig({
         layoutTransition: false,
         pageTransition: false,
     },
-    //devtools: {
-    //    enabled: true,
-    //    vscode: {},
-    //},
-    //strapi: {
-    //    devtools: true,
-    //},
     alias: {
         'assets-data': resolve(__dirname, './assets/data'),
     },
@@ -43,25 +36,27 @@ export default defineNuxtConfig({
         plugins: [],
     },
     build: {
-        transpile: ['animejs', 'primevue'],
+        transpile: [
+            //
+            'animejs',
+            'primevue',
+        ],
     },
     generate: {},
     i18n: {
         lazy: false,
-        defaultLocale: i18n_config.defaultLocale,
-
         strategy: 'prefix',
-
+        defaultLocale: i18n_config.defaultLocale,
         detectBrowserLanguage: {
             useCookie: true,
             cookieKey: i18n_config.cookieKey,
             redirectOn: 'all',
         },
-        customRoutes: 'config',
         pages: {
             link: false,
         },
         langDir: 'locales',
+        customRoutes: 'config',
         locales: i18n_config.locales,
     },
     sourcemap: {
@@ -76,6 +71,7 @@ export default defineNuxtConfig({
         public: { i18n_config },
     },
     modules: [
+        //
         'nuxt-windicss',
         '@nuxtjs/i18n',
         '@vueuse/nuxt',
@@ -83,20 +79,11 @@ export default defineNuxtConfig({
         '@nuxtjs/device',
         '@nuxt/devtools',
         '@formkit/nuxt',
-        '@nuxtjs/supabase',
         '@nuxt/content',
         'nuxt-icon',
     ],
     css: ['~/assets/index.scss'],
     hooks: {},
-    supabase: {
-        //process.env.SUPABASE_URL
-        //process.env.SUPABASE_KEY
-        url: process.env.SUPABASE_URL,
-        //client: {
-        //    auth: {},
-        //},
-    },
 })
 
 function locales() {
@@ -112,29 +99,3 @@ function locales() {
 
     return [...locales_pc, ...locales_mobile]
 }
-
-//'@tailvue/nuxt',
-
-//'nuxt-viewport',
-//"@nuxtjs/fontaine",
-//"@vueuse/motion",
-//"@vueuse/integrations",
-//"@vueuse/router",
-//'@dewib/xhr-cache',
-//'@vite-pwa/nuxt',
-
-//'@vee-validate/nuxt',
-//"nuxt-schema-org",
-//"nuxt-full-static",
-//'@nuxt/devtools',
-
-//'nuxt-og-image',
-//'nuxt-vue3-google-signin',
-//'@nuxtjs/robots',
-//'@nuxtjs/toast',
-//'nuxt-xstate',
-//'vue-final-modal/style.css'
-//persistSession: false,
-//robots: {
-//    /* module options */
-//},
