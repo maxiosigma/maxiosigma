@@ -6,8 +6,8 @@
 
         <div>
             <div
-                v-for="([key, val], i) in Object.entries(dataIndex).filter(
-                    ([key, val]) => key?.[0] !== '_'
+                v-for="([key, val], i) in noDefaultObj(
+                    Object.entries(dataIndex)
                 )"
                 :key="i"
             >
@@ -37,4 +37,8 @@ if (process.server) {
     //writeFileSync('content/ru.yaml', '')
 }
 //console.log(process.server)
+
+function noDefaultObj(arr) {
+    return arr.filter(([key, val]) => key?.[0] !== '_')
+}
 </script>
