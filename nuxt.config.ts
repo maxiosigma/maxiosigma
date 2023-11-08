@@ -40,11 +40,11 @@ export default defineNuxtConfig({
             'primevue',
         ],
     },
-    ...(isGenerateMode
-        ? {
-              ignore: ['**/api/**', '**/admin/**'],
-          }
-        : {}),
+    //...(isGenerateMode
+    //    ? {
+    //          ignore: ['**/api/**', '**/admin/**'],
+    //      }
+    //    : {}),
     i18n: {
         lazy: false,
         strategy: 'prefix',
@@ -66,8 +66,8 @@ export default defineNuxtConfig({
         client: true,
     },
     content: {
-        locales: i18n_config.locales.map((l) => l.code),
-        defaultLocale: i18n_config.defaultLocale,
+        //locales: i18n_config.locales.map((l) => l.code),
+        //defaultLocale: i18n_config.defaultLocale,
     },
     runtimeConfig: {
         public: { i18n_config },

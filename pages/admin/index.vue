@@ -1,14 +1,36 @@
 <template>
-    <div class="bg-black text-light-200">
-        <!--<ContentDoc path="ru" />-->
-        <!--{{ data }}-->
+    <div class="flex-grow min-h-full bg-black text-light-200">
+        <!--<ContentDoc path="ru" contenteditable="true" />-->
+
+        <!--<FormKit type="form"></FormKit>-->
+
+        <div>
+            <div
+                v-for="([key, val], i) in Object.entries(dataIndex).filter(
+                    ([key, val]) => key?.[0] !== '_'
+                )"
+                :key="i"
+            >
+                {{ key }} - {{ val }}
+            </div>
+        </div>
+
+        <!-- .filter((d) => d?.[0] !== '_')  -->
+        <!--<ContentRenderer :value="data">
+            <h1>{{ data.title }}</h1>
+        </ContentRenderer>-->
     </div>
 </template>
 
 <script setup>
-//const { data } = await useAsyncData('hello', () => queryContent('/index').findOne())
+const { data: dataIndex } = await useAsyncData('index', () =>
+    queryContent().where({ _file: 'ru/index.yaml' }).findOne()
+)
 
-console.log(await useContentData('ru', 'index', 'yaml').catch(console.log))
+//const
+
+//console.log(await useContentData('ru', 'index').catch(console.log))
+//console.log(await queryContent().where({ _extension: 'yaml' }).findOne()) //
 
 if (process.server) {
     //const { writeFileSync } = await import('fs')

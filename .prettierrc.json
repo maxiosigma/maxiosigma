@@ -1,8 +1,16 @@
 {
-    "trailingComma": "es5",
     "singleQuote": true,
-    "printWidth": 180,
+    "printWidth": 80,
     "semi": false,
     "tabWidth": 4,
-    "overrides": [{ "files": ["./plugins/content-data-server.ts"], "options": { "printWidth": 1600 } }]
+    "overrides": [
+        {
+            "files": [
+                "./plugins/content-data-server.ts"
+            ],
+            "options": {
+                "printWidth": 1600
+            }
+        }
+    ]
 }

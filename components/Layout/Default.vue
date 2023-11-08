@@ -31,20 +31,24 @@ useHead({
     bodyAttrs: { class: 'body' },
     meta: [
         { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no' },
+        {
+            name: 'viewport',
+            content:
+                'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no',
+        },
         { name: 'HandheldFriendly', content: 'true' },
         { name: 'MobileOptimized', content: '768' },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
         { name: 'HandheldFriendly', content: 'true' },
         //{ name: "", content: "" }
     ],
-    link: [
-        {
-            rel: 'icon',
-            type: 'image/png',
-            href: '/favicon.png',
-        },
-    ],
+    //link: [
+    //    {
+    //        rel: 'icon',
+    //        type: 'image/png',
+    //        href: '/favicon.png',
+    //    },
+    //],
 })
 
 useSeoMeta({

@@ -5,7 +5,8 @@
         "dev-o": "nuxt dev -o",
         "generate": "nuxt generate",
         "generate-start": "nuxt generate && nuxt start",
-        "start": "nuxt start"
+        "start": "nuxt start",
+        "clean": "npx nuxi clean"
     },
     "dependencies": {
         "google-translate-api-browser": "^3.0.1",
