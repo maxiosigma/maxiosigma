@@ -39,7 +39,6 @@ useHead({
         { name: 'HandheldFriendly', content: 'true' },
         { name: 'MobileOptimized', content: '768' },
         { name: 'apple-mobile-web-app-capable', content: 'yes' },
-        { name: 'HandheldFriendly', content: 'true' },
         //{ name: "", content: "" }
     ],
     //link: [

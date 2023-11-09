@@ -19,10 +19,18 @@
             </div>
         </ItemModal>
 
-        <div class="fixed w-full flex-center bottom-10 pointer-events-none group">
-            <div class="flex-center transition duration-1000 pointer-events-auto cursor-pointer opacity-25 sm:(opacity-10) group-hover:opacity-75" @click="openModal">
+        <div
+            class="fixed w-full flex-center bottom-10 pointer-events-none group"
+        >
+            <div
+                class="flex-center transition duration-1000 pointer-events-auto cursor-pointer opacity-25 sm:(opacity-10) group-hover:opacity-75"
+                @click="openModal"
+            >
                 <div class="absolute bg-self-7 rounded-full w-8 h-8"></div>
-                <Icon class="relative z-1 text-xl text-self-4" name="ooui:language"></Icon>
+                <Icon
+                    class="relative z-1 text-xl text-self-4"
+                    name="ooui:language"
+                ></Icon>
             </div>
         </div>
     </LayoutDefault>
@@ -40,8 +48,15 @@ defineProps({
 })
 
 const { locales, locale } = useI18n()
-const locales_filter = locales.value.filter((it, i) => i < locales.value.length / 2)
-const [views, views_lang, modal, modal_first] = useLocalsStorage({ n: `views`, v: 0 }, { n: `views_${locale.value}`, v: 0 }, 'lang_check', 'lang_check_first')
+const locales_filter = locales.value.filter(
+    (it, i) => i < locales.value.length / 2
+)
+const [views, views_lang, modal, modal_first] = useLocalsStorage(
+    { n: `views`, v: 0 },
+    { n: `views_${locale.value}`, v: 0 },
+    'lang_check',
+    'lang_check_first'
+)
 
 const show = ref(modal.value)
 

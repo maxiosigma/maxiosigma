@@ -1,25 +1,27 @@
 <template>
-    <div class="flex-grow min-h-full bg-black text-light-200">
-        <!--<ContentDoc path="ru" contenteditable="true" />-->
+    <LayoutDefault>
+        <div class="flex-grow min-h-full bg-black text-light-200">
+            <!--<ContentDoc path="ru" contenteditable="true" />-->
 
-        <!--<FormKit type="form"></FormKit>-->
+            <!--<FormKit type="form"></FormKit>-->
 
-        <div>
-            <div
-                v-for="([key, val], i) in noDefaultObj(
-                    Object.entries(dataIndex)
-                )"
-                :key="i"
-            >
-                {{ key }} - {{ val }}
+            <div>
+                <div
+                    v-for="([key, val], i) in noDefaultObj(
+                        Object.entries(dataIndex)
+                    )"
+                    :key="i"
+                >
+                    {{ key }} - {{ val }}
+                </div>
             </div>
-        </div>
 
-        <!-- .filter((d) => d?.[0] !== '_')  -->
-        <!--<ContentRenderer :value="data">
+            <!-- .filter((d) => d?.[0] !== '_')  -->
+            <!--<ContentRenderer :value="data">
             <h1>{{ data.title }}</h1>
         </ContentRenderer>-->
-    </div>
+        </div>
+    </LayoutDefault>
 </template>
 
 <script setup>
