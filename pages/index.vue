@@ -1,7 +1,23 @@
 <template>
-    <!-- :view="!isQuery" -->
     <LayoutPage class="main">
         <!--  -->
+
+        <div class="flex flex-grow">
+            <div class="relative flex-grow h-full w-full">
+                <ItemMediaImg
+                    class="absolute h-full w-full ml-13 object-cover object-right"
+                    src="main/face_1.webp"
+                ></ItemMediaImg>
+            </div>
+
+            <div class="relative flex-grow h-full w-full">
+                <ItemMediaImg
+                    class="absolute h-full w-full -ml-13 object-cover object-left"
+                    src="main/face_2.webp"
+                ></ItemMediaImg>
+            </div>
+        </div>
+
         <!--  -->
     </LayoutPage>
 </template>
@@ -35,7 +51,7 @@
 //useHead({ title, description })
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .main {
 }
 </style>

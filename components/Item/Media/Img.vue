@@ -12,7 +12,15 @@
         itemprop="image"
     />
 
-    <div v-else-if="getImage() && bg" :id="id" :class="['img-bg-mod']" :title="title" :alt="alt" itemprop="image" onabort="aborted()">
+    <div
+        v-else-if="getImage() && bg"
+        :id="id"
+        :class="['img-bg-mod']"
+        :title="title"
+        :alt="alt"
+        itemprop="image"
+        onabort="aborted()"
+    >
         <slot></slot>
     </div>
 </template>
@@ -35,6 +43,18 @@ const { width, height, id } = {
             .join('_'),
 }
 
+if (bg)
+    useHead({
+        style: [
+            {
+                type: 'text/css',
+                async: true,
+                innerHTML: `#${id} { background-image: url('${getImage()}'); }`,
+                body: true,
+            },
+        ],
+    })
+
 function getImage() {
     return useAssetsImages(src)
 }
@@ -42,8 +62,6 @@ function getImage() {
 function aborted(e) {
     console.log(e)
 }
-
-if (bg) useHead({ style: [{ type: 'text/css', async: true, innerHTML: `#${id} { background-image: url('${getImage()}'); }`, body: true }] })
 </script>
 
 <style lang="scss">

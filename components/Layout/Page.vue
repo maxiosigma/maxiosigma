@@ -37,7 +37,7 @@
 </template>
 
 <script setup>
-useSwitchLang()
+//useSwitchLang()
 
 defineProps({
     bs: { type: String, required: false, default: 'body-bg' },
@@ -122,7 +122,7 @@ views_lang.value++
 
 <style module>
 .page {
-    @apply flex flex-col h-auto min-h-full max-w-screen relative justify-between;
+    @apply flex flex-grow flex-col h-auto min-h-full max-w-screen relative justify-between;
 }
 </style>
 
