@@ -7,7 +7,7 @@
                 <ItemMediaImg
                     :class="[
                         'absolute h-full w-full ml-10 object-cover object-right',
-                        timers.mainImgLeft
+                        timers.mainImg
                             ? 'animated animate-fade-in'
                             : 'animated animate-fade-out',
                     ]"
@@ -15,11 +15,13 @@
                 ></ItemMediaImg>
             </div>
 
+            {{ timers }}
+
             <div :class="['relative flex-grow h-full w-full overflow-hidden']">
                 <ItemMediaImg
                     :class="[
                         'absolute h-full w-full -ml-10 object-cover object-left',
-                        timers.mainImgRight
+                        !timers.mainImg
                             ? 'animated animate-fade-in'
                             : 'animated animate-fade-out',
                     ]"
@@ -33,12 +35,12 @@
 </template>
 
 <script setup>
-const timers = { mainImgLeft: true, mainImgRight: false }
+const timers = ref({ mainImg: true })
 
-setInterval(() => {
-    timers.mainImgLeft = !timers.mainImgLeft
-    timers.mainImgRight = !timers.mainImgRight
-}, 3000)
+setInterval(async function () {
+    timers.value.mainImg = !timers.value.mainImg
+    console.log(timers.value)
+}, 5000)
 </script>
 
 <style lang="scss">
