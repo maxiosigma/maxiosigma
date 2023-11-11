@@ -1,6 +1,6 @@
 <template>
     <LayoutDefault>
-        <div :class="[$style.page, view ? '' : '!hidden']">
+        <div :class="[$style.page, view ? '' : '!hidden', pagecl]">
             <slot />
         </div>
 
@@ -45,6 +45,7 @@ defineProps({
     description: { type: String, required: false, default: undefined },
     preloader: { type: Boolean, required: false, default: true },
     view: { type: Boolean, required: false, default: true },
+    pagecl: { type: String, required: false, default: '' },
 })
 
 const { locales, locale } = useI18n()
