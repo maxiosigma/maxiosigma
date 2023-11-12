@@ -55,9 +55,14 @@ const dotHF = ([x1, y1], [x2, y2]) => [x1 + (x2 - x1) / 2, y1 + (y2 - y1) / 2]
 const newDot = (i1, i2) => polygon.splice(i2, 0, dotHF(polygon[i1], polygon[i2]))
 
 const newDotsBetween = () => {
-    newDot(polygon.length - 2, polygon.length - 1)
+    //newDot(polygon.length - 2, polygon.length - 1)
     newDot(0, 1)
-    newDot(polygon.length - 2, polygon.length - 1)
+    const index = (polygon.length / 2) | 0
+    newDot(index, index + 1)
+    newDot(index - 1, index)
+    console.log(index)
+
+    //newDot(polygon.length - 2, polygon.length - 1)
 }
 
 //newDot(0, 1)
@@ -68,6 +73,8 @@ const newDotsBetween = () => {
 //newDot(0, 1)
 
 newDotsBetween()
+//newDotsBetween()
+//newDotsBetween()
 
 //newDotsBetween()
 
