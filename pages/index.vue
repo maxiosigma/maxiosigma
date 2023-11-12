@@ -57,6 +57,7 @@ const newDot = (i1, i2) => polygon.splice(i2, 0, dotHF(polygon[i1], polygon[i2])
 const newDotsBetween = () => {
     newDot(polygon.length - 2, polygon.length - 1)
     newDot(0, 1)
+    newDot(polygon.length - 2, polygon.length - 1)
 }
 
 //newDot(0, 1)
