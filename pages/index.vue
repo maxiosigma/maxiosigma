@@ -2,7 +2,7 @@
     <LayoutPage pagecl="main">
         <div class="flex flex-grow">
             <div :class="['relative flex justify-end flex-grow h-full w-full overflow-hidden']">
-                <ItemMediaImg
+                <!--<ItemMediaImg
                     :class="[
                         'absolute h-full w-auto mt-0 -mr-[4vh] object-cover object-right'
                         //timers.mainImg
@@ -10,11 +10,11 @@
                         //    : 'animated animate-fade-out',
                     ]"
                     src="main/face_1.webp"
-                ></ItemMediaImg>
+                ></ItemMediaImg>-->
             </div>
 
             <div :class="['relative flex justify-start flex-grow h-full w-full overflow-hidden']">
-                <ItemMediaImg
+                <!--<ItemMediaImg
                     :class="[
                         'absolute h-full w-auto mt-0 -ml-[4vh] object-cover object-left'
                         //!timers.mainImg
@@ -25,7 +25,7 @@
                         //    : '',
                     ]"
                     src="main/face_2.webp"
-                ></ItemMediaImg>
+                ></ItemMediaImg>-->
             </div>
         </div>
 
