@@ -15,6 +15,6 @@ const {
 console.log(slug)
 
 useHead({
-    title: slug
+    title: slug.toUpperCase()
 })
 </script>

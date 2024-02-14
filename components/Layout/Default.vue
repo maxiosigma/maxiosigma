@@ -6,7 +6,7 @@
 const { localeProperties: lp } = useI18n()
 const lang = ref(lp.value.code)
 
-const props = defineProps({
+const prop = defineProps({
     bs: {
         type: String,
         required: false,
@@ -15,17 +15,18 @@ const props = defineProps({
     title: {
         type: String,
         required: false,
-        default: undefined
+        default: ''
     },
     description: {
         type: String,
         required: false,
-        default: undefined
+        default: ''
     }
 })
 
 useHead({
-    titleTemplate: `SIGMA %s`,
+    //title: prop.title,
+    titleTemplate: `SIGMA | %s`,
     htmlAttrs: { class: 'html', lang: lang },
     headAttrs: { class: 'head' },
     bodyAttrs: { class: 'body' },
