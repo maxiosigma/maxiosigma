@@ -88,8 +88,12 @@ export default defineNuxtConfig({
         '@nuxtjs/i18n',
         '@nuxt/content'
     ],
+    tailwindcss: {
+        viewer: true,
+        configPath: 'tailwind.config.ts'
+    },
     primevue: {
-        options: { ripple: true },
+        //options: { ripple: true },
         components: {
             prefix: 'Prime',
             include: ['Button', 'DataTable', 'FloatLabel', 'InputText']
