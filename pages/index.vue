@@ -1,6 +1,7 @@
 <template>
-    <LayoutPage pagecl="main">
-        <div class="flex flex-grow">
+    <!-- pagecl="main" -->
+    <LayoutPage>
+        <div class="flex my-auto">
             <div :class="['relative flex justify-end flex-grow h-full w-full overflow-hidden']">
                 <!--<ItemMediaImg
                     :class="[
@@ -12,8 +13,13 @@
                     src="main/face_1.webp"
                 ></ItemMediaImg>-->
 
-                <div class="my-auto">
-                    <div>Maxim Semenuk Valerievich</div>
+                <div>
+                    <PrimeFloatLabel>
+                        <PrimeInputText id="username" />
+                        <label for="username">Username</label>
+                    </PrimeFloatLabel>
+
+                    <!--<div>Maxim Semenuk Valerievich</div>-->
                     <!--<div>Maxim Sigma Brand</div>-->
                 </div>
             </div>
@@ -35,7 +41,6 @@
         </div>
 
         <!--<div class="nav-bottom"></div>-->
-        <!--  -->
     </LayoutPage>
 </template>
 

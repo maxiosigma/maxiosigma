@@ -66,7 +66,7 @@ onMounted(() => {})
 
 <style lang="scss">
 .html {
-    @apply bg-self-1 h-auto max-w-screen relative;
+    @apply bg-self-1 h-auto max-w-[100vw] relative;
 }
 
 .head {
@@ -74,7 +74,7 @@ onMounted(() => {})
 }
 
 .body {
-    @apply bg-self-1 flex font-roboto h-auto min-h-screen max-w-screen relative;
+    @apply bg-self-1 flex flex-col font-roboto h-auto min-h-screen max-w-[100vw] relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
@@ -82,6 +82,6 @@ onMounted(() => {})
 }
 
 .wrapper {
-    @apply h-full flex flex-grow overflow-hidden;
+    @apply min-h-full h-full flex flex-col flex-grow overflow-hidden;
 }
 </style>

@@ -1,4 +1,4 @@
-import data from '~/assets/index.graphql'
+import data from '~/z-old/assets/index.graphql'
 
 export default defineNuxtPlugin(async (nuxtApp) => {
     if (process.server) {

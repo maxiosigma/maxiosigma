@@ -7,19 +7,19 @@ const {
     base: { defineConfig, plugin },
     built: { aspectRatio, lineClamp, typography },
     external: { animations, heropatterns, icons, questionMark },
-    transform: { tailwindElevation },
+    transform: { tailwindElevation }
 } = plugins
 
 export default defineConfig({
     shortcuts,
     attributify: false,
     theme: {
-        extend: theme.extend,
+        extend: theme.extend
     },
     safelist: [
         //
         range(10).map((i) => `order-${i}`),
-        range(20).map((i) => `pl-[${i}%]`),
+        range(20).map((i) => `pl-[${i}%]`)
     ],
     plugins: [
         icons,
@@ -35,7 +35,7 @@ export default defineConfig({
                 'bank-note',
                 'hexagons',
                 'wiggle',
-                'rain',
+                'rain'
 
                 //"jigsaw",
                 //"polka-dots",
@@ -58,7 +58,7 @@ export default defineConfig({
                 blue: '#0000FF',
                 skyblue: '#87CEEB',
                 white: '#ffffff',
-                black: '#000000',
+                black: '#000000'
             },
             opacity: {
                 default: '0.4',
@@ -72,8 +72,8 @@ export default defineConfig({
                 50: '0.5',
                 60: '0.6',
                 75: '0.75',
-                100: '1.0',
-            },
+                100: '1.0'
+            }
         }),
         questionMark,
         tailwindElevation,
@@ -81,12 +81,12 @@ export default defineConfig({
             addUtilities({
                 ...utilities.base,
                 ...utilities.clipPaths,
-                ...utilities.textShadows,
+                ...utilities.textShadows
             })
-        }),
+        })
     ],
     extract: {
         include: [...extract.nuxt.include, 'node_modules/tailvue/dist/tailvue.es.js'],
-        exclude: extract.nuxt.exclude,
-    },
+        exclude: extract.nuxt.exclude
+    }
 })

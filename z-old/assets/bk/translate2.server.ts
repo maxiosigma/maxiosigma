@@ -1,6 +1,6 @@
 import { writeFileSync, readFileSync, existsSync } from 'node:fs'
 import { generateRequestUrl, normaliseResponse } from 'google-translate-api-browser'
-import data from '~/assets/index.graphql'
+import data from '~/z-old/assets/index.graphql'
 import { resolve } from 'path'
 import axios from 'axios'
 
@@ -29,18 +29,23 @@ export default defineNuxtPlugin(async (nuxtApp) => {
         links:
             (await graphql(data.links()))?.data.links.data.map(({ attributes }) => ({
                 ferd: useCripty(attributes.href),
-                sh: attributes.short,
+                sh: attributes.short
             })) || [],
         reffers:
             (await graphql(data.links()))?.data.links.data
-                .filter(({ attributes: link }) => !!link?.partnership && !!link?.title && !!link?.description && !!link?.short)
+                .filter(
+                    ({ attributes: link }) =>
+                        !!link?.partnership && !!link?.title && !!link?.description && !!link?.short
+                )
                 .map(({ attributes: link }) => ({
                     title: link?.title,
                     description: link?.description,
                     images: link?.imgs?.data?.map(({ attributes }) => attributes),
                     short: link?.short,
-                    tags: link?.tags?.data?.map(({ attributes: { title } }) => title)?.sort((a, b) => (a?.length > b?.length ? 1 : -1)),
-                    top: link?.top,
+                    tags: link?.tags?.data
+                        ?.map(({ attributes: { title } }) => title)
+                        ?.sort((a, b) => (a?.length > b?.length ? 1 : -1)),
+                    top: link?.top
                 })) || [],
         works:
             (await graphql(data.works()))?.data.works.data
@@ -49,19 +54,19 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                     assets: {
                         fonts: attributes.assets.fonts.data.map((as) => as.attributes.title),
                         models: attributes.assets.models.data.map((as) => as.attributes.title),
-                        technologies: attributes.assets.technologies.data.map((as) => as.attributes.title),
+                        technologies: attributes.assets.technologies.data.map((as) => as.attributes.title)
                     },
                     media: attributes.media.data.map((md) => {
                         const alt = md.attributes.alternativeText
                         delete md.attributes.alternativeText
                         return { ...md.attributes, alt }
-                    }),
+                    })
                 }))
                 .reverse() || [],
         publics: (await graphql(data.publics()))?.data.publicateds.data.map((it) => it.attributes) || [],
         menu: await asyncReduceObject(navSlugs, async (it) => ({
-            [it]: (await graphql(data.menu(it)))?.data.renderNavigation,
-        })),
+            [it]: (await graphql(data.menu(it)))?.data.renderNavigation
+        }))
     }
 
     const en = {
@@ -72,8 +77,8 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                 {
                     ...it,
                     title: it.title ? await translate(it.title, { from: 'ru', to: 'en' }) : null,
-                    description: it.description ? await translate(it.description, { from: 'ru', to: 'en' }) : null,
-                },
+                    description: it.description ? await translate(it.description, { from: 'ru', to: 'en' }) : null
+                }
             ])),
         works:
             read('en/works') ??
@@ -81,8 +86,8 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                 {
                     ...it,
                     title: it.title ? await translate(it.title, { from: 'ru', to: 'en' }) : null,
-                    description: it.description ? await translate(it.description, { from: 'ru', to: 'en' }) : null,
-                },
+                    description: it.description ? await translate(it.description, { from: 'ru', to: 'en' }) : null
+                }
             ])),
         publics:
             read('en/publics') ??
@@ -92,15 +97,17 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                         ...w,
                         title: w.title ? await translate(w.title, { from: 'ru', to: 'en' }) : null,
                         description: w.description ? await translate(w.description, { from: 'ru', to: 'en' }) : null,
-                        keywords: w.keywords ? await translate(w.keywords, { from: 'ru', to: 'en' }) : null,
-                    },
+                        keywords: w.keywords ? await translate(w.keywords, { from: 'ru', to: 'en' }) : null
+                    }
                 ]
             })),
         menu:
             read('en/menu') ??
             (await asyncReduceObject(Object.entries(ru.menu), async ([key, values]) => ({
-                [key]: await asyncReduceArray(values, async (v) => [{ ...v, title: v?.title ? await translate(v?.title, { from: 'ru', to: 'en' }) : null }]),
-            }))),
+                [key]: await asyncReduceArray(values, async (v) => [
+                    { ...v, title: v?.title ? await translate(v?.title, { from: 'ru', to: 'en' }) : null }
+                ])
+            })))
     }
 
     const zh = {
@@ -111,8 +118,8 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                 {
                     ...it,
                     title: it.title ? await translate(it.title, { from: 'ru', to: 'zh' }) : null,
-                    description: it.description ? await translate(it.description, { from: 'ru', to: 'zh' }) : null,
-                },
+                    description: it.description ? await translate(it.description, { from: 'ru', to: 'zh' }) : null
+                }
             ])),
         works:
             read('zh/works') ??
@@ -121,8 +128,8 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                     {
                         ...w,
                         title: w.title ? await translate(w.title, { from: 'ru', to: 'zh' }) : null,
-                        description: w.description ? await translate(w.description, { from: 'ru', to: 'zh' }) : null,
-                    },
+                        description: w.description ? await translate(w.description, { from: 'ru', to: 'zh' }) : null
+                    }
                 ]
             })),
         publics:
@@ -133,15 +140,17 @@ export default defineNuxtPlugin(async (nuxtApp) => {
                         ...w,
                         title: w.title ? await translate(w.title, { from: 'ru', to: 'zh' }) : null,
                         description: w.description ? await translate(w.description, { from: 'ru', to: 'zh' }) : null,
-                        keywords: w.keywords ? await translate(w.keywords, { from: 'ru', to: 'zh' }) : null,
-                    },
+                        keywords: w.keywords ? await translate(w.keywords, { from: 'ru', to: 'zh' }) : null
+                    }
                 ]
             })),
         menu:
             read('zh/menu') ??
             (await asyncReduceObject(Object.entries(ru.menu), async ([key, values]) => ({
-                [key]: await asyncReduceArray(values, async (v) => [{ ...v, title: v?.title ? await translate(v?.title, { from: 'ru', to: 'zh' }) : null }]),
-            }))),
+                [key]: await asyncReduceArray(values, async (v) => [
+                    { ...v, title: v?.title ? await translate(v?.title, { from: 'ru', to: 'zh' }) : null }
+                ])
+            })))
     }
 
     const result = { ru, en, zh }

@@ -1,6 +1,6 @@
 import { writeFileSync, readFileSync, existsSync } from 'node:fs'
 import { generateRequestUrl, normaliseResponse } from 'google-translate-api-browser'
-import data from '~/assets/index.graphql'
+import data from '~/z-old/assets/index.graphql'
 import { resolve } from 'path'
 import axios from 'axios'
 
@@ -27,10 +27,16 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     const defaultLang = 'ru'
     const langs = ['ru', 'en', 'zh']
 
-    const fieldTranslate = async (field = '', lang = '') => (lang === defaultLang || !field ? field : await translate(field, { from: 'ru', to: lang }))
+    const fieldTranslate = async (field = '', lang = '') =>
+        lang === defaultLang || !field ? field : await translate(field, { from: 'ru', to: lang })
 
     const content = await asyncReduceArray(langs, async (lang = '') => {
-        const links = read(`${lang}/links`) ?? (await graphql(data.links()))?.data.links.data.map(({ attributes: link = {} }) => ({ ferd: useCripty(link?.href), sh: link?.short }))
+        const links =
+            read(`${lang}/links`) ??
+            (await graphql(data.links()))?.data.links.data.map(({ attributes: link = {} }) => ({
+                ferd: useCripty(link?.href),
+                sh: link?.short
+            }))
         //const reffers =
         //    read(`${lang}/reffers`) ??
         //    (await asyncReduceArray(

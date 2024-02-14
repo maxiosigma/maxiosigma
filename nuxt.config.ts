@@ -2,7 +2,6 @@ import { resolve } from 'path'
 import { mkdirSync, writeFileSync, existsSync } from 'fs'
 
 const isGenerateMode = process.argv.includes('generate')
-const i18n_config = { cookieKey: 'lang', locales: locales(), defaultLocale: 'en' }
 
 export default defineNuxtConfig({
     ssr: true,
@@ -38,8 +37,8 @@ export default defineNuxtConfig({
     build: {
         transpile: [
             //
-            'animejs',
-            'primevue'
+            //'animejs',
+            //'primevue'
         ]
     },
     //...(isGenerateMode
@@ -49,11 +48,13 @@ export default defineNuxtConfig({
     //    : {}),
     i18n: {
         lazy: false,
+        defaultLocale: 'ru',
         strategy: 'prefix_except_default',
-        defaultLocale: i18n_config.defaultLocale,
         detectBrowserLanguage: {
             useCookie: true,
-            cookieKey: i18n_config.cookieKey
+            cookieKey: 'lang',
+            alwaysRedirect: false,
+            redirectOn: 'root'
             //redirectOn: 'all'
         },
         pages: {
@@ -61,7 +62,7 @@ export default defineNuxtConfig({
         },
         langDir: 'locales',
         customRoutes: 'config',
-        locales: i18n_config.locales
+        locales: locales()
     },
     sourcemap: {
         server: true,
@@ -72,28 +73,41 @@ export default defineNuxtConfig({
         //defaultLocale: i18n_config.defaultLocale,
     },
     runtimeConfig: {
-        public: { i18n_config }
+        //public: { i18n_config }
     },
     modules: [
         //
-        'nuxt-windicss',
-        '@nuxtjs/i18n',
-        '@vueuse/nuxt',
+        //'nuxt-windicss',
+        '@nuxtjs/tailwindcss',
         '@nuxtjs/device',
-        //'@nuxt/devtools',
+        'nuxt-primevue',
         '@formkit/nuxt',
-        '@nuxt/content',
-        'nuxt-icon'
+        '@vueuse/nuxt',
+        'nuxt-icon',
+
+        '@nuxtjs/i18n',
+        '@nuxt/content'
     ],
+    primevue: {
+        options: { ripple: true },
+        components: {
+            prefix: 'Prime',
+            include: ['Button', 'DataTable', 'FloatLabel', 'InputText']
+        },
+        directives: {
+            prefix: 'p-',
+            include: ['Ripple', 'Tooltip']
+        }
+    },
     css: ['~/assets/index.scss'],
     hooks: {}
 })
 
 function locales() {
     const locales_pc = [
-        { code: 'zh', iso: 'zh-CN', name: '中國人' },
         { code: 'ru', iso: 'ru-RU', name: 'Русский' },
-        { code: 'en', iso: 'en-ES', name: 'English' }
+        { code: 'en', iso: 'en-ES', name: 'English' },
+        { code: 'zh', iso: 'zh-CN', name: '中國人' }
     ].map((it) => ({ ...it, code_: it.code, file: it.code + '.json' }))
 
     const locales_mobile = locales_pc.map((locale) => {

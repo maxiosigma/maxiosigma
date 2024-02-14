@@ -45,9 +45,9 @@ defineProps({
 //}
 </script>
 
-<style module>
+<style module scoped>
 .page {
-    @apply flex flex-grow flex-col h-auto min-h-full max-w-screen relative justify-between;
+    @apply flex flex-grow flex-col max-w-[100vw] relative justify-between;
 }
 </style>
 
@@ -60,16 +60,16 @@ defineProps({
     @apply w-full z-20 relative;
 
     &-bar {
-        @apply min-h-8vh top-0 z-20 fixed;
+        @apply min-h-[8vh] top-0 z-20 fixed;
     }
 
     &-pre {
         &-bar {
-            @apply min-w-screen min-h-8vh z-0 relative;
+            @apply min-w-[100vh] min-h-[8vh] z-0 relative;
         }
 
         &-cont {
-            @apply min-w-screen min-h-64px z-0 relative;
+            @apply min-w-[100vh] min-h-[64px] z-0 relative;
         }
     }
 }
@@ -80,7 +80,7 @@ defineProps({
 
 .preload {
     &-show {
-        @apply max-h-none opacity-100 transition-all duration-250 delay-250;
+        @apply max-h-none opacity-100 transition-all duration-[250] delay-[250];
 
         &-nav-bar {
             @apply opacity-100 transition-all duration-1000 delay-1000;
@@ -92,7 +92,7 @@ defineProps({
     }
 
     &-hide {
-        @apply max-h-screen opacity-0 transition-all duration-250 delay-0 overflow-hidden pointer-events-none;
+        @apply max-h-screen opacity-0 transition-all duration-[250] delay-0 overflow-hidden pointer-events-none;
 
         &-nav-bar {
             @apply opacity-0;
