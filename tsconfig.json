@@ -1,27 +1,14 @@
 {
-	"extends": "./.nuxt/tsconfig.json",
-	"compilerOptions": {
-		"allowJs": true,
-		"esModuleInterop": false,
-		"types": [
-			"@nuxtjs/i18n",
-			"@nuxt/image",
-			"vite/client",
-			"nuxt-windicss"
-		],
-		"paths": {
-			"maxiosigma_libs/*": [
-				"../global-libs/*.js"
-			],
-			"assets_data/*": [
-				"./assets/data/*"
-			],
-			"assets/*": [
-				"./assets/*"
-			],
-			"~/*": [
-				"./*"
-			]
-		},
-	}
+    "compilerOptions": {
+        "allowJs": true,
+        "esModuleInterop": false,
+        "types": ["@nuxtjs/i18n", "@nuxt/image", "vite/client"],
+        "paths": {
+            "maxiosigma_libs/*": ["../global-libs/*.js"],
+            "assets_data/*": ["./assets/data/*"],
+            "assets/*": ["./assets/*"],
+            "~/*": ["./*"]
+        }
+    },
+    "extends": "./.nuxt/tsconfig.json"
 }
