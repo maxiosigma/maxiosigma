@@ -1,8 +1,8 @@
 <template>
     <!-- pagecl="main" -->
     <LayoutPage>
-        <div class="flex my-auto">
-            <div :class="['relative flex justify-end flex-grow h-full w-full overflow-hidden']">
+        <div class="flex my-auto p-20">
+            <div :class="['relative flex justify-end flex-grow h-full w-full']">
                 <!--<ItemMediaImg
                     :class="[
                         'absolute h-full w-auto mt-0 -mr-[4vh] object-cover object-right'
@@ -14,13 +14,6 @@
                 ></ItemMediaImg>-->
 
                 <div>
-                    <PrimeFloatLabel>
-                        <PrimeInputText id="username" />
-                        <label for="username">Username</label>
-                    </PrimeFloatLabel>
-
-                    <PrimeButton class="mt-5" label="AAA" severity="warning" />
-
                     <!--<div>Maxim Semenuk Valerievich</div>-->
                     <!--<div>Maxim Sigma Brand</div>-->
                 </div>
@@ -46,7 +39,9 @@
     </LayoutPage>
 </template>
 
-<script setup></script>
+<script setup>
+const test = ref('aaa')
+</script>
 
 <style lang="scss">
 .main {

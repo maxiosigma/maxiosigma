@@ -272,7 +272,14 @@
             "tags": [],
             "top": false
         },
-        { "title": "Живой сайт", "description": "Живой сайт с живым чатом", "images": [], "short": "jvsite", "tags": [], "top": false },
+        {
+            "title": "Живой сайт",
+            "description": "Живой сайт с живым чатом",
+            "images": [],
+            "short": "jvsite",
+            "tags": [],
+            "top": false
+        },
         {
             "title": "Легион: Страхи и Цели",
             "description": "Реализуй до 10 смелых целей за 3 недели, избавившись от своих страхов",

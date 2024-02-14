@@ -89,11 +89,19 @@ export default defineNuxtConfig({
         '@nuxt/content'
     ],
     tailwindcss: {
-        viewer: true,
-        configPath: 'tailwind.config.ts'
+        viewer: false,
+        configPath: 'tailwind.config.ts',
+        cssPath: '~/assets/tailwind.css'
     },
     primevue: {
-        //options: { ripple: true },
+        usePrimeVue: true,
+        //cssLayerOrder: 'reset,primevue',
+        cssLayerOrder: 'tailwind-base, primevue, tailwind-utilities',
+        importPT: { as: 'Tailwind', from: 'primevue/passthrough/tailwind' },
+        options: {
+            ripple: true,
+            inputStyle: 'outlined'
+        },
         components: {
             prefix: 'Prime',
             include: ['Button', 'DataTable', 'FloatLabel', 'InputText']
