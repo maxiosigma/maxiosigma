@@ -19,6 +19,8 @@
                         <label for="username">Username</label>
                     </PrimeFloatLabel>
 
+                    <PrimeButton class="mt-5" label="AAA" severity="warning" />
+
                     <!--<div>Maxim Semenuk Valerievich</div>-->
                     <!--<div>Maxim Sigma Brand</div>-->
                 </div>

@@ -93,11 +93,11 @@ export default defineNuxtConfig({
         components: {
             prefix: 'Prime',
             include: ['Button', 'DataTable', 'FloatLabel', 'InputText']
-        },
-        directives: {
-            prefix: 'p-',
-            include: ['Ripple', 'Tooltip']
         }
+        //directives: {
+        //    prefix: 'p-',
+        //    include: ['Ripple', 'Tooltip']
+        //}
     },
     css: ['~/assets/index.scss'],
     hooks: {}
