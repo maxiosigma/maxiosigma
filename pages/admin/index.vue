@@ -6,12 +6,7 @@
             <!--<FormKit type="form"></FormKit>-->
 
             <div>
-                <div
-                    v-for="([key, val], i) in noDefaultObj(
-                        Object.entries(dataIndex)
-                    )"
-                    :key="i"
-                >
+                <div v-for="([key, val], i) in noDefaultObj(Object.entries(dataIndex))" :key="i">
                     {{ key }} - {{ val }}
                 </div>
             </div>
@@ -25,9 +20,10 @@
 </template>
 
 <script setup>
-const { data: dataIndex } = await useAsyncData('index', () =>
-    queryContent().where({ _file: 'ru/index.yaml' }).findOne()
-)
+//const { data: dataIndex } = await useAsyncData('index', () =>
+//    queryContent().where({ _file: 'ru/index.yaml' }).findOne()
+//)
+const dataIndex = queryContent().where({ _file: 'ru/index.yaml' }).findOne()
 
 //const
 

@@ -17,8 +17,8 @@ const prop = defineProps({
     show: {
         required: true,
         default: false,
-        type: Boolean,
-    },
+        type: Boolean
+    }
 })
 
 //firstEntry: {

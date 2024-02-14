@@ -10,22 +10,22 @@ const props = defineProps({
     bs: {
         type: String,
         required: false,
-        default: 'body-bg',
+        default: 'body-bg'
     },
     title: {
         type: String,
         required: false,
-        default: undefined,
+        default: undefined
     },
     description: {
         type: String,
         required: false,
-        default: undefined,
-    },
+        default: undefined
+    }
 })
 
 useHead({
-    titleTemplate: `%s`,
+    titleTemplate: `SIGMA %s`,
     htmlAttrs: { class: 'html', lang: lang },
     headAttrs: { class: 'head' },
     bodyAttrs: { class: 'body' },
@@ -33,14 +33,13 @@ useHead({
         { charset: 'utf-8' },
         {
             name: 'viewport',
-            content:
-                'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no',
+            content: 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'
         },
         { name: 'HandheldFriendly', content: 'true' },
         { name: 'MobileOptimized', content: '768' },
-        { name: 'apple-mobile-web-app-capable', content: 'yes' },
+        { name: 'apple-mobile-web-app-capable', content: 'yes' }
         //{ name: "", content: "" }
-    ],
+    ]
     //link: [
     //    {
     //        rel: 'icon',
@@ -50,17 +49,17 @@ useHead({
     //],
 })
 
-useSeoMeta({
-    description: '[description]',
-    ogTitle: '[og:title]',
-    ogDescription: '[og:description]',
-    ogImage: '[og:image]',
-    ogUrl: '[og:url]',
-    twitterTitle: '[twitter:title]',
-    twitterDescription: '[twitter:description]',
-    twitterImage: '[twitter:image]',
-    twitterCard: 'summary',
-})
+//useSeoMeta({
+//    description: '[description]',
+//    ogTitle: '[og:title]',
+//    ogDescription: '[og:description]',
+//    ogImage: '[og:image]',
+//    ogUrl: '[og:url]',
+//    twitterTitle: '[twitter:title]',
+//    twitterDescription: '[twitter:description]',
+//    twitterImage: '[twitter:image]',
+//    twitterCard: 'summary'
+//})
 
 onMounted(() => {})
 </script>
@@ -83,6 +82,6 @@ onMounted(() => {})
 }
 
 .wrapper {
-    @apply h-full flex flex-grow h-auto overflow-hidden;
+    @apply h-full flex flex-grow overflow-hidden;
 }
 </style>

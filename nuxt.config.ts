@@ -1,5 +1,4 @@
 import { resolve } from 'path'
-import { defineNuxtConfig } from 'nuxt/config'
 import { mkdirSync, writeFileSync, existsSync } from 'fs'
 
 const isGenerateMode = process.argv.includes('generate')
@@ -13,32 +12,35 @@ export default defineNuxtConfig({
         rootTag: 'div class="wrapper"',
         buildAssetsDir: '/public/',
         layoutTransition: false,
-        pageTransition: false,
+        pageTransition: false
     },
     alias: {
-        'assets-data': resolve(__dirname, './assets/data'),
+        'assets-data': resolve(__dirname, './assets/data')
     },
     experimental: {
-        inlineSSRStyles: false,
+        //inlineSSRStyles: false,
         payloadExtraction: true,
-        treeshakeClientOnly: false,
+        treeshakeClientOnly: false
+    },
+    features: {
+        inlineStyles: false
     },
     vite: {
         css: {
             modules: {
                 localsConvention: 'camelCaseOnly',
-                generateScopedName: '[local]-[hash:base32:5]',
-            },
+                generateScopedName: '[local]-[hash:base32:5]'
+            }
         },
         resolve: {},
-        plugins: [],
+        plugins: []
     },
     build: {
         transpile: [
             //
             'animejs',
-            'primevue',
-        ],
+            'primevue'
+        ]
     },
     //...(isGenerateMode
     //    ? {
@@ -47,30 +49,30 @@ export default defineNuxtConfig({
     //    : {}),
     i18n: {
         lazy: false,
-        strategy: 'prefix',
+        strategy: 'prefix_except_default',
         defaultLocale: i18n_config.defaultLocale,
         detectBrowserLanguage: {
             useCookie: true,
-            cookieKey: i18n_config.cookieKey,
-            redirectOn: 'all',
+            cookieKey: i18n_config.cookieKey
+            //redirectOn: 'all'
         },
         pages: {
-            link: false,
+            link: false
         },
         langDir: 'locales',
         customRoutes: 'config',
-        locales: i18n_config.locales,
+        locales: i18n_config.locales
     },
     sourcemap: {
         server: true,
-        client: true,
+        client: true
     },
     content: {
         //locales: i18n_config.locales.map((l) => l.code),
         //defaultLocale: i18n_config.defaultLocale,
     },
     runtimeConfig: {
-        public: { i18n_config },
+        public: { i18n_config }
     },
     modules: [
         //
@@ -81,17 +83,17 @@ export default defineNuxtConfig({
         //'@nuxt/devtools',
         '@formkit/nuxt',
         '@nuxt/content',
-        'nuxt-icon',
+        'nuxt-icon'
     ],
     css: ['~/assets/index.scss'],
-    hooks: {},
+    hooks: {}
 })
 
 function locales() {
     const locales_pc = [
         { code: 'zh', iso: 'zh-CN', name: '中國人' },
         { code: 'ru', iso: 'ru-RU', name: 'Русский' },
-        { code: 'en', iso: 'en-ES', name: 'English' },
+        { code: 'en', iso: 'en-ES', name: 'English' }
     ].map((it) => ({ ...it, code_: it.code, file: it.code + '.json' }))
 
     const locales_mobile = locales_pc.map((locale) => {

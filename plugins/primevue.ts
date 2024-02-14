@@ -11,14 +11,6 @@ export default defineNuxtPlugin((nuxtApp) => {
     vueApp.use(PrimeVue, { ripple: true })
     vueApp.use(ToastService)
 
-    //for (const [name, component] of [
-    //    ['PrimeButton', Button],
-    //    ['PrimeInputText', InputText],
-    //    ['PrimeToast', Toast],
-    //]) {
-    //    vueApp.component(name, component)
-    //}
-
     vueApp.component('PrimeButton', Button)
     vueApp.component('PrimeInputText', InputText)
     vueApp.component('Toast', Toast)

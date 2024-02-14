@@ -11,6 +11,11 @@
                     ]"
                     src="main/face_1.webp"
                 ></ItemMediaImg>-->
+
+                <div class="my-auto">
+                    <div>Maxim Semenuk Valerievich</div>
+                    <!--<div>Maxim Sigma Brand</div>-->
+                </div>
             </div>
 
             <div :class="['relative flex justify-start flex-grow h-full w-full overflow-hidden']">
