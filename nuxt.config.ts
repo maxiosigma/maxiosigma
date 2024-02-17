@@ -25,7 +25,7 @@ export default defineNuxtConfig({
         inlineStyles: false
     },
     ignorePrefix: '_',
-    ignore: ['**/admin/**'],
+    ignore: isGenerateMode ? ['**/admin/**'] : [],
     vite: {
         css: {
             modules: {
@@ -72,7 +72,8 @@ export default defineNuxtConfig({
             //redirectOn: 'all'
         },
         pages: {
-            link: false
+            //link: false,
+            //admin: false
         },
         langDir: 'locales',
         customRoutes: 'config',
@@ -97,20 +98,21 @@ export default defineNuxtConfig({
 
         '@nuxtjs/i18n',
         '@nuxt/content',
-        '@nuxtjs/sitemap'
+        '@nuxtjs/sitemap',
+        'nuxt-simple-robots'
     ],
     site: {
         url: 'https://maxiosigma.web.app'
     },
     sitemap: {
-        autoI18n: true,
-        autoLastmod: true,
-        xsl: '/public/sitemap-style.xsl'
+        autoI18n: true
+        //autoLastmod: true,
+        //xsl: '/public/sitemap-style.xsl'
         //hostname: 'maxiosigma.web.app',
         //path: '/site-sigma-map.xml',
     },
     content: {
-        documentDriven: true
+        //documentDriven: true
         //locales: i18n_config.locales.map((l) => l.code),
         //defaultLocale: i18n_config.defaultLocale,
     },
@@ -165,7 +167,7 @@ export default defineNuxtConfig({
             concurrency: 50,
             crawlLinks: true,
             //autoSubfolderIndex: false,
-            routes: ['/', '/sitemap.xml', '/robots.txt'],
+            //routes: ['/sitemap.xml', '/robots.txt'],
             //ignore: isGenerateMode ? ['**/admin/*', '**/admin/*'] : [],
             //ignore: ['**/admin/*', '**/admin/*', '*/admin/*', 'admin/**', 'admin/*'],
             retryDelay: 100,

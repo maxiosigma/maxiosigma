@@ -20,6 +20,7 @@
 </template>
 
 <script setup>
+defineI18nRoute(false)
 //const { data: dataIndex } = await useAsyncData('index', () =>
 //    queryContent().where({ _file: 'ru/index.yaml' }).findOne()
 //)

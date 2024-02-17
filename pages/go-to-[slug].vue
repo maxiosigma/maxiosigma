@@ -29,10 +29,6 @@ await getSPBData(payload)
 if (payload.value === null) await navigateTo(localePath('/'))
 console.log(fetchContentNavigation())
 
-useHead({
-    title: slug.toUpperCase()
-})
-
 async function getSPBData(payload) {
     if (payload.value === null) {
         const client = useSupabaseClient()
@@ -45,4 +41,15 @@ async function getSPBData(payload) {
         payload.value = dataClient
     }
 }
+
+useHead({
+    title: slug.toUpperCase()
+})
+
+defineRouteRules({
+    sitemap: {
+        changefreq: 'daily',
+        priority: 0.3
+    }
+})
 </script>
