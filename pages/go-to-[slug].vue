@@ -19,21 +19,30 @@ if (process.server) {
         .only(['title', 'about', 'description', 'link'])
         .findOne()
         .catch(() => null)
+
+    await getSPBData(useNuxtData(namePayload)?.data)
 }
 
 const payload = useNuxtData(namePayload)?.data
+await getSPBData(payload)
 
-if (payload.value === null) {
-    const client = useSupabaseClient()
-    const { data: dataClient } = await client.from('links').select('about, description, link').eq('slug', slug).single()
-    payload.value = dataClient
-}
-
-if (payload.value === null) {
-    await navigateTo(localePath('/'))
-}
+if (payload.value === null) await navigateTo(localePath('/'))
+console.log(fetchContentNavigation())
 
 useHead({
     title: slug.toUpperCase()
 })
+
+async function getSPBData(payload) {
+    if (payload.value === null) {
+        const client = useSupabaseClient()
+        const { data: dataClient } = await client
+            .from('links')
+            .select('about, description, link')
+            .eq('slug', slug)
+            .single()
+
+        payload.value = dataClient
+    }
+}
 </script>
