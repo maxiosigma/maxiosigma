@@ -1,10 +1,12 @@
 ﻿<template>
     <LayoutDefault>
-        {{ payload }}
+        <!--{{ payload }}-->
     </LayoutDefault>
 </template>
 
 <script setup>
+defineI18nRoute(false)
+
 const {
     params: { slug }
 } = useRoute()
@@ -15,9 +17,9 @@ const baseLocale = locale.value?.replace('-amp', '') ?? 'ru'
 const namePayload = `${baseLocale}_go_to_${slug}`
 
 if (process.server) {
-    useNuxtApp().payload.data[namePayload] = await queryContent(`/${baseLocale}/links/${slug}`)
-        .only(['title', 'about', 'description', 'link'])
+    useNuxtApp().payload.data[namePayload] = await queryContent(`/common/links/${slug}`)
         .findOne()
+        .then((item) => (!isNot(item?.link) ? useCripty(item?.link) : null))
         .catch(() => null)
 
     await getSPBData(useNuxtData(namePayload)?.data)
@@ -26,15 +28,18 @@ if (process.server) {
 const payload = useNuxtData(namePayload)?.data
 await getSPBData(payload)
 
-if (payload.value === null) await navigateTo(localePath('/'))
-console.log(fetchContentNavigation())
+if (isNot(payload.value)) await navigateTo(localePath('/'))
 
 async function getSPBData(payload) {
     if (payload.value === null) {
         const client = useSupabaseClient()
-        const { data: dataClient } = await client.from('links').select('*').eq('slug', slug).single()
-        payload.value = dataClient
+        const { data: dataClient } = await client.from('links').select('link').eq('slug', slug).single()
+        payload.value = !isNot(dataClient?.link) ? useCripty(dataClient?.link) : null
     }
+}
+
+function isNot(item) {
+    return item === null || item?.trim() === ''
 }
 
 useHead({

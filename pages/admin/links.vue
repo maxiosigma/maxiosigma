@@ -5,6 +5,7 @@
 </template>
 
 <script setup>
+defineI18nRoute(false)
 const namePayload = `links`
 
 if (process.server) {
@@ -16,7 +17,7 @@ if (process.server) {
 
     useNuxtApp().payload.data[namePayload] = [
         ...((await client.from('links').select('*')?.data) ?? []),
-        ...(await queryContent(`/links`)
+        ...(await queryContent(`/common/links`)
             .find()
             .catch(() => []))
     ].map((item) => localePath(`/go-to-${item?.title?.toLowerCase() || item?.slug}`))
