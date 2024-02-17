@@ -82,16 +82,11 @@ export default defineNuxtConfig({
         server: true,
         client: true
     },
-    content: {
-        //locales: i18n_config.locales.map((l) => l.code),
-        //defaultLocale: i18n_config.defaultLocale,
-    },
     runtimeConfig: {
         //public: { i18n_config }
     },
     modules: [
         //
-        //'nuxt-windicss',
         '@nuxtjs/tailwindcss',
         '@nuxtjs/supabase',
         '@nuxtjs/device',
@@ -101,8 +96,24 @@ export default defineNuxtConfig({
         'nuxt-icon',
 
         '@nuxtjs/i18n',
-        '@nuxt/content'
+        '@nuxt/content',
+        '@nuxtjs/sitemap'
     ],
+    site: {
+        url: 'https://maxiosigma.web.app'
+    },
+    sitemap: {
+        autoI18n: true,
+        autoLastmod: true,
+        xsl: '/public/sitemap-style.xsl'
+        //hostname: 'maxiosigma.web.app',
+        //path: '/site-sigma-map.xml',
+    },
+    content: {
+        documentDriven: true
+        //locales: i18n_config.locales.map((l) => l.code),
+        //defaultLocale: i18n_config.defaultLocale,
+    },
     supabase: {
         redirect: false,
         redirectOptions: {
@@ -154,7 +165,7 @@ export default defineNuxtConfig({
             concurrency: 50,
             crawlLinks: true,
             //autoSubfolderIndex: false,
-            //routes: ['/sitemap.xml', '/robots.txt'],
+            routes: ['/', '/sitemap.xml', '/robots.txt'],
             //ignore: isGenerateMode ? ['**/admin/*', '**/admin/*'] : [],
             //ignore: ['**/admin/*', '**/admin/*', '*/admin/*', 'admin/**', 'admin/*'],
             retryDelay: 100,
