@@ -126,15 +126,18 @@ function locales() {
         return { ...locale, code: locale.code + '-amp', file: locale.code + '-amp.json' }
     })
 
-    const locales = [...locales_pc, ...locales_mobile]
+    //const locales = [...locales_pc, ...locales_mobile]
 
     if (!existsSync('./locales')) mkdirSync('./locales')
     if (!existsSync('./content')) mkdirSync('./content')
 
-    locales.map(({ file, code }) => {
-        !existsSync(`./locales/${file}`) ? writeFileSync(`./locales/${file}`, '{}') : null
+    locales_pc.map(({ code }) => {
         !existsSync(`./content/${code}`) ? mkdirSync(`./content/${code}`) : null
     })
+    //
+    ;[...locales_pc, ...locales_mobile].map(({ file }) => {
+        !existsSync(`./locales/${file}`) ? writeFileSync(`./locales/${file}`, '{}') : null
+    })
 
-    return locales
+    return [...locales_pc, ...locales_mobile]
 }
