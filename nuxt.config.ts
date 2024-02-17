@@ -17,13 +17,15 @@ export default defineNuxtConfig({
         'assets-data': resolve(__dirname, './assets/data')
     },
     experimental: {
-        //inlineSSRStyles: false,
         payloadExtraction: true,
+        //payloadExtraction: false,
         treeshakeClientOnly: false
     },
     features: {
         inlineStyles: false
     },
+    ignorePrefix: '_',
+    ignore: ['**/admin/**'],
     vite: {
         css: {
             modules: {
@@ -32,13 +34,25 @@ export default defineNuxtConfig({
             }
         },
         resolve: {},
-        plugins: []
+        plugins: [],
+        build: {
+            chunkSizeWarningLimit: 5000
+            //rollupOptions: {
+            //    output: {
+            //        manualChunks(id) {
+            //            if (id.includes('node_modules')) {
+            //                return id.toString().split('node_modules/')[1].split('/')[0].toString()
+            //            }
+            //        }
+            //    }
+            //}
+        }
     },
     build: {
         transpile: [
             //
             //'animejs',
-            //'primevue'
+            'primevue'
         ]
     },
     //...(isGenerateMode
@@ -79,6 +93,7 @@ export default defineNuxtConfig({
         //
         //'nuxt-windicss',
         '@nuxtjs/tailwindcss',
+        '@nuxtjs/supabase',
         '@nuxtjs/device',
         'nuxt-primevue',
         '@formkit/nuxt',
@@ -88,6 +103,13 @@ export default defineNuxtConfig({
         '@nuxtjs/i18n',
         '@nuxt/content'
     ],
+    supabase: {
+        redirect: false,
+        redirectOptions: {
+            login: '/',
+            callback: '/'
+        }
+    },
     tailwindcss: {
         viewer: false,
         configPath: 'tailwind.config.ts',
@@ -95,7 +117,6 @@ export default defineNuxtConfig({
     },
     primevue: {
         usePrimeVue: true,
-        //cssLayerOrder: 'reset,primevue',
         cssLayerOrder: 'tailwind-base, primevue, tailwind-utilities',
         importPT: { as: 'Tailwind', from: 'primevue/passthrough/tailwind' },
         options: {
@@ -104,12 +125,42 @@ export default defineNuxtConfig({
         },
         components: {
             prefix: 'Prime',
-            include: ['Button', 'DataTable', 'FloatLabel', 'InputText']
+            include: ['Button', 'FloatLabel', 'InputText'], // 'DataTable',
+            exclude: '*'
+        },
+        directives: {
+            prefix: 'p-',
+            include: ['Ripple', 'Tooltip'],
+            exclude: '*'
+        },
+        composables: {
+            include: [], //'useStyle'
+            exclude: '*'
         }
-        //directives: {
-        //    prefix: 'p-',
-        //    include: ['Ripple', 'Tooltip']
-        //}
+    },
+    nitro: {
+        static: true,
+        publicAssets: [
+            {
+                baseURL: 'images',
+                dir: 'public/images',
+                maxAge: 60 * 60 * 24 * 7 // 7 days
+            }
+        ],
+        //compressPublicAssets: {
+        //    brotli: true
+        //},
+        prerender: {
+            concurrency: 50,
+            crawlLinks: true,
+            //autoSubfolderIndex: false,
+            //routes: ['/sitemap.xml', '/robots.txt'],
+            //ignore: isGenerateMode ? ['**/admin/*', '**/admin/*'] : [],
+            //ignore: ['**/admin/*', '**/admin/*', '*/admin/*', 'admin/**', 'admin/*'],
+            retryDelay: 100,
+            interval: 10,
+            retry: 1
+        }
     },
     css: ['~/assets/index.scss'],
     hooks: {}

@@ -1,6 +1,6 @@
 ﻿<template>
     <LayoutDefault>
-        {{ data }}
+        {{ payload }}
     </LayoutDefault>
 </template>
 
@@ -10,27 +10,28 @@ const {
 } = useRoute()
 
 const { locale } = useI18n()
+const localePath = useLocalePath()
 const baseLocale = locale.value?.replace('-amp', '') ?? 'ru'
+const namePayload = `${baseLocale}_go_to_${slug}`
 
-const data = ref({})
-
-try {
-    data.value = await queryContent(`/${baseLocale}/links/${slug}`)
+if (process.server) {
+    useNuxtApp().payload.data[namePayload] = await queryContent(`/${baseLocale}/links/${slug}`)
         .only(['title', 'about', 'description', 'link'])
         .findOne()
-} catch (error) {}
+        .catch(() => null)
+}
 
-console.log(data.value)
+const payload = useNuxtData(namePayload)?.data
 
-// locale: locale.value?.replace('-amp', '')
-//console.log()
+if (payload.value === null) {
+    const client = useSupabaseClient()
+    const { data: dataClient } = await client.from('links').select('about, description, link').eq('slug', slug).single()
+    payload.value = dataClient
+}
 
-//await navigateTo('https://nuxt.com', {
-//    external: true,
-//    open: true
-//}).then(() => setTimeout(() => navigateTo('/'), 5000))
-
-console.log(slug)
+if (payload.value === null) {
+    await navigateTo(localePath('/'))
+}
 
 useHead({
     title: slug.toUpperCase()

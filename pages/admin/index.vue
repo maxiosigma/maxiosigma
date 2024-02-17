@@ -5,11 +5,11 @@
 
             <!--<FormKit type="form"></FormKit>-->
 
-            <div>
+            <!--<div>
                 <div v-for="([key, val], i) in noDefaultObj(Object.entries(dataIndex))" :key="i">
                     {{ key }} - {{ val }}
                 </div>
-            </div>
+            </div>-->
 
             <!-- .filter((d) => d?.[0] !== '_')  -->
             <!--<ContentRenderer :value="data">
@@ -23,7 +23,7 @@
 //const { data: dataIndex } = await useAsyncData('index', () =>
 //    queryContent().where({ _file: 'ru/index.yaml' }).findOne()
 //)
-const dataIndex = queryContent().where({ _file: 'ru/index.yaml' }).findOne()
+//const dataIndex = queryContent().where({ _file: 'ru/index.yaml' }).findOne()
 
 //const
 
