@@ -1,6 +1,6 @@
 ﻿<template>
     <LayoutDefault>
-        <!--  -->
+        <NuxtLink v-for="item in payload" :to="item">{{ item }}</NuxtLink>
     </LayoutDefault>
 </template>
 
@@ -8,12 +8,18 @@
 const namePayload = `links`
 
 if (process.server) {
-    useNuxtApp().payload.data[namePayload] = await queryContent(`/${baseLocale}/links`)
-        .only(['title', 'about', 'description', 'link'])
-        .findOne()
-        .catch(() => null)
+    const { locale } = useI18n()
+    const localePath = useLocalePath()
+    const baseLocale = locale.value?.replace('-amp', '') ?? 'ru'
 
-    //await getSPBData(useNuxtData(namePayload)?.data)
+    const client = useSupabaseClient()
+
+    useNuxtApp().payload.data[namePayload] = [
+        ...((await client.from('links').select('*')?.data) ?? []),
+        ...(await queryContent(`/links`)
+            .find()
+            .catch(() => []))
+    ].map((item) => localePath(`/go-to-${item?.title?.toLowerCase() || item?.slug}`))
 }
 
 const payload = useNuxtData(namePayload)?.data

@@ -32,24 +32,19 @@ console.log(fetchContentNavigation())
 async function getSPBData(payload) {
     if (payload.value === null) {
         const client = useSupabaseClient()
-        const { data: dataClient } = await client
-            .from('links')
-            .select('about, description, link')
-            .eq('slug', slug)
-            .single()
-
+        const { data: dataClient } = await client.from('links').select('*').eq('slug', slug).single()
         payload.value = dataClient
     }
 }
 
 useHead({
-    title: slug.toUpperCase()
+    title: slug?.toUpperCase()
 })
 
-defineRouteRules({
-    sitemap: {
-        changefreq: 'daily',
-        priority: 0.3
-    }
-})
+//defineRouteRules({
+//    sitemap: {
+//        changefreq: 'daily',
+//        priority: 0.3
+//    }
+//})
 </script>
