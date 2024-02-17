@@ -41,6 +41,10 @@
 
 <script setup>
 const test = ref('aaa')
+
+useHead({
+    title: 'Главная'
+})
 </script>
 
 <style lang="scss">

@@ -1,7 +1,5 @@
 ﻿<template>
-    <LayoutDefault>
-        <!--{{ payload }}-->
-    </LayoutDefault>
+    <LayoutDefault />
 </template>
 
 <script setup>
@@ -11,10 +9,8 @@ const {
     params: { slug }
 } = useRoute()
 
-const { locale } = useI18n()
 const localePath = useLocalePath()
-const baseLocale = locale.value?.replace('-amp', '') ?? 'ru'
-const namePayload = `${baseLocale}_go_to_${slug}`
+const namePayload = `${useBaseLocale()}_go_to_${slug}`
 
 if (process.server) {
     useNuxtApp().payload.data[namePayload] = await queryContent(`/common/links/${slug}`)
@@ -26,15 +22,26 @@ if (process.server) {
 }
 
 const payload = useNuxtData(namePayload)?.data
-await getSPBData(payload)
+await getSPBData(payload.value)
 
 if (isNot(payload.value)) await navigateTo(localePath('/'))
+else {
+    let check = false
+    const link = useUncript(payload.value)
+
+    if (link?.includes('http')) {
+        await navigateTo(link, { external: true, open: true })
+        check = true
+    }
+
+    if (check) setTimeout(() => navigateTo(localePath('/')), 1500)
+}
 
 async function getSPBData(payload) {
-    if (payload.value === null) {
+    if (payload === null) {
         const client = useSupabaseClient()
         const { data: dataClient } = await client.from('links').select('link').eq('slug', slug).single()
-        payload.value = !isNot(dataClient?.link) ? useCripty(dataClient?.link) : null
+        payload = !isNot(dataClient?.link) ? useCripty(dataClient?.link) : null
     }
 }
 

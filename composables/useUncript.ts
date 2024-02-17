@@ -1,10 +1,11 @@
-export default function (content = "") {
-	return content
-		?.split(":")
-		.map((it) => Number(it))
-		.map((it, i) => (i < 10 ? (it += 7) : i < 20 ? (it -= 9) : (it += 11)))
-		.map((it) => String.fromCharCode(it))
-		.join("");
+export default function (content = '') {
+    return content
+        ?.split(':')
+        ?.map((it) => Number(it))
+        ?.map((it, i) => (i < 10 ? (it += 7) : i < 20 ? (it -= 9) : (it += 11)))
+        ?.map((it) => String.fromCharCode(it))
+        ?.join('')
+        ?.slice(0, -1)
 }
 
 // btoa() и atob()

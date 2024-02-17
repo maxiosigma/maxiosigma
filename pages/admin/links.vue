@@ -9,10 +9,7 @@ defineI18nRoute(false)
 const namePayload = `links`
 
 if (process.server) {
-    const { locale } = useI18n()
     const localePath = useLocalePath()
-    const baseLocale = locale.value?.replace('-amp', '') ?? 'ru'
-
     const client = useSupabaseClient()
 
     useNuxtApp().payload.data[namePayload] = [
