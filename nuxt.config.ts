@@ -167,7 +167,7 @@ export default defineNuxtConfig({
             concurrency: 50,
             crawlLinks: true,
             //autoSubfolderIndex: false,
-            //routes: ['/sitemap.xml', '/robots.txt'],
+            routes: ['/sitemap.xml', '/robots.txt'],
             //ignore: isGenerateMode ? ['**/admin/*', '**/admin/*'] : [],
             //ignore: ['**/admin/*', '**/admin/*', '*/admin/*', 'admin/**', 'admin/*'],
             retryDelay: 100,
@@ -184,13 +184,11 @@ function locales() {
         { code: 'ru', iso: 'ru-RU', name: 'Русский' },
         { code: 'en', iso: 'en-ES', name: 'English' },
         { code: 'zh', iso: 'zh-CN', name: '中國人' }
-    ].map((it) => ({ ...it, code_: it.code, file: it.code + '.json' }))
+    ].map((it) => ({ ...it, origin: it.code, file: it.code + '.json' }))
 
     const locales_mobile = locales_pc.map((locale) => {
         return { ...locale, code: locale.code + '-amp', file: locale.code + '-amp.json' }
     })
-
-    //const locales = [...locales_pc, ...locales_mobile]
 
     if (!existsSync('./locales')) mkdirSync('./locales')
     if (!existsSync('./content')) mkdirSync('./content')
@@ -199,7 +197,7 @@ function locales() {
         !existsSync(`./content/${code}`) ? mkdirSync(`./content/${code}`) : null
     })
     //
-    ;[...locales_pc, ...locales_mobile].map(({ file }) => {
+    locales_pc.map(({ file }) => {
         !existsSync(`./locales/${file}`) ? writeFileSync(`./locales/${file}`, '{}') : null
     })
 

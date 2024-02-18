@@ -53,10 +53,10 @@ useHead({
     title: slug?.toUpperCase()
 })
 
-//defineRouteRules({
-//    sitemap: {
-//        changefreq: 'daily',
-//        priority: 0.3
-//    }
-//})
+defineRouteRules({
+    sitemap: {
+        changefreq: 'daily',
+        priority: 0.3
+    }
+})
 </script>
