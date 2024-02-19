@@ -1,12 +1,13 @@
 ﻿<template>
-    <LayoutDefault />
+    <LayoutDefault></LayoutDefault>
 </template>
 
 <script setup>
 defineI18nRoute(false)
 
 const {
-    params: { slug }
+    params: { slug },
+    query
 } = useRoute()
 
 const localePath = useLocalePath()
@@ -30,7 +31,8 @@ else {
     const link = useUncript(payload.value)
 
     if (link?.includes('http')) {
-        await navigateTo(link, { external: true, open: true })
+        //?directly=true //!query?.directly //http://localhost:3000/go-to-bizup?directly=true
+        await navigateTo(link, { external: true, open: !query?.directly })
         check = true
     }
 
@@ -53,10 +55,10 @@ useHead({
     title: slug?.toUpperCase()
 })
 
-defineRouteRules({
-    sitemap: {
-        changefreq: 'daily',
-        priority: 0.3
-    }
-})
+//defineRouteRules({
+//    sitemap: {
+//        changefreq: 'daily',
+//        priority: 0.3
+//    }
+//})
 </script>

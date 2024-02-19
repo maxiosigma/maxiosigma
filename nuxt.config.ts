@@ -187,7 +187,7 @@ function locales() {
     ].map((it) => ({ ...it, origin: it.code, file: it.code + '.json' }))
 
     const locales_mobile = locales_pc.map((locale) => {
-        return { ...locale, code: locale.code + '-amp', file: locale.code + '-amp.json' }
+        return { ...locale, code: locale.code + '-amp' }
     })
 
     if (!existsSync('./locales')) mkdirSync('./locales')

@@ -5,4 +5,5 @@
     //nuxtApp.hook('page:start', (pages) => {
     //    console.log(pages)
     //})
+    //return nuxtApp
 })
