@@ -1,17 +1,18 @@
 ﻿<template>
     <LayoutDefault>
         <div class="container py-10 flex flex-wrap gap-5 text-white/40">
-            <NuxtLink v-for="item in payload" :to="item">{{ item }}</NuxtLink>
+            <NuxtLink v-for="(item, i) in payload" :key="i" :to="localePath(item)">{{ item }}</NuxtLink>
         </div>
     </LayoutDefault>
 </template>
 
 <script setup>
-defineI18nRoute(false)
+//defineI18nRoute(false)
+defineI18nRoute({ locales: ['ru'] })
+const localePath = useLocalePath()
 const namePayload = `links`
 
 if (process.server) {
-    //const localePath = useLocalePath()
     const client = useSupabaseClient()
 
     useNuxtApp().payload.data[namePayload] = [

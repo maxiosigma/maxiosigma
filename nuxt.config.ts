@@ -25,7 +25,7 @@ export default defineNuxtConfig({
         inlineStyles: false
     },
     ignorePrefix: '_',
-    ignore: isGenerateMode ? ['**/admin/**'] : [],
+    //ignore: isGenerateMode ? ['**/admin/**'] : [],
     vite: {
         css: {
             modules: {
@@ -71,10 +71,10 @@ export default defineNuxtConfig({
             redirectOn: 'root'
             //redirectOn: 'all'
         },
-        pages: {
-            //link: false,
-            //admin: false
-        },
+        //pages: {
+        //    //link: false,
+        //    //admin: false
+        //},
         langDir: 'locales',
         customRoutes: 'config',
         locales: locales()
@@ -167,7 +167,7 @@ export default defineNuxtConfig({
             concurrency: 50,
             crawlLinks: true,
             //autoSubfolderIndex: false,
-            routes: ['/sitemap.xml', '/robots.txt'],
+            //routes: ['/sitemap.xml', '/robots.txt'],
             //ignore: isGenerateMode ? ['**/admin/*', '**/admin/*'] : [],
             //ignore: ['**/admin/*', '**/admin/*', '*/admin/*', 'admin/**', 'admin/*'],
             retryDelay: 100,

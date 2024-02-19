@@ -3,7 +3,8 @@
 </template>
 
 <script setup>
-defineI18nRoute(false)
+//defineI18nRoute(false)
+defineI18nRoute({ locales: ['ru'] })
 
 const {
     params: { slug },
@@ -32,11 +33,11 @@ else {
 
     if (link?.includes('http')) {
         //?directly=true //!query?.directly //http://localhost:3000/go-to-bizup?directly=true
-        await navigateTo(link, { external: true, open: !query?.directly })
+        //await navigateTo(link, { external: true, open: !query?.directly })
         check = true
     }
 
-    if (check) setTimeout(() => navigateTo(localePath('/')), 1500)
+    //if (check) setTimeout(() => navigateTo(localePath('/')), 1500)
 }
 
 async function getSPBData(payload) {
