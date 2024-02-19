@@ -1,5 +1,6 @@
 {
     "private": true,
+    "type": "module",
     "scripts": {
         "dev": "nuxt dev",
         "dev-o": "nuxt dev -o",
@@ -8,7 +9,9 @@
         "start": "nuxt start",
         "clean": "nuxt cleanup",
         "postinstall": "nuxt prepare",
-        "typecheck": "nuxt typecheck"
+        "typecheck": "nuxt typecheck",
+        "": "",
+        "json_to_yaml": "node ./z-mod/json_to_yaml/index.js"
     },
     "dependencies": {
         "@formkit/nuxt": "^1.5.9",
@@ -39,7 +42,8 @@
         "vue-final-modal": "^4.5.3",
         "vue-js-modal": "^2.0.1",
         "vue-toast-notification": "3.1.2",
-        "vue-toasted": "^1.1.28"
+        "vue-toasted": "^1.1.28",
+        "yaml": "^2.3.4"
     },
     "devDependencies": {
         "@nuxt/content": "^2.12.0",
