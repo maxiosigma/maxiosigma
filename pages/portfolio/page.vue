@@ -1,6 +1,6 @@
 ﻿<template>
     <LayoutDefault>
-        <NuxtLink v-for="item in payload" :to="item">{{ item }}</NuxtLink>
+        <!--<NuxtLinkLocale v-for="item in payload" :to="item">{{ item }}</NuxtLinkLocale>-->
     </LayoutDefault>
 </template>
 

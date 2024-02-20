@@ -4,7 +4,11 @@
 
 <script setup>
 //defineI18nRoute(false)
-defineI18nRoute({ locales: ['ru'] })
+//defineI18nRoute({ locales: ['ru'] })
+
+//definePageMeta({
+//    key: (route) => route.fullPath
+//})
 
 const {
     params: { slug },

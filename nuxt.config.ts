@@ -3,6 +3,31 @@ import { mkdirSync, writeFileSync, existsSync } from 'fs'
 
 const isGenerateMode = process.argv.includes('generate')
 
+const locales = () => {
+    const locales_pc = [
+        { code: 'ru', iso: 'ru-RU', name: 'Русский' },
+        { code: 'en', iso: 'en-ES', name: 'English' },
+        { code: 'zh', iso: 'zh-CN', name: '中國人' }
+    ].map((it) => ({ ...it, origin: it.code, file: it.code + '.json' }))
+
+    const locales_mobile = locales_pc.map((locale) => {
+        return { ...locale, code: locale.code + '-amp' }
+    })
+
+    if (!existsSync('./locales')) mkdirSync('./locales')
+    if (!existsSync('./content')) mkdirSync('./content')
+
+    locales_pc.map(({ code }) => {
+        !existsSync(`./content/${code}`) ? mkdirSync(`./content/${code}`) : null
+    })
+    //
+    locales_pc.map(({ file }) => {
+        !existsSync(`./locales/${file}`) ? writeFileSync(`./locales/${file}`, '{}') : null
+    })
+
+    return [...locales_pc, ...locales_mobile]
+}
+
 export default defineNuxtConfig({
     ssr: true,
     telemetry: false,
@@ -60,25 +85,6 @@ export default defineNuxtConfig({
     //          ignore: ['**/api/**', '**/admin/**'],
     //      }
     //    : {}),
-    i18n: {
-        lazy: false,
-        defaultLocale: 'ru',
-        strategy: 'prefix_except_default',
-        detectBrowserLanguage: {
-            useCookie: true,
-            cookieKey: 'lang',
-            alwaysRedirect: false,
-            redirectOn: 'root'
-            //redirectOn: 'all'
-        },
-        //pages: {
-        //    //link: false,
-        //    //admin: false
-        //},
-        langDir: 'locales',
-        customRoutes: 'config',
-        locales: locales()
-    },
     sourcemap: {
         server: true,
         client: true
@@ -97,20 +103,41 @@ export default defineNuxtConfig({
         'nuxt-icon',
 
         '@nuxtjs/i18n',
-        '@nuxt/content',
-        '@nuxtjs/sitemap',
-        'nuxt-simple-robots'
+        '@nuxt/content'
+        //'@nuxtjs/sitemap',
+        //'nuxt-simple-robots'
     ],
     site: {
         url: 'https://maxiosigma.web.app'
     },
-    sitemap: {
-        autoI18n: true
-        //autoLastmod: true,
-        //xsl: '/public/sitemap-style.xsl'
-        //hostname: 'maxiosigma.web.app',
-        //path: '/site-sigma-map.xml',
+    i18n: {
+        lazy: false,
+        defaultLocale: 'ru',
+        strategy: 'prefix_except_default',
+        detectBrowserLanguage: {
+            useCookie: true,
+            cookieKey: 'lang',
+            alwaysRedirect: false,
+            redirectOn: 'root'
+            //redirectOn: 'all'
+        },
+        pages: {
+            //link: false,
+            'go-to-[slug]': false,
+            'admin/index': false,
+            'admin/links': false
+        },
+        langDir: 'locales',
+        customRoutes: 'config',
+        locales: locales()
     },
+    //sitemap: {
+    //    //autoI18n: true
+    //    //autoLastmod: true,
+    //    //xsl: '/public/sitemap-style.xsl'
+    //    //hostname: 'maxiosigma.web.app',
+    //    //path: '/site-sigma-map.xml',
+    //},
     content: {
         //documentDriven: true
         //locales: i18n_config.locales.map((l) => l.code),
@@ -178,28 +205,3 @@ export default defineNuxtConfig({
     css: ['~/assets/index.scss'],
     hooks: {}
 })
-
-function locales() {
-    const locales_pc = [
-        { code: 'ru', iso: 'ru-RU', name: 'Русский' },
-        { code: 'en', iso: 'en-ES', name: 'English' },
-        { code: 'zh', iso: 'zh-CN', name: '中國人' }
-    ].map((it) => ({ ...it, origin: it.code, file: it.code + '.json' }))
-
-    const locales_mobile = locales_pc.map((locale) => {
-        return { ...locale, code: locale.code + '-amp' }
-    })
-
-    if (!existsSync('./locales')) mkdirSync('./locales')
-    if (!existsSync('./content')) mkdirSync('./content')
-
-    locales_pc.map(({ code }) => {
-        !existsSync(`./content/${code}`) ? mkdirSync(`./content/${code}`) : null
-    })
-    //
-    locales_pc.map(({ file }) => {
-        !existsSync(`./locales/${file}`) ? writeFileSync(`./locales/${file}`, '{}') : null
-    })
-
-    return [...locales_pc, ...locales_mobile]
-}
