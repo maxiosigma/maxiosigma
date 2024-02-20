@@ -11,7 +11,7 @@
         "postinstall": "nuxt prepare",
         "typecheck": "nuxt typecheck",
         "": "",
-        "json_to_yaml": "node ./z-mod/json_to_yaml/index.js"
+        "json_to_yaml": "node ./z-mod/json_to_yaml/app.js"
     },
     "dependencies": {
         "@formkit/nuxt": "^1.5.9",

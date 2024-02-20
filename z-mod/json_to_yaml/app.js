@@ -2,15 +2,22 @@
 import { parse, stringify } from 'yaml'
 //
 ;(async () => {
-    const links = await import('./referrers.json', {
+    //await links()
+    await works()
+})()
+
+async function works() {
+    //
+}
+
+async function links() {
+    const linksRows = await import('./referrers.json', {
         assert: {
             type: 'json'
         }
-    }).then((res) => res.default[0])
+    }).then((res) => res.default[0].rows)
 
-    const rows = links.rows
-
-    rows.map((row) => {
+    linksRows.map((row) => {
         const [
             id,
             title,
@@ -38,7 +45,7 @@ import { parse, stringify } from 'yaml'
                 stringify({ title: isNull(title), description: isNull(description) })
             )
     })
-})()
+}
 
 function isNull(item) {
     return item === 'NULL' ? null : item
