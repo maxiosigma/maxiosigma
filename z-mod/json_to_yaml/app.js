@@ -1,23 +1,34 @@
 ﻿import { writeFileSync } from 'node:fs'
-import { parse, stringify } from 'yaml'
+import { stringify } from 'yaml'
+import slugify from 'slugify'
+//
+const dir = './z-mod/json_to_yaml/.output'
 //
 ;(async () => {
-    //await links()
+    await links()
     await works()
 })()
 
 async function works() {
     //
+    ;(await importRows('works')).map((row, ri) => {
+        const [, , , , , , title, description, link, date, ,] = row
+        const name = slugify(title?.replaceAll('-', '_'), { lower: true, trim: true, replacement: '_' })
+
+        writeFileSync(
+            `${dir}/ru/works/${ri + 1}_${name}.yaml`,
+            stringify({
+                link: isNull(link),
+                title: isNull(title),
+                description: isNull(description),
+                date: isNull(date)
+            })
+        )
+    })
 }
 
 async function links() {
-    const linksRows = await import('./referrers.json', {
-        assert: {
-            type: 'json'
-        }
-    }).then((res) => res.default[0].rows)
-
-    linksRows.map((row) => {
+    ;(await importRows('referrers')).map((row) => {
         const [
             id,
             title,
@@ -35,16 +46,24 @@ async function links() {
         ] = row
 
         writeFileSync(
-            `./z-mod/json_to_yaml/.output/common/links/${short}.yaml`,
-            stringify({ link: isNull(href), name: isNull(name), alt: isNull(alt) })
+            `${dir}/common/links/${short}.yaml`,
+            stringify({ link: isNull(href), title: isNull(name), alt: isNull(alt) })
         )
 
         if (isZero(partnership))
             writeFileSync(
-                `./z-mod/json_to_yaml/.output/ru/referrers/${short}.yaml`,
+                `${dir}/ru/referrers/${short}.yaml`,
                 stringify({ title: isNull(title), description: isNull(description) })
             )
     })
+}
+
+async function importRows(name, field = 'rows') {
+    return await import(`./${name}.json`, {
+        assert: {
+            type: 'json'
+        }
+    }).then((res) => res.default[0][field])
 }
 
 function isNull(item) {
