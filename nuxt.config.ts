@@ -50,7 +50,7 @@ export default defineNuxtConfig({
         inlineStyles: false
     },
     ignorePrefix: '_',
-    //ignore: isGenerateMode ? ['**/admin/**'] : [],
+    ignore: isGenerateMode ? ['**/admin/**'] : [],
     vite: {
         css: {
             modules: {
@@ -103,8 +103,8 @@ export default defineNuxtConfig({
         'nuxt-icon',
 
         '@nuxtjs/i18n',
-        '@nuxt/content'
-        //'@nuxtjs/sitemap',
+        '@nuxt/content',
+        '@nuxtjs/sitemap'
         //'nuxt-simple-robots'
     ],
     site: {

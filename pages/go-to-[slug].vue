@@ -10,13 +10,25 @@
 //    key: (route) => route.fullPath
 //})
 
+//defineRouteRules({
+//    prerender: true
+//})
+
+defineRouteRules({
+    //prerender: true,
+    sitemap: {
+        changefreq: 'daily',
+        priority: 0.3
+    }
+})
+
 const {
     params: { slug },
     query
 } = useRoute()
 
-const localePath = useLocalePath()
-const namePayload = `${useBaseLocale()}_go_to_${slug}`
+const localePath = useLocalePath() //${useBaseLocale()}_
+const namePayload = `go_to_${slug}`
 
 if (process.server) {
     useNuxtApp().payload.data[namePayload] = await queryContent(`/common/links/${slug}`)
@@ -59,11 +71,4 @@ function isNot(item) {
 useHead({
     title: slug?.toUpperCase()
 })
-
-//defineRouteRules({
-//    sitemap: {
-//        changefreq: 'daily',
-//        priority: 0.3
-//    }
-//})
 </script>
