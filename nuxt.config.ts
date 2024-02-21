@@ -1,5 +1,6 @@
 import { resolve } from 'path'
 import { mkdirSync, writeFileSync, existsSync } from 'fs'
+import { defineNuxtConfig } from 'nuxt/config'
 
 const isGenerateMode = process.argv.includes('generate')
 
@@ -32,6 +33,11 @@ const locales = (() => {
 export default defineNuxtConfig({
     ssr: true,
     telemetry: false,
+    typescript: {
+        strict: false,
+        //typeCheck: true
+        shim: false
+    },
     app: {
         rootId: 'app',
         rootTag: 'div class="wrapper"',
@@ -52,6 +58,7 @@ export default defineNuxtConfig({
     },
     ignorePrefix: '_',
     //ignore: isGenerateMode ? ['**/admin/**'] : [],
+    ignore: ['**/z-content/**', '**/z-mod/**', '**/z-old/**'],
     vite: {
         css: {
             modules: {
@@ -95,6 +102,7 @@ export default defineNuxtConfig({
     },
     modules: [
         //
+
         '@nuxtjs/tailwindcss',
         '@nuxtjs/supabase',
         '@nuxtjs/device',
@@ -103,13 +111,17 @@ export default defineNuxtConfig({
         '@vueuse/nuxt',
         'nuxt-icon',
 
+        //'~/modules/pages/index',
+
         '@nuxtjs/i18n',
         '@nuxt/content',
         '@nuxtjs/sitemap'
+        //'nuxt-simple-sitemap'
         //'nuxt-simple-robots'
     ],
     site: {
-        url: 'https://maxiosigma.web.app'
+        //url: 'https://maxiosigma.web.app'
+        url: '/'
     },
     i18n: {
         lazy: false,
@@ -134,12 +146,15 @@ export default defineNuxtConfig({
         locales: locales
     },
     sitemap: {
-        autoI18n: true,
-        autoLastmod: true
-        //    //xsl: '/public/sitemap-style.xsl'
-        //    //hostname: 'maxiosigma.web.app',
-        //    //path: '/site-sigma-map.xml',
-        //sources: ['/api/__sitemap__/urls']
+        //sitemaps: true,
+        //defaultSitemapsChunkSize: 500,
+        sources: ['/api/sitemap']
+        //    //autoI18n: true,
+        //    //autoLastmod: true
+        //    //    //xsl: '/public/sitemap-style.xsl'
+        //    //    //hostname: 'maxiosigma.web.app',
+        //    //    //path: '/site-sigma-map.xml',
+        //    //sources: ['/api/__sitemap__/urls']
     },
     content: {
         //documentDriven: true
@@ -181,37 +196,45 @@ export default defineNuxtConfig({
             exclude: '*'
         }
     },
+    //generate: {},
     nitro: {
-        static: true,
-        publicAssets: [
-            {
-                baseURL: 'images',
-                dir: 'public/images',
-                maxAge: 60 * 60 * 24 * 7 // 7 days
-            }
-        ],
+        //static: true,
+        //publicAssets: [
+        //    {
+        //        baseURL: 'images',
+        //        dir: 'public/images',
+        //        maxAge: 60 * 60 * 24 * 7 // 7 days
+        //    }
+        //],
         //compressPublicAssets: {
         //    brotli: true
         //},
         prerender: {
-            concurrency: 50,
+            //routes: ['/go-to-mw']
+
             crawlLinks: true,
+            routes: ['/sitemap.xml', '/sitemap_index.xml', '/ru-RU-sitemap.xml']
+
+            //concurrency: 50,
+            //crawlLinks: true,
             //autoSubfolderIndex: false,
-            routes: ['/sitemap.xml', '/ru-RU-sitemap.xml'],
+            //routes: ['/sitemap.xml', '/ru-RU-sitemap.xml']
             //routes: ['/sitemap.xml', '/robots.txt'],
             //ignore: isGenerateMode ? ['**/admin/*', '**/admin/*'] : [],
             //ignore: ['**/admin/*', '**/admin/*', '*/admin/*', 'admin/**', 'admin/*'],
-            retryDelay: 100,
-            interval: 10,
-            retry: 1
+            //retryDelay: 100,
+            //interval: 10,
+            //retry: 1
         }
     },
     css: ['~/assets/index.scss'],
     hooks: {}
 })
 
+//console.log(onlyPageLocations([defaultLocale]))
+
 function onlyPageLocations(names: any[] = []) {
     return locales
-        .filter((locale) => names.filter((name) => !locale.code === name).length > 0)
+        .filter((locale) => names.filter((name) => locale.code !== name).length > 0)
         .reduce((s, locale) => (s = { ...s, [locale.code]: false }) && s, {})
 }

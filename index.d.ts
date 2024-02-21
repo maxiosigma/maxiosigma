@@ -10,8 +10,8 @@ declare module '*.gql' {
     export = value
 }
 
-declare module '@windicss/plugin-animations'
-declare module '@windicss/plugin-heropatterns'
+//declare module '@windicss/plugin-animations'
+//declare module '@windicss/plugin-heropatterns'
 
 //declare module "vue/types/vue" {
 //	interface Vue {

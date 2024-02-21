@@ -42,6 +42,13 @@
 <script setup>
 const test = ref('aaa')
 
+definePageMeta({
+    sitemap: {
+        changefreq: 'daily',
+        priority: 0.3
+    }
+})
+
 useHead({
     title: 'Главная'
 })
