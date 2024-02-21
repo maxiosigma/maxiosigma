@@ -6,10 +6,14 @@
 </template>
 
 <script setup>
-if (process.server) {
-    //useFetch('/go-to-mw', { server: true })
-    //navigateTo('/go-to-mw')
-}
+//const localeRoute = useLocaleRoute()
+//const route = localeRoute({ name: 'go-to-mw' })
+//console.log(route)
+
+//if (process.server) {
+//    //useFetch('/go-to-mw', { server: true })
+//    //navigateTo('/go-to-mw')
+//}
 
 // :foobar="123"
 // page-key="static"

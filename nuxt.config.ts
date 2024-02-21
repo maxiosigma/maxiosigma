@@ -3,7 +3,8 @@ import { mkdirSync, writeFileSync, existsSync } from 'fs'
 
 const isGenerateMode = process.argv.includes('generate')
 
-const locales = () => {
+const defaultLocale = 'ru'
+const locales = (() => {
     const locales_pc = [
         { code: 'ru', iso: 'ru-RU', name: 'Русский' },
         { code: 'en', iso: 'en-ES', name: 'English' },
@@ -26,7 +27,7 @@ const locales = () => {
     })
 
     return [...locales_pc, ...locales_mobile]
-}
+})()
 
 export default defineNuxtConfig({
     ssr: true,
@@ -50,7 +51,7 @@ export default defineNuxtConfig({
         inlineStyles: false
     },
     ignorePrefix: '_',
-    ignore: isGenerateMode ? ['**/admin/**'] : [],
+    //ignore: isGenerateMode ? ['**/admin/**'] : [],
     vite: {
         css: {
             modules: {
@@ -112,7 +113,7 @@ export default defineNuxtConfig({
     },
     i18n: {
         lazy: false,
-        defaultLocale: 'ru',
+        defaultLocale: defaultLocale,
         strategy: 'prefix_except_default',
         detectBrowserLanguage: {
             useCookie: true,
@@ -123,21 +124,23 @@ export default defineNuxtConfig({
         },
         pages: {
             //link: false,
-            'go-to-[slug]': false,
-            'admin/index': false,
-            'admin/links': false
+            //'go-to-[slug]': false,
+            'go-to-[slug]': onlyPageLocations([defaultLocale]),
+            'admin/index': onlyPageLocations([defaultLocale]),
+            'admin/links': onlyPageLocations([defaultLocale])
         },
         langDir: 'locales',
         customRoutes: 'config',
-        locales: locales()
+        locales: locales
     },
-    //sitemap: {
-    //    //autoI18n: true
-    //    //autoLastmod: true,
-    //    //xsl: '/public/sitemap-style.xsl'
-    //    //hostname: 'maxiosigma.web.app',
-    //    //path: '/site-sigma-map.xml',
-    //},
+    sitemap: {
+        autoI18n: true,
+        autoLastmod: true
+        //    //xsl: '/public/sitemap-style.xsl'
+        //    //hostname: 'maxiosigma.web.app',
+        //    //path: '/site-sigma-map.xml',
+        //sources: ['/api/__sitemap__/urls']
+    },
     content: {
         //documentDriven: true
         //locales: i18n_config.locales.map((l) => l.code),
@@ -194,7 +197,7 @@ export default defineNuxtConfig({
             concurrency: 50,
             crawlLinks: true,
             //autoSubfolderIndex: false,
-            routes: ['/sitemap.xml'],
+            routes: ['/sitemap.xml', '/ru-RU-sitemap.xml'],
             //routes: ['/sitemap.xml', '/robots.txt'],
             //ignore: isGenerateMode ? ['**/admin/*', '**/admin/*'] : [],
             //ignore: ['**/admin/*', '**/admin/*', '*/admin/*', 'admin/**', 'admin/*'],
@@ -206,3 +209,9 @@ export default defineNuxtConfig({
     css: ['~/assets/index.scss'],
     hooks: {}
 })
+
+function onlyPageLocations(names: any[] = []) {
+    return locales
+        .filter((locale) => names.filter((name) => !locale.code === name).length > 0)
+        .reduce((s, locale) => (s = { ...s, [locale.code]: false }) && s, {})
+}
