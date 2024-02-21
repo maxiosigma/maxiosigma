@@ -14,13 +14,13 @@
 //    prerender: true
 //})
 
-defineRouteRules({
-    //prerender: true,
-    sitemap: {
-        changefreq: 'daily',
-        priority: 0.3
-    }
-})
+//defineRouteRules({
+//    //prerender: true,
+//    sitemap: {
+//        changefreq: 'daily',
+//        priority: 0.3
+//    }
+//})
 
 const {
     params: { slug },

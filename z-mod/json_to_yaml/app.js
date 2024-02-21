@@ -1,4 +1,4 @@
-﻿import { writeFileSync } from 'node:fs'
+﻿import { writeFileSync, mkdirSync, existsSync, rmdirSync } from 'node:fs'
 import { stringify } from 'yaml'
 import slugify from 'slugify'
 //
@@ -15,15 +15,12 @@ async function works() {
         const [, , , , , , title, description, link, date, ,] = row
         const name = slugify(title?.replaceAll('-', '_'), { lower: true, trim: true, replacement: '_' })
 
-        writeFileSync(
-            `${dir}/ru/works/${ri + 1}_${name}.yaml`,
-            stringify({
-                link: isNull(link),
-                title: isNull(title),
-                description: isNull(description),
-                date: isNull(date)
-            })
-        )
+        write(`ru/works/${date}~${name}.yaml`, {
+            link: isNull(link),
+            title: isNull(title),
+            description: isNull(description),
+            date: isNull(date)
+        })
     })
 }
 
@@ -45,16 +42,17 @@ async function links() {
             top
         ] = row
 
-        writeFileSync(
-            `${dir}/common/links/${short}.yaml`,
-            stringify({ link: isNull(href), title: isNull(name), alt: isNull(alt) })
-        )
+        write(`common/links/${short}.yaml`, {
+            link: isNull(href),
+            title: isNull(name),
+            alt: isNull(alt)
+        })
 
         if (isZero(partnership))
-            writeFileSync(
-                `${dir}/ru/referrers/${short}.yaml`,
-                stringify({ title: isNull(title), description: isNull(description) })
-            )
+            write(`ru/referrers/${short}.yaml`, {
+                title: isNull(title),
+                description: isNull(description)
+            })
     })
 }
 
@@ -64,6 +62,13 @@ async function importRows(name, field = 'rows') {
             type: 'json'
         }
     }).then((res) => res.default[0][field])
+}
+
+function write(path, data) {
+    const fullpath = `${dir}/${path}`
+    const fulldir = fullpath.split('/').slice(0, -1).join('/')
+    if (!existsSync(fulldir)) mkdirSync(fulldir, { recursive: true })
+    writeFileSync(fullpath, stringify(data))
 }
 
 function isNull(item) {
