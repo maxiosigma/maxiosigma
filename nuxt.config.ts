@@ -1,6 +1,8 @@
 import { resolve } from 'path'
-import { mkdirSync, writeFileSync, existsSync } from 'fs'
+import { mkdirSync, writeFileSync, existsSync, unlinkSync } from 'fs'
 //import { defineNuxtConfig } from 'nuxt/config'
+//import { config } from './app.config'
+import { sitemapName } from './config'
 
 const isGenerateMode = process.argv.includes('generate')
 
@@ -51,7 +53,8 @@ export default defineNuxtConfig({
     experimental: {
         payloadExtraction: true,
         //payloadExtraction: false,
-        treeshakeClientOnly: false
+        treeshakeClientOnly: false,
+        componentIslands: true
     },
     features: {
         inlineStyles: false
@@ -99,11 +102,10 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         locales
+
         //public: { i18n_config }
     },
     modules: [
-        //
-
         '@nuxtjs/tailwindcss',
         '@nuxtjs/supabase',
         '@nuxtjs/device',
@@ -229,7 +231,12 @@ export default defineNuxtConfig({
         }
     },
     css: ['~/assets/index.scss'],
-    hooks: {}
+    hooks: {
+        ready: () => {
+            const pathName = `public/${sitemapName}`
+            if (existsSync(pathName)) unlinkSync(pathName)
+        }
+    }
 })
 
 //console.log(onlyPageLocations([defaultLocale]))

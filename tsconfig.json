@@ -1,3 +1,4 @@
 {
+    "exclude": ["z-content/**", "z-mod/**", "z-old/**"],
     "extends": "./.nuxt/tsconfig.json"
 }

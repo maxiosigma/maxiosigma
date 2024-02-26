@@ -1,3 +1,3 @@
-export default defineAppConfig({
-	title: "Sigma",
-});
+import config from './config'
+
+export default defineAppConfig(config)
