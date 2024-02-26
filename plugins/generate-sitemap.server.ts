@@ -32,6 +32,7 @@ export default defineNuxtPlugin({
         streamToPromise(Readable.from(siteLinks).pipe(stream)).then((data) => {
             const sitemap = data.toString()
             writeFileSync(`public/${sitemapName}`, sitemap)
+            writeFileSync(`public/robots.txt`, `Sitemap: ${siteUrl}/${sitemapName}`)
         })
     },
     env: {
@@ -39,6 +40,6 @@ export default defineNuxtPlugin({
     }
 })
 
-function getSitemapUtm(array, priority = 0.3, changefreq = 'daily') {
-    return array.map((url) => ({ url, changefreq, priority }))
+function getSitemapUtm(array: any[], priority = 0.3, changefreq = 'daily') {
+    return array.map((url: any) => ({ url, changefreq, priority }))
 }

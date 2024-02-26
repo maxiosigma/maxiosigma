@@ -11,26 +11,26 @@
 //console.log(useAttrs())
 //defineI18nRoute(false)
 //defineI18nRoute({ locales: ['ru'] })
-const localePath = useLocalePath()
-const namePayload = `links`
+//const localePath = useLocalePath()
+//const namePayload = `links`
 
 //const { data } = await useFetch('/go-to-[slug]', { key: 'link' })
 //console.log(data)
 
-if (process.server) {
-    const client = useSupabaseClient()
+//if (process.server) {
+//    const client = useSupabaseClient()
 
-    useNuxtApp().payload.data[namePayload] = useArrayUnique(
-        [
-            ...((await client.from('links').select('*')?.data) ?? []),
-            ...(await queryContent(`/common/links`)
-                .find()
-                .catch(() => []))
-        ].map((item) => `/go-to-${item?.title?.toLowerCase() || item?.slug}`)
-    )
-}
+//    useNuxtApp().payload.data[namePayload] = useArrayUnique(
+//        [
+//            ...((await client.from('links').select('*')?.data) ?? []),
+//            ...(await queryContent(`/common/links`)
+//                .find()
+//                .catch(() => []))
+//        ].map((item) => `/go-to-${item?.title?.toLowerCase() || item?.slug}`)
+//    )
+//}
 
-const payload = useNuxtData(namePayload)?.data
+//const payload = useNuxtData(namePayload)?.data
 
 useHead({
     title: 'Links'

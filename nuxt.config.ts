@@ -1,7 +1,6 @@
 import { resolve } from 'path'
 import { mkdirSync, writeFileSync, existsSync, unlinkSync } from 'fs'
 //import { defineNuxtConfig } from 'nuxt/config'
-//import { config } from './app.config'
 import { sitemapName } from './config'
 
 const isGenerateMode = process.argv.includes('generate')
@@ -215,8 +214,9 @@ export default defineNuxtConfig({
         prerender: {
             //routes: ['/go-to-mw']
 
-            crawlLinks: true
+            crawlLinks: true,
             //routes: ['/sitemap.xml', '/sitemap_index.xml', '/ru-RU-sitemap.xml']
+            routes: [`/${sitemapName}`]
 
             //concurrency: 50,
             //crawlLinks: true,
