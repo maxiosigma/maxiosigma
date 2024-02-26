@@ -1,50 +1,26 @@
-﻿//export default defineNuxtPlugin(async (nuxtApp) => {
-//    //console.log(nuxtApp)
-//    ////'pages:extend'
-//    //console.log('aaaa')
-//    //nuxtApp.hook('page:start', (pages) => {
-//    //    console.log(pages)
-//    //})
-//    //return nuxtApp
-//    //
-//    const { locales } = useI18n()
-//    //const client = useSupabaseClient()
-//    const links = useArrayUnique(
-//        [
-//            //...((await client.from('links').select('*')?.data) ?? []),
-//            ...(await queryContent(`/common/links`)
-//                .find()
-//                .catch(() => []))
-//        ].map((item) => `/go-to-${item?.title?.toLowerCase() || item?.slug}`)
-//    )
-//    console.log(locales, links)
-//})
-
-import sitemap from 'sitemap'
+﻿import sitemap from 'sitemap'
 
 export default defineNuxtPlugin({
     name: 'generate-sitemap',
+    parallel: false,
     enforce: 'pre',
     async setup(nuxtApp) {
-        const client = useSupabaseClient()
-        const locales = nuxtApp.vueApp.$nuxt.$i18n.locales.value.map(({ iso }) => iso.toLowerCase())
+        //const client = useSupabaseClient()
+        //const localesCodes = nuxtApp.$config.locales.map(({ code }) => code)
+        //const links = useArrayUnique(
+        //    [
+        //        //...((await client.from('links').select('*')?.data) ?? []),
+        //        ...(await queryContent(`/common/links`)
+        //            .find()
+        //            .catch(() => []))
+        //    ].map((item) => `/go-to-${item?.title?.toLowerCase() || item?.slug}`)
+        //).value
 
-        const links = useArrayUnique(
-            [
-                //...((await client.from('links').select('*')?.data) ?? []),
-                ...(await queryContent(`/common/links`)
-                    .find()
-                    .catch(() => []))
-            ].map((item) => `/go-to-${item?.title?.toLowerCase() || item?.slug}`)
-        ).value
+        const router = useRouter()
+        const routes = router.options.routes.map(({ path }) => path).filter((path) => !path.includes(':'))
 
-        //console.log(links)
-        console.log(sitemap)
-    },
-    hooks: {
-        'app:created'() {
-            //const nuxtApp = useNuxtApp()
-        }
+        console.log(routes)
+        //console.log(sitemap)
     },
     env: {
         islands: true

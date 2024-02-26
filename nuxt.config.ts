@@ -1,6 +1,6 @@
 import { resolve } from 'path'
 import { mkdirSync, writeFileSync, existsSync } from 'fs'
-import { defineNuxtConfig } from 'nuxt/config'
+//import { defineNuxtConfig } from 'nuxt/config'
 
 const isGenerateMode = process.argv.includes('generate')
 
@@ -98,6 +98,7 @@ export default defineNuxtConfig({
         client: true
     },
     runtimeConfig: {
+        locales
         //public: { i18n_config }
     },
     modules: [
