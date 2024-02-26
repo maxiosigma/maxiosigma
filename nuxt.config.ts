@@ -114,15 +114,15 @@ export default defineNuxtConfig({
         //'~/modules/pages/index',
 
         '@nuxtjs/i18n',
-        '@nuxt/content',
-        '@nuxtjs/sitemap'
+        '@nuxt/content'
+        //'@nuxtjs/sitemap'
         //'nuxt-simple-sitemap'
         //'nuxt-simple-robots'
     ],
-    site: {
-        //url: 'https://maxiosigma.web.app'
-        url: '/'
-    },
+    //site: {
+    //    //url: 'https://maxiosigma.web.app'
+    //    url: '/'
+    //},
     i18n: {
         lazy: false,
         defaultLocale: defaultLocale,
@@ -145,17 +145,17 @@ export default defineNuxtConfig({
         customRoutes: 'config',
         locales: locales
     },
-    sitemap: {
-        //sitemaps: true,
-        //defaultSitemapsChunkSize: 500,
-        sources: ['/api/sitemap']
-        //    //autoI18n: true,
-        //    //autoLastmod: true
-        //    //    //xsl: '/public/sitemap-style.xsl'
-        //    //    //hostname: 'maxiosigma.web.app',
-        //    //    //path: '/site-sigma-map.xml',
-        //    //sources: ['/api/__sitemap__/urls']
-    },
+    //sitemap: {
+    //    //sitemaps: true,
+    //    //defaultSitemapsChunkSize: 500,
+    //    sources: ['/api/sitemap']
+    //    //    //autoI18n: true,
+    //    //    //autoLastmod: true
+    //    //    //    //xsl: '/public/sitemap-style.xsl'
+    //    //    //    //hostname: 'maxiosigma.web.app',
+    //    //    //    //path: '/site-sigma-map.xml',
+    //    //    //sources: ['/api/__sitemap__/urls']
+    //},
     content: {
         //documentDriven: true
         //locales: i18n_config.locales.map((l) => l.code),
@@ -212,8 +212,8 @@ export default defineNuxtConfig({
         prerender: {
             //routes: ['/go-to-mw']
 
-            crawlLinks: true,
-            routes: ['/sitemap.xml', '/sitemap_index.xml', '/ru-RU-sitemap.xml']
+            crawlLinks: true
+            //routes: ['/sitemap.xml', '/sitemap_index.xml', '/ru-RU-sitemap.xml']
 
             //concurrency: 50,
             //crawlLinks: true,

@@ -1,5 +1,5 @@
 ﻿export default defineSitemapEventHandler(async (e) => {
-    console.log('aaaaaa')
+    //console.log('aaaaaa')
 
     return [
         {
