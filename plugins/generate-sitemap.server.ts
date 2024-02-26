@@ -19,8 +19,8 @@ export default defineNuxtPlugin({
         const router = useRouter()
         const routes = router.options.routes.map(({ path }) => path).filter((path) => !path.includes(':'))
 
-        console.log(routes)
-        //console.log(sitemap)
+        //console.log(routes)
+        console.log(sitemap)
     },
     env: {
         islands: true
