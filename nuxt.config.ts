@@ -34,11 +34,11 @@ const locales = (() => {
 export default defineNuxtConfig({
     ssr: true,
     telemetry: false,
-    typescript: {
-        strict: false,
-        //typeCheck: true
-        shim: false
-    },
+    //typescript: {
+    //    strict: false,
+    //    //typeCheck: true
+    //    shim: false
+    //},
     app: {
         rootId: 'app',
         rootTag: 'div class="wrapper"',
@@ -49,16 +49,16 @@ export default defineNuxtConfig({
     alias: {
         'assets-data': resolve(__dirname, './assets/data')
     },
-    experimental: {
-        payloadExtraction: true,
-        //payloadExtraction: false,
-        treeshakeClientOnly: false,
-        componentIslands: true
-    },
+    //experimental: {
+    //    payloadExtraction: true,
+    //    //payloadExtraction: false,
+    //    treeshakeClientOnly: false,
+    //    componentIslands: true
+    //},
     features: {
         inlineStyles: false
     },
-    ignorePrefix: '_',
+    //ignorePrefix: '_',
     //ignore: isGenerateMode ? ['**/admin/**'] : [],
     ignore: ['**/z-content/**', '**/z-mod/**', '**/z-old/**'],
     vite: {
@@ -101,14 +101,13 @@ export default defineNuxtConfig({
     },
     runtimeConfig: {
         locales
-
         //public: { i18n_config }
     },
     modules: [
         '@nuxtjs/tailwindcss',
         '@nuxtjs/supabase',
         '@nuxtjs/device',
-        'nuxt-primevue',
+        //'nuxt-primevue',
         '@formkit/nuxt',
         '@vueuse/nuxt',
         'nuxt-icon',
@@ -175,29 +174,29 @@ export default defineNuxtConfig({
         configPath: 'tailwind.config.ts',
         cssPath: '~/assets/tailwind.css'
     },
-    primevue: {
-        usePrimeVue: true,
-        cssLayerOrder: 'tailwind-base, primevue, tailwind-utilities',
-        importPT: { as: 'Tailwind', from: 'primevue/passthrough/tailwind' },
-        options: {
-            ripple: true,
-            inputStyle: 'outlined'
-        },
-        components: {
-            prefix: 'Prime',
-            include: ['Button', 'FloatLabel', 'InputText'], // 'DataTable',
-            exclude: '*'
-        },
-        directives: {
-            prefix: 'p-',
-            include: ['Ripple', 'Tooltip'],
-            exclude: '*'
-        },
-        composables: {
-            include: [], //'useStyle'
-            exclude: '*'
-        }
-    },
+    //primevue: {
+    //    usePrimeVue: true,
+    //    cssLayerOrder: 'tailwind-base, primevue, tailwind-utilities',
+    //    importPT: { as: 'Tailwind', from: 'primevue/passthrough/tailwind' },
+    //    options: {
+    //        ripple: true,
+    //        inputStyle: 'outlined'
+    //    },
+    //    components: {
+    //        prefix: 'Prime',
+    //        include: ['Button', 'FloatLabel', 'InputText', 'MeterGroup'], // 'DataTable',
+    //        exclude: '*'
+    //    }
+    //    //directives: {
+    //    //    prefix: 'p-',
+    //    //    include: ['Ripple', 'Tooltip'],
+    //    //    exclude: '*'
+    //    //},
+    //    //composables: {
+    //    //    include: [], //'useStyle'
+    //    //    exclude: '*'
+    //    //}
+    //},
     //generate: {},
     nitro: {
         //static: true,
