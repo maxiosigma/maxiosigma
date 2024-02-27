@@ -41,9 +41,8 @@
 
 <script setup>
 const test = ref('aaa')
-const router = useRouter()
-
-console.log(router.getRoutes())
+//const router = useRouter()
+//console.log(router.getRoutes())
 
 definePageMeta({
     sitemap: {

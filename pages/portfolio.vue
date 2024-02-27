@@ -1,5 +1,11 @@
 ﻿<template>
-    <div>
-        <!--<NuxtPage :foo="'aaaaa'"></NuxtPage>-->
-    </div>
+    <LayoutPage> </LayoutPage>
 </template>
+
+<script setup>
+const works = []
+
+useHead({
+    title: 'Портфолио'
+})
+</script>

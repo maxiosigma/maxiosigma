@@ -6,6 +6,7 @@ export default defineNuxtPlugin({
     name: 'generate-sitemap',
     parallel: false,
     enforce: 'pre',
+    order: 0,
     async setup(nuxtApp) {
         //const client = useSupabaseClient()
         //const localesCodes = nuxtApp.$config.locales.map(({ code }) => code)
@@ -29,14 +30,15 @@ export default defineNuxtPlugin({
         const siteLinks = [...getSitemapUtm(routes, 0.5), ...getSitemapUtm(linksContent, 0.1)]
         const stream = new SitemapStream({ hostname: siteUrl })
 
-        streamToPromise(Readable.from(siteLinks).pipe(stream)).then((data) => {
-            const sitemap = data.toString()
-            writeFileSync(`public/${sitemapName}`, sitemap)
-            writeFileSync(`public/robots.txt`, `Sitemap: ${siteUrl}/${sitemapName}`)
-        })
+        //await new Promise()
+
+        const sitemap = await streamToPromise(Readable.from(siteLinks).pipe(stream)).then((data) => data.toString())
+
+        writeFileSync(`public/${sitemapName}`, sitemap)
+        writeFileSync(`public/robots.txt`, `Sitemap: ${siteUrl}/${sitemapName}`)
     },
     env: {
-        islands: true
+        //islands: true
     }
 })
 
