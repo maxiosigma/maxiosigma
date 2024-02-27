@@ -1,9 +1,9 @@
 ﻿<template>
     <LayoutPage>
-        <PrimeMeterGroup :value="value"></PrimeMeterGroup>
-        <!--<div class="card flex justify-content-center" style="height: 360px">
+        <!--<PrimeMeterGroup :value="value"></PrimeMeterGroup>-->
+        <div class="card flex justify-content-center" style="height: 360px">
             <PrimeMeterGroup :value="value" orientation="vertical" labelOrientation="vertical" />
-        </div>-->
+        </div>
     </LayoutPage>
 </template>
 
