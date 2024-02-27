@@ -1,4 +1,6 @@
-﻿@layer tailwind-base {
+﻿@layer tailwind-base, primevue, tailwind-utilities;
+
+@layer tailwind-base {
     @tailwind base;
 }
 
