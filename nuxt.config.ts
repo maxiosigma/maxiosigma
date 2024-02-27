@@ -42,9 +42,9 @@ export default defineNuxtConfig({
     app: {
         rootId: 'app',
         rootTag: 'div class="wrapper"',
-        buildAssetsDir: '/public/',
-        layoutTransition: false,
-        pageTransition: false
+        buildAssetsDir: '/public/'
+        //layoutTransition: false,
+        //pageTransition: false
     },
     alias: {
         'assets-data': resolve(__dirname, './assets/data')

@@ -10,8 +10,10 @@
 <script setup>
 const works = []
 
+console.log(useTwColors())
+
 const value = ref([
-    { label: 'Apps', color: '#34d399', value: 16 },
+    { label: 'Apps', color: '#34d399', class: 'aaa', value: 16 },
     { label: 'Messages', color: '#fbbf24', value: 8 },
     { label: 'Media', color: '#60a5fa', value: 24 },
     { label: 'System', color: '#c084fc', value: 10 }

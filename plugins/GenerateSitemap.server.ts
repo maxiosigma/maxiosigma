@@ -11,31 +11,23 @@ export default defineNuxtPlugin({
         //const client = useSupabaseClient()
         //const localesCodes = nuxtApp.$config.locales.map(({ code }) => code)
         //...((await client.from('links').select('*')?.data) ?? []),
-
-        const router = useRouter()
-        const { sitemapName, siteUrl } = useAppConfig()
-
-        const linksContent = useArrayUnique(
-            (
-                await queryContent(`/common/links`)
-                    .find()
-                    .catch(() => [])
-            ).map((item) => `/go-to-${item?._path?.toLowerCase()?.replace('/common/links/', '') || item?.slug}`)
-        ).value
-
-        const routes = router.options.routes
-            .map(({ path }) => path)
-            .filter((path) => !path.includes(':') && !path.includes('admin'))
-
-        const siteLinks = [...getSitemapUtm(routes, 0.5), ...getSitemapUtm(linksContent, 0.1)]
-        const stream = new SitemapStream({ hostname: siteUrl })
-
-        //await new Promise()
-
-        const sitemap = await streamToPromise(Readable.from(siteLinks).pipe(stream)).then((data) => data.toString())
-
-        writeFileSync(`public/${sitemapName}`, sitemap)
-        writeFileSync(`public/robots.txt`, `Sitemap: ${siteUrl}/${sitemapName}`)
+        //const router = useRouter()
+        //const { sitemapName, siteUrl } = useAppConfig()
+        //const linksContent = useArrayUnique(
+        //    (
+        //        await queryContent(`/common/links`)
+        //            .find()
+        //            .catch(() => [])
+        //    ).map((item) => `/go-to-${item?._path?.toLowerCase()?.replace('/common/links/', '') || item?.slug}`)
+        //).value
+        //const routes = router.options.routes
+        //    .map(({ path }) => path)
+        //    .filter((path) => !path.includes(':') && !path.includes('admin'))
+        //const siteLinks = [...getSitemapUtm(routes, 0.5), ...getSitemapUtm(linksContent, 0.1)]
+        //const stream = new SitemapStream({ hostname: siteUrl })
+        //const sitemap = await streamToPromise(Readable.from(siteLinks).pipe(stream)).then((data) => data.toString())
+        //writeFileSync(`public/${sitemapName}`, sitemap)
+        //writeFileSync(`public/robots.txt`, `Sitemap: ${siteUrl}/${sitemapName}`)
     },
     env: {
         //islands: true
