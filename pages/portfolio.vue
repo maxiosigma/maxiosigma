@@ -2,7 +2,7 @@
     <LayoutPage>
         <!--<PrimeMeterGroup :value="value"></PrimeMeterGroup>-->
         <div class="card flex justify-content-center" style="height: 360px">
-            <PrimeMeterGroup :value="value" orientation="vertical" labelOrientation="vertical" />
+            <PrimeMeterGroup :value="meterGroups" orientation="vertical" labelOrientation="vertical" />
         </div>
     </LayoutPage>
 </template>
@@ -10,14 +10,16 @@
 <script setup>
 const works = []
 
-console.log(useTwColors())
+const baseMeterGroups = [
+    { label: 'Apps', value: 16 },
+    { label: 'Messages', value: 8 },
+    { label: 'Media', value: 24 },
+    { label: 'System', value: 10 }
+]
 
-const value = ref([
-    { label: 'Apps', color: '#34d399', class: 'aaa', value: 16 },
-    { label: 'Messages', color: '#fbbf24', value: 8 },
-    { label: 'Media', color: '#60a5fa', value: 24 },
-    { label: 'System', color: '#c084fc', value: 10 }
-])
+const colorsMeterGroups = useRandTwColors(baseMeterGroups.length)
+
+const meterGroups = ref(baseMeterGroups.map((it, i) => ({ ...it, color: colorsMeterGroups[i] })))
 
 useHead({
     title: 'Портфолио'
