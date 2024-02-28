@@ -21,7 +21,8 @@
 
 <script setup>
 const works = []
-const sidebarVisible = ref(true)
+const sidebarVisible = ref(false)
+//const sidebarVisible = ref(true)
 
 onMounted(() => {
     setTimeout(() => {
