@@ -13,28 +13,35 @@ const baseMeterGroups = ref(
     [
         //
         { label: 'Nuxt', weight: 100 },
-        { label: 'Tailwind', weight: 70 },
-        { label: 'Strapi CMS', weight: 90 },
+        { label: 'Tailwind', weight: 50 },
+        { label: 'Strapi CMS', weight: 70 },
         { label: 'October CMS' },
         { label: 'Wordpress CMS' },
         { label: 'Handlebars' },
         { label: 'PowerPoint' },
         { label: 'Photoshop' },
+        { label: 'Playwright', weight: 70 },
+        { label: 'Puppeteer' },
+        { label: 'Prettier' },
+        { label: 'Anime.JS' },
+        { label: 'Windicss' },
+        { label: 'Blender', weight: 40 },
+        { label: 'Devtool' },
         { label: '3DsMax' },
-        { label: 'Blender' },
         { label: 'MatLab' },
         { label: 'Html5' },
+        { label: 'Figma', weight: 50 },
         { label: 'Visio' },
         { label: 'CSS3' },
         { label: 'Maya' },
+        { label: 'Vue', weight: 30 },
         { label: 'PHP' },
         { label: 'PUG' },
         { label: 'GIT' },
         { label: 'SQL' },
-        { label: 'TS', weight: 50 },
-        { label: 'JS' },
-        { label: 'C#' }
-    ].map((it) => ({ ...it, weight: it?.weight ?? 5 }))
+        { label: 'TS', weight: 30 },
+        { label: 'JS' }
+    ].map((it) => ({ ...it, weight: it?.weight ?? 10 }))
 )
 
 const colorsMeterGroups = ref([])
