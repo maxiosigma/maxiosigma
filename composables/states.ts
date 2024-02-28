@@ -10,6 +10,6 @@ export const useRandTwClassColors = (count = 5, colors = useTwClassColors(), ran
     )
 }
 
-export const useRandTwColors = (count = 5, colors = useTwColors()) => {
+export const useRandTwColors = (count = 5, colors = useTwColors([300, 500, 600])) => {
     return useRandomArrayItems(colors, count)
 }
