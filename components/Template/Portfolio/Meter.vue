@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-const props = defineProps(['orientation', 'labelOrientation'])
+const prop = defineProps(['orientation', 'labelOrientation', 'visible'])
 
 const baseMeterGroups = ref(
     [
@@ -58,9 +58,10 @@ const meterGroups = computed(() =>
 onMounted(() => {
     colorsMeterGroups.value = useRandTwColors(baseMeterGroups.value.length)
 
-    setInterval(() => {
-        colorsMeterGroups.value = useRandTwColors(baseMeterGroups.value.length)
-    }, 15000)
+    if (prop.visible)
+        setInterval(() => {
+            colorsMeterGroups.value = useRandTwColors(baseMeterGroups.value.length)
+        }, 5000)
 })
 </script>
 

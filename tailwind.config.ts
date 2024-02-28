@@ -2,6 +2,7 @@ import type { Config } from 'tailwindcss'
 
 //import colors from 'tailwindcss/colors'
 import plugin from 'tailwindcss/plugin'
+//import tailwindcssAnimate from 'tailwindcss-animated'
 
 export default {
     mode: 'jit',
@@ -65,6 +66,7 @@ export default {
         }
     },
     plugins: [
+        //tailwindcssAnimate,
         plugin(function ({ matchUtilities, theme }) {
             matchUtilities(
                 {

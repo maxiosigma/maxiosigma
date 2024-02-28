@@ -7,7 +7,9 @@ import floatlabel from 'primevue/floatlabel'
 import metergroup from 'primevue/metergroup'
 import skeleton from 'primevue/skeleton'
 import stepper from 'primevue/stepper'
+import tooltip from 'primevue/tooltip'
 import stepperpanel from 'primevue/stepperpanel'
+import sidebar from 'primevue/sidebar'
 import toast from 'primevue/toast'
 import tag from 'primevue/tag'
 
@@ -27,9 +29,11 @@ export default defineNuxtPlugin((nuxtApp) => {
     vueApp.component('PrimeSkeleton', skeleton)
     vueApp.component('PrimeStepperPanel', stepperpanel)
     vueApp.component('PrimeStepper', stepper)
+    vueApp.component('PrimeSidebar', sidebar)
     vueApp.component('PrimeTag', tag)
     vueApp.component('Toast', toast)
 
     vueApp.directive('p-animate-on-scroll', animateonscroll)
     vueApp.directive('p-style-class', styleclass)
+    vueApp.directive('p-tooltip', tooltip)
 })
