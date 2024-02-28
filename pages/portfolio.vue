@@ -1,7 +1,6 @@
 ﻿<template>
     <LayoutPage>
-        <!--<PrimeMeterGroup :value="value"></PrimeMeterGroup>-->
-        <div class="card flex justify-content-center" style="height: 360px">
+        <div class="flex self-end py-8 pr-8 justify-content-center text-slate-300">
             <PrimeMeterGroup :value="meterGroups" orientation="vertical" labelOrientation="vertical" />
         </div>
     </LayoutPage>
@@ -11,29 +10,40 @@
 const works = []
 
 const baseMeterGroups = [
-    { label: 'Apps', value: 16 },
-    { label: 'Messages', value: 8 },
-    { label: 'Media', value: 24 },
-    { label: 'System', value: 10 }
+    //
+    { label: 'Nuxt', value: 20 },
+    { label: 'Strapi', value: 15 },
+    { label: 'Tailwind', value: 15 },
+    { label: 'October CMS' },
+    { label: 'Wordpress CMS' },
+    { label: 'Handlebars' },
+    { label: 'PowerPoint' },
+    { label: 'Photoshop' },
+    { label: 'Blender' },
+    { label: 'MatLab' },
+    { label: 'Html5' },
+    { label: 'Visio' },
+    { label: 'CSS3' },
+    { label: 'PHP' },
+    { label: 'PUG' },
+    { label: 'GIT' },
+    { label: 'TS', value: 10 },
+    { label: 'JS' },
+    { label: 'C#' }
 ]
+
 const colorsMeterGroups = useRandTwColors(baseMeterGroups.length)
+const valuesMeterGroups = baseMeterGroups.reduce((s, it) => (s += it?.value ?? 0) && s, 0)
 
-const meterGroups = useState(() => baseMeterGroups.map((it, i) => ({ ...it, color: colorsMeterGroups[i] })))
-
-//const payloadKey = 'works-colors'
-//if (process.server) {
-//    const baseMeterGroups = [
-//        { label: 'Apps', value: 16 },
-//        { label: 'Messages', value: 8 },
-//        { label: 'Media', value: 24 },
-//        { label: 'System', value: 10 }
-//    ]
-
-//    const colorsMeterGroups = useRandTwColors(baseMeterGroups.length)
-
-//    useNuxtApp().payload.data[payloadKey] = baseMeterGroups.map((it, i) => ({ ...it, color: colorsMeterGroups[i] }))
-//}
-//const meterGroups = useNuxtData(payloadKey).data
+const meterGroups = useState(
+    () =>
+        baseMeterGroups.map((it, i) => ({
+            color: colorsMeterGroups[i],
+            value: 100 / valuesMeterGroups,
+            ...it
+        }))
+    //.sort((a, b) => b.value - a.value)
+)
 
 useHead({
     title: 'Портфолио'

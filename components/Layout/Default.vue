@@ -63,6 +63,10 @@ useHead({
 //    twitterCard: 'summary'
 //})
 
+//useServerSeoMeta({
+//    robots: 'index, follow'
+//})
+
 onMounted(() => {})
 </script>
 
