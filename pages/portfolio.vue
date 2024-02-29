@@ -24,25 +24,26 @@ const works = []
 //const sidebarVisible = ref(false)
 //const sidebarVisible = ref(true)
 
-const sidebarVisible = ref(useLocalStorage('sidebar-visible').value === 'true' || true)
+const storageSidebarVisible = useLocalStorage('sidebar-visible')
+const sidebarVisible = ref(storageSidebarVisible.value === 'true' ?? true)
 
-watchEffect(() => {
-    useLocalStorage('sidebar-visible', sidebarVisible.value)
-    console.log(sidebarVisible.value, useLocalStorage('sidebar-visible').value)
-})
+//watchEffect(() => {
+//    useLocalStorage('sidebar-visible', sidebarVisible.value)
+//    console.log(sidebarVisible.value, useLocalStorage('sidebar-visible').value)
+//})
 
-//watch(
-//    () => sidebarVisible.value,
-//    () => useLocalStorage('sidebar-visible', sidebarVisible.value)
-//)
+watch(
+    () => sidebarVisible.value,
+    () => (storageSidebarVisible.value = sidebarVisible.value)
+)
 
 onMounted(() => {
     setTimeout(() => {
-        //if (sidebarVisible.value === true) {
-        //    sidebarVisible.value = false
-        //    //useLocalStorage('sidebar-visible', sidebarVisible.value)
-        //}
-    }, 15000)
+        if (sidebarVisible.value === true) {
+            sidebarVisible.value = false
+            //useLocalStorage('sidebar-visible', sidebarVisible.value)
+        }
+    }, 25000)
 })
 
 useHead({
