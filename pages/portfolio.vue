@@ -21,8 +21,15 @@
 
 <script setup>
 const works = []
-const sidebarVisible = ref(false)
+//const sidebarVisible = ref(false)
 //const sidebarVisible = ref(true)
+
+const sidebarVisible = ref(!!useLocalStorage('sidebar-visible').value ?? true)
+console.log(useLocalStorage('sidebar-visible').value)
+watch(
+    () => sidebarVisible.value,
+    () => useLocalStorage('sidebar-visible', sidebarVisible.value)
+)
 
 onMounted(() => {
     setTimeout(() => {
