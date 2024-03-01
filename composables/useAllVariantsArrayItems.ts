@@ -1,12 +1,5 @@
-﻿export default function (items: any[]) {
-    const length = items.length
-
-    console.log(useRange(length - 1, 2).map((it) => useRange(it)))
-    //console.log(items[0])
-
-    //console.log(permutator([1, 2, 3, 4, 5]))
-
-    //return items
+﻿export default function (items: any[], start = 2, round = 1) {
+    return useRange(items.length - 1, start).map((it) => permutator(useRange(it, round)))
 }
 
 function permutator(inputArr: any) {
