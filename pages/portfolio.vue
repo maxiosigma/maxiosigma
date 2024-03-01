@@ -23,14 +23,25 @@
 const works = []
 //const sidebarVisible = ref(false)
 //const sidebarVisible = ref(true)
+//console.log(useContent(""));
+
+const { locale } = useI18n()
+const localePath = useLocalePath()
+const namePayload = `${locale}-portfolio`
+
+if (process.server) {
+    useNuxtApp().payload.data[namePayload] = await queryContent(`/${locale.value}/works`).find()
+    //.then((item) => item)
+    //.catch(() => [])
+}
+
+const payload = useNuxtData(namePayload)?.data
+
+//console.log(payload.value.map(({ _id }) => _id.split(':').splice(-1)[0].replace('.yaml', '')))
+console.log(payload.value)
 
 const storageSidebarVisible = useLocalStorage('sidebar-visible')
 const sidebarVisible = ref(storageSidebarVisible.value === 'true' ?? true)
-
-//watchEffect(() => {
-//    useLocalStorage('sidebar-visible', sidebarVisible.value)
-//    console.log(sidebarVisible.value, useLocalStorage('sidebar-visible').value)
-//})
 
 watch(
     () => sidebarVisible.value,
@@ -41,7 +52,6 @@ onMounted(() => {
     setTimeout(() => {
         if (sidebarVisible.value === true) {
             sidebarVisible.value = false
-            //useLocalStorage('sidebar-visible', sidebarVisible.value)
         }
     }, 25000)
 })
