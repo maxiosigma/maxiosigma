@@ -27,18 +27,20 @@ const works = []
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
-const namePayload = `${locale}-portfolio`
+//const namePayload = `${locale}-portfolio`
+const worksTagsPayloadName = `${locale}-portfolio-tags`
 
 if (process.server) {
-    useNuxtApp().payload.data[namePayload] = await queryContent(`/${locale.value}/works`).find()
-    //.then((item) => item)
-    //.catch(() => [])
+    useNuxtApp().payload.data[worksTagsPayloadName] = await queryContent(`/${locale.value}/work_tags`)
+        .findOne()
+        .then((item) => item?.body ?? [])
+        .catch(() => [])
 }
 
-const payload = useNuxtData(namePayload)?.data
+const worksTagsPayload = useNuxtData(worksTagsPayloadName)?.data
 
 //console.log(payload.value.map(({ _id }) => _id.split(':').splice(-1)[0].replace('.yaml', '')))
-console.log(payload.value)
+console.log(useAllVariantsArrayItems(worksTagsPayload.value.map(({ slug }) => slug)))
 
 const storageSidebarVisible = useLocalStorage('sidebar-visible')
 const sidebarVisible = ref(storageSidebarVisible.value === 'true' ?? true)
