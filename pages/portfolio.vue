@@ -40,18 +40,21 @@
 
 <script setup>
 const works = []
-//const sidebarVisible = ref(false)
-//const sidebarVisible = ref(true)
-//console.log(useContent(""));
-
 const { locale } = useI18n()
 const localePath = useLocalePath()
 
-const skillsPayload = await getPayloadData({ name: 'portfolio-skills', path: 'skills' })
-const qualitiesPayload = await getPayloadData({ name: 'portfolio-qualities', path: 'qualities' })
-const competenciesPayload = await getPayloadData({ name: 'portfolio-competencies', path: 'competencies' })
+const skillsPayload = await usePayloadData({ name: 'portfolio-skills', path: 'skills' })
+const qualitiesPayload = await usePayloadData({ name: 'portfolio-qualities', path: 'qualities' })
+const competenciesPayload = await usePayloadData({ name: 'portfolio-competencies', path: 'competencies' })
+const worksPayload = await usePayloadData({
+    name: 'portfolio-works',
+    path: 'works/',
+    type: 'multi',
+    callback: (item) => item,
+    optionsWhere: { top: true }
+})
 
-console.log(skillsPayload)
+console.log(worksPayload.value)
 
 const storageSidebarVisible = useLocalStorage('sidebar-visible')
 const sidebarVisible = ref(storageSidebarVisible.value === 'true' ?? true)
@@ -62,11 +65,11 @@ watch(
 )
 
 onMounted(() => {
-    setTimeout(() => {
-        if (sidebarVisible.value === true) {
-            //sidebarVisible.value = false
-        }
-    }, 25000)
+    //setTimeout(() => {
+    //    if (sidebarVisible.value === true) {
+    //        //sidebarVisible.value = false
+    //    }
+    //}, 25000)
 })
 
 useHead({

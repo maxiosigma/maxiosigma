@@ -161,6 +161,9 @@ export default defineNuxtConfig({
         //documentDriven: true
         //locales: i18n_config.locales.map((l) => l.code),
         //defaultLocale: i18n_config.defaultLocale,
+        highlight: {
+            theme: 'dracula'
+        }
     },
     supabase: {
         redirect: false,

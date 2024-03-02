@@ -1,10 +1,12 @@
-﻿export default async function ({
+﻿import type { QueryBuilderWhere } from '@nuxt/content/types'
+
+export default async function ({
     name = '',
     path = '',
-    type = 'one',
+    type = 'one' || 'multi',
+    optionsWhere = <QueryBuilderWhere>{},
     callback = (item: any) => item?.body ?? [],
     errors = () => []
-    //surround: {}
 }) {
     const { locale } = useI18n()
     const payloadName = `${locale.value}-${name}`
@@ -13,6 +15,7 @@
         switch (type) {
             case 'multi':
                 useNuxtApp().payload.data[payloadName] = await queryContent(`/${locale.value}/${path}`)
+                    .where(optionsWhere)
                     .find()
                     .then(callback)
                     .catch(errors)
@@ -27,6 +30,7 @@
 
             default:
                 useNuxtApp().payload.data[payloadName] = await queryContent(`/${locale.value}/${path}`)
+                    .where(optionsWhere)
                     .findOne()
                     .then(callback)
                     .catch(errors)
