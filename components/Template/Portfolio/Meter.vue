@@ -4,53 +4,23 @@
 
 <script setup>
 const prop = defineProps({
+    items: { type: Object, default: [] },
     orientation: { type: String, default: 'vertical' },
     labelOrientation: { type: String, default: 'vertical' },
     visible: { type: Boolean, default: false }
 })
 
-const baseMeterGroups = ref(
-    [
-        //
-        { label: 'Nuxt', weight: 100 },
-        { label: 'Tailwind', weight: 50 },
-        { label: 'Strapi CMS', weight: 70 },
-        { label: 'October CMS' },
-        { label: 'Wordpress CMS' },
-        { label: 'Handlebars' },
-        { label: 'PowerPoint' },
-        { label: 'Photoshop' },
-        { label: 'Playwright', weight: 70 },
-        { label: 'Puppeteer' },
-        { label: 'Prettier' },
-        { label: 'Anime.JS' },
-        { label: 'Windicss' },
-        { label: 'Blender', weight: 40 },
-        { label: 'Devtool' },
-        { label: '3DsMax' },
-        { label: 'MatLab' },
-        { label: 'Html5' },
-        { label: 'Figma', weight: 50 },
-        { label: 'Visio' },
-        { label: 'CSS3' },
-        { label: 'Maya' },
-        { label: 'Vue', weight: 30 },
-        { label: 'PHP' },
-        { label: 'PUG' },
-        { label: 'GIT' },
-        { label: 'SQL' },
-        { label: 'TS', weight: 30 },
-        { label: 'JS' }
-    ].map((it) => ({ ...it, weight: it?.weight ?? 10 }))
-)
+const baseMeterGroups = ref(prop.items.map((it) => ({ label: it?.title, weight: it?.weight ?? 10 })))
 
 const colorsMeterGroups = ref([])
 const valuesMeterGroups = ref(baseMeterGroups.value.reduce((s, it) => (s += it?.weight ?? 0) && s, 0))
 
+console.log(valuesMeterGroups.value)
+
 const meterGroups = computed(() =>
     baseMeterGroups.value.map((it, i) => ({
         color: colorsMeterGroups.value[i],
-        value: Math.ceil((it?.weight / valuesMeterGroups.value) * 100),
+        value: (it?.weight / valuesMeterGroups.value) * 100,
         ...it
     }))
 )

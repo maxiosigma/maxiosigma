@@ -1,0 +1,37 @@
+﻿- title: 'Nuxt'
+  weight: 100
+- title: 'Tailwind'
+  weight: 50
+- title: 'Strapi CMS'
+  weight: 70
+- title: 'October CMS'
+- title: 'Wordpress CMS'
+- title: 'Handlebars'
+- title: 'PowerPoint'
+- title: 'Photoshop'
+- title: 'Playwright'
+  weight: 70
+- title: 'Puppeteer'
+- title: 'Prettier'
+- title: 'Anime.JS'
+- title: 'Windicss'
+- title: 'Blender'
+  weight: 40
+- title: 'Devtool'
+- title: '3DsMax'
+- title: 'MatLab'
+- title: 'Html5'
+- title: 'Figma'
+  weight: 50
+- title: 'Visio'
+- title: 'CSS3'
+- title: 'Maya'
+- title: 'Vue'
+  weight: 30
+- title: 'PHP'
+- title: 'PUG'
+- title: 'GIT'
+- title: 'SQL'
+- title: 'TS'
+  weight: 30
+- title: 'JS'

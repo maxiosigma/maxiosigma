@@ -11,9 +11,28 @@
             </PrimeButton>
         </div>
 
-        <PrimeSidebar v-model:visible="sidebarVisible" header="Skills" position="right">
-            <div class="flex py-8 pr-8 justify-content-center text-slate-300">
-                <TemplatePortfolioMeter :visible="sidebarVisible" />
+        <PrimeSidebar v-model:visible="sidebarVisible" header="About" position="right">
+            <div class="flex gap-20 px-5">
+                <div class="flex flex-col gap-5">
+                    <h3 class="text-xl tracking-wider">Qualities</h3>
+                    <div class="flex justify-content-center text-slate-300">
+                        <TemplatePortfolioMeter :items="qualitiesPayload" :visible="sidebarVisible" />
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-5">
+                    <h3 class="text-xl tracking-wider">Competencies</h3>
+                    <div class="flex justify-content-center text-slate-300">
+                        <TemplatePortfolioMeter :items="competenciesPayload" :visible="sidebarVisible" />
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-5">
+                    <h3 class="text-xl tracking-wider">Skills</h3>
+                    <div class="flex justify-content-center text-slate-300">
+                        <TemplatePortfolioMeter :items="skillsPayload" :visible="sidebarVisible" />
+                    </div>
+                </div>
             </div>
         </PrimeSidebar>
     </LayoutPage>
@@ -27,20 +46,12 @@ const works = []
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
-//const namePayload = `${locale}-portfolio`
-const worksTagsPayloadName = `${locale}-portfolio-tags`
 
-if (process.server) {
-    useNuxtApp().payload.data[worksTagsPayloadName] = await queryContent(`/${locale.value}/work_tags`)
-        .findOne()
-        .then((item) => item?.body ?? [])
-        .catch(() => [])
-}
+const skillsPayload = await getPayloadData({ name: 'portfolio-skills', path: 'skills' })
+const qualitiesPayload = await getPayloadData({ name: 'portfolio-qualities', path: 'qualities' })
+const competenciesPayload = await getPayloadData({ name: 'portfolio-competencies', path: 'competencies' })
 
-const worksTagsPayload = useNuxtData(worksTagsPayloadName)?.data
-
-//console.log(payload.value.map(({ _id }) => _id.split(':').splice(-1)[0].replace('.yaml', '')))
-console.log(useAllVariantsArrayItems(worksTagsPayload.value.map(({ slug }) => slug)))
+console.log(skillsPayload)
 
 const storageSidebarVisible = useLocalStorage('sidebar-visible')
 const sidebarVisible = ref(storageSidebarVisible.value === 'true' ?? true)
@@ -53,7 +64,7 @@ watch(
 onMounted(() => {
     setTimeout(() => {
         if (sidebarVisible.value === true) {
-            sidebarVisible.value = false
+            //sidebarVisible.value = false
         }
     }, 25000)
 })
@@ -62,3 +73,17 @@ useHead({
     title: 'Портфолио'
 })
 </script>
+
+<style lang="scss">
+.p-sidebar-right .p-sidebar {
+    @apply w-auto #{!important};
+}
+
+.p-sidebar-header {
+    @apply flex justify-end gap-3 uppercase tracking-[0.3rem];
+}
+
+.p-sidebar-header-content {
+    @apply border-b-2 border-b-self-3 border-dashed pl-1.5 text-center;
+}
+</style>
