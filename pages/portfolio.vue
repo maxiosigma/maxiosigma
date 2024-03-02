@@ -27,7 +27,7 @@
                     </div>
                 </div>
 
-                <div class="flex flex-col gap-5">
+                <div class="flex flex-col gap-5 min-w-52">
                     <h3 class="text-xl tracking-wider">Skills</h3>
                     <div class="flex justify-content-center text-slate-300">
                         <TemplatePortfolioMeter :items="skillsPayload" :visible="sidebarVisible" />
@@ -76,7 +76,7 @@ useHead({
 
 <style lang="scss">
 .p-sidebar-right .p-sidebar {
-    @apply w-auto #{!important};
+    @apply w-auto lg:max-w-[90%] max-w-full #{!important};
 }
 
 .p-sidebar-header {

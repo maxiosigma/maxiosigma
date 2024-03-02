@@ -15,8 +15,6 @@ const baseMeterGroups = ref(prop.items.map((it) => ({ label: it?.title, weight: 
 const colorsMeterGroups = ref([])
 const valuesMeterGroups = ref(baseMeterGroups.value.reduce((s, it) => (s += it?.weight ?? 0) && s, 0))
 
-console.log(valuesMeterGroups.value)
-
 const meterGroups = computed(() =>
     baseMeterGroups.value.map((it, i) => ({
         color: colorsMeterGroups.value[i],
@@ -41,7 +39,15 @@ onMounted(() => {
     @apply transition-all duration-[2s];
 }
 
-.p-metergroup-meter:nth-child(n-1) {
-    @apply mb-[0.2rem];
+.p-metergroup-meter {
+    @apply min-w-[0.5rem];
+}
+
+.p-metergroup-meter:nth-child(n + 1) {
+    @apply mt-[0.2rem];
+}
+
+.p-metergroup-label-marker {
+    @apply min-w-[0.5rem] min-h-[0.5rem];
 }
 </style>
