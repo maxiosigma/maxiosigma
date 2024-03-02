@@ -2,3 +2,9 @@ link: null
 title: Гаджетариум
 description: Сайт гаджетов, создавался для портфолио
 date: 2021-01-01
+images:
+    - assets/media/portfolio/gadgetarium/1.webp
+    - assets/media/portfolio/gadgetarium/2.webp
+    - assets/media/portfolio/gadgetarium/3.webp
+    - assets/media/portfolio/gadgetarium/4.webp
+    - assets/media/portfolio/gadgetarium/5.webp
