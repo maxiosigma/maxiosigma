@@ -30,7 +30,7 @@ const { src, alt, title, bg } = defineProps({
     src: { required: true, type: String },
     alt: { type: String, default: 'img' },
     title: { type: String, default: 'img' },
-    bg: { type: Boolean, default: false },
+    bg: { type: Boolean, default: false }
 })
 
 const { width, height, id } = {
@@ -40,7 +40,7 @@ const { width, height, id } = {
         'img_' +
         String(Math.random() * ((Math.random() * 10000000) / 1.0))
             .split('.')
-            .join('_'),
+            .join('_')
 }
 
 if (bg)
@@ -50,9 +50,9 @@ if (bg)
                 type: 'text/css',
                 async: true,
                 innerHTML: `#${id} { background-image: url('${getImage()}'); }`,
-                body: true,
-            },
-        ],
+                body: true
+            }
+        ]
     })
 
 function getImage() {
