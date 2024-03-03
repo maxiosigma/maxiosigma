@@ -1,30 +1,12 @@
 ﻿<template>
     <LayoutPage>
         <div class="card container py-20 w-full flex flex-col justify-content-center">
-            <div class="">Пройдите тест, чтобы увидеть больше</div>
-
             <PrimeStepper linear>
                 <PrimeStepperPanel header="Кем вы являетесь ?">
                     <template #content="{ nextCallback }">
-                        <!--<div></div>-->
-
-                        <PrimeSelectButton />
-
-                        <!--<div class="flex flex-col gap-2 mx-auto">
-                            <div class="text-center mt-3 mb-3 text-xl font-semibold">Choose your interests</div>
-                            <div class="flex flex-wrap justify-content-center gap-3">
-                                <PrimeToggleButton v-model="o1" onLabel="Nature" offLabel="Nature" />
-                                <PrimeToggleButton v-model="o2" onLabel="Art" offLabel="Art" />
-                                <PrimeToggleButton v-model="o3" onLabel="Music" offLabel="Music" />
-                                <PrimeToggleButton v-model="o4" onLabel="Design" offLabel="Design" />
-                                <PrimeToggleButton v-model="o5" onLabel="Photography" offLabel="Photography" />
-                                <PrimeToggleButton v-model="o6" onLabel="Movies" offLabel="Movies" />
-                                <PrimeToggleButton v-model="o7" onLabel="Sports" offLabel="Sports" />
-                                <PrimeToggleButton v-model="o8" onLabel="Gaming" offLabel="Gaming" />
-                                <PrimeToggleButton v-model="o9" onLabel="Traveling" offLabel="Traveling" />
-                                <PrimeToggleButton v-model="o10" onLabel="Dancing" offLabel="Dancing" />
-                            </div>
-                        </div>-->
+                        <div class="container flex py-20 justify-content-center">
+                            <PrimeSelectButton class="mx-auto" v-model="h1value" :options="h1selections" />
+                        </div>
 
                         <div class="flex pt-4 justify-center">
                             <PrimeButton
@@ -40,18 +22,13 @@
                 <PrimeStepperPanel header="Какие навыки вы ищите ?">
                     <template #content="{ prevCallback, nextCallback }">
                         <div class="flex flex-col gap-2 mx-auto">
-                            <div class="text-center mt-3 mb-3 text-xl font-semibold">Choose your interests</div>
-                            <div class="flex flex-wrap justify-content-center container py-10 gap-3">
-                                <PrimeToggleButton v-model="option1" onLabel="Nature" offLabel="Nature" />
-                                <PrimeToggleButton v-model="option2" onLabel="Art" offLabel="Art" />
-                                <PrimeToggleButton v-model="option3" onLabel="Music" offLabel="Music" />
-                                <PrimeToggleButton v-model="option4" onLabel="Design" offLabel="Design" />
-                                <PrimeToggleButton v-model="option5" onLabel="Photography" offLabel="Photography" />
-                                <PrimeToggleButton v-model="option6" onLabel="Movies" offLabel="Movies" />
-                                <PrimeToggleButton v-model="option7" onLabel="Sports" offLabel="Sports" />
-                                <PrimeToggleButton v-model="option8" onLabel="Gaming" offLabel="Gaming" />
-                                <PrimeToggleButton v-model="option9" onLabel="Traveling" offLabel="Traveling" />
-                                <PrimeToggleButton v-model="option10" onLabel="Dancing" offLabel="Dancing" />
+                            <div class="flex flex-wrap container py-20 justify-center gap-3">
+                                <PrimeToggleButton
+                                    v-for="({ title }, si) in skillsPayload"
+                                    v-model="h2models[si]"
+                                    :onLabel="title"
+                                    :offLabel="title"
+                                />
                             </div>
                         </div>
 
@@ -73,7 +50,7 @@
                     </template>
                 </PrimeStepperPanel>
 
-                <PrimeStepperPanel header="Header III">
+                <PrimeStepperPanel header="Что вы предлагаете ?">
                     <template #content="{ prevCallback }">
                         <div class="flex flex-column h-12rem">
                             <div
@@ -90,6 +67,8 @@
                                 icon="pi pi-arrow-left"
                                 @click="prevCallback"
                             />
+
+                            <PrimeButton label="Найти подходящие работы" severity="secondary" icon="pi pi-arrow-left" />
                         </div>
                     </template>
                 </PrimeStepperPanel>
@@ -144,8 +123,6 @@ const works = []
 const { locale } = useI18n()
 const localePath = useLocalePath()
 
-const [o1, o2, o3, o4, o5, o6, o7, o8, o9, o10] = useRange(10).map(() => ref(false))
-
 const skillsPayload = await usePayloadData({ name: 'portfolio-skills', path: 'skills' })
 const qualitiesPayload = await usePayloadData({ name: 'portfolio-qualities', path: 'qualities' })
 const competenciesPayload = await usePayloadData({ name: 'portfolio-competencies', path: 'competencies' })
@@ -157,7 +134,14 @@ const worksPayload = await usePayloadData({
     optionsWhere: { top: true }
 })
 
-console.log(worksPayload.value)
+const [h1value, h1selections] = [
+    ref('Фрилансер'),
+    ref(['Частный предприниматель', 'Фрилансер', 'Представитель организации'])
+]
+
+const h2models = ref(useRange(skillsPayload.value.length).map(() => false))
+
+//console.log(worksPayload.value)
 
 const storageSidebarVisible = useLocalStorage('sidebar-visible')
 const sidebarVisible = ref(storageSidebarVisible.value === 'true' ?? true)
