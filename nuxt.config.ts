@@ -163,6 +163,16 @@ export default defineNuxtConfig({
         //defaultLocale: i18n_config.defaultLocale,
         highlight: {
             theme: 'dracula'
+        },
+        api: {
+            baseURL: '/content-api/_content'
+        },
+        watch: {
+            ws: {
+                //  port: 4000,
+                port: 4444,
+                showURL: true
+            }
         }
     },
     supabase: {
