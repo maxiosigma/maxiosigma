@@ -1,9 +1,9 @@
 ﻿<template>
     <LayoutPage>
-        <div class="card container py-20 w-full flex flex-col justify-content-center">
+        <div class="container py-20 w-full flex flex-col justify-content-center">
             <PrimeAccordion v-model:activeIndex="accordionVisible">
                 <PrimeAccordionTab header="Желаю увидеть больше">
-                    <PrimeStepper class="box" v-model:activeStep="stepperIndex" linear>
+                    <PrimeStepper class="box-animate" v-model:activeStep="stepperIndex" linear>
                         <PrimeStepperPanel header="Кем вы являетесь ?">
                             <template #content="{ nextCallback }">
                                 <div class="container flex py-20 justify-content-center">
@@ -244,10 +244,22 @@ useHead({
     @apply transition-all duration-300;
 }
 
-.box:before {
-    animation: clippath 3s linear infinite;
-    border: 2px solid var(--home-box-ring-color);
-    border-radius: 10px;
+.box-animate {
+    border: 1px solid transparent;
+    border-radius: 1px;
+    position: relative;
+    z-index: 0;
+}
+
+.box-animate:hover:after,
+.box-animate:hover:before {
+    opacity: 1;
+}
+
+.box-animate:before {
+    animation: clippath 15s linear infinite;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 1px;
     bottom: -2px;
     content: '';
     left: -2px;
@@ -255,11 +267,34 @@ useHead({
     position: absolute;
     right: -2px;
     top: -2px;
-    transition: all 0.5s;
+    transition: all 3.5s;
     z-index: -1;
 }
 
-.box:after {
-    animation: clippath 3s linear -1.5s infinite;
+.box-animate:after {
+    animation: clippath 1.5s linear -0.5s infinite;
+}
+
+@keyframes clippath {
+    0%,
+    to {
+        -webkit-clip-path: inset(0 0 98% 0);
+        clip-path: inset(0 0 98% 0);
+    }
+
+    25% {
+        -webkit-clip-path: inset(0 98% 0 0);
+        clip-path: inset(0 98% 0 0);
+    }
+
+    50% {
+        -webkit-clip-path: inset(98% 0 0 0);
+        clip-path: inset(98% 0 0 0);
+    }
+
+    75% {
+        -webkit-clip-path: inset(0 0 0 98%);
+        clip-path: inset(0 0 0 98%);
+    }
 }
 </style>
