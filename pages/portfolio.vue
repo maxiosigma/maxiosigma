@@ -2,7 +2,7 @@
     <LayoutPage>
         <div class="container py-20 gap-20 w-full flex flex-col justify-content-center">
             <PrimeAccordion v-model:activeIndex="accordionVisible">
-                <PrimeAccordionTab header="Желаю увидеть больше ?">
+                <PrimeAccordionTab header="Желаете увидеть больше ?">
                     <PrimeStepper class="box-animate" v-model:activeStep="stepperIndex" linear>
                         <PrimeStepperPanel header="Кем вы являетесь ?">
                             <template #content="{ nextCallback }">
