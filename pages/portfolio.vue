@@ -3,7 +3,7 @@
         <div class="card container py-20 w-full flex flex-col justify-content-center">
             <PrimeAccordion v-model:activeIndex="accordionVisible">
                 <PrimeAccordionTab header="Желаю увидеть больше">
-                    <PrimeStepper class="box" linear>
+                    <PrimeStepper class="box" v-model:activeStep="stepperIndex" linear>
                         <PrimeStepperPanel header="Кем вы являетесь ?">
                             <template #content="{ nextCallback }">
                                 <div class="container flex py-20 justify-content-center">
@@ -24,10 +24,11 @@
                         <PrimeStepperPanel header="Какие навыки вы ищите ?">
                             <template #content="{ prevCallback, nextCallback }">
                                 <div class="flex flex-col gap-2 mx-auto">
-                                    <div class="flex flex-wrap container py-20 justify-center gap-3">
+                                    <div class="flex flex-wrap container py-10 justify-center gap-3">
                                         <PrimeToggleButton
                                             v-for="({ title }, si) in skillsPayload"
                                             v-model="h2models[title]"
+                                            :disabled="h2modelsDisabled"
                                             :onLabel="title"
                                             :offLabel="title"
                                             :key="si"
@@ -119,7 +120,10 @@
                     <!-- Skills -->
                     <h3 class="text-xl tracking-wider">Навыки</h3>
                     <div class="flex justify-content-center text-slate-300">
-                        <TemplatePortfolioMeter :items="skillsPayload" :visible="sidebarVisible" />
+                        <TemplatePortfolioMeter
+                            :items="skillsPayload.filter((it) => it?.only !== 'select')"
+                            :visible="sidebarVisible"
+                        />
                     </div>
                 </div>
             </div>
@@ -128,6 +132,8 @@
 </template>
 
 <script setup>
+import { number } from '~/node_modules/@intlify/core-base/dist/core-base'
+
 const works = []
 const { locale } = useI18n()
 const localePath = useLocalePath()
@@ -156,30 +162,58 @@ const [h1value, h1selections] = [
     ref(['Частный предприниматель', 'Фрилансер', 'Представитель организации'])
 ]
 
-const h2models = ref(skillsPayload.value.reduce((s, { title }) => (s = { ...s, [title]: false }) && s, {}))
+// LocalStorage Частный предприниматель
 
-const storageSidebarVisible = useLocalStorage('sidebar-visible')
+const [storageSidebarVisible, storageAccordionVisible, storageStepperIndex] = [
+    useLocalStorage('sidebar-visible'),
+    useLocalStorage('accordion-visible'),
+    useLocalStorage('stepper-index-visible')
+]
+
+const stepperIndex = ref(0)
+
+watch(
+    () => stepperIndex.value,
+    () => {
+        storageStepperIndex.value = stepperIndex.value
+    }
+)
+
+const h2models = ref({})
+const h2modelsDisabled = ref(false)
+
+watch(
+    () => h2models.value,
+    () => {
+        //.filter((it) => it === true).length
+        //console.log(Object.values(h2models.value))
+        console.log(h2models.value)
+    }
+)
+
 const sidebarVisible = ref(storageSidebarVisible.value === 'true' ?? true)
 
 watch(
     () => sidebarVisible.value,
-    () => (storageSidebarVisible.value = sidebarVisible.value)
+    () => {
+        storageSidebarVisible.value = sidebarVisible.value
+    }
 )
 
-const storageAccordionVisible = useLocalStorage('accordion-visible')
-const accordionVisible = ref(storageAccordionVisible.value === '0' ? 0 : null)
+//const storageAccordionVisible = useLocalStorage('accordion-visible')
+const accordionVisible = ref()
 
 watch(
     () => accordionVisible.value,
-    () => (storageAccordionVisible.value = accordionVisible.value)
+    () => {
+        storageAccordionVisible.value = accordionVisible.value ?? 1
+    }
 )
 
 onMounted(() => {
-    //setTimeout(() => {
-    //    if (sidebarVisible.value === true) {
-    //        //sidebarVisible.value = false
-    //    }
-    //}, 25000)
+    accordionVisible.value = Number(storageAccordionVisible.value ?? 0)
+    stepperIndex.value = Number(storageStepperIndex.value ?? 0)
+    h2models.value = skillsPayload.value.reduce((s, { title }) => (s = { ...s, [title]: false }) && s, {})
 })
 
 useHead({
@@ -204,6 +238,10 @@ useHead({
 
 .p-sidebar-header-content {
     @apply border-b-2 border-b-self-3 border-dashed pl-1.5 text-center;
+}
+
+.p-stepper-content {
+    @apply transition-all duration-300;
 }
 
 .box:before {
