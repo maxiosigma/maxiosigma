@@ -57,10 +57,13 @@
                         <PrimeStepperPanel header="Что вы предлагаете ?">
                             <template #content="{ prevCallback }">
                                 <div class="flex flex-column h-12rem">
-                                    <div
-                                        class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
-                                    >
-                                        Content III
+                                    <div class="container flex py-20 justify-content-center">
+                                        <PrimeSelectButton
+                                            class="mx-auto"
+                                            v-model="h2value"
+                                            :options="h2selections"
+                                            multiple
+                                        />
                                     </div>
                                 </div>
 
@@ -157,9 +160,17 @@ const worksPayload = await usePayloadData({
     optionsWhere: { top: true }
 })
 
-const [h1value, h1selections] = [
+const [h1value, h1selections, h2value, h2selections] = [
     ref('Фрилансер'),
-    ref(['Частный предприниматель', 'Фрилансер', 'Представитель организации'])
+    ref(['Частный предприниматель', 'Фрилансер', 'Представитель организации']),
+    ref('Заказ на фрилансе'),
+    ref([
+        'Работу в найме',
+        'Заказ на фрилансе',
+        'Личный проект',
+        'Долгосрочный личный проект',
+        'Долгосрочный проект компании / студии'
+    ])
 ]
 
 // LocalStorage Частный предприниматель

@@ -16,7 +16,7 @@ export default {
     theme: {
         //heroPatternsShades: ['100', '500'],
         //heroPatternsColors: ['blue', 'red'],
-        heroPatternsOpacities: ['0', '15', '30', '50', '90', '100'],
+        heroPatternsOpacities: ['0', '10', '15', '25', '30', '50', '90', '100'],
 
         container: {
             center: true,
