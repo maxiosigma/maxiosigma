@@ -14,9 +14,9 @@ export default {
         './pages/**/*.vue'
     ],
     theme: {
-        heroPatternsShades: ['100', '500'],
-        heroPatternsColors: ['blue', 'red'],
-        heroPatternsOpacities: ['0', '50', '90', '100'],
+        //heroPatternsShades: ['100', '500'],
+        //heroPatternsColors: ['blue', 'red'],
+        heroPatternsOpacities: ['0', '15', '30', '50', '90', '100'],
 
         container: {
             center: true,
