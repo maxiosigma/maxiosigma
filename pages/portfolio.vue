@@ -6,9 +6,11 @@
                     <PrimeStepper class="box-animate" v-model:activeStep="stepperIndex" linear>
                         <PrimeStepperPanel header="Кем вы являетесь ?">
                             <template #content="{ nextCallback }">
-                                <div class="container flex py-20 justify-content-center">
-                                    <PrimeSelectButton class="mx-auto" v-model="h1value" :options="h1selections" />
-                                </div>
+                                <PrimeSelectButton
+                                    class="flex flex-wrap container justify-center mx-auto py-10"
+                                    v-model="h1value"
+                                    :options="h1selections"
+                                />
 
                                 <div class="flex pt-4 justify-center">
                                     <PrimeButton
@@ -21,7 +23,7 @@
                             </template>
                         </PrimeStepperPanel>
 
-                        <PrimeStepperPanel header="Какие навыки вы ищите ?">
+                        <PrimeStepperPanel header="Какие навыки вам нужны ?">
                             <template #content="{ prevCallback, nextCallback }">
                                 <div class="flex flex-col gap-2 mx-auto">
                                     <div class="flex flex-wrap container py-10 justify-center gap-3">
@@ -56,16 +58,12 @@
 
                         <PrimeStepperPanel header="Что вы предлагаете ?">
                             <template #content="{ prevCallback }">
-                                <div class="flex flex-column h-12rem">
-                                    <div class="container flex py-20 justify-content-center">
-                                        <PrimeSelectButton
-                                            class="mx-auto"
-                                            v-model="h2value"
-                                            :options="h2selections"
-                                            multiple
-                                        />
-                                    </div>
-                                </div>
+                                <PrimeSelectButton
+                                    class="flex flex-wrap container justify-center mx-auto py-10"
+                                    v-model="h2value"
+                                    :options="h2selections"
+                                    multiple
+                                />
 
                                 <div class="flex gap-5 pt-4 justify-content-start">
                                     <PrimeButton
@@ -168,9 +166,8 @@ const [h1value, h1selections, h2value, h2selections] = [
         'Личный проект',
         'Заказ на фрилансе',
         'Долгосрочный личный проект',
-        'Долгосрочный проект компании / студии',
-        'Работу в найме на удалённой основе',
-        'Работу в найме'
+        'Долгосрочный проект компании & студии',
+        'Работу в найме на удаленной основе'
     ])
 ]
 
