@@ -85,7 +85,7 @@
             </PrimeAccordion>
 
             <div
-                class="min-h-64 min-w-full border-4 border-skyblue/75 rounded-lg heropattern-circuitboard-skyblue/30"
+                class="min-h-64 min-w-full border-4 border-skyblue/75 rounded-lg heropattern-circuitboard-skyblue/50"
             ></div>
         </div>
 
