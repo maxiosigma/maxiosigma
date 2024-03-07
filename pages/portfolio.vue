@@ -1,8 +1,8 @@
 ﻿<template>
     <LayoutPage>
-        <div class="container py-20 w-full flex flex-col justify-content-center">
+        <div class="container py-20 gap-20 w-full flex flex-col justify-content-center">
             <PrimeAccordion v-model:activeIndex="accordionVisible">
-                <PrimeAccordionTab header="Желаю увидеть больше">
+                <PrimeAccordionTab header="Желаю увидеть больше ?">
                     <PrimeStepper class="box-animate" v-model:activeStep="stepperIndex" linear>
                         <PrimeStepperPanel header="Кем вы являетесь ?">
                             <template #content="{ nextCallback }">
@@ -83,9 +83,9 @@
                     </PrimeStepper>
                 </PrimeAccordionTab>
             </PrimeAccordion>
-        </div>
 
-        <div></div>
+            <div class="min-h-64 min-w-full border-4 border-skyblue/75 rounded-lg"></div>
+        </div>
 
         <div class="fixed flex flex-col right-0 top-auto h-full">
             <PrimeButton
@@ -132,8 +132,6 @@
 </template>
 
 <script setup>
-import { number } from '~/node_modules/@intlify/core-base/dist/core-base'
-
 const works = []
 const { locale } = useI18n()
 const localePath = useLocalePath()

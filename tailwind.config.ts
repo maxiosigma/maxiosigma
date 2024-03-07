@@ -3,6 +3,8 @@ import type { Config } from 'tailwindcss'
 //import colors from 'tailwindcss/colors'
 import plugin from 'tailwindcss/plugin'
 //import tailwindcssAnimate from 'tailwindcss-animated'
+import tailwindcssHeroPatterns from 'tailwindcss-hero-patterns'
+//import tailwindcssHeroPatterns from 'tailwindcss-hero-patterns/src/patterns'
 
 export default {
     mode: 'jit',
@@ -12,6 +14,10 @@ export default {
         './pages/**/*.vue'
     ],
     theme: {
+        heroPatternsShades: ['100', '500'],
+        heroPatternsColors: ['blue', 'red'],
+        heroPatternsOpacities: ['0', '50', '90', '100'],
+
         container: {
             center: true,
             padding: {
@@ -67,6 +73,7 @@ export default {
     },
     plugins: [
         //tailwindcssAnimate,
+        tailwindcssHeroPatterns,
         plugin(function ({ matchUtilities, theme }) {
             matchUtilities(
                 {
