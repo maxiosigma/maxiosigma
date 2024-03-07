@@ -11,6 +11,8 @@ import tooltip from 'primevue/tooltip'
 import stepperpanel from 'primevue/stepperpanel'
 import togglebutton from 'primevue/togglebutton'
 import selectbutton from 'primevue/selectbutton'
+import accordion from 'primevue/accordion'
+import accordiontab from 'primevue/accordiontab'
 import sidebar from 'primevue/sidebar'
 import toast from 'primevue/toast'
 import tag from 'primevue/tag'
@@ -24,6 +26,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     vueApp.use(PrimeVue, { ripple: true })
     vueApp.use(ToastService)
 
+    vueApp.component('PrimeAccordion', accordion)
+    vueApp.component('PrimeAccordionTab', accordiontab)
     vueApp.component('PrimeSelectButton', selectbutton)
     vueApp.component('PrimeToggleButton', togglebutton)
     vueApp.component('PrimeStepperPanel', stepperpanel)

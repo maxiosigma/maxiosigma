@@ -1,78 +1,87 @@
 ﻿<template>
     <LayoutPage>
         <div class="card container py-20 w-full flex flex-col justify-content-center">
-            <PrimeStepper linear>
-                <PrimeStepperPanel header="Кем вы являетесь ?">
-                    <template #content="{ nextCallback }">
-                        <div class="container flex py-20 justify-content-center">
-                            <PrimeSelectButton class="mx-auto" v-model="h1value" :options="h1selections" />
-                        </div>
+            <PrimeAccordion v-model:activeIndex="accordionVisible">
+                <PrimeAccordionTab header="Желаю увидеть больше">
+                    <PrimeStepper class="box" linear>
+                        <PrimeStepperPanel header="Кем вы являетесь ?">
+                            <template #content="{ nextCallback }">
+                                <div class="container flex py-20 justify-content-center">
+                                    <PrimeSelectButton class="mx-auto" v-model="h1value" :options="h1selections" />
+                                </div>
 
-                        <div class="flex pt-4 justify-center">
-                            <PrimeButton
-                                label="Следующий вопрос"
-                                icon="pi pi-arrow-right"
-                                iconPos="right"
-                                @click="nextCallback"
-                            />
-                        </div>
-                    </template>
-                </PrimeStepperPanel>
+                                <div class="flex pt-4 justify-center">
+                                    <PrimeButton
+                                        label="Следующий вопрос"
+                                        icon="pi pi-arrow-right"
+                                        iconPos="right"
+                                        @click="nextCallback"
+                                    />
+                                </div>
+                            </template>
+                        </PrimeStepperPanel>
 
-                <PrimeStepperPanel header="Какие навыки вы ищите ?">
-                    <template #content="{ prevCallback, nextCallback }">
-                        <div class="flex flex-col gap-2 mx-auto">
-                            <div class="flex flex-wrap container py-20 justify-center gap-3">
-                                <PrimeToggleButton
-                                    v-for="({ title }, si) in skillsPayload"
-                                    v-model="h2models[si]"
-                                    :onLabel="title"
-                                    :offLabel="title"
-                                />
-                            </div>
-                        </div>
+                        <PrimeStepperPanel header="Какие навыки вы ищите ?">
+                            <template #content="{ prevCallback, nextCallback }">
+                                <div class="flex flex-col gap-2 mx-auto">
+                                    <div class="flex flex-wrap container py-20 justify-center gap-3">
+                                        <PrimeToggleButton
+                                            v-for="({ title }, si) in skillsPayload"
+                                            v-model="h2models[title]"
+                                            :onLabel="title"
+                                            :offLabel="title"
+                                            :key="si"
+                                        />
+                                    </div>
+                                </div>
 
-                        <div class="flex gap-5 pt-4 w-full justify-center">
-                            <PrimeButton
-                                label="Предыдущий вопрос"
-                                severity="secondary"
-                                icon="pi pi-arrow-left"
-                                @click="prevCallback"
-                            />
+                                <div class="flex gap-5 pt-4 w-full justify-center">
+                                    <PrimeButton
+                                        label="Предыдущий вопрос"
+                                        severity="secondary"
+                                        icon="pi pi-arrow-left"
+                                        @click="prevCallback"
+                                    />
 
-                            <PrimeButton
-                                label="Следующий вопрос"
-                                icon="pi pi-arrow-right"
-                                iconPos="right"
-                                @click="nextCallback"
-                            />
-                        </div>
-                    </template>
-                </PrimeStepperPanel>
+                                    <PrimeButton
+                                        label="Следующий вопрос"
+                                        icon="pi pi-arrow-right"
+                                        iconPos="right"
+                                        @click="nextCallback"
+                                    />
+                                </div>
+                            </template>
+                        </PrimeStepperPanel>
 
-                <PrimeStepperPanel header="Что вы предлагаете ?">
-                    <template #content="{ prevCallback }">
-                        <div class="flex flex-column h-12rem">
-                            <div
-                                class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
-                            >
-                                Content III
-                            </div>
-                        </div>
+                        <PrimeStepperPanel header="Что вы предлагаете ?">
+                            <template #content="{ prevCallback }">
+                                <div class="flex flex-column h-12rem">
+                                    <div
+                                        class="border-2 border-dashed surface-border border-round surface-ground flex-auto flex justify-content-center align-items-center font-medium"
+                                    >
+                                        Content III
+                                    </div>
+                                </div>
 
-                        <div class="flex gap-5 pt-4 justify-content-start">
-                            <PrimeButton
-                                label="Предыдущий вопрос"
-                                severity="secondary"
-                                icon="pi pi-arrow-left"
-                                @click="prevCallback"
-                            />
+                                <div class="flex gap-5 pt-4 justify-content-start">
+                                    <PrimeButton
+                                        label="Предыдущий вопрос"
+                                        severity="secondary"
+                                        icon="pi pi-arrow-left"
+                                        @click="prevCallback"
+                                    />
 
-                            <PrimeButton label="Найти подходящие работы" severity="secondary" icon="pi pi-arrow-left" />
-                        </div>
-                    </template>
-                </PrimeStepperPanel>
-            </PrimeStepper>
+                                    <PrimeButton
+                                        label="Найти подходящие работы"
+                                        severity="secondary"
+                                        icon="pi pi-arrow-left"
+                                    />
+                                </div>
+                            </template>
+                        </PrimeStepperPanel>
+                    </PrimeStepper>
+                </PrimeAccordionTab>
+            </PrimeAccordion>
         </div>
 
         <div></div>
@@ -124,8 +133,16 @@ const { locale } = useI18n()
 const localePath = useLocalePath()
 
 const skillsPayload = await usePayloadData({ name: 'portfolio-skills', path: 'skills' })
-const qualitiesPayload = await usePayloadData({ name: 'portfolio-qualities', path: 'qualities' })
-const competenciesPayload = await usePayloadData({ name: 'portfolio-competencies', path: 'competencies' })
+const qualitiesPayload = await usePayloadData({
+    name: 'portfolio-qualities',
+    path: 'qualities'
+})
+
+const competenciesPayload = await usePayloadData({
+    name: 'portfolio-competencies',
+    path: 'competencies'
+})
+
 const worksPayload = await usePayloadData({
     name: 'portfolio-works',
     path: 'works/',
@@ -139,9 +156,7 @@ const [h1value, h1selections] = [
     ref(['Частный предприниматель', 'Фрилансер', 'Представитель организации'])
 ]
 
-const h2models = ref(useRange(skillsPayload.value.length).map(() => false))
-
-//console.log(worksPayload.value)
+const h2models = ref(skillsPayload.value.reduce((s, { title }) => (s = { ...s, [title]: false }) && s, {}))
 
 const storageSidebarVisible = useLocalStorage('sidebar-visible')
 const sidebarVisible = ref(storageSidebarVisible.value === 'true' ?? true)
@@ -149,6 +164,14 @@ const sidebarVisible = ref(storageSidebarVisible.value === 'true' ?? true)
 watch(
     () => sidebarVisible.value,
     () => (storageSidebarVisible.value = sidebarVisible.value)
+)
+
+const storageAccordionVisible = useLocalStorage('accordion-visible')
+const accordionVisible = ref(storageAccordionVisible.value === '0' ? 0 : null)
+
+watch(
+    () => accordionVisible.value,
+    () => (storageAccordionVisible.value = accordionVisible.value)
 )
 
 onMounted(() => {
@@ -181,5 +204,24 @@ useHead({
 
 .p-sidebar-header-content {
     @apply border-b-2 border-b-self-3 border-dashed pl-1.5 text-center;
+}
+
+.box:before {
+    animation: clippath 3s linear infinite;
+    border: 2px solid var(--home-box-ring-color);
+    border-radius: 10px;
+    bottom: -2px;
+    content: '';
+    left: -2px;
+    opacity: 0;
+    position: absolute;
+    right: -2px;
+    top: -2px;
+    transition: all 0.5s;
+    z-index: -1;
+}
+
+.box:after {
+    animation: clippath 3s linear -1.5s infinite;
 }
 </style>
