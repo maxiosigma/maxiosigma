@@ -85,17 +85,46 @@
                 </PrimeAccordionTab>
             </PrimeAccordion>
 
-            <div class="relative mt-64 min-h-80">
-                <div class="finger !pl-20 absolute -top-[0%] -left-[0%] transform origin-top-left -rotate-45">
-                    <div class="w-4/5 text-2xl overflow-hidden">{{ worksPayload[0].title }}</div>
+            <div class="relative mt-[40%] min-h-80 pointer-events-none">
+                <div v-for="(work, wi) in worksPayload" :key="wi">
+                    <div
+                        class="finger"
+                        :class="[
+                            wi === 0
+                                ? '!pl-[10%] !pr-[5%] max-w-[55%] absolute top-0 left-0 transform origin-top-left -rotate-[50deg]'
+                                : 'relative z-10'
+                        ]"
+                    >
+                        <div class="finger-title">
+                            {{ work.title }}
+                        </div>
+
+                        <div class="finger-description">{{ work.description }}</div>
+                    </div>
+
+                    <div v-if="wi !== 0" class="min-h-10 bg-self-1"></div>
+                </div>
+
+                <!--<div
+                    class="finger !pl-24 !pr-16 max-w-[50%] absolute top-0 left-0 transform origin-top-left -rotate-[50deg]"
+                >
+                    <div class="finger-title">
+                        {{ worksPayload[0].title }}
+                    </div>
+
+                    <div class="finger-description">{{ worksPayload[0].description }}</div>
                 </div>
 
                 <div class="finger relative z-10">
-                    <div class="w-4/5 text-2xl overflow-hidden">{{ worksPayload[1].title }}</div>
-                </div>
+                    <div class="finger-title">
+                        {{ worksPayload[1].title }}
+                    </div>
+
+                    <div class="finger-description">{{ worksPayload[1].description }}</div>
+                </div>-->
             </div>
 
-            {{ worksPayload[0] }}
+            <!--{{ worksPayload[0] }}-->
         </div>
 
         <div class="fixed flex flex-col right-0 top-auto h-full">
@@ -263,6 +292,14 @@ useHead({
 .finger {
     //border-r-4 border-t-4 border-b-4
     @apply flex flex-col bg-self-1 justify-center px-8 py-4 w-auto border-4  border-skyblue/75 rounded-l-lg rounded-r-full shadow-[0_0_15px_0_rgba(0,0,0,0.3)] shadow-skyblue heropattern-circuitboard-skyblue/10;
+
+    &-title {
+        @apply text-2xl text-nowrap overflow-hidden text-self-3;
+    }
+
+    &-description {
+        @apply text-sm text-self-7;
+    }
 }
 
 .p-sidebar-right .p-sidebar {
