@@ -85,13 +85,17 @@
                 </PrimeAccordionTab>
             </PrimeAccordion>
 
-            <div class="relative">
-                <div
-                    class="relative min-h-64 min-w-full border-4 border-skyblue/75 rounded-lg drop-shadow-[0_0_15px_0_rgba(0,0,0,0.3)] shadow-[0_0_15px_0_rgba(0,0,0,0.3)] shadow-skyblue"
-                >
-                    <div class="absolute min-h-full min-w-full heropattern-circuitboard-skyblue opacity-5"></div>
+            <div class="relative mt-64 min-h-80">
+                <div class="finger !pl-20 absolute -top-[0%] -left-[0%] transform origin-top-left -rotate-45">
+                    <div class="w-4/5 text-2xl overflow-hidden">{{ worksPayload[0].title }}</div>
+                </div>
+
+                <div class="finger relative z-10">
+                    <div class="w-4/5 text-2xl overflow-hidden">{{ worksPayload[1].title }}</div>
                 </div>
             </div>
+
+            {{ worksPayload[0] }}
         </div>
 
         <div class="fixed flex flex-col right-0 top-auto h-full">
@@ -158,7 +162,22 @@ const worksPayload = await usePayloadData({
     name: 'portfolio-works',
     path: 'works/',
     type: 'multi',
-    callback: (item) => item,
+    callback: (items) =>
+        items.map((item) => {
+            delete item?._path
+            delete item?._dir
+            delete item?._draft
+            delete item?._partial
+            delete item?._extension
+            delete item?._source
+            delete item?._type
+            delete item?._file
+            delete item?._locale
+            delete item?.top
+            delete item?.date
+
+            return item
+        }),
     optionsWhere: { top: true }
 })
 
@@ -241,6 +260,11 @@ useHead({
 </style>
 
 <style lang="scss">
+.finger {
+    //border-r-4 border-t-4 border-b-4
+    @apply flex flex-col bg-self-1 justify-center px-8 py-4 w-auto border-4  border-skyblue/75 rounded-l-lg rounded-r-full shadow-[0_0_15px_0_rgba(0,0,0,0.3)] shadow-skyblue heropattern-circuitboard-skyblue/10;
+}
+
 .p-sidebar-right .p-sidebar {
     @apply w-auto lg:max-w-[90%] max-w-full #{!important};
 }
