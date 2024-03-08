@@ -85,9 +85,13 @@
                 </PrimeAccordionTab>
             </PrimeAccordion>
 
-            <div
-                class="min-h-64 min-w-full border-4 border-skyblue/75 rounded-lg heropattern-circuitboard-skyblue/50"
-            ></div>
+            <div class="relative">
+                <div
+                    class="relative min-h-64 min-w-full border-4 border-skyblue/75 rounded-lg drop-shadow-[0_0_15px_0_rgba(0,0,0,0.3)] shadow-[0_0_15px_0_rgba(0,0,0,0.3)] shadow-skyblue"
+                >
+                    <div class="absolute min-h-full min-w-full heropattern-circuitboard-skyblue opacity-5"></div>
+                </div>
+            </div>
         </div>
 
         <div class="fixed flex flex-col right-0 top-auto h-full">
