@@ -12,7 +12,7 @@ export default {
         //
         './components/**/*.{js,vue,ts}',
         './components/*.{js,vue,ts}',
-        './pages/**/*.vue'
+        './pages/**/*.vue',
         './pages/*.vue'
     ],
     theme: {

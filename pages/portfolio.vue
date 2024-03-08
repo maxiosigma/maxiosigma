@@ -85,13 +85,13 @@
                 </PrimeAccordionTab>
             </PrimeAccordion>
 
-            <div class="relative mt-[40%] min-h-80 pointer-events-none">
+            <div class="relative mt-[60%] min-h-80 pointer-events-none">
                 <div v-for="(work, wi) in worksPayload" :key="wi">
                     <div
                         class="finger"
                         :class="[
                             wi === 0
-                                ? '!pl-[10%] !pr-[5%] max-w-[55%] absolute top-0 left-0 transform origin-top-left -rotate-[50deg]'
+                                ? '!pl-[110px] !pr-[5%] min-w-[500px] max-w-[500px] absolute top-0 left-0 transform origin-top-left -rotate-[50deg]'
                                 : 'relative z-10'
                         ]"
                     >
@@ -100,13 +100,23 @@
                         </div>
 
                         <div class="finger-description">{{ work.description }}</div>
+
+                        <a
+                            v-if="work.link"
+                            :href="work.link"
+                            class="text-xs text-self-4 border-b-[0.5px] pr-1 cursor-pointer border-self-5 mr-auto hover:border-self-5 hover:text-self-5 pointer-events-auto"
+                            target="_blank"
+                            >Посмотреть проект</a
+                        >
                     </div>
 
                     <div v-if="wi !== 0" class="min-h-10 bg-self-1"></div>
                 </div>
             </div>
 
-            <!--{{ worksPayload[0] }}-->
+            <div class="flex flex-col gap-5" v-for="(work, wi) in worksPayload" :key="wi">
+                {{ work }}
+            </div>
         </div>
 
         <div class="fixed flex flex-col right-0 top-auto h-full">
@@ -271,6 +281,7 @@ useHead({
 </style>
 
 <style lang="scss">
+//https://primevue.org/speeddial/
 .finger {
     //border-r-4 border-t-4 border-b-4
     @apply flex flex-col bg-self-1 justify-center px-8 py-4 w-auto border-4 border-skyblue/75  rounded-r-full rounded-l-lg shadow-[0_0_10px_0_rgba(0,0,0,0.3)] shadow-skyblue heropattern-circuitboard-skyblue/10 overflow-hidden;

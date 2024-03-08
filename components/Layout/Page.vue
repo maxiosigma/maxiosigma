@@ -5,6 +5,7 @@
         </div>
 
         <!--<ItemModalSelectLang />-->
+        <Toast />
     </LayoutDefault>
 </template>
 
