@@ -104,24 +104,6 @@
 
                     <div v-if="wi !== 0" class="min-h-10 bg-self-1"></div>
                 </div>
-
-                <!--<div
-                    class="finger !pl-24 !pr-16 max-w-[50%] absolute top-0 left-0 transform origin-top-left -rotate-[50deg]"
-                >
-                    <div class="finger-title">
-                        {{ worksPayload[0].title }}
-                    </div>
-
-                    <div class="finger-description">{{ worksPayload[0].description }}</div>
-                </div>
-
-                <div class="finger relative z-10">
-                    <div class="finger-title">
-                        {{ worksPayload[1].title }}
-                    </div>
-
-                    <div class="finger-description">{{ worksPayload[1].description }}</div>
-                </div>-->
             </div>
 
             <!--{{ worksPayload[0] }}-->
@@ -291,7 +273,7 @@ useHead({
 <style lang="scss">
 .finger {
     //border-r-4 border-t-4 border-b-4
-    @apply flex flex-col bg-self-1 justify-center px-8 py-4 w-auto border-4  border-skyblue/75 rounded-l-lg rounded-r-full shadow-[0_0_15px_0_rgba(0,0,0,0.3)] shadow-skyblue heropattern-circuitboard-skyblue/10;
+    @apply flex flex-col bg-self-1 justify-center px-8 py-4 w-auto border-4 border-skyblue/75  rounded-r-full rounded-l-lg shadow-[0_0_10px_0_rgba(0,0,0,0.3)] shadow-skyblue heropattern-circuitboard-skyblue/10 overflow-hidden;
 
     &-title {
         @apply text-2xl text-nowrap overflow-hidden text-self-3;

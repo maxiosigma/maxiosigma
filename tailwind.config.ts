@@ -7,11 +7,13 @@ import tailwindcssHeroPatterns from 'tailwindcss-hero-patterns'
 //import tailwindcssHeroPatterns from 'tailwindcss-hero-patterns/src/patterns'
 
 export default {
-    mode: 'jit',
+    //mode: 'jit',
     content: [
         //
         './components/**/*.{js,vue,ts}',
+        './components/*.{js,vue,ts}',
         './pages/**/*.vue'
+        './pages/*.vue'
     ],
     theme: {
         //heroPatternsShades: ['100', '500'],
