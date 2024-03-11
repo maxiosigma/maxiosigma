@@ -1,5 +1,4 @@
 ﻿import PrimeVue from 'primevue/config'
-import ToastService from 'primevue/toastservice'
 
 import button from 'primevue/button'
 import inputtext from 'primevue/inputtext'
@@ -14,6 +13,7 @@ import selectbutton from 'primevue/selectbutton'
 import accordion from 'primevue/accordion'
 import accordiontab from 'primevue/accordiontab'
 import sidebar from 'primevue/sidebar'
+import toastservice from 'primevue/toastservice'
 import toast from 'primevue/toast'
 import tag from 'primevue/tag'
 
@@ -24,7 +24,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     const { vueApp } = nuxtApp
 
     vueApp.use(PrimeVue, { ripple: true })
-    vueApp.use(ToastService)
+    vueApp.use(toastservice)
 
     vueApp.component('PrimeAccordion', accordion)
     vueApp.component('PrimeAccordionTab', accordiontab)
@@ -44,4 +44,6 @@ export default defineNuxtPlugin((nuxtApp) => {
     vueApp.directive('p-animate-on-scroll', animateonscroll)
     vueApp.directive('p-style-class', styleclass)
     vueApp.directive('p-tooltip', tooltip)
+
+    //nuxtApp.provide('toast', nuxtApp.vueApp.config.globalProperties.$toast)
 })
