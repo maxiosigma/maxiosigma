@@ -414,13 +414,11 @@ useHead({
 })
 </script>
 
-<style scoped>
+<style lang="scss">
 .p-stepper {
     flex-basis: 100%;
 }
-</style>
 
-<style lang="scss">
 //https://primevue.org/speeddial/
 .finger {
     //border-r-4 border-t-4 border-b-4
