@@ -167,89 +167,7 @@
                 {{ work }}
             </div>-->
 
-            <PrimeAccordion v-model:activeIndex="accordionVisible">
-                <PrimeAccordionTab header="Желаете увидеть больше ?">
-                    <PrimeStepper class="box-animate" v-model:activeStep="stepperIndex" linear>
-                        <PrimeStepperPanel header="Кем вы являетесь ?">
-                            <template #content="{ nextCallback }">
-                                <PrimeSelectButton
-                                    class="flex flex-wrap container justify-center mx-auto py-10"
-                                    v-model="h1value"
-                                    :options="h1selections"
-                                />
-
-                                <div class="flex pt-4 justify-center">
-                                    <PrimeButton
-                                        label="Следующий вопрос"
-                                        icon="pi pi-arrow-right"
-                                        iconPos="right"
-                                        @click="nextCallback"
-                                    />
-                                </div>
-                            </template>
-                        </PrimeStepperPanel>
-
-                        <PrimeStepperPanel header="Какие навыки вам нужны ?">
-                            <template #content="{ prevCallback, nextCallback }">
-                                <div class="flex flex-col gap-2 mx-auto">
-                                    <div class="flex flex-wrap container py-10 justify-center gap-3">
-                                        <PrimeToggleButton
-                                            v-for="({ title }, si) in skillsPayload"
-                                            v-model="h2models[title]"
-                                            :disabled="h2modelsDisabled"
-                                            :onLabel="title"
-                                            :offLabel="title"
-                                            :key="si"
-                                        />
-                                    </div>
-                                </div>
-
-                                <div class="flex gap-5 pt-4 w-full justify-center">
-                                    <PrimeButton
-                                        label="Предыдущий вопрос"
-                                        severity="secondary"
-                                        icon="pi pi-arrow-left"
-                                        @click="prevCallback"
-                                    />
-
-                                    <PrimeButton
-                                        label="Следующий вопрос"
-                                        icon="pi pi-arrow-right"
-                                        iconPos="right"
-                                        @click="nextCallback"
-                                    />
-                                </div>
-                            </template>
-                        </PrimeStepperPanel>
-
-                        <PrimeStepperPanel header="Что вы предлагаете ?">
-                            <template #content="{ prevCallback }">
-                                <PrimeSelectButton
-                                    class="flex flex-wrap container justify-center mx-auto py-10"
-                                    v-model="h2value"
-                                    :options="h2selections"
-                                    multiple
-                                />
-
-                                <div class="flex gap-5 pt-4 justify-content-start">
-                                    <PrimeButton
-                                        label="Предыдущий вопрос"
-                                        severity="secondary"
-                                        icon="pi pi-arrow-left"
-                                        @click="prevCallback"
-                                    />
-
-                                    <PrimeButton
-                                        label="Найти подходящие работы"
-                                        severity="secondary"
-                                        icon="pi pi-arrow-left"
-                                    />
-                                </div>
-                            </template>
-                        </PrimeStepperPanel>
-                    </PrimeStepper>
-                </PrimeAccordionTab>
-            </PrimeAccordion>
+            <TemplatePortfolioStepper :skills="skillsPayload" />
         </div>
 
         <div class="fixed flex flex-col right-0 top-auto h-full">
@@ -319,55 +237,13 @@ const worksPayload = await usePayloadData({
     optionsWhere: { top: true }
 })
 
-const [h1value, h1selections, h2value, h2selections] = [
-    ref('Фрилансер'),
-    ref(['Частный предприниматель', 'Фрилансер', 'Представитель организации']),
-    ref('Заказ на фрилансе'),
-    ref([
-        'Личный проект',
-        'Заказ на фрилансе',
-        'Долгосрочный личный проект',
-        'Долгосрочный проект компании & студии',
-        'Работу в найме на удаленной основе'
-    ])
-]
-
 // LocalStorage Частный предприниматель
 
-const [storageSidebarVisible, storageAccordionVisible, storageStepperIndex] = [
-    useLocalStorage('sidebar-visible'),
-    useLocalStorage('accordion-visible'),
-    useLocalStorage('stepper-index-visible')
-]
+const storageSidebarVisible = useLocalStorage('sidebar-visible')
 
-const stepperIndex = ref(0)
-
-watch(
-    () => stepperIndex.value,
-    () => {
-        storageStepperIndex.value = stepperIndex.value
-    }
-)
-
-const h2models = ref({})
-const h2modelsDisabled = ref(false)
-
-watch(
-    () => h2models.value,
-    () => {
-        //.filter((it) => it === true).length
-        //console.log(Object.values(h2models.value))
-        console.log(h2models.value)
-    }
-)
-
-console.log(storageSidebarVisible.value, typeof storageSidebarVisible.value)
+//console.log(storageSidebarVisible.value, typeof storageSidebarVisible.value)
 
 const sidebarVisible = ref(useLocalStorageBoolean(storageSidebarVisible.value))
-
-//storageSidebarVisible.value === 'undefined' || storageSidebarVisible.value === undefined
-//? true
-//: storageSidebarVisible.value === 'true'
 
 watch(
     () => sidebarVisible.value,
@@ -376,21 +252,7 @@ watch(
     }
 )
 
-//const storageAccordionVisible = useLocalStorage('accordion-visible')
-const accordionVisible = ref()
-
-watch(
-    () => accordionVisible.value,
-    () => {
-        storageAccordionVisible.value = accordionVisible.value ?? 1
-    }
-)
-
 onMounted(() => {
-    accordionVisible.value = Number(storageAccordionVisible.value ?? 0)
-    stepperIndex.value = Number(storageStepperIndex.value ?? 0)
-    h2models.value = skillsPayload.value.reduce((s, { title }) => (s = { ...s, [title]: false }) && s, {})
-
     //toast.add({ severity: 'custom', summary: 'Uploading your files.', group: 'headless' })
 })
 
