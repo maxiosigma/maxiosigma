@@ -1,44 +1,20 @@
+import { getLocales, defaultLocale } from './config'
 import { resolve } from 'path'
 import { mkdirSync, writeFileSync, existsSync, unlinkSync } from 'fs'
-//import { defineNuxtConfig } from 'nuxt/config'
-//import { sitemapName } from './config'
 
+const locales = getLocales(mkdirSync, writeFileSync, existsSync)
 const isGenerateMode = process.argv.includes('generate')
-
-const defaultLocale = 'ru'
-const locales = (() => {
-    const locales_pc = [
-        { code: 'ru', iso: 'ru-RU', name: 'Русский' },
-        { code: 'en', iso: 'en-ES', name: 'English' },
-        { code: 'zh', iso: 'zh-CN', name: '中國人' }
-    ].map((it) => ({ ...it, origin: it.code, file: it.code + '.json' }))
-
-    const locales_mobile = locales_pc.map((locale) => {
-        return { ...locale, code: locale.code + '-amp' }
-    })
-
-    if (!existsSync('./locales')) mkdirSync('./locales')
-    if (!existsSync('./content')) mkdirSync('./content')
-
-    locales_pc.map(({ code }) => {
-        !existsSync(`./content/${code}`) ? mkdirSync(`./content/${code}`) : null
-    })
-    //
-    locales_pc.map(({ file }) => {
-        !existsSync(`./locales/${file}`) ? writeFileSync(`./locales/${file}`, '{}') : null
-    })
-
-    return [...locales_pc, ...locales_mobile]
-})()
 
 export default defineNuxtConfig({
     ssr: true,
     telemetry: false,
-    //typescript: {
-    //    strict: false,
-    //    //typeCheck: true
-    //    shim: false
-    //},
+    typescript: {
+        //typeCheck: false,
+        //typeCheck: true,
+        strict: true,
+        shim: false
+        //shim: true
+    },
     app: {
         rootId: 'app',
         rootTag: 'div class="wrapper"',
@@ -82,6 +58,11 @@ export default defineNuxtConfig({
             //    }
             //}
         }
+        //server: {
+        //    fs: {
+        //        strict: false
+        //    }
+        //}
     },
     build: {
         transpile: [
@@ -144,7 +125,7 @@ export default defineNuxtConfig({
         },
         langDir: 'locales',
         customRoutes: 'config',
-        locales: locales
+        locales
     },
     //sitemap: {
     //    //sitemaps: true,
@@ -170,8 +151,8 @@ export default defineNuxtConfig({
         watch: {
             ws: {
                 //  port: 4000,
-                port: 4444,
-                showURL: true
+                port: 4444
+                //showURL: true
             }
         }
     },
@@ -189,22 +170,39 @@ export default defineNuxtConfig({
     },
     //primevue: {
     //    usePrimeVue: true,
-    //    cssLayerOrder: 'tailwind-base, primevue, tailwind-utilities',
+    //    //cssLayerOrder: 'tailwind-base, primevue, tailwind-utilities',
     //    importPT: { as: 'Tailwind', from: 'primevue/passthrough/tailwind' },
     //    options: {
     //        ripple: true,
     //        inputStyle: 'outlined'
     //    },
     //    components: {
-    //        prefix: 'Prime',
-    //        include: ['Button', 'FloatLabel', 'InputText', 'MeterGroup'], // 'DataTable',
+    //        prefix: 'Prime'
+    //        //include: [
+    //        //    'Accordion',
+    //        //    'AccordionTab',
+    //        //    'SelectButton',
+    //        //    'ToggleButton',
+    //        //    'StepperPanel',
+    //        //    'ToastService',
+    //        //    'ScrollPanel',
+    //        //    'MeterGroup',
+    //        //    'FloatLabel',
+    //        //    'InputText',
+    //        //    'Skeleton',
+    //        //    'Stepper',
+    //        //    'Sidebar',
+    //        //    'Button',
+    //        //    'Toast',
+    //        //    'Tag'
+    //        //],
+    //        //exclude: '*'
+    //    },
+    //    directives: {
+    //        prefix: 'p-',
+    //        include: ['Ripple', 'Tooltip'],
     //        exclude: '*'
     //    }
-    //    //directives: {
-    //    //    prefix: 'p-',
-    //    //    include: ['Ripple', 'Tooltip'],
-    //    //    exclude: '*'
-    //    //},
     //    //composables: {
     //    //    include: [], //'useStyle'
     //    //    exclude: '*'

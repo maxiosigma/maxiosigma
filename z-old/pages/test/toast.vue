@@ -20,7 +20,6 @@
 </template>
 
 <script setup>
-import { useToast } from 'primevue/usetoast'
 const toast = useToast()
 
 const showTemplate = () => {
