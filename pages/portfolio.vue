@@ -1,7 +1,7 @@
 ﻿<template>
     <LayoutPage>
         <div class="container pt-20 pb-20 gap-20 w-full flex flex-col justify-content-center">
-            <div>
+            <!--<div>
                 <section class="text-gray-400 bg-gray-900 body-font">
                     <div class="container px-5 py-24 mx-auto">
                         <div
@@ -132,7 +132,7 @@
                         </button>
                     </div>
                 </section>
-            </div>
+            </div>-->
 
             <!--<div class="relative min-h-80 pointer-events-none">
                 <div v-for="(work, wi) in worksPayload" :key="wi">
@@ -257,46 +257,24 @@
                 class="my-auto p-1.5 rounded-r-none"
                 severity="success"
                 @click="sidebarVisible = true"
-                v-p-tooltip="'Skills'"
+                v-p-tooltip="'About'"
             >
                 <Icon name="solar:map-arrow-left-bold" size="25px" />
             </PrimeButton>
         </div>
 
-        <PrimeSidebar v-model:visible="sidebarVisible" header="About" position="right">
-            <div class="flex gap-20 px-5">
-                <div class="flex flex-col gap-5">
-                    <!-- Qualities -->
-                    <h3 class="text-xl tracking-wider">Качества</h3>
-                    <div class="flex justify-content-center text-slate-300">
-                        <TemplatePortfolioMeter :items="qualitiesPayload" :visible="sidebarVisible" />
-                    </div>
-                </div>
+        <!-- sidebarVisible = !sidebarVisible -->
+        <TemplatePortfolioSidebar
+            :qualities="qualitiesPayload"
+            :competencies="competenciesPayload"
+            :skills="skillsPayloadSidebar"
+            :visible="sidebarVisible"
+            @close="sidebarVisible = !sidebarVisible"
+        />
 
-                <div class="flex flex-col gap-5">
-                    <!-- Competencies -->
-                    <h3 class="text-xl tracking-wider">Компетенции</h3>
-                    <div class="flex justify-content-center text-slate-300">
-                        <TemplatePortfolioMeter :items="competenciesPayload" :visible="sidebarVisible" />
-                    </div>
-                </div>
-
-                <div class="flex flex-col gap-5 min-w-52">
-                    <!-- Skills -->
-                    <h3 class="text-xl tracking-wider">Навыки</h3>
-                    <div class="flex justify-content-center text-slate-300">
-                        <TemplatePortfolioMeter
-                            :items="skillsPayload.filter((it) => it?.only !== 'select')"
-                            :visible="sidebarVisible"
-                        />
-                    </div>
-                </div>
-            </div>
-        </PrimeSidebar>
-
-        <Toast position="top-center" group="headless" @close="false">
+        <!--<Toast position="top-center" group="headless" @close="false">
             <div>AAAAAAAAAAAA</div>
-        </Toast>
+        </Toast>-->
     </LayoutPage>
 </template>
 
@@ -307,6 +285,7 @@ const localePath = useLocalePath()
 const toast = useToast()
 
 const skillsPayload = await usePayloadData({ name: 'portfolio-skills', path: 'skills' })
+const skillsPayloadSidebar = skillsPayload.value?.filter((it) => it?.only !== 'select')
 const qualitiesPayload = await usePayloadData({
     name: 'portfolio-qualities',
     path: 'qualities'
@@ -382,7 +361,13 @@ watch(
     }
 )
 
-const sidebarVisible = ref(storageSidebarVisible.value === 'true' ?? true)
+console.log(storageSidebarVisible.value, typeof storageSidebarVisible.value)
+
+const sidebarVisible = ref(useLocalStorageBoolean(storageSidebarVisible.value))
+
+//storageSidebarVisible.value === 'undefined' || storageSidebarVisible.value === undefined
+//? true
+//: storageSidebarVisible.value === 'true'
 
 watch(
     () => sidebarVisible.value,
@@ -431,18 +416,6 @@ useHead({
     &-description {
         @apply text-sm text-self-7;
     }
-}
-
-.p-sidebar-right .p-sidebar {
-    @apply w-auto lg:max-w-[90%] max-w-full #{!important};
-}
-
-.p-sidebar-header {
-    @apply flex justify-end gap-3 uppercase tracking-[0.3rem];
-}
-
-.p-sidebar-header-content {
-    @apply border-b-2 border-b-self-3 border-dashed pl-1.5 text-center;
 }
 
 .p-stepper-content {

@@ -12,6 +12,7 @@ import togglebutton from 'primevue/togglebutton'
 import selectbutton from 'primevue/selectbutton'
 import accordion from 'primevue/accordion'
 import accordiontab from 'primevue/accordiontab'
+import scrollpanel from 'primevue/scrollpanel'
 import sidebar from 'primevue/sidebar'
 import toastservice from 'primevue/toastservice'
 import toast from 'primevue/toast'
@@ -31,6 +32,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     vueApp.component('PrimeSelectButton', selectbutton)
     vueApp.component('PrimeToggleButton', togglebutton)
     vueApp.component('PrimeStepperPanel', stepperpanel)
+    vueApp.component('PrimeScrollPanel', scrollpanel)
     vueApp.component('PrimeMeterGroup', metergroup)
     vueApp.component('PrimeFloatLabel', floatlabel)
     vueApp.component('PrimeInputText', inputtext)

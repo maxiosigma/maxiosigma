@@ -3,6 +3,8 @@ import type { Config } from 'tailwindcss'
 //import colors from 'tailwindcss/colors'
 import plugin from 'tailwindcss/plugin'
 //import tailwindcssAnimate from 'tailwindcss-animated'
+import tailwindScrollbar from 'tailwind-scrollbar'
+// @ts-expect-error
 import tailwindcssHeroPatterns from 'tailwindcss-hero-patterns'
 //import tailwindcssHeroPatterns from 'tailwindcss-hero-patterns/src/patterns'
 
@@ -78,6 +80,7 @@ export default {
     },
     plugins: [
         //tailwindcssAnimate,
+        tailwindScrollbar,
         tailwindcssHeroPatterns,
         plugin(function ({ matchUtilities, theme }) {
             matchUtilities(
