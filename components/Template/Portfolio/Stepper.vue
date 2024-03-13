@@ -4,7 +4,6 @@
             <PrimeStepper class="box-animate" v-model:activeStep="stepperIndex" linear>
                 <PrimeStepperPanel header="Кем вы являетесь ?">
                     <template #content="{ nextCallback }">
-                        <!-- v-model="h1value" -->
                         <PrimeSelectButton
                             class="flex flex-wrap container justify-center mx-auto py-10"
                             v-model="h1value"
@@ -26,7 +25,6 @@
                     <template #content="{ prevCallback, nextCallback }">
                         <div class="flex flex-col gap-2 mx-auto">
                             <div class="flex flex-wrap container py-10 justify-center gap-3">
-                                <!-- v-model="h2models[title]" -->
                                 <PrimeToggleButton
                                     v-for="({ title }, si) in skills"
                                     v-model="h2models[title]"
@@ -39,26 +37,27 @@
                         </div>
 
                         <div class="flex gap-5 pt-4 w-full justify-center">
-                            <PrimeButton
-                                label="Предыдущий вопрос"
-                                severity="secondary"
-                                icon="pi pi-arrow-left"
-                                @click="prevCallback"
-                            />
+                            <PrimeButton label="Предыдущий вопрос" severity="secondary" @click="prevCallback">
+                                <template #icon>
+                                    <Icon
+                                        class="mr-1 transform rotate-180"
+                                        size="20px"
+                                        name="material-symbols-light:brightness-3-rounded"
+                                    />
+                                </template>
+                            </PrimeButton>
 
-                            <PrimeButton
-                                label="Следующий вопрос"
-                                icon="pi pi-arrow-right"
-                                iconPos="right"
-                                @click="nextCallback"
-                            />
+                            <PrimeButton type="button" label="Следующий вопрос" iconPos="right" @click="nextCallback">
+                                <template #icon>
+                                    <Icon class="mr-1" size="20px" name="material-symbols-light:brightness-3-rounded" />
+                                </template>
+                            </PrimeButton>
                         </div>
                     </template>
                 </PrimeStepperPanel>
 
                 <PrimeStepperPanel header="Что вы предлагаете ?">
                     <template #content="{ prevCallback }">
-                        <!-- v-model="h2value" -->
                         <PrimeSelectButton
                             class="flex flex-wrap container justify-center mx-auto py-10"
                             v-model="h3value"
@@ -67,14 +66,21 @@
                         />
 
                         <div class="flex gap-5 pt-4 justify-content-start">
-                            <PrimeButton
-                                label="Предыдущий вопрос"
-                                severity="secondary"
-                                icon="pi pi-arrow-left"
-                                @click="prevCallback"
-                            />
+                            <PrimeButton label="Предыдущий вопрос" severity="secondary" @click="prevCallback">
+                                <template #icon>
+                                    <Icon class="mr-1" size="20px" name="ic:sharp-arrow-back-ios-new" />
+                                </template>
+                            </PrimeButton>
 
-                            <PrimeButton label="Найти подходящие работы" severity="secondary" icon="pi pi-arrow-left" />
+                            <PrimeButton label="Найти подходящие работы" severity="success">
+                                <template #icon>
+                                    <Icon
+                                        class="mr-1"
+                                        size="24px"
+                                        name="material-symbols-light:search-insights-rounded"
+                                    />
+                                </template>
+                            </PrimeButton>
                         </div>
                     </template>
                 </PrimeStepperPanel>
@@ -113,15 +119,8 @@ watch(
     }
 )
 
-const storageStepperIndex = useLocalStorage('stepper-index-visible')
 const stepperIndex = ref(0)
-
-watch(
-    () => stepperIndex.value,
-    () => {
-        storageStepperIndex.value = stepperIndex.value
-    }
-)
+const storageStepperIndex = useSaveStorageValue(stepperIndex, 'stepper-index-visible')
 
 const storageAccordionVisible = useLocalStorage('accordion-visible')
 const accordionVisible = ref()
