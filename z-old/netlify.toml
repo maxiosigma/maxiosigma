@@ -1,9 +1,0 @@
-[[headers]]
-	for = "/*"
-		[headers.values]
-		 	X-XSS-Protection = "0"
-			X-Content-Type-Options = "nosniff"
-			X-Frame-Options: ALLOW-FROM= "https://maxiosigma.web.app"
-			Access-Control-Allow-Origin = "https://maxiosigma.web.app"
-			Content-Security-Policy = "frame-ancestors 'self' https://maxiosigma.web.app;"
-			Vary = Origin

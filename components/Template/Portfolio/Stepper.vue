@@ -10,13 +10,8 @@
                             :options="h1selections"
                         />
 
-                        <div class="flex pt-4 justify-center">
-                            <PrimeButton
-                                label="Следующий вопрос"
-                                icon="pi pi-arrow-right"
-                                iconPos="right"
-                                @click="nextCallback"
-                            />
+                        <div class="flex pt-4 w-full justify-center">
+                            <TemplatePortfolioButtonQuestion :callback="nextCallback" />
                         </div>
                     </template>
                 </PrimeStepperPanel>
@@ -37,21 +32,13 @@
                         </div>
 
                         <div class="flex gap-5 pt-4 w-full justify-center">
-                            <PrimeButton label="Предыдущий вопрос" severity="secondary" @click="prevCallback">
-                                <template #icon>
-                                    <Icon
-                                        class="mr-1 transform rotate-180"
-                                        size="20px"
-                                        name="material-symbols-light:brightness-3-rounded"
-                                    />
-                                </template>
-                            </PrimeButton>
+                            <TemplatePortfolioButtonQuestion
+                                label="Предыдущий вопрос"
+                                position="left"
+                                :callback="prevCallback"
+                            />
 
-                            <PrimeButton type="button" label="Следующий вопрос" iconPos="right" @click="nextCallback">
-                                <template #icon>
-                                    <Icon class="mr-1" size="20px" name="material-symbols-light:brightness-3-rounded" />
-                                </template>
-                            </PrimeButton>
+                            <TemplatePortfolioButtonQuestion :callback="nextCallback" />
                         </div>
                     </template>
                 </PrimeStepperPanel>
@@ -59,28 +46,25 @@
                 <PrimeStepperPanel header="Что вы предлагаете ?">
                     <template #content="{ prevCallback }">
                         <PrimeSelectButton
-                            class="flex flex-wrap container justify-center mx-auto py-10"
+                            class="flex flex-wrap gap-3 container justify-center mx-auto py-10"
                             v-model="h3value"
                             :options="h3selections"
                             multiple
                         />
 
-                        <div class="flex gap-5 pt-4 justify-content-start">
-                            <PrimeButton label="Предыдущий вопрос" severity="secondary" @click="prevCallback">
-                                <template #icon>
-                                    <Icon class="mr-1" size="20px" name="ic:sharp-arrow-back-ios-new" />
-                                </template>
-                            </PrimeButton>
+                        <div class="flex gap-5 pt-4 justify-center">
+                            <TemplatePortfolioButtonQuestion
+                                label="Предыдущий вопрос"
+                                position="left"
+                                :callback="prevCallback"
+                            />
 
-                            <PrimeButton label="Найти подходящие работы" severity="success">
-                                <template #icon>
-                                    <Icon
-                                        class="mr-1"
-                                        size="24px"
-                                        name="material-symbols-light:search-insights-rounded"
-                                    />
-                                </template>
-                            </PrimeButton>
+                            <TemplatePortfolioButtonQuestion
+                                label="Найти подходящие работы"
+                                icon="material-symbols-light:search-insights-rounded"
+                                size="24px"
+                                :callback="() => console.log('aaaa')"
+                            />
                         </div>
                     </template>
                 </PrimeStepperPanel>
