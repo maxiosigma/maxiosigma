@@ -34,11 +34,16 @@
                             {{ work.description }}
                         </p>
 
-                        <a v-if="work.link" :href="work.link" class="inline-flex items-center mt-3 text-self-5">
-                            Посмотреть сайт
+                        <a
+                            v-if="work.link"
+                            :href="work.link"
+                            target="_blank"
+                            class="inline-flex items-center mt-3 group *:transition-colors *:duration-300"
+                        >
+                            <div class="text-self-5 group-hover:text-self-3">Посмотреть сайт</div>
 
                             <Icon
-                                class="ml-2 mb-1.5 text-self-3"
+                                class="ml-2 mb-1.5 text-self-3 group-hover:text-self-5"
                                 size="20px"
                                 name="streamline:travel-wayfinder-fire-exit-sign-arrow-point-direction-signal"
                             />
@@ -49,7 +54,7 @@
         </div>
     </section>
 
-    <div>
+    <!--<div>
         <section class="text-gray-400 bg-gray-900 body-font">
             <div class="container px-5 py-24 mx-auto">
                 <div
@@ -181,7 +186,7 @@
                 </button>
             </div>
         </section>
-    </div>
+    </div>-->
 
     <!--<div class="relative min-h-80 pointer-events-none">
         <div v-for="(work, wi) in works" :key="wi">

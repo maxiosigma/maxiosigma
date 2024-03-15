@@ -1,0 +1,141 @@
+﻿- slug: animacionnyj_banner
+  link: null
+  title: Анимационный баннер
+  description: null
+  date: 2022-05-13
+
+- slug: avtoskaner_elm327
+  link: null
+  title: Автосканер ELM327
+  description: Заказ для авто-сайта
+  date: 2022-05-13
+
+- slug: blog_o_kompyuternyh_igrah
+  link: null
+  title: Блог о компьютерных играх
+  description: Блог создавал на бакалавриате. Обучался созданию разных видов сайтов.
+  date: 2017-02-01
+
+- slug: diplomnaya_rabota
+  link: null
+  title: Дипломная работа
+  description: Проект в формате книжки по обучению 3D-моделирования. Построение робота, его костемизация и анимация.
+  date: 2017-03-01
+
+- slug: domashnij_pereezd
+  link: null
+  title: Домашний переезд
+  description: Сайт стажировки (многостраничный) создан для прохождения вступительного
+      испытания компании «Информационные технологии». Он был создан с использованием разных подходов к сеткам сайта. База создается с помощью сетки, а некоторые блоки создаются с помощью флексбокса и таблицы. С мобильной адаптацией.
+  date: 2019-01-01
+
+- slug: dve_dyni_po_cene_odnoj
+  link: null
+  title: Две дыни по цене одной
+  description: 1 из 2 работ для заказа по баннерам
+  date: 2021-01-01
+
+- slug: fabrika_kofe
+  link: https://maksim-semenyuk-coffee-masters.webflow.io
+  title: Фабрика кофе
+  description: Демонстрационный сайт был создан в Webflow.
+  date: 2021-01-01
+
+- slug: gadzhetarium
+  link: null
+  title: Гаджетариум
+  description: Сайт гаджетов, создавался для портфолио
+  date: 2021-01-01
+  images:
+      - assets/media/portfolio/gadgetarium/1.webp
+      - assets/media/portfolio/gadgetarium/2.webp
+      - assets/media/portfolio/gadgetarium/3.webp
+      - assets/media/portfolio/gadgetarium/4.webp
+      - assets/media/portfolio/gadgetarium/5.webp
+  # Image + No Image на тёмном фоне
+
+- slug: karta_loyalnosti
+  top: true
+  #link: https://my-world-ru.web.app
+  link: https://world-ru.web.app
+  title: Карта лояльности
+  description: Дизайн карты лояльности для крупнейшей компании мира по кэшбеку
+  date: 2022-05-13
+
+- slug: karta_associacii
+  link: http://associationcards.f97746o0.beget.tech/
+  title: Карты ассоциации
+  description: Легкий сайт с категориями без пагинации. Разбиение на страницы легко реализовать и может иметь место на вашем сайте. На сайте тоже есть модальные окна и анимация даже со сменой категории через Ajax.
+  date: 2020-02-01
+
+- slug: ketky_or_sajt_kafedry
+  top: true
+  link: http://n96348lg.beget.tech
+  title: KETKY | Сайт кафедры
+  description: Сайт кафедры экономической теории и корпоративного управления. Проект проходит стадию согласования с размещением или неразмещением в сети общего пользования.
+  date: 2020-03-01
+
+- slug: knizhnaya_polka
+  link: null
+  title: Книжная полка
+  description: PHP-книжная полка на бакалавриате. Обучался созданию функциональной
+      части сайта основанного на php-сервере.
+  date: 2017-01-01
+
+- slug: logotip_dlya_telegram_chata
+  link: null
+  title: Логотип для телеграм-чата
+  description: Seller
+  date: 2021-01-01
+
+- slug: magazin_keksbi
+  link: null
+  title: Магазин Кексби
+  description: Учебный проект (лендинг) в профессиональном стиле, с использованием правильных
+      элементов разметки и стилизации. Он был создан с использованием flexbox, без какой-либо специальной функциональности.
+  date: 2019-01-01
+
+- slug: moj_rodnoj_gorod
+  link: https://me-portfolio-grande-purpure.tilda.ws/my-city
+  title: Мой родной город
+  description: Сайт родного города на Тильде
+  date: 2021-02-01
+
+- slug: prodazha_avtozapchastej
+  link: null
+  title: Продажа автозапчастей
+  description: Начальный шаблон сайта для магазина моего дяди
+  date: 2022-05-13
+
+- slug: rozovaya_chereshnya
+  top: true
+  link: null
+  title: Розовая черешня
+  description: 1 из 2 работ для заказа по баннерам
+  date: 2021-02-01
+
+- slug: shkola_avtozvuka
+  link: http://schoolaudiocar.f97746o0.beget.tech
+  title: Школа автозвука
+  description: Демонстрационный сайт на бирже фриланса. Он был закрытым, но наполненным душой.
+  date: 2021-03-01
+
+- slug: shkola_boevyh_iskusstv
+  link: http://martialartschool.f97746o0.beget.tech
+  title: Школа боевых искусств
+  description: Пример простого лендинга с плавающим меню и анимацией прокрутки.
+  date: 2020-03-01
+
+- slug: staart
+  top: true
+  link: https://max-eros-portfolio-site-staart.netlify.app
+  title: Стаарт
+  description: Редизайн сайта, создание с использованием новых технологий, статическая сборка
+  date: 2021-04-01
+
+- slug: tommi_dzhins
+  top: true
+  link: https://me-portfolio-tommy-jeans.netlify.app
+  title: Томми Джинс
+  description: Целевая страница сложно-анимационного характера.
+  date: 2021-06-01
