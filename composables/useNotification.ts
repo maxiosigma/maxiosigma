@@ -23,9 +23,7 @@ export default ({
 
         if (visible.value === true) {
             toast.add({ summary, detail, life })
-
-            //route.meta?.title ??
-            saveToast.value = { date: now, page: pageTitle || route.path, title: summary, body: detail }
+            saveToast.value = { date: now, page: pageTitle, url: route.path, title: summary, body: detail }
         } else {
             toast.remove({ life: 3000 })
         }

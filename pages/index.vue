@@ -50,8 +50,6 @@ const title = ref('Главная')
 
 const visible = ref(true)
 useNotification({ name: 'K10', summary: 'K10', detail: 'Inf', visible })
-
-onMounted(() => {})
 </script>
 
 <style lang="scss">
