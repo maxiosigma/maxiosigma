@@ -8,13 +8,13 @@ const isGenerateMode = process.argv.includes('generate')
 export default defineNuxtConfig({
     ssr: true,
     telemetry: false,
-    typescript: {
-        //typeCheck: false,
-        //typeCheck: true,
-        strict: true,
-        shim: false
-        //shim: true
-    },
+    //typescript: {
+    //    //typeCheck: false,
+    //    //typeCheck: true,
+    //    strict: true,
+    //    shim: false
+    //    //shim: true
+    //},
     app: {
         rootId: 'app',
         rootTag: 'div class="wrapper"',

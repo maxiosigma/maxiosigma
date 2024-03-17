@@ -47,25 +47,28 @@ const competenciesPayload = await usePayloadData({
 
 const worksPayload = await usePayloadData({
     name: 'portfolio-works',
-    path: 'works/',
-    type: 'multi',
-    callback: (items) =>
-        items.map((item) => {
-            delete item?._path
-            delete item?._dir
-            delete item?._draft
-            delete item?._partial
-            delete item?._extension
-            delete item?._source
-            delete item?._type
-            delete item?._file
-            delete item?._locale
-            delete item?.top
-            delete item?.date
+    path: 'works',
+    //type: 'multi',
+    callback: (items) => {
+        console.log(items)
+        return []
+        //return items?.body?.map((item) => {
+        //    delete item?._path
+        //    delete item?._dir
+        //    delete item?._draft
+        //    delete item?._partial
+        //    delete item?._extension
+        //    delete item?._source
+        //    delete item?._type
+        //    delete item?._file
+        //    delete item?._locale
+        //    delete item?.top
+        //    delete item?.date
 
-            return item
-        }),
-    optionsWhere: { top: true }
+        //    return item
+        //})
+    }
+    //optionsWhere: { top: true }
 })
 
 // LocalStorage Частный предприниматель

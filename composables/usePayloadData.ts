@@ -11,6 +11,12 @@ export default async function ({
     const { locale } = useI18n()
     const payloadName = `${locale.value}-${name}`
 
+    console.log(
+        await queryContent(`/${locale.value}/${path}`)
+            .where({ ...optionsWhere, _path: `/${locale.value}/${path}` })
+            .findOne()
+    )
+
     if (process.server) {
         switch (type) {
             case 'multi':
@@ -30,7 +36,7 @@ export default async function ({
 
             default:
                 useNuxtApp().payload.data[payloadName] = await queryContent(`/${locale.value}/${path}`)
-                    .where(optionsWhere)
+                    .where({ ...optionsWhere, _path: `/${locale.value}/${path}` })
                     .findOne()
                     .then(callback)
                     .catch(errors)
