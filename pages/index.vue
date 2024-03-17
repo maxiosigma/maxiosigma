@@ -48,8 +48,7 @@ const title = ref('Главная')
 //const router = useRouter()
 //console.log(router.getRoutes())
 
-const visible = ref(true)
-useNotification({ name: 'K10', summary: 'K10', detail: 'Inf', visible })
+useNotification({ name: 'K10', summary: 'K10', detail: 'Inf', visible: ref(true) })
 </script>
 
 <style lang="scss">

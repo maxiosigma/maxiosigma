@@ -2,9 +2,22 @@
     <NuxtLoadingIndicator />
 
     <slot />
-    <Toast />
+    <Toast>
+        <!-- class="aaaaaaa" -->
+        <!--<template #container="{ message, closeCallback }">
+            <div>{{ message }}}</div>
+        </template>-->
 
-    <!--<Toast :position="position" group="all-notifications">
+        <template #icon="{ class: classIcon }">
+            <div class="flex items-center min-h-full inset-0">
+                <div class="h-full w-1.5 bg-self-3"></div>
+                <div class="h-full w-1 bg-self-1"></div>
+                <div :class="classIcon"></div>
+            </div>
+        </template>
+    </Toast>
+
+    <!--<Toast class="bg-self-2">
         <template #message="slotProps">
             <div class="flex flex-col items-center">
                 <slot name="text" :data="slotProps">
@@ -93,6 +106,10 @@ onMounted(() => {})
 </script>
 
 <style lang="scss">
+html {
+    //font-size: 12px;
+}
+
 .html {
     @apply bg-self-1 h-auto max-w-[100vw] relative;
 }
@@ -113,7 +130,23 @@ onMounted(() => {})
     @apply min-h-full h-full flex flex-col flex-grow overflow-hidden;
 }
 
-.p-toast .p-toast-message {
-    backdrop-filter: inherit;
+.p-toast {
+    @apply bg-indigo-800 border-0 rounded-lg overflow-hidden;
+
+    &-message {
+        @apply bg-transparent border-0 m-0 backdrop-blur-none;
+
+        &-content {
+            @apply border-0 bg-transparent items-stretch p-0;
+        }
+
+        &-text {
+            @apply p-4;
+        }
+    }
+
+    &-icon-close {
+        @apply mt-2 mr-4;
+    }
 }
 </style>

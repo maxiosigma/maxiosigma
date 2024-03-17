@@ -33,6 +33,8 @@ const { locale } = useI18n()
 const localePath = useLocalePath()
 const toast = useToast()
 
+useNotification({ name: 'K11', summary: 'K11', detail: 'Inf', visible: ref(true), life: 1000000 })
+
 const skillsPayload = await usePayloadData({ name: 'portfolio-skills', path: 'skills' })
 const skillsPayloadSidebar = skillsPayload.value?.filter((it) => it?.only !== 'select')
 const qualitiesPayload = await usePayloadData({
@@ -85,10 +87,6 @@ watch(
         storageSidebarVisible.value = sidebarVisible.value
     }
 )
-
-onMounted(() => {
-    //toast.add({ severity: 'custom', summary: 'Uploading your files.', group: 'headless' })
-})
 
 useHead({
     title: 'Портфолио'
