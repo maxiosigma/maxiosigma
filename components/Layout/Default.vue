@@ -1,6 +1,27 @@
 <template>
-    <!--<NuxtLoadingIndicator />-->
+    <NuxtLoadingIndicator />
+
     <slot />
+    <Toast />
+
+    <!--<Toast :position="position" group="all-notifications">
+        <template #message="slotProps">
+            <div class="flex flex-col items-center">
+                <slot name="text" :data="slotProps">
+                    <div class="text-center">
+                        <div class="text-xl my-3">{{ slotProps }}</div>
+                    </div>
+                </slot>
+
+                <slot name="buttons" :data="slotProps">
+                    <div class="flex gap-2">
+                        <PrimeButton severity="success" label="Yes" @click="onConfirm()"></PrimeButton>
+                        <PrimeButton severity="secondary" label="No" @click="onReject()"></PrimeButton>
+                    </div>
+                </slot>
+            </div>
+        </template>
+    </Toast>-->
 </template>
 
 <script setup>
@@ -10,23 +31,24 @@ const lang = ref(lp.value.code)
 const prop = defineProps({
     bs: {
         type: String,
-        required: false,
         default: 'body-bg'
     },
     title: {
         type: String,
-        required: false,
         default: ''
     },
     description: {
         type: String,
-        required: false,
         default: ''
+    },
+    toast: {
+        type: Object,
+        default: {}
     }
 })
 
 useHead({
-    //title: prop.title,
+    title: prop.title,
     titleTemplate: `SIGMA | %s`,
     htmlAttrs: { class: 'html', lang: lang },
     headAttrs: { class: 'head' },
@@ -42,30 +64,30 @@ useHead({
         { name: 'apple-mobile-web-app-capable', content: 'yes' }
         //{ name: "", content: "" }
     ]
-    //link: [
-    //    {
-    //        rel: 'icon',
-    //        type: 'image/png',
-    //        href: '/favicon.png',
-    //    },
-    //],
 })
 
-//useSeoMeta({
-//    description: '[description]',
-//    ogTitle: '[og:title]',
-//    ogDescription: '[og:description]',
-//    ogImage: '[og:image]',
-//    ogUrl: '[og:url]',
-//    twitterTitle: '[twitter:title]',
-//    twitterDescription: '[twitter:description]',
-//    twitterImage: '[twitter:image]',
-//    twitterCard: 'summary'
-//})
+const meta = {
+    //description: '[description]',
 
-//useServerSeoMeta({
-//    robots: 'index, follow'
-//})
+    ogTitle: prop.title,
+    //ogDescription: '[og:description]',
+    //ogImage: '[og:image]',
+    //ogUrl: '[og:url]',
+
+    twitterTitle: prop.title,
+    //twitterDescription: '[twitter:description]',
+    //twitterImage: '[twitter:image]',
+    twitterCard: 'summary'
+}
+
+useSeoMeta({
+    ...meta
+})
+
+useServerSeoMeta({
+    robots: 'index, follow',
+    ...meta
+})
 
 onMounted(() => {})
 </script>
@@ -89,5 +111,9 @@ onMounted(() => {})
 
 .wrapper {
     @apply min-h-full h-full flex flex-col flex-grow overflow-hidden;
+}
+
+.p-toast .p-toast-message {
+    backdrop-filter: inherit;
 }
 </style>

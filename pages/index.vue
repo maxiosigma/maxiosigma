@@ -1,6 +1,6 @@
 <template>
     <!-- pagecl="main" -->
-    <LayoutPage>
+    <LayoutPage :title="title">
         <div class="flex my-auto p-20">
             <div :class="['relative flex justify-end flex-grow h-full w-full']">
                 <!--<ItemMediaImg
@@ -35,25 +35,23 @@
             </div>
         </div>
 
+        <!--<ItemNotification name="K4" body="About 4" :visible="true" />-->
+        <!--<ItemNotification name="K5" body="About 5" :visible="true" />-->
+        <!--<ItemNotification name="K6" body="About 6" :visible="true" />-->
+
         <!--<div class="nav-bottom"></div>-->
     </LayoutPage>
 </template>
 
 <script setup>
-const test = ref('aaa')
+const title = ref('Главная')
 //const router = useRouter()
 //console.log(router.getRoutes())
 
-definePageMeta({
-    sitemap: {
-        changefreq: 'daily',
-        priority: 0.3
-    }
-})
+const visible = ref(true)
+useNotification({ name: 'K10', summary: 'K10', detail: 'Inf', visible })
 
-useHead({
-    title: 'Главная'
-})
+onMounted(() => {})
 </script>
 
 <style lang="scss">

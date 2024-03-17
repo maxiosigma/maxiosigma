@@ -1,5 +1,5 @@
 <template>
-    <LayoutDefault>
+    <LayoutDefault :title="title" :description="description">
         <div :class="[$style.page, view ? '' : '!hidden', pagecl]">
             <slot />
         </div>

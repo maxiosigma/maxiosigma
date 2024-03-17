@@ -1,7 +1,37 @@
-//import { useNotification } from '@kyvg/vue3-notification'
-//export default useNotification
+import { useTitle } from '@vueuse/core'
 
-////https://www.npmjs.com/package/vue-toast-notification
-//import { useToast } from 'vue-toast-notification'
-////import 'vue-toast-notification/dist/theme-default.css'
-//export default useToast
+//    position = 'top-center',
+
+export default ({
+    name = Math.random().toString(),
+    afterCallback = () => {},
+    preCallback = () => {},
+    visible = ref(false),
+    summary = undefined,
+    detail = undefined,
+    life = undefined
+}) => {
+    const nameToast = ref(`notification-${name.toLowerCase()}`)
+    const saveToast = useLocalStorage(nameToast.value, {})
+    const now = useNow({ interval: 0 })
+    const pageTitle = useTitle()
+    const toast = useToast()
+    const route = useRoute()
+
+    onMounted(() => {
+        preCallback()
+
+        if (visible.value === true) {
+            toast.add({ summary, detail, life })
+
+            //route.meta?.title ??
+            saveToast.value = { date: now, page: pageTitle || route.path, title: summary, body: detail }
+        } else {
+            toast.remove({ life: 3000 })
+        }
+
+        afterCallback()
+    })
+
+    return { nameToast, saveToast, pageTitle, now }
+}
