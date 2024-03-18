@@ -22,6 +22,7 @@ export default ({
         preCallback()
 
         if (visible.value === true) {
+            life !== undefined ? (life >= 20000 ? (life = 20000) : null) : null
             toast.add({ summary, detail, life })
             saveToast.value = { date: now, page: pageTitle, url: route.path, title: summary, body: detail }
         } else {
