@@ -2,39 +2,8 @@
     <NuxtLoadingIndicator />
 
     <slot />
-    <Toast>
-        <!-- class="aaaaaaa" -->
-        <!--<template #container="{ message, closeCallback }">
-            <div>{{ message }}}</div>
-        </template>-->
 
-        <template #icon="{ class: classIcon }">
-            <div class="flex items-center min-h-full inset-0">
-                <div class="h-full w-1.5 bg-self-3"></div>
-                <div class="h-full w-1 bg-self-1"></div>
-                <div :class="classIcon"></div>
-            </div>
-        </template>
-    </Toast>
-
-    <!--<Toast class="bg-self-2">
-        <template #message="slotProps">
-            <div class="flex flex-col items-center">
-                <slot name="text" :data="slotProps">
-                    <div class="text-center">
-                        <div class="text-xl my-3">{{ slotProps }}</div>
-                    </div>
-                </slot>
-
-                <slot name="buttons" :data="slotProps">
-                    <div class="flex gap-2">
-                        <PrimeButton severity="success" label="Yes" @click="onConfirm()"></PrimeButton>
-                        <PrimeButton severity="secondary" label="No" @click="onReject()"></PrimeButton>
-                    </div>
-                </slot>
-            </div>
-        </template>
-    </Toast>-->
+    <ItemToast />
 </template>
 
 <script setup>
@@ -60,6 +29,20 @@ const prop = defineProps({
     }
 })
 
+const meta = {
+    //description: '[description]',
+
+    ogTitle: prop.title,
+    //ogDescription: '[og:description]',
+    //ogImage: '[og:image]',
+    //ogUrl: '[og:url]',
+
+    twitterTitle: prop.title,
+    //twitterDescription: '[twitter:description]',
+    //twitterImage: '[twitter:image]',
+    twitterCard: 'summary'
+}
+
 useHead({
     title: prop.title,
     titleTemplate: `SIGMA | %s`,
@@ -78,20 +61,6 @@ useHead({
         //{ name: "", content: "" }
     ]
 })
-
-const meta = {
-    //description: '[description]',
-
-    ogTitle: prop.title,
-    //ogDescription: '[og:description]',
-    //ogImage: '[og:image]',
-    //ogUrl: '[og:url]',
-
-    twitterTitle: prop.title,
-    //twitterDescription: '[twitter:description]',
-    //twitterImage: '[twitter:image]',
-    twitterCard: 'summary'
-}
 
 useSeoMeta({
     ...meta
@@ -128,25 +97,5 @@ html {
 
 .wrapper {
     @apply min-h-full h-full flex flex-col flex-grow overflow-hidden;
-}
-
-.p-toast {
-    @apply bg-indigo-800 border-0 rounded-lg overflow-hidden;
-
-    &-message {
-        @apply bg-transparent border-0 m-0 backdrop-blur-none;
-
-        &-content {
-            @apply border-0 bg-transparent items-stretch p-0;
-        }
-
-        &-text {
-            @apply p-4;
-        }
-    }
-
-    &-icon-close {
-        @apply mt-2 mr-4;
-    }
 }
 </style>

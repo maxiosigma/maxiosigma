@@ -31,7 +31,6 @@
 const works = []
 const { locale } = useI18n()
 const localePath = useLocalePath()
-const toast = useToast()
 
 useNotification({ name: 'K11', summary: 'K11', detail: 'Inf', visible: ref(true), life: 1000000 })
 
