@@ -18,23 +18,20 @@
         </template>
     </Toast>-->
 
-    {{ counter }}
-
-    <Toast @life-end="lifeEnd = true">
+    <Toast>
         <template #message="{ message }">
-            <div class="flex items-center min-h-full inset-0">
+            <div class="flex items-center justify-between">
                 <div
                     class="w-2 bg-self-3 rounded-l-lg"
                     :style="`height: ${message.life ? (counter / (message.life / step)) * 100 : 100}%`"
                 ></div>
 
-                <!--{{ (cn[message.id] = useInterval(step, { controls: true })) }}-->
-
                 <div class="h-full w-1 bg-self-1"></div>
             </div>
 
-            <div class="min-h-20 px-5">
-                {{ lifeEnd }}
+            <div class="flex flex-col py-3 pl-5 mr-auto">
+                <div>{{ message.summary }}</div>
+                <div>{{ message.detail }}</div>
             </div>
         </template>
 
@@ -50,7 +47,6 @@
 
 <script setup>
 const step = 50
-const lifeEnd = ref(false)
 const { counter, pause } = useInterval(step, { controls: true })
 
 watch(
@@ -61,13 +57,13 @@ watch(
 
 <style lang="scss">
 .p-toast {
-    @apply border-0 rounded-lg overflow-hidden;
+    @apply w-auto min-w-[15vw] max-w-[35vw] border-0 rounded-lg overflow-hidden;
 
     &-message {
-        @apply bg-self-2 border-0 mx-0 my-5 backdrop-blur-none;
+        @apply flex flex-col bg-self-2 border-0 mx-0 my-5 backdrop-blur-none;
 
         &-content {
-            @apply border-0 bg-transparent items-stretch p-0;
+            @apply border-0 bg-transparent items-stretch justify-between p-0;
         }
 
         &-text {
