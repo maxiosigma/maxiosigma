@@ -9,7 +9,7 @@ export default ({
     visible = ref(false),
     summary = undefined,
     detail = undefined,
-    life = undefined
+    life = undefined || 0
 }) => {
     const nameToast = ref(`notification-${name.toLowerCase()}`)
     const saveToast = useLocalStorage(nameToast.value, {})
