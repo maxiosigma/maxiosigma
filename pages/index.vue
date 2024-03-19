@@ -45,22 +45,6 @@
 
 <script setup>
 const title = ref('Главная')
-useNotification({ name: 'K10', summary: 'K10', detail: 'Inf', visible: ref(true) }) //life: 15000,
-useNotification({
-    name: 'K11',
-    summary: 'K11',
-    detail: 'Задача организации, в особенности же дальнейшее развитие различных форм деятельности играет важную роль в формировании модели развития. Разнообразный и богатый опыт постоянное информационно-пропагандистское обеспечение нашей деятельности влечет за собой процесс внедрения и модернизации новых предложений.',
-    visible: ref(true)
-}) //life: 20000,
-useNotification({ name: 'K11', summary: 'K11', detail: 'Inf', visible: ref(true), life: 5000 }) //life: 20000,
 </script>
 
-<style lang="scss">
-.main {
-    /*@apply flex-grow;*/
-
-    /*&-clip {
-        clip-path: polygon(1% 1%, 95% 5%, 85% 15%, 95% 95%, 5% 95%);
-    }*/
-}
-</style>
+<style lang="scss"></style>
