@@ -1,9 +1,8 @@
-﻿body:
-    - title: 'Харизматичность'
-      weight: 30
-    - title: 'Коммуникативность'
-      weight: 70
-    - title: 'Исполнительность'
-      weight: 70
-    - title: 'Дотошность'
-      weight: 70
+﻿- title: 'Харизматичность'
+  weight: 30
+- title: 'Коммуникативность'
+  weight: 70
+- title: 'Исполнительность'
+  weight: 70
+- title: 'Дотошность'
+  weight: 70
