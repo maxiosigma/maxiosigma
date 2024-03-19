@@ -47,6 +47,7 @@
 const title = ref('Главная')
 useNotification({ name: 'K10', summary: 'K10', detail: 'Inf', visible: ref(true) }) //life: 15000,
 useNotification({ name: 'K11', summary: 'K11', detail: 'Inf', visible: ref(true) }) //life: 20000,
+useNotification({ name: 'K11', summary: 'K11', detail: 'Inf', visible: ref(true), life: 5000 }) //life: 20000,
 </script>
 
 <style lang="scss">

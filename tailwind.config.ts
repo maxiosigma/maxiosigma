@@ -20,7 +20,7 @@ export default {
     theme: {
         //heroPatternsShades: ['100', '500'],
         //heroPatternsColors: ['blue', 'red'],
-        //heroPatternsOpacities: ['0', '10', '15', '25', '30', '50', '90', '100'],
+        heroPatternsOpacities: ['0', '10', '15', '25', '30', '50', '90', '100'],
 
         container: {
             center: true,
@@ -50,7 +50,9 @@ export default {
                     5: '#499DF3',
                     6: '#FFC300',
                     7: '#E2E8F0'
-                }
+                },
+
+                ...getPrime()
             },
             fontFamily: {
                 vetka: ['Vetka'],
@@ -75,7 +77,8 @@ export default {
             boxShadow: {
                 '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)'
                 //skyblue: '0 35px 60px -15px rgba(0, 0, 0, 0.3)'
-            }
+            },
+            heroPatternsOpacities: ['10', '15', '25', '30', '90']
         }
     },
     plugins: [

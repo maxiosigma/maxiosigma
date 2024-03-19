@@ -1,7 +1,5 @@
 import { useTitle } from '@vueuse/core'
 
-//    position = 'top-center',
-
 export default ({
     name = Math.random().toString(),
     afterCallback = () => {},
