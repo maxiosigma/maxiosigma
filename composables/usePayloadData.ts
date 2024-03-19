@@ -11,32 +11,19 @@ export default async function ({
     const { locale } = useI18n()
     const payloadName = `${locale.value}-${name}`
 
-    console.log(
-        await queryContent(`/${locale.value}/${path}`)
-            .where({ ...optionsWhere, _path: `/${locale.value}/${path}` })
-            .findOne()
-    )
-
     if (process.server) {
         switch (type) {
             case 'multi':
                 useNuxtApp().payload.data[payloadName] = await queryContent(`/${locale.value}/${path}`)
-                    .where(optionsWhere)
+                    .where({ _path: `/${locale.value}/${path}` })
                     .find()
                     .then(callback)
                     .catch(errors)
                 break
 
-            //case 'surround':
-            //    useNuxtApp().payload.data[payloadName] = await queryContent(`/${locale.value}/${path}`)
-            //        .findSurround(surround)
-            //        .then(callback)
-            //        .catch(errors)
-            //    break
-
             default:
                 useNuxtApp().payload.data[payloadName] = await queryContent(`/${locale.value}/${path}`)
-                    .where({ ...optionsWhere, _path: `/${locale.value}/${path}` })
+                    .where({ _path: `/${locale.value}/${path}` })
                     .findOne()
                     .then(callback)
                     .catch(errors)
@@ -46,3 +33,10 @@ export default async function ({
 
     return useNuxtData(payloadName)?.data
 }
+
+//case 'surround':
+//    useNuxtApp().payload.data[payloadName] = await queryContent(`/${locale.value}/${path}`)
+//        .findSurround(surround)
+//        .then(callback)
+//        .catch(errors)
+//    break

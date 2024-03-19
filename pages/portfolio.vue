@@ -1,8 +1,7 @@
 ﻿<template>
-    <LayoutPage>
+    <LayoutPage :title="title">
         <div class="container pt-20 pb-20 gap-20 w-full flex flex-col justify-content-center">
-            <TemplatePortfolioWorks :works="worksPayload" />
-
+            <!--<TemplatePortfolioWorks :works="worksPayload" />-->
             <TemplatePortfolioStepper :skills="skillsPayload" />
         </div>
 
@@ -28,11 +27,9 @@
 </template>
 
 <script setup>
-const works = []
 const { locale } = useI18n()
 const localePath = useLocalePath()
-
-useNotification({ name: 'K11', summary: 'K11', detail: 'Inf', visible: ref(true), life: 1000000 })
+const title = ref('Портфолио')
 
 const skillsPayload = await usePayloadData({ name: 'portfolio-skills', path: 'skills' })
 const skillsPayloadSidebar = skillsPayload.value?.filter((it) => it?.only !== 'select')
@@ -49,35 +46,32 @@ const competenciesPayload = await usePayloadData({
 const worksPayload = await usePayloadData({
     name: 'portfolio-works',
     path: 'works',
-    //type: 'multi',
     callback: (items) => {
-        console.log(items)
-        return []
-        //return items?.body?.map((item) => {
-        //    delete item?._path
-        //    delete item?._dir
-        //    delete item?._draft
-        //    delete item?._partial
-        //    delete item?._extension
-        //    delete item?._source
-        //    delete item?._type
-        //    delete item?._file
-        //    delete item?._locale
-        //    delete item?.top
-        //    delete item?.date
+        return (
+            items.body
+                ?.filter(({ top }) => top === true)
+                ?.map((item) => {
+                    delete item?._path
+                    delete item?._dir
+                    delete item?._draft
+                    delete item?._partial
+                    delete item?._extension
+                    delete item?._source
+                    delete item?._type
+                    delete item?._file
+                    delete item?._locale
+                    delete item?.top
+                    delete item?.date
 
-        //    return item
-        //})
+                    return item
+                }) ?? []
+        )
     }
-    //optionsWhere: { top: true }
 })
 
 // LocalStorage Частный предприниматель
-
 const storageSidebarVisible = useLocalStorage('sidebar-visible')
-
 //console.log(storageSidebarVisible.value, typeof storageSidebarVisible.value)
-
 const sidebarVisible = ref(useLocalStorageBoolean(storageSidebarVisible.value))
 
 watch(
@@ -86,10 +80,6 @@ watch(
         storageSidebarVisible.value = sidebarVisible.value
     }
 )
-
-useHead({
-    title: 'Портфолио'
-})
 </script>
 
 <style lang="scss">

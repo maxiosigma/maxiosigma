@@ -1,5 +1,4 @@
 <template>
-    <!-- pagecl="main" -->
     <LayoutPage :title="title">
         <div class="flex my-auto p-20">
             <div :class="['relative flex justify-end flex-grow h-full w-full']">

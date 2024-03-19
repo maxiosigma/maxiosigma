@@ -1,6 +1,6 @@
 <template>
     <section class="flex flex-col">
-        {{ works }}
+        <!--{{ works }}-->
 
         <div class="text-gray-400 bg-gray-900 body-font" v-for="(work, wi) in works" :key="wi">
             <!--{{ work }}-->
