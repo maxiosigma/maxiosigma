@@ -15,7 +15,7 @@ export default async function ({
         switch (type) {
             case 'multi':
                 useNuxtApp().payload.data[payloadName] = await queryContent(`/${locale.value}/${path}`)
-                    .where({ _path: `/${locale.value}/${path}` })
+                    .where({ ...optionsWhere, _path: `/${locale.value}/${path}` })
                     .find()
                     .then(callback)
                     .catch(errors)
@@ -23,7 +23,7 @@ export default async function ({
 
             default:
                 useNuxtApp().payload.data[payloadName] = await queryContent(`/${locale.value}/${path}`)
-                    .where({ _path: `/${locale.value}/${path}` })
+                    .where({ ...optionsWhere, _path: `/${locale.value}/${path}` })
                     .findOne()
                     .then(callback)
                     .catch(errors)

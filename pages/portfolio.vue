@@ -1,7 +1,7 @@
 ﻿<template>
     <LayoutPage :title="title">
         <div class="container pt-20 pb-20 gap-20 w-full flex flex-col justify-content-center">
-            <!--<TemplatePortfolioWorks :works="worksPayload" />-->
+            <TemplatePortfolioWorks :works="worksPayload" />
             <TemplatePortfolioStepper :skills="skillsPayload" />
         </div>
 
@@ -27,8 +27,6 @@
 </template>
 
 <script setup>
-const { locale } = useI18n()
-const localePath = useLocalePath()
 const title = ref('Портфолио')
 
 const skillsPayload = await usePayloadData({ name: 'portfolio-skills', path: 'skills' })
