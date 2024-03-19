@@ -32,7 +32,7 @@
 
             <div class="flex flex-col py-3 pl-5 mr-auto">
                 <div class="font-bold text-self-4">{{ message.summary }}</div>
-                <div class="text-self-5">{{ message.detail }}</div>
+                <div class="text-self-5 text-justify" style="hyphens: auto">{{ message.detail }}</div>
             </div>
         </template>
     </Toast>
@@ -54,14 +54,10 @@ watch(
 
     &-message {
         //heropattern-dominos-inherit/10 bg-[length:10px_10px]
-        @apply flex flex-col bg-self-2 border-0 mx-0 backdrop-blur-none heropattern-diagonallines-current/30 bg-center;
+        @apply flex flex-col bg-self-2 border-0 mx-0 backdrop-blur-none heropattern-diagonallines-current/50 bg-center;
 
         &-content {
             @apply border-0 bg-transparent items-stretch justify-between p-0;
-        }
-
-        &-text {
-            @apply p-4;
         }
     }
 
