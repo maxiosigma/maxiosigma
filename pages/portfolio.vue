@@ -45,8 +45,10 @@ const worksPayload = await usePayloadData({
     name: 'portfolio-works',
     path: 'works',
     callback: (items) => {
+        //console.log(items)
+
         return (
-            items.body
+            items
                 ?.filter(({ top }) => top === true)
                 ?.map((item) => {
                     delete item?._path
@@ -65,6 +67,7 @@ const worksPayload = await usePayloadData({
                 }) ?? []
         )
     }
+    // optionsWhere: { top: true }
 })
 
 // LocalStorage Частный предприниматель
@@ -78,6 +81,8 @@ watch(
         storageSidebarVisible.value = sidebarVisible.value
     }
 )
+
+useNotification({ name: 'aaa', visible: ref(true), summary: 'aaaa', life: 30000, infinity: true })
 </script>
 
 <style lang="scss">

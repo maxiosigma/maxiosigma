@@ -11,7 +11,7 @@ export default ({
     infinity = false
 }) => {
     const nameToast = ref(`notification-${name.toLowerCase()}`)
-    const saveToast = useLocalStorage(nameToast.value, {})
+    const saveToast: any = useLocalStorage(nameToast.value, {})
     const now = useNow({ interval: 0 })
     const pageTitle = useTitle()
     const toast = useToast()

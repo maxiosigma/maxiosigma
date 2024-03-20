@@ -1,9 +1,11 @@
-import { getLocales, defaultLocale } from './config'
 import { resolve } from 'path'
+import { getLocales, defaultLocale } from './config'
 import { mkdirSync, writeFileSync, existsSync, unlinkSync } from 'fs'
 
 const locales = getLocales(mkdirSync, writeFileSync, existsSync)
 const isGenerateMode = process.argv.includes('generate')
+
+import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
     ssr: true,
@@ -85,7 +87,8 @@ export default defineNuxtConfig({
         //public: { i18n_config }
     },
     modules: [
-        '@nuxtjs/tailwindcss',
+        '@unocss/nuxt',
+        //'@nuxtjs/tailwindcss',
         '@nuxtjs/supabase',
         '@nuxtjs/device',
         //'nuxt-primevue',
@@ -93,6 +96,10 @@ export default defineNuxtConfig({
         '@vueuse/nuxt',
         'nuxt-icon',
 
+        //'@tresjs/nuxt',
+        '@vite-pwa/nuxt',
+        'nuxt-security',
+        //'nuxt-time',
         //'~/modules/pages/index',
 
         '@nuxtjs/i18n',
@@ -163,11 +170,15 @@ export default defineNuxtConfig({
             callback: '/'
         }
     },
-    tailwindcss: {
-        viewer: false,
-        configPath: 'tailwind.config.ts',
-        cssPath: '~/assets/tailwind.css'
+    unocss: {
+        //preflight: true,
+        uno: true
     },
+    //tailwindcss: {
+    //    viewer: false,
+    //    configPath: 'tailwind.config.ts',
+    //    cssPath: '~/assets/tailwind.css'
+    //},
     //primevue: {
     //    usePrimeVue: true,
     //    //cssLayerOrder: 'tailwind-base, primevue, tailwind-utilities',

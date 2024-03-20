@@ -21,8 +21,9 @@
     <Toast>
         <template #message="{ message }">
             <div class="flex items-center justify-between">
+                <!-- rounded-l-lg -->
                 <div
-                    class="w-2 rounded-l-lg"
+                    class="w-2"
                     :class="[message.life ? 'bg-self-3' : '']"
                     :style="`height: ${message.life ? (counter / (message.life / step)) * 100 : 100}%`"
                 ></div>
