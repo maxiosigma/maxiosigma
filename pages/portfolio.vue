@@ -5,7 +5,7 @@
             <TemplatePortfolioStepper :skills="skillsPayload" />
         </div>
 
-        <div class="fixed flex flex-col right-0 top-auto h-full">
+        <div class="flex flex-col fixed right-0 top-auto h-full">
             <PrimeButton
                 class="my-auto p-1.5 rounded-r-none"
                 severity="success"
@@ -82,7 +82,14 @@ watch(
     }
 )
 
-useNotification({ name: 'aaa', visible: ref(true), summary: 'aaaa', life: 30000, infinity: true })
+useNotification({
+    name: 'aaa',
+    visible: ref(true),
+    summary: 'Title',
+    detail: 'Description about us',
+    life: 8000,
+    infinity: true
+})
 </script>
 
 <style lang="scss">

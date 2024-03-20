@@ -5,6 +5,7 @@
             <div class="flex flex-col h-full">
                 <div class="p-sidebar-header">
                     <div class="p-sidebar-header-content">About</div>
+
                     <Icon
                         class="text-self-7 mb-1 border-2 border-self-3 border-dashed rounded-full cursor-pointer transition-colors duration-200 hover:text-self-3"
                         size="28px"
@@ -60,7 +61,7 @@ const prop = defineProps({
 
 <style lang="scss">
 .p-sidebar-right .p-sidebar {
-    @apply w-auto lg:max-w-[90%] max-w-full #{!important};
+    @apply w-auto lg:(max-w-[90%]) max-w-full #{!important};
 }
 
 .p-sidebar-header {
@@ -68,6 +69,6 @@ const prop = defineProps({
 }
 
 .p-sidebar-header-content {
-    @apply border-b-2 border-b-self-3 rounded-br-full border-dashed pl-1.5 text-center;
+    @apply border-b-2 border-b-self-3 rounded-br-full border-b-dashed pl-1.5 text-center;
 }
 </style>

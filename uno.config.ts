@@ -33,24 +33,24 @@ export default defineConfig({
                 5: '#499DF3',
                 6: '#FFC300',
                 7: '#E2E8F0'
-            }
+            },
 
-            //...getPrime()
+            ...getPrime()
         },
-        //fontFamily: {
-        //    vetka: ['Vetka'],
-        //    roboto: ['Roboto'],
-        //    raleway: ['Raleway'],
-        //    poppins: ['Poppins'],
-        //    ttnorms: ['TT Norms'],
-        //    windctt: ['Wind CTT'],
-        //    futuranew: ['Futura New'],
-        //    robotoslab: ['Roboto Slab'],
-        //    futuranewbook: ['Futura New Book'],
-        //    oranienbaum: ['Oranienbaum'],
-        //    nanumpen: ['Nanum Pen', 'cursive'],
-        //    'cera-pro-regular': ['cera-pro-regular']
-        //},
+        fontFamily: {
+            vetka: ['Vetka'],
+            roboto: ['Roboto'],
+            raleway: ['Raleway'],
+            poppins: ['Poppins'],
+            ttnorms: ['TT Norms'],
+            windctt: ['Wind CTT'],
+            futuranew: ['Futura New'],
+            robotoslab: ['Roboto Slab'],
+            futuranewbook: ['Futura New Book'],
+            oranienbaum: ['Oranienbaum'],
+            nanumpen: ['Nanum Pen', 'cursive'],
+            'cera-pro-regular': ['cera-pro-regular']
+        },
         textShadow: {
             'double-text': '5px 5px 2px rgba(255, 0, 0, 0.5)',
             sm: '0 1px 2px var(--tw-shadow-color)',
@@ -79,7 +79,7 @@ export default defineConfig({
 
     presets: [
         //
-        //presetUno(),
+        presetUno(),
         presetWind(),
         //presetHeroPatterns(),
         presetAttributify(),
@@ -93,32 +93,32 @@ export default defineConfig({
     ]
 })
 
-//function getPrime() {
-//    return {
-//        colors: {
-//            'primary-50': 'rgb(var(--primary-50))',
-//            'primary-100': 'rgb(var(--primary-100))',
-//            'primary-200': 'rgb(var(--primary-200))',
-//            'primary-300': 'rgb(var(--primary-300))',
-//            'primary-400': 'rgb(var(--primary-400))',
-//            'primary-500': 'rgb(var(--primary-500))',
-//            'primary-600': 'rgb(var(--primary-600))',
-//            'primary-700': 'rgb(var(--primary-700))',
-//            'primary-800': 'rgb(var(--primary-800))',
-//            'primary-900': 'rgb(var(--primary-900))',
-//            'primary-950': 'rgb(var(--primary-950))',
-//            'surface-0': 'rgb(var(--surface-0))',
-//            'surface-50': 'rgb(var(--surface-50))',
-//            'surface-100': 'rgb(var(--surface-100))',
-//            'surface-200': 'rgb(var(--surface-200))',
-//            'surface-300': 'rgb(var(--surface-300))',
-//            'surface-400': 'rgb(var(--surface-400))',
-//            'surface-500': 'rgb(var(--surface-500))',
-//            'surface-600': 'rgb(var(--surface-600))',
-//            'surface-700': 'rgb(var(--surface-700))',
-//            'surface-800': 'rgb(var(--surface-800))',
-//            'surface-900': 'rgb(var(--surface-900))',
-//            'surface-950': 'rgb(var(--surface-950))'
-//        }
-//    }
-//}
+function getPrime() {
+    return {
+        colors: {
+            'primary-50': 'rgb(var(--primary-50))',
+            'primary-100': 'rgb(var(--primary-100))',
+            'primary-200': 'rgb(var(--primary-200))',
+            'primary-300': 'rgb(var(--primary-300))',
+            'primary-400': 'rgb(var(--primary-400))',
+            'primary-500': 'rgb(var(--primary-500))',
+            'primary-600': 'rgb(var(--primary-600))',
+            'primary-700': 'rgb(var(--primary-700))',
+            'primary-800': 'rgb(var(--primary-800))',
+            'primary-900': 'rgb(var(--primary-900))',
+            'primary-950': 'rgb(var(--primary-950))',
+            'surface-0': 'rgb(var(--surface-0))',
+            'surface-50': 'rgb(var(--surface-50))',
+            'surface-100': 'rgb(var(--surface-100))',
+            'surface-200': 'rgb(var(--surface-200))',
+            'surface-300': 'rgb(var(--surface-300))',
+            'surface-400': 'rgb(var(--surface-400))',
+            'surface-500': 'rgb(var(--surface-500))',
+            'surface-600': 'rgb(var(--surface-600))',
+            'surface-700': 'rgb(var(--surface-700))',
+            'surface-800': 'rgb(var(--surface-800))',
+            'surface-900': 'rgb(var(--surface-900))',
+            'surface-950': 'rgb(var(--surface-950))'
+        }
+    }
+}
