@@ -1,6 +1,6 @@
 <template>
     <LayoutPage>
-        <div class="m-auto bg-coolgray w-[30vw] h-[30vh] self-center"></div>
+        <div class="m-auto bg-coolgray w-[30vw] h-[30vh] self-center test-clip-2"></div>
     </LayoutPage>
 </template>
 
@@ -114,6 +114,9 @@
             99% 53.55%,
             100% 52.4%
         );
+    }
+    &-2 {
+        clip-path: polygon(0% 0%, 90% 0%, 95% 1%, 99% 0%, 100% 5%, 99% 10%, 100% 15%, 100% 100%, 0% 100%);
     }
 }
 </style>
