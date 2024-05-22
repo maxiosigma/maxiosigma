@@ -28,7 +28,6 @@
         "cross-env": "^7.0.3",
         "globe.gl": "^2.32.4",
         "google-translate-api-browser": "^5.0.0",
-        "maxiosigma_libs": "file:../global-libs",
         "notiflix": "^3.2.7",
         "points-on-curve": "^1.0.1",
         "primevue": "^3.52.0",

@@ -4,8 +4,7 @@ import { mkdirSync, writeFileSync, existsSync, unlinkSync } from 'fs'
 
 const locales = getLocales(mkdirSync, writeFileSync, existsSync)
 const isGenerateMode = process.argv.includes('generate')
-
-import { defineNuxtConfig } from 'nuxt/config'
+//import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
     ssr: true,
