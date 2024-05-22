@@ -1,6 +1,6 @@
 <template>
     <LayoutPage>
-        <div class="m-auto bg-coolgray w-[30vw] h-[30vh] self-center test-clip-2"></div>
+        <div class="m-auto bg-coolgray w-[70vw] h-[70vh] self-center test-clip-animation-2"></div>
     </LayoutPage>
 </template>
 
@@ -117,6 +117,23 @@
     }
     &-2 {
         clip-path: polygon(0% 0%, 90% 0%, 95% 1%, 99% 0%, 100% 5%, 99% 10%, 100% 15%, 100% 100%, 0% 100%);
+    }
+}
+
+.test-clip-animation {
+    &-2 {
+        animation: clipsed 3s infinite;
+    }
+}
+
+@keyframes clipsed {
+    0%,
+    100% {
+        clip-path: polygon(0% 0%, 90% 0%, 95% 1%, 99% 3%, 100% 5%, 99% 10%, 100% 15%, 100% 20%, 100% 100%, 0% 100%);
+    }
+
+    50% {
+        clip-path: polygon(0% 0%, 90% 0%, 95% 2%, 99% 3%, 100% 5%, 98% 10%, 99% 15%, 100% 20%, 100% 100%, 0% 100%);
     }
 }
 </style>
