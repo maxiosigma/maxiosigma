@@ -10,7 +10,7 @@ html {
 }
 
 .html {
-    @apply bg-self-1 flex min-h-full min-w  relative;
+    @apply bg-self-1 flex min-h-full min-w-full relative;
 }
 
 .head {
@@ -18,7 +18,7 @@ html {
 }
 
 .body {
-    @apply bg-self-1 flex flex-col font-roboto min-h-full h-auto max-w-[100vw] relative;
+    @apply bg-self-1 flex flex-col font-roboto min-h-full min-w-full h-auto max-w-screen relative m-0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
