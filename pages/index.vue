@@ -5,7 +5,7 @@
                 class="absolute grid gap-10 grid-cols-2 columns-2 w-full inset-0 self-center"
             >
                 <div
-                    v-for="({ title, icon }, ni) in nav.side"
+                    v-for="({ title, icon, style }, ni) in nav.side"
                     class="flex-center bg-self-4 size-10 rounded-full cursor-pointer transition-all transition-delay-200 group group-hover:bg-self-5"
                     :class="[
                         ni % 2 === 0 ? '' : 'ml-a',
@@ -24,7 +24,8 @@
                     <Icon
                         :name="icon"
                         mode="css"
-                        class="transition-all transition-duration-300 transition-delay-200 text-self-2 group-hover:(text-self-7 rotate-360)"
+                        class="text-2xl transition-all transition-duration-300 transition-delay-200 text-self-2 group-hover:(text-self-7 rotate-360)"
+                        :class="[style]"
                     />
                 </div>
             </div>
@@ -70,8 +71,11 @@
 const title = ref('Главная')
 const nav = ref({
     side: [
-        { title: 'Предложения', icon: '' },
-        { title: 'Подарки', icon: '' },
+        { title: 'Предложения', icon: 'bx:bxs-offer', style: 'text-2xl' },
+        {
+            title: 'Подарки',
+            icon: 'streamline:shopping-gift-reward-box-social-present-gift-media-rating-bow'
+        },
         { title: 'Документы', icon: '' },
         { title: 'Новости', icon: '' },
         { title: 'Брэнды', icon: '' },
