@@ -1,159 +1,57 @@
 <template>
-    <LayoutPage :title="title">
-        <div class="flex my-auto p-20">
-            <div :class="['relative flex justify-end flex-grow h-full w-full']">
-                <!--<ItemMediaImg
-                    :class="[
-                        'absolute h-full w-auto mt-0 -mr-[4vh] object-cover object-right'
-                        //timers.mainImg
-                        //    ? 'animated animate-fade-in'
-                        //    : 'animated animate-fade-out',
-                    ]"
-                    src="main/face_1.webp"
-                ></ItemMediaImg>-->
-
-                <div>
-                    <!--<div>Maxim Semenuk Valerievich</div>-->
-                    <!--<div>Maxim Sigma Brand</div>-->
-                </div>
-            </div>
-
-            <div :class="['relative flex justify-start flex-grow h-full w-full overflow-hidden']">
-                <!--<ItemMediaImg
-                    :class="[
-                        'absolute h-full w-auto mt-0 -ml-[4vh] object-cover object-left'
-                        //!timers.mainImg
-                        //    ? 'animated animate-fade-in'
-                        //    : 'animated animate-fade-out',
-                        //timers.mainImgCount === 0
-                        //    ? 'opacity-0 animate-none'
-                        //    : '',
-                    ]"
-                    src="main/face_2.webp"
-                ></ItemMediaImg>-->
+    <LayoutDefault :title="title">
+        <div
+            class="absolute flex gap-5 w-full justify-center place-items-end bottom-[10%]"
+        >
+            <div
+                v-for="({ title, icon }, ni) in nav.bottom"
+                class="flex-center bg-self-4 size-8 rounded-full cursor-pointer transition-all transition-delay-200 animate-pulse-alt animate-duration-3000 group group-hover:bg-self-5"
+                :class="[
+                    position(ni, nav.bottom.length) ? 'm-b-5' : '',
+                    useRandomString([
+                        'animate-delay-200',
+                        'animate-delay-400',
+                        'animate-delay-600',
+                        'animate-delay-800',
+                        'animate-delay-1000'
+                    ])
+                ]"
+                v-p-tooltip.top="{
+                    value: title,
+                    showDelay: 200,
+                    pt: {
+                        arrow: 'border-transparent',
+                        text: 'bg-self-5'
+                    }
+                }"
+            >
+                <Icon
+                    :name="icon"
+                    mode="css"
+                    class="transition-all transition-delay-200 text-self-2 group-hover:text-self-7"
+                />
             </div>
         </div>
-
-        <!--<ItemNotification name="K4" body="About 4" :visible="true" />-->
-        <!--<ItemNotification name="K5" body="About 5" :visible="true" />-->
-        <!--<ItemNotification name="K6" body="About 6" :visible="true" />-->
-
-        <!--<div class="nav-bottom"></div>-->
-    </LayoutPage>
+    </LayoutDefault>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 const title = ref('Главная')
+const nav = ref({
+    left: [],
+    right: [],
+    bottom: [
+        { title: 'Проекты', icon: 'bi:person-workspace' },
+        { title: 'Направления', icon: 'f7:rays' },
+        { title: 'F.A.Q', icon: 'bi:patch-question' },
+        { title: 'Отзывы', icon: 'carbon:star-review' }
+    ]
+})
+
+const position = (i: number, count: number) => i === 0 || i === count - 1
+
+//const navWithPosition = (position: 'bottom' | 'top' | 'left' | 'right') =>
+//    nav.value.filter((it) => it.position === position)
 </script>
 
-<style lang="scss">
-.test-clip {
-    &-1 {
-        clip-path: polygon(
-            100% 0%,
-            0% 0%,
-            0% 65%,
-            1% 64.95%,
-            2% 64.8%,
-            3% 64.6%,
-            4% 64.3%,
-            5% 63.9%,
-            6% 63.45%,
-            7% 62.9%,
-            8% 62.25%,
-            9% 61.55%,
-            10% 60.8%,
-            11% 59.95%,
-            12% 59.05%,
-            13% 58.1%,
-            14% 57.1%,
-            15% 56.05%,
-            16% 55%,
-            17% 53.9%,
-            18% 52.8%,
-            19% 51.65%,
-            20% 50.5%,
-            21% 49.35%,
-            22% 48.2%,
-            23% 47.05%,
-            24% 45.9%,
-            25% 44.8%,
-            26% 43.75%,
-            27% 42.75%,
-            28% 41.75%,
-            29% 40.8%,
-            30% 39.9%,
-            31% 39.1%,
-            32% 38.35%,
-            33% 37.65%,
-            34% 37.05%,
-            35% 36.5%,
-            36% 36.05%,
-            37% 35.65%,
-            38% 35.35%,
-            39% 35.15%,
-            40% 35.05%,
-            41% 35%,
-            42% 35.05%,
-            43% 35.2%,
-            44% 35.45%,
-            45% 35.75%,
-            46% 36.15%,
-            47% 36.65%,
-            48% 37.2%,
-            49% 37.85%,
-            50% 38.55%,
-            51% 39.35%,
-            52% 40.2%,
-            53% 41.1%,
-            54% 42.05%,
-            55% 43.05%,
-            56% 44.1%,
-            57% 45.15%,
-            58% 46.3%,
-            59% 47.4%,
-            60% 48.55%,
-            61% 49.7%,
-            62% 50.85%,
-            63% 52%,
-            64% 53.15%,
-            65% 54.25%,
-            66% 55.35%,
-            67% 56.4%,
-            68% 57.45%,
-            69% 58.4%,
-            70% 59.35%,
-            71% 60.2%,
-            72% 61.05%,
-            73% 61.8%,
-            74% 62.45%,
-            75% 63.05%,
-            76% 63.6%,
-            77% 64.05%,
-            78% 64.4%,
-            79% 64.7%,
-            80% 64.85%,
-            81% 65%,
-            82% 65%,
-            83% 64.9%,
-            84% 64.75%,
-            85% 64.5%,
-            86% 64.2%,
-            87% 63.75%,
-            88% 63.25%,
-            89% 62.7%,
-            90% 62.05%,
-            91% 61.3%,
-            92% 60.5%,
-            93% 59.65%,
-            94% 58.75%,
-            95% 57.8%,
-            96% 56.8%,
-            97% 55.75%,
-            98% 54.65%,
-            99% 53.55%,
-            100% 52.4%
-        );
-    }
-}
-</style>
+<style lang="scss"></style>

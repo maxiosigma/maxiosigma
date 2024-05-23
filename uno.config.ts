@@ -5,6 +5,13 @@ import transformerDirectives from '@unocss/transformer-directives'
 import presetRemToPx from '@unocss/preset-rem-to-px'
 
 export default defineConfig({
+    shortcuts: [
+        [
+            /^flex-center$/,
+            ([, c], { theme }) => `flex justify-center items-center`
+        ]
+    ],
+
     theme: {
         container: {
             center: true,
@@ -24,7 +31,6 @@ export default defineConfig({
             skyblue: '#87CEEB',
             white: '#ffffff',
             black: '#000000',
-
             self: {
                 1: '#0C2142',
                 2: '#003366',
@@ -68,7 +74,6 @@ export default defineConfig({
             include: [
                 //
                 /\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
-
                 'components/**/*.{js,vue,ts}',
                 'components/*.{js,vue,ts}',
                 'pages/**/*.{js,vue,ts}',
@@ -82,8 +87,8 @@ export default defineConfig({
         presetUno(),
         presetWind(),
         //presetHeroPatterns(),
-        presetAttributify(),
-        presetRemToPx()
+        presetAttributify()
+        //presetRemToPx()
     ],
 
     transformers: [

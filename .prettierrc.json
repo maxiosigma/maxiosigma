@@ -4,14 +4,12 @@
     "jsxBracketSameLine": false,
     "trailingComma": "none",
     "singleQuote": true,
-    "printWidth": 120,
+    "printWidth": 80,
     "semi": false,
     "tabWidth": 4,
     "overrides": [
         {
-            "files": [
-                "./plugins/content-data-server.ts"
-            ],
+            "files": ["./plugins/content-data-server.ts"],
             "options": {
                 "printWidth": 1600
             }
