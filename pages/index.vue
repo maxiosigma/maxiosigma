@@ -2,22 +2,22 @@
     <LayoutDefault :title="title">
         <div class="relative container flex h-full">
             <div
-                class="absolute grid gap-10 grid-cols-2 columns-2 w-full inset-0 self-center"
+                class="absolute grid gap-14 grid-cols-2 columns-2 w-full inset-0 self-center"
             >
                 <div
                     v-for="({ title, icon, style }, ni) in nav.side"
-                    class="flex-center bg-self-4 size-10 rounded-full cursor-pointer transition-all transition-delay-200 group group-hover:bg-self-5"
+                    class="flex-center bg-self-4 size-14 rounded-full cursor-pointer transition-all transition-delay-200 group hover:(bg-self-5) border-dotted border-2 border-self-5"
                     :class="[
                         ni % 2 === 0 ? '' : 'ml-a',
-                        ni === 2 || ni === 4 ? 'm-l-' + (ni / 2) * 5 : '',
-                        ni === 3 || ni === 5 ? 'm-r-' + ((ni - 1) / 2) * 5 : ''
+                        ni === 2 || ni === 4 ? 'm-l-' + (ni / 2) * 8 : '',
+                        ni === 3 || ni === 5 ? 'm-r-' + ((ni - 1) / 2) * 8 : ''
                     ]"
                     v-p-tooltip="{
                         value: title,
                         showDelay: 200,
                         pt: {
                             arrow: 'border-transparent',
-                            text: 'bg-self-5'
+                            text: 'bg-self-5 text-2xl'
                         }
                     }"
                 >
@@ -31,13 +31,13 @@
             </div>
 
             <div
-                class="absolute flex gap-10 w-full self-end justify-center place-items-end inset-0 bottom-[10%]"
+                class="absolute flex gap-14 w-full self-end justify-center place-items-end inset-0 bottom-[10%]"
             >
                 <div
                     v-for="({ title, icon }, ni) in nav.bottom"
-                    class="flex-center bg-self-4 size-10 rounded-full cursor-pointer transition-all transition-delay-200 group group-hover:(bg-self-5)"
+                    class="flex-center bg-self-4 size-14 rounded-full cursor-pointer border-12 border-self-7 transition-all transition-delay-200 group hover:(bg-self-5)"
                     :class="[
-                        position(ni, nav.bottom.length) ? 'm-b-5' : ''
+                        ni === 0 || ni === nav.bottom.length - 1 ? 'm-b-8' : ''
                         //'animate-pulse-alt animate-duration-3000',
                         //useRandomString([
                         //    'animate-delay-200',
@@ -52,14 +52,14 @@
                         showDelay: 200,
                         pt: {
                             arrow: 'border-transparent',
-                            text: 'bg-self-5'
+                            text: 'bg-self-5 text-2xl'
                         }
                     }"
                 >
                     <Icon
                         :name="icon"
                         mode="css"
-                        class="transition-all transition-duration-300 transition-delay-200 text-self-2 group-hover:(text-self-7 rotate-360)"
+                        class="text-2xl transition-all transition-duration-300 transition-delay-200 text-self-2 group-hover:(text-self-7 rotate-360)"
                     />
                 </div>
             </div>
@@ -71,15 +71,19 @@
 const title = ref('Главная')
 const nav = ref({
     side: [
-        { title: 'Предложения', icon: 'bx:bxs-offer', style: 'text-2xl' },
+        { title: 'Предложения', icon: 'bx:bxs-offer', style: '!text-3xl' },
         {
             title: 'Подарки',
             icon: 'streamline:shopping-gift-reward-box-social-present-gift-media-rating-bow'
         },
-        { title: 'Документы', icon: '' },
-        { title: 'Новости', icon: '' },
-        { title: 'Брэнды', icon: '' },
-        { title: 'Контакты', icon: '' }
+        { title: 'Документы', icon: 'oui:documentation', style: '!text-3xl' },
+        { title: 'Новости', icon: 'iconamoon:news-fill', style: '!text-3xl' },
+        {
+            title: 'Бренды',
+            icon: 'tabler:brand-github-filled',
+            style: '!text-3xl'
+        },
+        { title: 'Контакты', icon: 'ri:contacts-line' }
     ],
     bottom: [
         { title: 'Проекты', icon: 'bi:person-workspace' },
@@ -90,8 +94,6 @@ const nav = ref({
 })
 
 const position = (i: number, count: number) => i === 0 || i === count - 1
-
-const position_ = (i: number, count: number) => i === 2 || i === 3
 
 //const navWithPosition = (position: 'bottom' | 'top' | 'left' | 'right') =>
 //    nav.value.filter((it) => it.position === position)

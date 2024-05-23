@@ -7,10 +7,10 @@ import presetRemToPx from '@unocss/preset-rem-to-px'
 export default defineConfig({
     safelist: [
         //
-        'm-l-5',
-        'm-l-10',
-        'm-r-5',
-        'm-r-10'
+        ...[1, 2, 3].map((i) => `m-l-${i * 5}`),
+        ...[1, 2, 3].map((i) => `m-l-${i * 8}`),
+        ...[1, 2, 3].map((i) => `m-r-${i * 5}`),
+        ...[1, 2, 3].map((i) => `m-r-${i * 8}`)
     ],
 
     shortcuts: [
