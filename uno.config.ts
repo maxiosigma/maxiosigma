@@ -5,6 +5,14 @@ import transformerDirectives from '@unocss/transformer-directives'
 import presetRemToPx from '@unocss/preset-rem-to-px'
 
 export default defineConfig({
+    safelist: [
+        //
+        'm-l-5',
+        'm-l-10',
+        'm-r-5',
+        'm-r-10'
+    ],
+
     shortcuts: [
         [
             /^flex-center$/,
