@@ -31,9 +31,15 @@ html {
 </style>
 
 <script setup>
-const { localeProperties: lp } = useI18n()
-const lang = ref(lp.value.code)
+const { localeProperties: lp, locales, locale } = useI18n()
 
+defineI18nRoute({
+    locales: locales.value
+        .filter(({ code }) => code !== 'index')
+        .map(({ code }) => code)
+})
+
+const lang = ref(lp.value.code)
 const prop = defineProps({
     bs: {
         type: String,
@@ -77,7 +83,8 @@ useHead({
         { charset: 'utf-8' },
         {
             name: 'viewport',
-            content: 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'
+            content:
+                'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'
         },
         { name: 'HandheldFriendly', content: 'true' },
         { name: 'MobileOptimized', content: '768' },
