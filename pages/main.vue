@@ -1,25 +1,25 @@
 <template>
     <LayoutDefault :title="title">
-        <div class="relative container flex h-full">
-            <div
-                class="absolute grid gap-14 grid-cols-2 columns-2 w-full inset-0 self-center"
-            >
-                <div
-                    v-for="({ title, icon, style }, ni) in nav.side"
-                    class="flex-center bg-self-4 size-14 rounded-full cursor-pointer transition-all transition-delay-200 group hover:(bg-self-5) border-dotted border-2 border-self-5"
-                    :class="[
-                        ni % 2 === 0 ? '' : 'ml-a',
-                        ni === 2 || ni === 4 ? 'm-l-' + (ni / 2) * 8 : '',
-                        ni === 3 || ni === 5 ? 'm-r-' + ((ni - 1) / 2) * 8 : ''
-                    ]"
-                    v-p-tooltip="{
+        <!--        v-p-tooltip="{
                         value: title,
                         showDelay: 200,
                         pt: {
                             arrow: 'border-transparent',
                             text: 'bg-self-5 text-2xl'
                         }
-                    }"
+                    }" -->
+        <div class="relative container flex h-full">
+            <div
+                class="absolute grid gap-14 grid-cols-2 columns-2 w-full inset-0 self-center px-[10%]"
+            >
+                <div
+                    v-for="({ title, icon, style }, ni) in nav.side"
+                    class="relative flex-center bg-self-4 size-14 rounded-full cursor-pointer transition-all transition-delay-200 group hover:(bg-self-5) border-dotted border-2 border-self-5"
+                    :class="[
+                        ni % 2 === 0 ? '' : 'ml-a',
+                        ni === 2 || ni === 4 ? 'm-l-' + (ni / 2) * 8 : '',
+                        ni === 3 || ni === 5 ? 'm-r-' + ((ni - 1) / 2) * 8 : ''
+                    ]"
                 >
                     <Icon
                         :name="icon"
@@ -27,6 +27,18 @@
                         class="text-2xl transition-all transition-duration-300 transition-delay-200 text-self-2 group-hover:(text-self-7 rotate-360)"
                         :class="[style]"
                     />
+
+                    <div
+                        class="absolute hidden opacity-0 bg-self-5 px-2 py-1 rounded-1 text-2xl transition-all duration-1000 group-hover:(flex-center)"
+                        :class="[
+                            ni % 2 === 0
+                                ? 'left-full ml-2 group-hover:(animate-bounce-in opacity-100)'
+                                : 'right-full mr-2 group-hover:(animate-bounce-in opacity-100)',
+                            ''
+                        ]"
+                    >
+                        {{ title }}
+                    </div>
                 </div>
             </div>
 
