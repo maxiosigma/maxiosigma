@@ -33,8 +33,7 @@
                         :class="[
                             ni % 2 === 0
                                 ? 'left-full ml-2 group-hover:(animate-bounce-in opacity-100)'
-                                : 'right-full mr-2 group-hover:(animate-bounce-in opacity-100)',
-                            ''
+                                : 'right-full mr-2 group-hover:(animate-bounce-in opacity-100)'
                         ]"
                     >
                         {{ title }}
@@ -47,7 +46,7 @@
             >
                 <div
                     v-for="({ title, icon }, ni) in nav.bottom"
-                    class="flex-center bg-self-4 size-14 rounded-full cursor-pointer border-12 border-self-7 transition-all transition-delay-200 group hover:(bg-self-5)"
+                    class="relative flex-center bg-self-4 size-14 rounded-full cursor-pointer border-12 border-self-7 transition-all transition-delay-200 group hover:(bg-self-5)"
                     :class="[
                         ni === 0 || ni === nav.bottom.length - 1 ? 'm-b-8' : ''
                         //'animate-pulse-alt animate-duration-3000',
@@ -59,20 +58,18 @@
                         //    'animate-delay-1000'
                         //])
                     ]"
-                    v-p-tooltip.top="{
-                        value: title,
-                        showDelay: 200,
-                        pt: {
-                            arrow: 'border-transparent',
-                            text: 'bg-self-5 text-2xl'
-                        }
-                    }"
                 >
                     <Icon
                         :name="icon"
                         mode="css"
                         class="text-2xl transition-all transition-duration-300 transition-delay-200 text-self-2 group-hover:(text-self-7 rotate-360)"
                     />
+
+                    <div
+                        class="absolute hidden opacity-0 bg-self-5 px-2 py-1 rounded-1 text-2xl transition-all duration-1000 bottom-full mb-2 group-hover:(flex-center animate-bounce-in opacity-100)"
+                    >
+                        {{ title }}
+                    </div>
                 </div>
             </div>
         </div>
