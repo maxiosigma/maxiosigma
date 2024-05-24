@@ -1,16 +1,8 @@
 <template>
     <LayoutDefault :title="title">
-        <!--        v-p-tooltip="{
-                        value: title,
-                        showDelay: 200,
-                        pt: {
-                            arrow: 'border-transparent',
-                            text: 'bg-self-5 text-2xl'
-                        }
-                    }" -->
         <div class="relative container flex h-full">
             <div
-                class="absolute grid gap-14 grid-cols-2 columns-2 w-full inset-0 self-center px-[10%]"
+                class="absolute grid flex-wrap gap-14 grid-cols-2 columns-2 w-full inset-0 self-center px-[10%]"
             >
                 <div
                     v-for="({ title, icon, style }, ni) in nav.side"
@@ -42,7 +34,7 @@
             </div>
 
             <div
-                class="absolute flex gap-14 w-full self-end justify-center place-items-end inset-0 bottom-[10%]"
+                class="absolute flex flex-wrap gap-14 w-full self-end justify-center place-items-end inset-0 bottom-[10%]"
             >
                 <div
                     v-for="({ title, icon }, ni) in nav.bottom"
