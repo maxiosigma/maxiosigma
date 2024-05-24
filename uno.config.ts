@@ -72,6 +72,12 @@ export default defineConfig({
             lg: '0 8px 16px var(--tw-shadow-color)'
         },
         boxShadow: {
+            'xs-circle': '0 0 3px 0 rgba(0, 0, 0, 0.3)',
+            'sm-circle': '0 0 5px 0 rgba(0, 0, 0, 0.3)',
+            'lg-circle': '0 0 10px 0 rgba(0, 0, 0, 0.3)',
+            'xl-circle': '0 0 20px 0 rgba(0, 0, 0, 0.3)',
+            '2xl-circle': '0 0 40px 0 rgba(0, 0, 0, 0.3)',
+            '3xl-circle': '0 0 60px 0 rgba(0, 0, 0, 0.3)',
             '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)'
             //skyblue: '0 35px 60px -15px rgba(0, 0, 0, 0.3)'
         }
