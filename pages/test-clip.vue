@@ -1,6 +1,6 @@
 <template>
     <LayoutPage>
-        <ItemClip></ItemClip>
+        <ItemClip class-container="bg-white"></ItemClip>
     </LayoutPage>
 </template>
 

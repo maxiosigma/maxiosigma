@@ -1,86 +1,83 @@
 <template>
     <LayoutDefault :title="title">
-        <div class="relative container flex h-full">
-            <div
-                class="absolute grid flex-wrap gap-14 grid-cols-2 columns-2 w-full inset-0 self-center px-[10%]"
-            >
-                <a
-                    v-for="({ title, icon, style, link }, ni) in nav.side"
-                    class="relative flex-center bg-self-4 size-14 rounded-full cursor-pointer transition-all transition-delay-200 shadow-sm-circle shadow-self-4 group hover:(bg-self-5)"
-                    :class="[
-                        ni % 2 === 0 ? '' : 'ml-a',
-                        ni === 2 || ni === 4 ? 'm-l-' + (ni / 2) * 8 : '',
-                        ni === 3 || ni === 5 ? 'm-r-' + ((ni - 1) / 2) * 8 : '',
-                        'animate-pulse-alt animate-duration-5000',
-                        useRandomString([
-                            'animate-delay-200',
-                            'animate-delay-400',
-                            'animate-delay-600',
-                            'animate-delay-800',
-                            'animate-delay-1000'
-                        ])
-                    ]"
-                    :href="link"
+        <ItemClip :class-container="'bg-self-7'">
+            <div class="relative flex h-full bg-self-2">
+                <div
+                    class="absolute grid flex-wrap gap-14 grid-cols-2 columns-2 w-full inset-0 self-center px-[10%]"
                 >
-                    <Icon
-                        :name="icon"
-                        mode="css"
-                        class="text-2xl transition-all transition-duration-300 transition-delay-200 text-self-2 group-hover:(text-self-7 rotate-360)"
-                        :class="[style]"
-                    />
-
-                    <div
-                        class="absolute hidden opacity-0 bg-self-5 px-2 py-1 rounded-1 text-2xl transition-all duration-1000 shadow-xs-circle shadow-self-4 text-self-7 group-hover:(flex-center animate-bounce-in opacity-100)"
+                    <a
+                        :key="ni"
+                        v-for="({ title, icon, style, link }, ni) in nav.side"
+                        class="relative flex-center bg-self-4 size-14 rounded-full cursor-pointer transition-all transition-delay-200 shadow-sm-circle shadow-self-4 animate-pulse-alt animate-duration-5000 group hover:(bg-self-5)"
                         :class="[
-                            ni % 2 === 0 ? 'left-full ml-2' : 'right-full mr-2',
-                            !loadTimeout
-                                ? '!flex-center animate-bounce-in opacity-100'
-                                : ''
+                            ni % 2 === 0 ? '' : 'ml-a',
+                            ni === 2 || ni === 4 ? 'm-l-' + (ni / 2) * 8 : '',
+                            ni === 3 || ni === 5
+                                ? 'm-r-' + ((ni - 1) / 2) * 8
+                                : '',
+                            setAnimate()
                         ]"
+                        :href="link"
                     >
-                        {{ title }}
-                    </div>
-                </a>
-            </div>
+                        <Icon
+                            :name="icon"
+                            mode="css"
+                            class="text-2xl transition-all transition-duration-300 transition-delay-200 text-self-2 group-hover:(text-self-7 rotate-360)"
+                            :class="[style]"
+                        />
 
-            <div
-                class="absolute flex flex-wrap gap-14 w-full self-end justify-center place-items-end inset-0 bottom-[10%]"
-            >
-                <a
-                    v-for="({ title, icon, link }, ni) in nav.bottom"
-                    class="relative flex-center bg-self-4 size-14 rounded-full cursor-pointer border-12 border-self-7 transition-all transition-delay-200 shadow-sm-circle shadow-self-4 group hover:(bg-self-5)"
-                    :class="[
-                        ni === 0 || ni === nav.bottom.length - 1 ? 'm-b-8' : '',
-                        'animate-pulse-alt animate-duration-5000',
-                        useRandomString([
-                            'animate-delay-200',
-                            'animate-delay-400',
-                            'animate-delay-600',
-                            'animate-delay-800',
-                            'animate-delay-1000'
-                        ])
-                    ]"
-                    :href="link"
+                        <div
+                            class="absolute hidden opacity-0 bg-self-5 px-2 py-1 rounded-1 text-2xl transition-all duration-1000 shadow-xs-circle shadow-self-4 text-self-7 group-hover:(flex-center animate-bounce-in opacity-100)"
+                            :class="[
+                                ni % 2 === 0
+                                    ? 'left-full ml-2'
+                                    : 'right-full mr-2',
+                                !loadTimeout
+                                    ? '!flex-center animate-bounce-in opacity-100'
+                                    : ''
+                            ]"
+                        >
+                            {{ title }}
+                        </div>
+                    </a>
+                </div>
+
+                <div
+                    class="absolute flex flex-wrap gap-14 w-full self-end justify-center place-items-end inset-0 bottom-[10%]"
                 >
-                    <Icon
-                        :name="icon"
-                        mode="css"
-                        class="text-2xl transition-all transition-duration-300 transition-delay-200 text-self-2 group-hover:(text-self-7 rotate-360)"
-                    />
-
-                    <div
-                        class="absolute hidden opacity-0 bg-self-5 px-2 py-1 rounded-1 text-2xl transition-all duration-1000 bottom-full mb-2 shadow-xs-circle shadow-self-4 text-self-7 group-hover:(flex-center animate-bounce-in opacity-100)"
+                    <a
+                        :key="ni"
+                        v-for="({ title, icon, link }, ni) in nav.bottom"
+                        class="relative flex-center bg-self-4 size-14 rounded-full cursor-pointer border-12 border-self-7 transition-all transition-delay-200 shadow-sm-circle shadow-self-4 animate-pulse-alt animate-duration-5000 group hover:(bg-self-5)"
                         :class="[
-                            !loadTimeout
-                                ? '!flex-center animate-bounce-in opacity-100'
-                                : ''
+                            ni === 0 || ni === nav.bottom.length - 1
+                                ? 'm-b-8'
+                                : '',
+
+                            setAnimate()
                         ]"
+                        :href="link"
                     >
-                        {{ title }}
-                    </div>
-                </a>
+                        <Icon
+                            :name="icon"
+                            mode="css"
+                            class="text-2xl transition-all transition-duration-300 transition-delay-200 text-self-2 group-hover:(text-self-7 rotate-360)"
+                        />
+
+                        <div
+                            class="absolute hidden opacity-0 bg-self-5 px-2 py-1 rounded-1 text-2xl transition-all duration-1000 bottom-full mb-2 shadow-xs-circle shadow-self-4 text-self-7 group-hover:(flex-center animate-bounce-in opacity-100)"
+                            :class="[
+                                !loadTimeout
+                                    ? '!flex-center animate-bounce-in opacity-100'
+                                    : ''
+                            ]"
+                        >
+                            {{ title }}
+                        </div>
+                    </a>
+                </div>
             </div>
-        </div>
+        </ItemClip>
     </LayoutDefault>
 </template>
 
@@ -130,6 +127,16 @@ const nav = ref({
         { title: 'Отзывы', icon: 'carbon:star-review', link: '' }
     ]
 })
+
+const setAnimate = ref(() =>
+    useRandomString([
+        'animate-delay-200',
+        'animate-delay-400',
+        'animate-delay-600',
+        'animate-delay-800',
+        'animate-delay-1000'
+    ])
+)
 
 const position = (i: number, count: number) => i === 0 || i === count - 1
 
