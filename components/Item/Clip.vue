@@ -6,7 +6,7 @@
         <!-- shadow-3xl shadow-self-4 -->
         <div
             :style="['clip-path: url(#clip-path);']"
-            class="w-full h-full max-w-full max-h-full"
+            class="w-full h-full max-w-full max-h-full pickerez"
         >
             <slot></slot>
         </div>
@@ -42,7 +42,7 @@ const clip = ref(
 
 const clipSplit = ref(clip.value.split(' '))
 
-const r = () => useRandomInt(-10, 10)
+const r = () => useRandomInt(-5, 5)
 
 const setRectClip = () => {
     const { width: w, height: h } = rectClip.value.getBBox()
@@ -80,7 +80,7 @@ onMounted(() => {
 
 <style lang="scss">
 .pickerez {
-    animation: picker 3s infinite;
+    animation: picker 14s infinite;
 }
 
 @keyframes picker {
@@ -89,7 +89,7 @@ onMounted(() => {
         transform: scale(1);
     }
     50% {
-        transform: scale(0.95);
+        transform: scale(0.99);
     }
 }
 </style>
