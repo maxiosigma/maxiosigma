@@ -1,9 +1,8 @@
 ﻿<template>
     <div
-        class="flex-center w-full h-full max-w-full max-h-full p-4 shadow-inner-3 shadow-self-4/50 drop-shadow-3xl-circle drop-shadow-color-self-3"
+        class="flex-center w-full h-full max-w-full max-h-full p-2 shadow-inner-3 shadow-self-4/50 drop-shadow-3xl-circle drop-shadow-color-self-3"
         :class="classContainer"
     >
-        <!-- shadow-3xl shadow-self-4 -->
         <div
             :style="['clip-path: url(#clip-path);']"
             class="w-full h-full max-w-full max-h-full pickerez"
@@ -24,7 +23,7 @@
                     fill-rule="evenodd"
                     clip-rule="evenodd"
                     :d="`${clip}`"
-                    class="transition-all duration-2000"
+                    class="transition-all duration-750"
                 />
             </clipPath>
         </defs>
@@ -71,16 +70,18 @@ onMounted(() => {
 
     setInterval(() => {
         clip.value = setNewRectClip()
-    }, 1000)
-
-    //console.log(clipSplit)
-    //console.log(setNewRectClip())
+    }, 750)
 })
 </script>
 
 <style lang="scss">
 .pickerez {
-    animation: picker 14s infinite;
+    //animation: picker 20s infinite;
+    perspective: 24rem;
+
+    & > div {
+        //animation: reverse 20s infinite;
+    }
 }
 
 @keyframes picker {
@@ -89,7 +90,17 @@ onMounted(() => {
         transform: scale(1);
     }
     50% {
-        transform: scale(0.99);
+        transform: scale(0.98);
+    }
+}
+
+@keyframes reverse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
     }
 }
 </style>

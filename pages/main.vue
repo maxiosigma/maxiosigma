@@ -3,35 +3,22 @@
         <ItemClip :class-container="'bg-self-7'">
             <div class="relative flex h-full bg-self-2"></div>
 
-            <div class="absolute inset-0 flex justify-center py-4">
-                <div class="h-full w-1/2">
-                    <ItemMediaImg
-                        :class="[
-                            'h-full w-full mt-0 -mr-[4vh] object-cover object-right hidden'
-                        ]"
-                        src="main/face_1.webp"
-                    ></ItemMediaImg>
-                </div>
+            <ItemMediaImg
+                :class="[
+                    'absolute inset-0 h-screen w-auto mx-auto object-t transform scale-105 '
+                ]"
+                src="main/face_3.png"
+            />
 
-                <div class="h-full w-1/2">
-                    <ItemMediaImg
-                        :class="[
-                            'h-full w-full mt-0 -ml-[4vh] object-cover object-left hidden'
-                        ]"
-                        src="main/face_2.webp"
-                    ></ItemMediaImg>
-                </div>
-            </div>
-
-            <!--<div class="absolute inset-0 flex flex-col justify-center">
+            <div class="absolute inset-0 flex flex-col justify-center mt-[10%]">
                 <div
-                    class="grid flex-wrap gap-[5vmax] grid-cols-2 columns-2 w-full inset-0 self-center px-[10vw] mb-[5vh]"
+                    class="grid flex-wrap gap-[5vmax] grid-cols-2 columns-2 w-full inset-0 self-center px-[10vw] mb-[5vmax]"
                 >
                     <a
                         :key="ni"
                         v-for="({ title, icon, style, link }, ni) in nav.side"
-                        class="relative flex-center bg-self-4 size-14 rounded-full cursor-pointer transition-all transition-delay-200 shadow-sm-circle shadow-self-4 animate-pulse-alt animate-duration-5000 group hover:(bg-self-5)"
                         :class="[
+                            'main-nav-item group',
                             ni % 2 === 0 ? '' : 'ml-a',
                             ni === 2 || ni === 4 ? 'm-l-' + (ni / 2) * 8 : '',
                             ni === 3 || ni === 5
@@ -44,13 +31,12 @@
                         <Icon
                             :name="icon"
                             mode="css"
-                            class="text-2xl transition-all transition-duration-300 transition-delay-200 text-self-2 group-hover:(text-self-7 rotate-360)"
-                            :class="[style]"
+                            :class="['main-nav-icon', style]"
                         />
 
                         <div
-                            class="absolute hidden opacity-0 bg-self-5 px-2 py-1 rounded-1 text-2xl transition-all duration-1000 shadow-xs-circle shadow-self-4 text-self-7 group-hover:(flex-center animate-bounce-in opacity-100)"
                             :class="[
+                                'main-nav-pop',
                                 ni % 2 === 0
                                     ? 'left-full ml-2'
                                     : 'right-full mr-2',
@@ -70,8 +56,8 @@
                     <a
                         :key="ni"
                         v-for="({ title, icon, link }, ni) in nav.bottom"
-                        class="relative flex-center bg-self-4 size-14 rounded-full cursor-pointer border-12 border-self-7 transition-all transition-delay-200 shadow-sm-circle shadow-self-4 animate-pulse-alt animate-duration-5000 group hover:(bg-self-5)"
                         :class="[
+                            'main-nav-item group',
                             ni === 0 || ni === nav.bottom.length - 1
                                 ? 'm-b-8'
                                 : '',
@@ -80,15 +66,24 @@
                         ]"
                         :href="link"
                     >
-                        <Icon
-                            :name="icon"
-                            mode="css"
-                            class="text-2xl transition-all transition-duration-300 transition-delay-200 text-self-2 group-hover:(text-self-7 rotate-360)"
+                        <!--<Icon :name="icon" mode="css" class="main-nav-icon" />-->
+
+                        <!--<DotLottieVue
+                            style="height: 500px; width: 500px"
+                            autoplay
+                            loop
+                            src=""
+                        />-->
+
+                        <LottieAnimate
+                            :animationData="iconProjects"
+                            :height="200"
+                            :width="200"
                         />
 
                         <div
-                            class="absolute hidden opacity-0 bg-self-5 px-2 py-1 rounded-1 text-2xl transition-all duration-1000 bottom-full mb-2 shadow-xs-circle shadow-self-4 text-self-7 group-hover:(flex-center animate-bounce-in opacity-100)"
                             :class="[
+                                'main-nav-pop bottom-full mb-2',
                                 !loadTimeout
                                     ? '!flex-center animate-bounce-in opacity-100'
                                     : ''
@@ -98,19 +93,24 @@
                         </div>
                     </a>
                 </div>
-            </div>-->
+            </div>
         </ItemClip>
     </LayoutDefault>
 </template>
 
 <script lang="ts" setup>
+//import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
+import iconProjects from '~/assets/images/main/lottie/projects.json'
+
+console.log(iconProjects)
+
 const title = ref('Главная')
 const nav = ref({
     side: [
         {
             title: 'Предложения',
             icon: 'bx:bxs-offer',
-            style: '!text-3xl',
+            style: '',
             link: ''
         },
         {
@@ -121,19 +121,19 @@ const nav = ref({
         {
             title: 'Документы',
             icon: 'oui:documentation',
-            style: '!text-3xl',
+            style: '',
             link: ''
         },
         {
             title: 'Новости',
             icon: 'iconamoon:news-fill',
-            style: '!text-3xl',
+            style: '',
             link: ''
         },
         {
             title: 'Бренды',
             icon: 'tabler:brand-github-filled',
-            style: '!text-3xl',
+            style: '',
             link: ''
         },
         {
@@ -168,9 +168,20 @@ onMounted(() => {
         loadTimeout.value = true
     }, 3000)
 })
-
-//const navWithPosition = (position: 'bottom' | 'top' | 'left' | 'right') =>
-//    nav.value.filter((it) => it.position === position)
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.main {
+    &-nav {
+        &-item {
+            @apply relative flex-center bg-transparent size-14 rounded-full border-4 border-self-3 cursor-pointer transition-all transition-delay-200 shadow-sm-circle shadow-self-4 animate-pulse-alt animate-duration-5000 hover:(bg-self-5);
+        }
+        &-icon {
+            @apply text-4xl transition-all transition-duration-300 transition-delay-200 text-self-7 group-hover:(text-self-7 rotate-360);
+        }
+        &-pop {
+            @apply absolute hidden opacity-0 bg-transparent px-2 py-1 rounded-1 text-2xl transition-all duration-1000 shadow-xs-circle shadow-self-4 text-self-7 group-hover:(flex-center animate-bounce-in opacity-100);
+        }
+    }
+}
+</style>

@@ -16,6 +16,7 @@
     "dependencies": {
         "@formkit/nuxt": "^1.6.5",
         "@kyvg/vue3-notification": "^3.2.1",
+        "@lottiefiles/dotlottie-vue": "^0.3.4",
         "@tresjs/cientos": "^3.9.0",
         "@tresjs/nuxt": "^2.1.2",
         "@tresjs/post-processing": "^0.7.1",
@@ -44,6 +45,7 @@
         "vue-js-modal": "^2.0.1",
         "vue-toast-notification": "3.1.2",
         "vue-toasted": "^1.1.28",
+        "vue3-lottie": "^3.3.0",
         "yaml": "^2.4.5"
     },
     "devDependencies": {

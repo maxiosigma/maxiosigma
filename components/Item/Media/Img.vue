@@ -1,19 +1,18 @@
 <template>
     <img
-        v-if="getImage() && !bg"
-        :src="getImage()"
+        v-if="getImage && !bg"
+        :src="getImage"
         :width="width"
         :height="height"
         :class="['img-render']"
         :alt="alt"
         :aria-label="title"
-        :id="id"
         onabort="aborted()"
         itemprop="image"
     />
 
     <div
-        v-else-if="getImage() && bg"
+        v-else-if="getImage && bg"
         :id="id"
         :class="['img-bg-mod']"
         :title="title"
@@ -26,6 +25,12 @@
 </template>
 
 <script setup>
+const {
+    payload: {
+        data: { uploadImages }
+    }
+} = useNuxtApp()
+
 const { src, alt, title, bg } = defineProps({
     src: { required: true, type: String },
     alt: { type: String, default: 'img' },
@@ -33,34 +38,30 @@ const { src, alt, title, bg } = defineProps({
     bg: { type: Boolean, default: false }
 })
 
-const { width, height, id } = {
-    width: 'auto',
-    height: 'auto',
-    id:
-        'img_' +
+const getImage = ref(uploadImages?.[src])
+const id = ref(
+    'img_' +
         String(Math.random() * ((Math.random() * 10000000) / 1.0))
             .split('.')
             .join('_')
+)
+
+const { width, height } = {
+    width: 'auto',
+    height: 'auto'
 }
 
-if (bg)
+if (bg && getImage.value && id.value) {
     useHead({
         style: [
             {
                 type: 'text/css',
                 async: true,
-                innerHTML: `#${id} { background-image: url('${getImage()}'); }`,
+                innerHTML: `#${id.value} { background-image: url('${getImage.value}'); }`,
                 body: true
             }
         ]
     })
-
-function getImage() {
-    return useAssetsImages(src)
-}
-
-function aborted(e) {
-    console.log(e)
 }
 </script>
 

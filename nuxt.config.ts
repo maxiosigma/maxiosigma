@@ -97,14 +97,14 @@ export default defineNuxtConfig({
         },
         api: {
             baseURL: '/content-api/_content'
-        },
-        watch: {
-            ws: {
-                //  port: 4000,
-                port: 4444
-                //showURL: true
-            }
         }
+        //watch: {
+        //    ws: {
+        //        //  port: 4000,
+        //        port: 4444
+        //        //showURL: true
+        //    }
+        //}
     },
     supabase: {
         redirect: false,
