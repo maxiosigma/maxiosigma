@@ -78,8 +78,24 @@ export default defineConfig({
             'xl-circle': '0 0 20px 0 rgba(0, 0, 0, 0.3)',
             '2xl-circle': '0 0 40px 0 rgba(0, 0, 0, 0.3)',
             '3xl-circle': '0 0 60px 0 rgba(0, 0, 0, 0.3)',
-            '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)'
+            '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
             //skyblue: '0 35px 60px -15px rgba(0, 0, 0, 0.3)'
+            'inner-0.5': 'inset 0 0 5px 0 rgba(0, 0, 0, 0.3)',
+            'inner-1': 'inset 0 0 10px 0 rgba(0, 0, 0, 0.3)',
+            'inner-2': 'inset 0 0 20px 0 rgba(0, 0, 0, 0.3)',
+            'inner-3': 'inset 0 0 30px 0 rgba(0, 0, 0, 0.3)'
+        },
+        dropShadow: {
+            '3xl': 'drop-shadow(0 30px 30px rgba(0, 0, 0, 0.5))',
+            '4xl': 'drop-shadow(0 40px 40px rgba(0, 0, 0, 0.5))',
+            'xs-circle': 'drop-shadow(0 0 3px rgba(0, 0, 0, 0.5))',
+            'sm-circle': 'drop-shadow(0 0 5px rgba(0, 0, 0, 0.5))',
+            'lg-circle': 'drop-shadow(0 0 10px rgba(0, 0, 0, 0.5))',
+            'xl-circle': 'drop-shadow(0 0 20px rgba(0, 0, 0, 0.5))',
+            '2xl-circle': 'drop-shadow(0 0 40px rgba(0, 0, 0, 0.5))',
+            '3xl-circle': 'drop-shadow(0 0 60px rgba(0, 0, 0, 0.5))',
+            '3xl-circle-full': 'drop-shadow(0 0 60px #000000)',
+            test: 'drop-shadow(0 50px 5px #000000)'
         }
     },
 

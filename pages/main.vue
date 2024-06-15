@@ -1,9 +1,31 @@
 <template>
     <LayoutDefault :title="title">
         <ItemClip :class-container="'bg-self-7'">
-            <div class="relative flex h-full bg-self-2">
+            <div class="relative flex h-full bg-self-2"></div>
+
+            <div class="absolute inset-0 flex justify-center py-4">
+                <div class="h-full w-1/2">
+                    <ItemMediaImg
+                        :class="[
+                            'h-full w-full mt-0 -mr-[4vh] object-cover object-right hidden'
+                        ]"
+                        src="main/face_1.webp"
+                    ></ItemMediaImg>
+                </div>
+
+                <div class="h-full w-1/2">
+                    <ItemMediaImg
+                        :class="[
+                            'h-full w-full mt-0 -ml-[4vh] object-cover object-left hidden'
+                        ]"
+                        src="main/face_2.webp"
+                    ></ItemMediaImg>
+                </div>
+            </div>
+
+            <!--<div class="absolute inset-0 flex flex-col justify-center">
                 <div
-                    class="absolute grid flex-wrap gap-14 grid-cols-2 columns-2 w-full inset-0 self-center px-[10%]"
+                    class="grid flex-wrap gap-[5vmax] grid-cols-2 columns-2 w-full inset-0 self-center px-[10vw] mb-[5vh]"
                 >
                     <a
                         :key="ni"
@@ -43,7 +65,7 @@
                 </div>
 
                 <div
-                    class="absolute flex flex-wrap gap-14 w-full self-end justify-center place-items-end inset-0 bottom-[10%]"
+                    class="flex flex-wrap gap-[5vmax] w-full self-end justify-center place-items-end inset-0 bottom-[10vh]"
                 >
                     <a
                         :key="ni"
@@ -76,7 +98,7 @@
                         </div>
                     </a>
                 </div>
-            </div>
+            </div>-->
         </ItemClip>
     </LayoutDefault>
 </template>

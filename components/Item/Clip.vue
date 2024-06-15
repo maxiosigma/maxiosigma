@@ -1,11 +1,12 @@
 ﻿<template>
     <div
-        class="flex-center w-full h-full max-w-full max-h-full p-4"
+        class="flex-center w-full h-full max-w-full max-h-full p-4 shadow-inner-3 shadow-self-4/50 drop-shadow-3xl-circle drop-shadow-color-self-3"
         :class="classContainer"
     >
+        <!-- shadow-3xl shadow-self-4 -->
         <div
             :style="['clip-path: url(#clip-path);']"
-            class="w-full h-full max-w-full max-h-full overflow-hidden"
+            class="w-full h-full max-w-full max-h-full"
         >
             <slot></slot>
         </div>
@@ -76,3 +77,19 @@ onMounted(() => {
     //console.log(setNewRectClip())
 })
 </script>
+
+<style lang="scss">
+.pickerez {
+    animation: picker 3s infinite;
+}
+
+@keyframes picker {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.95);
+    }
+}
+</style>

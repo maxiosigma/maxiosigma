@@ -18,7 +18,11 @@
                 </div>
             </div>
 
-            <div :class="['relative flex justify-start flex-grow h-full w-full overflow-hidden']">
+            <div
+                :class="[
+                    'relative flex justify-start flex-grow h-full w-full overflow-hidden'
+                ]"
+            >
                 <!--<ItemMediaImg
                     :class="[
                         'absolute h-full w-auto mt-0 -ml-[4vh] object-cover object-left'
@@ -44,7 +48,6 @@
 
 <script setup>
 const title = ref('Главная')
-
 </script>
 
 <style lang="scss"></style>
