@@ -3,12 +3,12 @@
         <ItemClip :class-container="'bg-self-7'">
             <div class="relative flex h-full bg-self-2"></div>
 
-            <ItemMediaImg
+            <!--<ItemMediaImg
                 :class="[
                     'absolute inset-0 h-screen w-auto mx-auto object-t transform scale-105 '
                 ]"
                 src="main/face_3.png"
-            />
+            />-->
 
             <div class="absolute inset-0 flex flex-col justify-center mt-[10%]">
                 <div
@@ -66,17 +66,15 @@
                         ]"
                         :href="link"
                     >
-                        <!--<Icon :name="icon" mode="css" class="main-nav-icon" />-->
-
-                        <!--<DotLottieVue
-                            style="height: 500px; width: 500px"
-                            autoplay
-                            loop
-                            src=""
+                        <!--<Icon
+                            ref="refIcon"
+                            :name="icon"
+                            mode="css"
+                            class="main-nav-icon"
                         />-->
 
-                        <LottieAnimate
-                            :animationData="iconProjects"
+                        <VueLottie
+                            :animationData="iconPresents"
                             :height="200"
                             :width="200"
                         />
@@ -101,8 +99,10 @@
 <script lang="ts" setup>
 //import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 import iconProjects from '~/assets/images/main/lottie/projects.json'
+import iconPresents from '~/assets/images/main/lottie/presents.json'
+//import iconPresents2 from '~/assets/images/main/lottie/presents.lottie'
 
-console.log(iconProjects)
+console.log(iconPresents)
 
 const title = ref('Главная')
 const nav = ref({

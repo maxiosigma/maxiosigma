@@ -1,5 +1,7 @@
-﻿import Vue3Lottie from 'vue3-lottie'
+﻿import { Vue3Lottie } from 'vue3-lottie'
+//import lottie from 'lottie-web'
 
 export default defineNuxtPlugin((nuxtApp) => {
-    nuxtApp.vueApp.component('LottieAnimate', Vue3Lottie)
+    nuxtApp.vueApp.component('VueLottie', Vue3Lottie)
+    //return nuxtApp.provide('lottie', lottie)
 })
