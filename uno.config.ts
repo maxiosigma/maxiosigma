@@ -1,7 +1,8 @@
-﻿import { defineConfig, presetAttributify, presetUno, presetWind } from 'unocss'
+﻿import { defineConfig, presetAttributify, presetUno, presetWind } from 'unocss' //, resolvedConfig
 //import { presetHeroPatterns } from '@julr/unocss-preset-heropatterns'
 import transformerVariantGroup from '@unocss/transformer-variant-group'
 import transformerDirectives from '@unocss/transformer-directives'
+import { presetUseful } from 'unocss-preset-useful'
 import presetRemToPx from '@unocss/preset-rem-to-px'
 
 export default defineConfig({
@@ -11,6 +12,8 @@ export default defineConfig({
         ...[1, 2, 3].map((i) => `m-l-${i * 8}`),
         ...[1, 2, 3].map((i) => `m-r-${i * 5}`),
         ...[1, 2, 3].map((i) => `m-r-${i * 8}`)
+
+        //...Object.keys(resolvedConfig.theme?.animation?.keyframes ?? {}).map(k => [`animate-${k}`, `group-hover-animate-${k}`]).flat()
     ],
 
     shortcuts: [
@@ -117,7 +120,10 @@ export default defineConfig({
         presetUno(),
         presetWind(),
         //presetHeroPatterns(),
-        presetAttributify()
+        presetAttributify(),
+        presetUseful({
+            enableMagicAnimations: true
+        })
         //presetRemToPx()
     ],
 

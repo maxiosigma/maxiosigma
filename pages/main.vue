@@ -229,7 +229,7 @@ onMounted(() => {
 .main {
     &-nav {
         &-item {
-            @apply relative flex-center bg-transparent size-18 rounded-full border-4 border-self-3 cursor-pointer transition-all transition-delay-200 shadow-sm-circle shadow-self-4 animate-pulse-alt animate-duration-5000 hover:(bg-self-5);
+            @apply relative flex-center bg-transparent size-18 rounded-full border-4 border-self-7/15 cursor-pointer transition-all transition-delay-200 shadow-sm-circle shadow-self-4 animate-pulse-alt animate-duration-5000 hover:(bg-self-5);
         }
         &-icon {
             @apply text-4xl transition-all transition-duration-300 transition-delay-200 text-self-7 group-hover:(text-self-7 rotate-360);
