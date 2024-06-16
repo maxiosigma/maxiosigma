@@ -28,6 +28,9 @@ export default defineNuxtConfig({
                 generateScopedName: '[local]-[hash:base32:5]'
             }
         },
+        optimizeDeps: {
+            include: ['@supabase/gotrue-js']
+        },
         resolve: {},
         plugins: [],
         build: {
@@ -37,7 +40,8 @@ export default defineNuxtConfig({
     build: {
         transpile: [
             //
-            'primevue'
+            'primevue',
+            'vue3-lottie'
         ]
     },
     sourcemap: {
