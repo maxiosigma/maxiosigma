@@ -46,6 +46,8 @@ const id = ref(
             .join('_')
 )
 
+console.log(uploadImages)
+
 const { width, height } = {
     width: 'auto',
     height: 'auto'

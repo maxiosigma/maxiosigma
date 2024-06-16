@@ -5,6 +5,8 @@
         </div>
 
         <!--<ItemModalSelectLang />-->
+
+        <TemplatePreload />
     </LayoutDefault>
 </template>
 

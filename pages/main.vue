@@ -109,6 +109,8 @@
                 </div>
             </div>
         </ItemClip>
+
+        <TemplatePreload />
     </LayoutDefault>
 </template>
 
@@ -120,11 +122,6 @@
 //https://www.google.com/search?q=dfqwfqwf&oq=dfqwfqwf&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBBzk0MmowajeoAgCwAgA&sourceid=chrome&ie=UTF-8
 //https://lottiefiles.com/search?q=project&category=animations
 
-const getLottie = async (name: any) =>
-    await import(`~/assets/images/main/lottie/${name}.json`)
-        .then((r) => r.default)
-        .catch(() => '')
-
 const title = ref('Главная')
 const nav = ref({
     side: [
@@ -133,21 +130,21 @@ const nav = ref({
             icon: 'bx:bxs-offer',
             style: '',
             link: '',
-            lottie: await getLottie('offers')
+            lottie: await useGetLottie('offers')
         },
         {
             title: 'Подарки',
             icon: 'streamline:shopping-gift-reward-box-social-present-gift-media-rating-bow',
             style: '',
             link: '',
-            lottie: await getLottie('presents')
+            lottie: await useGetLottie('presents')
         },
         {
             title: 'Документы',
             icon: 'oui:documentation',
             style: 'scale-140',
             link: '',
-            lottie: await getLottie('documents'),
+            lottie: await useGetLottie('documents'),
             lottieConfig: {
                 scale: 1.5
             }
@@ -155,21 +152,21 @@ const nav = ref({
         {
             title: 'Новости',
             icon: 'iconamoon:news-fill',
-            lottie: await getLottie('news'),
+            lottie: await useGetLottie('news'),
             style: '',
             link: ''
         },
         {
             title: 'Бренды',
             icon: 'tabler:brand-github-filled',
-            lottie: await getLottie('brands'),
+            lottie: await useGetLottie('brands'),
             style: 'scale-70',
             link: ''
         },
         {
             title: 'Контакты',
             icon: 'ri:contacts-line',
-            lottie: await getLottie('contacts'),
+            lottie: await useGetLottie('contacts'),
             link: '/contacts',
             style: 'scale-80'
         }
@@ -180,33 +177,33 @@ const nav = ref({
             icon: 'bi:person-workspace',
             style: 'scale-80',
             link: '',
-            lottie: await getLottie('projects')
+            lottie: await useGetLottie('projects')
         },
         {
             title: 'Услуги',
             icon: 'f7:rays',
             style: 'scale-110',
             link: '',
-            lottie: await getLottie('services')
+            lottie: await useGetLottie('services')
         },
         {
             title: 'F.A.Q',
             icon: 'bi:patch-question',
             style: '',
             link: '',
-            lottie: await getLottie('questions')
+            lottie: await useGetLottie('questions')
         },
         {
             title: 'Отзывы',
             icon: 'carbon:star-review',
             style: 'scale-190',
             link: '',
-            lottie: await getLottie('reviews')
+            lottie: await useGetLottie('reviews')
         }
     ]
 })
 
-console.log(await getLottie('contacts'))
+//console.log(await useGetLottie('contacts'))
 
 const setAnimate = ref(() =>
     useRandomString([
