@@ -3,9 +3,11 @@
         <ItemClip :class-container="'bg-self-7'">
             <div class="relative flex h-full bg-self-2"></div>
 
+            <div class="absolute inset-0"></div>
+
             <!--<ItemMediaImg
                 :class="[
-                    'absolute inset-0 h-screen w-auto mx-auto object-t transform scale-105 '
+                    'absolute inset-0 h-screen w-auto mx-auto object-t transform scale-105'
                 ]"
                 src="main/face_3.png"
             />-->
@@ -30,12 +32,6 @@
                         ]"
                         :href="link"
                     >
-                        <!--<Icon
-                            :name="icon"
-                            mode="css"
-                            :class="['main-nav-icon', style]"
-                        />-->
-
                         <VueLottie
                             v-if="lottie"
                             :animationData="lottie"
