@@ -5,12 +5,12 @@
 
             <div class="absolute inset-0"></div>
 
-            <!--<ItemMediaImg
+            <ItemMediaImg
                 :class="[
                     'absolute inset-0 h-screen w-auto mx-auto object-t transform scale-105'
                 ]"
                 src="main/face_3.png"
-            />-->
+            />
 
             <div class="absolute inset-0 flex flex-col justify-center my-[5%]">
                 <div
@@ -37,6 +37,7 @@
                             :animationData="lottie"
                             :class="[
                                 'main-nav-icon w-full h-full transform',
+                                setRotate(),
                                 style
                             ]"
                             autoplay
@@ -47,8 +48,8 @@
                             :class="[
                                 'main-nav-pop',
                                 ni % 2 === 0
-                                    ? 'left-full ml-2'
-                                    : 'right-full mr-2',
+                                    ? 'left-full ml-4'
+                                    : 'right-full mr-4',
                                 !loadTimeout
                                     ? '!flex-center animate-bounce-in opacity-100'
                                     : ''
@@ -77,27 +78,23 @@
                         ]"
                         :href="link"
                     >
-                        <!--<Icon
-                            ref="refIcon"
-                            :name="icon"
-                            mode="css"
-                            class="main-nav-icon"
-                        />-->
-
                         <VueLottie
                             v-if="lottie"
                             :animationData="lottie"
                             :class="[
                                 'main-nav-icon w-full h-full transform',
+                                setRotate(),
                                 style
                             ]"
                             autoplay
                             loop
                         />
 
+                        {{ loadTimeout }}
+
                         <div
                             :class="[
-                                'main-nav-pop bottom-full mb-2',
+                                'main-nav-pop bottom-full mb-4',
                                 !loadTimeout
                                     ? '!flex-center animate-bounce-in opacity-100'
                                     : ''
@@ -115,13 +112,6 @@
 </template>
 
 <script lang="ts" setup>
-//import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
-//import iconProjects from '~/assets/images/main/lottie/projects.json'
-
-//https://lottiefiles.com/animations/project-development-MKmnWwx027?from=search
-//https://www.google.com/search?q=dfqwfqwf&oq=dfqwfqwf&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBBzk0MmowajeoAgCwAgA&sourceid=chrome&ie=UTF-8
-//https://lottiefiles.com/search?q=project&category=animations
-
 const title = ref('Главная')
 const nav = ref({
     side: [
@@ -203,8 +193,6 @@ const nav = ref({
     ]
 })
 
-//console.log(await useGetLottie('contacts'))
-
 const setAnimate = ref(() =>
     useRandomString([
         'animate-delay-200',
@@ -215,13 +203,23 @@ const setAnimate = ref(() =>
     ])
 )
 
+const setRotate = ref(() =>
+    useRandomString([
+        'group-hover:(rotate-360)',
+        'group-hover:(-rotate-360)',
+        'group-hover:(rotate-720)',
+        'group-hover:(-rotate-360)'
+    ])
+)
+
 const position = (i: number, count: number) => i === 0 || i === count - 1
 
 const loadTimeout = ref(false)
+
 onMounted(() => {
     setTimeout(() => {
         loadTimeout.value = true
-    }, 3000)
+    }, 15000)
 })
 </script>
 
@@ -229,13 +227,13 @@ onMounted(() => {
 .main {
     &-nav {
         &-item {
-            @apply relative flex-center bg-transparent size-18 rounded-full border-4 border-self-7/15 cursor-pointer transition-all transition-delay-200 shadow-sm-circle shadow-self-4 animate-pulse-alt animate-duration-5000 hover:(bg-self-5);
+            @apply relative flex-center bg-transparent size-18 rounded-full border-4 border-self-7/15 cursor-pointer transition-all transition-delay-200 shadow-sm-circle shadow-self-4 animate-pulse-alt animate-duration-5000 hover:(bg-self-2 border-self-7);
         }
         &-icon {
-            @apply text-4xl transition-all transition-duration-300 transition-delay-200 text-self-7 group-hover:(text-self-7 rotate-360);
+            @apply text-4xl transition-all transition-duration-300 transition-delay-100 text-self-7 group-hover:(text-self-7);
         }
         &-pop {
-            @apply absolute hidden opacity-0 bg-transparent px-2 py-1 rounded-1 text-2xl transition-all duration-1000 shadow-xs-circle shadow-self-4 text-self-7 group-hover:(flex-center animate-bounce-in opacity-100);
+            @apply absolute hidden opacity-0 bg-self-2 px-2 py-1 rounded-1 text-2xl transition-all duration-1000 shadow-xs-circle shadow-self-4 text-self-7 group-hover:(flex-center animate-bounce-in opacity-100 border-2 border-self-7);
         }
     }
 }

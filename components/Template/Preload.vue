@@ -1,5 +1,5 @@
 ﻿<template>
-    <Teleport to="body">
+    <!--<Teleport to="body">
         <div
             :class="[
                 loading
@@ -11,7 +11,7 @@
                 :class="[
                     !icon ? 'w-auto h-auto' : 'hidden',
                     !icon && preLoading
-                        ? 'animate-vanishOut'
+                        ? 'animate-back-out-up'
                         : 'animate-foolishIn'
                 ]"
                 src="preload/index.gif"
@@ -22,20 +22,22 @@
                 :class="[
                     icon ? 'w-full h-full' : 'hidden',
                     icon && preLoading
-                        ? 'animate-vanishOut '
+                        ? 'animate-back-out-up'
                         : 'animate-foolishIn'
                 ]"
                 autoplay
                 loop
             />
         </div>
-    </Teleport>
+    </Teleport>-->
 </template>
 
 <script lang="ts" setup>
 const loading = ref(false)
 const preLoading = ref(false)
 const icon = await useGetLottie('preload')
+
+// Если куки не установлены, задерживать preload
 
 onMounted(() => {
     setTimeout(() => {
