@@ -133,10 +133,7 @@ const nav = ref({
             icon: 'oui:documentation',
             style: 'scale-140',
             link: '/documents',
-            lottie: await useGetLottie('documents'),
-            lottieConfig: {
-                scale: 1.5
-            }
+            lottie: await useGetLottie('documents')
         },
         {
             title: 'Новости',
