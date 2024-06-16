@@ -1,7 +1,7 @@
 ﻿<template>
-    <LayoutDefault>
+    <LayoutPage>
         <!--<NuxtLinkLocale v-for="item in payload" :to="item">{{ item }}</NuxtLinkLocale>-->
-    </LayoutDefault>
+    </LayoutPage>
 </template>
 
 <script setup>
