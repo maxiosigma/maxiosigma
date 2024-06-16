@@ -10,7 +10,7 @@
                 src="main/face_3.png"
             />-->
 
-            <div class="absolute inset-0 flex flex-col justify-center mt-[10%]">
+            <div class="absolute inset-0 flex flex-col justify-center my-[5%]">
                 <div
                     class="grid flex-wrap gap-[5vmax] grid-cols-2 columns-2 w-full inset-0 self-center px-[10vw] mb-[5vmax]"
                 >
@@ -43,6 +43,8 @@
                                 'main-nav-icon w-full h-full transform',
                                 style
                             ]"
+                            autoplay
+                            loop
                         />
 
                         <div
@@ -93,6 +95,8 @@
                                 'main-nav-icon w-full h-full transform',
                                 style
                             ]"
+                            autoplay
+                            loop
                         />
 
                         <div
@@ -145,44 +149,47 @@ const nav = ref({
         {
             title: 'Документы',
             icon: 'oui:documentation',
-            style: '',
+            style: 'scale-140',
             link: '',
-            lottie: await getLottie('documents')
+            lottie: await getLottie('documents'),
+            lottieConfig: {
+                scale: 1.5
+            }
         },
         {
             title: 'Новости',
             icon: 'iconamoon:news-fill',
+            lottie: await getLottie('news'),
             style: '',
-            link: '',
-            lottie: await getLottie('news')
+            link: ''
         },
         {
             title: 'Бренды',
             icon: 'tabler:brand-github-filled',
-            style: '',
-            link: '',
-            lottie: await getLottie('brands')
+            lottie: await getLottie('brands'),
+            style: 'scale-70',
+            link: ''
         },
         {
             title: 'Контакты',
             icon: 'ri:contacts-line',
+            lottie: await getLottie('contacts'),
             link: '/contacts',
-            lottie: '',
-            style: await getLottie('contacts')
+            style: 'scale-80'
         }
     ],
     bottom: [
         {
             title: 'Проекты',
             icon: 'bi:person-workspace',
-            style: '',
+            style: 'scale-80',
             link: '',
             lottie: await getLottie('projects')
         },
         {
             title: 'Услуги',
             icon: 'f7:rays',
-            style: '',
+            style: 'scale-110',
             link: '',
             lottie: await getLottie('services')
         },
@@ -196,7 +203,7 @@ const nav = ref({
         {
             title: 'Отзывы',
             icon: 'carbon:star-review',
-            style: '',
+            style: 'scale-190',
             link: '',
             lottie: await getLottie('reviews')
         }
@@ -229,7 +236,7 @@ onMounted(() => {
 .main {
     &-nav {
         &-item {
-            @apply relative flex-center bg-transparent size-14 rounded-full border-4 border-self-3 cursor-pointer transition-all transition-delay-200 shadow-sm-circle shadow-self-4 animate-pulse-alt animate-duration-5000 hover:(bg-self-5);
+            @apply relative flex-center bg-transparent size-18 rounded-full border-4 border-self-3 cursor-pointer transition-all transition-delay-200 shadow-sm-circle shadow-self-4 animate-pulse-alt animate-duration-5000 hover:(bg-self-5);
         }
         &-icon {
             @apply text-4xl transition-all transition-duration-300 transition-delay-200 text-self-7 group-hover:(text-self-7 rotate-360);
