@@ -2,8 +2,7 @@
     <LayoutDefault :title="title">
         <ItemClip :class-container="'bg-self-7'">
             <div class="relative flex h-full bg-self-2"></div>
-
-            <div class="absolute inset-0"></div>
+            <!--<div class="absolute inset-0"></div>-->
 
             <ItemMediaImg
                 :class="[
@@ -32,7 +31,7 @@
                         ]"
                         :href="link"
                     >
-                        <VueLottie
+                        <LottieAnimation
                             v-if="lottie"
                             :animationData="lottie"
                             :class="[
@@ -78,7 +77,7 @@
                         ]"
                         :href="link"
                     >
-                        <VueLottie
+                        <LottieAnimation
                             v-if="lottie"
                             :animationData="lottie"
                             :class="[
@@ -90,7 +89,7 @@
                             loop
                         />
 
-                        {{ loadTimeout }}
+                        <!--{{ loadTimeout }}-->
 
                         <div
                             :class="[
@@ -119,21 +118,21 @@ const nav = ref({
             title: 'Предложения',
             icon: 'bx:bxs-offer',
             style: '',
-            link: '',
+            link: '/offers',
             lottie: await useGetLottie('offers')
         },
         {
             title: 'Подарки',
             icon: 'streamline:shopping-gift-reward-box-social-present-gift-media-rating-bow',
             style: '',
-            link: '',
+            link: '/presents',
             lottie: await useGetLottie('presents')
         },
         {
             title: 'Документы',
             icon: 'oui:documentation',
             style: 'scale-140',
-            link: '',
+            link: '/documents',
             lottie: await useGetLottie('documents'),
             lottieConfig: {
                 scale: 1.5
@@ -144,14 +143,14 @@ const nav = ref({
             icon: 'iconamoon:news-fill',
             lottie: await useGetLottie('news'),
             style: '',
-            link: ''
+            link: '/news'
         },
         {
             title: 'Бренды',
             icon: 'tabler:brand-github-filled',
             lottie: await useGetLottie('brands'),
             style: 'scale-70',
-            link: ''
+            link: '/brands'
         },
         {
             title: 'Контакты',
@@ -166,28 +165,28 @@ const nav = ref({
             title: 'Проекты',
             icon: 'bi:person-workspace',
             style: 'scale-80',
-            link: '',
+            link: '/projects',
             lottie: await useGetLottie('projects')
         },
         {
             title: 'Услуги',
             icon: 'f7:rays',
             style: 'scale-110',
-            link: '',
+            link: '/services',
             lottie: await useGetLottie('services')
         },
         {
             title: 'F.A.Q',
             icon: 'bi:patch-question',
             style: '',
-            link: '',
+            link: '/questions',
             lottie: await useGetLottie('questions')
         },
         {
             title: 'Отзывы',
             icon: 'carbon:star-review',
             style: 'scale-190',
-            link: '',
+            link: '/reviews',
             lottie: await useGetLottie('reviews')
         }
     ]
@@ -219,7 +218,7 @@ const loadTimeout = ref(false)
 onMounted(() => {
     setTimeout(() => {
         loadTimeout.value = true
-    }, 15000)
+    }, 5000)
 })
 </script>
 
@@ -227,7 +226,7 @@ onMounted(() => {
 .main {
     &-nav {
         &-item {
-            @apply relative flex-center bg-transparent size-18 rounded-full border-4 border-self-7/15 cursor-pointer transition-all transition-delay-200 shadow-sm-circle shadow-self-4 animate-pulse-alt animate-duration-5000 hover:(bg-self-2 border-self-7);
+            @apply relative flex-center bg-self-2/50 size-18 rounded-full border-4 border-self-7/15 cursor-pointer transition-all transition-delay-200 shadow-sm-circle shadow-self-4 animate-pulse-alt animate-duration-5000 hover:(bg-self-2 border-self-7);
         }
         &-icon {
             @apply text-4xl transition-all transition-duration-300 transition-delay-100 text-self-7 group-hover:(text-self-7);

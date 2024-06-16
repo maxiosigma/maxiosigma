@@ -1,4 +1,6 @@
-﻿<template></template>
+﻿<template>
+    <div></div>
+</template>
 
 <script lang="ts" setup>
 defineI18nRoute(false)
@@ -8,14 +10,18 @@ const vueLangs = locales.value
     .filter(({ code }) => code !== 'index')
     .map(({ code }) => code)
 
-onMounted(async () => {
+onMounted(() => {
     const navLangs = navigator.languages.filter(
         (lang) => lang?.length === 2 || vueLangs.includes(lang)
     )
 
     const lang = navLangs?.[0] ?? defaultLocale
-    await setLocale(lang)
-    await navigateTo(`/${lang}/main`)
+
+    setLocale(lang)
+        .then(() => {
+            navigateTo(`/${lang}/main`)
+        })
+        .catch(console.log)
 })
 </script>
 

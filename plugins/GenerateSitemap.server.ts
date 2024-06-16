@@ -1,6 +1,6 @@
-﻿import { SitemapStream, streamToPromise } from 'sitemap'
-import { writeFileSync } from 'fs'
-import { Readable } from 'stream'
+﻿//import { SitemapStream, streamToPromise } from 'sitemap'
+//import { writeFileSync } from 'fs'
+//import { Readable } from 'stream'
 
 export default defineNuxtPlugin({
     name: 'generate-sitemap',

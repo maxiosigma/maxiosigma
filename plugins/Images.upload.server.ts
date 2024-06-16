@@ -11,6 +11,4 @@
     }, {})
 
     nuxtApp.payload.data['uploadImages'] = images
-
-    return {}
 })

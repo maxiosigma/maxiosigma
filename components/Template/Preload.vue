@@ -17,7 +17,7 @@
                 src="preload/index.gif"
             />
 
-            <VueLottie
+            <LottieAnimation
                 :animationData="icon"
                 :class="[
                     icon ? 'w-full h-full' : 'hidden',

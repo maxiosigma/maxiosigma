@@ -4,7 +4,6 @@ import { mkdirSync, writeFileSync, existsSync, unlinkSync } from 'fs'
 
 const locales = getLocales(mkdirSync, writeFileSync, existsSync)
 const isGenerateMode = process.argv.includes('generate')
-//import { defineNuxtConfig } from 'nuxt/config'
 
 export default defineNuxtConfig({
     ssr: true,
@@ -28,9 +27,9 @@ export default defineNuxtConfig({
                 generateScopedName: '[local]-[hash:base32:5]'
             }
         },
-        optimizeDeps: {
-            include: ['@supabase/gotrue-js']
-        },
+        //optimizeDeps: {
+        //    include: ['@supabase/gotrue-js']
+        //},
         resolve: {},
         plugins: [],
         build: {
@@ -40,8 +39,7 @@ export default defineNuxtConfig({
     build: {
         transpile: [
             //
-            'primevue',
-            'vue3-lottie'
+            'primevue'
         ]
     },
     sourcemap: {
@@ -54,16 +52,16 @@ export default defineNuxtConfig({
     modules: [
         '@unocss/nuxt',
         //'@nuxtjs/tailwindcss',
-        '@nuxtjs/supabase',
+        //'@nuxtjs/supabase',
         '@nuxtjs/device',
         //'nuxt-primevue',
-        '@formkit/nuxt',
+        //'@formkit/nuxt',
         '@vueuse/nuxt',
         'nuxt-icon',
 
         //'@tresjs/nuxt',
         '@vite-pwa/nuxt',
-        'nuxt-security',
+        //'nuxt-security',
         //'nuxt-time',
         //'~/modules/pages/index',
 

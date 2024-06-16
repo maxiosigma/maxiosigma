@@ -16,7 +16,6 @@
     "dependencies": {
         "@formkit/nuxt": "^1.6.5",
         "@kyvg/vue3-notification": "^3.2.1",
-        "@lottiefiles/dotlottie-vue": "^0.3.4",
         "@tresjs/cientos": "^3.9.0",
         "@tresjs/nuxt": "^2.1.2",
         "@tresjs/post-processing": "^0.7.1",
@@ -29,7 +28,6 @@
         "cross-env": "^7.0.3",
         "globe.gl": "^2.32.4",
         "google-translate-api-browser": "^5.0.0",
-        "lottie-web": "^5.12.2",
         "notiflix": "^3.2.7",
         "points-on-curve": "^1.0.1",
         "primevue": "^3.52.0",

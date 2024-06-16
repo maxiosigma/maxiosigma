@@ -35,7 +35,7 @@
 //})
 
 export default defineNuxtPlugin((nuxtApp) => {
-    if (false) {
-        navigateTo('/go-to-mw')
-    }
+    //if (false) {
+    //    navigateTo('/go-to-mw')
+    //}
 })
