@@ -16,7 +16,9 @@
                 >
                     <a
                         :key="ni"
-                        v-for="({ title, icon, style, link }, ni) in nav.side"
+                        v-for="(
+                            { title, icon, style, link, lottie }, ni
+                        ) in nav.side"
                         :class="[
                             'main-nav-item group',
                             ni % 2 === 0 ? '' : 'ml-a',
@@ -28,10 +30,19 @@
                         ]"
                         :href="link"
                     >
-                        <Icon
+                        <!--<Icon
                             :name="icon"
                             mode="css"
                             :class="['main-nav-icon', style]"
+                        />-->
+
+                        <VueLottie
+                            v-if="lottie"
+                            :animationData="lottie"
+                            :class="[
+                                'main-nav-icon w-full h-full transform',
+                                style
+                            ]"
                         />
 
                         <div
@@ -55,7 +66,9 @@
                 >
                     <a
                         :key="ni"
-                        v-for="({ title, icon, link }, ni) in nav.bottom"
+                        v-for="(
+                            { title, icon, style, link, lottie }, ni
+                        ) in nav.bottom"
                         :class="[
                             'main-nav-item group',
                             ni === 0 || ni === nav.bottom.length - 1
@@ -74,9 +87,12 @@
                         />-->
 
                         <VueLottie
-                            :animationData="iconPresents"
-                            :height="200"
-                            :width="200"
+                            v-if="lottie"
+                            :animationData="lottie"
+                            :class="[
+                                'main-nav-icon w-full h-full transform',
+                                style
+                            ]"
                         />
 
                         <div
@@ -98,11 +114,16 @@
 
 <script lang="ts" setup>
 //import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
-import iconProjects from '~/assets/images/main/lottie/projects.json'
-import iconPresents from '~/assets/images/main/lottie/presents.json'
-//import iconPresents2 from '~/assets/images/main/lottie/presents.lottie'
+//import iconProjects from '~/assets/images/main/lottie/projects.json'
 
-console.log(iconPresents)
+//https://lottiefiles.com/animations/project-development-MKmnWwx027?from=search
+//https://www.google.com/search?q=dfqwfqwf&oq=dfqwfqwf&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBBzk0MmowajeoAgCwAgA&sourceid=chrome&ie=UTF-8
+//https://lottiefiles.com/search?q=project&category=animations
+
+const getLottie = async (name: any) =>
+    await import(`~/assets/images/main/lottie/${name}.json`)
+        .then((r) => r.default)
+        .catch(() => '')
 
 const title = ref('Главная')
 const nav = ref({
@@ -111,44 +132,78 @@ const nav = ref({
             title: 'Предложения',
             icon: 'bx:bxs-offer',
             style: '',
-            link: ''
+            link: '',
+            lottie: await getLottie('offers')
         },
         {
             title: 'Подарки',
             icon: 'streamline:shopping-gift-reward-box-social-present-gift-media-rating-bow',
-            link: ''
+            style: '',
+            link: '',
+            lottie: await getLottie('presents')
         },
         {
             title: 'Документы',
             icon: 'oui:documentation',
             style: '',
-            link: ''
+            link: '',
+            lottie: await getLottie('documents')
         },
         {
             title: 'Новости',
             icon: 'iconamoon:news-fill',
             style: '',
-            link: ''
+            link: '',
+            lottie: await getLottie('news')
         },
         {
             title: 'Бренды',
             icon: 'tabler:brand-github-filled',
             style: '',
-            link: ''
+            link: '',
+            lottie: await getLottie('brands')
         },
         {
             title: 'Контакты',
             icon: 'ri:contacts-line',
-            link: '/contacts'
+            link: '/contacts',
+            lottie: '',
+            style: await getLottie('contacts')
         }
     ],
     bottom: [
-        { title: 'Проекты', icon: 'bi:person-workspace', link: '' },
-        { title: 'Услуги', icon: 'f7:rays', link: '' },
-        { title: 'F.A.Q', icon: 'bi:patch-question', link: '' },
-        { title: 'Отзывы', icon: 'carbon:star-review', link: '' }
+        {
+            title: 'Проекты',
+            icon: 'bi:person-workspace',
+            style: '',
+            link: '',
+            lottie: await getLottie('projects')
+        },
+        {
+            title: 'Услуги',
+            icon: 'f7:rays',
+            style: '',
+            link: '',
+            lottie: await getLottie('services')
+        },
+        {
+            title: 'F.A.Q',
+            icon: 'bi:patch-question',
+            style: '',
+            link: '',
+            lottie: await getLottie('questions')
+        },
+        {
+            title: 'Отзывы',
+            icon: 'carbon:star-review',
+            style: '',
+            link: '',
+            lottie: await getLottie('reviews')
+        }
     ]
 })
+
+console.log(await getLottie('contacts'))
 
 const setAnimate = ref(() =>
     useRandomString([
