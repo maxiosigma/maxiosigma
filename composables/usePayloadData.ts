@@ -11,25 +11,35 @@ export default async function ({
     const { locale } = useI18n()
     const payloadName = `${locale.value}-${name}`
 
-    if (process.server) {
-        switch (type) {
-            case 'multi':
-                useNuxtApp().payload.data[payloadName] = await queryContent(`/${locale.value}/${path}`)
-                    .where({ ...optionsWhere, _path: `/${locale.value}/${path}` })
-                    .find()
-                    .then(callback)
-                    .catch(errors)
-                break
+    //if (import.meta.server) {
+    switch (type) {
+        case 'multi':
+            useNuxtApp().payload.data[payloadName] = await queryContent(
+                `/${locale.value}/${path}`
+            )
+                .where({
+                    ...optionsWhere,
+                    _path: `/${locale.value}/${path}`
+                })
+                .find()
+                .then(callback)
+                .catch(errors)
+            break
 
-            default:
-                useNuxtApp().payload.data[payloadName] = await queryContent(`/${locale.value}/${path}`)
-                    .where({ ...optionsWhere, _path: `/${locale.value}/${path}` })
-                    .findOne()
-                    .then(callback)
-                    .catch(errors)
-                break
-        }
+        default:
+            useNuxtApp().payload.data[payloadName] = await queryContent(
+                `/${locale.value}/${path}`
+            )
+                .where({
+                    ...optionsWhere,
+                    _path: `/${locale.value}/${path}`
+                })
+                .findOne()
+                .then(callback)
+                .catch(errors)
+            break
     }
+    //}
 
     return useNuxtData(payloadName)?.data
 }

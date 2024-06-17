@@ -30,8 +30,10 @@ const {
 const localePath = useLocalePath() //${useBaseLocale()}_
 const namePayload = `go_to_${slug}`
 
-if (process.server) {
-    useNuxtApp().payload.data[namePayload] = await queryContent(`/common/links/${slug}`)
+if (import.meta.server) {
+    useNuxtApp().payload.data[namePayload] = await queryContent(
+        `/common/links/${slug}`
+    )
         .findOne()
         .then((item) => (!isNot(item?.link) ? useCripty(item?.link) : null))
         .catch(() => null)
@@ -59,7 +61,11 @@ else {
 async function getSPBData(payload) {
     if (payload === null) {
         const client = useSupabaseClient()
-        const { data: dataClient } = await client.from('links').select('link').eq('slug', slug).single()
+        const { data: dataClient } = await client
+            .from('links')
+            .select('link')
+            .eq('slug', slug)
+            .single()
         payload = !isNot(dataClient?.link) ? useCripty(dataClient?.link) : null
     }
 }

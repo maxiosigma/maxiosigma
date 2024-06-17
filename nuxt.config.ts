@@ -54,8 +54,7 @@ export default defineNuxtConfig({
         //'@nuxtjs/tailwindcss',
         //'@nuxtjs/supabase',
         '@nuxtjs/device',
-        //'nuxt-primevue',
-        //'@formkit/nuxt',
+        '@formkit/nuxt',
         '@vueuse/nuxt',
         'nuxt-icon',
 
@@ -108,17 +107,16 @@ export default defineNuxtConfig({
         //    }
         //}
     },
-    supabase: {
-        redirect: false,
-        redirectOptions: {
-            login: '/',
-            callback: '/'
-        }
-    },
+    //supabase: {
+    //    redirect: false,
+    //    redirectOptions: {
+    //        login: '/',
+    //        callback: '/'
+    //    }
+    //},
     unocss: {
         uno: true
     },
-
     nitro: {
         prerender: {
             crawlLinks: true

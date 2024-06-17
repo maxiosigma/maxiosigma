@@ -1,13 +1,15 @@
 ﻿<template>
     <LayoutPage :title="title">
-        <div class="container pt-20 pb-20 gap-20 w-full flex flex-col justify-content-center">
+        <div
+            class="container pt-20 pb-20 gap-20 w-full flex flex-col justify-content-center"
+        >
             <TemplatePortfolioWorks :works="worksPayload" />
             <TemplatePortfolioStepper :skills="skillsPayload" />
         </div>
 
         <div class="flex flex-col fixed right-0 top-auto h-full">
             <PrimeButton
-                class="my-auto p-1.5 rounded-r-none"
+                class="my-auto p-1.5 rounded-r-none bg-self-4"
                 severity="success"
                 @click="sidebarVisible = true"
                 v-p-tooltip="'About'"
@@ -29,8 +31,15 @@
 <script setup>
 const title = ref('Портфолио')
 
-const skillsPayload = await usePayloadData({ name: 'portfolio-skills', path: 'skills' })
-const skillsPayloadSidebar = skillsPayload.value?.filter((it) => it?.only !== 'select')
+const skillsPayload = await usePayloadData({
+    name: 'portfolio-skills',
+    path: 'skills'
+})
+
+const skillsPayloadSidebar = skillsPayload.value?.filter(
+    (it) => it?.only !== 'select'
+)
+
 const qualitiesPayload = await usePayloadData({
     name: 'portfolio-qualities',
     path: 'qualities'
@@ -82,14 +91,14 @@ watch(
     }
 )
 
-useNotification({
-    name: 'aaa',
-    visible: ref(true),
-    summary: 'Title',
-    detail: 'Description about us',
-    life: 8000,
-    infinity: true
-})
+//useNotification({
+//    name: 'aaa',
+//    visible: ref(true),
+//    summary: 'Title',
+//    detail: 'Description about us',
+//    life: 8000,
+//    infinity: true
+//})
 </script>
 
 <style lang="scss">

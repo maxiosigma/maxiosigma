@@ -1,7 +1,11 @@
 <template>
     <PrimeAccordion v-model:activeIndex="accordionVisible">
         <PrimeAccordionTab header="Желаете увидеть больше ?">
-            <PrimeStepper class="box-animate" v-model:activeStep="stepperIndex" linear>
+            <PrimeStepper
+                class="box-animate"
+                v-model:activeStep="stepperIndex"
+                linear
+            >
                 <PrimeStepperPanel header="Кем вы являетесь ?">
                     <template #content="{ nextCallback }">
                         <PrimeSelectButton
@@ -11,7 +15,9 @@
                         />
 
                         <div class="flex pt-4 w-full justify-center">
-                            <TemplatePortfolioButtonQuestion :callback="nextCallback" />
+                            <TemplatePortfolioButtonQuestion
+                                :callback="nextCallback"
+                            />
                         </div>
                     </template>
                 </PrimeStepperPanel>
@@ -19,7 +25,9 @@
                 <PrimeStepperPanel header="Какие навыки вам нужны ?">
                     <template #content="{ prevCallback, nextCallback }">
                         <div class="flex flex-col gap-2 mx-auto">
-                            <div class="flex flex-wrap container py-10 justify-center gap-3">
+                            <div
+                                class="flex flex-wrap container py-10 justify-center gap-3"
+                            >
                                 <PrimeToggleButton
                                     v-for="({ title }, si) in skills"
                                     v-model="h2models[title]"
@@ -38,7 +46,9 @@
                                 :callback="prevCallback"
                             />
 
-                            <TemplatePortfolioButtonQuestion :callback="nextCallback" />
+                            <TemplatePortfolioButtonQuestion
+                                :callback="nextCallback"
+                            />
                         </div>
                     </template>
                 </PrimeStepperPanel>
@@ -104,7 +114,10 @@ watch(
 )
 
 const stepperIndex = ref(0)
-const storageStepperIndex = useSaveStorageValue(stepperIndex, 'stepper-index-visible')
+const storageStepperIndex = useSaveStorageValue(
+    stepperIndex,
+    'stepper-index-visible'
+)
 
 const storageAccordionVisible = useLocalStorage('accordion-visible')
 const accordionVisible = ref()
@@ -119,7 +132,10 @@ watch(
 onMounted(() => {
     accordionVisible.value = Number(storageAccordionVisible.value ?? 0)
     stepperIndex.value = Number(storageStepperIndex.value ?? 0)
-    h2models.value = prop.skills.reduce((s, { title }) => (s = { ...s, [title]: false }) && s, {})
+    h2models.value = prop.skills.reduce(
+        (s, { title }) => (s = { ...s, [title]: false }) && s,
+        {}
+    )
 })
 </script>
 

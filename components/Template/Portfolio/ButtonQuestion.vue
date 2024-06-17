@@ -4,6 +4,10 @@
         :label="label || 'Следующий вопрос'"
         :iconPos="position || 'right'"
         :severity="position !== 'left' ? 'success' : 'secondary'"
+        :class="[
+            'px-4 py-2  transition-all duration-250 hover:(bg-self-4)',
+            position === 'left' ? 'bg-self-1' : 'bg-self-5'
+        ]"
         @click="callback"
     >
         <template #icon="{ class: cl }">

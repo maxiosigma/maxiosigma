@@ -1,4 +1,4 @@
-export default function (callback) {
-	//&& !process.browser
-	if (process.server) callback();
+export default function (callback: any) {
+    //&& !process.browser
+    if (import.meta.server) callback()
 }
