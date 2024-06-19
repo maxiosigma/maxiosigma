@@ -1,6 +1,5 @@
 <template>
-    <!-- v-model header="About" -->
-    <PrimeSidebar :visible="visible" position="right">
+    <!--<PrimeSidebar :visible="visible" position="right">
         <template #container>
             <div class="flex flex-col h-full">
                 <div class="p-sidebar-header">
@@ -17,10 +16,6 @@
                 <div
                     class="flex gap-20 px-5 overflow-auto scrollbar-thin scrollbar-corner-self-1 scrollbar-track-self-1 scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar-thumb-self-3"
                 >
-                    <!-- Qualities -->
-                    <!-- Competencies -->
-                    <!-- Skills -->
-
                     <div
                         class="flex flex-col gap-5 pointer-events-none"
                         :class="[name === 'Навыки' ? ' min-w-52' : '']"
@@ -32,12 +27,22 @@
                         :key="ti"
                     >
                         <h3 class="text-xl tracking-wider">{{ name }}</h3>
-                        <TemplatePortfolioMeter class="text-slate-300" :items="items" :visible="visible" />
+                        <TemplatePortfolioMeter
+                            class="text-slate-300"
+                            :items="items"
+                            :visible="visible"
+                        />
                     </div>
                 </div>
 
-                <div class="flex items-center justify-center gap-5 px-5 pt-1 pb-3">
-                    <Icon class="text-self-4" size="28px" name="ic:sharp-format-quote" />
+                <div
+                    class="flex items-center justify-center gap-5 px-5 pt-1 pb-3"
+                >
+                    <Icon
+                        class="text-self-4"
+                        size="28px"
+                        name="ic:sharp-format-quote"
+                    />
 
                     <div class="border-l-2 border-self-4 pl-2 opacity-50">
                         Если и создавать code, то только с душой ...
@@ -45,7 +50,7 @@
                 </div>
             </div>
         </template>
-    </PrimeSidebar>
+    </PrimeSidebar>-->
 </template>
 
 <script setup>

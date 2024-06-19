@@ -53,6 +53,7 @@ export default defineNuxtConfig({
         '@unocss/nuxt',
         //'@nuxtjs/tailwindcss',
         //'@nuxtjs/supabase',
+        '@primevue/nuxt-module',
         '@nuxtjs/device',
         '@formkit/nuxt',
         '@vueuse/nuxt',
@@ -70,6 +71,50 @@ export default defineNuxtConfig({
         //'nuxt-simple-sitemap'
         //'nuxt-simple-robots'
     ],
+    primevue: {
+        usePrimeVue: true,
+        importTheme: { from: '~/assets/prime.js' },
+        options: {
+            unstyled: true,
+            ripple: true,
+            inputVariant: 'filled'
+        },
+        components: {
+            prefix: 'Prime',
+            include: [
+                'Accordion',
+                'AccordionPanel',
+                'AccordionHeader',
+                'AccordionContent',
+                'Stepper',
+                'StepList',
+                'StepPanels',
+                'StepItem',
+                'Step',
+                'StepPanel',
+                'ToastService',
+                'Toast',
+                'Button',
+                'ToggleButton',
+                'SelectButton',
+                'ScrollPanel',
+                'FloatLabel',
+                'MeterGroup',
+                'InputText',
+                'Skeleton',
+                'Tooltip',
+                'Sidebar',
+                'Tag'
+            ]
+        },
+        directives: {
+            prefix: 'p-',
+            include: ['Ripple', 'Tooltip', 'AnimateOnScroll', 'StyleClass']
+        },
+        composables: {
+            include: ['useStyle']
+        }
+    },
     i18n: {
         lazy: false,
         defaultLocale: defaultLocale,

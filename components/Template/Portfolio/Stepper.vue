@@ -1,5 +1,14 @@
 <template>
-    <PrimeAccordion v-model:activeIndex="accordionVisible">
+    <PrimeAccordion :value="STORAGE_ACCORDION_VISIBLE">
+        <PrimeAccordionPanel value="0">
+            <PrimeAccordionHeader
+                >Желаете увидеть больше ?</PrimeAccordionHeader
+            >
+            <PrimeAccordionContent> aaaaaaaaaa </PrimeAccordionContent>
+        </PrimeAccordionPanel>
+    </PrimeAccordion>
+
+    <!--<PrimeAccordion v-model:activeIndex="accordionVisible">
         <PrimeAccordionTab header="Желаете увидеть больше ?">
             <PrimeStepper
                 class="box-animate"
@@ -84,7 +93,7 @@
                 </PrimeStepperPanel>
             </PrimeStepper>
         </PrimeAccordionTab>
-    </PrimeAccordion>
+    </PrimeAccordion>-->
 </template>
 
 <script setup>
@@ -105,19 +114,9 @@ const [H1_SELECTIONS, H3_SELECTIONS] = [
 
 const STORAGE_H1 = useLocalStorage('portfolio-h1-value')
 
-const STORAGE_H2 = useLocalStorage(
-    'portfolio-h2-value',
-    //useLocalStorage('portfolio-h2-value') ??
-    //prop.skills.reduce(
-    //    (s, { title }) => (s = { ...s, [title]: false }) && s,
-    //    {}
-    //)
-    {}
-)
+const STORAGE_H2 = useLocalStorage('portfolio-h2-value')
 
 const STORAGE_H3 = useLocalStorage('portfolio-h3-value')
-
-//watch(STORAGE_H1, (value) => console.log((STORAGE_H1.value = value)))
 
 const h2modelsDisabled = ref(false)
 const h2change = () => {
@@ -130,15 +129,12 @@ const storageStepperIndex = useSaveStorageValue(
     'stepper-index-visible'
 )
 
-const storageAccordionVisible = useLocalStorage(
+const STORAGE_ACCORDION_VISIBLE = useLocalStorage(
     'accordion-visible',
     Number(useLocalStorage('accordion-visible').value ?? 0)
 )
-const accordionVisible = ref()
 
-//watch(accordionVisible, () => {
-//    storageAccordionVisible.value = accordionVisible.value ?? 1
-//})
+const accordionVisible = ref()
 
 onMounted(() => {
     //accordionVisible.value = Number(storageAccordionVisible.value ?? 0)
@@ -149,6 +145,16 @@ onMounted(() => {
     STORAGE_H1 ??= H1_SELECTIONS.value[1]
     STORAGE_H3 ??= H3_SELECTIONS.value[1]
 })
+
+//watch(STORAGE_H1, (value) => console.log((STORAGE_H1.value = value)))
+//watch(accordionVisible, () => {
+//    storageAccordionVisible.value = accordionVisible.value ?? 1
+//})
+//useLocalStorage('portfolio-h2-value') ??
+//prop.skills.reduce(
+//    (s, { title }) => (s = { ...s, [title]: false }) && s,
+//    {}
+//)
 </script>
 
 <style lang="scss"></style>
