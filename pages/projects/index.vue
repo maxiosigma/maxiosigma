@@ -3,7 +3,8 @@
 </template>
 
 <script lang="ts" setup>
-navigateTo('/portfolio')
+const localePath = useLocalePath()
+navigateTo(localePath('/portfolio'))
 </script>
 
 <style lang="scss"></style>

@@ -15,7 +15,7 @@
                 <div
                     class="grid flex-wrap gap-[5vmax] grid-cols-2 columns-2 w-full inset-0 self-center px-[10vw] mb-[5vmax]"
                 >
-                    <a
+                    <NuxtLinkLocale
                         :key="ni"
                         v-for="(
                             { title, icon, style, link, lottie }, ni
@@ -29,7 +29,7 @@
                                 : '',
                             setAnimate()
                         ]"
-                        :href="link"
+                        :to="link"
                     >
                         <LottieAnimation
                             v-if="lottie"
@@ -56,13 +56,13 @@
                         >
                             {{ title }}
                         </div>
-                    </a>
+                    </NuxtLinkLocale>
                 </div>
 
                 <div
                     class="flex flex-wrap gap-[5vmax] w-full self-end justify-center place-items-end inset-0 bottom-[10vh]"
                 >
-                    <a
+                    <NuxtLinkLocale
                         :key="ni"
                         v-for="(
                             { title, icon, style, link, lottie }, ni
@@ -75,7 +75,7 @@
 
                             setAnimate()
                         ]"
-                        :href="link"
+                        :to="link"
                     >
                         <LottieAnimation
                             v-if="lottie"
@@ -89,8 +89,6 @@
                             loop
                         />
 
-                        <!--{{ loadTimeout }}-->
-
                         <div
                             :class="[
                                 'main-nav-pop bottom-full mb-4',
@@ -101,7 +99,7 @@
                         >
                             {{ title }}
                         </div>
-                    </a>
+                    </NuxtLinkLocale>
                 </div>
             </div>
         </ItemClip>
@@ -111,6 +109,8 @@
 </template>
 
 <script lang="ts" setup>
+//const { localePath } = useI18n()
+
 const title = ref('Главная')
 const nav = ref({
     side: [

@@ -10,9 +10,12 @@
                     <template #content="{ nextCallback }">
                         <PrimeSelectButton
                             class="flex flex-wrap container justify-center mx-auto py-10"
-                            v-model="h1value"
-                            :options="h1selections"
+                            :modelValue="STORAGE_H1"
+                            :options="H1_SELECTIONS"
                         />
+
+                        {{ STORAGE_H1 }}
+                        {{ H1_SELECTIONS }}
 
                         <div class="flex pt-4 w-full justify-center">
                             <TemplatePortfolioButtonQuestion
@@ -30,11 +33,12 @@
                             >
                                 <PrimeToggleButton
                                     v-for="({ title }, si) in skills"
-                                    v-model="h2models[title]"
+                                    v-model="STORAGE_H2[title]"
                                     :disabled="h2modelsDisabled"
                                     :onLabel="title"
                                     :offLabel="title"
                                     :key="si"
+                                    @change="h2change"
                                 />
                             </div>
                         </div>
@@ -57,8 +61,8 @@
                     <template #content="{ prevCallback }">
                         <PrimeSelectButton
                             class="flex flex-wrap gap-3 container justify-center mx-auto py-10"
-                            v-model="h3value"
-                            :options="h3selections"
+                            :modelValue="STORAGE_H3"
+                            :options="H3_SELECTIONS"
                             multiple
                         />
 
@@ -88,10 +92,8 @@ const prop = defineProps({
     skills: { type: Object, default: [] }
 })
 
-const [h1value, h1selections, h3value, h3selections] = [
-    ref('Фрилансер'),
+const [H1_SELECTIONS, H3_SELECTIONS] = [
     ref(['Частный предприниматель', 'Фрилансер', 'Представитель организации']),
-    ref('Заказ на фрилансе'),
     ref([
         'Личный проект',
         'Заказ на фрилансе',
@@ -101,17 +103,26 @@ const [h1value, h1selections, h3value, h3selections] = [
     ])
 ]
 
-const h2models = ref({})
-const h2modelsDisabled = ref(false)
+const STORAGE_H1 = useLocalStorage('portfolio-h1-value')
 
-watch(
-    () => h2models.value,
-    () => {
-        //.filter((it) => it === true).length
-        //console.log(Object.values(h2models.value))
-        //console.log(h2models.value)
-    }
+const STORAGE_H2 = useLocalStorage(
+    'portfolio-h2-value',
+    //useLocalStorage('portfolio-h2-value') ??
+    //prop.skills.reduce(
+    //    (s, { title }) => (s = { ...s, [title]: false }) && s,
+    //    {}
+    //)
+    {}
 )
+
+const STORAGE_H3 = useLocalStorage('portfolio-h3-value')
+
+//watch(STORAGE_H1, (value) => console.log((STORAGE_H1.value = value)))
+
+const h2modelsDisabled = ref(false)
+const h2change = () => {
+    //console.log({ ...h2selections.value })
+}
 
 const stepperIndex = ref(0)
 const storageStepperIndex = useSaveStorageValue(
@@ -119,23 +130,24 @@ const storageStepperIndex = useSaveStorageValue(
     'stepper-index-visible'
 )
 
-const storageAccordionVisible = useLocalStorage('accordion-visible')
+const storageAccordionVisible = useLocalStorage(
+    'accordion-visible',
+    Number(useLocalStorage('accordion-visible').value ?? 0)
+)
 const accordionVisible = ref()
 
-watch(
-    () => accordionVisible.value,
-    () => {
-        storageAccordionVisible.value = accordionVisible.value ?? 1
-    }
-)
+//watch(accordionVisible, () => {
+//    storageAccordionVisible.value = accordionVisible.value ?? 1
+//})
 
 onMounted(() => {
-    accordionVisible.value = Number(storageAccordionVisible.value ?? 0)
+    //accordionVisible.value = Number(storageAccordionVisible.value ?? 0)
     stepperIndex.value = Number(storageStepperIndex.value ?? 0)
-    h2models.value = prop.skills.reduce(
-        (s, { title }) => (s = { ...s, [title]: false }) && s,
-        {}
-    )
+
+    console.log(STORAGE_H1.value, H1_SELECTIONS.value[1])
+
+    STORAGE_H1 ??= H1_SELECTIONS.value[1]
+    STORAGE_H3 ??= H3_SELECTIONS.value[1]
 })
 </script>
 

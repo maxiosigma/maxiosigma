@@ -1,4 +1,8 @@
-﻿export default function (index: Ref = ref(0), name: String = `${Math.random()}`, other = null) {
+﻿export default function (
+    index: Ref = ref(0),
+    name: String = `${Math.random()}`,
+    other = null
+) {
     const storage = useLocalStorage(`${name}`, index.value)
 
     watch(

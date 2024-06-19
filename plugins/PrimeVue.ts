@@ -1,4 +1,5 @@
 ﻿import PrimeVue from 'primevue/config'
+import Aura from '@primevue/themes/aura'
 
 import button from 'primevue/button'
 import inputtext from 'primevue/inputtext'
@@ -25,8 +26,13 @@ export default defineNuxtPlugin((nuxtApp) => {
     const { vueApp } = nuxtApp
     const { use, component, directive } = vueApp
 
-    use(PrimeVue, { ripple: true })
     use(toastservice)
+    use(PrimeVue, {
+        theme: { preset: Aura },
+        ripple: true,
+        inputStyle: 'outlined',
+        inputVariant: 'outlined',
+    })
 
     component('PrimeAccordion', accordion)
     component('PrimeAccordionTab', accordiontab)
