@@ -7,6 +7,7 @@ const isGenerateMode = process.argv.includes('generate')
 
 export default defineNuxtConfig({
     ssr: true,
+    dev: true,
     telemetry: false,
     app: {
         rootId: 'app',

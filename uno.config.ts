@@ -105,6 +105,7 @@ export default defineConfig({
             include: [
                 //
                 ///\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
+                './node_modules/primevue/**/*.{vue,js,ts,jsx,tsx}',
                 'components/**/*.{js,vue,ts}',
                 'components/*.{js,vue,ts}',
                 'pages/**/*.{js,vue,ts}',
