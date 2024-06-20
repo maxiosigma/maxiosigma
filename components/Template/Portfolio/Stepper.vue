@@ -12,7 +12,7 @@
                                 <div class="flex flex-col py-4">
                                     <div class="flex-auto flex-center">
                                         <PrimeSelectButton
-                                            class="flex flex-wrap justify-center mx-auto border-1 p-1 border-dashed border-self-5"
+                                            class="flex flex-wrap justify-center mx-auto p-1 border-1 border-dashed border-self-4"
                                             v-model="H1"
                                             :options="H1_SELECTIONS"
                                             @change="({ value }) => (STORAGE_H1 = value)"
@@ -21,16 +21,20 @@
                                 </div>
 
                                 <div class="flex pt-4 w-full justify-start">
-                                    <TemplatePortfolioButtonQuestion :callback="() => activateCallback('2')" />
+                                    <TemplatePortfolioButtonQuestion
+                                        :disabled="isDisable(H1)"
+                                        :callback="() => activateCallback('2')"
+                                    />
                                 </div>
                             </PrimeStepPanel>
                         </PrimeStepItem>
+
                         <PrimeStepItem value="2">
                             <PrimeStep>Какие навыки вам нужны ?</PrimeStep>
                             <PrimeStepPanel v-slot="{ activateCallback }">
                                 <div class="flex flex-col py-4 gap-2 mx-auto">
                                     <PrimeSelectButton
-                                        class="flex flex-wrap gap-3 container justify-center mx-auto py-10"
+                                        class="flex flex-wrap gap-3 container justify-center mx-auto p-4 border-1 border-dashed border-self-4"
                                         v-model="H2"
                                         :options="H2_SELECTIONS"
                                         @change="({ value }) => (STORAGE_H2 = value)"
@@ -45,16 +49,20 @@
                                         :callback="() => activateCallback('1')"
                                     />
 
-                                    <TemplatePortfolioButtonQuestion :callback="() => activateCallback('3')" />
+                                    <TemplatePortfolioButtonQuestion
+                                        :disabled="isDisable(H2)"
+                                        :callback="() => activateCallback('3')"
+                                    />
                                 </div>
                             </PrimeStepPanel>
                         </PrimeStepItem>
+
                         <PrimeStepItem value="3">
                             <PrimeStep>Что вы предлагаете ?</PrimeStep>
                             <PrimeStepPanel v-slot="{ activateCallback }">
-                                <div class="flex flex-col py-4 gap-2 mx-auto">
+                                <div class="flex flex-col p-4 gap-2 mx-auto">
                                     <PrimeSelectButton
-                                        class="flex flex-wrap gap-3 container justify-center mx-auto py-10"
+                                        class="flex flex-wrap gap-3 container justify-center mx-auto p-5 border-1 border-dashed border-self-4"
                                         v-model="H3"
                                         :options="H3_SELECTIONS"
                                         @change="({ value }) => (STORAGE_H3 = value)"
@@ -70,6 +78,7 @@
                                     />
 
                                     <TemplatePortfolioButtonQuestion
+                                        :disabled="isDisable(H3)"
                                         label="Найти подходящие работы"
                                         icon="material-symbols-light:search-insights-rounded"
                                         size="24px"
@@ -112,11 +121,13 @@ const storageStepperIndex = useSaveStorageValue(stepperIndex, 'stepper-index-vis
 
 const [ACCORDION_VISIBLE, STORAGE_ACCORDION_VISIBLE] = [ref(), useLocalStorage('portfolio-accordion-visible')]
 
+const isDisable = (val) => !val || val?.[0] === '' || val?.length === 0
+
 onMounted(() => {
     ACCORDION_VISIBLE.value = STORAGE_ACCORDION_VISIBLE.value ?? '-1'
     H1.value ??= STORAGE_H1.value
-    H2.value ??= STORAGE_H2.value?.split(',')
-    H3.value ??= STORAGE_H3.value?.split(',')
+    H2.value ??= STORAGE_H2.value?.split(',')?.filter((it) => !!it) ?? []
+    H3.value ??= STORAGE_H3.value?.split(',')?.filter((it) => !!it) ?? []
 })
 
 //watch(STORAGE_H1, (value) => console.log((STORAGE_H1.value = value)))
@@ -131,9 +142,10 @@ onMounted(() => {
 </script>
 
 <style lang="scss">
-button.p-togglebutton.p-togglebutton,
-button.p-togglebutton.p-togglebutton::before {
-    @apply bg-transparent #{!important};
+button.p-togglebutton,
+button.p-togglebutton::before,
+button.p-togglebutton:hover {
+    @apply border-transparent bg-transparent #{!important};
 }
 
 button.p-togglebutton.p-togglebutton::before {
@@ -142,5 +154,13 @@ button.p-togglebutton.p-togglebutton::before {
 
 button.p-togglebutton.p-togglebutton-checked::before {
     @apply bg-self-5 border-1 border-dotted border-self-1  #{!important};
+}
+
+div.p-stepitem button.p-step-header span.p-step-title {
+    @apply text-lg;
+}
+
+div.p-stepitem-active button.p-step-header span.p-step-title {
+    @apply text-self-4 text-xl;
 }
 </style>

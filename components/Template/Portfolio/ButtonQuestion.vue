@@ -4,6 +4,7 @@
         :label="label || 'Следующий вопрос'"
         :iconPos="position || 'right'"
         :severity="position !== 'left' ? 'success' : 'secondary'"
+        :disabled="disabled"
         :class="[
             'px-4 py-2  transition-all duration-250 hover:(bg-self-4)',
             position === 'left' ? 'bg-self-1' : 'bg-self-5'
@@ -21,5 +22,5 @@
 </template>
 
 <script setup>
-const prop = defineProps(['callback', 'label', 'position', 'icon', 'size'])
+const prop = defineProps(['callback', 'label', 'position', 'icon', 'size', 'disabled'])
 </script>
