@@ -18,6 +18,15 @@ export default defineNuxtConfig({
     alias: {
         'assets-data': resolve(__dirname, './assets/data')
     },
+    experimental: {
+        appManifest: false,
+        componentIslands: 'local',
+        treeshakeClientOnly: false,
+        sharedPrerenderData: true,
+        externalVue: false,
+        typedPages: true,
+        watcher: 'parcel'
+    },
     features: {
         inlineStyles: false,
         devLogs: false
@@ -35,11 +44,11 @@ export default defineNuxtConfig({
         //},
         //resolve: {},
         //plugins: [],
-        build: {
-            ssr: true,
-            target: 'ESNext',
-            chunkSizeWarningLimit: 5000
-        }
+        //build: {
+        //    ssr: true,
+        //    target: 'ESNext',
+        //    chunkSizeWarningLimit: 5000
+        //}
     },
     build: {
         transpile: [
@@ -184,8 +193,6 @@ export default defineNuxtConfig({
 
 function onlyPageLocations(names: any[] = []) {
     return locales
-        .filter(
-            (locale) => names.filter((name) => locale.code !== name).length > 0
-        )
+        .filter((locale) => names.filter((name) => locale.code !== name).length > 0)
         .reduce((s, locale) => (s = { ...s, [locale.code]: false }) && s, {})
 }

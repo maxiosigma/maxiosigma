@@ -1,13 +1,12 @@
 <template>
-    <LayoutDefault :title="title">
+    <!-- :title="title" -->
+    <LayoutDefault>
         <ItemClip :class-container="'bg-self-7'">
             <div class="relative flex h-full bg-self-2"></div>
             <!--<div class="absolute inset-0"></div>-->
 
             <ItemMediaImg
-                :class="[
-                    'absolute inset-0 h-screen w-auto mx-auto object-t transform scale-105'
-                ]"
+                :class="['absolute inset-0 h-screen w-auto mx-auto object-t transform scale-105']"
                 src="main/face_3.png"
             />
 
@@ -17,16 +16,12 @@
                 >
                     <NuxtLinkLocale
                         :key="ni"
-                        v-for="(
-                            { title, icon, style, link, lottie }, ni
-                        ) in nav.side"
+                        v-for="({ title, icon, style, link, lottie }, ni) in nav.side"
                         :class="[
                             'main-nav-item group',
                             ni % 2 === 0 ? '' : 'ml-a',
                             ni === 2 || ni === 4 ? 'm-l-' + (ni / 2) * 8 : '',
-                            ni === 3 || ni === 5
-                                ? 'm-r-' + ((ni - 1) / 2) * 8
-                                : '',
+                            ni === 3 || ni === 5 ? 'm-r-' + ((ni - 1) / 2) * 8 : '',
                             setAnimate()
                         ]"
                         :to="link"
@@ -34,11 +29,7 @@
                         <LottieAnimation
                             v-if="lottie"
                             :animationData="lottie"
-                            :class="[
-                                'main-nav-icon w-full h-full transform',
-                                setRotate(),
-                                style
-                            ]"
+                            :class="['main-nav-icon w-full h-full transform', setRotate(), style]"
                             autoplay
                             loop
                         />
@@ -46,12 +37,8 @@
                         <div
                             :class="[
                                 'main-nav-pop',
-                                ni % 2 === 0
-                                    ? 'left-full ml-4'
-                                    : 'right-full mr-4',
-                                !loadTimeout
-                                    ? '!flex-center animate-bounce-in opacity-100'
-                                    : ''
+                                ni % 2 === 0 ? 'left-full ml-4' : 'right-full mr-4',
+                                !loadTimeout ? '!flex-center animate-bounce-in opacity-100' : ''
                             ]"
                         >
                             {{ title }}
@@ -64,14 +51,10 @@
                 >
                     <NuxtLinkLocale
                         :key="ni"
-                        v-for="(
-                            { title, icon, style, link, lottie }, ni
-                        ) in nav.bottom"
+                        v-for="({ title, icon, style, link, lottie }, ni) in nav.bottom"
                         :class="[
                             'main-nav-item group',
-                            ni === 0 || ni === nav.bottom.length - 1
-                                ? 'm-b-8'
-                                : '',
+                            ni === 0 || ni === nav.bottom.length - 1 ? 'm-b-8' : '',
 
                             setAnimate()
                         ]"
@@ -80,11 +63,7 @@
                         <LottieAnimation
                             v-if="lottie"
                             :animationData="lottie"
-                            :class="[
-                                'main-nav-icon w-full h-full transform',
-                                setRotate(),
-                                style
-                            ]"
+                            :class="['main-nav-icon w-full h-full transform', setRotate(), style]"
                             autoplay
                             loop
                         />
@@ -92,9 +71,7 @@
                         <div
                             :class="[
                                 'main-nav-pop bottom-full mb-4',
-                                !loadTimeout
-                                    ? '!flex-center animate-bounce-in opacity-100'
-                                    : ''
+                                !loadTimeout ? '!flex-center animate-bounce-in opacity-100' : ''
                             ]"
                         >
                             {{ title }}
