@@ -51,26 +51,30 @@ export default defineNuxtConfig({
         locales
     },
     modules: [
-        '@unocss/nuxt',
-        //'@nuxtjs/tailwindcss',
-        //'@nuxtjs/supabase',
-        //'@primevue/nuxt-module',
-        '@nuxtjs/device',
+        '@vite-pwa/nuxt',
+        '@nuxtjs/i18n',
+
+        '@nuxt/content',
+        //'@nuxtjs/seo',
+
         '@formkit/nuxt',
-        '@vueuse/nuxt',
+        '@unocss/nuxt',
         'nuxt-icon',
 
-        //'@tresjs/nuxt',
-        '@vite-pwa/nuxt',
+        '@nuxtjs/device',
+        '@vueuse/nuxt'
+
+        //'@tresjs/nuxt'
         //'nuxt-security',
         //'nuxt-time',
         //'~/modules/pages/index',
 
-        '@nuxtjs/i18n',
-        '@nuxt/content'
         //'@nuxtjs/sitemap'
         //'nuxt-simple-sitemap'
         //'nuxt-simple-robots'
+        //'@nuxtjs/tailwindcss',
+        //'@nuxtjs/supabase',
+        //'@primevue/nuxt-module',
     ],
     //primevue: {
     //    usePrimeVue: true,

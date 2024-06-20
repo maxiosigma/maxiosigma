@@ -15,16 +15,18 @@
                             <PrimeStep>Кем вы являетесь ?</PrimeStep>
                             <PrimeStepPanel v-slot="{ activateCallback }">
                                 <div class="flex flex-col h-48">
-                                    <div
-                                        class="border-2 border-dashed border-surface-200/25 dark:border-surface-700/25 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium"
-                                    >
+                                    <div class="flex-auto flex-center">
                                         <PrimeSelectButton
-                                            class="flex flex-wrap container justify-center mx-auto py-10"
-                                            :modelValue="STORAGE_H1"
+                                            class="flex flex-wrap justify-center mx-auto border-1 p-1 border-dashed border-self-5"
+                                            v-model="H1"
                                             :options="H1_SELECTIONS"
+                                            @change="
+                                                (value) => (STORAGE_H1 = value)
+                                            "
                                         />
                                     </div>
                                 </div>
+
                                 <div class="py-6">
                                     <PrimeButton
                                         label="Next"
@@ -98,7 +100,10 @@ const [H1_SELECTIONS, H3_SELECTIONS] = [
     ])
 ]
 
-const [H1, STORAGE_H1] = [ref(), useLocalStorage('portfolio-h1-value')]
+const [H1, STORAGE_H1] = [
+    ref(useLocalStorage('portfolio-h1-value')),
+    useLocalStorage('portfolio-h1-value')
+]
 const [H2, STORAGE_H2] = [ref(), useLocalStorage('portfolio-h2-value')]
 const [H3, STORAGE_H3] = [ref(), useLocalStorage('portfolio-h3-value')]
 

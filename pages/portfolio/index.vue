@@ -31,6 +31,10 @@
 <script setup>
 const title = ref('Портфолио')
 
+//const links = useBreadcrumbItems()
+
+//console.log(links)
+
 const skillsPayload = await usePayloadData({
     name: 'portfolio-skills',
     path: 'skills'
@@ -98,6 +102,10 @@ watch(
 //    detail: 'Description about us',
 //    life: 8000,
 //    infinity: true
+//})
+
+//useHead({
+//    title: title.value
 //})
 </script>
 

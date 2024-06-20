@@ -1,7 +1,3 @@
 {
-    "compilerOptions": {
-        "module": "ESNext",
-        "target": "ESNext"
-    },
     "extends": "./.nuxt/tsconfig.json"
 }

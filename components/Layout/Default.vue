@@ -4,32 +4,6 @@
     <ItemToast />
 </template>
 
-<style lang="scss">
-html {
-    //font-size: 12px;
-}
-
-.html {
-    @apply bg-self-1 flex min-h-full min-w-full relative;
-}
-
-.head {
-    @apply hidden;
-}
-
-.body {
-    @apply bg-self-1 flex flex-col font-roboto min-h-full min-w-full h-auto max-w-screen relative m-0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
-    text-rendering: optimizeLegibility;
-}
-
-.wrapper {
-    @apply flex flex-col flex-grow overflow-hidden;
-}
-</style>
-
 <script setup>
 const { localeProperties: lp, locales, locale } = useI18n()
 
@@ -40,6 +14,7 @@ defineI18nRoute({
 })
 
 const lang = ref(lp.value.code)
+
 const prop = defineProps({
     bs: {
         type: String,
@@ -104,3 +79,29 @@ useServerSeoMeta({
 
 onMounted(() => {})
 </script>
+
+<style lang="scss">
+html {
+    //font-size: 12px;
+}
+
+.html {
+    @apply bg-self-1 flex min-h-full min-w-full relative;
+}
+
+.head {
+    @apply hidden;
+}
+
+.body {
+    @apply bg-self-1 flex flex-col font-roboto min-h-full min-w-full h-auto max-w-screen relative m-0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+    text-rendering: optimizeLegibility;
+}
+
+.wrapper {
+    @apply flex flex-col flex-grow overflow-hidden;
+}
+</style>
