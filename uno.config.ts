@@ -6,7 +6,7 @@ import { presetUseful } from 'unocss-preset-useful'
 //import presetRemToPx from '@unocss/preset-rem-to-px'
 
 export default defineConfig({
-    warn: false,
+    //warn: false,
     safelist: [
         //
         ...[1, 2, 3].map((i) => `m-l-${i * 5}`),

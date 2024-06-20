@@ -1,78 +1,79 @@
 <template>
     <LayoutPage>
-        <PrimeAccordion
-            :value="ACCORDION_VISIBLE"
-            @update:value="(value) => (STORAGE_ACCORDION_VISIBLE = value)"
-        >
+        <PrimeAccordion :value="ACCORDION_VISIBLE" @update:value="(value) => (STORAGE_ACCORDION_VISIBLE = value)">
             <PrimeAccordionPanel value="0">
-                <PrimeAccordionHeader>
-                    Желаете увидеть больше ?
-                </PrimeAccordionHeader>
+                <PrimeAccordionHeader> Желаете увидеть больше ? </PrimeAccordionHeader>
 
                 <PrimeAccordionContent>
                     <PrimeStepper value="1">
                         <PrimeStepItem value="1">
                             <PrimeStep>Кем вы являетесь ?</PrimeStep>
                             <PrimeStepPanel v-slot="{ activateCallback }">
-                                <div class="flex flex-col h-48">
+                                <div class="flex flex-col py-4">
                                     <div class="flex-auto flex-center">
                                         <PrimeSelectButton
                                             class="flex flex-wrap justify-center mx-auto border-1 p-1 border-dashed border-self-5"
                                             v-model="H1"
                                             :options="H1_SELECTIONS"
-                                            @change="
-                                                (value) => (STORAGE_H1 = value)
-                                            "
+                                            @change="({ value }) => (STORAGE_H1 = value)"
                                         />
                                     </div>
                                 </div>
 
-                                <div class="py-6">
-                                    <PrimeButton
-                                        label="Next"
-                                        @click="activateCallback('2')"
-                                    />
+                                <div class="flex pt-4 w-full justify-start">
+                                    <TemplatePortfolioButtonQuestion :callback="() => activateCallback('2')" />
                                 </div>
                             </PrimeStepPanel>
                         </PrimeStepItem>
                         <PrimeStepItem value="2">
-                            <PrimeStep>Header II</PrimeStep>
+                            <PrimeStep>Какие навыки вам нужны ?</PrimeStep>
                             <PrimeStepPanel v-slot="{ activateCallback }">
-                                <div class="flex flex-col h-48">
-                                    <div
-                                        class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium"
-                                    >
-                                        Content II
-                                    </div>
+                                <div class="flex flex-col py-4 gap-2 mx-auto">
+                                    <PrimeSelectButton
+                                        class="flex flex-wrap gap-3 container justify-center mx-auto py-10"
+                                        v-model="H2"
+                                        :options="H2_SELECTIONS"
+                                        @change="({ value }) => (STORAGE_H2 = value)"
+                                        multiple
+                                    />
                                 </div>
-                                <div class="flex py-6 gap-2">
-                                    <PrimeButton
-                                        label="Back"
-                                        severity="secondary"
-                                        @click="activateCallback('1')"
+
+                                <div class="flex gap-5 pt-4 w-full justify-start">
+                                    <TemplatePortfolioButtonQuestion
+                                        label="Предыдущий вопрос"
+                                        position="left"
+                                        :callback="() => activateCallback('1')"
                                     />
-                                    <PrimeButton
-                                        label="Next"
-                                        @click="activateCallback('3')"
-                                    />
+
+                                    <TemplatePortfolioButtonQuestion :callback="() => activateCallback('3')" />
                                 </div>
                             </PrimeStepPanel>
                         </PrimeStepItem>
                         <PrimeStepItem value="3">
-                            <PrimeStep>Header III</PrimeStep>
+                            <PrimeStep>Что вы предлагаете ?</PrimeStep>
                             <PrimeStepPanel v-slot="{ activateCallback }">
-                                <div class="flex flex-col h-48">
-                                    <div
-                                        class="border-2 border-dashed border-surface-200 dark:border-surface-700 rounded bg-surface-50 dark:bg-surface-950 flex-auto flex justify-center items-center font-medium"
-                                    >
-                                        Content III
-                                    </div>
+                                <div class="flex flex-col py-4 gap-2 mx-auto">
+                                    <PrimeSelectButton
+                                        class="flex flex-wrap gap-3 container justify-center mx-auto py-10"
+                                        v-model="H3"
+                                        :options="H3_SELECTIONS"
+                                        @change="({ value }) => (STORAGE_H3 = value)"
+                                        multiple
+                                    />
                                 </div>
-                                <div class="py-6">
-                                    <PrimeButton
-                                        label="Back"
-                                        severity="secondary"
-                                        @click="activateCallback('2')"
+
+                                <div class="flex gap-5 pt-4 w-full justify-start">
+                                    <TemplatePortfolioButtonQuestion
+                                        label="Предыдущий вопрос"
+                                        position="left"
+                                        :callback="() => activateCallback('2')"
+                                    />
+
+                                    <TemplatePortfolioButtonQuestion
+                                        label="Найти подходящие работы"
+                                        icon="material-symbols-light:search-insights-rounded"
+                                        size="24px"
+                                        :callback="() => console.log('aaaa')"
                                     />
                                 </div>
                             </PrimeStepPanel>
@@ -89,8 +90,11 @@ const prop = defineProps({
     skills: { type: Object, default: [] }
 })
 
-const [H1_SELECTIONS, H3_SELECTIONS] = [
+console.log(prop?.skills?.map(({ title }) => title))
+
+const [H1_SELECTIONS, H2_SELECTIONS, H3_SELECTIONS] = [
     ref(['Частный предприниматель', 'Фрилансер', 'Представитель организации']),
+    ref(prop?.skills?.map((title) => title) ?? []),
     ref([
         'Личный проект',
         'Заказ на фрилансе',
@@ -100,31 +104,21 @@ const [H1_SELECTIONS, H3_SELECTIONS] = [
     ])
 ]
 
-const [H1, STORAGE_H1] = [
-    ref(useLocalStorage('portfolio-h1-value')),
-    useLocalStorage('portfolio-h1-value')
-]
+const [H1, STORAGE_H1] = [ref(), useLocalStorage('portfolio-h1-value')]
 const [H2, STORAGE_H2] = [ref(), useLocalStorage('portfolio-h2-value')]
 const [H3, STORAGE_H3] = [ref(), useLocalStorage('portfolio-h3-value')]
-
-const h2modelsDisabled = ref(false)
-const h2change = () => {
-    //console.log({ ...h2selections.value })
-}
+const [INX, STORAGE_INX] = [ref(), useLocalStorage('portfolio-inx-value')]
 
 const stepperIndex = ref(0)
-const storageStepperIndex = useSaveStorageValue(
-    stepperIndex,
-    'stepper-index-visible'
-)
+const storageStepperIndex = useSaveStorageValue(stepperIndex, 'stepper-index-visible')
 
-const [ACCORDION_VISIBLE, STORAGE_ACCORDION_VISIBLE] = [
-    ref(),
-    useLocalStorage('portfolio-accordion-visible')
-]
+const [ACCORDION_VISIBLE, STORAGE_ACCORDION_VISIBLE] = [ref(), useLocalStorage('portfolio-accordion-visible')]
 
 onMounted(() => {
     ACCORDION_VISIBLE.value = STORAGE_ACCORDION_VISIBLE.value ?? '-1'
+    H1.value ??= STORAGE_H1.value
+    //H2.value ??= STORAGE_H2.value
+    H3.value ??= STORAGE_H3.value?.split(',')
 })
 
 //watch(STORAGE_H1, (value) => console.log((STORAGE_H1.value = value)))

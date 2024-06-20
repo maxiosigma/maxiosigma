@@ -1,6 +1,8 @@
 <template>
-    <LayoutDefault :title="title" :description="description">
-        <div :class="[$style.page, view ? '' : '!hidden', pagecl]">
+    <!-- :title="title" :description="description" -->
+    <LayoutDefault>
+        <!-- , pagecl , view ? '' : '!hidden' -->
+        <div :class="[$style.page]">
             <slot />
         </div>
 
@@ -13,14 +15,14 @@
 <script setup>
 //useSwitchLang()
 
-defineProps({
-    bs: { type: String, required: false, default: 'body-bg' },
-    title: { type: String, required: false, default: undefined },
-    description: { type: String, required: false, default: undefined },
-    preloader: { type: Boolean, required: false, default: true },
-    view: { type: Boolean, required: false, default: true },
-    pagecl: { type: String, required: false, default: '' }
-})
+//defineProps({
+//    bs: { type: String, required: false, default: 'body-bg' },
+//    title: { type: String, required: false, default: undefined },
+//    description: { type: String, required: false, default: undefined },
+//    preloader: { type: Boolean, required: false, default: true },
+//    view: { type: Boolean, required: false, default: true },
+//    pagecl: { type: String, required: false, default: '' }
+//})
 
 //toast.show()
 
@@ -47,7 +49,7 @@ defineProps({
 //}
 </script>
 
-<style module scoped>
+<style module>
 .page {
     @apply flex flex-grow flex-col max-w-[100vw] relative justify-between;
 }

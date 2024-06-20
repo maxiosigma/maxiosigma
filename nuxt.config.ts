@@ -7,51 +7,55 @@ const isGenerateMode = process.argv.includes('generate')
 
 export default defineNuxtConfig({
     ssr: true,
-    dev: true,
+    //dev: true,
     telemetry: false,
     app: {
-        rootId: 'app',
-        rootTag: 'div class="wrapper"',
-        buildAssetsDir: '/public/'
+        //rootId: 'app',
+        //rootTag: 'div class="wrapper"',
+        buildAssetsDir: '/public/',
+        rootAttrs: { class: 'wrapper', id: 'app' }
     },
     alias: {
         'assets-data': resolve(__dirname, './assets/data')
     },
     features: {
-        inlineStyles: false
+        inlineStyles: false,
+        devLogs: false
     },
-    ignore: ['**/z-content/**', '**/z-mod/**', '**/z-old/**'],
+    ignore: ['**/z-content/**', '**/z-mod/**', '**/z-old/**', '**/z/**'],
     vite: {
-        css: {
-            modules: {
-                localsConvention: 'camelCaseOnly',
-                generateScopedName: '[local]-[hash:base32:5]'
-            }
-        },
+        //css: {
+        //    modules: {
+        //        localsConvention: 'camelCaseOnly',
+        //        generateScopedName: '[local]-[hash:base32:5]'
+        //    }
+        //},
         //optimizeDeps: {
         //    include: ['@supabase/gotrue-js']
         //},
-        resolve: {},
-        plugins: [],
+        //resolve: {},
+        //plugins: [],
         build: {
+            ssr: true,
+            target: 'ESNext',
             chunkSizeWarningLimit: 5000
         }
     },
     build: {
         transpile: [
             //
-            'primevue'
+            //'primevue'
         ]
     },
-    sourcemap: {
-        server: true,
-        client: true
-    },
+    //sourcemap: {
+    //    server: true,
+    //    client: true
+    //},
     runtimeConfig: {
-        locales
+        //locales
     },
     modules: [
-        '@vite-pwa/nuxt',
+        //'@vite-pwa/nuxt',
         '@nuxtjs/i18n',
 
         '@nuxt/content',

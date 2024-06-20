@@ -1,5 +1,6 @@
 ﻿<template>
-    <LayoutPage :title="title">
+    <!--  :title="title" -->
+    <LayoutPage>
         <div
             class="container pt-20 pb-20 gap-20 w-full flex flex-col justify-content-center"
         >
