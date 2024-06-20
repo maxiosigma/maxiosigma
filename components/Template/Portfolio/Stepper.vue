@@ -1,99 +1,18 @@
 <template>
-    <PrimeAccordion :value="STORAGE_ACCORDION_VISIBLE">
-        <PrimeAccordionPanel value="0">
-            <PrimeAccordionHeader
-                >Желаете увидеть больше ?</PrimeAccordionHeader
-            >
-            <PrimeAccordionContent> aaaaaaaaaa </PrimeAccordionContent>
-        </PrimeAccordionPanel>
-    </PrimeAccordion>
+    <LayoutPage>
+        <PrimeAccordion
+            :value="ACCORDION_VISIBLE"
+            @update:value="(value) => (STORAGE_ACCORDION_VISIBLE = value)"
+        >
+            <PrimeAccordionPanel value="0">
+                <PrimeAccordionHeader>
+                    Желаете увидеть больше ?
+                </PrimeAccordionHeader>
 
-    <!--<PrimeAccordion v-model:activeIndex="accordionVisible">
-        <PrimeAccordionTab header="Желаете увидеть больше ?">
-            <PrimeStepper
-                class="box-animate"
-                v-model:activeStep="stepperIndex"
-                linear
-            >
-                <PrimeStepperPanel header="Кем вы являетесь ?">
-                    <template #content="{ nextCallback }">
-                        <PrimeSelectButton
-                            class="flex flex-wrap container justify-center mx-auto py-10"
-                            :modelValue="STORAGE_H1"
-                            :options="H1_SELECTIONS"
-                        />
-
-                        {{ STORAGE_H1 }}
-                        {{ H1_SELECTIONS }}
-
-                        <div class="flex pt-4 w-full justify-center">
-                            <TemplatePortfolioButtonQuestion
-                                :callback="nextCallback"
-                            />
-                        </div>
-                    </template>
-                </PrimeStepperPanel>
-
-                <PrimeStepperPanel header="Какие навыки вам нужны ?">
-                    <template #content="{ prevCallback, nextCallback }">
-                        <div class="flex flex-col gap-2 mx-auto">
-                            <div
-                                class="flex flex-wrap container py-10 justify-center gap-3"
-                            >
-                                <PrimeToggleButton
-                                    v-for="({ title }, si) in skills"
-                                    v-model="STORAGE_H2[title]"
-                                    :disabled="h2modelsDisabled"
-                                    :onLabel="title"
-                                    :offLabel="title"
-                                    :key="si"
-                                    @change="h2change"
-                                />
-                            </div>
-                        </div>
-
-                        <div class="flex gap-5 pt-4 w-full justify-center">
-                            <TemplatePortfolioButtonQuestion
-                                label="Предыдущий вопрос"
-                                position="left"
-                                :callback="prevCallback"
-                            />
-
-                            <TemplatePortfolioButtonQuestion
-                                :callback="nextCallback"
-                            />
-                        </div>
-                    </template>
-                </PrimeStepperPanel>
-
-                <PrimeStepperPanel header="Что вы предлагаете ?">
-                    <template #content="{ prevCallback }">
-                        <PrimeSelectButton
-                            class="flex flex-wrap gap-3 container justify-center mx-auto py-10"
-                            :modelValue="STORAGE_H3"
-                            :options="H3_SELECTIONS"
-                            multiple
-                        />
-
-                        <div class="flex gap-5 pt-4 justify-center">
-                            <TemplatePortfolioButtonQuestion
-                                label="Предыдущий вопрос"
-                                position="left"
-                                :callback="prevCallback"
-                            />
-
-                            <TemplatePortfolioButtonQuestion
-                                label="Найти подходящие работы"
-                                icon="material-symbols-light:search-insights-rounded"
-                                size="24px"
-                                :callback="() => console.log('aaaa')"
-                            />
-                        </div>
-                    </template>
-                </PrimeStepperPanel>
-            </PrimeStepper>
-        </PrimeAccordionTab>
-    </PrimeAccordion>-->
+                <PrimeAccordionContent> aaaaaaaaaa </PrimeAccordionContent>
+            </PrimeAccordionPanel>
+        </PrimeAccordion>
+    </LayoutPage>
 </template>
 
 <script setup>
@@ -112,11 +31,9 @@ const [H1_SELECTIONS, H3_SELECTIONS] = [
     ])
 ]
 
-const STORAGE_H1 = useLocalStorage('portfolio-h1-value')
-
-const STORAGE_H2 = useLocalStorage('portfolio-h2-value')
-
-const STORAGE_H3 = useLocalStorage('portfolio-h3-value')
+const [H1, STORAGE_H1] = [ref(), useLocalStorage('portfolio-h1-value')]
+const [H2, STORAGE_H2] = [ref(), useLocalStorage('portfolio-h2-value')]
+const [H3, STORAGE_H3] = [ref(), useLocalStorage('portfolio-h3-value')]
 
 const h2modelsDisabled = ref(false)
 const h2change = () => {
@@ -129,21 +46,13 @@ const storageStepperIndex = useSaveStorageValue(
     'stepper-index-visible'
 )
 
-const STORAGE_ACCORDION_VISIBLE = useLocalStorage(
-    'accordion-visible',
-    Number(useLocalStorage('accordion-visible').value ?? 0)
-)
-
-const accordionVisible = ref()
+const [ACCORDION_VISIBLE, STORAGE_ACCORDION_VISIBLE] = [
+    ref(),
+    useLocalStorage('portfolio-accordion-visible')
+]
 
 onMounted(() => {
-    //accordionVisible.value = Number(storageAccordionVisible.value ?? 0)
-    stepperIndex.value = Number(storageStepperIndex.value ?? 0)
-
-    console.log(STORAGE_H1.value, H1_SELECTIONS.value[1])
-
-    STORAGE_H1 ??= H1_SELECTIONS.value[1]
-    STORAGE_H3 ??= H3_SELECTIONS.value[1]
+    ACCORDION_VISIBLE.value = STORAGE_ACCORDION_VISIBLE.value ?? '-1'
 })
 
 //watch(STORAGE_H1, (value) => console.log((STORAGE_H1.value = value)))

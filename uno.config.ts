@@ -3,7 +3,7 @@
 import transformerVariantGroup from '@unocss/transformer-variant-group'
 import transformerDirectives from '@unocss/transformer-directives'
 import { presetUseful } from 'unocss-preset-useful'
-import presetRemToPx from '@unocss/preset-rem-to-px'
+//import presetRemToPx from '@unocss/preset-rem-to-px'
 
 export default defineConfig({
     safelist: [
@@ -15,7 +15,6 @@ export default defineConfig({
 
         //...Object.keys(resolvedConfig.theme?.animation?.keyframes ?? {}).map(k => [`animate-${k}`, `group-hover-animate-${k}`]).flat()
     ],
-
     shortcuts: [
         [
             /^flex-center$/,
@@ -55,18 +54,18 @@ export default defineConfig({
             ...getPrime()
         },
         fontFamily: {
-            vetka: ['Vetka'],
-            roboto: ['Roboto'],
-            raleway: ['Raleway'],
-            poppins: ['Poppins'],
-            ttnorms: ['TT Norms'],
-            windctt: ['Wind CTT'],
-            futuranew: ['Futura New'],
-            robotoslab: ['Roboto Slab'],
-            futuranewbook: ['Futura New Book'],
-            oranienbaum: ['Oranienbaum'],
-            nanumpen: ['Nanum Pen', 'cursive'],
-            'cera-pro-regular': ['cera-pro-regular']
+            //vetka: ['Vetka'],
+            //roboto: ['Roboto'],
+            //raleway: ['Raleway'],
+            //poppins: ['Poppins'],
+            //ttnorms: ['TT Norms'],
+            //windctt: ['Wind CTT'],
+            //futuranew: ['Futura New'],
+            //robotoslab: ['Roboto Slab'],
+            //futuranewbook: ['Futura New Book'],
+            //oranienbaum: ['Oranienbaum'],
+            //nanumpen: ['Nanum Pen', 'cursive'],
+            //'cera-pro-regular': ['cera-pro-regular']
         },
         textShadow: {
             'double-text': '5px 5px 2px rgba(255, 0, 0, 0.5)',
@@ -101,12 +100,11 @@ export default defineConfig({
             test: 'drop-shadow(0 50px 5px #000000)'
         }
     },
-
     content: {
         pipeline: {
             include: [
                 //
-                /\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
+                ///\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
                 'components/**/*.{js,vue,ts}',
                 'components/*.{js,vue,ts}',
                 'pages/**/*.{js,vue,ts}',
@@ -114,13 +112,12 @@ export default defineConfig({
             ]
         }
     },
-
     presets: [
         //
         presetUno(),
         presetWind(),
         //presetHeroPatterns(),
-        presetAttributify(),
+        //presetAttributify(),
         presetUseful({
             enableMagicAnimations: true
         })
