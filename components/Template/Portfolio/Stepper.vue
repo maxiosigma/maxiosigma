@@ -90,11 +90,9 @@ const prop = defineProps({
     skills: { type: Object, default: [] }
 })
 
-console.log(prop?.skills?.map(({ title }) => title))
-
 const [H1_SELECTIONS, H2_SELECTIONS, H3_SELECTIONS] = [
     ref(['Частный предприниматель', 'Фрилансер', 'Представитель организации']),
-    ref(prop?.skills?.map((title) => title) ?? []),
+    ref(prop?.skills?.map(({ title }) => title) ?? []),
     ref([
         'Личный проект',
         'Заказ на фрилансе',
@@ -117,7 +115,7 @@ const [ACCORDION_VISIBLE, STORAGE_ACCORDION_VISIBLE] = [ref(), useLocalStorage('
 onMounted(() => {
     ACCORDION_VISIBLE.value = STORAGE_ACCORDION_VISIBLE.value ?? '-1'
     H1.value ??= STORAGE_H1.value
-    //H2.value ??= STORAGE_H2.value
+    H2.value ??= STORAGE_H2.value?.split(',')
     H3.value ??= STORAGE_H3.value?.split(',')
 })
 
@@ -132,4 +130,17 @@ onMounted(() => {
 //)
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+button.p-togglebutton.p-togglebutton,
+button.p-togglebutton.p-togglebutton::before {
+    @apply bg-transparent #{!important};
+}
+
+button.p-togglebutton.p-togglebutton::before {
+    @apply border-1 border-dotted border-self-5/50 #{!important};
+}
+
+button.p-togglebutton.p-togglebutton-checked::before {
+    @apply bg-self-5 border-1 border-dotted border-self-1  #{!important};
+}
+</style>
