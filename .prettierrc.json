@@ -13,6 +13,13 @@
             "options": {
                 "printWidth": 1600
             }
+        },
+        {
+            "files": ["./content/*"],
+            "options": {
+                "singleAttributePerLine": true,
+                "printWidth": 1600
+            }
         }
     ]
 }

@@ -2,7 +2,7 @@
     <!--  :title="title" -->
     <LayoutPage>
         <div class="container pt-20 pb-20 gap-20 w-full flex flex-col justify-content-center">
-            <TemplatePortfolioHot :works="worksPayload" />
+            <TemplatePortfolioHot :works="worksHotPayload" />
             <TemplatePortfolioStepper :skills="skillsPayload" />
         </div>
 
@@ -50,32 +50,32 @@ const competenciesPayload = await usePayloadData({
     path: 'competencies'
 })
 
-const worksPayload = await usePayloadData({
+const worksHotPayload = await usePayloadData({
     name: 'portfolio-works',
-    path: 'works',
-    callback: (items) => {
-        //console.log(items)
+    path: 'works'
+    //callback: (items) => {
+    //    console.log(items)
 
-        return (
-            items
-                ?.filter(({ top }) => top === true)
-                ?.map((item) => {
-                    delete item?._path
-                    delete item?._dir
-                    delete item?._draft
-                    delete item?._partial
-                    delete item?._extension
-                    delete item?._source
-                    delete item?._type
-                    delete item?._file
-                    delete item?._locale
-                    delete item?.top
-                    delete item?.date
+    //    return (
+    //        items
+    //            ?.filter(({ top }) => top === true)
+    //            ?.map((item) => {
+    //                delete item?._path
+    //                delete item?._dir
+    //                delete item?._draft
+    //                delete item?._partial
+    //                delete item?._extension
+    //                delete item?._source
+    //                delete item?._type
+    //                delete item?._file
+    //                delete item?._locale
+    //                delete item?.top
+    //                delete item?.date
 
-                    return item
-                }) ?? []
-        )
-    }
+    //                return item
+    //            }) ?? []
+    //    )
+    //}
     // optionsWhere: { top: true }
 })
 
