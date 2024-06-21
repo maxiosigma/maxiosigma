@@ -11,21 +11,18 @@ export default async function ({
     const { locale } = useI18n()
     const payloadName = `${locale.value}-${name}`
 
-    if (path === 'works')
-        console.log(
-            await queryContent(`/${locale.value}/${path}`)
-                .where({
-                    //_path: `/${locale.value}/${path}`,
-                    _file: `/${locale.value}/${path}.json`
-                })
-                .findOne()
-        )
-
     if (import.meta.server) {
         try {
-            //const { data } = await useAsyncData(`server-content-${locale.value}-${path}`, () =>
-            //    queryContent(`/${locale.value}/${path}`).find()
-            //)
+            //`/${locale.value}/${path}`
+            if (path === 'works') {
+                console.log(
+                    await queryContent('ru/works')
+                        .where({
+                            _stem: 'ru/works'
+                        })
+                        .findOne()
+                )
+            }
 
             switch (type) {
                 case 'multi':
@@ -38,7 +35,6 @@ export default async function ({
                         .then(callback)
                         .catch(errors)
                     break
-
                 default:
                     useNuxtApp().payload.data[payloadName] = await queryContent(`/${locale.value}/${path}`)
                         .where({

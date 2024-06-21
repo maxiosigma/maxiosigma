@@ -156,16 +156,17 @@ export default defineNuxtConfig({
         locales
     },
     content: {
-        defaultLocale: 'ru',
-        experimental: {
-            //search: true
-        }
+        //defaultLocale: 'ru',
+        //experimental: {
+        //    //search: true
+        //}
         //highlight: {
         //    theme: 'dracula'
         //}
-        //api: {
-        //    baseURL: '/content-api/_content'
-        //}
+
+        api: {
+            baseURL: '/content-api/_content'
+        }
         //watch: {
         //    ws: {
         //        //  port: 4000,
