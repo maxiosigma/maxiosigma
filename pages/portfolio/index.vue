@@ -2,7 +2,7 @@
     <!--  :title="title" -->
     <LayoutPage>
         <div class="container pt-20 pb-20 gap-20 w-full flex flex-col justify-content-center">
-            <!--<TemplatePortfolioWorks :works="worksPayload" />-->
+            <TemplatePortfolioHot :works="worksPayload" />
             <TemplatePortfolioStepper :skills="skillsPayload" />
         </div>
 
