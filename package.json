@@ -28,8 +28,8 @@
     },
     "devDependencies": {
         "@julr/unocss-preset-heropatterns": "^1.0.2",
-        "@nuxt/content": "^2.12.1",
-        "@nuxt/devtools": "^1.3.3",
+        "@nuxt/content": "^2.13.0",
+        "@nuxt/devtools": "^1.3.6",
         "@nuxt/image": "^1.7.0",
         "@nuxt/types": "^2.17.4",
         "@nuxtjs/device": "^3.1.1",
@@ -42,13 +42,13 @@
         "@unocss/transformer-compile-class": "^0.61.0",
         "@unocss/transformer-directives": "^0.61.0",
         "@unocss/transformer-variant-group": "^0.61.0",
-        "@vite-pwa/nuxt": "^0.8.0",
+        "@vite-pwa/nuxt": "^0.8.1",
         "@vueuse/core": "^10.11.0",
         "@vueuse/nuxt": "^10.11.0",
         "nuxt": "3.12.2",
         "nuxt-icon": "^0.6.10",
         "sass": "^1.77.6",
-        "typescript": "^5.4.5",
+        "typescript": "^5.5.2",
         "unocss-preset-useful": "^0.4.2",
         "vue-tsc": "2.0.21"
     }
