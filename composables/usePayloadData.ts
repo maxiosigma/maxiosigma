@@ -11,13 +11,21 @@ export default async function ({
     const { locale } = useI18n()
     const payloadName = `${locale.value}-${name}`
 
+    if (path === 'works')
+        console.log(
+            await queryContent(`/${locale.value}/${path}`)
+                .where({
+                    //_path: `/${locale.value}/${path}`,
+                    _file: `/${locale.value}/${path}.json`
+                })
+                .findOne()
+        )
+
     if (import.meta.server) {
         try {
-            const { data } = await useAsyncData(`server-content-${locale.value}-${path}`, () =>
-                queryContent(`/${locale.value}/${path}`).findOne()
-            )
-
-            console.log(data)
+            //const { data } = await useAsyncData(`server-content-${locale.value}-${path}`, () =>
+            //    queryContent(`/${locale.value}/${path}`).find()
+            //)
 
             switch (type) {
                 case 'multi':
