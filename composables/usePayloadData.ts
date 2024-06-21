@@ -1,34 +1,22 @@
-﻿import type { QueryBuilderWhere } from '@nuxt/content/types'
+﻿import type { QueryBuilderWhere } from '@nuxt/content'
 
 export default async function ({
     name = '',
     path = '',
     type = 'one' || 'multi',
     optionsWhere = <QueryBuilderWhere>{},
-    callback = (item: any) => item?.body ?? [],
+    callback = (items: any) => items?.body ?? [],
     errors = () => []
 }) {
     const { locale } = useI18n()
-    const payloadName = `${locale.value}-${name}`
+    const payloadName = `content-pl-${locale.value}-${name}`
 
     if (import.meta.server) {
         try {
-            //`/${locale.value}/${path}`
-            if (path === 'works') {
-                console.log(
-                    await queryContent('ru/works')
-                        .where({
-                            _stem: 'ru/works'
-                        })
-                        .findOne()
-                )
-            }
-
             switch (type) {
                 case 'multi':
                     useNuxtApp().payload.data[payloadName] = await queryContent(`/${locale.value}/${path}`)
                         .where({
-                            ...optionsWhere,
                             _path: `/${locale.value}/${path}`
                         })
                         .find()
@@ -38,7 +26,6 @@ export default async function ({
                 default:
                     useNuxtApp().payload.data[payloadName] = await queryContent(`/${locale.value}/${path}`)
                         .where({
-                            ...optionsWhere,
                             _path: `/${locale.value}/${path}`
                         })
                         .findOne()
@@ -48,6 +35,7 @@ export default async function ({
             }
         } catch (error) {
             console.log(error)
+            console.log(errors)
         }
     }
 

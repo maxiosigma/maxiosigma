@@ -8,7 +8,7 @@
 
         <div class="flex flex-col fixed right-0 top-auto h-full">
             <PrimeButton
-                class="my-auto p-1.5 rounded-r-none bg-self-4"
+                class="my-auto p-1.5 !rounded-r-none bg-self-4"
                 severity="success"
                 @click="sidebarVisible = true"
                 v-p-tooltip="'About'"
@@ -52,31 +52,8 @@ const competenciesPayload = await usePayloadData({
 
 const worksHotPayload = await usePayloadData({
     name: 'portfolio-works',
-    path: 'works'
-    //callback: (items) => {
-    //    console.log(items)
-
-    //    return (
-    //        items
-    //            ?.filter(({ top }) => top === true)
-    //            ?.map((item) => {
-    //                delete item?._path
-    //                delete item?._dir
-    //                delete item?._draft
-    //                delete item?._partial
-    //                delete item?._extension
-    //                delete item?._source
-    //                delete item?._type
-    //                delete item?._file
-    //                delete item?._locale
-    //                delete item?.top
-    //                delete item?.date
-
-    //                return item
-    //            }) ?? []
-    //    )
-    //}
-    // optionsWhere: { top: true }
+    path: 'works',
+    callback: (items) => items?.body?.filter(({ top }) => top === true) ?? []
 })
 
 // LocalStorage Частный предприниматель
