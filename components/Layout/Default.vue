@@ -8,9 +8,7 @@
 const { localeProperties: lp, locales, locale } = useI18n()
 
 defineI18nRoute({
-    locales: locales.value
-        .filter(({ code }) => code !== 'index')
-        .map(({ code }) => code)
+    locales: locales.value.filter(({ code }) => code !== 'index').map(({ code }) => code)
 })
 
 //const lang = ref(lp.value.code)
@@ -98,7 +96,7 @@ body {
     text-rendering: optimizeLegibility;
 }
 
-wrapper {
+.wrapper {
     @apply flex flex-col flex-grow overflow-hidden;
 }
 </style>

@@ -6,23 +6,16 @@ import { presetUseful } from 'unocss-preset-useful'
 //import presetRemToPx from '@unocss/preset-rem-to-px'
 
 export default defineConfig({
-    //warn: false,
+    warn: false,
     safelist: [
         //
         ...[1, 2, 3].map((i) => `m-l-${i * 5}`),
         ...[1, 2, 3].map((i) => `m-l-${i * 8}`),
         ...[1, 2, 3].map((i) => `m-r-${i * 5}`),
         ...[1, 2, 3].map((i) => `m-r-${i * 8}`)
-
         //...Object.keys(resolvedConfig.theme?.animation?.keyframes ?? {}).map(k => [`animate-${k}`, `group-hover-animate-${k}`]).flat()
     ],
-    shortcuts: [
-        [
-            /^flex-center$/,
-            ([, c], { theme }) => `flex justify-center items-center`
-        ]
-    ],
-
+    shortcuts: [[/^flex-center$/, ([, c], { theme }) => `flex justify-center items-center`]],
     theme: {
         container: {
             center: true,

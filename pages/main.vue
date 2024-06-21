@@ -22,14 +22,29 @@
                             ni % 2 === 0 ? '' : 'ml-a',
                             ni === 2 || ni === 4 ? 'm-l-' + (ni / 2) * 8 : '',
                             ni === 3 || ni === 5 ? 'm-r-' + ((ni - 1) / 2) * 8 : '',
-                            setAnimate()
+                            useRandomString([
+                                'animate-delay-200',
+                                'animate-delay-400',
+                                'animate-delay-600',
+                                'animate-delay-800',
+                                'animate-delay-1000'
+                            ])
                         ]"
                         :to="link"
                     >
                         <LottieAnimation
                             v-if="lottie"
                             :animationData="lottie"
-                            :class="['main-nav-icon w-full h-full transform', setRotate(), style]"
+                            :class="[
+                                'main-nav-icon w-full h-full transform',
+                                useRandomString([
+                                    'group-hover:(rotate-360)',
+                                    'group-hover:(-rotate-360)',
+                                    'group-hover:(rotate-720)',
+                                    'group-hover:(-rotate-360)'
+                                ]),
+                                style
+                            ]"
                             autoplay
                             loop
                         />
@@ -55,15 +70,29 @@
                         :class="[
                             'main-nav-item group',
                             ni === 0 || ni === nav.bottom.length - 1 ? 'm-b-8' : '',
-
-                            setAnimate()
+                            useRandomString([
+                                'animate-delay-200',
+                                'animate-delay-400',
+                                'animate-delay-600',
+                                'animate-delay-800',
+                                'animate-delay-1000'
+                            ])
                         ]"
                         :to="link"
                     >
                         <LottieAnimation
                             v-if="lottie"
                             :animationData="lottie"
-                            :class="['main-nav-icon w-full h-full transform', setRotate(), style]"
+                            :class="[
+                                'main-nav-icon w-full h-full transform',
+                                useRandomString([
+                                    'group-hover:(rotate-360)',
+                                    'group-hover:(-rotate-360)',
+                                    'group-hover:(rotate-720)',
+                                    'group-hover:(-rotate-360)'
+                                ]),
+                                style
+                            ]"
                             autoplay
                             loop
                         />
@@ -165,25 +194,6 @@ const nav = ref({
         }
     ]
 })
-
-const setAnimate = ref(() =>
-    useRandomString([
-        'animate-delay-200',
-        'animate-delay-400',
-        'animate-delay-600',
-        'animate-delay-800',
-        'animate-delay-1000'
-    ])
-)
-
-const setRotate = ref(() =>
-    useRandomString([
-        'group-hover:(rotate-360)',
-        'group-hover:(-rotate-360)',
-        'group-hover:(rotate-720)',
-        'group-hover:(-rotate-360)'
-    ])
-)
 
 const position = (i: number, count: number) => i === 0 || i === count - 1
 

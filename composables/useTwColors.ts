@@ -1,68 +1,48 @@
-﻿import {
-    amber,
-    black,
-    blue,
-    cyan,
-    emerald,
-    fuchsia,
-    gray,
-    green,
-    indigo,
-    lime,
-    neutral,
-    orange,
-    pink,
-    purple,
-    red,
-    rose,
-    sky,
-    slate,
-    stone,
-    teal,
-    violet,
-    white,
-    yellow,
-    zinc
-} from 'tailwindcss/colors'
+﻿import { theme } from 'unocss/preset-wind'
+const { colors } = theme
 
-export default function (range = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]) {
+//50, 100, 200, 900, 950
+const range = [300, 400, 500, 600, 700, 800]
+const allColors = [
+    'amber',
+    'black',
+    'blue',
+    'cyan',
+    'emerald',
+    'fuchsia',
+    'gray',
+    'green',
+    'indigo',
+    'lime',
+    'neutral',
+    'orange',
+    'pink',
+    'purple',
+    'red',
+    'rose',
+    'sky',
+    'slate',
+    'stone',
+    'teal',
+    'violet',
+    'white',
+    'yellow',
+    'zinc'
+]
+
+const validColors = Object.entries(colors ?? {})
+    .filter(([key]) => allColors.includes(key))
+    .map(([key, val]) =>
+        Object.entries(val)
+            .filter(([key_v]) => range.includes(Number(key_v)))
+            .map(([key, val]) => val)
+    )
+    .flat()
+    .filter((c) => !!c)
+
+export default function () {
     try {
-        const colors = [
-            amber,
-            black,
-            blue,
-            cyan,
-            emerald,
-            fuchsia,
-            gray,
-            green,
-            indigo,
-            lime,
-            neutral,
-            orange,
-            pink,
-            purple,
-            red,
-            rose,
-            sky,
-            slate,
-            stone,
-            teal,
-            violet,
-            white,
-            yellow,
-            zinc
-        ]
-            .map((c) =>
-                Object.entries(c)
-                    .filter(([key, val]) => range.includes(Number(key)))
-                    .map(([key, val]) => val)
-            )
-
-            .flat()
-            .filter((c) => !!c)
-
-        return colors ?? []
+        return validColors ?? []
     } catch (error) {
         return []
     }

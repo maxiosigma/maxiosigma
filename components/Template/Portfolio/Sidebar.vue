@@ -1,5 +1,5 @@
 <template>
-    <!--<PrimeSidebar :visible="visible" position="right">
+    <PrimeSidebar :visible="visible" position="right">
         <template #container>
             <div class="flex flex-col h-full">
                 <div class="p-sidebar-header">
@@ -27,22 +27,12 @@
                         :key="ti"
                     >
                         <h3 class="text-xl tracking-wider">{{ name }}</h3>
-                        <TemplatePortfolioMeter
-                            class="text-slate-300"
-                            :items="items"
-                            :visible="visible"
-                        />
+                        <TemplatePortfolioMeter class="text-slate-300" :items="items" :visible="visible" />
                     </div>
                 </div>
 
-                <div
-                    class="flex items-center justify-center gap-5 px-5 pt-1 pb-3"
-                >
-                    <Icon
-                        class="text-self-4"
-                        size="28px"
-                        name="ic:sharp-format-quote"
-                    />
+                <div class="flex items-center justify-center gap-5 px-5 pt-1 pb-3">
+                    <Icon class="text-self-4" size="28px" name="ic:sharp-format-quote" />
 
                     <div class="border-l-2 border-self-4 pl-2 opacity-50">
                         Если и создавать code, то только с душой ...
@@ -50,7 +40,7 @@
                 </div>
             </div>
         </template>
-    </PrimeSidebar>-->
+    </PrimeSidebar>
 </template>
 
 <script setup>
@@ -65,7 +55,8 @@ const prop = defineProps({
 </script>
 
 <style lang="scss">
-.p-sidebar-right .p-sidebar {
+body .p-drawer-right .p-drawer,
+body .p-sidebar-right .p-sidebar {
     @apply w-auto lg:(max-w-[90%]) max-w-full #{!important};
 }
 

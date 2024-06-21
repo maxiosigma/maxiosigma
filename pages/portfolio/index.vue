@@ -1,14 +1,12 @@
 ﻿<template>
     <!--  :title="title" -->
     <LayoutPage>
-        <div
-            class="container pt-20 pb-20 gap-20 w-full flex flex-col justify-content-center"
-        >
+        <div class="container pt-20 pb-20 gap-20 w-full flex flex-col justify-content-center">
             <!--<TemplatePortfolioWorks :works="worksPayload" />-->
             <TemplatePortfolioStepper :skills="skillsPayload" />
         </div>
 
-        <!--<div class="flex flex-col fixed right-0 top-auto h-full">
+        <div class="flex flex-col fixed right-0 top-auto h-full">
             <PrimeButton
                 class="my-auto p-1.5 rounded-r-none bg-self-4"
                 severity="success"
@@ -17,15 +15,15 @@
             >
                 <Icon name="solar:map-arrow-left-bold" size="25px" />
             </PrimeButton>
-        </div>-->
+        </div>
 
-        <!--<TemplatePortfolioSidebar
+        <TemplatePortfolioSidebar
             :qualities="qualitiesPayload"
             :competencies="competenciesPayload"
             :skills="skillsPayloadSidebar"
             :visible="sidebarVisible"
             @close="sidebarVisible = !sidebarVisible"
-        />-->
+        />
     </LayoutPage>
 </template>
 
@@ -33,7 +31,6 @@
 const title = ref('Портфолио')
 
 //const links = useBreadcrumbItems()
-
 //console.log(links)
 
 const skillsPayload = await usePayloadData({
@@ -41,9 +38,7 @@ const skillsPayload = await usePayloadData({
     path: 'skills'
 })
 
-const skillsPayloadSidebar = skillsPayload.value?.filter(
-    (it) => it?.only !== 'select'
-)
+const skillsPayloadSidebar = skillsPayload.value?.filter((it) => it?.only !== 'select')
 
 const qualitiesPayload = await usePayloadData({
     name: 'portfolio-qualities',
