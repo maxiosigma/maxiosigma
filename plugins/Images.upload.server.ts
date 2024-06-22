@@ -10,5 +10,16 @@
         return acc
     }, {})
 
-    nuxtApp.payload.data['uploadImages'] = images
+    const media = Object.entries(
+        import.meta.glob(`/assets/media/**/*.*`, {
+            eager: true
+        })
+    ).reduce((acc, [key, val]: any) => {
+        acc = Object.assign(acc, {
+            [key]: val?.default
+        })
+        return acc
+    }, {})
+
+    nuxtApp.payload.data['uploadImages'] = { ...images, ...media }
 })
