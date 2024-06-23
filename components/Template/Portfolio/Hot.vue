@@ -3,15 +3,23 @@
         <div
             v-for="(work, wi) in works"
             :key="wi"
-            class=":uno: flex flex-col text-gray-400 rounded-2xl p-4"
-            :class="[$style['multi-border'], wi !== 0 ? ':uno: absolute !hidden' : '']"
+            class=":uno: flex text-gray-400 rounded-2xl gap-4 overflow-hidden"
+            :class="[$style['multi-border'], wi !== 1 ? ':uno: absolute !hidden' : '']"
         >
-            <div>{{ work }}</div>
-            <div>{{ work.title }}</div>
-            <div>{{ work.description }}</div>
+            <div class="min-w-1/4 max-w-1/4 pl-0.5 py-0.5" :class="[$style['multi-border']]">
+                <ItemMediaImg
+                    class="flex-shrink-1 w-full h-full rounded-l-2xl"
+                    :class="[$style['multi-border']]"
+                    :src="'/' + work?.images?.[0]"
+                />
+            </div>
 
-            {{ work?.images?.[0] }}
-            <ItemMediaImg class="w-full h-full" :src="'/' + work?.images?.[0]" />
+            <div class="flex flex-col py-4 pr-4 self-center flex-grow gap-2">
+                <!--<div>{{ work }}</div>-->
+                <div class="text-3xl text-self-4">{{ work.title }}</div>
+                <div class="">{{ work.description }}</div>
+            </div>
+            <!--{{ work?.images?.[0] }}-->
         </div>
     </section>
 </template>
