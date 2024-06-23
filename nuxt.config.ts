@@ -33,12 +33,13 @@ export default defineNuxtConfig({
     },
     ignore: ['**/z-content/**', '**/z-mod/**', '**/z-old/**', '**/z/**'],
     vite: {
-        //css: {
-        //    modules: {
-        //        localsConvention: 'camelCaseOnly',
-        //        generateScopedName: '[local]-[hash:base32:5]'
-        //    }
-        //},
+        css: {
+            modules: {
+                //localsConvention: 'dashesOnly',
+                //generateScopedName: '[hash:base32:5]'
+                generateScopedName: '[hash:8]'
+            }
+        }
         //optimizeDeps: {
         //    include: ['@supabase/gotrue-js']
         //},
@@ -183,7 +184,8 @@ export default defineNuxtConfig({
     //    }
     //},
     unocss: {
-        uno: true
+        uno: true,
+        
     },
     nitro: {
         prerender: {

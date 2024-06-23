@@ -1,7 +1,13 @@
-﻿import { defineConfig, presetAttributify, presetUno, presetWind } from 'unocss' //, resolvedConfig
+﻿import {
+    transformerCompileClass,
+    transformerVariantGroup,
+    transformerDirectives,
+    defineConfig,
+    presetWind,
+    presetUno
+} from 'unocss' //, resolvedConfig
 //import { presetHeroPatterns } from '@julr/unocss-preset-heropatterns'
-import transformerVariantGroup from '@unocss/transformer-variant-group'
-import transformerDirectives from '@unocss/transformer-directives'
+
 import { presetUseful } from 'unocss-preset-useful'
 //import presetRemToPx from '@unocss/preset-rem-to-px'
 
@@ -122,6 +128,10 @@ export default defineConfig({
     transformers: [
         //
         transformerVariantGroup(),
+        transformerCompileClass({
+            classPrefix: 'max:'
+            //alwaysHash: true
+        }),
         transformerDirectives()
     ]
 })
