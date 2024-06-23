@@ -31,8 +31,6 @@ const {
     }
 } = useNuxtApp()
 
-console.log(uploadImages)
-
 const { src, alt, title, bg } = defineProps({
     src: { required: true, type: String },
     alt: { type: String, default: 'img' },
