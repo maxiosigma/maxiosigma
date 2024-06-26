@@ -3,7 +3,11 @@
         <!-- :uno: -->
         <div
             class="flex text-gray-400 rounded-2xl gap-4 overflow-hidden"
-            :class="[$style['multi-border'], wi !== 1 ? 'absolute !hidden' : '']"
+            :class="[
+                $style['multi-border'],
+                wi !== 1 ? 'absolute !hidden' : '',
+                `mr-[${(wi + 1) * 10}px]`
+            ]"
             v-for="(work, wi) in works"
             :key="wi"
         >
