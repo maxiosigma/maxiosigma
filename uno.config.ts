@@ -131,7 +131,9 @@ export default defineConfig({
     presets: [
         //
         presetUno(),
-        presetWind(),
+        presetWind({
+            important: true
+        }),
         presetHeroPatterns(),
         //presetAttributify(),
         presetUseful({

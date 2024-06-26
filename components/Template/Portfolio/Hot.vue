@@ -1,14 +1,22 @@
 ﻿<template>
     <section class="flex gap-20 relative overflow-hidden">
-        <PrimeTabs :value="0" class="w-full">
+        <PrimeTabs value="1" class="w-full">
             <PrimeTabList>
-                <PrimeTab v-for="(work, wi) in works" :key="work.slug" :value="wi">
-                    {{ wi }}
+                <PrimeTab
+                    v-for="(category, ci) in worksCategories"
+                    :key="`${category.slug}`"
+                    :value="`${ci + 1}`"
+                >
+                    {{ category.title }}
                 </PrimeTab>
             </PrimeTabList>
 
             <PrimeTabPanels class="h-full">
-                <PrimeTabPanel v-for="(work, wi) in works" :key="work.slug" :value="wi">
+                <PrimeTabPanel
+                    v-for="(work, wi) in works"
+                    :key="`${work.category}`"
+                    :value="`${wi}`"
+                >
                     <div
                         class="flex transition-all duration-300 cursor-pointer h-full w-full text-gray-400 rounded-2xl gap-4 bg-self-1 mt-a border-2 border-self-2 max-h-50vh overflow-hidden group"
                         :class="[$style['multi-border']]"
@@ -36,7 +44,11 @@
 
 <script setup>
 const prop = defineProps(['works'])
-//console.log(prop.works)
+
+const worksCategories = await usePayloadData({
+    name: 'portfolio-works-categories',
+    path: 'works_categories'
+})
 </script>
 
 <style lang="scss" module>
@@ -51,8 +63,8 @@ const prop = defineProps(['works'])
 </style>
 
 <style lang="scss">
-.p-tablist-tab-list,
-.p-tabpanels {
+div.p-tablist-tab-list,
+div.p-tabpanels {
     @apply bg-transparent #{!important};
 }
 </style>
