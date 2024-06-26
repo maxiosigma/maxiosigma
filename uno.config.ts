@@ -6,17 +6,15 @@
     presetWind,
     presetUno
 } from 'unocss' //, resolvedConfig
-//import { presetHeroPatterns } from '@julr/unocss-preset-heropatterns'
+
+import { presetHeroPatterns } from '@julr/unocss-preset-heropatterns'
 import { presetGridAreas } from 'unocss-preset-grid-areas'
-import presetLegacyCompat from '@unocss/preset-legacy-compat'
+//import presetLegacyCompat from '@unocss/preset-legacy-compat'
 import { presetUseful } from 'unocss-preset-useful'
-
 //import presetRemToPx from '@unocss/preset-rem-to-px'
-
 //https://renatomoor.github.io/unocss-preset-fluid/utilities.html
 import { presetFluid } from 'unocss-preset-fluid'
-
-import presetEase from 'unocss-preset-ease'
+//import presetEase from 'unocss-preset-ease'
 
 export default defineConfig({
     warn: false,
@@ -124,22 +122,22 @@ export default defineConfig({
         //
         presetUno(),
         presetWind(),
-        //presetHeroPatterns(),
+        presetHeroPatterns(),
         //presetAttributify(),
         presetUseful({
             enableMagicAnimations: true
         }),
         //presetRemToPx()
-        presetLegacyCompat({
-            commaStyleColorFunction: true
-        }),
+        //presetLegacyCompat({
+        //    commaStyleColorFunction: true
+        //}),
         presetGridAreas({
             gridTemplateAreas: {
                 layout: ['header header header', 'nav main main', 'nav footer footer']
             }
         }),
-        presetFluid(),
-        presetEase()
+        presetFluid()
+        //presetEase()
     ],
 
     transformers: [

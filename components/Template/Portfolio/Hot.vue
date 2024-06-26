@@ -1,8 +1,9 @@
 ﻿<template>
     <section class="flex relative">
+        <!-- :uno: -->
         <div
-            class=":uno: flex text-gray-400 rounded-2xl gap-4 overflow-hidden"
-            :class="[$style['multi-border'], wi !== 1 ? ':uno: absolute !hidden' : '']"
+            class="flex text-gray-400 rounded-2xl gap-4 overflow-hidden"
+            :class="[$style['multi-border'], wi !== 1 ? 'absolute !hidden' : '']"
             v-for="(work, wi) in works"
             :key="wi"
         >
