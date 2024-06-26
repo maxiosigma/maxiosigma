@@ -18,12 +18,22 @@ import { presetFluid } from 'unocss-preset-fluid'
 
 export default defineConfig({
     warn: false,
+    sortLayers(layers) {
+        //console.log(layers)
+        return layers
+    },
     safelist: [
         //
-        ...[1, 2, 3].map((i) => `m-l-${i * 5}`),
-        ...[1, 2, 3].map((i) => `m-l-${i * 8}`),
-        ...[1, 2, 3].map((i) => `m-r-${i * 5}`),
-        ...[1, 2, 3].map((i) => `m-r-${i * 8}`)
+        ...range(20, 1).map((i) => `p-l-${i * 5}`),
+        ...range(20, 1).map((i) => `p-l-${i * 5}%`),
+        ...range(20, 1).map((i) => `-m-b-${i * 10}`),
+        ...range(20, 1).map((i) => `-m-b-${i * 5}%`),
+        ...range(3, 1).map((i) => `m-l-${i * 5}`),
+        ...range(3, 1).map((i) => `m-l-${i * 8}`),
+        ...range(3, 1).map((i) => `m-r-${i * 5}`),
+        ...range(3, 1).map((i) => `m-r-${i * 8}`),
+        ...range(20, 1).map((i) => `m-r-${i * 5}%`),
+        ...range(20, 1).map((i) => `z-${i * 5}`)
         //...Object.keys(resolvedConfig.theme?.animation?.keyframes ?? {}).map(k => [`animate-${k}`, `group-hover-animate-${k}`]).flat()
     ],
     shortcuts: [[/^flex-center$/, ([, c], { theme }) => `flex justify-center items-center`]],
@@ -179,4 +189,9 @@ function getPrime() {
             'surface-950': 'rgb(var(--surface-950))'
         }
     }
+}
+
+function range(n: number, init?: number) {
+    const res = Array.from(Array(n).keys())
+    return !!init ? res.map((it) => it + 1) : res
 }

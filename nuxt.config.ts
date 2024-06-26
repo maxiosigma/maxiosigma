@@ -184,8 +184,7 @@ export default defineNuxtConfig({
     //    }
     //},
     unocss: {
-        uno: true,
-        
+        uno: true
     },
     nitro: {
         prerender: {

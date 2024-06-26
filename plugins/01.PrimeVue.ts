@@ -26,12 +26,18 @@ import AccordionPanel from 'primevue/accordionpanel'
 import AccordionHeader from 'primevue/accordionheader'
 import AccordionContent from 'primevue/accordioncontent'
 
-import Stepper from 'primevue/stepper'
-import StepList from 'primevue/steplist'
 import StepPanels from 'primevue/steppanels'
-import StepItem from 'primevue/stepitem'
-import Step from 'primevue/step'
 import StepPanel from 'primevue/steppanel'
+import StepList from 'primevue/steplist'
+import StepItem from 'primevue/stepitem'
+import Stepper from 'primevue/stepper'
+import Step from 'primevue/step'
+
+import TabPanels from 'primevue/tabpanels'
+import TabPanel from 'primevue/tabpanel'
+import TabList from 'primevue/tablist'
+import Tabs from 'primevue/tabs'
+import Tab from 'primevue/tab'
 
 import ToastService from 'primevue/toastservice'
 import Toast from 'primevue/toast'
@@ -84,6 +90,12 @@ export default defineNuxtPlugin((nuxtApp) => {
     component('PrimeStepItem', StepItem)
     component('PrimeStepper', Stepper)
     component('PrimeStep', Step)
+
+    component('PrimeTabPanels', TabPanels)
+    component('PrimeTabPanel', TabPanel)
+    component('PrimeTabList', TabList)
+    component('PrimeTabs', Tabs)
+    component('PrimeTab', Tab)
 
     component('PrimeSelectButton', SelectButton)
     component('PrimeToggleButton', ToggleButton)
