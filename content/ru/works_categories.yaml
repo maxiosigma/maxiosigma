@@ -1,4 +1,12 @@
-﻿- title: Сайт
-  slug: site
+﻿- title: Разработка
+  slug: develop
 - title: Дизайн
   slug: design
+- title: 3D
+  slug: threedimensional
+- title: Копирайтинг
+  slug: copywriting
+- title: Медиа
+  slug: media
+- title: Поддержка
+  slug: support

@@ -1,6 +1,6 @@
 ﻿<template>
     <section class="flex gap-20 relative overflow-hidden">
-        <PrimeTabs value="1" class="w-full">
+        <PrimeTabs value="1" class="w-full" scrollable>
             <PrimeTabList>
                 <PrimeTab
                     v-for="(category, ci) in worksCategories"
@@ -18,19 +18,25 @@
                     :value="`${wi}`"
                 >
                     <div
-                        class="flex transition-all duration-300 cursor-pointer h-full w-full text-gray-400 rounded-2xl gap-4 bg-self-1 mt-a border-2 border-self-2 max-h-50vh overflow-hidden group"
+                        class="flex transition-all duration-300 cursor-pointer min-h-30vmin h-full w-full text-gray-400 rounded-2xl gap-4 bg-self-1 mt-a border-2 border-self-2 overflow-hidden group <md:(flex-col) md:(max-h-50vmin)"
                         :class="[$style['multi-border']]"
                     >
-                        <div class="min-w-3/8 max-w-3/8 pl-0.5 py-0.5">
+                        <div
+                            class="relative z-0 overflow-hidden <md:(max-h-45vmin) md:(min-w-3/8 max-w-3/8)"
+                        >
                             <ItemMediaImg
-                                class="flex-shrink-1 w-full h-full rounded-l-2xl"
+                                class="relative w-full h-full md:(rounded-l-2xl flex-shrink-1 h-full)"
                                 :src="'/' + work?.images?.[0]"
                             />
                         </div>
 
-                        <div class="flex flex-col py-4 pr-4 self-center flex-grow gap-4">
-                            <div class="text-3xl text-self-4">{{ work.title }}</div>
-                            <div class="">{{ work.description }}</div>
+                        <div
+                            class="flex flex-col py-4 pr-4 self-center flex-grow gap-4 <md:(px-8%)"
+                        >
+                            <div class="f-text-18-36 text-self-4">{{ work.title }}</div>
+
+                            <div class="f-text-10-24">{{ work.description }}</div>
+
                             <PrimeButton v-if="work.link" class="self-start !px-1.5 !py-1">
                                 Посмотреть →
                             </PrimeButton>
@@ -63,8 +69,28 @@ const worksCategories = await usePayloadData({
 </style>
 
 <style lang="scss">
-div.p-tablist-tab-list,
-div.p-tabpanels {
-    @apply bg-transparent #{!important};
+.p-tablist-content {
+    @apply flex;
+}
+
+.p-tablist-prev-button,
+.p-tablist-next-button {
+    @apply bg-self-2;
+}
+
+.p-tablist-tab-list {
+    @apply f-c mx-a;
+}
+
+.p-tabpanels {
+    @apply bg-transparent;
+}
+
+.p-tabs-scrollable > .p-tablist {
+    @apply min-h-10vmin h-full overflow-x-hidden overflow-y-auto;
+}
+
+.p-tab {
+    @apply w-auto;
 }
 </style>
