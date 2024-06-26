@@ -1,7 +1,9 @@
 ﻿<template>
     <!--  :title="title" -->
     <LayoutPage>
-        <div class="container pt-20 pb-20 gap-20 w-full flex flex-col justify-content-center">
+        <div
+            class="container transition-all duration-1000 pt-20 gap-20 w-full h-full flex flex-col justify-between"
+        >
             <TemplatePortfolioHot :works="worksHotPayload" />
             <TemplatePortfolioStepper :skills="skillsPayload" />
         </div>
