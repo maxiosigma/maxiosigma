@@ -1,10 +1,10 @@
 ﻿<template>
     <section class="flex relative">
         <div
-            v-for="(work, wi) in works"
-            :key="wi"
             class=":uno: flex text-gray-400 rounded-2xl gap-4 overflow-hidden"
             :class="[$style['multi-border'], wi !== 1 ? ':uno: absolute !hidden' : '']"
+            v-for="(work, wi) in works"
+            :key="wi"
         >
             <div class="min-w-3/8 max-w-3/8 pl-0.5 py-0.5" :class="[$style['multi-border']]">
                 <ItemMediaImg
