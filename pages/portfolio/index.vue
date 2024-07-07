@@ -13,7 +13,7 @@
                 class="my-auto p-1.5 !rounded-r-none bg-self-4"
                 severity="success"
                 @click="sidebarVisible = true"
-                v-p-tooltip="'About'"
+                v-tooltip="'About'"
             >
                 <Icon name="solar:map-arrow-left-bold" size="25px" />
             </PrimeButton>
@@ -40,7 +40,7 @@ const skillsPayload = await usePayloadData({
     path: 'skills'
 })
 
-//console.log({ skillsPayload: skillsPayload.value })
+//console.log({ skillsPayload: skillsPayload.value?.[1] })
 
 const skillsPayloadSidebar = skillsPayload.value?.filter((it) => it?.only !== 'select')
 

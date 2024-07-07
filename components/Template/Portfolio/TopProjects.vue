@@ -51,10 +51,10 @@
 <script setup>
 const prop = defineProps(['works'])
 
-const worksCategories = await usePayloadData({
-    name: 'portfolio_works_categories',
-    path: 'works_categories'
-})
+//const worksCategories = await usePayloadData({
+//    name: 'portfolio-works-categories',
+//    path: 'works_categories',
+//})
 </script>
 
 <style lang="scss" module>

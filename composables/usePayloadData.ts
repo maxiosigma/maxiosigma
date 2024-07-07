@@ -5,46 +5,34 @@ export default async function ({
     path = '',
     type = 'one' || 'multi',
     optionsWhere = <QueryBuilderWhere>{},
-    callback = (items: any) => items?.body ?? [],
-    errors = () => []
+    callback = (items: any) =>
+        type === 'multi'
+            ? items.map((item: any) => item?.body) ?? []
+            : items.map((item: any) => item?.body)?.[0] ?? {},
+    errors = (err: any) => {
+        console.log(err)
+        return null
+    }
 }) {
     const { locale } = useI18n()
     const payloadName = `content-pl-${locale.value}-${name}`
 
-    if (import.meta.server) {
-        try {
-            //const preData = queryContent(`/${locale.value}/${path}`).where({
-            //    _path: `/${locale.value}/${path}`
-            //})
+    if (process.server) {
+        console.log(
+            await queryContent(`/${locale.value}/${path}`)
+                .where({
+                    _path: `/${locale.value}/${path}`
+                })
+                .find()
+        )
 
-            switch (type) {
-                case 'multi':
-                    useNuxtApp().payload.data[payloadName] = await queryContent(
-                        `/${locale.value}/${path}`
-                    )
-                        .where({
-                            _path: `/${locale.value}/${path}`
-                        })
-                        .find()
-                        .then(callback)
-                        .catch(errors)
-                    break
-                default:
-                    useNuxtApp().payload.data[payloadName] = await queryContent(
-                        `/${locale.value}/${path}`
-                    )
-                        .where({
-                            _path: `/${locale.value}/${path}`
-                        })
-                        .findOne()
-                        .then(callback)
-                        .catch(errors)
-                    break
-            }
-        } catch (error) {
-            console.log(error)
-            console.log(errors)
-        }
+        useNuxtApp().payload.data[payloadName] = await queryContent(`/${locale.value}/${path}`)
+            .where({
+                _path: `/${locale.value}/${path}`
+            })
+            .find()
+            .then(callback)
+            .catch(errors)
     }
 
     return useNuxtData(payloadName)?.data

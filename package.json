@@ -26,6 +26,8 @@
         "yaml": "^2.4.5"
     },
     "devDependencies": {
+        "@iconify-json/ic": "^1.1.17",
+        "@iconify-json/material-symbols": "^1.1.83",
         "@iconify-json/material-symbols-light": "^1.1.23",
         "@iconify-json/solar": "^1.1.9",
         "@julr/unocss-preset-heropatterns": "^1.0.2",

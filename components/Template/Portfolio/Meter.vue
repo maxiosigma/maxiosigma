@@ -1,19 +1,27 @@
 ﻿<template>
-    <PrimeMeterGroup :value="meterGroups" :orientation="orientation" :labelOrientation="labelOrientation" />
+    <PrimeMeterGroup
+        :value="meterGroups"
+        :orientation="orientation"
+        :labelOrientation="labelOrientation"
+    />
 </template>
 
 <script setup>
-const prop = defineProps({
+const { items, visible } = defineProps({
     items: { type: Object, default: [] },
     orientation: { type: String, default: 'vertical' },
     labelOrientation: { type: String, default: 'vertical' },
     visible: { type: Boolean, default: false }
 })
 
-const baseMeterGroups = ref(prop.items.map((it) => ({ label: it?.title, weight: it?.weight ?? 10 })))
+const baseMeterGroups = ref(
+    items?.length > 0 ? items?.map((it) => ({ label: it?.title, weight: it?.weight ?? 10 })) : []
+)
 
 const colorsMeterGroups = ref([])
-const valuesMeterGroups = ref(baseMeterGroups.value.reduce((s, it) => (s += it?.weight ?? 0) && s, 0))
+const valuesMeterGroups = ref(
+    baseMeterGroups.value.reduce((s, it) => (s += it?.weight ?? 0) && s, 0)
+)
 
 const meterGroups = computed(() =>
     baseMeterGroups.value.map((it, i) => ({
@@ -26,7 +34,7 @@ const meterGroups = computed(() =>
 onMounted(() => {
     colorsMeterGroups.value = useRandTwColors(baseMeterGroups.value.length)
 
-    if (!!prop.visible)
+    if (!!visible)
         setInterval(() => {
             colorsMeterGroups.value = useRandTwColors(baseMeterGroups.value.length)
         }, 5000)

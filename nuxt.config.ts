@@ -115,19 +115,19 @@ export default defineNuxtConfig({
         components: {
             prefix: 'Prime'
         },
-        directives: {
-            prefix: 'p-'
-        },
+        //directives: {
+        //    prefix: 'p-'
+        //},
         options: {
             ripple: true,
             inputVariant: 'filled',
             theme: {
-                preset: Aura,
-                options: {
-                    prefix: 'p',
-                    darkModeSelector: 'system',
-                    cssLayer: false
-                }
+                preset: Aura
+                //options: {
+                //    prefix: 'p',
+                //    darkModeSelector: 'system',
+                //    cssLayer: false
+                //}
             }
         }
     },
