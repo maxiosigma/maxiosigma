@@ -115,11 +115,13 @@ export default defineNuxtConfig({
         components: {
             prefix: 'Prime'
         },
-        //directives: {
-        //    prefix: 'p-'
-        //},
+        directives: {
+            prefix: 'p-',
+            include: '*',
+            exclude: ['Ripple']
+        },
         options: {
-            ripple: true,
+            ripple: false,
             inputVariant: 'filled',
             theme: {
                 preset: Aura

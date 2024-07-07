@@ -1,10 +1,10 @@
 ﻿<template>
     <section class="flex gap-20 relative overflow-hidden">
-        <!--<PrimeTabs value="1" class="w-full" scrollable>
+        <PrimeTabs value="1" class="w-full" scrollable>
             <PrimeTabList>
                 <PrimeTab
                     v-for="(category, ci) in worksCategories"
-                    :key="`${category.slug}`"
+                    :key="`${category.slug}_${ci}`"
                     :value="`${ci + 1}`"
                 >
                     {{ category.title }}
@@ -12,9 +12,9 @@
             </PrimeTabList>
 
             <PrimeTabPanels class="h-full">
-                <PrimeTabPanel
+                <!--<PrimeTabPanel
                     v-for="(work, wi) in works"
-                    :key="`${work.category}`"
+                    :key="`${work.category}_${wi}`"
                     :value="`${wi}`"
                 >
                     <div
@@ -42,19 +42,19 @@
                             </PrimeButton>
                         </div>
                     </div>
-                </PrimeTabPanel>
+                </PrimeTabPanel>-->
             </PrimeTabPanels>
-        </PrimeTabs>-->
+        </PrimeTabs>
     </section>
 </template>
 
 <script setup>
 const prop = defineProps(['works'])
 
-//const worksCategories = await usePayloadData({
-//    name: 'portfolio-works-categories',
-//    path: 'works_categories',
-//})
+const worksCategories = await usePayloadData({
+    name: 'portfolio-works-categories',
+    path: 'works_categories'
+})
 </script>
 
 <style lang="scss" module>

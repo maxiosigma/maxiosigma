@@ -91,6 +91,14 @@ watch(
     flex-basis: 100%;
 }
 
+.p-button-success {
+    border: 0;
+}
+
+.p-stepper-content {
+    @apply transition-all duration-300;
+}
+
 //https://primevue.org/speeddial/
 .finger {
     //border-r-4 border-t-4 border-b-4
@@ -103,10 +111,6 @@ watch(
     &-description {
         @apply text-sm text-self-7;
     }
-}
-
-.p-stepper-content {
-    @apply transition-all duration-300;
 }
 
 .box-animate {
