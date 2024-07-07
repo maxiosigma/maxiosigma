@@ -40,7 +40,7 @@ const skillsPayload = await usePayloadData({
     path: 'skills'
 })
 
-console.log({ skillsPayload: skillsPayload.value })
+//console.log({ skillsPayload: skillsPayload.value })
 
 const skillsPayloadSidebar = skillsPayload.value?.filter((it) => it?.only !== 'select')
 

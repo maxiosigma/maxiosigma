@@ -13,19 +13,29 @@ export default async function ({
 
     if (import.meta.server) {
         try {
-            const preData = queryContent(`/${locale.value}/${path}`).where({
-                _path: `/${locale.value}/${path}`
-            })
+            //const preData = queryContent(`/${locale.value}/${path}`).where({
+            //    _path: `/${locale.value}/${path}`
+            //})
 
             switch (type) {
                 case 'multi':
-                    useNuxtApp().payload.data[payloadName] = preData
+                    useNuxtApp().payload.data[payloadName] = await queryContent(
+                        `/${locale.value}/${path}`
+                    )
+                        .where({
+                            _path: `/${locale.value}/${path}`
+                        })
                         .find()
                         .then(callback)
                         .catch(errors)
                     break
                 default:
-                    useNuxtApp().payload.data[payloadName] = preData
+                    useNuxtApp().payload.data[payloadName] = await queryContent(
+                        `/${locale.value}/${path}`
+                    )
+                        .where({
+                            _path: `/${locale.value}/${path}`
+                        })
                         .findOne()
                         .then(callback)
                         .catch(errors)

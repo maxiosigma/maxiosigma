@@ -1,6 +1,7 @@
 import { resolve } from 'path'
 import { getLocales, defaultLocale } from './config'
 import { mkdirSync, writeFileSync, existsSync, unlinkSync } from 'fs'
+import Aura from '@primevue/themes/aura'
 
 const locales = getLocales(mkdirSync, writeFileSync, existsSync)
 const isGenerateMode = process.argv.includes('generate')
@@ -87,6 +88,7 @@ export default defineNuxtConfig({
         '@nuxt/content',
         //'@nuxtjs/seo',
 
+        '@primevue/nuxt-module',
         '@formkit/nuxt',
         '@unocss/nuxt',
         '@nuxt/icon',
@@ -106,6 +108,29 @@ export default defineNuxtConfig({
         //'@nuxtjs/supabase',
         //'@primevue/nuxt-module',
     ],
+
+    primevue: {
+        usePrimeVue: true,
+        autoImport: true,
+        components: {
+            prefix: 'Prime'
+        },
+        directives: {
+            prefix: 'p-'
+        },
+        options: {
+            ripple: true,
+            inputVariant: 'filled',
+            theme: {
+                preset: Aura,
+                options: {
+                    prefix: 'p',
+                    darkModeSelector: 'system',
+                    cssLayer: false
+                }
+            }
+        }
+    },
 
     //primevue: {
     //    usePrimeVue: true,
