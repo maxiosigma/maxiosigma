@@ -1,6 +1,6 @@
 ﻿<template>
     <section class="flex gap-20 relative overflow-hidden">
-        <PrimeTabs value="1" class="w-full" scrollable>
+        <!--<PrimeTabs value="1" class="w-full" scrollable>
             <PrimeTabList>
                 <PrimeTab
                     v-for="(category, ci) in worksCategories"
@@ -44,7 +44,7 @@
                     </div>
                 </PrimeTabPanel>
             </PrimeTabPanels>
-        </PrimeTabs>
+        </PrimeTabs>-->
     </section>
 </template>
 
@@ -52,7 +52,7 @@
 const prop = defineProps(['works'])
 
 const worksCategories = await usePayloadData({
-    name: 'portfolio-works-categories',
+    name: 'portfolio_works_categories',
     path: 'works_categories'
 })
 </script>
@@ -66,6 +66,8 @@ const worksCategories = await usePayloadData({
         @apply z-50;
     }
 }
+
+//
 </style>
 
 <style lang="scss">

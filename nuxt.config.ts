@@ -7,31 +7,44 @@ const isGenerateMode = process.argv.includes('generate')
 
 export default defineNuxtConfig({
     ssr: true,
+
     //dev: true,
     telemetry: false,
+
     app: {
         //rootId: 'app',
         //rootTag: 'div class="wrapper"',
         buildAssetsDir: '/public/',
         rootAttrs: { class: 'wrapper', id: 'app' }
     },
+
     alias: {
         'assets-data': resolve(__dirname, './assets/data')
     },
+
+    vue: {
+        compilerOptions: {
+            isCustomElement: (tag) => ['lite'].includes(tag)
+        }
+    },
+
     experimental: {
         appManifest: false,
-        componentIslands: 'local',
-        treeshakeClientOnly: false,
-        sharedPrerenderData: true,
-        externalVue: false,
-        typedPages: true,
-        watcher: 'parcel'
+        //componentIslands: 'local',
+        treeshakeClientOnly: false
+        //sharedPrerenderData: true,
+        //externalVue: false,
+        //typedPages: true
+        //watcher: 'parcel'
     },
+
     features: {
-        inlineStyles: false,
-        devLogs: false
+        inlineStyles: false
+        //devLogs: false
     },
+
     ignore: ['**/z-content/**', '**/z-mod/**', '**/z-old/**', '**/z/**'],
+
     vite: {
         css: {
             modules: {
@@ -51,12 +64,14 @@ export default defineNuxtConfig({
         //    chunkSizeWarningLimit: 5000
         //}
     },
+
     build: {
         transpile: [
             //
             //'primevue'
         ]
     },
+
     //sourcemap: {
     //    server: true,
     //    client: true
@@ -64,6 +79,7 @@ export default defineNuxtConfig({
     runtimeConfig: {
         //locales
     },
+
     modules: [
         //'@vite-pwa/nuxt',
         '@nuxtjs/i18n',
@@ -73,7 +89,7 @@ export default defineNuxtConfig({
 
         '@formkit/nuxt',
         '@unocss/nuxt',
-        'nuxt-icon',
+        '@nuxt/icon',
 
         '@nuxtjs/device',
         '@vueuse/nuxt'
@@ -90,6 +106,7 @@ export default defineNuxtConfig({
         //'@nuxtjs/supabase',
         //'@primevue/nuxt-module',
     ],
+
     //primevue: {
     //    usePrimeVue: true,
     //    //importTheme: { from: '@/assets/prime.js' },
@@ -156,6 +173,7 @@ export default defineNuxtConfig({
         customRoutes: 'config',
         locales
     },
+
     content: {
         //defaultLocale: 'ru',
         //experimental: {
@@ -176,6 +194,7 @@ export default defineNuxtConfig({
         //    }
         //}
     },
+
     //supabase: {
     //    redirect: false,
     //    redirectOptions: {
@@ -186,15 +205,20 @@ export default defineNuxtConfig({
     unocss: {
         uno: true
     },
+
     nitro: {
         prerender: {
             crawlLinks: true
         }
     },
+
     css: ['~/assets/index.scss'],
+
     hooks: {
         ready: () => {}
-    }
+    },
+
+    compatibilityDate: '2024-07-07'
 })
 
 function onlyPageLocations(names: any[] = []) {

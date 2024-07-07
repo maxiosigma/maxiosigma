@@ -53,6 +53,7 @@ import InputText from 'primevue/inputtext'
 import Skeleton from 'primevue/skeleton'
 import Tooltip from 'primevue/tooltip'
 import Sidebar from 'primevue/drawer'
+import Ripple from 'primevue/ripple'
 import Tag from 'primevue/tag'
 
 import animateonscroll from 'primevue/animateonscroll'
@@ -113,4 +114,5 @@ export default defineNuxtPlugin((nuxtApp) => {
     directive('p-animate-on-scroll', animateonscroll)
     directive('p-style-class', styleclass)
     directive('p-tooltip', Tooltip)
+    directive('ripple', Ripple)
 })

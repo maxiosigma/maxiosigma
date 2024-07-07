@@ -4,7 +4,7 @@
         <div
             class="container transition-all duration-1000 pt-20 gap-20 w-full h-full flex flex-col justify-between"
         >
-            <TemplatePortfolioHot :works="worksHotPayload" />
+            <TemplatePortfolioTopProjects :works="worksHotPayload" />
             <TemplatePortfolioStepper :skills="skillsPayload" />
         </div>
 
@@ -39,6 +39,8 @@ const skillsPayload = await usePayloadData({
     name: 'portfolio-skills',
     path: 'skills'
 })
+
+console.log({ skillsPayload: skillsPayload.value })
 
 const skillsPayloadSidebar = skillsPayload.value?.filter((it) => it?.only !== 'select')
 
