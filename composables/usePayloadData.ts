@@ -18,14 +18,14 @@ export default async function ({
     const payloadName = `content-pl-${locale.value}-${name}`
 
     if (process.server) {
-        if (path === 'works_categories')
-            console.log(
-                await queryContent(`/${locale.value}/${path}`)
-                    .where({
-                        _path: `/${locale.value}/${path}`
-                    })
-                    .find()
-            )
+        //if (path === 'works_categories')
+        //    console.log(
+        //        await queryContent(`/${locale.value}/${path}`)
+        //            .where({
+        //                _path: `/${locale.value}/${path}`
+        //            })
+        //            .find()
+        //    )
 
         useNuxtApp().payload.data[payloadName] = await queryContent(`/${locale.value}/${path}`)
             .where({

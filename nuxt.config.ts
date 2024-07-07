@@ -116,7 +116,7 @@ export default defineNuxtConfig({
             prefix: 'Prime'
         },
         directives: {
-            prefix: 'p-',
+            //prefix: 'p-',
             include: '*',
             exclude: ['Ripple']
         },
