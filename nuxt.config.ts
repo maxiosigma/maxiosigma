@@ -11,6 +11,8 @@ export default defineNuxtConfig({
     //dev: true,
     telemetry: false,
 
+    //devtools: { enabled: true },
+
     app: {
         buildAssetsDir: '/public/',
         rootAttrs: { class: 'wrapper', id: 'app' }
