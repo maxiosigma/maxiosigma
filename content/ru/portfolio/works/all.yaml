@@ -13,7 +13,7 @@
   link: null
   title: Автосканер ELM327
   description: Заказ для авто-сайта
-  category:
+  category: design
   images:
       -
   tags: []
@@ -89,7 +89,7 @@
   link: https://world-ru.web.app
   title: Карта лояльности
   description: Дизайн карты лояльности для крупнейшей компании мира по кэшбеку
-  category: 2
+  category: design
   images:
       - assets/media/portfolio/karta_loyalnosti/1.webp
       - assets/media/portfolio/karta_loyalnosti/2.webp
@@ -115,7 +115,7 @@
   description: Сайт кафедры экономической теории и корпоративного управления.
       Проект проходит стадию согласования с размещением или неразмещением в сети
       общего пользования.
-  category: 1
+  category: develop
   images:
       - assets/media/portfolio/ketky_or_sajt_kafedry/1.webp
       - assets/media/portfolio/ketky_or_sajt_kafedry/2.webp

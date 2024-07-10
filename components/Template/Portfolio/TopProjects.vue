@@ -17,6 +17,9 @@
                     :key="`panel_${category.slug}_${ci}`"
                     :value="`${ci + 1}`"
                 >
+                    <!--{{ category.slug }}-->
+
+                    <!--{{ works.filter((w) => w?.category === category.slug) }}-->
                 </PrimeTabPanel>
             </PrimeTabPanels>
         </PrimeTabs>
@@ -26,7 +29,7 @@
 <script setup>
 const prop = defineProps(['works'])
 const worksCategories = usePayloadData('portfolio_works_categories')
-const worksTop = usePayloadData('portfolio_works_top')
+const works = usePayloadData('portfolio_works_top')
 
 //<!--<PrimeTabPanel
 //                    v-for="(work, wi) in works"
