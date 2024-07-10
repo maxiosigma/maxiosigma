@@ -94,7 +94,7 @@
 
         &-nav-bar {
             @apply opacity-0;
-            @apply hidden #{!important};
+            @apply hidden;
         }
 
         &-header {
