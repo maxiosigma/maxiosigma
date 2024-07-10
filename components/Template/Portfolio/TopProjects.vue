@@ -13,13 +13,12 @@
 
             <PrimeTabPanels class="h-full">
                 <PrimeTabPanel
+                    class="w-full grid"
                     v-for="(category, ci) in worksCategories"
                     :key="`panel_${category.slug}_${ci}`"
                     :value="`${ci + 1}`"
                 >
-                    <!--{{ category.slug }}-->
-
-                    <!--{{ works.filter((w) => w?.category === category.slug) }}-->
+                    {{ works.filter((w) => !!w && w?.category === category.slug) }}
                 </PrimeTabPanel>
             </PrimeTabPanels>
         </PrimeTabs>

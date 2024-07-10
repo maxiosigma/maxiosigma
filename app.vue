@@ -2,7 +2,7 @@
     <NuxtLayout>
         <NuxtLoadingIndicator />
         <NuxtPage />
-        <ItemToast />
+        <!--<ItemToast />-->
     </NuxtLayout>
 </template>
 
