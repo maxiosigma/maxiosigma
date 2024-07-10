@@ -8,7 +8,7 @@ const isGenerateMode = process.argv.includes('generate')
 
 export default defineNuxtConfig({
     ssr: true,
-    dev: true,
+    //dev: true,
     telemetry: false,
 
     app: {
@@ -51,14 +51,14 @@ export default defineNuxtConfig({
     build: {
         transpile: [
             //
-            'primevue'
+            //'primevue'
         ]
     },
 
-    sourcemap: {
-        server: true,
-        client: true
-    },
+    //sourcemap: {
+    //    server: true,
+    //    client: true
+    //},
 
     runtimeConfig: {
         //locales
@@ -66,13 +66,13 @@ export default defineNuxtConfig({
 
     modules: [
         '@nuxtjs/i18n',
-
         '@nuxt/content',
 
-        '@primevue/nuxt-module',
-        '@formkit/nuxt',
         '@unocss/nuxt',
+        '@formkit/nuxt',
         '@nuxt/icon',
+
+        '@primevue/nuxt-module',
 
         '@nuxtjs/device',
         '@vueuse/nuxt'
