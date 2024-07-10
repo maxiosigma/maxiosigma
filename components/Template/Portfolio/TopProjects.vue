@@ -4,7 +4,7 @@
             <PrimeTabList>
                 <PrimeTab
                     v-for="(category, ci) in worksCategories"
-                    :key="`${category.slug}_${ci}`"
+                    :key="`tab_${category.slug}_${ci}`"
                     :value="`${ci + 1}`"
                 >
                     {{ category.title }}
@@ -12,37 +12,12 @@
             </PrimeTabList>
 
             <PrimeTabPanels class="h-full">
-                <!--<PrimeTabPanel
-                    v-for="(work, wi) in works"
-                    :key="`${work.category}_${wi}`"
-                    :value="`${wi}`"
+                <PrimeTabPanel
+                    v-for="(category, ci) in worksCategories"
+                    :key="`panel_${category.slug}_${ci}`"
+                    :value="`${ci + 1}`"
                 >
-                    <div
-                        class="flex transition-all duration-300 cursor-pointer min-h-30vmin h-full w-full text-gray-400 rounded-2xl gap-4 bg-self-1 mt-a border-2 border-self-2 overflow-hidden group <md:(flex-col) md:(max-h-50vmin)"
-                        :class="[$style['multi-border']]"
-                    >
-                        <div
-                            class="relative z-0 overflow-hidden <md:(max-h-45vmin) md:(min-w-3/8 max-w-3/8)"
-                        >
-                            <ItemMediaImg
-                                class="relative w-full h-full md:(rounded-l-2xl flex-shrink-1 h-full)"
-                                :src="'/' + work?.images?.[0]"
-                            />
-                        </div>
-
-                        <div
-                            class="flex flex-col py-4 pr-4 self-center flex-grow gap-4 <md:(px-8%)"
-                        >
-                            <div class="f-text-18-36 text-self-4">{{ work.title }}</div>
-
-                            <div class="f-text-10-24">{{ work.description }}</div>
-
-                            <PrimeButton v-if="work.link" class="self-start !px-1.5 !py-1">
-                                Посмотреть →
-                            </PrimeButton>
-                        </div>
-                    </div>
-                </PrimeTabPanel>-->
+                </PrimeTabPanel>
             </PrimeTabPanels>
         </PrimeTabs>
     </section>
@@ -53,8 +28,39 @@ const prop = defineProps(['works'])
 
 const worksCategories = await usePayloadData({
     name: 'portfolio-works-categories',
-    path: 'works_categories'
+    path: 'works/categories'
 })
+
+//<!--<PrimeTabPanel
+//                    v-for="(work, wi) in works"
+//                    :key="`${work.category}_${wi}`"
+//                    :value="`${wi}`"
+//                >-->
+//                    <!--  <div
+//                        class="flex transition-all duration-300 cursor-pointer min-h-30vmin h-full w-full text-gray-400 rounded-2xl gap-4 bg-self-1 mt-a border-2 border-self-2 overflow-hidden group <md:(flex-col) md:(max-h-50vmin)"
+//                        :class="[$style['multi-border']]"
+//                    >
+//                        <div
+//                            class="relative z-0 overflow-hidden <md:(max-h-45vmin) md:(min-w-3/8 max-w-3/8)"
+//                        >
+//                            <ItemMediaImg
+//                                class="relative w-full h-full md:(rounded-l-2xl flex-shrink-1 h-full)"
+//                                :src="'/' + work?.images?.[0]"
+//                            />
+//                        </div>
+
+//                        <div
+//                            class="flex flex-col py-4 pr-4 self-center flex-grow gap-4 <md:(px-8%)"
+//                        >
+//                            <div class="f-text-18-36 text-self-4">{{ work.title }}</div>
+
+//                            <div class="f-text-10-24">{{ work.description }}</div>
+
+//                            <PrimeButton v-if="work.link" class="self-start !px-1.5 !py-1">
+//                                Посмотреть →
+//                            </PrimeButton>
+//                        </div>
+//                    </div>-->
 </script>
 
 <style lang="scss" module>
