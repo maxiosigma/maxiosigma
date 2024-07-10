@@ -7,13 +7,69 @@
     const baseLocales = ['ru']
 
     const pw = [
-        //
-        { path: 'works/categories', name: 'portfolio-works-categories' }
+        {
+            path: 'portfolio/qualities',
+            name: 'portfolio_qualities',
+            callback: (res: any) => res?.[0]?.body
+        },
+        {
+            path: 'portfolio/competencies',
+            name: 'portfolio_competencies',
+            callback: (res: any) => res?.[0]?.body
+        },
+        {
+            path: 'portfolio/works/all',
+            name: 'portfolio_works_top',
+            callback: (res: any) =>
+                res?.[0]?.body?.filter((it: { top: boolean }) => it?.top === true)
+        },
+        {
+            path: 'portfolio/works/categories',
+            name: 'portfolio_works_categories',
+            callback: (res: any) => res?.[0]?.body
+        },
+        {
+            path: 'portfolio/works/subcategories',
+            name: 'portfolio_works_subcategories',
+            callback: (res: any) => res?.[0]?.body
+        },
+        {
+            path: 'portfolio/works/tags',
+            name: 'portfolio_works_tags',
+            callback: (res: any) => res?.[0]?.body
+        },
+        {
+            path: 'socials',
+            name: 'socials',
+            callback: (res: any) => res?.[0]?.body
+        },
+        {
+            path: 'referrers',
+            name: 'referrers',
+            callback: (res: any) => res,
+            many: true
+        }
     ]
 
     baseLocales.map((locale) => {
-        pw.map(({ name, path }) => {
+        pw.map(async ({ name, path, many, callback = (res) => res }) => {
             const payloadName = `content-pl-${locale}-${name}`
+
+            console.log(locale, name, path)
+
+            const data = await queryContent(`/${locale}/${path}`)
+                .where(
+                    !many
+                        ? {
+                              _path: `/${locale}/${path}`
+                          }
+                        : {}
+                )
+                .find()
+                .then(callback)
+                .catch(console.log)
+
+            console.log({ [name]: data })
 
             //nuxtApp.payload.data[name] =
         })

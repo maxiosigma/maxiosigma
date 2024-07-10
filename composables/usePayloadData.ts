@@ -16,11 +16,9 @@
 //    }
 //}
 
-
 export default async function () {
     //const { locale } = useI18n()
     //const payloadName = `content-pl-${locale.value}-${name}`
-
     //if (import.meta.server) {
     //    const data = await queryContent(`/${locale.value}/${path}`)
     //        .where({
@@ -29,9 +27,7 @@ export default async function () {
     //        .find()
     //        .then(callback)
     //        .catch(errors)
-
     //    useNuxtApp().payload.data[payloadName] = !!data ? data : []
     //}
-
     //return useNuxtData(payloadName)?.data
 }

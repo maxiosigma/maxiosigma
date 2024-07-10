@@ -12,6 +12,24 @@ const sidebarVisible = ref(useLocalStorageBoolean(storageSidebarVisible.value))
 //    path: 'skills'
 //})
 
+//const skillsPayloadSidebar = skillsPayload.value?.filter((it) => it?.only !== 'select')
+
+//const qualitiesPayload = await usePayloadData({
+//    name: 'portfolio-qualities',
+//    path: 'qualities'
+//})
+
+//const competenciesPayload = await usePayloadData({
+//    name: 'portfolio-competencies',
+//    path: 'competencies'
+//})
+
+//const worksHotPayload = await usePayloadData({
+//    name: 'portfolio-works',
+//    path: 'works',
+//    callback: (items) => items?.body?.filter(({ top }) => top === true) ?? []
+//})
+
 watch(
     () => sidebarVisible.value,
     () => {
