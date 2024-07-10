@@ -18,13 +18,12 @@
 
             <PrimeTabPanels>
                 <PrimeTabPanel
-                    class="grid transition-all duration-300 cursor-pointer text-gray-400 bg-self-1 group"
+                    class="transition-all duration-300 cursor-pointer text-gray-400 bg-self-1 group"
                     v-for="(category, ci) in worksCategories"
                     :key="`panel_${category.slug}_${ci}`"
                     :value="`${ci + 1}`"
                 >
                     <div
-                        class=""
                         v-for="work in works
                             .filter((w) => !!w.category && w.category === category.slug)
                             .filter((w) => !!w)"
@@ -75,7 +74,7 @@ const works = usePayloadData('portfolio_works_top')
 
 <style lang="scss">
 .p-tablist-content {
-    @apply flex items-center relative mx-a;
+    //@apply flex items-center relative mx-a;
 }
 
 .p-tablist-prev-button,
@@ -84,7 +83,7 @@ const works = usePayloadData('portfolio_works_top')
 }
 
 .p-tablist-tab-list {
-    @apply f-c mx-a flex-wrap;
+    @apply f-c mx-a flex-wrap bg-transparent;
 }
 
 .p-tabpanels {
