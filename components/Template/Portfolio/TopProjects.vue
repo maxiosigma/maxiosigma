@@ -9,6 +9,7 @@
             <!-- scrollable -->
             <PrimeTabList>
                 <PrimeTab
+                    class="f-text-14-24"
                     v-for="(category, ci) in worksCategories"
                     :key="`tab_${category.slug}_${ci}`"
                     :value="`${ci + 1}`"
@@ -19,7 +20,7 @@
 
             <PrimeTabPanels>
                 <PrimeTabPanel
-                    class="transition-all duration-300 cursor-pointer text-gray-400 bg-self-1 group"
+                    class="transition-all duration-300 text-gray-400 bg-self-1 group"
                     v-for="(category, ci) in worksCategories"
                     :key="`panel_${category.slug}_${ci}`"
                     :value="`${ci + 1}`"
@@ -38,19 +39,23 @@
                             />
                         </div>-->
 
-                        <div
-                            class="flex flex-col py-4 pr-4 self-center flex-grow gap-4 <md:(px-8%)"
-                        >
-                            <div class="f-text-18-36 text-self-4">
+                        <div class="flex flex-col py-4 pr-4 self-center flex-grow gap-4">
+                            <div class="f-text-16-28 text-self-4">
                                 {{ work.title }}
-                                <Icon name="" />
+
+                                <a @click.default="clicked(work.link)">
+                                    <Icon
+                                        class="f-text-12-24 text-self-5 text-shadow-lg text-shadow-color-self-5 transition-all duration-200 cursor-pointer hover:(text-self-6)"
+                                        name="ph:paper-plane-right-bold"
+                                    />
+                                </a>
                             </div>
 
-                            <div class="f-text-10-24">{{ work.description }}</div>
-
+                            <div class="f-text-12-24">{{ work.description }}</div>
+                            <!--
                             <PrimeButton v-if="work.link" class="self-start !px-1.5 !py-1">
                                 Посмотреть →
-                            </PrimeButton>
+                            </PrimeButton>-->
                         </div>
                     </div>
                 </PrimeTabPanel>
@@ -63,6 +68,20 @@
 const prop = defineProps(['works'])
 const worksCategories = usePayloadData('portfolio_works_categories')
 const works = usePayloadData('portfolio_works_top')
+
+const clicked = (href) => {
+    const link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a')
+    link.href = href
+    link.target = '_blank'
+
+    const event = new MouseEvent('click', {
+        view: window,
+        bubbles: false,
+        cancelable: true
+    })
+
+    link.dispatchEvent(event)
+}
 </script>
 
 <style lang="scss" module>
