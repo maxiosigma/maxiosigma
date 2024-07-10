@@ -41,8 +41,13 @@
                         <div
                             class="flex flex-col py-4 pr-4 self-center flex-grow gap-4 <md:(px-8%)"
                         >
-                            <div class="f-text-18-36 text-self-4">{{ work.title }}</div>
+                            <div class="f-text-18-36 text-self-4">
+                                {{ work.title }}
+                                <Icon name="" />
+                            </div>
+
                             <div class="f-text-10-24">{{ work.description }}</div>
+
                             <PrimeButton v-if="work.link" class="self-start !px-1.5 !py-1">
                                 Посмотреть →
                             </PrimeButton>
