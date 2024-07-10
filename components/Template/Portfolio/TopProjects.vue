@@ -4,6 +4,7 @@
             value="1"
             class="flex w-full p-4 border-2 border-self-2 rounded-2xl"
             :class="[$style['multi-border']]"
+            scrollable
         >
             <!-- scrollable -->
             <PrimeTabList>
@@ -74,16 +75,16 @@ const works = usePayloadData('portfolio_works_top')
 
 <style lang="scss">
 .p-tablist-content {
-    //@apply flex items-center relative mx-a;
+    @apply flex items-center relative mx-a;
 }
 
 .p-tablist-prev-button,
 .p-tablist-next-button {
-    @apply bg-self-2 border-self-4 border-2 border-inset rounded-md h-[90%] my-a top-0 bottom-0;
+    @apply bg-self-2 border-self-4 border-2 border-inset rounded-md h-[90%] my-a top-0 bottom-0 opacity-75;
 }
 
 .p-tablist-tab-list {
-    @apply f-c mx-a flex-wrap bg-transparent;
+    @apply mx-a bg-transparent;
 }
 
 .p-tabpanels {
