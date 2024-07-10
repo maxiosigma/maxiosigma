@@ -1,12 +1,8 @@
 <template>
-    <!-- :title="title" :description="description" -->
     <LayoutDefault>
-        <!-- , pagecl , view ? '' : '!hidden' -->
-        <div :class="[$style.page]">
+        <div class="page">
             <slot />
         </div>
-
-        <!--<ItemModalSelectLang />-->
 
         <TemplatePreload />
     </LayoutDefault>
@@ -49,13 +45,11 @@
 //}
 </script>
 
-<style module>
+<style lang="scss">
 .page {
     @apply flex flex-grow flex-col max-w-[100vw] relative justify-between;
 }
-</style>
 
-<style lang="scss">
 .header {
     @apply flex-grow-0 flex-shrink-0 z-10 relative;
 }

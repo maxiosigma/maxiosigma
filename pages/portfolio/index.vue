@@ -1,64 +1,63 @@
 ﻿<template>
-    <!--  :title="title" -->
-    <LayoutPage>
-        <div
-            class="container transition-all duration-1000 pt-20 gap-20 w-full h-full flex flex-col justify-between"
-        >
-            <TemplatePortfolioTopProjects :works="worksHotPayload" />
-            <TemplatePortfolioStepper :skills="skillsPayload" />
-        </div>
-
-        <div class="flex flex-col fixed right-0 top-auto h-full">
-            <PrimeButton
-                class="my-auto p-1.5 !rounded-r-none bg-self-4"
-                severity="success"
-                @click="sidebarVisible = true"
-                v-tooltip="'About'"
-            >
-                <Icon name="solar:map-arrow-left-bold" size="25px" />
-            </PrimeButton>
-        </div>
-
-        <TemplatePortfolioSidebar
-            :qualities="qualitiesPayload"
-            :competencies="competenciesPayload"
-            :skills="skillsPayloadSidebar"
-            :visible="sidebarVisible"
-            @close="sidebarVisible = !sidebarVisible"
-        />
-    </LayoutPage>
+    <LayoutPage> </LayoutPage>
 </template>
 
 <script setup>
+//<!--<div
+//            class="container transition-all duration-1000 pt-20 gap-20 w-full h-full flex flex-col justify-between"
+//        >
+//            <TemplatePortfolioTopProjects :works="worksHotPayload" />
+//            <TemplatePortfolioStepper :skills="skillsPayload" />
+//        </div>
+
+//        <div class="flex flex-col fixed right-0 top-auto h-full">
+//            <PrimeButton
+//                class="my-auto p-1.5 !rounded-r-none bg-self-4"
+//                severity="success"
+//                @click="sidebarVisible = true"
+//                v-tooltip="'About'"
+//            >
+//                <Icon name="solar:map-arrow-left-bold" size="25px" />
+//            </PrimeButton>
+//        </div>
+
+//        <TemplatePortfolioSidebar
+//            :qualities="qualitiesPayload"
+//            :competencies="competenciesPayload"
+//            :skills="skillsPayloadSidebar"
+//            :visible="sidebarVisible"
+//            @close="sidebarVisible = !sidebarVisible"
+//        />-->
+
 const title = ref('Портфолио')
 
 //const links = useBreadcrumbItems()
 //console.log(links)
 
-const skillsPayload = await usePayloadData({
-    name: 'portfolio-skills',
-    path: 'skills'
-})
+//const skillsPayload = await usePayloadData({
+//    name: 'portfolio-skills',
+//    path: 'skills'
+//})
 
 //console.log({ skillsPayload: skillsPayload.value?.[1] })
 
-const skillsPayloadSidebar = skillsPayload.value?.filter((it) => it?.only !== 'select')
+//const skillsPayloadSidebar = skillsPayload.value?.filter((it) => it?.only !== 'select')
 
-const qualitiesPayload = await usePayloadData({
-    name: 'portfolio-qualities',
-    path: 'qualities'
-})
+//const qualitiesPayload = await usePayloadData({
+//    name: 'portfolio-qualities',
+//    path: 'qualities'
+//})
 
-const competenciesPayload = await usePayloadData({
-    name: 'portfolio-competencies',
-    path: 'competencies'
-})
+//const competenciesPayload = await usePayloadData({
+//    name: 'portfolio-competencies',
+//    path: 'competencies'
+//})
 
-const worksHotPayload = await usePayloadData({
-    name: 'portfolio-works',
-    path: 'works',
-    callback: (items) => items?.body?.filter(({ top }) => top === true) ?? []
-})
+//const worksHotPayload = await usePayloadData({
+//    name: 'portfolio-works',
+//    path: 'works',
+//    callback: (items) => items?.body?.filter(({ top }) => top === true) ?? []
+//})
 
 // LocalStorage Частный предприниматель
 const storageSidebarVisible = useLocalStorage('sidebar-visible')

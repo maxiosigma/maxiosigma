@@ -1,7 +1,5 @@
 <template>
-    <!--<NuxtLoadingIndicator />-->
     <slot />
-    <!--<ItemToast />-->
 </template>
 
 <script setup>
@@ -76,6 +74,9 @@ defineI18nRoute({
 //})
 
 //onMounted(() => {})
+
+//<!--<NuxtLoadingIndicator />-->
+//<!--<ItemToast />-->
 </script>
 
 <style lang="scss">

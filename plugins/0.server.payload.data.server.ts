@@ -4,7 +4,7 @@
         { path: 'works/categories', name: 'portfolio-works-categories' }
     ]
 
-    console.log(nuxtApp.$config.content.locales)
+    console.log(nuxtApp?.$config?.content?.locales)
 
     //pw.map(({ name, path }) => {
     //	const payloadName = `content-pl-${locale.value}-${name}`
