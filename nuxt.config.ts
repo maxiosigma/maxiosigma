@@ -21,32 +21,38 @@ export default defineNuxtConfig({
     },
 
     vue: {
-        compilerOptions: {
-            isCustomElement: (tag) => ['lite'].includes(tag)
-        }
+        //compilerOptions: {
+        //    isCustomElement: (tag) => ['lite'].includes(tag)
+        //}
     },
 
     experimental: {
-        appManifest: false,
-        renderJsonPayloads: true,
-        componentIslands: 'local',
-        payloadExtraction: !isGenerateMode,
-        treeshakeClientOnly: false,
-        sharedPrerenderData: true,
-        clientNodeCompat: true,
-        externalVue: false,
-        typedPages: true,
-        watcher: 'parcel'
+        //appManifest: false,
+        //renderJsonPayloads: true,
+        componentIslands: 'local'
+        //payloadExtraction: !isGenerateMode,
+        //treeshakeClientOnly: false,
+        //sharedPrerenderData: true,
+        //clientNodeCompat: true,
+        //externalVue: false,
+        //typedPages: true,
+        //watcher: 'parcel'
     },
 
     features: {
-        inlineStyles: !isGenerateMode,
+        //inlineStyles: !isGenerateMode,
         devLogs: true
     },
 
     ignore: ['**/z-content/**', '**/z-mod/**', '**/z-old/**', '**/z/**'],
 
-    vite: {},
+    vite: {
+        css: {
+            modules: {
+                generateScopedName: '[hash:8]'
+            }
+        }
+    },
 
     build: {
         transpile: [

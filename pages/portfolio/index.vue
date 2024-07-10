@@ -1,5 +1,5 @@
 ﻿<template>
-    <LayoutPage> </LayoutPage>
+    <div></div>
 </template>
 
 <script setup>

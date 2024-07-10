@@ -1,13 +1,3 @@
-<template>
-    <LayoutDefault>
-        <div class="page">
-            <slot />
-        </div>
-
-        <TemplatePreload />
-    </LayoutDefault>
-</template>
-
 <script setup>
 //useSwitchLang()
 
@@ -45,11 +35,21 @@
 //}
 </script>
 
-<style lang="scss">
+<template>
+    <div :class="[$style.page]">
+        <slot />
+    </div>
+
+    <!--<TemplatePreload />-->
+</template>
+
+<style module>
 .page {
     @apply flex flex-grow flex-col max-w-[100vw] relative justify-between;
 }
+</style>
 
+<style lang="scss">
 .header {
     @apply flex-grow-0 flex-shrink-0 z-10 relative;
 }

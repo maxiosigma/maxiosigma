@@ -64,9 +64,9 @@ export default defineConfig({
                 5: '#499DF3',
                 6: '#FFC300',
                 7: '#E2E8F0'
-            },
+            }
 
-            ...getPrime()
+            //...getPrime()
         },
         fontFamily: {
             //vetka: ['Vetka'],

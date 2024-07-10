@@ -1,120 +1,123 @@
 <template>
     <!-- :title="title" -->
-    <LayoutDefault>
-        <ItemClip :class-container="'bg-self-7'">
-            <div class="relative flex h-full bg-self-2"></div>
-            <!--<div class="absolute inset-0"></div>-->
 
-            <ItemMediaImg
-                :class="['absolute inset-0 h-screen w-auto mx-auto object-t transform scale-105']"
-                src="main/face_3.png"
-            />
+    <ItemClip :class-container="'bg-self-7'">
+        <div class="relative flex h-full bg-self-2"></div>
+        <!--<div class="absolute inset-0"></div>-->
 
-            <div class="absolute inset-0 flex flex-col justify-center my-[5%]">
-                <div
-                    class="grid flex-wrap gap-[5vmax] grid-cols-2 columns-2 w-full inset-0 self-center px-[10vw] mb-[5vmax]"
+        <ItemMediaImg
+            :class="['absolute inset-0 h-screen w-auto mx-auto object-t transform scale-105']"
+            src="main/face_3.png"
+        />
+
+        <div class="absolute inset-0 flex flex-col justify-center my-[5%]">
+            <div
+                class="grid flex-wrap gap-[5vmax] grid-cols-2 columns-2 w-full inset-0 self-center px-[10vw] mb-[5vmax]"
+            >
+                <NuxtLinkLocale
+                    :key="ni"
+                    v-for="({ title, icon, style, link, lottie }, ni) in nav.side"
+                    :class="[
+                        'main-nav-item group',
+                        ni % 2 === 0 ? '' : 'ml-a',
+                        ni === 2 || ni === 4 ? 'm-l-' + (ni / 2) * 8 : '',
+                        ni === 3 || ni === 5 ? 'm-r-' + ((ni - 1) / 2) * 8 : '',
+                        useRandomString([
+                            'animate-delay-200',
+                            'animate-delay-400',
+                            'animate-delay-600',
+                            'animate-delay-800',
+                            'animate-delay-1000'
+                        ])
+                    ]"
+                    :to="link"
                 >
-                    <NuxtLinkLocale
-                        :key="ni"
-                        v-for="({ title, icon, style, link, lottie }, ni) in nav.side"
+                    <LottieAnimation
+                        v-if="lottie"
+                        :animationData="lottie"
                         :class="[
-                            'main-nav-item group',
-                            ni % 2 === 0 ? '' : 'ml-a',
-                            ni === 2 || ni === 4 ? 'm-l-' + (ni / 2) * 8 : '',
-                            ni === 3 || ni === 5 ? 'm-r-' + ((ni - 1) / 2) * 8 : '',
+                            'main-nav-icon w-full h-full transform',
                             useRandomString([
-                                'animate-delay-200',
-                                'animate-delay-400',
-                                'animate-delay-600',
-                                'animate-delay-800',
-                                'animate-delay-1000'
-                            ])
+                                'group-hover:(rotate-360)',
+                                'group-hover:(-rotate-360)',
+                                'group-hover:(rotate-720)',
+                                'group-hover:(-rotate-360)'
+                            ]),
+                            style
                         ]"
-                        :to="link"
-                    >
-                        <LottieAnimation
-                            v-if="lottie"
-                            :animationData="lottie"
-                            :class="[
-                                'main-nav-icon w-full h-full transform',
-                                useRandomString([
-                                    'group-hover:(rotate-360)',
-                                    'group-hover:(-rotate-360)',
-                                    'group-hover:(rotate-720)',
-                                    'group-hover:(-rotate-360)'
-                                ]),
-                                style
-                            ]"
-                            autoplay
-                            loop
-                        />
+                        autoplay
+                        loop
+                    />
 
-                        <div
-                            :class="[
-                                'main-nav-pop',
-                                ni % 2 === 0 ? 'left-full ml-4' : 'right-full mr-4',
-                                !loadTimeout ? '!flex-center animate-bounce-in opacity-100' : ''
-                            ]"
-                        >
-                            {{ title }}
-                        </div>
-                    </NuxtLinkLocale>
-                </div>
-
-                <div
-                    class="flex flex-wrap gap-[5vmax] w-full self-end justify-center place-items-end inset-0 bottom-[10vh]"
-                >
-                    <NuxtLinkLocale
-                        :key="ni"
-                        v-for="({ title, icon, style, link, lottie }, ni) in nav.bottom"
+                    <div
                         :class="[
-                            'main-nav-item group',
-                            ni === 0 || ni === nav.bottom.length - 1 ? 'm-b-8' : '',
-                            useRandomString([
-                                'animate-delay-200',
-                                'animate-delay-400',
-                                'animate-delay-600',
-                                'animate-delay-800',
-                                'animate-delay-1000'
-                            ])
+                            'main-nav-pop',
+                            ni % 2 === 0 ? 'left-full ml-4' : 'right-full mr-4',
+                            !loadTimeout ? '!flex-center animate-bounce-in opacity-100' : ''
                         ]"
-                        :to="link"
                     >
-                        <LottieAnimation
-                            v-if="lottie"
-                            :animationData="lottie"
-                            :class="[
-                                'main-nav-icon w-full h-full transform',
-                                useRandomString([
-                                    'group-hover:(rotate-360)',
-                                    'group-hover:(-rotate-360)',
-                                    'group-hover:(rotate-720)',
-                                    'group-hover:(-rotate-360)'
-                                ]),
-                                style
-                            ]"
-                            autoplay
-                            loop
-                        />
-
-                        <div
-                            :class="[
-                                'main-nav-pop bottom-full mb-4',
-                                !loadTimeout ? '!flex-center animate-bounce-in opacity-100' : ''
-                            ]"
-                        >
-                            {{ title }}
-                        </div>
-                    </NuxtLinkLocale>
-                </div>
+                        {{ title }}
+                    </div>
+                </NuxtLinkLocale>
             </div>
-        </ItemClip>
 
-        <TemplatePreload />
-    </LayoutDefault>
+            <div
+                class="flex flex-wrap gap-[5vmax] w-full self-end justify-center place-items-end inset-0 bottom-[10vh]"
+            >
+                <NuxtLinkLocale
+                    :key="ni"
+                    v-for="({ title, icon, style, link, lottie }, ni) in nav.bottom"
+                    :class="[
+                        'main-nav-item group',
+                        ni === 0 || ni === nav.bottom.length - 1 ? 'm-b-8' : '',
+                        useRandomString([
+                            'animate-delay-200',
+                            'animate-delay-400',
+                            'animate-delay-600',
+                            'animate-delay-800',
+                            'animate-delay-1000'
+                        ])
+                    ]"
+                    :to="link"
+                >
+                    <LottieAnimation
+                        v-if="lottie"
+                        :animationData="lottie"
+                        :class="[
+                            'main-nav-icon w-full h-full transform',
+                            useRandomString([
+                                'group-hover:(rotate-360)',
+                                'group-hover:(-rotate-360)',
+                                'group-hover:(rotate-720)',
+                                'group-hover:(-rotate-360)'
+                            ]),
+                            style
+                        ]"
+                        autoplay
+                        loop
+                    />
+
+                    <div
+                        :class="[
+                            'main-nav-pop bottom-full mb-4',
+                            !loadTimeout ? '!flex-center animate-bounce-in opacity-100' : ''
+                        ]"
+                    >
+                        {{ title }}
+                    </div>
+                </NuxtLinkLocale>
+            </div>
+        </div>
+    </ItemClip>
+
+    <TemplatePreload />
 </template>
 
 <script lang="ts" setup>
+definePageMeta({
+    layout: false
+})
+
 //const { localePath } = useI18n()
 
 const title = ref('Главная')
