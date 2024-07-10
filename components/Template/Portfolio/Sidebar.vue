@@ -27,7 +27,11 @@
                         :key="ti"
                     >
                         <h3 class="text-xl tracking-wider">{{ name }}</h3>
-                        <TemplatePortfolioMeter class="text-slate-300" :items="items" :visible="visible" />
+                        <TemplatePortfolioMeter
+                            class="text-slate-300"
+                            :items="items"
+                            :visible="visible"
+                        />
                     </div>
                 </div>
 
@@ -47,11 +51,12 @@
 const emit = defineEmits(['close'])
 
 const prop = defineProps({
-    qualities: { type: Object, default: [] },
-    competencies: { type: Object, default: [] },
-    skills: { type: Object, default: [] },
     visible: { type: Boolean, default: false }
 })
+
+const skills = usePayloadData('portfolio_skills').value?.filter((it) => it?.only !== 'select')
+const qualities = usePayloadData('portfolio_qualities')
+const competencies = usePayloadData('portfolio_competencies')
 </script>
 
 <style lang="scss">

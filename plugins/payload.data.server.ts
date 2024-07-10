@@ -1,4 +1,4 @@
-﻿export default defineNuxtPlugin((nuxtApp) => {
+﻿export default defineNuxtPlugin(async (nuxtApp) => {
     const i18n: any = nuxtApp?.$i18n
     const locales: [{ code: any; name: any }] = i18n.locales.value
     //const baseLocales = locales
@@ -15,6 +15,11 @@
         {
             path: 'portfolio/competencies',
             name: 'portfolio_competencies',
+            callback: (res: any) => res?.[0]?.body
+        },
+        {
+            path: 'portfolio/skills',
+            name: 'portfolio_skills',
             callback: (res: any) => res?.[0]?.body
         },
         {
@@ -51,27 +56,26 @@
         }
     ]
 
-    baseLocales.map((locale) => {
-        pw.map(async ({ name, path, many, callback = (res) => res }) => {
-            const payloadName = `content-pl-${locale}-${name}`
+    await Promise.all(
+        baseLocales.map(async (locale) => {
+            await Promise.all(
+                pw.map(async ({ name, path, many, callback = (res) => res }) => {
+                    const data = await queryContent(`/${locale}/${path}`)
+                        .where(
+                            !many
+                                ? {
+                                      _path: `/${locale}/${path}`
+                                  }
+                                : {}
+                        )
+                        .find()
+                        .then(callback)
+                        .catch(console.log)
 
-            console.log(locale, name, path)
-
-            const data = await queryContent(`/${locale}/${path}`)
-                .where(
-                    !many
-                        ? {
-                              _path: `/${locale}/${path}`
-                          }
-                        : {}
-                )
-                .find()
-                .then(callback)
-                .catch(console.log)
-
-            console.log({ [name]: data })
-
-            //nuxtApp.payload.data[name] =
+                    nuxtApp.payload.data[name] = data ?? []
+                    return true
+                })
+            )
         })
-    })
+    )
 })

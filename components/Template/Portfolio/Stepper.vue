@@ -96,13 +96,11 @@
 </template>
 
 <script setup>
-const prop = defineProps({
-    skills: { type: Object, default: [] }
-})
+const skills = usePayloadData('portfolio_skills')
 
 const [H1_SELECTIONS, H2_SELECTIONS, H3_SELECTIONS] = [
     ref(['Частный предприниматель', 'Фрилансер', 'Представитель организации']),
-    ref(prop?.skills?.map(({ title }) => title) ?? []),
+    ref(skills.value?.map(({ title }) => title) ?? []),
     ref([
         'Личный проект',
         'Заказ на фрилансе',
@@ -133,16 +131,6 @@ onMounted(() => {
     H2.value ??= STORAGE_H2.value?.split(',')?.filter((it) => !!it) ?? []
     H3.value ??= STORAGE_H3.value?.split(',')?.filter((it) => !!it) ?? []
 })
-
-//watch(STORAGE_H1, (value) => console.log((STORAGE_H1.value = value)))
-//watch(accordionVisible, () => {
-//    storageAccordionVisible.value = accordionVisible.value ?? 1
-//})
-//useLocalStorage('portfolio-h2-value') ??
-//prop.skills.reduce(
-//    (s, { title }) => (s = { ...s, [title]: false }) && s,
-//    {}
-//)
 </script>
 
 <style lang="scss">

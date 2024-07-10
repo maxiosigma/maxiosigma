@@ -1,34 +1,29 @@
 ﻿<template>
-    <div class="aaa"></div>
+    <div
+        class="container transition-all duration-1000 pt-20 gap-20 w-full h-full flex flex-col justify-between"
+    >
+        <TemplatePortfolioTopProjects />
+        <TemplatePortfolioStepper />
+    </div>
+
+    <div class="flex flex-col fixed right-0 top-auto h-full">
+        <PrimeButton
+            class="my-auto p-1.5 !rounded-r-none bg-self-4"
+            severity="success"
+            @click="sidebarVisible = true"
+            v-tooltip="'About'"
+        >
+            <Icon name="solar:map-arrow-left-bold" size="25px" />
+        </PrimeButton>
+    </div>
+
+    <TemplatePortfolioSidebar :visible="sidebarVisible" @close="sidebarVisible = !sidebarVisible" />
 </template>
 
 <script setup>
 const title = ref('Портфолио')
 const storageSidebarVisible = useLocalStorage('sidebar-visible')
 const sidebarVisible = ref(useLocalStorageBoolean(storageSidebarVisible.value))
-
-//const skillsPayload = await usePayloadData({
-//    name: 'portfolio-skills',
-//    path: 'skills'
-//})
-
-//const skillsPayloadSidebar = skillsPayload.value?.filter((it) => it?.only !== 'select')
-
-//const qualitiesPayload = await usePayloadData({
-//    name: 'portfolio-qualities',
-//    path: 'qualities'
-//})
-
-//const competenciesPayload = await usePayloadData({
-//    name: 'portfolio-competencies',
-//    path: 'competencies'
-//})
-
-//const worksHotPayload = await usePayloadData({
-//    name: 'portfolio-works',
-//    path: 'works',
-//    callback: (items) => items?.body?.filter(({ top }) => top === true) ?? []
-//})
 
 watch(
     () => sidebarVisible.value,
