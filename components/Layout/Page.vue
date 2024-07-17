@@ -4,7 +4,6 @@
 
 <script setup>
 const setPageClass = (style) => {
-    console.log(style)
     useClassApp(document, style)
 }
 </script>

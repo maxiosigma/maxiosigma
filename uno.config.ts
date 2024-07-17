@@ -130,9 +130,12 @@ export default defineConfig({
     },
     presets: [
         //
-        presetUno(),
+        presetUno({
+            variablePrefix: 'wind'
+        }),
         presetWind({
-            important: true
+            important: true,
+            variablePrefix: 'wind'
         }),
         presetHeroPatterns(),
         //presetAttributify(),
