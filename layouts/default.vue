@@ -3,14 +3,17 @@
 </template>
 
 <script setup>
-const setPageClass = (style) => {
-    if (!!document) {
-        const baseAppClass = document.querySelector('#app').getAttribute('class')
+defineOptions({ inheritAttrs: false })
+const prop = useAttrs()
 
-        if (!document.querySelector('#app').className.includes(style))
-            document.querySelector('#app').className = `${baseAppClass} ${style}`
-    }
+const setPageClass = (style) => {
+    useNuxtApp().payload.data['stylePage'] = style
+    useClassApp(document, style)
 }
+
+useHead({
+    ...(prop?.title ? { title: prop?.title } : {})
+})
 
 //  <!--<TemplatePreload />-->
 
@@ -57,5 +60,3 @@ const setPageClass = (style) => {
     @apply flex flex-grow flex-col max-w-[100vw] h-full relative justify-between;
 }
 </style>
-
-

@@ -15,7 +15,11 @@ export default defineNuxtConfig({
 
     app: {
         buildAssetsDir: '/public/',
-        rootAttrs: { class: 'wrapper', id: 'app' }
+        rootAttrs: { class: 'wrapper', id: 'app' },
+        head: {
+            charset: 'utf-8',
+            viewport: 'width=device-width, initial-scale=1'
+        }
     },
 
     alias: {

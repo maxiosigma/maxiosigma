@@ -1,11 +1,16 @@
 ﻿<template>
-    <slot />
+    <slot :onload="setPageClass($style.body)" />
 </template>
 
-<script setyp>
-//
+<script setup>
+const setPageClass = (style) => {
+    console.log(style)
+    useClassApp(document, style)
+}
 </script>
 
-<style lang="scss">
-//
+<style module>
+.body {
+    @apply bg-self-3;
+}
 </style>

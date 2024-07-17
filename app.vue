@@ -1,16 +1,29 @@
 ﻿<template>
     <NuxtLayout>
-        <NuxtLoadingIndicator />
         <NuxtPage />
-        <!--<ItemToast />-->
     </NuxtLayout>
 </template>
 
 <script setup>
+// <ItemToast />
+// <NuxtLoadingIndicator />
 const { localeProperties: lp, locales, locale } = useI18n()
 
 defineI18nRoute({
     locales: locales.value.filter(({ code }) => code !== 'index').map(({ code }) => code)
+})
+
+useHead({
+    htmlAttrs: {
+        class: 'html'
+    },
+    bodyAttrs: {
+        class: 'body'
+    },
+    titleTemplate: (title) => {
+        return `SIGMA ‡ ${title || 'Page ' + useRandomInt(1000, 99999)}`
+    },
+    meta: []
 })
 
 //const lang = ref(lp.value.code)
