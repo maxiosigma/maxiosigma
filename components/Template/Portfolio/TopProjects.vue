@@ -6,7 +6,6 @@
             :class="[$style['multi-border']]"
             scrollable
         >
-            <!-- scrollable -->
             <PrimeTabList>
                 <PrimeTab
                     class="f-text-14-24"

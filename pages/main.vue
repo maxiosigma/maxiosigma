@@ -207,6 +207,10 @@ onMounted(() => {
         loadTimeout.value = true
     }, 5000)
 })
+
+useHead({
+    title
+})
 </script>
 
 <style lang="scss">

@@ -6,9 +6,7 @@
 defineI18nRoute(false)
 
 const { locales, defaultLocale, setLocale } = useI18n()
-const vueLangs = locales.value
-    .filter(({ code }) => code !== 'index')
-    .map(({ code }) => code)
+const vueLangs = locales.value.filter(({ code }) => code !== 'index').map(({ code }) => code)
 
 onMounted(() => {
     const navLangs = navigator.languages.filter(
