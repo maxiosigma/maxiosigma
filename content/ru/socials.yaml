@@ -1,14 +1,67 @@
-﻿- ВК: https://vk.com/maxiosigma
-- Телеграм: https://t.me/maxiosigma
-- Ватсап: https://wa.me/message/XAL2G63EC7A5I1
-- Ютуб: https://www.youtube.com/channel/UC23sONwCUL2dUY7IjcR-vhg
-- Авито: https://www.avito.ru/user/e639c9c50ef152b701d4dc1f738a8d8f/profile
-- Дзен: https://zen.yandex.ru/maxibisness
-- Дискорд: https://discord.gg/hngkwZ5MFb
-- Фейсбук: https://www.facebook.com/maxiosigma
-- Инстаграм: https://www.instagram.com/maxiosigma
-- ТикТок: https://www.tiktok.com/@maxiosigma
-- Амеба: https://ameblo.jp/maxiosigma
-- Микси: https://mixi.jp/show_profile.pl?id=68085802
-- Твиттер: https://twitter.com/maxiosigma
-- Тумблер: https://www.tumblr.com/blog/maxiosigma
+﻿- name: ВК
+  icon: entypo-social:vk
+  link: https://vk.com/maxiosigma
+
+- name: Телеграм
+  icon: simple-icons:telegram
+  link: https://t.me/maxiosigma
+
+- name: Ватсап
+  icon: hugeicons:whatsapp-business
+  link: https://wa.me/message/XAL2G63EC7A5I1
+
+- name: Ютуб
+  icon: simple-icons:youtubekids
+  link: https://www.youtube.com/channel/UC23sONwCUL2dUY7IjcR-vhg
+
+- name: Авито
+  icon: me:avito
+  link: https://www.avito.ru/user/e639c9c50ef152b701d4dc1f738a8d8f/profile
+
+- name: Дзен
+  icon: gravity-ui:logo-yandex
+  link: https://dzen.ru/maxiosigma_business
+
+- name: Дискорд
+  icon: akar-icons:discord-fill
+  link: https://discord.gg/hngkwZ5MFb
+
+- name: Фейсбук
+  icon: entypo-social:facebook
+  link: https://www.facebook.com/maxiosigma
+
+- name: Инстаграм
+  icon: entypo-social:instagram
+  link: https://www.instagram.com/maxiosigma
+
+- name: ТикТок
+  icon: simple-icons:tiktok
+  link: https://www.tiktok.com/@maxiosigma
+
+- name: Амеба
+  icon: simple-icons:ameba
+  link: https://ameblo.jp/maxiosigma
+
+- name: Микси
+  icon: entypo-social:mixi
+  link: https://mixi.jp/show_profile.pl?id=68085802
+
+- name: Твиттер
+  icon: entypo-social:twitter
+  link: https://twitter.com/maxiosigma
+
+- name: Тумблер
+  icon: entypo-social:tumblr
+  link: https://www.tumblr.com/blog/maxiosigma
+
+- name: Пинтерест
+  icon: entypo-social:pinterest-with-circle
+  link: https://ru.pinterest.com/maxiosigma
+
+- name: Тенчат
+  icon: me:tenchat
+  link: https://tenchat.ru/maxiosigma
+
+- name: Син
+  icon: entypo-social:xing
+  link: https://www.xing.com/profile/user_089531/web_profiles

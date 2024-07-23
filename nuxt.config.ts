@@ -129,6 +129,15 @@ export default defineNuxtConfig({
         locales
     },
 
+    icon: {
+        customCollections: [
+            {
+                prefix: 'me',
+                dir: './assets/icons'
+            }
+        ]
+    },
+
     content: {
         api: {
             baseURL: '/content-api/_content'

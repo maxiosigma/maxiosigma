@@ -53,6 +53,16 @@
             name: 'referrers',
             callback: (res: any) => res,
             many: true
+        },
+        {
+            path: 'nav',
+            name: 'nav',
+            callback: (res: any) => res?.[0]?.body
+        },
+        {
+            path: 'socials',
+            name: 'socials',
+            callback: (res: any) => res?.[0]?.body
         }
     ]
 
