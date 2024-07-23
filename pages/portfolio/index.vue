@@ -31,6 +31,10 @@ watch(
         storageSidebarVisible.value = sidebarVisible.value
     }
 )
+
+useHead({
+    title: 'Портфолио'
+})
 </script>
 
 <style lang="scss">
