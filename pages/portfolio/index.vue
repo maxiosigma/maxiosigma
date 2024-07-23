@@ -5,33 +5,45 @@
                 <Icon name="material-symbols:logo-dev" class="text-5xl"></Icon>
             </div>
 
-            <div
-                class="flex flex-center flex-wrap gap-4.5 max-h-60vh p-0.5 -mr-4 overflow-overlay scrollbar-thumb-color-amber scrollbar-track-color-skyblue scrollbar-w-24 *:min-w-[35%] *:flex-center"
+            <!-- page-scroll -->
+            <PrimeScrollPanel
+                class="max-h-60vh p-0.5 -mr-4 py-4 b-t-8 b-b-8 b-self-2"
+                :dt="{
+                    bar: {
+                        background: '{primary.color}'
+                    }
+                }"
             >
-                <div
-                    class="flex-center flex-col b-2 px-2 py-1 b-self-2 rounded-lg"
-                    v-for="it in [
-                        { name: '1', link: '', icon: '' },
-                        { name: '2', link: '', icon: '' },
-                        { name: '3', link: '', icon: '' },
-                        { name: '4', link: '', icon: '' },
-                        { name: '5', link: '', icon: '' },
-                        { name: '6', link: '', icon: '' },
-                        { name: '7', link: '', icon: '' },
-                        { name: '8', link: '', icon: '' },
-                        { name: '9', link: '', icon: '' },
-                        { name: '10', link: '', icon: '' },
-                        { name: '11', link: '', icon: '' },
-                        { name: '12', link: '', icon: '' },
-                        { name: '13', link: '', icon: '' },
-                        { name: '14', link: '', icon: '' },
-                        { name: '15', link: '', icon: '' },
-                        { name: '16', link: '', icon: '' }
-                    ]"
-                >
-                    <Icon :name="it?.icon || 'ph:github-logo-fill'" class="text-6xl"></Icon>
-                    <div class="text-self-7">{{ it.name }}</div>
+                <div class="flex flex-center flex-wrap gap-4.5">
+                    <div
+                        class="flex-center flex-col min-w-[40%] b-2 p-1 b-self-2 rounded-lg"
+                        v-for="it in [
+                            { name: '1', link: '', icon: '' },
+                            { name: '2', link: '', icon: '' },
+                            { name: '3', link: '', icon: '' },
+                            { name: '4', link: '', icon: '' },
+                            { name: '5', link: '', icon: '' },
+                            { name: '6', link: '', icon: '' },
+                            { name: '7', link: '', icon: '' },
+                            { name: '8', link: '', icon: '' },
+                            { name: '9', link: '', icon: '' },
+                            { name: '10', link: '', icon: '' },
+                            { name: '11', link: '', icon: '' },
+                            { name: '12', link: '', icon: '' },
+                            { name: '13', link: '', icon: '' },
+                            { name: '14', link: '', icon: '' },
+                            { name: '15', link: '', icon: '' },
+                            { name: '16', link: '', icon: '' }
+                        ]"
+                    >
+                        <Icon :name="it?.icon || 'ph:github-logo-fill'" class="text-6xl"></Icon>
+                        <div class="text-self-7">{{ it.name }}</div>
+                    </div>
                 </div>
+            </PrimeScrollPanel>
+
+            <div class="flex-center flex-wrap">
+                <div v-for="it in [{}, {}, {}, {}, {}]"></div>
             </div>
         </div>
 
@@ -160,5 +172,9 @@ useHead({
         -webkit-clip-path: inset(0 0 0 98%);
         clip-path: inset(0 0 0 98%);
     }
+}
+
+.p-scrollpanel-bar.p-scrollpanel-bar-y {
+    @apply bg-self-7;
 }
 </style>
