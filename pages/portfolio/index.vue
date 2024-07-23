@@ -6,10 +6,10 @@
             </div>
 
             <div
-                class="flex flex-center flex-wrap gap-4 max-h-60vh -mr-4 overflow-auto scrollbar-thumb-color-amber scrollbar-track-color-skyblue scrollbar-w-24 *:min-w-[35%] *:flex-center"
+                class="flex flex-center flex-wrap gap-4.5 max-h-60vh p-0.5 -mr-4 overflow-overlay scrollbar-thumb-color-amber scrollbar-track-color-skyblue scrollbar-w-24 *:min-w-[35%] *:flex-center"
             >
                 <div
-                    class="flex-center flex-col"
+                    class="flex-center flex-col b-2 px-2 py-1 b-self-2 rounded-lg"
                     v-for="it in [
                         { name: '1', link: '', icon: '' },
                         { name: '2', link: '', icon: '' },
@@ -25,7 +25,8 @@
                         { name: '12', link: '', icon: '' },
                         { name: '13', link: '', icon: '' },
                         { name: '14', link: '', icon: '' },
-                        { name: '15', link: '', icon: '' }
+                        { name: '15', link: '', icon: '' },
+                        { name: '16', link: '', icon: '' }
                     ]"
                 >
                     <Icon :name="it?.icon || 'ph:github-logo-fill'" class="text-6xl"></Icon>
