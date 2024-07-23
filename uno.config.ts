@@ -11,6 +11,7 @@ import { presetHeroPatterns } from '@julr/unocss-preset-heropatterns'
 import { presetGridAreas } from 'unocss-preset-grid-areas'
 //import presetLegacyCompat from '@unocss/preset-legacy-compat'
 import { presetUseful } from 'unocss-preset-useful'
+import { presetScrollbar } from 'unocss-preset-scrollbar'
 //import presetRemToPx from '@unocss/preset-rem-to-px'
 //https://renatomoor.github.io/unocss-preset-fluid/utilities.html
 import { presetFluid } from 'unocss-preset-fluid'
@@ -134,7 +135,7 @@ export default defineConfig({
             variablePrefix: 'wind'
         }),
         presetWind({
-            important: true,
+            //important: true,
             variablePrefix: 'wind'
         }),
         presetHeroPatterns(),
@@ -151,8 +152,11 @@ export default defineConfig({
                 layout: ['header header header', 'nav main main', 'nav footer footer']
             }
         }),
-        presetFluid()
+        presetFluid(),
         //presetEase()
+        presetScrollbar({
+            // config
+        })
     ],
 
     transformers: [

@@ -1,14 +1,47 @@
 ﻿<template>
-    <div
-        class="container transition-all duration-1000 pt-20 gap-20 w-full h-full flex flex-col justify-between"
-    >
-        <!--<TemplatePortfolioTopProjects />-->
-        <!--<TemplatePortfolioStepper />-->
-    </div>
+    <LayoutPage class="portfolio">
+        <div class="fixed bg-self-1 h-full w-25vw overflow-hidden max-h-screen pr-4">
+            <div class="flex-center h-25vh py-8">
+                <Icon name="material-symbols:logo-dev" class="text-5xl"></Icon>
+            </div>
 
-    <div class=""></div>
+            <div
+                class="flex flex-center flex-wrap gap-4 max-h-60vh -mr-4 overflow-auto scrollbar-thumb-color-amber scrollbar-track-color-skyblue scrollbar-w-24 *:min-w-[35%] *:flex-center"
+            >
+                <div
+                    class="flex-center flex-col"
+                    v-for="it in [
+                        { name: '1', link: '', icon: '' },
+                        { name: '2', link: '', icon: '' },
+                        { name: '3', link: '', icon: '' },
+                        { name: '4', link: '', icon: '' },
+                        { name: '5', link: '', icon: '' },
+                        { name: '6', link: '', icon: '' },
+                        { name: '7', link: '', icon: '' },
+                        { name: '8', link: '', icon: '' },
+                        { name: '9', link: '', icon: '' },
+                        { name: '10', link: '', icon: '' },
+                        { name: '11', link: '', icon: '' },
+                        { name: '12', link: '', icon: '' },
+                        { name: '13', link: '', icon: '' },
+                        { name: '14', link: '', icon: '' },
+                        { name: '15', link: '', icon: '' }
+                    ]"
+                >
+                    <Icon :name="it?.icon || 'ph:github-logo-fill'" class="text-6xl"></Icon>
+                    <div class="text-self-7">{{ it.name }}</div>
+                </div>
+            </div>
+        </div>
 
-    <!--<div class="flex flex-col fixed right-0 top-auto h-full">
+        <div
+            class="container transition-all duration-1000 pt-20 gap-20 w-full h-full flex flex-col justify-between"
+        >
+            <!--<TemplatePortfolioTopProjects />-->
+            <!--<TemplatePortfolioStepper />-->
+        </div>
+
+        <!--<div class="flex flex-col fixed right-0 top-auto h-full">
         <PrimeButton
             class="my-auto p-1.5 h-full rounded-none bg-self-4/50"
             severity="success"
@@ -20,9 +53,12 @@
     </div>
 
     <TemplatePortfolioSidebar :visible="sidebarVisible" @close="sidebarVisible = !sidebarVisible" />-->
+    </LayoutPage>
 </template>
 
 <script setup>
+//https://blocks.primevue.org/application/sidebarlayout
+
 const title = ref('Портфолио')
 const storageSidebarVisible = useLocalStorage('sidebar-visible')
 const sidebarVisible = ref(useLocalStorageBoolean(storageSidebarVisible.value))
@@ -40,6 +76,9 @@ useHead({
 </script>
 
 <style lang="scss">
+.portfolio {
+    @apply flex-row;
+}
 .p-stepper {
     flex-basis: 100%;
 }

@@ -3,8 +3,11 @@
 </template>
 
 <script setup>
+const prop = defineProps(['class'])
+
 const setPageClass = (style) => {
     useClassApp(document, style)
+    if (prop?.class) useClassApp(document, prop.class)
 }
 </script>
 
