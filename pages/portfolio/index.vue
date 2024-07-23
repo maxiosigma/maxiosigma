@@ -6,9 +6,11 @@
         <!--<TemplatePortfolioStepper />-->
     </div>
 
-    <div class="flex flex-col fixed right-0 top-auto h-full">
+    <div class=""></div>
+
+    <!--<div class="flex flex-col fixed right-0 top-auto h-full">
         <PrimeButton
-            class="my-auto p-1.5 !rounded-r-none bg-self-4"
+            class="my-auto p-1.5 h-full rounded-none bg-self-4/50"
             severity="success"
             @click="sidebarVisible = true"
             v-tooltip="'About'"
@@ -17,7 +19,7 @@
         </PrimeButton>
     </div>
 
-    <TemplatePortfolioSidebar :visible="sidebarVisible" @close="sidebarVisible = !sidebarVisible" />
+    <TemplatePortfolioSidebar :visible="sidebarVisible" @close="sidebarVisible = !sidebarVisible" />-->
 </template>
 
 <script setup>
@@ -87,6 +89,10 @@ useHead({
     top: -2px;
     transition: all 3.5s;
     z-index: -1;
+}
+
+.p-button-success:not(:disabled):hover {
+    @apply b-0 b-none filter;
 }
 
 .box-animate:after {
