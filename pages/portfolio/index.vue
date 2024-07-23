@@ -2,8 +2,8 @@
     <div
         class="container transition-all duration-1000 pt-20 gap-20 w-full h-full flex flex-col justify-between"
     >
-        <TemplatePortfolioTopProjects />
-        <TemplatePortfolioStepper />
+        <!--<TemplatePortfolioTopProjects />-->
+        <!--<TemplatePortfolioStepper />-->
     </div>
 
     <div class="flex flex-col fixed right-0 top-auto h-full">
@@ -33,7 +33,7 @@ watch(
 )
 
 useHead({
-    title: 'Портфолио'
+    title
 })
 </script>
 
