@@ -36,14 +36,41 @@
                             { name: '16', link: '', icon: '' }
                         ]"
                     >
-                        <Icon :name="it?.icon || 'ph:github-logo-fill'" class="text-6xl"></Icon>
+                        <Icon
+                            :name="it?.icon || 'ph:github-logo-fill'"
+                            class="text-6xl opacity-25"
+                        ></Icon>
                         <div class="text-self-7">{{ it.name }}</div>
                     </div>
                 </div>
             </PrimeScrollPanel>
 
-            <div class="flex-center flex-wrap">
-                <div v-for="it in [{}, {}, {}, {}, {}]"></div>
+            <div class="flex-center flex-wrap p-4">
+                <div
+                    v-for="it in [
+                        { name: '1', link: '', icon: '' },
+                        { name: '2', link: '', icon: '' },
+                        { name: '3', link: '', icon: '' },
+                        { name: '4', link: '', icon: '' },
+                        { name: '5', link: '', icon: '' },
+                        { name: '6', link: '', icon: '' },
+                        { name: '7', link: '', icon: '' },
+                        { name: '8', link: '', icon: '' },
+                        { name: '9', link: '', icon: '' },
+                        { name: '10', link: '', icon: '' },
+                        { name: '11', link: '', icon: '' },
+                        { name: '12', link: '', icon: '' },
+                        { name: '13', link: '', icon: '' },
+                        { name: '14', link: '', icon: '' },
+                        { name: '15', link: '', icon: '' },
+                        { name: '16', link: '', icon: '' }
+                    ]"
+                >
+                    <Icon
+                        :name="it?.icon || 'ph:github-logo-fill'"
+                        class="text-xl opacity-25"
+                    ></Icon>
+                </div>
             </div>
         </div>
 
