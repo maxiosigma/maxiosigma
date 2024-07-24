@@ -1,6 +1,6 @@
 ﻿<template>
     <div class="bg-self-1 flex flex-col justify-between w-25vw overflow-hidden h-screen pr-4">
-        <div class="flex-center py-14">
+        <div class="flex-center py-4">
             <Icon name="material-symbols:logo-dev" class="text-5xl"></Icon>
         </div>
 
