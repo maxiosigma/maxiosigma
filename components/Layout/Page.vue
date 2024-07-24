@@ -1,9 +1,11 @@
 ﻿<template>
+    <BaseNavSidebar :items="navItems" />
+
     <slot :onload="setPageClass($style.body)" />
 </template>
 
 <script setup>
-const prop = defineProps(['class'])
+const prop = defineProps(['class', 'navItems'])
 
 const setPageClass = (style) => {
     useClassApp(document, style)

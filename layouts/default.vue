@@ -57,6 +57,6 @@ useHead({
 
 <style module>
 .page {
-    @apply flex flex-grow flex-col max-w-[100vw] h-full relative justify-between;
+    @apply flex flex-grow flex-col max-w-100vw h-full relative justify-between;
 }
 </style>

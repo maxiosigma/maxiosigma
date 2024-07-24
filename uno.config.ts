@@ -126,6 +126,7 @@ export default defineConfig({
                 './node_modules/primevue/**/*.{vue,js,ts,jsx,tsx}',
                 'components/**/*.{js,vue,ts}',
                 'components/*.{js,vue,ts}',
+                'layouts/*.{js,vue,ts}',
                 'pages/**/*.{js,vue,ts}',
                 'pages/*.{js,vue,ts}'
             ]
