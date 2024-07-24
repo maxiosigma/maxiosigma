@@ -1,5 +1,5 @@
 ﻿<template>
-    <LayoutPage class="portfolio" :navItems="worksCategories">
+    <LayoutPage class="portfolio" :navItems="worksCategories" @clickNav="(e) => console.log(e)">
         <div
             class="container transition-all duration-1000 pt-20 gap-20 w-full h-full flex flex-col justify-between"
         >
@@ -30,14 +30,6 @@ const storageSidebarVisible = useLocalStorage('sidebar-visible')
 const sidebarVisible = ref(useLocalStorageBoolean(storageSidebarVisible.value))
 
 const worksCategories = usePayloadData('portfolio_works_categories')
-
-await callOnce(async () => {
-    console.log(worksCategories.value)
-    //worksCategories.value = worksCategories.value.map((it) => ({
-    //    ...it,
-    //    callback: () => it.title
-    //}))
-})
 
 watch(
     () => sidebarVisible.value,

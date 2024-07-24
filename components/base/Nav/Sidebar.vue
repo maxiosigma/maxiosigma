@@ -18,10 +18,10 @@
             <div class="grid grid-cols-2 justify-center gap-4.5 px-4">
                 <NuxtLink
                     class="flex-center flex-col b-2 p-1 b-self-2 rounded-lg overflow-clip cursor-pointer group"
-                    v-for="({ title, icon, link, lottie, style, callback, bg }, ni) in nav"
+                    v-for="({ title, icon, link, lottie, style, slug, bg }, ni) in nav"
                     :class="[bg ? 'b-self-3' : '']"
                     :to="link"
-                    @click="!link ? callback : null"
+                    @click="!link ? $parent.$emit('clickNav', slug) : null"
                 >
                     <Icon
                         :name="icon || 'ph:github-logo-fill'"

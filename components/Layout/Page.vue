@@ -1,4 +1,5 @@
 ﻿<template>
+    <!-- @clickNav="(e) => console.log(e)"  -->
     <BaseNavSidebar :items="navItems" />
 
     <slot :onload="setPageClass($style.body)" />
