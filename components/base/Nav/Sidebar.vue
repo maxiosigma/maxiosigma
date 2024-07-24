@@ -1,6 +1,6 @@
 ﻿<template>
     <div
-        class="bg-self-1 flex flex-col justify-between flex-grow-1 min-w-220px w-35vw overflow-hidden h-screen pr-4"
+        class="bg-self-1 flex flex-col justify-between min-w-220px w-35vw overflow-hidden h-screen pr-4"
     >
         <div class="flex-center py-8 px-4 grow-0">
             <!--<Icon name="material-symbols:logo-dev" class="text-5xl"></Icon>-->
@@ -58,9 +58,9 @@
 
             <div
                 :class="[
-                    'flex-center flex-wrap items-start gap-2 overflow-hidden',
+                    'flex-center flex-wrap items-start f-gap-8-16 gap-2 overflow-hidden',
                     // transition-all duration-1000 delay-1000
-                    !storeSideSocials ? '!mt-0 !p-0 !gap-0 !h-0' : 'p-4'
+                    !storeSideSocials ? '!mt-0 !p-0 !gap-0 !h-0' : 'f-py-8-32 p-4'
                 ]"
             >
                 <NuxtLink

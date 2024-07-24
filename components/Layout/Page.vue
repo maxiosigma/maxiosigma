@@ -1,7 +1,16 @@
 ﻿<template>
     <BaseNavSidebar :items="navItems" />
 
-    <slot :onload="setPageClass($style.body)" />
+    <PrimeScrollPanel
+        class="max-h-100vh h-full w-full overflow-hidden"
+        :dt="{
+            bar: {
+                background: '{primary.color}'
+            }
+        }"
+    >
+        <slot :onload="setPageClass($style.body)" />
+    </PrimeScrollPanel>
 </template>
 
 <script setup>

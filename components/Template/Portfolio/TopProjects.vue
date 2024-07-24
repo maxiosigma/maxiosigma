@@ -1,35 +1,20 @@
 ﻿<template>
-    <section class="flex gap-20 relative overflow-hidden">
-        <PrimeTabs
-            value="1"
-            class="flex w-full p-4 border-2 border-self-2 rounded-2xl"
-            :class="[$style['multi-border']]"
-            scrollable
-        >
-            <PrimeTabList>
-                <PrimeTab
-                    class="f-text-14-24"
-                    v-for="(category, ci) in worksCategories"
-                    :key="`tab_${category.slug}_${ci}`"
-                    :value="`${ci + 1}`"
-                >
-                    {{ category.title }}
-                </PrimeTab>
-            </PrimeTabList>
+    <div class="flex flex-col gap-5 relative">
+        <div :class="[!category ? '' : 'hidden']">
+            <div>aaa</div>
+        </div>
 
-            <PrimeTabPanels>
-                <PrimeTabPanel
-                    class="transition-all duration-300 text-gray-400 bg-self-1 group"
-                    v-for="(category, ci) in worksCategories"
-                    :key="`panel_${category.slug}_${ci}`"
-                    :value="`${ci + 1}`"
-                >
-                    <div
-                        v-for="work in works
-                            .filter((w) => !!w.category && w.category === category.slug)
-                            .filter((w) => !!w)"
-                    >
-                        <!--<div
+        <div
+            :class="[category && worksFilter.length === 0 ? 'flex-center w-full h-90vh' : 'hidden']"
+        >
+            <div class="uppercase font-bold">На данный момент работ по текущей категории нет</div>
+        </div>
+
+        <div
+            :class="[category && worksFilter.length > 0 ? '' : 'hidden']"
+            v-for="work in worksFilter"
+        >
+            <!--<div
                             class="relative z-0 overflow-hidden <md:(max-h-45vmin) md:(min-w-3/8 max-w-3/8)"
                         >
                             <ItemMediaImg
@@ -38,35 +23,34 @@
                             />
                         </div>-->
 
-                        <div class="flex flex-col py-4 pr-4 self-center flex-grow gap-4">
-                            <div class="f-text-16-28 text-self-4">
-                                {{ work.title }}
+            <div class="flex flex-col bg-self-2 rounded-lg py-4 self-center flex-grow gap-4">
+                <div class="f-text-16-28 text-self-4 px-4">
+                    {{ work.title }}
+                </div>
 
-                                <a @click.default="clicked(work.link)">
-                                    <Icon
-                                        class="f-text-12-24 text-self-5 text-shadow-lg text-shadow-color-self-5 transition-all duration-200 cursor-pointer hover:(text-self-6)"
-                                        name="ph:paper-plane-right-bold"
-                                    />
-                                </a>
-                            </div>
+                <div class="f-text-12-24 b-t-2 b-b-2 b-self-3 py-1 px-4">
+                    {{ work.description }}
+                </div>
 
-                            <div class="f-text-12-24">{{ work.description }}</div>
-                            <!--
-                            <PrimeButton v-if="work.link" class="self-start !px-1.5 !py-1">
-                                Посмотреть →
-                            </PrimeButton>-->
-                        </div>
-                    </div>
-                </PrimeTabPanel>
-            </PrimeTabPanels>
-        </PrimeTabs>
-    </section>
+                <PrimeButton
+                    v-if="work.link"
+                    @click="clicked(work.link)"
+                    class="self-start !py-1 mx-4"
+                >
+                    Посмотреть →
+                </PrimeButton>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script setup>
-const prop = defineProps(['works'])
-const worksCategories = usePayloadData('portfolio_works_categories')
+const prop = defineProps(['works', 'category'])
 const works = usePayloadData('portfolio_works_top')
+
+const worksFilter = computed(() =>
+    works.value.filter((w) => !!w.category && w.category === prop.category).filter((w) => !!w)
+)
 
 const clicked = (href) => {
     const link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a')

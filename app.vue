@@ -167,4 +167,10 @@ body {
         }
     }
 }
+
+.p-scrollpanel-bar.p-scrollpanel-bar-y {
+    //@apply bg-self-3 mix-blend-screen;
+    //@apply bg-self-3 mix-blend-exclusion;
+    @apply bg-self-3 mix-blend-difference;
+}
 </style>

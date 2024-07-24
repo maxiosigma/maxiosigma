@@ -1,10 +1,7 @@
 ﻿<template>
     <LayoutPage class="portfolio" :navItems="worksCategories" @clickNav="(e) => (category = e)">
-        <div
-            class="container transition-all duration-1000 pt-20 gap-20 w-full h-full flex flex-col justify-between"
-        >
-            {{ category }}
-            <TemplatePortfolioTopProjects />
+        <div class="container transition-all flex-grow-1 duration-1000 py-8">
+            <TemplatePortfolioTopProjects :category="category" />
             <!--<TemplatePortfolioStepper />-->
         </div>
 
@@ -129,9 +126,5 @@ useHead({
         -webkit-clip-path: inset(0 0 0 98%);
         clip-path: inset(0 0 0 98%);
     }
-}
-
-.p-scrollpanel-bar.p-scrollpanel-bar-y {
-    @apply bg-self-7;
 }
 </style>
