@@ -1,6 +1,65 @@
-﻿- name: Главная
+﻿- title: Главная
   icon:
   link: /
-- name: Главная
-  icon:
-  link: /
+  lottie:
+  style:
+
+- title: Предложения
+  icon: bx:bxs-offer
+  link: /offers
+  lottie: offers
+  style:
+
+- title: Подарки
+  icon: streamline:shopping-gift-reward-box-social-present-gift-media-rating-bow
+  link: /presents
+  lottie: presents
+  style:
+
+- title: Документы
+  icon: oui:documentation
+  link: /documents
+  lottie: documents
+  style: scale-140
+
+- title: Новости
+  icon: iconamoon:news-fill
+  link: /news
+  lottie: news
+  style:
+
+- title: Бренды
+  icon: tabler:brand-github-filled
+  link: /brands
+  lottie: brands
+  style: scale-70
+
+- title: Контакты
+  icon: ri:contacts-line
+  link: /contacts
+  lottie: contacts
+  style: scale-80
+
+- title: Проекты
+  icon: bi:person-workspace
+  link: /projects
+  lottie: projects
+  style: scale-80
+
+- title: Услуги
+  icon: f7:rays
+  link: /services
+  lottie: services
+  style: scale-110
+
+- title: F.A.Q
+  icon: bi:patch-question
+  link: /questions
+  lottie: questions
+  style:
+
+- title: Отзывы
+  icon: carbon:star-review
+  link: /reviews
+  lottie: reviews
+  style: scale-190
