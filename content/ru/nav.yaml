@@ -1,5 +1,5 @@
 ﻿- title: Главная
-  icon:
+  icon: material-symbols:home
   link: /
   lottie:
   style:

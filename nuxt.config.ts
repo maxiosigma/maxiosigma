@@ -77,17 +77,15 @@ export default defineNuxtConfig({
     },
 
     modules: [
-        '@nuxtjs/i18n',
-        '@nuxt/content',
-
         '@unocss/nuxt',
         '@formkit/nuxt',
         '@nuxt/icon',
-
+        '@nuxtjs/i18n',
+        '@nuxt/content',
         '@primevue/nuxt-module',
-
         '@nuxtjs/device',
-        '@vueuse/nuxt'
+        '@vueuse/nuxt',
+        "@nuxt/eslint"
     ],
 
     primevue: {

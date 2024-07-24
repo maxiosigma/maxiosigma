@@ -1,12 +1,23 @@
 ﻿- title: Разработка
+  icon: fluent:developer-board-16-filled
   slug: develop
+
 - title: Дизайн
+  icon: mdi:creation
   slug: design
+
 - title: 3D
+  icon: streamline:interface-lighting-brightness-3-bright-adjust-brightness-adjustment-sun-raise-controls-dot-small
   slug: threedimensional
+
 - title: Копирайтинг
+  icon: icon-park-solid:writing-fluently
   slug: copywriting
+
 - title: Медиа
+  icon: simple-icons:mediamarkt
   slug: media
+
 - title: Поддержка
+  icon: streamline:computer-desktop-help-device-help-information-display-computer-desktop-question-info
   slug: support

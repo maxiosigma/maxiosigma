@@ -1,80 +1,79 @@
 ﻿<template>
     <div class="bg-self-1 flex flex-col justify-between w-25vw overflow-hidden h-screen pr-4">
-        <div class="flex-center py-4">
-            <Icon name="material-symbols:logo-dev" class="text-5xl"></Icon>
+        <div class="flex-center py-8 px-4 grow-0">
+            <!--<Icon name="material-symbols:logo-dev" class="text-5xl"></Icon>-->
+            <ItemMediaImg :class="['w-full h-full']" src="main/signature.webp" />
         </div>
 
-        <!-- page-scroll -->
         <PrimeScrollPanel
-            class="h-full grow-1 p-0.5 -mr-4 py-4 b-t-8 b-b-8 b-self-2 overflow-hidden"
+            class="h-full grow-1 -mr-4 py-4 b-t-8 b-b-8 b-self-2 overflow-hidden"
             :dt="{
                 bar: {
                     background: '{primary.color}'
                 }
             }"
         >
-            <div class="flex flex-center flex-wrap gap-4.5">
-                <div
-                    class="flex-center flex-col min-w-[40%] b-2 p-1 b-self-2 rounded-lg"
-                    v-for="it in [
-                        { name: '1', link: '', icon: '' },
-                        { name: '2', link: '', icon: '' },
-                        { name: '3', link: '', icon: '' },
-                        { name: '4', link: '', icon: '' },
-                        { name: '5', link: '', icon: '' },
-                        { name: '6', link: '', icon: '' },
-                        { name: '7', link: '', icon: '' },
-                        { name: '8', link: '', icon: '' },
-                        { name: '9', link: '', icon: '' },
-                        { name: '10', link: '', icon: '' },
-                        { name: '11', link: '', icon: '' },
-                        { name: '12', link: '', icon: '' },
-                        { name: '13', link: '', icon: '' },
-                        { name: '14', link: '', icon: '' },
-                        { name: '15', link: '', icon: '' },
-                        { name: '16', link: '', icon: '' }
-                    ]"
+            <div class="grid grid-cols-2 justify-center gap-4.5 px-4">
+                <NuxtLink
+                    class="flex-center flex-col b-2 p-1 b-self-2 rounded-lg overflow-clip cursor-pointer group"
+                    v-for="({ title, icon, link, lottie, style, bg }, ni) in nav"
+                    :class="[bg ? 'b-self-3' : '']"
+                    :to="link"
                 >
                     <Icon
-                        :name="it?.icon || 'ph:github-logo-fill'"
-                        class="text-6xl opacity-25"
-                    ></Icon>
-                    <div class="text-self-7">{{ it.name }}</div>
-                </div>
+                        :name="icon || 'ph:github-logo-fill'"
+                        class="text-xl text-self-3 filter group-hover:text-self-4"
+                        :class="[
+                            useRandomString([
+                                `hue-rotate-${10 * (ni + 1)}`,
+                                `-hue-rotate-${10 * (ni + 1)}`
+                            ])
+                        ]"
+                    />
+
+                    <div class="text-self-7 text-xs font-thin max-w-full overflow-clip">
+                        {{ title }}
+                    </div>
+                </NuxtLink>
             </div>
         </PrimeScrollPanel>
 
-        {{ !sidebarSocialsVisible }}
-
-        <div class="relative -mr-4">
+        <div class="relative -mr-4 grow-0">
             <div
                 class="flex-center w-full bg-self-3 cursor-pointer"
-                @click="sidebarSocialsVisible = !sidebarSocialsVisible"
+                @click="setStoreSideSocials(!storeSideSocials)"
             >
                 <Icon
                     name="ic:sharp-keyboard-double-arrow-down"
-                    class="text-sm transform transition-all duration-300"
-                    :class="[!sidebarSocialsVisible ? 'rotate-180' : '']"
-                ></Icon>
+                    :class="[
+                        'text-sm transform',
+                        //transition-all duration-300
+                        !storeSideSocials ? 'rotate-180' : ''
+                    ]"
+                />
             </div>
 
             <div
-                class="flex-center flex-wrap gap-2 mt-4 p-4 overflow-hidden transition-all duration-1000 delay-1000"
-                :class="[!sidebarSocialsVisible ? '!mt-0 !p-0 !gap-0 !h-0' : '']"
+                :class="[
+                    'flex-center flex-wrap gap-2 overflow-hidden',
+                    // transition-all duration-1000 delay-1000
+                    !storeSideSocials ? '!mt-0 !p-0 !gap-0 !h-0' : 'mt-4 p-4'
+                ]"
             >
-                <a
+                <NuxtLink
                     v-for="{ name, link, icon } in socials"
-                    :href="link"
                     class="flex-center text-self-6 hover:text-self-3"
+                    target="_blank"
+                    :to="link"
                 >
                     <Icon
                         :name="icon || 'ph:github-logo-fill'"
                         :class="[
-                            'text-2xl transition-all duration-1500',
-                            !sidebarSocialsVisible ? '!text-0 !overflow-hidden' : 'delay-2000'
+                            //'transition-all duration-1500 delay-2000',
+                            !storeSideSocials ? '!text-0 !overflow-hidden' : 'text-2xl'
                         ]"
                     ></Icon>
-                </a>
+                </NuxtLink>
             </div>
         </div>
     </div>
@@ -83,16 +82,28 @@
 <script setup>
 const nav = usePayloadData('nav')
 const socials = usePayloadData('socials')
+const worksCategories = usePayloadData('portfolio_works_categories')
 
-const storageSidebarSocialsVisible = useLocalStorage('nav-sidebar-socials-visible')
-const sidebarSocialsVisible = ref(useLocalStorageBoolean(storageSidebarSocialsVisible.value))
+const storeSideSocials = useLocalStorage('nav-sidebar-socials-visible', null, {
+    deep: false,
+    writeDefaults: false,
+    initOnMounted: true
+})
 
-watch(
-    () => sidebarSocialsVisible.value,
-    () => {
-        storageSidebarSocialsVisible.value = sidebarSocialsVisible.value
-    }
-)
+const setStoreSideSocials = (value) => {
+    storeSideSocials.value = value
+}
 
-console.log(socials.value)
+await callOnce(async () => {
+    worksCategories.value = worksCategories.value.map((it) => ({ ...it, bg: true }))
+
+    nav.value = useRange(Math.max(nav.value.length, worksCategories.value.length))
+        .map((i) => [nav.value?.[i], worksCategories.value?.[i]])
+        .flat()
+        .filter((it) => !!it)
+})
+
+onMounted(() => {
+    storeSideSocials.value = useLocalStorageBoolean(storeSideSocials.value)
+})
 </script>

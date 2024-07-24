@@ -34,7 +34,9 @@ export default defineConfig({
         ...range(3, 1).map((i) => `m-r-${i * 5}`),
         ...range(3, 1).map((i) => `m-r-${i * 8}`),
         ...range(20, 1).map((i) => `m-r-${i * 5}%`),
-        ...range(20, 1).map((i) => `z-${i * 5}`)
+        ...range(20, 1).map((i) => `z-${i * 5}`),
+        ...range(50, 1).map((i) => `hue-rotate-${i * 10}`),
+        ...range(50, 1).map((i) => `-hue-rotate-${i * 10}`)
         //...Object.keys(resolvedConfig.theme?.animation?.keyframes ?? {}).map(k => [`animate-${k}`, `group-hover-animate-${k}`]).flat()
     ],
     shortcuts: [[/^flex-center$/, ([, c], { theme }) => `flex justify-center items-center`]],
