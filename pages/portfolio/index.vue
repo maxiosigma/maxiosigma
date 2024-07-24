@@ -1,9 +1,10 @@
 ﻿<template>
-    <LayoutPage class="portfolio" :navItems="worksCategories" @clickNav="(e) => console.log(e)">
+    <LayoutPage class="portfolio" :navItems="worksCategories" @clickNav="(e) => (category = e)">
         <div
             class="container transition-all duration-1000 pt-20 gap-20 w-full h-full flex flex-col justify-between"
         >
-            <!--<TemplatePortfolioTopProjects />-->
+            {{ category }}
+            <TemplatePortfolioTopProjects />
             <!--<TemplatePortfolioStepper />-->
         </div>
 
@@ -28,8 +29,8 @@
 const title = ref('Портфолио')
 const storageSidebarVisible = useLocalStorage('sidebar-visible')
 const sidebarVisible = ref(useLocalStorageBoolean(storageSidebarVisible.value))
-
 const worksCategories = usePayloadData('portfolio_works_categories')
+const category = ref(null)
 
 watch(
     () => sidebarVisible.value,

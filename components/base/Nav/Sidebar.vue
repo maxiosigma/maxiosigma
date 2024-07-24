@@ -1,6 +1,6 @@
 ﻿<template>
     <div
-        class="bg-self-1 flex flex-col justify-between flex-grow-1 min-w-180px w-50vw sm:w-25vw overflow-hidden h-screen pr-4"
+        class="bg-self-1 flex flex-col justify-between flex-grow-1 min-w-220px w-35vw overflow-hidden h-screen pr-4"
     >
         <div class="flex-center py-8 px-4 grow-0">
             <!--<Icon name="material-symbols:logo-dev" class="text-5xl"></Icon>-->
@@ -17,7 +17,7 @@
         >
             <div class="grid grid-cols-2 justify-center gap-4.5 px-4">
                 <NuxtLink
-                    class="flex-center flex-col b-2 p-1 b-self-2 rounded-lg overflow-clip cursor-pointer group"
+                    class="relative flex-center flex-col b-2 p-1 b-self-2 rounded-lg overflow-clip cursor-pointer group"
                     v-for="({ title, icon, link, lottie, style, slug, bg }, ni) in nav"
                     :class="[bg ? 'b-self-3' : '']"
                     :to="link"
@@ -25,7 +25,7 @@
                 >
                     <Icon
                         :name="icon || 'ph:github-logo-fill'"
-                        class="text-xl text-self-3 filter group-hover:text-self-4"
+                        class="text-xl text-self-3 filter group-hover:text-self-4 z-10"
                         :class="[
                             useRandomString([
                                 `hue-rotate-${10 * (ni + 1)}`,
@@ -34,7 +34,7 @@
                         ]"
                     />
 
-                    <div class="text-self-7 text-xs font-thin max-w-full overflow-clip">
+                    <div class="text-self-7 f-text-10-16 px-2 font-thin overflow-hidden">
                         {{ title }}
                     </div>
                 </NuxtLink>
@@ -43,7 +43,7 @@
 
         <div class="relative -mr-4 grow-0">
             <div
-                class="flex-center w-full bg-self-3 cursor-pointer"
+                class="flex-center w-full py-1 bg-self-3 cursor-pointer"
                 @click="setStoreSideSocials(!storeSideSocials)"
             >
                 <Icon
@@ -58,9 +58,9 @@
 
             <div
                 :class="[
-                    'flex-center flex-wrap gap-2 overflow-hidden',
+                    'flex-center flex-wrap items-start gap-2 overflow-hidden',
                     // transition-all duration-1000 delay-1000
-                    !storeSideSocials ? '!mt-0 !p-0 !gap-0 !h-0' : 'mt-4 p-4'
+                    !storeSideSocials ? '!mt-0 !p-0 !gap-0 !h-0' : 'p-4'
                 ]"
             >
                 <NuxtLink
