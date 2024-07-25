@@ -170,9 +170,8 @@ body {
     }
 }
 
-.p-scrollpanel-bar.p-scrollpanel-bar-y {
-    //--at-apply:  bg-self-3 mix-blend-screen;
-    //--at-apply:  bg-self-3 mix-blend-exclusion;
+.p-scrollpanel-bar.p-scrollpanel-bar-y,
+.p-scrollpanel-bar.p-scrollpanel-bar-x {
     --at-apply: bg-self-3 mix-blend-difference;
 }
 </style>

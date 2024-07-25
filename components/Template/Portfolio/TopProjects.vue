@@ -1,7 +1,11 @@
 ﻿<template>
-    <div class="flex flex-col gap-5 relative">
+    <div class="flex flex-col gap-5 relative max-w-65vw">
         <div :class="[!category ? '' : 'hidden']">
-            <!--<div>aaa</div>-->
+            <PrimeOrganizationChart :value="organizationChart" collapsible>
+                <template #default="slotProps">
+                    <span class="p-organizationchart-label">{{ slotProps.node.label }}</span>
+                </template>
+            </PrimeOrganizationChart>
         </div>
 
         <div
@@ -73,6 +77,21 @@ const worksFilter = computed(() =>
     works.value.filter((w) => !!w.category && w.category === prop.category).filter((w) => !!w)
 )
 
+const organizationChart = ref({
+    label: 'Основные работы',
+    children: [
+        { label: 'Парсинг сайтов и приложений', children: [{ label: 'Node' }] },
+        { label: 'Windows приложения', children: [{ label: 'Electron' }] },
+        { label: 'Дизайн баннеров', children: [{ label: 'Figma' }] },
+        {
+            label: 'API-интеграции',
+            children: [{ label: 'VK' }, { label: 'TG' }, { label: 'WA' }, { label: 'Node' }]
+        }
+    ]
+})
+
+//      ОСНОВНЫЕ РАБОТЫ: парсинг сайтов (node), дизайн баннеров (figma), api-интеграции (vk, tg, wa, node-bot, other), windows-приложения.
+
 const clicked = (href) => {
     const link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a')
     link.href = href
@@ -102,29 +121,38 @@ const clicked = (href) => {
 </style>
 
 <style lang="scss">
-.p-tablist-content {
-    --at-apply: flex items-center relative mx-a;
+.wrapper .p-organizationchart-node {
+    --p-organizationchart-node-padding: 4px 6px;
+    --at-apply: inline-flex px-4 py-2;
 }
 
-.p-tablist-prev-button,
-.p-tablist-next-button {
-    --at-apply: bg-self-2 border-self-4 border-2 border-inset rounded-md h-[90%] my-a top-0 bottom-0
-        opacity-75;
+.p-organizationchart-label {
+    --at-apply: f-text-8-20 leading-none;
 }
 
-.p-tablist-tab-list {
-    --at-apply: mx-a bg-transparent;
-}
+//.p-tablist-content {
+//    --at-apply: flex items-center relative mx-a;
+//}
 
-.p-tabpanels {
-    --at-apply: bg-transparent;
-}
+//.p-tablist-prev-button,
+//.p-tablist-next-button {
+//    --at-apply: bg-self-2 border-self-4 border-2 border-inset rounded-md h-[90%] my-a top-0 bottom-0
+//        opacity-75;
+//}
 
-.p-tabs-scrollable > .p-tablist {
-    --at-apply: min-h-10vmin h-full overflow-x-hidden overflow-y-auto;
-}
+//.p-tablist-tab-list {
+//    --at-apply: mx-a bg-transparent;
+//}
 
-.p-tab {
-    --at-apply: w-auto;
-}
+//.p-tabpanels {
+//    --at-apply: bg-transparent;
+//}
+
+//.p-tabs-scrollable > .p-tablist {
+//    --at-apply: min-h-10vmin h-full overflow-x-hidden overflow-y-auto;
+//}
+
+//.p-tab {
+//    --at-apply: w-auto;
+//}
 </style>

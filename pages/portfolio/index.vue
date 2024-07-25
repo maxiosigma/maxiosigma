@@ -1,6 +1,6 @@
 ﻿<template>
     <LayoutPage class="portfolio" :navItems="worksCategories" @clickNav="(e) => (category = e)">
-        <div class="container transition-all flex-grow-1 duration-1000 py-8">
+        <div class="transition-all flex-grow-1 duration-1000 py-8 px-4">
             <TemplatePortfolioTopProjects :category="category" />
             <!--<TemplatePortfolioStepper />-->
         </div>
