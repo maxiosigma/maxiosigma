@@ -7,14 +7,7 @@
             <ItemMediaImg :class="['w-full h-full']" src="main/signature.webp" />
         </div>
 
-        <PrimeScrollPanel
-            class="h-full grow-1 -mr-4 py-4 b-t-8 b-b-8 b-self-2 overflow-hidden"
-            :dt="{
-                bar: {
-                    background: '{primary.color}'
-                }
-            }"
-        >
+        <PrimeScrollPanel class="h-full grow-1 -mr-4 py-4 b-t-8 b-b-8 b-self-2 overflow-hidden">
             <div class="grid grid-cols-2 justify-center gap-4.5 px-4 transition-all duration-1000">
                 <NuxtLink
                     class="relative flex-center flex-col filter b-2 px-1 py-2 b-self-2 rounded-lg overflow-clip cursor-pointer transition-all duration-300 *:transition-all *:duration-300 hover:(b-self-7) group"

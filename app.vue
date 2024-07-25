@@ -170,6 +170,10 @@ body {
     }
 }
 
+.wrapper .p-organizationchart-node {
+    --at-apply: inline-flex px-2 py-1 bg-self-1 b-self-2;
+}
+
 .p-scrollpanel-bar.p-scrollpanel-bar-y,
 .p-scrollpanel-bar.p-scrollpanel-bar-x {
     --at-apply: bg-self-3 mix-blend-difference;

@@ -1,11 +1,62 @@
 ﻿<template>
-    <div class="flex flex-col gap-5 relative max-w-65vw">
-        <div :class="[!category ? '' : 'hidden']">
-            <PrimeOrganizationChart :value="organizationChart">
-                <template #default="slotProps">
-                    <span class="p-organizationchart-label">{{ slotProps.node.label }}</span>
-                </template>
-            </PrimeOrganizationChart>
+    <div class="portfolio-content :uno: flex flex-col gap-5 relative">
+        <div :class="[!category ? 'flex flex-col gap-14' : 'hidden']">
+            <div class="bg-self-1/95 text-self-7/55 f-text-10-16 p-4 rounded-md shadow-lg-circle">
+                <span class="inline text-self-6/55">Подсказка:</span> вы можете зажать SHIFT и
+                покрутить колесом мыши для скроллинга по горизонтали
+            </div>
+
+            <div class="flex w-full gap-10">
+                <div
+                    class="flex flex-col justify-around gap-2 bg-self-1/95 p-4 rounded-md shadow-lg-circle"
+                    v-for="{ title, children } in [
+                        {
+                            title: 'Как разработчик',
+                            children: [
+                                `Предпочитаю: Nuxt 3&4 ~ Vue | Node ~ заменяет python полностью | Strapi как CMS`,
+                                'Начинал с webpack, laravel-mix и освоения разных фреймворков'
+                            ]
+                        },
+                        {
+                            title: 'Как дизайнер',
+                            children: [
+                                'Креативен, знаю стандарты',
+                                'В основе: тренды текущего года, яркие тона, геометрия, нег. пространство',
+                                'Использую приложение Figma'
+                            ]
+                        }
+                    ]"
+                >
+                    <div class="f-text-14-18">{{ title }}:</div>
+
+                    <div class="inline-block v-middle f-text-10-14" v-for="it in children">
+                        <Icon
+                            :name="
+                                useRandomString([
+                                    'geo:turf-simplify',
+                                    'geo:turf-intersect',
+                                    'geo:turf-explode',
+                                    'geo:turf-envelope',
+                                    'geo:ui-earth-west'
+                                ])
+                            "
+                        />
+
+                        {{ it }}
+                    </div>
+                </div>
+            </div>
+
+            <PrimeScrollPanel
+                class="min-h-30vh h-full"
+                v-for="chart in [chartWorks, chartCharacteristics]"
+            >
+                <PrimeOrganizationChart :value="chart">
+                    <template #default="slotProps">
+                        <span class="p-organizationchart-label">{{ slotProps.node.label }}</span>
+                    </template>
+                </PrimeOrganizationChart>
+            </PrimeScrollPanel>
         </div>
 
         <div
@@ -66,27 +117,42 @@ const works = usePayloadData('portfolio_works_top')
 const worksCategories = usePayloadData('portfolio_works_categories')
 
 //console.log(worksCategories.value)
-const workCategory = computed(
-    () =>
-        worksCategories.value
-            .filter((w) => !!w.slug && w.slug === prop.category)
-            .filter((w) => !!w)?.[0]
-)
+const workCategory = computed(() => {
+    worksCategories.value
+        .filter((w) => !!w.slug && w.slug === prop.category)
+        .filter((w) => !!w)?.[0]
+})
 
 const worksFilter = computed(() =>
     works.value.filter((w) => !!w.category && w.category === prop.category).filter((w) => !!w)
 )
 
-const organizationChart = ref({
+const chartWorks = ref({
+    key: 0,
     label: 'Основные работы',
     children: [
-        { label: 'Парсинг сайтов и приложений', children: [{ label: 'Node' }] },
+        {
+            label: 'Парсинг сайтов и приложений',
+            children: [{ label: 'Node' }, { label: 'Electron' }]
+        },
         { label: 'Windows приложения', children: [{ label: 'Electron' }] },
         { label: 'Дизайн баннеров', children: [{ label: 'Figma' }] },
+        { label: 'Чат-боты', children: [{ label: 'VK' }, { label: 'TG' }, { label: 'WA' }] },
         {
             label: 'API-интеграции',
-            children: [{ label: 'VK' }, { label: 'TG' }, { label: 'WA' }, { label: 'Node' }]
+            children: [{ label: 'VK' }, { label: 'Node' }, { label: 'Site' }]
         }
+    ]
+})
+
+const chartCharacteristics = ref({
+    key: 0,
+    label: 'Ключевые характеристики',
+    children: [
+        { label: 'Харизматичность', children: [{ label: 'Проявляю инициативу' }] },
+        { label: 'Коммуникативность', children: [{ label: 'В любой сети, без матов и негатива' }] },
+        { label: 'Исполнительность', children: [{ label: 'Взяв проект, делаю до конца' }] },
+        { label: 'Дотошность', children: [{ label: 'Внимание к мелочам' }] }
     ]
 })
 
@@ -121,37 +187,16 @@ const clicked = (href) => {
 </style>
 
 <style lang="scss">
-.wrapper .p-organizationchart-node {
-    --at-apply: inline-flex px-2 py-1 bg-self-1 b-self-2;
+.portfolio-content .p-organizationchart-node {
+    --at-apply: shadow-sm-circle;
 }
 
-.p-organizationchart-label {
+.portfolio-content .p-organizationchart-label {
     --at-apply: f-text-8-14 leading-snug;
 }
 
-//.p-tablist-content {
-//    --at-apply: flex items-center relative mx-a;
-//}
-
-//.p-tablist-prev-button,
-//.p-tablist-next-button {
-//    --at-apply: bg-self-2 border-self-4 border-2 border-inset rounded-md h-[90%] my-a top-0 bottom-0
-//        opacity-75;
-//}
-
-//.p-tablist-tab-list {
-//    --at-apply: mx-a bg-transparent;
-//}
-
-//.p-tabpanels {
-//    --at-apply: bg-transparent;
-//}
-
-//.p-tabs-scrollable > .p-tablist {
-//    --at-apply: min-h-10vmin h-full overflow-x-hidden overflow-y-auto;
-//}
-
-//.p-tab {
-//    --at-apply: w-auto;
-//}
+.portfolio-content .p-scrollpanel-bar.p-scrollpanel-bar-y,
+.portfolio-content .p-scrollpanel-bar.p-scrollpanel-bar-x {
+    --at-apply: bg-self-1 mix-blend-unset;
+}
 </style>

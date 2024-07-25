@@ -1,5 +1,16 @@
 ﻿<template>
-    <LayoutPage class="portfolio" :navItems="worksCategories" @clickNav="(e) => (category = e)">
+    <LayoutPage
+        class="portfolio"
+        :navItems="[
+            {
+                title: 'Превью',
+                icon: 'streamline:interface-arrows-horizontal-up-down-expand-resize-bigger-vertical-smaller-size-arrow-arrows-big',
+                slug: ''
+            },
+            ...worksCategories
+        ]"
+        @clickNav="(e) => (category = e)"
+    >
         <div class="transition-all flex-grow-1 duration-1000 py-8 px-4">
             <TemplatePortfolioTopProjects :category="category" />
             <!--<TemplatePortfolioStepper />-->

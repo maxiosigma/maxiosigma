@@ -19,6 +19,8 @@ import { presetScrollbar } from 'unocss-preset-scrollbar'
 import { presetFluid } from 'unocss-preset-fluid'
 //import presetEase from 'unocss-preset-ease'
 
+const isGenerateMode = process.argv.includes('generate')
+
 export default defineConfig({
     warn: false,
     sortLayers(layers) {
@@ -178,7 +180,7 @@ export default defineConfig({
             extendMaxWidth: 1920,
             extendMinWidth: 320,
             remBase: 16,
-            useRemByDefault: true,
+            useRemByDefault: false,
             ranges: {
                 xs: [12, 16],
                 sm: [14, 18],
@@ -198,10 +200,13 @@ export default defineConfig({
     transformers: [
         //
         transformerVariantGroup(),
-        transformerCompileClass({
-            classPrefix: 'max:'
-            //alwaysHash: true
-        }),
+        ...(isGenerateMode
+            ? [
+                  transformerCompileClass({
+                      classPrefix: 'max:'
+                  })
+              ]
+            : []),
         transformerDirectives({
             applyVariable: ['--at-apply', '--at-sigma', '--sigma'],
             varStyle: false
