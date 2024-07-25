@@ -93,11 +93,6 @@ const prop = defineProps({
 
 const nav = usePayloadData('nav')
 const socials = usePayloadData('socials')
-
-const { path } = useRoute()
-
-console.log(path)
-
 const newNav = shallowRef(
     prop.items?.length > 0
         ? useRange(Math.max(nav.value?.length, prop.items?.length))

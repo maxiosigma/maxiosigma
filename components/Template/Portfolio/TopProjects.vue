@@ -1,7 +1,7 @@
 ﻿<template>
     <div class="flex flex-col gap-5 relative max-w-65vw">
         <div :class="[!category ? '' : 'hidden']">
-            <PrimeOrganizationChart :value="organizationChart" collapsible>
+            <PrimeOrganizationChart :value="organizationChart">
                 <template #default="slotProps">
                     <span class="p-organizationchart-label">{{ slotProps.node.label }}</span>
                 </template>
@@ -122,12 +122,11 @@ const clicked = (href) => {
 
 <style lang="scss">
 .wrapper .p-organizationchart-node {
-    --p-organizationchart-node-padding: 4px 6px;
-    --at-apply: inline-flex px-4 py-2;
+    --at-apply: inline-flex px-2 py-1 bg-self-1 b-self-2;
 }
 
 .p-organizationchart-label {
-    --at-apply: f-text-8-20 leading-none;
+    --at-apply: f-text-8-14 leading-snug;
 }
 
 //.p-tablist-content {

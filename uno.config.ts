@@ -172,7 +172,23 @@ export default defineConfig({
                 layout: ['header header header', 'nav main main', 'nav footer footer']
             }
         }),
-        presetFluid(),
+        presetFluid({
+            maxWidth: 1440,
+            minWidth: 375,
+            extendMaxWidth: 1920,
+            extendMinWidth: 320,
+            remBase: 16,
+            useRemByDefault: true,
+            ranges: {
+                xs: [12, 16],
+                sm: [14, 18],
+                md: [18, 24],
+                lg: [22, 30],
+                xl: [32, 56],
+                xxl: [44, 64]
+            },
+            commentHelpers: true
+        }),
         //presetEase()
         presetScrollbar({
             // config
