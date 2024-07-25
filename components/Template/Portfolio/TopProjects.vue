@@ -78,7 +78,7 @@ const clicked = (href) => {
 
     &-hover:hover {
         box-shadow: inset 0 0 15px 0 rgb(73 157 243), 0 0 10px 12px rgb(73 157 243);
-        @apply z-50;
+        --at-apply: z-50;
     }
 }
 
@@ -87,27 +87,28 @@ const clicked = (href) => {
 
 <style lang="scss">
 .p-tablist-content {
-    @apply flex items-center relative mx-a;
+    --at-apply: flex items-center relative mx-a;
 }
 
 .p-tablist-prev-button,
 .p-tablist-next-button {
-    @apply bg-self-2 border-self-4 border-2 border-inset rounded-md h-[90%] my-a top-0 bottom-0 opacity-75;
+    --at-apply: bg-self-2 border-self-4 border-2 border-inset rounded-md h-[90%] my-a top-0 bottom-0
+        opacity-75;
 }
 
 .p-tablist-tab-list {
-    @apply mx-a bg-transparent;
+    --at-apply: mx-a bg-transparent;
 }
 
 .p-tabpanels {
-    @apply bg-transparent;
+    --at-apply: bg-transparent;
 }
 
 .p-tabs-scrollable > .p-tablist {
-    @apply min-h-10vmin h-full overflow-x-hidden overflow-y-auto;
+    --at-apply: min-h-10vmin h-full overflow-x-hidden overflow-y-auto;
 }
 
 .p-tab {
-    @apply w-auto;
+    --at-apply: w-auto;
 }
 </style>

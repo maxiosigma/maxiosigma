@@ -43,14 +43,16 @@ const prop = defineProps({
 
 <style lang="scss" module>
 .modal {
-    @apply fixed flex-center bg-self-1 bg-opacity-95 inset-0 w-full h-full z-99999;
+    --at-apply: fixed flex-center bg-self-1 bg-opacity-95 inset-0 w-full h-full z-99999;
 
     &-hidden {
-        @apply !hidden h-0 w-0 overflow-hidden;
+        --at-apply: !hidden h-0 w-0 overflow-hidden;
     }
 
     &-container {
-        @apply flex-center flex-col flex-shrink rounded-md elevation-10 m-auto inset-0 bg-self-2 w-4/5 px-4 py-10 max-w-sm h-auto min-h-40 max-h-none z-99999 text-white pointer-events-none;
+        --at-apply: flex-center flex-col flex-shrink rounded-md elevation-10 m-auto inset-0
+            bg-self-2 w-4/5 px-4 py-10 max-w-sm h-auto min-h-40 max-h-none z-99999 text-white
+            pointer-events-none;
     }
 }
 </style>

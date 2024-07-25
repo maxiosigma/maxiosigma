@@ -222,7 +222,7 @@
 //	return function (style) {
 //		style.define("apply", function () {
 //			const strings = Object.keys(arguments).map((key) => arguments[key].string);
-//			return new stylus.nodes.String(`@apply ${strings.join(" ")};`, " ");
+//			return new stylus.nodes.String(`--at-apply:  ${strings.join(" ")};`, " ");
 //		});
 //	};
 //}

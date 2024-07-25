@@ -62,14 +62,14 @@ const competencies = usePayloadData('portfolio_competencies')
 <style lang="scss">
 body .p-drawer-right .p-drawer,
 body .p-sidebar-right .p-sidebar {
-    @apply w-auto lg:(max-w-[90%]) max-w-full #{!important};
+    --at-apply:  w-auto lg:(max-w-[90%]) max-w-full #{!important};
 }
 
 .p-sidebar-header {
-    @apply flex justify-end gap-3 uppercase tracking-[0.3rem];
+    --at-apply:  flex justify-end gap-3 uppercase tracking-[0.3rem];
 }
 
 .p-sidebar-header-content {
-    @apply border-b-2 border-b-self-3 rounded-br-full border-b-dashed pl-1.5 text-center;
+    --at-apply:  border-b-2 border-b-self-3 rounded-br-full border-b-dashed pl-1.5 text-center;
 }
 </style>

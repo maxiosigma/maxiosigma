@@ -70,12 +70,12 @@ if (bg && getImage.value && id.value) {
 <style lang="scss">
 .img {
     &-render {
-        @apply image-render-edge pointer-events-none;
+        --at-apply: image-render-edge pointer-events-none;
     }
 
     &-bg {
         &-mod {
-            @apply bg-no-repeat pointer-events-none;
+            --at-apply: bg-no-repeat pointer-events-none;
         }
     }
 }

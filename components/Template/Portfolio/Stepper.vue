@@ -137,36 +137,36 @@ onMounted(() => {
 button.p-togglebutton,
 button.p-togglebutton::before,
 button.p-togglebutton:hover {
-    @apply border-transparent bg-transparent #{!important};
+    --at-apply: border-transparent bg-transparent #{!important};
 }
 
 button.p-togglebutton:not(:disabled):not(.p-togglebutton-checked):hover {
     &:hover {
-        @apply bg-transparent text-self-6 #{!important};
+        --at-apply: bg-transparent text-self-6 #{!important};
     }
 }
 
 button.p-togglebutton.p-togglebutton::before {
-    @apply border-1 border-dotted border-self-5/50 #{!important};
+    --at-apply: border-1 border-dotted border-self-5/50 #{!important};
 }
 
 button.p-togglebutton.p-togglebutton-checked {
-    @apply bg-transparent border-0 text-self-1;
+    --at-apply: bg-transparent border-0 text-self-1;
 
     &:hover {
-        @apply bg-transparent border-0 text-self-7;
+        --at-apply: bg-transparent border-0 text-self-7;
     }
 }
 
 button.p-togglebutton.p-togglebutton-checked::before {
-    @apply bg-self-5 border-1 border-dotted border-self-1  #{!important};
+    --at-apply: bg-self-5 border-1 border-dotted border-self-1 #{!important};
 }
 
 div.p-stepitem button.p-step-header span.p-step-title {
-    @apply text-lg;
+    --at-apply: text-lg;
 }
 
 div.p-stepitem-active button.p-step-header span.p-step-title {
-    @apply text-self-4 text-xl;
+    --at-apply: text-self-4 text-xl;
 }
 </style>

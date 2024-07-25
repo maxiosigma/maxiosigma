@@ -95,16 +95,17 @@ useHead({
 
 <style lang="scss">
 html {
-    @apply bg-self-1 flex min-h-full min-w-full relative;
+    --at-apply: bg-self-1 flex min-h-full min-w-full relative;
     //font-size: 12px;
 }
 
 head {
-    @apply hidden;
+    --at-apply: hidden;
 }
 
 body {
-    @apply bg-self-1 flex flex-col font-roboto min-h-full min-w-full h-auto max-w-screen relative m-0;
+    --at-apply: bg-self-1 flex flex-col font-roboto min-h-full min-w-full h-auto max-w-screen
+        relative m-0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
@@ -112,65 +113,66 @@ body {
 }
 
 .wrapper {
-    @apply flex flex-col flex-grow overflow-hidden;
+    --at-apply: flex flex-col flex-grow overflow-hidden;
 }
 
 .header {
-    @apply flex-grow-0 flex-shrink-0 z-10 relative;
+    --at-apply: flex-grow-0 flex-shrink-0 z-10 relative;
 }
 
 .nav {
-    @apply w-full z-20 relative;
+    --at-apply: w-full z-20 relative;
 
     &-bar {
-        @apply min-h-[8vh] top-0 z-20 fixed;
+        --at-apply: min-h-[8vh] top-0 z-20 fixed;
     }
 
     &-pre {
         &-bar {
-            @apply min-w-[100vh] min-h-[8vh] z-0 relative;
+            --at-apply: min-w-[100vh] min-h-[8vh] z-0 relative;
         }
 
         &-cont {
-            @apply min-w-[100vh] min-h-[64px] z-0 relative;
+            --at-apply: min-w-[100vh] min-h-[64px] z-0 relative;
         }
     }
 }
 
 .footer {
-    @apply flex-grow-0 flex-shrink-0 z-20 relative;
+    --at-apply: flex-grow-0 flex-shrink-0 z-20 relative;
 }
 
 .preload {
     &-show {
-        @apply max-h-none opacity-100 transition-all duration-[250] delay-[250];
+        --at-apply: max-h-none opacity-100 transition-all duration-[250] delay-[250];
 
         &-nav-bar {
-            @apply opacity-100 transition-all duration-1000 delay-1000;
+            --at-apply: opacity-100 transition-all duration-1000 delay-1000;
         }
 
         &-header {
-            @apply h-auto opacity-100 transition-opacity duration-75;
+            --at-apply: h-auto opacity-100 transition-opacity duration-75;
         }
     }
 
     &-hide {
-        @apply max-h-screen opacity-0 transition-all duration-[250] delay-0 overflow-hidden pointer-events-none;
+        --at-apply: max-h-screen opacity-0 transition-all duration-[250] delay-0 overflow-hidden
+            pointer-events-none;
 
         &-nav-bar {
-            @apply opacity-0;
-            @apply hidden;
+            --at-apply: opacity-0;
+            --at-apply: hidden;
         }
 
         &-header {
-            @apply h-0 opacity-0 transition-opacity overflow-hidden;
+            --at-apply: h-0 opacity-0 transition-opacity overflow-hidden;
         }
     }
 }
 
 .p-scrollpanel-bar.p-scrollpanel-bar-y {
-    //@apply bg-self-3 mix-blend-screen;
-    //@apply bg-self-3 mix-blend-exclusion;
-    @apply bg-self-3 mix-blend-difference;
+    //--at-apply:  bg-self-3 mix-blend-screen;
+    //--at-apply:  bg-self-3 mix-blend-exclusion;
+    --at-apply: bg-self-3 mix-blend-difference;
 }
 </style>

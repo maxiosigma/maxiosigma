@@ -24,6 +24,6 @@ const setPageClass = (style) => {
 
 <style module>
 .body {
-    @apply bg-self-3;
+    --at-apply: bg-self-3;
 }
 </style>

@@ -7,7 +7,7 @@
     presetUno
 } from 'unocss' //, resolvedConfig
 
-import extractorArbitrary from '@unocss/extractor-arbitrary-variants'
+//import extractorArbitrary from '@unocss/extractor-arbitrary-variants'
 
 import { presetHeroPatterns } from '@julr/unocss-preset-heropatterns'
 import { presetGridAreas } from 'unocss-preset-grid-areas'
@@ -135,7 +135,7 @@ export default defineConfig({
             ]
         }
     },
-    extractors: [extractorArbitrary()],
+    //extractors: [extractorArbitrary()],
     presets: [
         //
         presetUno({
@@ -174,7 +174,8 @@ export default defineConfig({
             //alwaysHash: true
         }),
         transformerDirectives({
-            applyVariable: ['--at-apply', '--max']
+            applyVariable: ['--at-apply', '--at-sigma', '--sigma'],
+            varStyle: false
         })
     ]
 })

@@ -217,13 +217,13 @@ useHead({
 .main {
     &-nav {
         &-item {
-            @apply relative flex-center bg-self-2/50 size-18 rounded-full border-4 border-self-7/15 cursor-pointer transition-all transition-delay-200 shadow-sm-circle shadow-self-4 animate-pulse-alt animate-duration-5000 hover:(bg-self-2 border-self-7);
+            --at-apply:  relative flex-center bg-self-2/50 size-18 rounded-full border-4 border-self-7/15 cursor-pointer transition-all transition-delay-200 shadow-sm-circle shadow-self-4 animate-pulse-alt animate-duration-5000 hover:(bg-self-2 border-self-7);
         }
         &-icon {
-            @apply text-4xl transition-all transition-duration-300 transition-delay-100 text-self-7 group-hover:(text-self-7);
+            --at-apply:  text-4xl transition-all transition-duration-300 transition-delay-100 text-self-7 group-hover:(text-self-7);
         }
         &-pop {
-            @apply absolute hidden opacity-0 bg-self-2 px-2 py-1 rounded-1 text-2xl transition-all duration-1000 shadow-xs-circle shadow-self-4 text-self-7 group-hover:(flex-center animate-bounce-in opacity-100 border-2 border-self-7);
+            --at-apply:  absolute hidden opacity-0 bg-self-2 px-2 py-1 rounded-1 text-2xl transition-all duration-1000 shadow-xs-circle shadow-self-4 text-self-7 group-hover:(flex-center animate-bounce-in opacity-100 border-2 border-self-7);
         }
     }
 }

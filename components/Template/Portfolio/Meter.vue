@@ -44,18 +44,18 @@ onMounted(() => {
 <style lang="scss">
 .p-metergroup-meter,
 .p-metergroup-label-marker {
-    @apply transition-all duration-[2s];
+    --at-apply: transition-all duration-[2s];
 }
 
 .p-metergroup-meter {
-    @apply min-w-[0.5rem];
+    --at-apply: min-w-[0.5rem];
 }
 
 .p-metergroup-meter:nth-child(n + 1) {
-    @apply mt-[0.2rem];
+    --at-apply: mt-[0.2rem];
 }
 
 .p-metergroup-label-marker {
-    @apply min-w-[0.5rem] min-h-[0.5rem];
+    --at-apply: min-w-[0.5rem] min-h-[0.5rem];
 }
 </style>

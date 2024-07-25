@@ -43,7 +43,7 @@ useHead({
 
 <style lang="scss">
 .portfolio {
-    @apply flex-row;
+    --at-apply: flex-row;
     flex-direction: row !important;
 }
 .p-stepper {
@@ -55,18 +55,20 @@ useHead({
 }
 
 .p-stepper-content {
-    @apply transition-all duration-300;
+    --at-apply: transition-all duration-300;
 }
 
 .finger {
-    @apply flex flex-col bg-self-1 justify-center px-8 py-4 w-auto border-4 border-skyblue/75  rounded-r-full rounded-l-lg shadow-[0_0_10px_0_rgba(0,0,0,0.3)] shadow-skyblue heropattern-circuitboard-skyblue/10 overflow-hidden;
+    --at-apply: flex flex-col bg-self-1 justify-center px-8 py-4 w-auto border-4 border-skyblue/75
+        rounded-r-full rounded-l-lg shadow-[0_0_10px_0_rgba(0, 0, 0, 0.3)] shadow-skyblue heropattern-circuitboard-skyblue/10
+        overflow-hidden;
 
     &-title {
-        @apply text-2xl text-nowrap overflow-hidden text-self-3;
+        --at-apply: text-2xl text-nowrap overflow-hidden text-self-3;
     }
 
     &-description {
-        @apply text-sm text-self-7;
+        --at-apply: text-sm text-self-7;
     }
 }
 
@@ -98,7 +100,7 @@ useHead({
 }
 
 .p-button-success:not(:disabled):hover {
-    @apply b-0 b-none filter;
+    --at-apply: b-0 b-none filter;
 }
 
 .box-animate:after {
