@@ -48,6 +48,7 @@
         "@nuxtjs/svg": "^0.4.1",
         "@nuxtjs/toast": "^3.3.1",
         "@primevue/nuxt-module": "^4.0.1",
+        "@unocss/extractor-arbitrary-variants": "^0.61.5",
         "@unocss/nuxt": "^0.61.5",
         "@unocss/preset-legacy-compat": "^0.61.5",
         "@unocss/preset-rem-to-px": "^0.61.5",

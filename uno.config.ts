@@ -7,6 +7,8 @@
     presetUno
 } from 'unocss' //, resolvedConfig
 
+import extractorArbitrary from '@unocss/extractor-arbitrary-variants'
+
 import { presetHeroPatterns } from '@julr/unocss-preset-heropatterns'
 import { presetGridAreas } from 'unocss-preset-grid-areas'
 //import presetLegacyCompat from '@unocss/preset-legacy-compat'
@@ -133,6 +135,7 @@ export default defineConfig({
             ]
         }
     },
+    extractors: [extractorArbitrary()],
     presets: [
         //
         presetUno({
@@ -170,7 +173,9 @@ export default defineConfig({
             classPrefix: 'max:'
             //alwaysHash: true
         }),
-        transformerDirectives()
+        transformerDirectives({
+            applyVariable: ['--at-apply', '--max']
+        })
     ]
 })
 
