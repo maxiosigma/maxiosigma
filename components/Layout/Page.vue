@@ -9,7 +9,11 @@
             }
         }"
     >
-        <slot :onload="setPageClass($style.body)" />
+        <slot :onload="setPageClass($style.body)">
+            <div class="flex-center flex-grow w-full h-90vh uppercase f-text-24-48 fw-black">
+                В разработке
+            </div>
+        </slot>
     </PrimeScrollPanel>
 </template>
 
@@ -25,5 +29,11 @@ const setPageClass = (style) => {
 <style module>
 .body {
     --at-apply: bg-self-3;
+}
+</style>
+
+<style>
+.wrapper {
+    --at-apply: flex-row !important;
 }
 </style>

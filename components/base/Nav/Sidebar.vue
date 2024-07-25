@@ -18,12 +18,9 @@
             <div class="grid grid-cols-2 justify-center gap-4.5 px-4">
                 <NuxtLink
                     class="relative flex-center flex-col filter b-2 px-1 py-2 b-self-2 rounded-lg overflow-clip cursor-pointer group"
-                    v-for="({ title, icon, link, active, lottie, style, slug, bg }, ni) in nav"
-                    :class="[
-                        bg ? 'b-self-3 shadow-xs-circle-light' : '',
-                        active ? 'b-self-4 bg-black shadow-sm-circle-light' : ''
-                    ]"
-                    :to="link"
+                    v-for="({ title, icon, link, active, lottie, style, slug, bg }, ni) in newNav"
+                    :class="[bg ? 'b-self-3 shadow-xs-circle-light' : '', active ? '' : '']"
+                    :href="link"
                     @click="!link ? $parent.$emit('clickNav', slug) : null"
                 >
                     <Icon
@@ -70,7 +67,7 @@
                     v-for="{ name, link, icon } in socials"
                     class="flex-center text-self-6 hover:text-self-3"
                     target="_blank"
-                    :to="link"
+                    :href="link"
                 >
                     <Icon
                         :name="icon || 'ph:github-logo-fill'"
@@ -92,13 +89,20 @@ const prop = defineProps({
     }
 })
 
-const { path } = useRoute()
-
 const nav = usePayloadData('nav')
 const socials = usePayloadData('socials')
-nav.value = nav.value
-    .filter((n) => !n?.nav)
-    .map((n) => ({ ...n, ...(n.link === path ? { active: true } : {}) }))
+
+//prop.items = prop.items?.map((it) => ({ ...it, bg: true }))
+const newNav = shallowRef(
+    prop.items?.length > 0
+        ? useRange(Math.max(nav.value?.length, prop.items?.length))
+              .map((i) => [nav.value?.[i], { ...prop.items?.[i], bg: true }])
+              .flat()
+              .filter((it) => !!it?.title)
+        : nav.value
+)
+
+console.log(nav.value, newNav.value, prop.items)
 
 const storeSideSocials = useLocalStorage('nav-sidebar-socials-visible', null, {
     deep: false,
@@ -110,16 +114,24 @@ const setStoreSideSocials = (value) => {
     storeSideSocials.value = value
 }
 
-await callOnce(async () => {
-    prop.items.value = prop.items.map((it) => ({ ...it, bg: true }))
+//if (prop.items) {
+//    const lengthNav = useRange(Math.max(nav.value?.length, prop.items.value?.length))
 
-    nav.value = useRange(Math.max(nav.value.length, prop.items.value.length))
-        .map((i) => [nav.value?.[i], prop.items.value?.[i]])
-        .flat()
-        .filter((it) => !!it)
-})
+//    prop.items.value = prop.items?.map((it) => ({ ...it, bg: true }))
+
+//    newNav.value = lengthNav
+//        .map((i) => [nav.value?.[i], prop.items.value?.[i]])
+//        .flat()
+//        .filter((it) => !!it)
+//}
 
 onMounted(() => {
     storeSideSocials.value = useLocalStorageBoolean(storeSideSocials.value)
 })
 </script>
+
+<style lang="scss">
+.page-link-active {
+    --at-apply: b-self-4 bg-black shadow-sm-circle-light;
+}
+</style>

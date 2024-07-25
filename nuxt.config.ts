@@ -53,9 +53,9 @@ export default defineNuxtConfig({
 
         defaults: {
             nuxtLink: {
-                activeClass: 'active',
-                exactActiveClass: 'extract-active',
-                prefetchedClass: 'prefetch-active'
+                activeClass: 'page-link-active',
+                exactActiveClass: 'page-link-extract-active',
+                prefetchedClass: 'page-link-prefetch'
             }
         }
     },

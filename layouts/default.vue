@@ -1,5 +1,5 @@
 ﻿<template>
-    <slot :onload="setPageClass($style.page)" />
+    <slot :onload="setPageClass($style.page)"> </slot>
 </template>
 
 <script setup>
@@ -57,6 +57,6 @@ useHead({
 
 <style module>
 .page {
-    --at-apply: flex flex-grow flex-col max-w-100vw h-full relative justify-between;
+    --at-apply: flex flex-grow max-w-100vw h-full relative justify-between;
 }
 </style>

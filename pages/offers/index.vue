@@ -1,5 +1,5 @@
 ﻿<template>
-    <div class="offers"></div>
+    <LayoutPage></LayoutPage>
 </template>
 
 <script lang="ts" setup></script>

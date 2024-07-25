@@ -46,6 +46,7 @@ useHead({
     --at-apply: flex-row;
     flex-direction: row !important;
 }
+
 .p-stepper {
     flex-basis: 100%;
 }

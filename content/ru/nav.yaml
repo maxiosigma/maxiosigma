@@ -40,13 +40,6 @@
   lottie: contacts
   style: scale-80
 
-- title: Проекты
-  icon: bi:person-workspace
-  link: /projects
-  lottie: projects
-  style: scale-80
-  nav: ['main']
-
 - title: Портфолио
   icon: bi:person-workspace
   link: /portfolio
