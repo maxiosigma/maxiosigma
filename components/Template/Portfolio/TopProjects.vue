@@ -8,10 +8,17 @@
             :class="[category && worksFilter.length === 0 ? 'flex-center w-full h-90vh' : 'hidden']"
         >
             <div
-                class="uppercase font-bold max-w-3/5 transition-all duration-1000 text-center f-text-16-32 text-wrap"
+                class="uppercase font-bold max-w-4/5 transition-all duration-1000 text-center f-text-16-32 text-wrap"
             >
-                На данный момент работ по текущей категории нет
-                <span class="inline text-self-2">или они не предоставлены</span>
+                {{
+                    useRandomString([
+                        'На данный момент работ по текущей',
+                        'Увы, но сейчас работ по'
+                    ])
+                }}
+
+                <span class="inline text-self-6">категории «{{ workCategory?.title }}»</span> нет
+                <span class="inline text-self-2">или </span> они не предоставлены
             </div>
         </div>
 
@@ -52,6 +59,15 @@
 <script setup>
 const prop = defineProps(['works', 'category'])
 const works = usePayloadData('portfolio_works_top')
+const worksCategories = usePayloadData('portfolio_works_categories')
+
+console.log(worksCategories.value)
+const workCategory = computed(
+    () =>
+        worksCategories.value
+            .filter((w) => !!w.slug && w.slug === prop.category)
+            .filter((w) => !!w)?.[0]
+)
 
 const worksFilter = computed(() =>
     works.value.filter((w) => !!w.category && w.category === prop.category).filter((w) => !!w)

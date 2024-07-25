@@ -32,10 +32,17 @@ export default defineNuxtConfig({
         //}
     },
 
+    router: {
+        options: {
+            hashMode: false,
+            scrollBehaviorType: 'smooth'
+        }
+    },
+
     experimental: {
         //appManifest: false,
         //renderJsonPayloads: true,
-        componentIslands: 'local'
+        componentIslands: 'local',
         //payloadExtraction: !isGenerateMode,
         //treeshakeClientOnly: false,
         //sharedPrerenderData: true,
@@ -43,6 +50,14 @@ export default defineNuxtConfig({
         //externalVue: false,
         //typedPages: true,
         //watcher: 'parcel'
+
+        defaults: {
+            nuxtLink: {
+                activeClass: 'active',
+                exactActiveClass: 'extract-active',
+                prefetchedClass: 'prefetch-active'
+            }
+        }
     },
 
     features: {
@@ -85,7 +100,7 @@ export default defineNuxtConfig({
         '@primevue/nuxt-module',
         '@nuxtjs/device',
         '@vueuse/nuxt',
-        "@nuxt/eslint"
+        '@nuxt/eslint'
     ],
 
     primevue: {
