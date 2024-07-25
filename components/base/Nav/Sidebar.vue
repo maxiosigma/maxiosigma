@@ -92,7 +92,6 @@ const prop = defineProps({
 const nav = usePayloadData('nav')
 const socials = usePayloadData('socials')
 
-//prop.items = prop.items?.map((it) => ({ ...it, bg: true }))
 const newNav = shallowRef(
     prop.items?.length > 0
         ? useRange(Math.max(nav.value?.length, prop.items?.length))
@@ -101,8 +100,6 @@ const newNav = shallowRef(
               .filter((it) => !!it?.title)
         : nav.value
 )
-
-console.log(nav.value, newNav.value, prop.items)
 
 const storeSideSocials = useLocalStorage('nav-sidebar-socials-visible', null, {
     deep: false,
@@ -113,17 +110,6 @@ const storeSideSocials = useLocalStorage('nav-sidebar-socials-visible', null, {
 const setStoreSideSocials = (value) => {
     storeSideSocials.value = value
 }
-
-//if (prop.items) {
-//    const lengthNav = useRange(Math.max(nav.value?.length, prop.items.value?.length))
-
-//    prop.items.value = prop.items?.map((it) => ({ ...it, bg: true }))
-
-//    newNav.value = lengthNav
-//        .map((i) => [nav.value?.[i], prop.items.value?.[i]])
-//        .flat()
-//        .filter((it) => !!it)
-//}
 
 onMounted(() => {
     storeSideSocials.value = useLocalStorageBoolean(storeSideSocials.value)

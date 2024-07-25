@@ -1,6 +1,6 @@
 ﻿<template>
     <NuxtLayout title="Services">
-        <LayoutPage> aaa </LayoutPage>
+        <LayoutPage></LayoutPage>
     </NuxtLayout>
 </template>
 
