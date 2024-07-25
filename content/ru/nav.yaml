@@ -45,6 +45,13 @@
   link: /projects
   lottie: projects
   style: scale-80
+  nav: ['main']
+
+- title: Портфолио
+  icon: bi:person-workspace
+  link: /portfolio
+  lottie: projects
+  style: scale-80
 
 - title: Услуги
   icon: f7:rays

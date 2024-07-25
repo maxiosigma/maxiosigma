@@ -100,8 +100,14 @@ export default defineConfig({
             'xl-circle': '0 0 20px 0 rgba(0, 0, 0, 0.3)',
             '2xl-circle': '0 0 40px 0 rgba(0, 0, 0, 0.3)',
             '3xl-circle': '0 0 60px 0 rgba(0, 0, 0, 0.3)',
-            '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
-            //skyblue: '0 35px 60px -15px rgba(0, 0, 0, 0.3)'
+
+            'xs-circle-light': '0 0 3px 0 rgba(255, 255, 255, 0.7)',
+            'sm-circle-light': '0 0 5px 0 rgba(255, 255, 255, 0.7)',
+            'lg-circle-light': '0 0 10px 0 rgba(255, 255, 255, 0.7)',
+            'xl-circle-light': '0 0 20px 0 rgba(255, 255, 255, 0.7)',
+            '2xl-circle-light': '0 0 40px 0 rgba(255, 255, 255, 0.7)',
+            '3xl-circle-light': '0 0 60px 0 rgba(255, 255, 255, 0.7)',
+
             'inner-0.5': 'inset 0 0 5px 0 rgba(0, 0, 0, 0.3)',
             'inner-1': 'inset 0 0 10px 0 rgba(0, 0, 0, 0.3)',
             'inner-2': 'inset 0 0 20px 0 rgba(0, 0, 0, 0.3)',

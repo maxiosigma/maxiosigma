@@ -17,9 +17,12 @@
         >
             <div class="grid grid-cols-2 justify-center gap-4.5 px-4">
                 <NuxtLink
-                    class="relative flex-center flex-col b-2 p-1 b-self-2 rounded-lg overflow-clip cursor-pointer group"
+                    class="relative flex-center flex-col filter b-2 px-1 py-2 b-self-2 rounded-lg overflow-clip cursor-pointer group"
                     v-for="({ title, icon, link, active, lottie, style, slug, bg }, ni) in nav"
-                    :class="[bg ? 'b-self-3' : '']"
+                    :class="[
+                        bg ? 'b-self-3 shadow-xs-circle-light' : '',
+                        active ? 'b-self-4 bg-black shadow-sm-circle-light' : ''
+                    ]"
                     :to="link"
                     @click="!link ? $parent.$emit('clickNav', slug) : null"
                 >
@@ -35,7 +38,7 @@
                     />
 
                     <div class="text-self-7 f-text-10-16 px-2 font-thin overflow-hidden">
-                        {{ title }} {{ active }}
+                        {{ title }}
                     </div>
                 </NuxtLink>
             </div>
@@ -93,7 +96,9 @@ const { path } = useRoute()
 
 const nav = usePayloadData('nav')
 const socials = usePayloadData('socials')
-nav.value = nav.value.map((n) => ({ ...n, ...(n.link === path ? { active: true } : {}) }))
+nav.value = nav.value
+    .filter((n) => !n?.nav)
+    .map((n) => ({ ...n, ...(n.link === path ? { active: true } : {}) }))
 
 const storeSideSocials = useLocalStorage('nav-sidebar-socials-visible', null, {
     deep: false,
