@@ -1,14 +1,16 @@
 ﻿<template>
     <div class="portfolio-content :uno: flex flex-col gap-5 relative">
         <div :class="[!category ? 'flex flex-col gap-14' : 'hidden']">
-            <div class="bg-self-1/95 text-self-7/55 f-text-10-16 p-4 rounded-md shadow-lg-circle">
+            <div
+                class="bg-self-1/95 text-self-7/55 f-text-10-16 px-4 py-4 rounded-md shadow-sm-circle"
+            >
                 <span class="inline text-self-6/55">Подсказка:</span> вы можете зажать SHIFT и
                 покрутить колесом мыши для скроллинга по горизонтали
             </div>
 
-            <div class="flex w-full gap-10">
+            <div class="flex w-full gap-10 <lg:(flex-col gap-5)">
                 <div
-                    class="flex flex-col justify-around gap-2 bg-self-1/95 p-4 rounded-md shadow-lg-circle"
+                    class="flex flex-col justify-around gap-2 bg-self-1/95 p-4 rounded-md shadow-sm-circle"
                     v-for="{ title, children } in [
                         {
                             title: 'Как разработчик',
@@ -72,8 +74,8 @@
                     ])
                 }}
 
-                <span class="inline text-self-6">категории «{{ workCategory?.title }}»</span> нет
-                <span class="inline text-self-2">или</span> не предоставлены
+                категории <span class="inline text-self-2 fw-black">«{{ workCategory }}»</span> нет
+                <span class="inline text-self-2 fw-black">или</span> не предоставлены
             </div>
         </div>
 
@@ -116,11 +118,12 @@ const prop = defineProps(['works', 'category'])
 const works = usePayloadData('portfolio_works_top')
 const worksCategories = usePayloadData('portfolio_works_categories')
 
-//console.log(worksCategories.value)
+console.log(prop.category, worksCategories.value)
+
 const workCategory = computed(() => {
-    worksCategories.value
+    return worksCategories.value
         .filter((w) => !!w.slug && w.slug === prop.category)
-        .filter((w) => !!w)?.[0]
+        .filter((w) => !!w)?.[0]?.title
 })
 
 const worksFilter = computed(() =>

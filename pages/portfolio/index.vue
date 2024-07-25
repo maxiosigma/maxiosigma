@@ -16,18 +16,21 @@
             <!--<TemplatePortfolioStepper />-->
         </div>
 
-        <!--<div class="flex flex-col fixed right-0 top-auto h-full">
-        <PrimeButton
-            class="my-auto p-1.5 h-full rounded-none bg-self-4/50"
-            severity="success"
-            @click="sidebarVisible = true"
-            v-tooltip="'About'"
-        >
-            <Icon name="solar:map-arrow-left-bold" size="25px" />
-        </PrimeButton>
-    </div>
+        <div class="flex-center absolute left-0 top-0 z-10">
+            <PrimeButton
+                class="!px-2 !py-1 !rounded-l-none !rounded-t-none !bg-self-3/85 !b-0 !b-b-4 !b-r-4 !b-self-2 hover:(!bg-self-6 shadow-sm-circle)"
+                severity="success"
+                @click="sidebarVisible = true"
+                v-tooltip="'About'"
+            >
+                <Icon name="solar:map-arrow-right-bold" size="15px" />
+            </PrimeButton>
+        </div>
 
-    <TemplatePortfolioSidebar :visible="sidebarVisible" @close="sidebarVisible = !sidebarVisible" />-->
+        <TemplatePortfolioSidebar
+            :visible="sidebarVisible"
+            @close="sidebarVisible = !sidebarVisible"
+        />
     </LayoutPage>
 </template>
 
