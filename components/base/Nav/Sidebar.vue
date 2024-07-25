@@ -15,26 +15,28 @@
                 }
             }"
         >
-            <div class="grid grid-cols-2 justify-center gap-4.5 px-4">
+            <div class="grid grid-cols-2 justify-center gap-4.5 px-4 transition-all duration-1000">
                 <NuxtLink
-                    class="relative flex-center flex-col filter b-2 px-1 py-2 b-self-2 rounded-lg overflow-clip cursor-pointer group"
+                    class="relative flex-center flex-col filter b-2 px-1 py-2 b-self-2 rounded-lg overflow-clip cursor-pointer transition-all duration-300 *:transition-all *:duration-300 hover:(b-self-7) group"
                     v-for="({ title, icon, link, active, lottie, style, slug, bg }, ni) in newNav"
                     :class="[bg ? 'b-self-3 shadow-xs-circle-light' : '', active ? '' : '']"
-                    :href="link"
+                    :href="link ? localePath(link) : null"
                     @click="!link ? $parent.$emit('clickNav', slug) : null"
                 >
                     <Icon
                         :name="icon || 'ph:github-logo-fill'"
-                        class="text-xl text-self-3 filter group-hover:text-self-4 z-10"
+                        class="text-xl text-self-3 filter group-hover:(text-self-7 hue-rotate-0)"
                         :class="[
                             useRandomString([
-                                `hue-rotate-${10 * (ni + 1)}`,
-                                `-hue-rotate-${10 * (ni + 1)}`
+                                `hue-rotate-${20 * (ni + 1)}`,
+                                `-hue-rotate-${20 * (ni + 1)}`
                             ])
                         ]"
                     />
 
-                    <div class="text-self-7 f-text-10-16 px-2 font-thin overflow-hidden">
+                    <div
+                        class="text-self-7 f-text-10-16 px-2 font-thin overflow-hidden group-hover:(text-self-4)"
+                    >
                         {{ title }}
                     </div>
                 </NuxtLink>
@@ -91,6 +93,10 @@ const prop = defineProps({
 
 const nav = usePayloadData('nav')
 const socials = usePayloadData('socials')
+
+const { path } = useRoute()
+
+console.log(path)
 
 const newNav = shallowRef(
     prop.items?.length > 0

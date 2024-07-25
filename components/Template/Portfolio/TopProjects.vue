@@ -1,14 +1,14 @@
 ﻿<template>
     <div class="flex flex-col gap-5 relative">
         <div :class="[!category ? '' : 'hidden']">
-            <div>aaa</div>
+            <!--<div>aaa</div>-->
         </div>
 
         <div
             :class="[category && worksFilter.length === 0 ? 'flex-center w-full h-90vh' : 'hidden']"
         >
             <div
-                class="uppercase font-bold max-w-4/5 transition-all duration-1000 text-center f-text-16-32 text-wrap"
+                class="uppercase font-bold max-w-4/5 transition-all duration-1000 text-center f-text-12-32 text-wrap"
             >
                 {{
                     useRandomString([
@@ -18,7 +18,7 @@
                 }}
 
                 <span class="inline text-self-6">категории «{{ workCategory?.title }}»</span> нет
-                <span class="inline text-self-2">или </span> они не предоставлены
+                <span class="inline text-self-2">или</span> не предоставлены
             </div>
         </div>
 

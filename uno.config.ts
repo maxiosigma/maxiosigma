@@ -91,7 +91,14 @@ export default defineConfig({
             'double-text': '5px 5px 2px rgba(255, 0, 0, 0.5)',
             sm: '0 1px 2px var(--tw-shadow-color)',
             DEFAULT: '0 2px 4px var(--tw-shadow-color)',
-            lg: '0 8px 16px var(--tw-shadow-color)'
+            lg: '0 8px 16px var(--tw-shadow-color)',
+
+            'xs-circle-light': '0 0 3px rgba(255, 255, 255, 0.7)',
+            'sm-circle-light': '0 0 5px rgba(255, 255, 255, 0.7)',
+            'lg-circle-light': '0 0 10px rgba(255, 255, 255, 0.7)',
+            'xl-circle-light': '0 0 20px rgba(255, 255, 255, 0.7)',
+            '2xl-circle-light': '0 0 40px rgba(255, 255, 255, 0.7)',
+            '3xl-circle-light': '0 0 60px rgba(255, 255, 255, 0.7)'
         },
         boxShadow: {
             'xs-circle': '0 0 3px 0 rgba(0, 0, 0, 0.3)',
