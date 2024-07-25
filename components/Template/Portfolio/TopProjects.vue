@@ -7,7 +7,12 @@
         <div
             :class="[category && worksFilter.length === 0 ? 'flex-center w-full h-90vh' : 'hidden']"
         >
-            <div class="uppercase font-bold">На данный момент работ по текущей категории нет</div>
+            <div
+                class="uppercase font-bold max-w-3/5 transition-all duration-1000 text-center f-text-16-32 text-wrap"
+            >
+                На данный момент работ по текущей категории нет
+                <span class="inline text-self-2">или они не предоставлены</span>
+            </div>
         </div>
 
         <div
