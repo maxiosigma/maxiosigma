@@ -150,6 +150,18 @@ export default defineNuxtConfig({
             //'admin/index': onlyPageLocations([defaultLocale]),
             //'admin/links': onlyPageLocations([defaultLocale])
             //onlyNotDefaultPageLocations(['index'])
+            documents: onlyNotDefaultPageLocations(['index']),
+            main: onlyNotDefaultPageLocations(['index']),
+            news: onlyNotDefaultPageLocations(['index']),
+            offers: onlyNotDefaultPageLocations(['index']),
+            portfolio: onlyNotDefaultPageLocations(['index']),
+            presents: onlyNotDefaultPageLocations(['index']),
+            projects: onlyNotDefaultPageLocations(['index']),
+            questions: onlyNotDefaultPageLocations(['index']),
+            reviews: onlyNotDefaultPageLocations(['index']),
+            services: onlyNotDefaultPageLocations(['index']),
+            brands: onlyNotDefaultPageLocations(['index']),
+            contacts: onlyNotDefaultPageLocations(['index'])
         },
         langDir: 'locales',
         customRoutes: 'config',
