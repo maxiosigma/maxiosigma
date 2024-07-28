@@ -118,7 +118,7 @@ const prop = defineProps(['works', 'category'])
 const works = usePayloadData('portfolio_works_top')
 const worksCategories = usePayloadData('portfolio_works_categories')
 
-console.log(prop.category, worksCategories.value)
+//console.log(prop.category, worksCategories.value)
 
 const workCategory = computed(() => {
     return worksCategories.value

@@ -1,0 +1,746 @@
+﻿[
+    {
+        "path": "/index/brands",
+        "name": "brands___index",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru/brands",
+        "name": "brands___ru",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru-amp/brands",
+        "name": "brands___ru-amp",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/index/contacts",
+        "name": "contacts___index",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru/contacts",
+        "name": "contacts___ru",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru-amp/contacts",
+        "name": "contacts___ru-amp",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/index/documents",
+        "name": "documents___index",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru/documents",
+        "name": "documents___ru",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru-amp/documents",
+        "name": "documents___ru-amp",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/index/main",
+        "name": "main___index",
+        "meta": {
+            "layout": false
+        },
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru/main",
+        "name": "main___ru",
+        "meta": {
+            "layout": false
+        },
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru-amp/main",
+        "name": "main___ru-amp",
+        "meta": {
+            "layout": false
+        },
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/index/news",
+        "name": "news___index",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru/news",
+        "name": "news___ru",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru-amp/news",
+        "name": "news___ru-amp",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/index/offers",
+        "name": "offers___index",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru/offers",
+        "name": "offers___ru",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru-amp/offers",
+        "name": "offers___ru-amp",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/index/portfolio",
+        "name": "portfolio___index",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru/portfolio",
+        "name": "portfolio___ru",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {
+            "default": {}
+        },
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {
+            "default": {
+                "__name": "index",
+                "__hmrId": "57207ceb",
+                "__file": "C:/Projects/maxiosigma/pages/portfolio/index.vue"
+            }
+        }
+    },
+    {
+        "path": "/ru-amp/portfolio",
+        "name": "portfolio___ru-amp",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/index/presents",
+        "name": "presents___index",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru/presents",
+        "name": "presents___ru",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru-amp/presents",
+        "name": "presents___ru-amp",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/index/projects",
+        "name": "projects___index",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru/projects",
+        "name": "projects___ru",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru-amp/projects",
+        "name": "projects___ru-amp",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/index/questions",
+        "name": "questions___index",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru/questions",
+        "name": "questions___ru",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru-amp/questions",
+        "name": "questions___ru-amp",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/index/reviews",
+        "name": "reviews___index",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru/reviews",
+        "name": "reviews___ru",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru-amp/reviews",
+        "name": "reviews___ru-amp",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/index/services",
+        "name": "services___index",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru/services",
+        "name": "services___ru",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru-amp/services",
+        "name": "services___ru-amp",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/brands",
+        "name": "brands___index___default",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/contacts",
+        "name": "contacts___index___default",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/documents",
+        "name": "documents___index___default",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/",
+        "name": "index___index___default",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/index",
+        "name": "index___index",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru",
+        "name": "index___ru",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/ru-amp",
+        "name": "index___ru-amp",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/main",
+        "name": "main___index___default",
+        "meta": {
+            "layout": false
+        },
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/news",
+        "name": "news___index___default",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/offers",
+        "name": "offers___index___default",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/portfolio",
+        "name": "portfolio___index___default",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/presents",
+        "name": "presents___index___default",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/projects",
+        "name": "projects___index___default",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/questions",
+        "name": "questions___index___default",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/reviews",
+        "name": "reviews___index___default",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    },
+    {
+        "path": "/services",
+        "name": "services___index___default",
+        "meta": {},
+        "props": {
+            "default": false
+        },
+        "children": [],
+        "instances": {},
+        "leaveGuards": {},
+        "updateGuards": {},
+        "enterCallbacks": {},
+        "components": {}
+    }
+]

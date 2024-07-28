@@ -7,7 +7,13 @@
 <script setup>
 // <ItemToast />
 // <NuxtLoadingIndicator />
+
+const router = useRouter()
+console.log(router.getRoutes())
+
 const { localeProperties: lp, locales, locale } = useI18n()
+
+//console.log(locales.value.filter(({ code }) => code !== 'index').map(({ code }) => code))
 
 defineI18nRoute({
     locales: locales.value.filter(({ code }) => code !== 'index').map(({ code }) => code)

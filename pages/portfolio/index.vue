@@ -53,6 +53,8 @@ watch(
 useHead({
     title
 })
+
+useSelfDefineI18nRoute()
 </script>
 
 <style lang="scss">

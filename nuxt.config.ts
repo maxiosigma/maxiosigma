@@ -6,8 +6,6 @@ import Aura from '@primevue/themes/aura'
 const locales = getLocales(mkdirSync, writeFileSync, existsSync)
 const isGenerateMode = process.argv.includes('generate')
 
-console.log(onlyNotDefaultPageLocations(['index']))
-
 export default defineNuxtConfig({
     ssr: true,
     //dev: true,
@@ -102,8 +100,8 @@ export default defineNuxtConfig({
         '@primevue/nuxt-module',
         '@nuxtjs/device',
         '@vueuse/nuxt',
-        '@nuxt/eslint',
-        'nuxt-twa-module'
+        '@nuxt/eslint'
+        //'nuxt-twa-module'
         //{
         //    defaultUrl: 'https://maxiosigma.com',
         //    hostName: 'maxiosigma.com',
@@ -151,6 +149,7 @@ export default defineNuxtConfig({
             //'go-to-[slug]': onlyPageLocations([defaultLocale]),
             //'admin/index': onlyPageLocations([defaultLocale]),
             //'admin/links': onlyPageLocations([defaultLocale])
+            //onlyNotDefaultPageLocations(['index'])
         },
         langDir: 'locales',
         customRoutes: 'config',
