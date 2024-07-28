@@ -96,13 +96,13 @@ export default defineNuxtConfig({
     modules: [
         '@unocss/nuxt',
         '@formkit/nuxt',
-        '@nuxt/icon',
         '@nuxtjs/i18n',
         '@nuxt/content',
         '@primevue/nuxt-module',
         '@nuxtjs/device',
         '@vueuse/nuxt',
-        '@nuxt/eslint'
+        '@nuxt/eslint',
+        '@nuxt/icon'
         //'nuxt-twa-module'
         //{
         //    defaultUrl: 'https://maxiosigma.com',
