@@ -1,10 +1,12 @@
 import { resolve } from 'path'
-import { getLocales, defaultLocale } from './config'
-import { mkdirSync, writeFileSync, existsSync, unlinkSync } from 'fs'
+//import { mkdirSync, writeFileSync, existsSync, unlinkSync } from 'fs'
+import { getLocales as locales, defaultLocale, onlyNotDefaultPageLocations } from './config'
 import Aura from '@primevue/themes/aura'
 
-const locales = getLocales(mkdirSync, writeFileSync, existsSync)
+const presetLocationNotIndex = onlyNotDefaultPageLocations(['default', 'defi'])
 const isGenerateMode = process.argv.includes('generate')
+
+console.log(presetLocationNotIndex)
 
 export default defineNuxtConfig({
     ssr: true,
@@ -137,7 +139,6 @@ export default defineNuxtConfig({
     i18n: {
         lazy: false,
         defaultLocale: defaultLocale,
-
         strategy: 'prefix_and_default',
         detectBrowserLanguage: {
             useCookie: true,
@@ -146,25 +147,28 @@ export default defineNuxtConfig({
             redirectOn: 'root'
         },
         pages: {
+            defi: false,
+            'defi/*': false,
+
             //'go-to-[slug]': onlyPageLocations([defaultLocale]),
             //'admin/index': onlyPageLocations([defaultLocale]),
             //'admin/links': onlyPageLocations([defaultLocale])
-            //onlyNotDefaultPageLocations(['index'])
-            documents: onlyNotDefaultPageLocations(['index']),
-            main: onlyNotDefaultPageLocations(['index']),
-            news: onlyNotDefaultPageLocations(['index']),
-            offers: onlyNotDefaultPageLocations(['index']),
-            portfolio: onlyNotDefaultPageLocations(['index']),
-            presents: onlyNotDefaultPageLocations(['index']),
-            projects: onlyNotDefaultPageLocations(['index']),
-            questions: onlyNotDefaultPageLocations(['index']),
-            reviews: onlyNotDefaultPageLocations(['index']),
-            services: onlyNotDefaultPageLocations(['index']),
-            brands: onlyNotDefaultPageLocations(['index']),
-            contacts: onlyNotDefaultPageLocations(['index'])
+            documents: { default: false, defi: false },
+            main: { default: false, defi: false },
+            news: { default: false, defi: false },
+            offers: { default: false, defi: false },
+            portfolio: { default: false, defi: false },
+            presents: { default: false, defi: false },
+            projects: { default: false, defi: false },
+            questions: { default: false, defi: false },
+            reviews: { default: false, defi: false },
+            services: { default: false, defi: false },
+            brands: { default: false, defi: false },
+            contacts: { default: false, defi: false }
         },
         langDir: 'locales',
         customRoutes: 'config',
+        //customRoutes: 'page',
         locales
     },
 
@@ -191,18 +195,6 @@ export default defineNuxtConfig({
 
     compatibilityDate: '2024-07-10'
 })
-
-function onlyPageLocations(names: any[] = []) {
-    return locales
-        .filter((locale) => names.filter((name) => locale.code !== name).length > 0)
-        .reduce((s, locale) => (s = { ...s, [locale.code]: false }) && s, {})
-}
-
-function onlyNotDefaultPageLocations(names: any[] = []) {
-    return locales
-        .filter((locale) => names.filter((name) => locale.code === name).length > 0)
-        .reduce((s, locale) => (s = { ...s, [locale.code]: false }) && s, {})
-}
 
 //primevue: {
 //    usePrimeVue: true,

@@ -24,6 +24,10 @@ const setPageClass = (style) => {
     useClassApp(document, style)
     if (prop?.class) useClassApp(document, prop.class)
 }
+
+defineI18nRoute({
+    locales: ['ru']
+})
 </script>
 
 <style module>

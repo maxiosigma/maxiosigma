@@ -54,7 +54,7 @@ useHead({
     title
 })
 
-useSelfDefineI18nRoute()
+//useSelfDefineI18nRoute()
 </script>
 
 <style lang="scss">
