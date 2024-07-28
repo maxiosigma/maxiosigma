@@ -103,22 +103,19 @@ export default defineNuxtConfig({
         '@nuxtjs/device',
         '@vueuse/nuxt',
         '@nuxt/eslint',
-
-        [
-            'nuxt-twa-module',
-            {
-                defaultUrl: 'https://maxiosigma.com',
-                hostName: 'maxiosigma.com',
-                sha256Fingerprints: [''],
-                applicationId: 'com.example.example',
-                launcherName: 'Maxiosigma',
-                versionCode: 1,
-                versionName: '1.0',
-                statusBarColor: 'black',
-                iconPath: '/static/icon.png',
-                distFolder: '.nuxt/dist/client'
-            }
-        ]
+        'nuxt-twa-module'
+        //{
+        //    defaultUrl: 'https://maxiosigma.com',
+        //    hostName: 'maxiosigma.com',
+        //    sha256Fingerprints: [''],
+        //    applicationId: 'com.example.example',
+        //    launcherName: 'Maxiosigma',
+        //    versionCode: 1,
+        //    versionName: '1.0',
+        //    statusBarColor: 'black',
+        //    iconPath: '/static/icon.png',
+        //    distFolder: '.nuxt/dist/client'
+        //}
     ],
 
     primevue: {
