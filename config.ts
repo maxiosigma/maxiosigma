@@ -6,16 +6,12 @@
 
 export const defaultLocale = 'index'
 
-export const getLocales = (
-    mkdirSync: any,
-    writeFileSync: any,
-    existsSync: any
-) => {
+export const getLocales = (mkdirSync: any, writeFileSync: any, existsSync: any) => {
     const locales_pc = [
         { code: 'index', iso: 'ru-RU', name: 'Index' },
-        { code: 'ru', iso: 'ru-RU', name: 'Русский' },
-        { code: 'en', iso: 'en-ES', name: 'English' },
-        { code: 'zh', iso: 'zh-CN', name: '中國人' }
+        { code: 'ru', iso: 'ru-RU', name: 'Русский' }
+        //{ code: 'en', iso: 'en-ES', name: 'English' },
+        //{ code: 'zh', iso: 'zh-CN', name: '中國人' }
     ].map((it) => ({ ...it, origin: it.code, file: it.code + '.json' }))
 
     const locales_mobile = locales_pc
@@ -32,9 +28,7 @@ export const getLocales = (
     })
     //
     locales_pc.map(({ file }) => {
-        !existsSync(`./locales/${file}`)
-            ? writeFileSync(`./locales/${file}`, '{}')
-            : null
+        !existsSync(`./locales/${file}`) ? writeFileSync(`./locales/${file}`, '{}') : null
     })
 
     return [...locales_pc, ...locales_mobile]

@@ -6,6 +6,8 @@ import Aura from '@primevue/themes/aura'
 const locales = getLocales(mkdirSync, writeFileSync, existsSync)
 const isGenerateMode = process.argv.includes('generate')
 
+console.log(onlyNotDefaultPageLocations(['index']))
+
 export default defineNuxtConfig({
     ssr: true,
     //dev: true,
@@ -100,7 +102,23 @@ export default defineNuxtConfig({
         '@primevue/nuxt-module',
         '@nuxtjs/device',
         '@vueuse/nuxt',
-        '@nuxt/eslint'
+        '@nuxt/eslint',
+
+        [
+            'nuxt-twa-module',
+            {
+                defaultUrl: 'https://maxiosigma.com',
+                hostName: 'maxiosigma.com',
+                sha256Fingerprints: [''],
+                applicationId: 'com.example.example',
+                launcherName: 'Maxiosigma',
+                versionCode: 1,
+                versionName: '1.0',
+                statusBarColor: 'black',
+                iconPath: '/static/icon.png',
+                distFolder: '.nuxt/dist/client'
+            }
+        ]
     ],
 
     primevue: {
@@ -133,9 +151,9 @@ export default defineNuxtConfig({
             redirectOn: 'root'
         },
         pages: {
-            'go-to-[slug]': onlyPageLocations([defaultLocale]),
-            'admin/index': onlyPageLocations([defaultLocale]),
-            'admin/links': onlyPageLocations([defaultLocale])
+            //'go-to-[slug]': onlyPageLocations([defaultLocale]),
+            //'admin/index': onlyPageLocations([defaultLocale]),
+            //'admin/links': onlyPageLocations([defaultLocale])
         },
         langDir: 'locales',
         customRoutes: 'config',
@@ -169,6 +187,12 @@ export default defineNuxtConfig({
 function onlyPageLocations(names: any[] = []) {
     return locales
         .filter((locale) => names.filter((name) => locale.code !== name).length > 0)
+        .reduce((s, locale) => (s = { ...s, [locale.code]: false }) && s, {})
+}
+
+function onlyNotDefaultPageLocations(names: any[] = []) {
+    return locales
+        .filter((locale) => names.filter((name) => locale.code === name).length > 0)
         .reduce((s, locale) => (s = { ...s, [locale.code]: false }) && s, {})
 }
 
