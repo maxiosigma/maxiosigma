@@ -15,7 +15,9 @@
   description: Заказ для авто-сайта
   category: design
   images:
-      -
+      - assets/media/portfolio/autoscanner_elm/1.webp
+      - assets/media/portfolio/autoscanner_elm/2.webp
+      - assets/media/portfolio/autoscanner_elm/3.webp
   tags: []
   date: 2022-05-13T00:00:00.000Z
 
