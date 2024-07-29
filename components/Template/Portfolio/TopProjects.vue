@@ -133,7 +133,7 @@ const workCategory = computed(() => {
         .filter((w) => !!w)?.[0]?.title
 })
 
-console.log(works.value.sort((a, b) => new Date(b.date) - new Date(a.date)))
+console.log(works.value)
 
 const worksFilter = computed(() =>
     works.value.filter((w) => !!w.category && w.category === prop.category).filter((w) => !!w)
