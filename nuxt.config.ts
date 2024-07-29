@@ -6,8 +6,6 @@ import Aura from '@primevue/themes/aura'
 const presetLocationNotIndex = onlyNotDefaultPageLocations(['default', 'defi'])
 const isGenerateMode = process.argv.includes('generate')
 
-console.log(presetLocationNotIndex)
-
 export default defineNuxtConfig({
     ssr: true,
     //dev: true,
@@ -63,7 +61,7 @@ export default defineNuxtConfig({
     },
 
     features: {
-        //inlineStyles: !isGenerateMode,
+        inlineStyles: !isGenerateMode,
         devLogs: true
     },
 
@@ -120,7 +118,6 @@ export default defineNuxtConfig({
 
     primevue: {
         usePrimeVue: true,
-
         components: {
             prefix: 'Prime'
         },
@@ -147,24 +144,20 @@ export default defineNuxtConfig({
             redirectOn: 'root'
         },
         pages: {
-            defi: false,
-            'defi/*': false,
-
-            //'go-to-[slug]': onlyPageLocations([defaultLocale]),
-            //'admin/index': onlyPageLocations([defaultLocale]),
-            //'admin/links': onlyPageLocations([defaultLocale])
-            documents: { default: false, defi: false },
-            main: { default: false, defi: false },
-            news: { default: false, defi: false },
-            offers: { default: false, defi: false },
-            portfolio: { default: false, defi: false },
-            presents: { default: false, defi: false },
-            projects: { default: false, defi: false },
-            questions: { default: false, defi: false },
-            reviews: { default: false, defi: false },
-            services: { default: false, defi: false },
-            brands: { default: false, defi: false },
-            contacts: { default: false, defi: false }
+            //defi: false,
+            //'defi/*': false,
+            //documents: { default: false, defi: false },
+            //main: { default: false, defi: false },
+            //news: { default: false, defi: false },
+            //offers: { default: false, defi: false },
+            //portfolio: { default: false, defi: false },
+            //presents: { default: false, defi: false },
+            //projects: { default: false, defi: false },
+            //questions: { default: false, defi: false },
+            //reviews: { default: false, defi: false },
+            //services: { default: false, defi: false },
+            //brands: { default: false, defi: false },
+            //contacts: { default: false, defi: false }
         },
         langDir: 'locales',
         customRoutes: 'config',
@@ -317,3 +310,6 @@ export default defineNuxtConfig({
 //hooks: {
 //    ready: () => {}
 //},
+//'go-to-[slug]': onlyPageLocations([defaultLocale]),
+//'admin/index': onlyPageLocations([defaultLocale]),
+//'admin/links': onlyPageLocations([defaultLocale])

@@ -1,5 +1,5 @@
 ﻿<template>
-    <div class="portfolio-content :uno: flex flex-col gap-5 relative">
+    <div class="portfolio-content :uno: flex flex-col gap-16 relative">
         <div :class="[!category ? 'flex flex-col gap-14' : 'hidden']">
             <div
                 class="bg-self-1/95 text-self-7/55 f-text-10-16 px-4 py-4 rounded-md shadow-sm-circle"
@@ -83,28 +83,35 @@
             :class="[category && worksFilter.length > 0 ? '' : 'hidden']"
             v-for="work in worksFilter"
         >
-            <!--<div
-                            class="relative z-0 overflow-hidden <md:(max-h-45vmin) md:(min-w-3/8 max-w-3/8)"
-                        >
-                            <ItemMediaImg
-                                class="relative w-full h-full md:(rounded-l-2xl flex-shrink-1 h-full)"
-                                :src="'/' + work?.images?.[0]"
-                            />
-                        </div>-->
-
             <div class="flex flex-col bg-self-2 rounded-lg py-4 self-center flex-grow gap-4">
                 <div class="f-text-16-28 text-self-4 px-4">
                     {{ work.title }}
                 </div>
 
-                <div class="f-text-12-24 b-t-2 b-b-2 b-self-3 py-1 px-4">
-                    {{ work.description }}
+                <div class="flex f-text-12-24 b-t-8 b-b-8 b-x-20 b-self-3 rounded-2xl">
+                    <div
+                        v-if="work?.images?.[0]"
+                        class="flex-shrink relative z-0 overflow-hidden rounded-r-full shadow-lg-circle h-auto w-2/5 min-w-2/5"
+                    >
+                        <ItemMediaImg
+                            class="relative w-full h-full"
+                            :src="'/' + work?.images?.[0]"
+                        />
+                    </div>
+
+                    <div
+                        class="flex-grow self-center px-4 py-2 text-shadow-sm-circle"
+                        :class="[work?.images?.[0] ? 'hypnes-auto' : '']"
+                    >
+                        {{ work.description }}
+                    </div>
                 </div>
 
                 <PrimeButton
                     v-if="work.link"
                     @click="clicked(work.link)"
-                    class="self-start !py-1 mx-4"
+                    class="self-end transition-all duration-300 !text-self-5 !b-self-5 !py-1 mx-4 hover:(!bg-self-3 !b-self-3 !text-self-1 shadow-xs-circle-light)"
+                    outlined
                 >
                     Посмотреть →
                 </PrimeButton>
@@ -115,7 +122,7 @@
 
 <script setup>
 const prop = defineProps(['works', 'category'])
-const works = usePayloadData('portfolio_works_top')
+const works = usePayloadData('portfolio_works_all')
 const worksCategories = usePayloadData('portfolio_works_categories')
 
 //console.log(prop.category, worksCategories.value)
@@ -125,6 +132,8 @@ const workCategory = computed(() => {
         .filter((w) => !!w.slug && w.slug === prop.category)
         .filter((w) => !!w)?.[0]?.title
 })
+
+console.log(works.value.sort((a, b) => new Date(b.date) - new Date(a.date)))
 
 const worksFilter = computed(() =>
     works.value.filter((w) => !!w.category && w.category === prop.category).filter((w) => !!w)

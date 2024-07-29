@@ -29,6 +29,17 @@
                 res?.[0]?.body?.filter((it: { top: boolean }) => it?.top === true)
         },
         {
+            path: 'portfolio/works/all',
+            name: 'portfolio_works_all',
+            callback: (res: any) =>
+                res?.[0]?.body
+                    .sort((a: any, b: any) => new Date(b.date) - new Date(a.date))
+                    .map((it: { date: any }) => {
+                        delete it?.date
+                        return it
+                    })
+        },
+        {
             path: 'portfolio/works/categories',
             name: 'portfolio_works_categories',
             callback: (res: any) => res?.[0]?.body

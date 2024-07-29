@@ -8,8 +8,8 @@
 // <ItemToast />
 // <NuxtLoadingIndicator />
 
-const router = useRouter()
-useClientLog(router.getRoutes())
+//const router = useRouter()
+//useClientLog(router.getRoutes())
 
 //const { localeProperties: lp, locales, locale } = useI18n()
 

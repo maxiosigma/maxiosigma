@@ -95,6 +95,13 @@ export default defineConfig({
             DEFAULT: '0 2px 4px var(--tw-shadow-color)',
             lg: '0 8px 16px var(--tw-shadow-color)',
 
+            'xs-circle': '0 0 3px rgba(0, 0, 0, 0.3)',
+            'sm-circle': '0 0 5px rgba(0, 0, 0, 0.3)',
+            'lg-circle': '0 0 10px rgba(0, 0, 0, 0.3)',
+            'xl-circle': '0 0 20px rgba(0, 0, 0, 0.3)',
+            '2xl-circle': '0 0 40px rgba(0, 0, 0, 0.3)',
+            '3xl-circle': '0 0 60px rgba(0, 0, 0, 0.3)',
+
             'xs-circle-light': '0 0 3px rgba(255, 255, 255, 0.7)',
             'sm-circle-light': '0 0 5px rgba(255, 255, 255, 0.7)',
             'lg-circle-light': '0 0 10px rgba(255, 255, 255, 0.7)',
@@ -125,6 +132,7 @@ export default defineConfig({
         dropShadow: {
             '3xl': 'drop-shadow(0 30px 30px rgba(0, 0, 0, 0.5))',
             '4xl': 'drop-shadow(0 40px 40px rgba(0, 0, 0, 0.5))',
+
             'xs-circle': 'drop-shadow(0 0 3px rgba(0, 0, 0, 0.5))',
             'sm-circle': 'drop-shadow(0 0 5px rgba(0, 0, 0, 0.5))',
             'lg-circle': 'drop-shadow(0 0 10px rgba(0, 0, 0, 0.5))',
@@ -132,6 +140,7 @@ export default defineConfig({
             '2xl-circle': 'drop-shadow(0 0 40px rgba(0, 0, 0, 0.5))',
             '3xl-circle': 'drop-shadow(0 0 60px rgba(0, 0, 0, 0.5))',
             '3xl-circle-full': 'drop-shadow(0 0 60px #000000)',
+
             test: 'drop-shadow(0 50px 5px #000000)'
         }
     },
