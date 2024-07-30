@@ -5,8 +5,6 @@
       - integrations
       - serverless
       - parsing
-      - integrations
-      - integrations
       - api
   slug: develop
 

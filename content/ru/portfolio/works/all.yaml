@@ -18,7 +18,7 @@
       - assets/media/portfolio/autoscanner_elm/1.webp
       - assets/media/portfolio/autoscanner_elm/2.webp
       - assets/media/portfolio/autoscanner_elm/3.webp
-  tags: []
+  tags:
   date: 2022-05-13T00:00:00.000Z
 
 - slug: blog_o_kompyuternyh_igrah
@@ -28,7 +28,7 @@
   category: develop
   images:
       -
-  tags: []
+  tags:
   date: 2017-02-01T00:00:00.000Z
 
 - slug: diplomnaya_rabota
@@ -39,7 +39,7 @@
   category: develop
   images:
       -
-  tags: []
+  tags:
   date: 2017-03-01T00:00:00.000Z
 
 - slug: domashnij_pereezd
@@ -49,7 +49,7 @@
   category: develop
   images:
       -
-  tags: []
+  tags:
   date: 2019-01-01T00:00:00.000Z
 
 - top: true
@@ -60,7 +60,7 @@
   category: design
   images:
       -
-  tags: []
+  tags:
   date: 2021-01-01T00:00:00.000Z
 
 - slug: fabrika_kofe
@@ -70,14 +70,14 @@
   category: develop
   images:
       -
-  tags: []
+  tags:
   date: 2021-01-01T00:00:00.000Z
 
 - slug: gadzhetarium
   link: null
   title: Гаджетариум
   description: Сайт гаджетов, создавался для портфолио
-  tags: []
+  tags:
   date: 2021-01-01T00:00:00.000Z
   category:
   images:
@@ -96,7 +96,7 @@
   images:
       - assets/media/portfolio/karta_loyalnosti/1.webp
       - assets/media/portfolio/karta_loyalnosti/2.webp
-  tags: []
+  tags:
   date: 2022-05-13T00:00:00.000Z
 
 - slug: karta_associacii
@@ -108,7 +108,7 @@
   category: develop
   images:
       -
-  tags: []
+  tags:
   date: 2020-02-01T00:00:00.000Z
 
 - slug: ketky_or_sajt_kafedry
@@ -125,7 +125,7 @@
       - assets/media/portfolio/ketky_or_sajt_kafedry/3.webp
       - assets/media/portfolio/ketky_or_sajt_kafedry/4.webp
       - assets/media/portfolio/ketky_or_sajt_kafedry/5.webp
-  tags: []
+  tags:
   date: 2020-03-01T00:00:00.000Z
 
 - slug: knizhnaya_polka
@@ -137,7 +137,7 @@
   category: develop
   images:
       -
-  tags: []
+  tags:
   date: 2017-01-01T00:00:00.000Z
 
 - slug: logotip_dlya_telegram_chata
@@ -147,7 +147,7 @@
   category: design
   images:
       -
-  tags: []
+  tags:
   date: 2021-01-01T00:00:00.000Z
 
 - slug: magazin_keksbi
@@ -157,7 +157,7 @@
   category: develop
   images:
       -
-  tags: []
+  tags:
   date: 2019-01-01T00:00:00.000Z
 
 - slug: moj_rodnoj_gorod
@@ -167,7 +167,7 @@
   category: develop
   images:
       -
-  tags: []
+  tags:
   date: 2021-02-01T00:00:00.000Z
 
 - slug: prodazha_avtozapchastej
@@ -177,7 +177,7 @@
   category: develop
   images:
       -
-  tags: []
+  tags:
   date: 2022-05-13T00:00:00.000Z
 
 - slug: rozovaya_chereshnya
@@ -188,7 +188,7 @@
   category: design
   images:
       -
-  tags: []
+  tags:
   date: 2021-02-01T00:00:00.000Z
 
 - slug: shkola_avtozvuka
@@ -199,7 +199,7 @@
   category: develop
   images:
       -
-  tags: []
+  tags:
   date: 2021-03-01T00:00:00.000Z
 
 - slug: shkola_boevyh_iskusstv
@@ -209,7 +209,7 @@
   category: develop
   images:
       -
-  tags: []
+  tags:
   date: 2020-03-01T00:00:00.000Z
 
 - slug: staart
@@ -221,7 +221,7 @@
   category: develop
   images:
       -
-  tags: []
+  tags:
   date: 2021-04-01T00:00:00.000Z
 
 - top: true
@@ -232,5 +232,5 @@
   category: develop
   images:
       - assets/media/portfolio/tommy_jeans/1.webp
-  tags: []
+  tags:
   date: 2021-06-01T00:00:00.000Z
