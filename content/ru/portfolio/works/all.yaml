@@ -1,23 +1,47 @@
-﻿- slug: animacionnyj_banner
+﻿- slug: tattoo_school_pavel_bobkov
+  link: null
+  title: Презентация школы тату Павла Бобкова
+  description: null
+  category: design
+  preview_image: assets/media/portfolio/design_tattoo_school_pavel_bobkov_2.webp
+  preview_video:
+  videos:
+      -
+  images:
+      - assets/media/portfolio/design_tattoo_school_pavel_bobkov_1.webp
+      - assets/media/portfolio/design_tattoo_school_pavel_bobkov_2.webp
+      - assets/media/portfolio/design_tattoo_school_pavel_bobkov_3.webp
+  tags:
+  date: 2024-01-13T00:00:00.000Z
+
+- slug: animacionnyj_banner
   link: null
   title: Анимационный баннер
   description: null
   category: develop
+  preview_image:
+  preview_video:
+  videos:
+      -
   images:
       -
   tags:
       - corporate
   date: 2022-05-13T00:00:00.000Z
 
-- slug: avtoskaner_elm327
+- slug: autoscanner_elm
   link: null
   title: Автосканер ELM327
   description: Заказ для авто-сайта
   category: design
+  preview_image: assets/media/portfolio/design_autoscanner_elm_1.webp
+  preview_video:
+  videos:
+      -
   images:
-      - assets/media/portfolio/autoscanner_elm/1.webp
-      - assets/media/portfolio/autoscanner_elm/2.webp
-      - assets/media/portfolio/autoscanner_elm/3.webp
+      - assets/media/portfolio/design_autoscanner_elm_1.webp
+      - assets/media/portfolio/design_autoscanner_elm_2.webp
+      - assets/media/portfolio/design_autoscanner_elm_3.webp
   tags:
   date: 2022-05-13T00:00:00.000Z
 
@@ -26,6 +50,10 @@
   title: Блог о компьютерных играх
   description: Блог создавал на бакалавриате. Обучался созданию разных видов сайтов.
   category: develop
+  preview_image:
+  preview_video:
+  videos:
+      -
   images:
       -
   tags:
@@ -37,6 +65,10 @@
   description: Проект в формате книжки по обучению 3D-моделирования. Построение
       робота, его костемизация и анимация.
   category: develop
+  preview_image:
+  preview_video:
+  videos:
+      -
   images:
       -
   tags:
@@ -47,6 +79,10 @@
   title: Домашний переезд
   description: Сайт стажировки (многостраничный) создан для прохождения вступительного испытания компании «Информационные технологии». Он был создан с использованием разных подходов к сеткам сайта. База создается с помощью сетки, а некоторые блоки создаются с помощью флексбокса и таблицы. С мобильной адаптацией.
   category: develop
+  preview_image:
+  preview_video:
+  videos:
+      -
   images:
       -
   tags:
@@ -58,18 +94,29 @@
   title: Две дыни по цене одной
   description: 1 из 2 работ для заказа по баннерам
   category: design
+  preview_image:
+  preview_video:
+  videos:
+      -
   images:
       -
   tags:
   date: 2021-01-01T00:00:00.000Z
 
-- slug: fabrika_kofe
+- slug: coffee_factory
   link: https://maksim-semenyuk-coffee-masters.webflow.io
   title: Фабрика кофе
   description: Демонстрационный сайт был создан в Webflow.
   category: develop
-  images:
+  preview_image: assets/media/portfolio/development_coffee_factory_1.webp
+  preview_video:
+  videos:
       -
+  images:
+      - assets/media/portfolio/development_coffee_factory_1.webp
+      - assets/media/portfolio/development_coffee_factory_2.webp
+      - assets/media/portfolio/development_coffee_factory_3.webp
+      - assets/media/portfolio/development_coffee_factory_4.webp
   tags:
   date: 2021-01-01T00:00:00.000Z
 
@@ -80,12 +127,16 @@
   tags:
   date: 2021-01-01T00:00:00.000Z
   category:
+  preview_image: assets/media/portfolio/design_gadgetarium_1.webp
+  preview_video:
+  videos:
+      -
   images:
-      - assets/media/portfolio/gadgetarium/1.webp
-      - assets/media/portfolio/gadgetarium/2.webp
-      - assets/media/portfolio/gadgetarium/3.webp
-      - assets/media/portfolio/gadgetarium/4.webp
-      - assets/media/portfolio/gadgetarium/5.webp
+      - assets/media/portfolio/design_gadgetarium_1.webp
+      - assets/media/portfolio/design_gadgetarium_2.webp
+      - assets/media/portfolio/design_gadgetarium_3.webp
+      - assets/media/portfolio/design_gadgetarium_4.webp
+      - assets/media/portfolio/design_gadgetarium_5.webp
 
 - slug: karta_loyalnosti
   top: true
@@ -93,9 +144,12 @@
   title: Карта лояльности
   description: Дизайн карты лояльности для крупнейшей компании мира по кэшбеку
   category: design
+  preview_image: assets/media/portfolio/design_loyalty_card_1.webp
+  preview_video:
+  videos:
+      -
   images:
-      - assets/media/portfolio/karta_loyalnosti/1.webp
-      - assets/media/portfolio/karta_loyalnosti/2.webp
+      - assets/media/portfolio/design_loyalty_card_1.webp
   tags:
   date: 2022-05-13T00:00:00.000Z
 
@@ -106,6 +160,10 @@
       легко реализовать и может иметь место на вашем сайте. На сайте тоже есть
       модальные окна и анимация даже со сменой категории через Ajax.
   category: develop
+  preview_image:
+  preview_video:
+  videos:
+      -
   images:
       -
   tags:
@@ -119,12 +177,16 @@
       Проект проходит стадию согласования с размещением или неразмещением в сети
       общего пользования.
   category: develop
+  preview_image: assets/media/portfolio/development_ketky_or_sajt_kafedry_1.webp
+  preview_video:
+  videos:
+      -
   images:
-      - assets/media/portfolio/ketky_or_sajt_kafedry/1.webp
-      - assets/media/portfolio/ketky_or_sajt_kafedry/2.webp
-      - assets/media/portfolio/ketky_or_sajt_kafedry/3.webp
-      - assets/media/portfolio/ketky_or_sajt_kafedry/4.webp
-      - assets/media/portfolio/ketky_or_sajt_kafedry/5.webp
+      - assets/media/portfolio/development_ketky_or_sajt_kafedry_1.webp
+      - assets/media/portfolio/development_ketky_or_sajt_kafedry_2.webp
+      - assets/media/portfolio/development_ketky_or_sajt_kafedry_3.webp
+      - assets/media/portfolio/development_ketky_or_sajt_kafedry_4.webp
+      - assets/media/portfolio/development_ketky_or_sajt_kafedry_5.webp
   tags:
   date: 2020-03-01T00:00:00.000Z
 
@@ -135,6 +197,10 @@
       PHP-книжная полка на бакалавриате. Обучался созданию функциональной
       части сайта основанного на php-сервере.
   category: develop
+  preview_image:
+  preview_video:
+  videos:
+      -
   images:
       -
   tags:
@@ -145,6 +211,10 @@
   title: Логотип для телеграм-чата
   description: Seller
   category: design
+  preview_image:
+  preview_video:
+  videos:
+      -
   images:
       -
   tags:
@@ -155,6 +225,10 @@
   title: Магазин Кексби
   description: Учебный проект (лендинг) в профессиональном стиле, с использованием правильных элементов разметки и стилизации. Он был создан с использованием flexbox, без какой-либо специальной функциональности.
   category: develop
+  preview_image:
+  preview_video:
+  videos:
+      -
   images:
       -
   tags:
@@ -165,6 +239,10 @@
   title: Мой родной город
   description: Сайт родного города на Тильде
   category: develop
+  preview_image:
+  preview_video:
+  videos:
+      -
   images:
       -
   tags:
@@ -175,6 +253,10 @@
   title: Продажа автозапчастей
   description: Начальный шаблон сайта для магазина моего дяди
   category: develop
+  preview_image:
+  preview_video:
+  videos:
+      -
   images:
       -
   tags:
@@ -186,8 +268,12 @@
   title: Розовая черешня
   description: 1 из 2 работ для заказа по баннерам
   category: design
-  images:
+  preview_image: assets/media/portfolio/design_pink_cherry_1.webp
+  preview_video:
+  videos:
       -
+  images:
+      - assets/media/portfolio/design_pink_cherry_1.webp
   tags:
   date: 2021-02-01T00:00:00.000Z
 
@@ -197,8 +283,19 @@
   description: Демонстрационный сайт на бирже фриланса. Он был закрытым, но
       наполненным душой.
   category: develop
-  images:
+  preview_image: assets/media/portfolio/development_school_audio_car_1.webp
+  preview_video:
+  videos:
       -
+  images:
+      - assets/media/portfolio/development_school_audio_car_1.webp
+      - assets/media/portfolio/development_school_audio_car_2.webp
+      - assets/media/portfolio/development_school_audio_car_3.webp
+      - assets/media/portfolio/development_school_audio_car_4.webp
+      - assets/media/portfolio/development_school_audio_car_5.webp
+      - assets/media/portfolio/development_school_audio_car_6.webp
+      - assets/media/portfolio/development_school_audio_car_7.webp
+      - assets/media/portfolio/development_school_audio_car_8.webp
   tags:
   date: 2021-03-01T00:00:00.000Z
 
@@ -207,6 +304,10 @@
   title: Школа боевых искусств
   description: Пример простого лендинга с плавающим меню и анимацией прокрутки.
   category: develop
+  preview_image:
+  preview_video:
+  videos:
+      -
   images:
       -
   tags:
@@ -219,8 +320,23 @@
   description: Редизайн сайта, создание с использованием новых технологий,
       статическая сборка
   category: develop
-  images:
+  preview_image: assets/media/portfolio/development_staart_1.webp
+  preview_video:
+  videos:
       -
+  images:
+      - assets/media/portfolio/development_staart_1.webp
+      - assets/media/portfolio/development_staart_2.webp
+      - assets/media/portfolio/development_staart_3.webp
+      - assets/media/portfolio/development_staart_4.webp
+      - assets/media/portfolio/development_staart_5.webp
+      - assets/media/portfolio/development_staart_6.webp
+      - assets/media/portfolio/development_staart_7.webp
+      - assets/media/portfolio/development_staart_8.webp
+      - assets/media/portfolio/development_staart_9.webp
+      - assets/media/portfolio/development_staart_10.webp
+      - assets/media/portfolio/development_staart_11.webp
+      - assets/media/portfolio/development_staart_12.webp
   tags:
   date: 2021-04-01T00:00:00.000Z
 
@@ -230,7 +346,11 @@
   title: Томми Джинс
   description: Целевая страница сложно-анимационного характера.
   category: develop
+  preview_image: assets/media/portfolio/development_tommy_jeans_1.webp
+  preview_video:
+  videos:
+      -
   images:
-      - assets/media/portfolio/tommy_jeans/1.webp
+      - assets/media/portfolio/development_tommy_jeans_1.webp
   tags:
   date: 2021-06-01T00:00:00.000Z
