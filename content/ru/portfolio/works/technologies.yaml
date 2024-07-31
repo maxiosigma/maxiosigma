@@ -1,8 +1,8 @@
 ﻿- title: Strapi
   slug: strapi
 
-- title: Nuxt
-  slug: nuxt
+- title: Nuxt 3
+  slug: nuxt3
 
 - title: Cloudflare Workers
   slug: cloudflare_workers

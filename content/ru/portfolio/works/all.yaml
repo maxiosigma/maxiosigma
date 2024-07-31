@@ -10,13 +10,9 @@
   images:
       -
   technologies:
-      - strapi
-      - nuxt
       - cloudflare_workers
-      -
-      -
-      -
-      -
+      - strapi
+      - nuxt3
   tags:
       - cloud
       - traffic
