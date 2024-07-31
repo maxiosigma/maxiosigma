@@ -1,71 +1,95 @@
 - title: Сайт
   slug: website
+  icon: simple-icons:sitepoint
 
 - title: Интеграции
   slug: integrations
+  icon: oui:integration-security
 
 - title: Бессерверные функции
   slug: serverless
+  icon: file-icons:serverless
 
 - title: Парсинг
   slug: parsing
+  icon: carbon:data-unstructured
 
 - title: Апи
   slug: api
+  icon: ant-design:api-filled
 
 - title: Фирменный стиль
   slug: form_style
+  icon: vscode-icons:file-type-stylelint
 
 - title: Прототипирование
   slug: prototyping
+  icon: icon-park-outline:hanfu-chinese-style
 
 - title: Презентация
   slug: presentation
+  icon: mingcute:presentation-2-fill
 
 - title: Редизайн
   slug: redesign
+  icon: streamline:interface-edit-paint-color-colors-design-paint-painting-palette
 
 - title: Логотип
   slug: logo
+  icon: ph:apple-logo-fill
 
 - title: Графические правки
   slug: graphic_edits
+  icon: streamline:image-camera-tripod-tripod-photos-picture-camera-photography-photo-pictures
 
 - title: Баннер
   slug: banner
+  icon: material-symbols:planner-banner-ad-pt-rounded
 
 - title: Проектирование сайта
   slug: website_design
+  icon: streamline:programming-browser-code-1-code-browser-line-shell-programming-command-terminal
 
 - title: Простые модели
   slug: just_models
+  icon: streamline:interface-lighting-brightness-3-bright-adjust-brightness-adjustment-sun-raise-controls-dot-small
 
 - title: Описание к товарам
   slug: description_of_goods
+  icon: streamline:shopping-bag-hand-bag-1-shopping-bag-purse-goods-item-products
 
 - title: Продающий текст
   slug: selling_text
+  icon:
 
 - title: Оставить отзыв
   slug: leave_feedback
+  icon:
 
 - title: Обработка видео
   slug: video_processing
+  icon:
 
 - title: Обработка фото
   slug: photo_processing
+  icon:
 
 - title: Нарезка видео
   slug: video_cutting
+  icon:
 
 - title: Программирование
   slug: programming
+  icon:
 
 - title: Видеопоказ
   slug: video_show
+  icon:
 
 - title: Вопросы дизайна
   slug: design_issues
+  icon:
 
 - title: Анимированный баннер
   slug: animated_banner
+  icon:
