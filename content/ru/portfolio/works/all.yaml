@@ -13,6 +13,7 @@
       - cloudflare_workers
       - strapi
       - nuxt3
+      - js
   tags:
       - cloud
       - traffic
