@@ -79,27 +79,29 @@
   title: Домашний переезд
   description: Сайт стажировки (многостраничный) создан для прохождения вступительного испытания компании «Информационные технологии». Он был создан с использованием разных подходов к сеткам сайта. База создается с помощью сетки, а некоторые блоки создаются с помощью флексбокса и таблицы. С мобильной адаптацией.
   category: develop
-  preview_image:
+  preview_image: assets/media/portfolio/development_hometown_1.webp
   preview_video:
   videos:
       -
   images:
-      -
+      - assets/media/portfolio/development_hometown_1.webp
+      - assets/media/portfolio/development_hometown_2.webp
+      - assets/media/portfolio/development_hometown_3.webp
   tags:
   date: 2019-01-01T00:00:00.000Z
 
 - top: true
-  slug: dve_dyni_po_cene_odnoj
+  slug: two_melons_for_the_price_of_one
   link: null
   title: Две дыни по цене одной
   description: 1 из 2 работ для заказа по баннерам
   category: design
-  preview_image:
+  preview_image: assets/media/portfolio/design_two_melons_for_the_price_of_one_1.webp
   preview_video:
   videos:
       -
   images:
-      -
+      - assets/media/portfolio/design_two_melons_for_the_price_of_one_1.webp
   tags:
   date: 2021-01-01T00:00:00.000Z
 
@@ -160,16 +162,16 @@
       легко реализовать и может иметь место на вашем сайте. На сайте тоже есть
       модальные окна и анимация даже со сменой категории через Ajax.
   category: develop
-  preview_image:
+  preview_image: assets/media/portfolio/development_association_card_1.webp
   preview_video:
   videos:
       -
   images:
-      -
+      - assets/media/portfolio/development_association_card_1.webp
   tags:
   date: 2020-02-01T00:00:00.000Z
 
-- slug: ketky_or_sajt_kafedry
+- slug: website_ketku_department
   top: true
   link: http://n96348lg.beget.tech
   title: KETKY | Сайт кафедры
@@ -190,7 +192,7 @@
   tags:
   date: 2020-03-01T00:00:00.000Z
 
-- slug: knizhnaya_polka
+- slug: bookshelf
   link: null
   title: Книжная полка
   description: |-
@@ -198,9 +200,9 @@
       части сайта основанного на php-сервере.
   category: develop
   preview_image:
-  preview_video:
+  preview_video: assets/media/portfolio/development_bookshelf_php_1.mp4
   videos:
-      -
+      - assets/media/portfolio/development_bookshelf_php_1.mp4
   images:
       -
   tags:
