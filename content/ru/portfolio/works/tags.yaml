@@ -1,63 +1,62 @@
-﻿- id: 1
-  title: Инфобизнес
+﻿- title: Инфобизнес
   slug: infobusiness
-- id: 2
-  title: Мультиязычность
+
+- title: Мультиязычность
   slug: languages
-- id: 3
-  title: Облако
+
+- title: Облако
   slug: cloud
-- id: 4
-  title: Спорт
+
+- title: Спорт
   slug: sport
-- id: 5
-  title: Трафик
+
+- title: Трафик
   slug: traffic
-- id: 6
-  title: Реклама
+
+- title: Реклама
   slug: adv
-- id: 7
-  title: Торговая площадка
+
+- title: Торговая площадка
   slug: marketplace
-- id: 8
-  title: Покупки
+
+- title: Покупки
   slug: purchases
-- id: 9
-  title: Самообучение
+
+- title: Самообучение
   slug: self-learning
-- id: 10
-  title: Обмен
+
+- title: Обмен
   slug: exchanges
-- id: 11
-  title: Бот
+
+- title: Бот
   slug: bot
-- id: 12
-  title: Конструктор
+
+- title: Конструктор
   slug: constructor
-- id: 13
-  title: Психология
+
+- title: Психология
   slug: psychology
-- id: 14
-  title: Прототип
+
+- title: Прототип
   slug: prototype
-- id: 15
-  title: Корпоративный
+
+- title: Корпоративный
   slug: corporate
-- id: 16
-  title: Лендинг
+
+- title: Лендинг
   slug: landing
-- id: 17
-  title: Визитка
+
+- title: Визитка
   slug: cutaway
-- id: 18
-  title: Электронная книга
+
+- title: Электронная книга
   slug: e-book
-- id: 19
-  title: Шаблон
+
+- title: Шаблон
   slug: pattern
-- id: 20
-  title: Карточка
+
+- title: Карточка
   slug: card
-- id: 21
-  title: Блог
+
+- title: Блог
   slug: blog
