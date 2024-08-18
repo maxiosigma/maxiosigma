@@ -1,5 +1,7 @@
 ﻿<template>
-    <LayoutPage></LayoutPage>
+    <LayoutPage>
+        <!--<ItemCookieControl />-->
+    </LayoutPage>
 </template>
 
 <script lang="ts" setup></script>

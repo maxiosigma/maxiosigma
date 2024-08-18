@@ -88,7 +88,7 @@ const nav = usePayloadData('nav')
 const socials = usePayloadData('socials')
 const newNav = shallowRef(
     prop.items?.length > 0
-        ? useRange(Math.max(nav.value?.length, prop.items?.length))
+        ? useCustomRange(Math.max(nav.value?.length, prop.items?.length))
               .map((i) => [nav.value?.[i], { ...prop.items?.[i], bg: true }])
               .flat()
               .filter((it) => !!it?.title)

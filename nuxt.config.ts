@@ -97,25 +97,43 @@ export default defineNuxtConfig({
         '@nuxtjs/i18n',
         '@nuxt/content',
         '@primevue/nuxt-module',
-        '@vite-pwa/nuxt',
+        '@dargmuesli/nuxt-cookie-control',
+        //'@vite-pwa/nuxt',
         '@nuxtjs/device',
         '@vueuse/nuxt',
-        '@nuxt/eslint',
+        //'@nuxt/eslint',
+        //'nuxt-radash',
+        //'@i2d/nuxt-pdf-frame',
+        //'@nuxtjs/web-vitals',
+        //'nuxt-twemoji',
         '@nuxt/icon'
-        //'nuxt-twa-module'
-        //{
-        //    defaultUrl: 'https://maxiosigma.com',
-        //    hostName: 'maxiosigma.com',
-        //    sha256Fingerprints: [''],
-        //    applicationId: 'com.example.example',
-        //    launcherName: 'Maxiosigma',
-        //    versionCode: 1,
-        //    versionName: '1.0',
-        //    statusBarColor: 'black',
-        //    iconPath: '/static/icon.png',
-        //    distFolder: '.nuxt/dist/client'
-        //}
+        //'nuxt-maplibre',
+        //'@tresjs/nuxt'
+        //'@nuxt/scripts',
     ],
+
+    //webVitals: {
+    //    debug: true,
+    //    provider: 'log',
+    //    disabled: false
+    //},
+
+    cookieControl: {
+        barPosition: 'bottom-full',
+        closeModalOnClickOutside: false
+    },
+
+    tres: {
+        devtools: true
+    },
+
+    lucide: {
+        namePrefix: 'LUIcon'
+    },
+
+    twemoji: {
+        expiresIn: 3.154e7
+    },
 
     primevue: {
         usePrimeVue: true,
@@ -195,128 +213,3 @@ export default defineNuxtConfig({
 
     compatibilityDate: '2024-07-10'
 })
-
-//primevue: {
-//    usePrimeVue: true,
-//    //importTheme: { from: '@/assets/prime.js' },
-//    options: {
-//        ripple: true,
-//        inputStyle: 'outlined',
-//        inputVariant: 'outlined'
-//    },
-//    components: {
-//        prefix: 'Prime',
-//        include: [
-//            'Accordion',
-//            'AccordionPanel',
-//            'AccordionHeader',
-//            'AccordionContent',
-//            'Stepper',
-//            'StepList',
-//            'StepPanels',
-//            'StepItem',
-//            'Step',
-//            'StepPanel',
-//            //'ToastService',
-//            //'Toast',
-//            'Button',
-//            'ToggleButton',
-//            'SelectButton',
-//            'ScrollPanel',
-//            'FloatLabel',
-//            'MeterGroup',
-//            'InputText',
-//            'Skeleton',
-//            'Tooltip',
-//            'Sidebar',
-//            'Tag'
-//        ]
-//    }
-//    //directives: {
-//    //    prefix: 'p-',
-//    //    include: ['Ripple', 'Tooltip', 'AnimateOnScroll', 'StyleClass']
-//    //},
-//    //composables: {
-//    //    include: ['useStyle']
-//    //}
-//},
-
-//rootId: 'app',
-//rootTag: 'div class="wrapper"',
-//cacheDir: '.cache'
-//css: {
-//    modules: {
-//        //localsConvention: 'dashesOnly',
-//        //generateScopedName: '[hash:base32:5]'
-//        generateScopedName: '[hash:8]'
-//    }
-//}
-//optimizeDeps: {
-//    include: ['@supabase/gotrue-js']
-//},
-//resolve: {},
-//plugins: [],
-//build: {
-//    ssr: true,
-//    target: 'ESNext',
-//    chunkSizeWarningLimit: 5000
-//}
-//'@vite-pwa/nuxt',
-//'@nuxtjs/seo',
-//'@tresjs/nuxt'
-//'nuxt-security',
-//'nuxt-time',
-//'~/modules/pages/index',
-
-//'@nuxtjs/sitemap'
-//'nuxt-simple-sitemap'
-//'nuxt-simple-robots'
-//'@nuxtjs/tailwindcss',
-//'@nuxtjs/supabase',
-//'@primevue/nuxt-module',
-
-//autoImport: true,
-//prefix: 'p-',
-//exclude: ['Ripple']
-//options: {
-//    prefix: 'p',
-//    darkModeSelector: 'system',
-//    cssLayer: false
-//}
-//strategy: 'prefix_except_default',
-//link: false,
-//'go-to-[slug]': false,
-//defaultLocale: 'ru',
-//experimental: {
-//    //search: true
-//}
-//highlight: {
-//    theme: 'dracula'
-//}
-
-//watch: {
-//    ws: {
-//        //  port: 4000,
-//        port: 4444
-//        //showURL: true
-//    }
-//}
-//supabase: {
-//    redirect: false,
-//    redirectOptions: {
-//        login: '/',
-//        callback: '/'
-//    }
-//},
-//nitro: {
-//    prerender: {
-//        crawlLinks: true
-//    }
-//},
-
-//hooks: {
-//    ready: () => {}
-//},
-//'go-to-[slug]': onlyPageLocations([defaultLocale]),
-//'admin/index': onlyPageLocations([defaultLocale]),
-//'admin/links': onlyPageLocations([defaultLocale])

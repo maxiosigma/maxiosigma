@@ -1,5 +1,7 @@
 ﻿export default function (items: any[], start = 2, round = 1) {
-    return useRange(items.length - 1, start).map((it) => permutator(useRange(it, round)))
+    return useCustomRange(items.length - 1, start).map((it) =>
+        permutator(useCustomRange(it, round))
+    )
 }
 
 function permutator(inputArr: any) {
