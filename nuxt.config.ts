@@ -97,6 +97,7 @@ export default defineNuxtConfig({
         '@nuxtjs/i18n',
         '@nuxt/content',
         '@primevue/nuxt-module',
+        '@vite-pwa/nuxt',
         '@nuxtjs/device',
         '@vueuse/nuxt',
         '@nuxt/eslint',
@@ -131,6 +132,12 @@ export default defineNuxtConfig({
                 preset: Aura
             }
         }
+    },
+
+    pwa: {
+        filename: 'max.js',
+        injectRegister: 'script-defer',
+        registerType: 'autoUpdate'
     },
 
     i18n: {

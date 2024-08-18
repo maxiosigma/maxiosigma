@@ -10,10 +10,10 @@ export const defaultLocale = 'defi'
 
 export const getLocales = (() => {
     const locales_pc = [
-        { code: 'defi', iso: 'ru-RU', name: 'Index' },
-        { code: 'ru', iso: 'ru-RU', name: 'Русский' }
-        //{ code: 'en', iso: 'en-ES', name: 'English' },
-        //{ code: 'zh', iso: 'zh-CN', name: '中國人' }
+        { code: 'defi', language: 'ru-RU', name: 'Index' },
+        { code: 'ru', language: 'ru-RU', name: 'Русский' }
+        //{ code: 'en', language: 'en-ES', name: 'English' },
+        //{ code: 'zh', language: 'zh-CN', name: '中國人' }
     ].map((it) => ({ ...it, origin: it.code, file: it.code + '.json' }))
 
     const locales_mobile = locales_pc
