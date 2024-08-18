@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts" setup>
-const title = ref('Brands')
+const title = ref('Бренды')
 useHead({
     title
 })

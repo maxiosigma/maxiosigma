@@ -1,6 +1,25 @@
 ﻿<template>
     <CookieControl :locale="locale">
-        <!--  -->
+        <template #bar>
+            <h2>Bar title</h2>
+            <p>Bar description (you can use $cookies.text.barDescription)</p>
+            <n-link>Go somewhere</n-link>
+        </template>
+
+        <template #cookie="{ cookie }">
+            <h3 v-text="cookie.name" />
+            <span v-html="cookie.description" />
+
+            <div v-if="cookie.targetCookieIds">
+                <b>Cookie ids: </b>
+                <span v-text="cookie?.targetCookieIds?.join(', ')" />
+            </div>
+        </template>
+
+        <template #modal>
+            <h2>Modal title</h2>
+            <p>Modal description</p>
+        </template>
     </CookieControl>
 </template>
 
