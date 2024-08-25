@@ -53,6 +53,7 @@ export default defineNuxtConfig({
 
         defaults: {
             nuxtLink: {
+                prefetch: false,
                 activeClass: 'page-link-active',
                 exactActiveClass: 'page-link-extract-active',
                 prefetchedClass: 'page-link-prefetch'
@@ -82,10 +83,10 @@ export default defineNuxtConfig({
         ]
     },
 
-    //sourcemap: {
-    //    server: true,
-    //    client: true
-    //},
+    sourcemap: {
+        server: true,
+        client: true
+    },
 
     runtimeConfig: {
         //locales
@@ -123,9 +124,9 @@ export default defineNuxtConfig({
         closeModalOnClickOutside: false
     },
 
-    tres: {
-        devtools: true
-    },
+    //tres: {
+    //    devtools: true
+    //},
 
     lucide: {
         namePrefix: 'LUIcon'

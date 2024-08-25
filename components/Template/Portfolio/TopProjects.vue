@@ -94,7 +94,7 @@
                         class="flex-shrink relative z-0 overflow-hidden rounded-r-full shadow-lg-circle h-auto w-2/5 min-w-2/5"
                     >
                         <ItemMediaImg
-                            class="relative w-full h-full"
+                            class="relative w-full h-full max-h-30vh object-cover"
                             :src="'/' + work?.images?.[0]"
                         />
                     </div>
@@ -133,7 +133,7 @@ const workCategory = computed(() => {
         .filter((w) => !!w)?.[0]?.title
 })
 
-console.log(works.value)
+//console.log(works.value)
 
 const worksFilter = computed(() =>
     works.value.filter((w) => !!w.category && w.category === prop.category).filter((w) => !!w)

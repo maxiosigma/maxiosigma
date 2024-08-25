@@ -13,7 +13,7 @@
                     class="relative flex-center flex-col filter b-2 px-1 py-2 b-self-2 rounded-lg overflow-clip cursor-pointer transition-all duration-300 *:transition-all *:duration-300 hover:(b-self-7) group"
                     v-for="({ title, icon, link, active, lottie, style, slug, bg }, ni) in newNav"
                     :class="[bg ? 'b-self-3 shadow-xs-circle-light' : '', active ? '' : '']"
-                    :href="link ? localePath(link) : null"
+                    :to="link ? localePath(link) : ''"
                     @click="!link ? $parent.$emit('clickNav', slug) : null"
                 >
                     <Icon

@@ -1,6 +1,8 @@
 ﻿<template>
     <LayoutPage>
-        <ItemCookieControl />
+        <!--<ItemCookieControl />-->
+
+        <fragment v-if="$dev">aaaa</fragment>
     </LayoutPage>
 </template>
 
