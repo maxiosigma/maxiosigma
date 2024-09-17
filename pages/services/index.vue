@@ -1,24 +1,24 @@
 ﻿<template>
     <NuxtLayout title="Services" @titleService="console.log">
-        <LayoutPage></LayoutPage>
+        <LayoutPage>
+            {{ routes?.[0] }}
+        </LayoutPage>
     </NuxtLayout>
 </template>
 
 <script setup>
-const { locale } = useI18n()
+const { locale, t } = useI18n()
 const routes = await Promise.all(
     useRouter()
         .getRoutes()
         .filter((route) => route.path?.includes(`/${locale.value}/service/`))
         .map(async (route) => ({ ...route, data: (await useFetch(route.path)).data.value }))
 )
+//data: (await useFetch(route.path)).data.value
 
-//console.log(emit)
 console.log(routes?.[0])
-console.log(useRoute())
 
-//console.log(useNuxtData('stylePage').data.value)
-const title = ref('Услуги')
+const title = t('titleServices')
 useHead({
     title
 })
