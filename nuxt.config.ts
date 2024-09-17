@@ -128,13 +128,13 @@ export default defineNuxtConfig({
     //    devtools: true
     //},
 
-    lucide: {
-        namePrefix: 'LUIcon'
-    },
+    //lucide: {
+    //    namePrefix: 'LUIcon'
+    //},
 
-    twemoji: {
-        expiresIn: 3.154e7
-    },
+    //twemoji: {
+    //    expiresIn: 3.154e7
+    //},
 
     primevue: {
         usePrimeVue: true,
@@ -153,11 +153,11 @@ export default defineNuxtConfig({
         }
     },
 
-    pwa: {
-        filename: 'max.js',
-        injectRegister: 'script-defer',
-        registerType: 'autoUpdate'
-    },
+    //pwa: {
+    //    filename: 'max.js',
+    //    injectRegister: 'script-defer',
+    //    registerType: 'autoUpdate'
+    //},
 
     i18n: {
         lazy: false,
