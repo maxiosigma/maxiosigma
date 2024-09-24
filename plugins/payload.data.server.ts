@@ -1,9 +1,10 @@
 ﻿export default defineNuxtPlugin(async (nuxtApp) => {
-    const i18n: any = nuxtApp?.$i18n
-    const locales: [{ code: any; name: any }] = i18n.locales.value
+    //const i18n: any = nuxtApp?.$i18n
+    //const locales: [{ code: any; name: any }] = i18n.locales.value
     //const baseLocales = locales
     //    .filter(({ code }) => code !== 'index' && !code.includes('-amp'))
     //    .map(({ code }) => code)
+
     const baseLocales = ['ru']
 
     const pw = [
