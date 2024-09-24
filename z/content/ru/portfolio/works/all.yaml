@@ -150,7 +150,7 @@
   description: Сайт гаджетов, создавался для портфолио
   tags:
   date: 2021-01-01T00:00:00.000Z
-  category:
+  category: develop
   preview_image: assets/media/portfolio/design_gadgetarium_1.webp
   preview_video:
   videos:

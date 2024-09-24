@@ -15,10 +15,9 @@
             }
         },
         {
-            "files": ["./content/*"],
+            "files": ["./content/*.json", "./content/**/*.json"],
             "options": {
-                "singleAttributePerLine": true,
-                "printWidth": 1600
+                "printWidth": 200
             }
         }
     ]

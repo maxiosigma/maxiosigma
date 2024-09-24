@@ -1,0 +1,7 @@
+﻿[
+    { "slug": "strapi", "title": "Strapi" },
+    { "slug": "nuxt3", "title": "Nuxt 3" },
+    { "slug": "cloudflare_workers", "title": "Cloudflare Workers" },
+    { "slug": "cloudflare", "title": "Cloudflare" },
+    { "slug": "js", "title": "JS" }
+]
