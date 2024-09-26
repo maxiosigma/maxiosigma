@@ -1,7 +1,12 @@
 import { resolve } from 'path'
-//import { mkdirSync, writeFileSync, existsSync, unlinkSync } from 'fs'
-import { getLocales as locales, defaultLocale, onlyNotDefaultPageLocations } from './config'
 import Aura from '@primevue/themes/aura'
+//import { mkdirSync, writeFileSync, existsSync, unlinkSync } from 'fs'
+import {
+    getLocales as locales,
+    defaultLocale,
+    onlyNotDefaultLocations,
+    onlyNotDefaultPageLocations
+} from './config'
 
 const presetLocationNotIndex = onlyNotDefaultPageLocations(['default', 'defi'])
 const isGenerateMode = process.argv.includes('generate')
@@ -201,9 +206,20 @@ export default defineNuxtConfig({
     },
 
     content: {
-        api: {
-            baseURL: '/content-api/_content'
-        }
+        csv: false,
+        yaml: false,
+        markdown: {},
+        documentDriven: false,
+        contentHead: false,
+        experimental: {
+            search: {
+                indexed: false
+            }
+        },
+        locales: onlyNotDefaultLocations
+        //api: {
+        //    baseURL: '/content-api/_content'
+        //}
     },
 
     unocss: {

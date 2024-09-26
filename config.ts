@@ -47,3 +47,7 @@ export function onlyNotDefaultPageLocations(names: any[] = []) {
         .filter((locale) => names.filter((name) => locale.code === name).length > 0)
         .reduce((s, locale) => (s = { ...s, [locale.code]: false }) && s, {})
 }
+
+export const onlyNotDefaultLocations = [
+    ...new Set(getLocales.map((locale) => locale.origin))
+].filter((locale) => locale !== defaultLocale)

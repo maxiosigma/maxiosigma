@@ -3,22 +3,22 @@
         "title": "Главная",
         "icon": "material-symbols:home",
         "link": "/",
-        "lottie": null,
-        "style": null
+        "lottie": "",
+        "style": ""
     },
     {
         "title": "Предложения",
         "icon": "bx:bxs-offer",
         "link": "/offers",
         "lottie": "offers",
-        "style": null
+        "style": ""
     },
     {
         "title": "Подарки",
         "icon": "streamline:shopping-gift-reward-box-social-present-gift-media-rating-bow",
         "link": "/presents",
         "lottie": "presents",
-        "style": null
+        "style": ""
     },
     {
         "title": "Документы",
@@ -32,7 +32,7 @@
         "icon": "iconamoon:news-fill",
         "link": "/news",
         "lottie": "news",
-        "style": null
+        "style": ""
     },
     {
         "title": "Бренды",
@@ -67,7 +67,7 @@
         "icon": "bi:patch-question",
         "link": "/questions",
         "lottie": "questions",
-        "style": null
+        "style": ""
     },
     {
         "title": "Отзывы",
