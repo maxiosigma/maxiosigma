@@ -1,0 +1,23 @@
+﻿[
+    { "slug": "infobusiness", "title": "Инфобизнес" },
+    { "slug": "languages", "title": "Мультиязычность" },
+    { "slug": "cloud", "title": "Облако" },
+    { "slug": "sport", "title": "Спорт" },
+    { "slug": "traffic", "title": "Трафик" },
+    { "slug": "adv", "title": "Реклама" },
+    { "slug": "marketplace", "title": "Торговая площадка" },
+    { "slug": "purchases", "title": "Покупки" },
+    { "slug": "self-learning", "title": "Самообучение" },
+    { "slug": "exchanges", "title": "Обмен" },
+    { "slug": "bot", "title": "Бот" },
+    { "slug": "constructor", "title": "Конструктор" },
+    { "slug": "psychology", "title": "Психология" },
+    { "slug": "prototype", "title": "Прототип" },
+    { "slug": "corporate", "title": "Корпоративный" },
+    { "slug": "landing", "title": "Лендинг" },
+    { "slug": "cutaway", "title": "Визитка" },
+    { "slug": "e-book", "title": "Электронная книга" },
+    { "slug": "pattern", "title": "Шаблон" },
+    { "slug": "card", "title": "Карточка" },
+    { "slug": "blog", "title": "Блог" }
+]
