@@ -10,5 +10,14 @@ export default <RouterConfig>{
                     path.includes('/ru') ||
                     path.includes('/ru-amp'))
         )
+    },
+    scrollBehavior: (to, from, savedPosition) => {
+        if (savedPosition) {
+            return savedPosition
+        } else {
+            return {
+                top: 0
+            }
+        }
     }
 }

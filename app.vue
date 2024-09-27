@@ -5,19 +5,32 @@
 </template>
 
 <script setup>
-// <ItemToast />
-// <NuxtLoadingIndicator />
+const route = useRoute()
+const cookieScroll = useCookie(`scroll_${route.name}`, { default: 0, watch: true, maxAge: 604800 })
+const prevScroll = cookieScroll.value
 
-//const router = useRouter()
-//useClientLog(router.getRoutes())
+const onScroll = (e) => {
+    //https://stackoverflow.com/questions/55391472/watch-window-scrolly-changes-in-vuejs
+    //https://learn.javascript.ru/metrics-window
 
-//const { localeProperties: lp, locales, locale } = useI18n()
+    const value =
+        window?.pageYOffset ||
+        document.documentElement.scrollTop ||
+        window?.scrollY ||
+        window?.top?.scrollY
 
-//console.log(locales.value.filter(({ code }) => code !== 'defi').map(({ code }) => code))
+    cookieScroll.value = value
+}
 
-//defineI18nRoute({
-//    locales: locales.value.filter(({ code }) => code !== 'defi').map(({ code }) => code)
-//})
+onMounted(() => {
+    window.addEventListener('scroll', onScroll)
+    document.body.scroll({ top: prevScroll })
+    window.scroll({ top: prevScroll, behavior: 'smooth' })
+})
+
+onBeforeUnmount(() => {
+    window.removeEventListener('scroll', onScroll)
+})
 
 useHead({
     htmlAttrs: {
@@ -31,6 +44,20 @@ useHead({
     },
     meta: []
 })
+
+// <ItemToast />
+// <NuxtLoadingIndicator />
+
+//const router = useRouter()
+//useClientLog(router.getRoutes())
+
+//const { localeProperties: lp, locales, locale } = useI18n()
+
+//console.log(locales.value.filter(({ code }) => code !== 'defi').map(({ code }) => code))
+
+//defineI18nRoute({
+//    locales: locales.value.filter(({ code }) => code !== 'defi').map(({ code }) => code)
+//})
 
 //const lang = ref(lp.value.code)
 

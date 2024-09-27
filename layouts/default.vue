@@ -1,5 +1,6 @@
 ﻿<template>
     <slot :onload="setPageClass($style.page)"> </slot>
+    <PrimeToast position="top-center" />
 </template>
 
 <script setup>
@@ -53,6 +54,8 @@ useHead({
 //    useCookieLang().value = code
 //    useSwitcherRedirect(code)
 //}
+
+//https://flaviocopes.com/fix-dirname-not-defined-es-module-scope/
 </script>
 
 <style module>

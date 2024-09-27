@@ -31,12 +31,10 @@ const localePath = useLocalePath() //${useBaseLocale()}_
 const namePayload = `go_to_${slug}`
 
 if (import.meta.server) {
-    useNuxtApp().payload.data[namePayload] = await queryContent(
-        `/common/links/${slug}`
-    )
-        .findOne()
-        .then((item) => (!isNot(item?.link) ? useCripty(item?.link) : null))
-        .catch(() => null)
+    useNuxtApp().payload.data[namePayload] = await queryContent(`/common/links/${slug}`)
+        ?.findOne()
+        ?.then((item) => (!isNot(item?.link) ? useCripty(item?.link) : null))
+        ?.catch(() => null)
 
     await getSPBData(useNuxtData(namePayload)?.data)
 }

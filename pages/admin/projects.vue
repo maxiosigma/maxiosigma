@@ -1,23 +1,134 @@
 ﻿<template>
-    <div class="f-c flex-col py-14">
-        <div class="py-8" v-for="it in worksAll">
-            <div>{{ it.slug }}</div>
+    <ClientOnly>
+        <div class="f-c flex-col container py-14 px-20">
+            <div
+                class="flex flex-col justify-center relative my-8 p-4 gap-4 border-1 border-self-4/25 rounded w-full !text-self-7/75"
+                v-for="[slug, it] in Object.entries(worksEdit)
+                    .sort(([akey, aval], [bkey, bval]) => new Date(aval.date) - new Date(bval.date))
+                    .reverse()"
+            >
+                <PrimeInputGroup>
+                    <PrimeInputText
+                        class="w-full !text-self-7/75"
+                        type="text"
+                        :value="it.link"
+                        v-model="worksEdit[slug].link"
+                        placeholder="link"
+                    />
+
+                    <PrimeInputGroupAddon class="!bg-self-3/75">
+                        <PrimeCheckbox
+                            class="!text-self-7/75"
+                            type="text"
+                            :value="!!it.top"
+                            v-model="worksEdit[slug].top"
+                            placeholder="top"
+                            :binary="true"
+                        />
+                    </PrimeInputGroupAddon>
+                </PrimeInputGroup>
+
+                <div class="flex gap-4">
+                    <PrimeInputText
+                        class="w-full !text-self-7/75"
+                        placeholder="slug"
+                        type="text"
+                        :value="it.title"
+                        v-model="worksEdit[slug].title"
+                    />
+
+                    <PrimeInputText
+                        class="w-3/7 !text-self-7/75"
+                        placeholder="slug"
+                        type="text"
+                        :value="slug"
+                        disabled
+                    />
+                </div>
+
+                <PrimeInputText
+                    class="w-full !text-self-7/75"
+                    type="text"
+                    :value="it.description"
+                    v-model="worksEdit[slug].description"
+                    placeholder="description"
+                />
+
+                <PrimeInputText
+                    class="w-full !text-self-7/75"
+                    type="text"
+                    :value="it.preview_image"
+                    v-model="worksEdit[slug].preview_image"
+                    placeholder="preview_image"
+                />
+
+                <PrimeInputText
+                    class="w-full !text-self-7/75"
+                    type="text"
+                    :value="it.preview_video"
+                    v-model="worksEdit[slug].preview_video"
+                    placeholder="preview_video"
+                />
+
+                <PrimeSelectButton
+                    class="w-full !text-self-7/75"
+                    :options="worksCategoriesOptions"
+                    :modelValue="worksEdit[slug].category"
+                    v-model="worksEdit[slug].category"
+                    placeholder="category"
+                    optionValue="value"
+                    optionLabel="name"
+                    type="text"
+                />
+
+                <!--{{ it }}-->
+                <!--{{ worksEdit[slug].category }}-->
+
+                <div
+                    class="absolute -right-60px top-5px f-c bg-self-2 rounded-full size-10 cursor-pointer group transition-300 hover:bg-self-3"
+                    @click="change"
+                >
+                    <Icon
+                        class="text-self-5 text-3xl transition-300 group-hover:text-self-2"
+                        name="ic:sharp-save-alt"
+                    />
+                </div>
+            </div>
         </div>
-    </div>
+    </ClientOnly>
 </template>
 
 <script setup>
-const worksAll = (await ugc('portfolio/works/all')).sort(
-    (a, b) => new Date(b.date) - new Date(a.date)
-)
+const toast = useToast()
 
 const worksCategories = await ugc('portfolio/works/categories')
 const worksSubcategories = await ugc('portfolio/works/subcategories')
 const worksTechnologies = await ugc('portfolio/works/technologies')
 const worksTags = await ugc('portfolio/works/tags')
 
+const worksAll = await ugc('portfolio/works/all_test')
+const worksEdit = ref(worksAll)
+
+const worksCategoriesOptions = Object.entries(worksCategories).map(([key, val]) => ({
+    name: val.title,
+    value: key
+}))
+
+console.log(worksCategoriesOptions)
+
+const change = async () => {
+    const { body } = await $fetch('/api/works_edit', {
+        method: 'post',
+        body: worksEdit.value ?? {}
+    })
+
+    if (body === 'success') {
+        toast.add({ severity: 'success', summary: 'Save', life: 3000 })
+    }
+}
+
 //console.log(worksAll)
-console.log([worksCategories, worksSubcategories, worksTechnologies, worksTags])
+//console.log([worksCategories, worksSubcategories, worksTechnologies, worksTags])
 
 useHead({
     title: 'Projects'

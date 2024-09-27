@@ -101,7 +101,7 @@ export default defineNuxtConfig({
         '@unocss/nuxt',
         '@formkit/nuxt',
         '@nuxtjs/i18n',
-        '@nuxt/content',
+        //'@nuxt/content',
         '@primevue/nuxt-module',
         '@dargmuesli/nuxt-cookie-control',
         //'@vite-pwa/nuxt',
@@ -205,22 +205,22 @@ export default defineNuxtConfig({
         ]
     },
 
-    content: {
-        csv: false,
-        yaml: false,
-        markdown: {},
-        documentDriven: false,
-        contentHead: false,
-        experimental: {
-            search: {
-                indexed: false
-            }
-        },
-        locales: onlyNotDefaultLocations
-        //api: {
-        //    baseURL: '/content-api/_content'
-        //}
-    },
+    //content: {
+    //    csv: false,
+    //    yaml: false,
+    //    markdown: {},
+    //    documentDriven: false,
+    //    contentHead: false,
+    //    experimental: {
+    //        search: {
+    //            indexed: false
+    //        }
+    //    },
+    //    locales: onlyNotDefaultLocations
+    //    //api: {
+    //    //    baseURL: '/content-api/_content'
+    //    //}
+    //},
 
     unocss: {
         uno: true

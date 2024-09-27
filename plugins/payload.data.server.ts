@@ -83,16 +83,16 @@
             await Promise.all(
                 pw.map(async ({ name, path, many, callback = (res) => res }) => {
                     const data = await queryContent(`/${locale}/${path}`)
-                        .where(
+                        ?.where(
                             !many
                                 ? {
                                       _path: `/${locale}/${path}`
                                   }
                                 : {}
                         )
-                        .find()
-                        .then(callback)
-                        .catch(console.log)
+                        ?.find()
+                        ?.then(callback)
+                        ?.catch(console.log)
 
                     nuxtApp.payload.data[name] = data ?? []
                     return true

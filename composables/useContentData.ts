@@ -1,7 +1,7 @@
 export default function (lang = 'en', path = 'links', extension = 'json') {
     return queryContent()
-        .where({ _locale: `${lang}`, _path: `/${path}`, _extension: `${extension}` })
-        .findOne()
+        ?.where({ _locale: `${lang}`, _path: `/${path}`, _extension: `${extension}` })
+        ?.findOne()
 }
 
 // ref, useState, useAsyncState
