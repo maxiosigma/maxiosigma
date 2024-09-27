@@ -81,6 +81,20 @@
                     type="text"
                 />
 
+                <PrimeMultiSelect
+                    class="w-full !text-self-7/75"
+                    :options="worksSubcategoriesOptions"
+                    :modelValue="worksEdit[slug].subcategories"
+                    v-model="worksEdit[slug].subcategories"
+                    placeholder="subcategories"
+                    optionValue="value"
+                    optionLabel="name"
+                    type="text"
+                    multiple
+                    showToggleAll
+                    fluid
+                />
+
                 <!--{{ it }}-->
                 <!--{{ worksEdit[slug].category }}-->
 
@@ -113,8 +127,12 @@ const worksCategoriesOptions = Object.entries(worksCategories).map(([key, val]) 
     name: val.title,
     value: key
 }))
+const worksSubcategoriesOptions = Object.entries(worksSubcategories).map(([key, val]) => ({
+    name: val.title,
+    value: key
+}))
 
-console.log(worksCategoriesOptions)
+console.log(worksSubcategoriesOptions)
 
 const change = async () => {
     const { body } = await $fetch('/api/works_edit', {

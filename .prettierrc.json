@@ -19,6 +19,12 @@
             "options": {
                 "printWidth": 200
             }
+        },
+        {
+            "files": ["./pages/admin/*.vue"],
+            "options": {
+                "printWidth": 100
+            }
         }
     ]
 }
