@@ -34,7 +34,13 @@
             "assets/media/portfolio/design_tattoo_school_pavel_bobkov_3.webp"
         ],
         "tags": null,
-        "date": "2024-01-13T00:00:00.000Z"
+        "date": "2024-01-12T21:00:00.000Z",
+        "subcategories": [
+            "presentation",
+            "selling_text",
+            "photo_processing",
+            "graphic_edits"
+        ]
     },
     "animation_banner": {
         "link": null,

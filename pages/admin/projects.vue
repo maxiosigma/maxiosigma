@@ -16,6 +16,15 @@
                 <PrimeAccordionContent
                     class="child:(flex flex-col justify-center relative p-4 gap-4 border-1 border-self-4/25 rounded w-full !text-self-7/75)"
                 >
+                    {{ it }}
+
+                    <PrimeDatePicker
+                        :modelValue="new Date(worksEdit[slug].date)"
+                        v-model="worksEdit[slug].date"
+                        dateFormat="dd-mm-yy"
+                        showButtonBar
+                    />
+
                     <PrimeSelectButton
                         class="w-full !text-self-7/75"
                         :options="worksCategoriesOptions"
@@ -172,11 +181,8 @@
                         </PrimeButton>
                     </div>
 
-                    {{ it }}
-                    <!--{{ worksEdit[slug].category }}-->
-
                     <div
-                        class="absolute -right-60px top-5px f-c bg-self-2 rounded-full size-10 cursor-pointer group transition-300 hover:bg-self-3"
+                        class="absolute -right-60px -top-50px f-c bg-self-2 rounded-full size-10 cursor-pointer group transition-300 hover:bg-self-3"
                         @click="change"
                     >
                         <Icon
