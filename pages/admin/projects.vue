@@ -1,6 +1,6 @@
 ﻿<template>
     <ClientOnly>
-        <PrimeAccordion class="f-c flex-col container gap-8 py-8 px-20" :value="['0']" multiple>
+        <PrimeAccordion class="f-c flex-col container gap-8 py-8 px-20" :value="['1']" multiple>
             <PrimeAccordionPanel
                 class="flex flex-col justify-center relative border-1 border-self-4/25 rounded w-full !text-self-7/75"
                 value="0"
@@ -170,6 +170,8 @@
 
                     <div class="flex flex-col gap-2 py-2 px-2 border-1 border-self-7/15 rounded">
                         <PrimeInputGroup v-for="(image, ikey) in worksEdit[slug].images">
+                            <PrimeInputGroupAddon> Preview </PrimeInputGroupAddon>
+
                             <PrimeInputText
                                 class="w-full !text-self-7/75"
                                 type="text"
@@ -243,6 +245,16 @@
                         <Icon
                             class="text-self-5 text-3xl transition-300 group-hover:text-self-2"
                             name="ic:sharp-save-alt"
+                        />
+                    </div>
+
+                    <div
+                        class="absolute -right-60px bottom-0px f-c bg-self-2 rounded-full size-10 cursor-pointer group transition-300 hover:bg-self-3"
+                        @click="delete worksEdit[slug] && change()"
+                    >
+                        <Icon
+                            class="text-self-5 text-3xl transition-300 group-hover:text-self-2"
+                            name="material-symbols:delete-outline"
                         />
                     </div>
                 </PrimeAccordionContent>
