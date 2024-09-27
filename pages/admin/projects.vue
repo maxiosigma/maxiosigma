@@ -7,16 +7,16 @@
 </template>
 
 <script setup>
-const worksAll = (await useGetContent('portfolio/works/all')).sort(
+const worksAll = (await ugc('portfolio/works/all')).sort(
     (a, b) => new Date(b.date) - new Date(a.date)
 )
 
-const worksCategories = await useGetContent('portfolio/works/categories')
-const worksSubcategories = await useGetContent('portfolio/works/subcategories')
-const worksTechnologies = await useGetContent('portfolio/works/technologies')
-const worksTags = await useGetContent('portfolio/works/tags')
+const worksCategories = await ugc('portfolio/works/categories')
+const worksSubcategories = await ugc('portfolio/works/subcategories')
+const worksTechnologies = await ugc('portfolio/works/technologies')
+const worksTags = await ugc('portfolio/works/tags')
 
-console.log(worksAll)
+//console.log(worksAll)
 console.log([worksCategories, worksSubcategories, worksTechnologies, worksTags])
 
 useHead({
