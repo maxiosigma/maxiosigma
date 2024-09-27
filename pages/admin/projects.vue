@@ -1,8 +1,8 @@
 ﻿<template>
     <ClientOnly>
-        <PrimeAccordion class="f-c flex-col container py-8 px-20" :value="['0']" multiple>
+        <PrimeAccordion class="f-c flex-col container gap-8 py-8 px-20" :value="['0']" multiple>
             <PrimeAccordionPanel
-                class="flex flex-col justify-center relative my-8 p-4 gap-4 border-1 border-self-4/25 rounded w-full !text-self-7/75"
+                class="flex flex-col justify-center relative border-1 border-self-4/25 rounded w-full !text-self-7/75"
                 v-for="([slug, it], ti) in Object.entries(worksEdit)
                     .sort(([akey, aval], [bkey, bval]) => new Date(aval.date) - new Date(bval.date))
                     .reverse()"
@@ -13,7 +13,9 @@
 
                 <!--   class="flex flex-col justify-center relative my-8 p-4 gap-4 border-1 border-self-4/25 rounded w-full !text-self-7/75" -->
 
-                <PrimeAccordionContent class="child:(flex flex-col gap-4)">
+                <PrimeAccordionContent
+                    class="child:(flex flex-col justify-center relative p-4 gap-4 border-1 border-self-4/25 rounded w-full !text-self-7/75)"
+                >
                     <PrimeSelectButton
                         class="w-full !text-self-7/75"
                         :options="worksCategoriesOptions"
