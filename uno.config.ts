@@ -23,10 +23,12 @@ const isGenerateMode = process.argv.includes('generate')
 
 export default defineConfig({
     warn: false,
+
     sortLayers(layers) {
         //console.log(layers)
         return layers
     },
+
     safelist: [
         //
         ...range(20, 1).map((i) => `p-l-${i * 5}`),
@@ -43,7 +45,18 @@ export default defineConfig({
         ...range(50, 1).map((i) => `-hue-rotate-${i * 10}`)
         //...Object.keys(resolvedConfig.theme?.animation?.keyframes ?? {}).map(k => [`animate-${k}`, `group-hover-animate-${k}`]).flat()
     ],
+
     shortcuts: [[/^flex-center$/, ([, c], { theme }) => `flex justify-center items-center`]],
+
+    //rules: [['rune', '*']],
+
+    variants: [
+        (matcher /* child */) => {
+            if (!matcher.startsWith('child:')) return matcher
+            return { matcher: '*' + matcher.slice(5), selector: (s) => `${s}` }
+        }
+    ],
+
     theme: {
         container: {
             center: true,
@@ -208,7 +221,6 @@ export default defineConfig({
 
     transformers: [
         //
-        transformerVariantGroup(),
         ...(isGenerateMode
             ? [
                   transformerCompileClass({
@@ -219,6 +231,9 @@ export default defineConfig({
         transformerDirectives({
             applyVariable: ['--at-apply', '--at-sigma', '--sigma'],
             varStyle: false
+        }),
+        transformerVariantGroup({
+            separators: [':', '-', '~']
         })
     ]
 })
