@@ -33,14 +33,19 @@
             "assets/media/portfolio/design_tattoo_school_pavel_bobkov_2.webp",
             "assets/media/portfolio/design_tattoo_school_pavel_bobkov_3.webp"
         ],
-        "tags": null,
+        "tags": [
+            "infobusiness",
+            "cutaway"
+        ],
         "date": "2024-01-12T21:00:00.000Z",
         "subcategories": [
             "presentation",
             "selling_text",
             "photo_processing",
             "graphic_edits"
-        ]
+        ],
+        "top": false,
+        "technologies": []
     },
     "animation_banner": {
         "link": null,

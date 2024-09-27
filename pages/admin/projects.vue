@@ -3,10 +3,49 @@
         <PrimeAccordion class="f-c flex-col container gap-8 py-8 px-20" :value="['0']" multiple>
             <PrimeAccordionPanel
                 class="flex flex-col justify-center relative border-1 border-self-4/25 rounded w-full !text-self-7/75"
+                value="0"
+            >
+                <PrimeAccordionHeader>Новый проект</PrimeAccordionHeader>
+
+                <PrimeAccordionContent
+                    class="child:(flex flex-col justify-center relative p-4 gap-4 border-1 border-self-4/25 rounded w-full !text-self-7/75)"
+                >
+                    <PrimeInputGroup>
+                        <PrimeInputGroupAddon>
+                            <PrimeInputText
+                                class="w-full !text-self-7/75"
+                                type="text"
+                                v-model="newProject.slug"
+                                placeholder="slug"
+                            />
+                        </PrimeInputGroupAddon>
+
+                        <PrimeDatePicker
+                            class="child:(!text-self-7/75)"
+                            :modelValue="Date.now()"
+                            v-model="newProject.date"
+                            dateFormat="dd-mm-yy"
+                            showButtonBar
+                        />
+
+                        <PrimeInputGroupAddon>
+                            <PrimeButton
+                                class="self-start !text-self-7/75 !justify-start cursor-pointer"
+                                severity="secondary"
+                            >
+                                Добавить
+                            </PrimeButton>
+                        </PrimeInputGroupAddon>
+                    </PrimeInputGroup>
+                </PrimeAccordionContent>
+            </PrimeAccordionPanel>
+
+            <PrimeAccordionPanel
+                class="flex flex-col justify-center relative border-1 border-self-4/25 rounded w-full !text-self-7/75"
                 v-for="([slug, it], ti) in Object.entries(worksEdit)
                     .sort(([akey, aval], [bkey, bval]) => new Date(aval.date) - new Date(bval.date))
                     .reverse()"
-                :value="`${ti}`"
+                :value="`${ti + 1}`"
                 :key="slug"
             >
                 <PrimeAccordionHeader>{{ it.title }}</PrimeAccordionHeader>
@@ -17,13 +56,6 @@
                     class="child:(flex flex-col justify-center relative p-4 gap-4 border-1 border-self-4/25 rounded w-full !text-self-7/75)"
                 >
                     {{ it }}
-
-                    <PrimeDatePicker
-                        :modelValue="new Date(worksEdit[slug].date)"
-                        v-model="worksEdit[slug].date"
-                        dateFormat="dd-mm-yy"
-                        showButtonBar
-                    />
 
                     <PrimeSelectButton
                         class="w-full !text-self-7/75"
@@ -37,20 +69,35 @@
                     />
 
                     <PrimeMultiSelect
+                        v-for="{ options, name } in [
+                            { name: 'subcategories', options: worksSubcategoriesOptions },
+                            { name: 'technologies', options: worksTechnologiesOptions },
+                            { name: 'tags', options: worksTagsOptions }
+                        ]"
                         class="w-full !text-self-7/75"
-                        :options="worksSubcategoriesOptions"
-                        :modelValue="worksEdit[slug].subcategories"
-                        v-model="worksEdit[slug].subcategories"
-                        placeholder="subcategories"
+                        :options="options"
+                        :modelValue="worksEdit[slug][name]"
+                        v-model="worksEdit[slug][name]"
+                        :placeholder="name"
                         optionValue="value"
                         optionLabel="name"
+                        showToggleAll
                         type="text"
                         multiple
-                        showToggleAll
                         fluid
                     />
 
                     <PrimeInputGroup>
+                        <PrimeInputGroupAddon>
+                            <PrimeDatePicker
+                                class="child:(!text-self-7/75)"
+                                :modelValue="new Date(worksEdit[slug].date)"
+                                v-model="worksEdit[slug].date"
+                                dateFormat="dd-mm-yy"
+                                showButtonBar
+                            />
+                        </PrimeInputGroupAddon>
+
                         <PrimeInputText
                             class="w-full !text-self-7/75"
                             type="text"
@@ -59,7 +106,7 @@
                             placeholder="link"
                         />
 
-                        <PrimeInputGroupAddon class="!bg-self-3/75">
+                        <PrimeInputGroupAddon>
                             <PrimeCheckbox
                                 class="!text-self-7/75"
                                 type="text"
@@ -198,6 +245,7 @@
 
 <script setup>
 const toast = useToast()
+const newProject = ref({ slug: '', date: '' })
 
 const worksCategories = await ugc('portfolio/works/categories')
 const worksSubcategories = await ugc('portfolio/works/subcategories')
@@ -207,16 +255,17 @@ const worksTags = await ugc('portfolio/works/tags')
 const worksAll = await ugc('portfolio/works/all_test')
 const worksEdit = ref(worksAll)
 
-const worksCategoriesOptions = Object.entries(worksCategories).map(([key, val]) => ({
-    name: val.title,
-    value: key
-}))
-const worksSubcategoriesOptions = Object.entries(worksSubcategories).map(([key, val]) => ({
-    name: val.title,
-    value: key
-}))
-
-console.log(worksSubcategoriesOptions)
+const [
+    worksCategoriesOptions,
+    worksSubcategoriesOptions,
+    worksTechnologiesOptions,
+    worksTagsOptions
+] = [
+    Object.entries(worksCategories).map(([key, val]) => ({ name: val.title, value: key })),
+    Object.entries(worksSubcategories).map(([key, val]) => ({ name: val.title, value: key })),
+    Object.entries(worksTechnologies).map(([key, val]) => ({ name: val, value: key })),
+    Object.entries(worksTags).map(([key, val]) => ({ name: val, value: key }))
+]
 
 const change = async () => {
     const { body } = await $fetch('/api/works_edit', {

@@ -48,12 +48,11 @@ export default defineConfig({
 
     shortcuts: [[/^flex-center$/, ([, c], { theme }) => `flex justify-center items-center`]],
 
-    //rules: [['rune', '*']],
-
     variants: [
-        (matcher /* child */) => {
-            if (!matcher.startsWith('child:')) return matcher
-            return { matcher: '*' + matcher.slice(5), selector: (s) => `${s}` }
+        (matcher) => {
+            if (matcher.startsWith('child:'))
+                return { matcher: '*' + matcher.slice(5), selector: (s) => `${s}` }
+            return matcher
         }
     ],
 
@@ -182,7 +181,7 @@ export default defineConfig({
             //important: true,
             variablePrefix: 'wind'
         }),
-        presetHeroPatterns(),
+        //presetHeroPatterns(),
         //presetAttributify(),
         presetUseful({
             enableMagicAnimations: true
@@ -232,9 +231,7 @@ export default defineConfig({
             applyVariable: ['--at-apply', '--at-sigma', '--sigma'],
             varStyle: false
         }),
-        transformerVariantGroup({
-            separators: [':', '-', '~']
-        })
+        transformerVariantGroup()
     ]
 })
 
