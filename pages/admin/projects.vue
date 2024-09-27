@@ -11,7 +11,7 @@
                     class="child:(flex flex-col justify-center relative p-4 gap-4 border-1 border-self-4/25 rounded w-full !text-self-7/75)"
                 >
                     <PrimeInputGroup>
-                        <PrimeInputGroupAddon>
+                        <PrimeInputGroupAddon class="w-full">
                             <PrimeInputText
                                 class="w-full !text-self-7/75"
                                 type="text"
@@ -20,18 +20,26 @@
                             />
                         </PrimeInputGroupAddon>
 
-                        <PrimeDatePicker
-                            class="child:(!text-self-7/75)"
-                            :modelValue="Date.now()"
-                            v-model="newProject.date"
-                            dateFormat="dd-mm-yy"
-                            showButtonBar
-                        />
-
                         <PrimeInputGroupAddon>
+                            <PrimeDatePicker
+                                class="child:(!text-self-7/75)"
+                                :value="newProject.date"
+                                v-model="newProject.date"
+                                dateFormat="dd-mm-yy"
+                                showButtonBar
+                            />
+                        </PrimeInputGroupAddon>
+
+                        <PrimeInputGroupAddon class="!min-w-130px">
                             <PrimeButton
-                                class="self-start !text-self-7/75 !justify-start cursor-pointer"
+                                class="!text-self-7/75 text-center cursor-pointer"
                                 severity="secondary"
+                                @click="
+                                    ;(worksEdit = {
+                                        [newProject.slug]: { date: newProject.date },
+                                        ...worksEdit
+                                    }) && change()
+                                "
                             >
                                 Добавить
                             </PrimeButton>
@@ -49,8 +57,6 @@
                 :key="slug"
             >
                 <PrimeAccordionHeader>{{ it.title }}</PrimeAccordionHeader>
-
-                <!--   class="flex flex-col justify-center relative my-8 p-4 gap-4 border-1 border-self-4/25 rounded w-full !text-self-7/75" -->
 
                 <PrimeAccordionContent
                     class="child:(flex flex-col justify-center relative p-4 gap-4 border-1 border-self-4/25 rounded w-full !text-self-7/75)"
@@ -98,13 +104,15 @@
                             />
                         </PrimeInputGroupAddon>
 
-                        <PrimeInputText
-                            class="w-full !text-self-7/75"
-                            type="text"
-                            :value="it.link"
-                            v-model="worksEdit[slug].link"
-                            placeholder="link"
-                        />
+                        <PrimeInputGroupAddon class="w-full">
+                            <PrimeInputText
+                                class="w-full !text-self-7/75"
+                                type="text"
+                                :value="it.link"
+                                v-model="worksEdit[slug].link"
+                                placeholder="link"
+                            />
+                        </PrimeInputGroupAddon>
 
                         <PrimeInputGroupAddon>
                             <PrimeCheckbox
@@ -121,7 +129,7 @@
                     <div class="flex gap-4">
                         <PrimeInputText
                             class="w-full !text-self-7/75"
-                            placeholder="slug"
+                            placeholder="title"
                             type="text"
                             :value="it.title"
                             v-model="worksEdit[slug].title"
@@ -245,7 +253,7 @@
 
 <script setup>
 const toast = useToast()
-const newProject = ref({ slug: '', date: '' })
+const newProject = ref({ slug: '', date: new Date().toISOString() })
 
 const worksCategories = await ugc('portfolio/works/categories')
 const worksSubcategories = await ugc('portfolio/works/subcategories')
