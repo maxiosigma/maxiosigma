@@ -1,6 +1,6 @@
 ﻿<template>
     <ClientOnly>
-        <div class="f-c flex-col container py-14 px-20">
+        <div class="f-c flex-col container py-8 px-20">
             <div
                 class="flex flex-col justify-center relative my-8 p-4 gap-4 border-1 border-self-4/25 rounded w-full !text-self-7/75"
                 v-for="[slug, it] in Object.entries(worksEdit)
