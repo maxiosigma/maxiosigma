@@ -1,6 +1,11 @@
 ﻿<template>
     <ClientOnly>
-        <PrimeAccordion class="f-c flex-col container gap-8 py-8 px-20" :value="['1']" multiple>
+        <PrimeAccordion
+            class="f-c flex-col container gap-8 py-8 px-20"
+            :value="accordion"
+            @update:value="(v) => (accordion = v)"
+            multiple
+        >
             <PrimeAccordionPanel
                 class="flex flex-col justify-center relative border-1 border-self-4/25 rounded w-full !text-self-7/75"
                 value="0"
@@ -138,9 +143,9 @@
                         <PrimeInputText
                             class="w-3/7 !text-self-7/75"
                             placeholder="slug"
-                            type="text"
                             :value="slug"
-                            disabled
+                            type="text"
+                            @update:modelValue="(v) => (newSlug[slug] = v)"
                         />
                     </div>
 
@@ -265,7 +270,9 @@
 
 <script setup>
 const toast = useToast()
+const accordion = useCookie('admin-accordion')
 const newProject = ref({ slug: '', date: new Date().toISOString() })
+const newSlug = ref({})
 
 const worksCategories = await ugc('portfolio/works/categories')
 const worksSubcategories = await ugc('portfolio/works/subcategories')
@@ -288,13 +295,18 @@ const [
 ]
 
 const change = async () => {
+    Object.entries(newSlug.value)?.map(([key, val]) => {
+        worksEdit.value = { [val]: worksEdit.value[key], ...worksEdit.value }
+        delete worksEdit.value[key]
+    })
+
     const { body } = await $fetch('/api/works_edit', {
         method: 'post',
         body: worksEdit.value ?? {}
     })
 
     if (body === 'success') {
-        toast.add({ severity: 'success', summary: 'Save', life: 3000 })
+        toast.add({ severity: 'success', summary: 'Save', life: 1000 })
     }
 }
 
