@@ -22,12 +22,12 @@ import { presetFluid } from 'unocss-preset-fluid'
 const isGenerateMode = process.argv.includes('generate')
 
 export default defineConfig({
-    warn: false,
+    //warn: false,
 
-    sortLayers(layers) {
-        //console.log(layers)
-        return layers
-    },
+    //sortLayers(layers) {
+    //    //console.log(layers)
+    //    return layers
+    //},
 
     safelist: [
         //
@@ -49,11 +49,10 @@ export default defineConfig({
     shortcuts: [[/^flex-center$/, ([, c], { theme }) => `flex justify-center items-center`]],
 
     variants: [
-        (matcher) => {
-            if (matcher.startsWith('child:'))
-                return { matcher: '*' + matcher.slice(5), selector: (s) => `${s}` }
-            return matcher
-        }
+        (matcher) =>
+            matcher.startsWith('child:')
+                ? { matcher: '*' + matcher.slice(5), selector: (s) => s }
+                : matcher
     ],
 
     theme: {
@@ -160,7 +159,7 @@ export default defineConfig({
         pipeline: {
             include: [
                 //
-                ///\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
+                /\.(vue|svelte|[jt]sx|mdx?|astro|elm|php|phtml|html)($|\?)/,
                 './node_modules/primevue/**/*.{vue,js,ts,jsx,tsx}',
                 'components/**/*.{js,vue,ts}',
                 'components/*.{js,vue,ts}',
