@@ -129,7 +129,7 @@ useHead({
 <style lang="scss">
 html {
     --at-apply: bg-self-1 flex min-h-full min-w-full relative;
-    //font-size: 12px;
+    font-size: 14px;
 }
 
 head {

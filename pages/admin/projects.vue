@@ -91,6 +91,37 @@
         </PrimeDataTable>
 
         <PrimeDialog
+            v-model:visible="dialog"
+            :style="{ width: '450px' }"
+            header="Product Details"
+            :modal="true"
+        >
+            <!--<div class="flex flex-col gap-6">
+                <div>
+                    <label for="name" class="block font-bold mb-3">Name</label>
+
+                    <InputText
+                        id="name"
+                        v-model.trim="product.name"
+                        required="true"
+                        autofocus
+                        :invalid="submitted && !product.name"
+                        fluid
+                    />
+
+                    <small v-if="submitted && !product.name" class="text-red-500"
+                        >Name is required.</small
+                    >
+                </div>
+            </div>-->
+
+            <template #footer>
+                <PrimeButton label="Cancel" icon="pi pi-times" text @click="hideDialog" />
+                <PrimeButton label="Save" icon="pi pi-check" @click="saveProduct" />
+            </template>
+        </PrimeDialog>
+
+        <PrimeDialog
             v-model:visible="deleteDialog"
             :style="{ width: '450px' }"
             header="Confirm"
@@ -111,6 +142,7 @@
 
 <script setup>
 import { FilterMatchMode } from '@primevue/core/api'
+//https://primevue.org/datatable/#customers
 
 const toast = useToast()
 const filters = ref({
@@ -151,7 +183,11 @@ const deleteSelected = async () => {
 const openNew = () => {
     //product.value = {}
     //submitted.value = false
-    //productDialog.value = true
+    dialog.value = true
+}
+
+const hideDialog = () => {
+    dialog.value = false
 }
 
 useHead({
