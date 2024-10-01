@@ -119,46 +119,33 @@ const filters = ref({
 
 const dialog = ref(false)
 const deleteDialog = ref(false)
-const newProject = ref({ slug: '', date: new Date().toISOString() })
 const selected = ref()
 
 const worksAll = await ugc('portfolio/works/all_test')
 const worksEdit = useLocalStorage('works-all', worksAll)
 
-const change = async () => {
+const confirmDeleteSelected = () => {
+    deleteDialog.value = true
+}
+
+const deleteSelected = async () => {
+    selected.value?.map((it) => delete worksEdit.value[it?.slug])
+
     const { body } = await $fetch('/api/works_edit', {
         method: 'post',
         body: worksEdit.value ?? {}
     })
 
-    if (body === 'success' && newProject.value.slug !== null) {
-        toast.add({ severity: 'success', summary: 'Save', life: 1000 })
-    }
-}
-
-const confirmDeleteProduct = (value) => {
-    //product.value = value
-    console.log(value)
-    deleteDialog.value = true
-}
-
-const confirmDeleteSelected = () => {
-    deleteDialog.value = true
-}
-
-const deleteSelected = () => {
-    //products.value = products.value.filter(val => !selectedProducts.value.includes(val));
-
-    console.log(selected)
+    if (body === 'success')
+        toast.add({
+            severity: 'success',
+            summary: 'Successful',
+            detail: 'Projects Deleted',
+            life: 1000
+        })
 
     deleteDialog.value = false
     selected.value = null
-    toast.add({
-        severity: 'success',
-        summary: 'Successful',
-        detail: 'Products Deleted',
-        life: 1000
-    })
 }
 
 const openNew = () => {
