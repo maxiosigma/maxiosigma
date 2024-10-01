@@ -1,5 +1,7 @@
 import { resolve } from 'path'
 import Aura from '@primevue/themes/aura'
+import { definePreset } from '@primevue/themes'
+import { palette } from '@primevue/themes'
 //import { mkdirSync, writeFileSync, existsSync, unlinkSync } from 'fs'
 import {
     getLocales as locales,
@@ -151,9 +153,14 @@ export default defineNuxtConfig({
         },
         options: {
             ripple: false,
-            inputVariant: 'filled',
+            inputVariant: 'outlined',
+            inputStyle: 'outlined',
             theme: {
-                preset: Aura
+                //preset: Aura
+                preset: preset(),
+                options: {
+                    darkModeSelector: '.darken-max'
+                }
             }
         }
     },
@@ -230,3 +237,67 @@ export default defineNuxtConfig({
 
     compatibilityDate: '2024-07-10'
 })
+
+function preset() {
+    return definePreset(Aura, {
+        semantic: {
+            primary: {
+                50: '{lime.50}',
+                100: '{lime.100}',
+                200: '{lime.200}',
+                300: '{lime.300}',
+                400: '{lime.400}',
+                500: '{lime.500}',
+                600: '{lime.600}',
+                700: '{lime.700}',
+                800: '{lime.800}',
+                900: '{lime.900}',
+                950: '{lime.950}'
+            },
+            surface: {
+                0: '#ffffff',
+                50: '{ocean.50}',
+                100: '{ocean.100}',
+                200: '{ocean.200}',
+                300: '{ocean.300}',
+                400: '{ocean.400}',
+                500: '{ocean.500}',
+                600: '{ocean.600}',
+                700: '{ocean.700}',
+                800: '{ocean.800}',
+                900: '{ocean.900}',
+                950: '{ocean.950}'
+            },
+            colorScheme: {
+                light: {
+                    primary: {
+                        color: '#ffffff',
+                        inverseColor: '#ffffff',
+                        hoverColor: '{lime.900}',
+                        activeColor: '{lime.800}'
+                    },
+                    highlight: {
+                        background: '{lime.950}',
+                        focusBackground: '{lime.700}',
+                        color: '#ffffff',
+                        focusColor: '#ffffff'
+                    }
+                },
+                dark: {
+                    primary: {
+                        color: '{lime.50}',
+                        inverseColor: '{lime.950}',
+                        hoverColor: '{lime.100}',
+                        activeColor: '{lime.200}'
+                    },
+                    highlight: {
+                        background: 'rgba(250, 250, 250, .16)',
+                        focusBackground: 'rgba(250, 250, 250, .24)',
+                        color: 'rgba(255,255,255,.87)',
+                        focusColor: 'rgba(255,255,255,.87)'
+                    }
+                }
+            }
+        }
+    })
+}

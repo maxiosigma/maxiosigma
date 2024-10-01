@@ -34,7 +34,7 @@ onBeforeUnmount(() => {
 
 useHead({
     htmlAttrs: {
-        class: 'html'
+        class: 'html darken-max'
     },
     bodyAttrs: {
         class: 'body'
