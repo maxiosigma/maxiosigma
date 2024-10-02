@@ -1,7 +1,5 @@
 import { resolve } from 'path'
-import Aura from '@primevue/themes/aura'
-import { definePreset } from '@primevue/themes'
-import { palette } from '@primevue/themes'
+import { presetAura, presetPT } from './prime.config.ts'
 //import { mkdirSync, writeFileSync, existsSync, unlinkSync } from 'fs'
 import {
     getLocales as locales,
@@ -156,12 +154,12 @@ export default defineNuxtConfig({
             inputVariant: 'outlined',
             inputStyle: 'outlined',
             theme: {
-                //preset: Aura
-                preset: preset(),
+                preset: presetAura,
                 options: {
                     darkModeSelector: '.darken-max'
                 }
-            }
+            },
+            pt: presetPT
         }
     },
 
@@ -237,67 +235,3 @@ export default defineNuxtConfig({
 
     compatibilityDate: '2024-07-10'
 })
-
-function preset() {
-    return definePreset(Aura, {
-        semantic: {
-            primary: {
-                50: '{amber.50}',
-                100: '{amber.100}',
-                200: '{amber.200}',
-                300: '{amber.300}',
-                400: '{amber.400}',
-                500: '{amber.500}',
-                600: '{amber.600}',
-                700: '{amber.700}',
-                800: '{amber.800}',
-                900: '{amber.900}',
-                950: '{amber.950}'
-            },
-            surface: {
-                0: '#ffffff',
-                50: '{ocean.50}',
-                100: '{ocean.100}',
-                200: '{ocean.200}',
-                300: '{ocean.300}',
-                400: '{ocean.400}',
-                500: '{ocean.500}',
-                600: '{ocean.600}',
-                700: '{ocean.700}',
-                800: '{ocean.800}',
-                900: '{ocean.900}',
-                950: '{ocean.950}'
-            },
-            colorScheme: {
-                light: {
-                    primary: {
-                        color: '#ffffff',
-                        inverseColor: '#ffffff',
-                        hoverColor: '{amber.900}',
-                        activeColor: '{amber.800}'
-                    },
-                    highlight: {
-                        background: '{amber.950}',
-                        focusBackground: '{amber.700}',
-                        color: '#ffffff',
-                        focusColor: '#ffffff'
-                    }
-                },
-                dark: {
-                    primary: {
-                        color: '{amber.50}',
-                        inverseColor: '{amber.950}',
-                        hoverColor: '{amber.100}',
-                        activeColor: '{amber.200}'
-                    },
-                    highlight: {
-                        background: 'rgba(250, 250, 250, .16)',
-                        focusBackground: 'rgba(250, 250, 250, .24)',
-                        color: 'rgba(255,255,255,.87)',
-                        focusColor: 'rgba(255,255,255,.87)'
-                    }
-                }
-            }
-        }
-    })
-}

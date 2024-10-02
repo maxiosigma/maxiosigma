@@ -15,6 +15,8 @@
 
         <PrimeDataTable
             stripedRows
+            resizableColumns
+            columnResizeMode="fit"
             :filters="filters"
             v-model:selection="selected"
             class="min-w-70vw max-w-70vw"
@@ -37,39 +39,6 @@
                         <PrimeInputText v-model="filters['global'].value" placeholder="Search..." />
                     </PrimeIconField>
                 </div>
-
-                <!--<div
-                    class="flex justify-center relative mt-5 max-w-90% mx-a rounded w-full !text-self-7/75 border-1 border-self-4/50 rounded divide-x-10 divide-self-7 child:(!rounded-none !border-transparent w-full)"
-                >
-                    <PrimeInputText
-                        class="!text-self-7/75 border-0"
-                        type="text"
-                        :invalid="newProject.slug === null"
-                        v-model="newProject.slug"
-                        placeholder="slug"
-                    />
-
-                    <PrimeDatePicker
-                        class="child:(!text-self-7/75 !border-0 !rounded-none)"
-                        :modelValue="new Date(newProject.date)"
-                        v-model="newProject.date"
-                        dateFormat="dd-mm-yy"
-                        showButtonBar
-                    />
-
-                    <PrimeButton
-                        class="!text-self-7/75 text-center cursor-pointer"
-                        severity="secondary"
-                        @click="
-                            ;(worksEdit = {
-                                [newProject.slug]: { date: newProject.date },
-                                ...worksEdit
-                            }) && change()
-                        "
-                    >
-                        Добавить
-                    </PrimeButton>
-                </div>-->
             </template>
 
             <PrimeColumn
@@ -87,46 +56,51 @@
                 :field="col.field"
                 :header="col.header"
             >
+                <template v-if="col.field === 'slug'" #body="{ data: { slug } }">
+                    <a :href="'/admin/project_' + slug" target="_blank">{{ slug }}</a>
+                </template>
             </PrimeColumn>
         </PrimeDataTable>
 
         <PrimeDialog
+            class="min-w-30vw"
             v-model:visible="dialog"
-            :style="{ width: '450px' }"
             header="Product Details"
             :modal="true"
         >
-            <!--<div class="flex flex-col gap-6">
-                <div>
-                    <label for="name" class="block font-bold mb-3">Name</label>
+            <div class="flex flex-col gap-6">
+                <PrimeInputText
+                    class="!text-self-7/75 border-0"
+                    type="text"
+                    :invalid="newProject.slug === null"
+                    v-model="newProject.slug"
+                    placeholder="slug"
+                />
 
-                    <InputText
-                        id="name"
-                        v-model.trim="product.name"
-                        required="true"
-                        autofocus
-                        :invalid="submitted && !product.name"
-                        fluid
-                    />
+                <PrimeInputText
+                    class="!text-self-7/75 border-0"
+                    type="text"
+                    :invalid="newProject.title === null"
+                    v-model="newProject.title"
+                    placeholder="title"
+                />
 
-                    <small v-if="submitted && !product.name" class="text-red-500"
-                        >Name is required.</small
-                    >
-                </div>
-            </div>-->
+                <PrimeDatePicker
+                    class="child:(!text-self-7/75 !border-0 !rounded-none)"
+                    :modelValue="new Date(newProject.date)"
+                    v-model="newProject.date"
+                    dateFormat="dd-mm-yy"
+                    showButtonBar
+                />
+            </div>
 
             <template #footer>
                 <PrimeButton label="Cancel" icon="pi pi-times" text @click="hideDialog" />
-                <PrimeButton label="Save" icon="pi pi-check" @click="saveProduct" />
+                <PrimeButton label="Save" icon="pi pi-check" @click="saveProject" />
             </template>
         </PrimeDialog>
 
-        <PrimeDialog
-            v-model:visible="deleteDialog"
-            :style="{ width: '450px' }"
-            header="Confirm"
-            :modal="true"
-        >
+        <PrimeDialog v-model:visible="deleteDialog" header="Confirm" :modal="true">
             <div class="flex items-center gap-4">
                 <i class="pi pi-exclamation-triangle !text-3xl" />
                 <span>Are you sure you want to delete the selected products?</span>
@@ -149,6 +123,8 @@ const filters = ref({
     global: { value: null, matchMode: FilterMatchMode.CONTAINS }
 })
 
+const newProject = ref({ slug: '', title: '', date: new Date().toISOString() })
+
 const dialog = ref(false)
 const deleteDialog = ref(false)
 const selected = ref()
@@ -160,9 +136,7 @@ const confirmDeleteSelected = () => {
     deleteDialog.value = true
 }
 
-const deleteSelected = async () => {
-    selected.value?.map((it) => delete worksEdit.value[it?.slug])
-
+const change = async (message) => {
     const { body } = await $fetch('/api/works_edit', {
         method: 'post',
         body: worksEdit.value ?? {}
@@ -172,10 +146,25 @@ const deleteSelected = async () => {
         toast.add({
             severity: 'success',
             summary: 'Successful',
-            detail: 'Projects Deleted',
+            detail: message,
             life: 1000
         })
+}
 
+const saveProject = async () => {
+    const { slug, date, title } = newProject.value
+
+    worksEdit.value = {
+        [slug]: { date, title },
+        ...worksEdit.value
+    }
+
+    await change('Project Add')
+}
+
+const deleteSelected = async () => {
+    selected.value?.map((it) => delete worksEdit.value[it?.slug])
+    await change('Projects Deleted')
     deleteDialog.value = false
     selected.value = null
 }

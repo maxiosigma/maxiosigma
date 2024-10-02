@@ -7,8 +7,7 @@
             </a>
         </div>
 
-        <ClientOnly>
-            <!--<PrimeAccordion
+        <!--<PrimeAccordion
                 class="f-c flex-col container gap-8 py-8 px-20 m-l-20vw"
                 :value="accordion"
                 @update:value="(v) => (accordion = v)"
@@ -280,7 +279,6 @@
                     </PrimeAccordionContent>
                 </PrimeAccordionPanel>
             </PrimeAccordion>-->
-        </ClientOnly>
     </div>
 </template>
 
@@ -304,10 +302,22 @@ const [
     worksTechnologiesOptions,
     worksTagsOptions
 ] = [
-    Object.entries(worksCategories).map(([key, val]) => ({ name: val.title, value: key })),
-    Object.entries(worksSubcategories).map(([key, val]) => ({ name: val.title, value: key })),
-    Object.entries(worksTechnologies).map(([key, val]) => ({ name: val, value: key })),
-    Object.entries(worksTags).map(([key, val]) => ({ name: val, value: key }))
+    Object.entries(await ugc('portfolio/works/categories')).map(([key, val]) => ({
+        name: val.title,
+        value: key
+    })),
+    Object.entries(await ugc('portfolio/works/subcategories')).map(([key, val]) => ({
+        name: val.title,
+        value: key
+    })),
+    Object.entries(await ugc('portfolio/works/technologies')).map(([key, val]) => ({
+        name: val,
+        value: key
+    })),
+    Object.entries(await ugc('portfolio/works/tags')).map(([key, val]) => ({
+        name: val,
+        value: key
+    }))
 ]
 
 //const change = async () => {
@@ -327,6 +337,6 @@ const [
 //}
 
 useHead({
-    title: 'Projects'
+    title: 'Project'
 })
 </script>

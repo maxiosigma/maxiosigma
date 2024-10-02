@@ -166,6 +166,7 @@ export default defineConfig({
                 'layouts/*.{js,vue,ts}',
                 'pages/**/*.{js,vue,ts}',
                 'pages/*.{js,vue,ts}',
+                'prime.config.ts',
                 'app.vue'
             ]
         }
