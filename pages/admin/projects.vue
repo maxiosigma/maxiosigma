@@ -57,7 +57,9 @@
                 :header="col.header"
             >
                 <template v-if="col.field === 'slug'" #body="{ data: { slug } }">
-                    <a :href="'/admin/project_' + slug" target="_blank">{{ slug }}</a>
+                    <NuxtLink :to="'/admin/project-' + slug.replaceAll('_', '-')" target="_blank">
+                        {{ slug }}
+                    </NuxtLink>
                 </template>
             </PrimeColumn>
         </PrimeDataTable>

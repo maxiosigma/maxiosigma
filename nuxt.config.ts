@@ -179,22 +179,22 @@ export default defineNuxtConfig({
             alwaysRedirect: false,
             redirectOn: 'root'
         },
-        pages: {
-            //defi: false,
-            //'defi/*': false,
-            //documents: { default: false, defi: false },
-            //main: { default: false, defi: false },
-            //news: { default: false, defi: false },
-            //offers: { default: false, defi: false },
-            //portfolio: { default: false, defi: false },
-            //presents: { default: false, defi: false },
-            //projects: { default: false, defi: false },
-            //questions: { default: false, defi: false },
-            //reviews: { default: false, defi: false },
-            //services: { default: false, defi: false },
-            //brands: { default: false, defi: false },
-            //contacts: { default: false, defi: false }
-        },
+        //pages: {
+        //    //defi: false,
+        //    //'defi/*': false,
+        //    //documents: { default: false, defi: false },
+        //    //main: { default: false, defi: false },
+        //    //news: { default: false, defi: false },
+        //    //offers: { default: false, defi: false },
+        //    //portfolio: { default: false, defi: false },
+        //    //presents: { default: false, defi: false },
+        //    //projects: { default: false, defi: false },
+        //    //questions: { default: false, defi: false },
+        //    //reviews: { default: false, defi: false },
+        //    //services: { default: false, defi: false },
+        //    //brands: { default: false, defi: false },
+        //    //contacts: { default: false, defi: false }
+        //},
         langDir: 'locales',
         customRoutes: 'config',
         //customRoutes: 'page',
@@ -231,7 +231,7 @@ export default defineNuxtConfig({
         uno: true
     },
 
-    css: ['~/assets/index.scss'],
+    css: ['~/assets/index.scss']
 
-    compatibilityDate: '2024-07-10'
+    //compatibilityDate: '2024-07-10'
 })

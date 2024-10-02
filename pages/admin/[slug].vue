@@ -1,11 +1,11 @@
 ﻿<template>
     <div class="flex">
-        <div class="fixed min-w-15vw bg-self-2 py-8 px-8 overflow-hidden">
+        <!--<div class="fixed min-w-15vw bg-self-2 py-8 px-8 overflow-hidden">
             <a class="flex items-center gap-2 text-xl text-self-4" href="/admin/projects">
                 <Icon name="octicon:project-roadmap-16" />
                 Projects
             </a>
-        </div>
+        </div>-->
 
         <!--<PrimeAccordion
                 class="f-c flex-col container gap-8 py-8 px-20 m-l-20vw"
@@ -283,42 +283,42 @@
 </template>
 
 <script setup>
-const toast = useToast()
-const accordion = useCookie('admin-accordion')
-const newProject = ref({ slug: '', date: new Date().toISOString() })
-const newSlug = ref({})
+//const toast = useToast()
+//const accordion = useCookie('admin-accordion')
+//const newProject = ref({ slug: '', date: new Date().toISOString() })
+//const newSlug = ref({})
 
-const worksCategories = await ugc('portfolio/works/categories')
-const worksSubcategories = await ugc('portfolio/works/subcategories')
-const worksTechnologies = await ugc('portfolio/works/technologies')
-const worksTags = await ugc('portfolio/works/tags')
+//const worksCategories = await ugc('portfolio/works/categories')
+//const worksSubcategories = await ugc('portfolio/works/subcategories')
+//const worksTechnologies = await ugc('portfolio/works/technologies')
+//const worksTags = await ugc('portfolio/works/tags')
 
-const worksAll = await ugc('portfolio/works/all_test')
-const worksEdit = useLocalStorage('works-all', worksAll)
+//const worksAll = await ugc('portfolio/works/all_test')
+//const worksEdit = useLocalStorage('works-all', worksAll)
 
-const [
-    worksCategoriesOptions,
-    worksSubcategoriesOptions,
-    worksTechnologiesOptions,
-    worksTagsOptions
-] = [
-    Object.entries(await ugc('portfolio/works/categories')).map(([key, val]) => ({
-        name: val.title,
-        value: key
-    })),
-    Object.entries(await ugc('portfolio/works/subcategories')).map(([key, val]) => ({
-        name: val.title,
-        value: key
-    })),
-    Object.entries(await ugc('portfolio/works/technologies')).map(([key, val]) => ({
-        name: val,
-        value: key
-    })),
-    Object.entries(await ugc('portfolio/works/tags')).map(([key, val]) => ({
-        name: val,
-        value: key
-    }))
-]
+//const [
+//    worksCategoriesOptions,
+//    worksSubcategoriesOptions,
+//    worksTechnologiesOptions,
+//    worksTagsOptions
+//] = [
+//    Object.entries(await ugc('portfolio/works/categories')).map(([key, val]) => ({
+//        name: val.title,
+//        value: key
+//    })),
+//    Object.entries(await ugc('portfolio/works/subcategories')).map(([key, val]) => ({
+//        name: val.title,
+//        value: key
+//    })),
+//    Object.entries(await ugc('portfolio/works/technologies')).map(([key, val]) => ({
+//        name: val,
+//        value: key
+//    })),
+//    Object.entries(await ugc('portfolio/works/tags')).map(([key, val]) => ({
+//        name: val,
+//        value: key
+//    }))
+//]
 
 //const change = async () => {
 //    Object.entries(newSlug.value)?.map(([key, val]) => {
@@ -336,7 +336,7 @@ const [
 //    }
 //}
 
-useHead({
-    title: 'Project'
-})
+//useHead({
+//    title: 'Project'
+//})
 </script>
