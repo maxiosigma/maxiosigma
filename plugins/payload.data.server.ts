@@ -78,26 +78,26 @@
         }
     ]
 
-    await Promise.all(
-        baseLocales.map(async (locale) => {
-            await Promise.all(
-                pw.map(async ({ name, path, many, callback = (res) => res }) => {
-                    const data = await queryContent(`/${locale}/${path}`)
-                        ?.where(
-                            !many
-                                ? {
-                                      _path: `/${locale}/${path}`
-                                  }
-                                : {}
-                        )
-                        ?.find()
-                        ?.then(callback)
-                        ?.catch(console.log)
+    //await Promise.all(
+    //    baseLocales.map(async (locale) => {
+    //        await Promise.all(
+    //            pw.map(async ({ name, path, many, callback = (res) => res }) => {
+    //                const data = await queryContent(`/${locale}/${path}`)
+    //                    ?.where(
+    //                        !many
+    //                            ? {
+    //                                  _path: `/${locale}/${path}`
+    //                              }
+    //                            : {}
+    //                    )
+    //                    ?.find()
+    //                    ?.then(callback)
+    //                    ?.catch(console.log)
 
-                    nuxtApp.payload.data[name] = data ?? []
-                    return true
-                })
-            )
-        })
-    )
+    //                nuxtApp.payload.data[name] = data ?? []
+    //                return true
+    //            })
+    //        )
+    //    })
+    //)
 })

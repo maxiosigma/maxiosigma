@@ -12,226 +12,228 @@ const presetLocationNotIndex = onlyNotDefaultPageLocations(['default', 'defi'])
 const isGenerateMode = process.argv.includes('generate')
 
 export default defineNuxtConfig({
-    ssr: true,
-    //dev: true,
-    telemetry: false,
+  ssr: true,
 
-    devtools: { enabled: false },
+  //dev: true,
+  telemetry: false,
 
-    app: {
-        buildAssetsDir: '/public/',
-        rootAttrs: { class: 'wrapper', id: 'app' },
-        head: {
-            charset: 'utf-8',
-            viewport: 'width=device-width, initial-scale=1'
-        }
-    },
+  devtools: { enabled: false },
 
-    alias: {
-        'assets-data': resolve(__dirname, './assets/data')
-    },
+  app: {
+      buildAssetsDir: '/public/',
+      rootAttrs: { class: 'wrapper', id: 'app' },
+      head: {
+          charset: 'utf-8',
+          viewport: 'width=device-width, initial-scale=1'
+      }
+  },
 
-    vue: {
-        //compilerOptions: {
-        //    isCustomElement: (tag) => ['lite'].includes(tag)
-        //}
-    },
+  alias: {
+      'assets-data': resolve(__dirname, './assets/data')
+  },
 
-    router: {
-        options: {
-            hashMode: false,
-            scrollBehaviorType: 'smooth'
-        }
-    },
+  vue: {
+      //compilerOptions: {
+      //    isCustomElement: (tag) => ['lite'].includes(tag)
+      //}
+  },
 
-    experimental: {
-        //appManifest: false,
-        //renderJsonPayloads: true,
-        componentIslands: 'local',
-        //payloadExtraction: !isGenerateMode,
-        //treeshakeClientOnly: false,
-        //sharedPrerenderData: true,
-        //clientNodeCompat: true,
-        //externalVue: false,
-        //typedPages: true,
-        //watcher: 'parcel'
+  router: {
+      options: {
+          hashMode: false,
+          scrollBehaviorType: 'smooth'
+      }
+  },
 
-        defaults: {
-            nuxtLink: {
-                prefetch: false,
-                activeClass: 'page-link-active',
-                exactActiveClass: 'page-link-extract-active',
-                prefetchedClass: 'page-link-prefetch'
-            }
-        }
-    },
+  experimental: {
+      //appManifest: false,
+      //renderJsonPayloads: true,
+      componentIslands: 'local',
+      //payloadExtraction: !isGenerateMode,
+      //treeshakeClientOnly: false,
+      //sharedPrerenderData: true,
+      //clientNodeCompat: true,
+      //externalVue: false,
+      //typedPages: true,
+      //watcher: 'parcel'
 
-    features: {
-        inlineStyles: !isGenerateMode,
-        devLogs: true
-    },
+      defaults: {
+          nuxtLink: {
+              prefetch: false,
+              activeClass: 'page-link-active',
+              exactActiveClass: 'page-link-extract-active',
+              prefetchedClass: 'page-link-prefetch'
+          }
+      }
+  },
 
-    ignore: ['**/z-content/**', '**/z-mod/**', '**/z-old/**', '**/z/**'],
+  features: {
+      inlineStyles: !isGenerateMode,
+      devLogs: true
+  },
 
-    vite: {
-        css: {
-            modules: {
-                generateScopedName: '[hash:8]'
-            }
-        }
-    },
+  ignore: ['**/z-content/**', '**/z-mod/**', '**/z-old/**', '**/z/**'],
 
-    build: {
-        transpile: [
-            //
-            //'primevue'
-        ]
-    },
+  vite: {
+      css: {
+          modules: {
+              generateScopedName: '[hash:8]'
+          }
+      }
+  },
 
-    sourcemap: {
-        server: true,
-        client: true
-    },
+  build: {
+      transpile: [
+          //
+          //'primevue'
+      ]
+  },
 
-    runtimeConfig: {
-        //locales
-    },
+  sourcemap: {
+      server: true,
+      client: true
+  },
 
-    modules: [
-        '@unocss/nuxt',
-        '@formkit/nuxt',
-        '@nuxtjs/i18n',
-        //'@nuxt/content',
-        '@primevue/nuxt-module',
-        '@dargmuesli/nuxt-cookie-control',
-        //'@vite-pwa/nuxt',
-        '@nuxtjs/device',
-        '@vueuse/nuxt',
-        //'@nuxt/eslint',
-        //'nuxt-radash',
-        //'@i2d/nuxt-pdf-frame',
-        //'@nuxtjs/web-vitals',
-        //'nuxt-twemoji',
-        '@nuxt/icon'
-        //'nuxt-maplibre',
-        //'@tresjs/nuxt'
-        //'@nuxt/scripts',
-    ],
+  runtimeConfig: {
+      //locales
+  },
 
-    //webVitals: {
-    //    debug: true,
-    //    provider: 'log',
-    //    disabled: false
-    //},
+  modules: [
+      '@unocss/nuxt',
+      '@formkit/nuxt',
+      '@nuxtjs/i18n',
+      //'@nuxt/content',
+      '@primevue/nuxt-module',
+      '@dargmuesli/nuxt-cookie-control',
+      //'@vite-pwa/nuxt',
+      '@nuxtjs/device',
+      '@vueuse/nuxt',
+      //'@nuxt/eslint',
+      //'nuxt-radash',
+      //'@i2d/nuxt-pdf-frame',
+      //'@nuxtjs/web-vitals',
+      //'nuxt-twemoji',
+      '@nuxt/icon'
+      //'nuxt-maplibre',
+      //'@tresjs/nuxt'
+      //'@nuxt/scripts',
+  ],
 
-    cookieControl: {
-        barPosition: 'bottom-full',
-        closeModalOnClickOutside: false
-    },
+  //webVitals: {
+  //    debug: true,
+  //    provider: 'log',
+  //    disabled: false
+  //},
 
-    //tres: {
-    //    devtools: true
-    //},
+  cookieControl: {
+      barPosition: 'bottom-full',
+      closeModalOnClickOutside: false
+  },
 
-    //lucide: {
-    //    namePrefix: 'LUIcon'
-    //},
+  //tres: {
+  //    devtools: true
+  //},
 
-    //twemoji: {
-    //    expiresIn: 3.154e7
-    //},
+  //lucide: {
+  //    namePrefix: 'LUIcon'
+  //},
 
-    primevue: {
-        usePrimeVue: true,
-        components: {
-            prefix: 'Prime'
-        },
-        directives: {
-            include: '*'
-        },
-        options: {
-            ripple: false,
-            inputVariant: 'outlined',
-            inputStyle: 'outlined',
-            theme: {
-                preset: presetAura,
-                options: {
-                    darkModeSelector: '.darken-max'
-                }
-            },
-            pt: presetPT
-        }
-    },
+  //twemoji: {
+  //    expiresIn: 3.154e7
+  //},
 
-    //pwa: {
-    //    filename: 'max.js',
-    //    injectRegister: 'script-defer',
-    //    registerType: 'autoUpdate'
-    //},
+  primevue: {
+      usePrimeVue: true,
+      components: {
+          prefix: 'Prime'
+      },
+      directives: {
+          include: '*'
+      },
+      options: {
+          ripple: false,
+          inputVariant: 'outlined',
+          inputStyle: 'outlined',
+          theme: {
+              preset: presetAura,
+              options: {
+                  darkModeSelector: '.darken-max'
+              }
+          },
+          pt: presetPT
+      }
+  },
 
-    i18n: {
-        lazy: false,
-        defaultLocale: defaultLocale,
-        strategy: 'prefix_and_default',
-        detectBrowserLanguage: {
-            useCookie: true,
-            cookieKey: 'lang',
-            alwaysRedirect: false,
-            redirectOn: 'root'
-        },
-        //pages: {
-        //    //defi: false,
-        //    //'defi/*': false,
-        //    //documents: { default: false, defi: false },
-        //    //main: { default: false, defi: false },
-        //    //news: { default: false, defi: false },
-        //    //offers: { default: false, defi: false },
-        //    //portfolio: { default: false, defi: false },
-        //    //presents: { default: false, defi: false },
-        //    //projects: { default: false, defi: false },
-        //    //questions: { default: false, defi: false },
-        //    //reviews: { default: false, defi: false },
-        //    //services: { default: false, defi: false },
-        //    //brands: { default: false, defi: false },
-        //    //contacts: { default: false, defi: false }
-        //},
-        langDir: 'locales',
-        customRoutes: 'config',
-        //customRoutes: 'page',
-        locales
-    },
+  //pwa: {
+  //    filename: 'max.js',
+  //    injectRegister: 'script-defer',
+  //    registerType: 'autoUpdate'
+  //},
 
-    icon: {
-        customCollections: [
-            {
-                prefix: 'me',
-                dir: './assets/icons'
-            }
-        ]
-    },
+  i18n: {
+      lazy: false,
+      defaultLocale: defaultLocale,
+      strategy: 'prefix_and_default',
+      detectBrowserLanguage: {
+          useCookie: true,
+          cookieKey: 'lang',
+          alwaysRedirect: false,
+          redirectOn: 'root'
+      },
+      //pages: {
+      //    //defi: false,
+      //    //'defi/*': false,
+      //    //documents: { default: false, defi: false },
+      //    //main: { default: false, defi: false },
+      //    //news: { default: false, defi: false },
+      //    //offers: { default: false, defi: false },
+      //    //portfolio: { default: false, defi: false },
+      //    //presents: { default: false, defi: false },
+      //    //projects: { default: false, defi: false },
+      //    //questions: { default: false, defi: false },
+      //    //reviews: { default: false, defi: false },
+      //    //services: { default: false, defi: false },
+      //    //brands: { default: false, defi: false },
+      //    //contacts: { default: false, defi: false }
+      //},
+      langDir: 'locales',
+      customRoutes: 'config',
+      //customRoutes: 'page',
+      locales
+  },
 
-    //content: {
-    //    csv: false,
-    //    yaml: false,
-    //    markdown: {},
-    //    documentDriven: false,
-    //    contentHead: false,
-    //    experimental: {
-    //        search: {
-    //            indexed: false
-    //        }
-    //    },
-    //    locales: onlyNotDefaultLocations
-    //    //api: {
-    //    //    baseURL: '/content-api/_content'
-    //    //}
-    //},
+  icon: {
+      customCollections: [
+          {
+              prefix: 'me',
+              dir: './assets/icons'
+          }
+      ]
+  },
 
-    unocss: {
-        uno: true
-    },
+  //content: {
+  //    csv: false,
+  //    yaml: false,
+  //    markdown: {},
+  //    documentDriven: false,
+  //    contentHead: false,
+  //    experimental: {
+  //        search: {
+  //            indexed: false
+  //        }
+  //    },
+  //    locales: onlyNotDefaultLocations
+  //    //api: {
+  //    //    baseURL: '/content-api/_content'
+  //    //}
+  //},
 
-    css: ['~/assets/index.scss']
+  unocss: {
+      uno: true
+  },
 
-    //compatibilityDate: '2024-07-10'
+  //compatibilityDate: '2024-07-10'
+  css: ['~/assets/index.scss'],
+
+  compatibilityDate: '2024-10-02'
 })
