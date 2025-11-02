@@ -1,6 +1,7 @@
 ### SITES
 
 - https://maxiosigma-portfolio.web.app
+- https://www.figma.com/@maxiosigma
 
 ### SOCIAL
 
