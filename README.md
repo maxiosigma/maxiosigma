@@ -1,6 +1,6 @@
 ### SITES
 
-https://maxiosigma-portfolio.web.app/
+https://maxiosigma-portfolio.web.app
 
 ### SOCIAL
 
