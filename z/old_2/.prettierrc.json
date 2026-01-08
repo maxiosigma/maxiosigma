@@ -1,0 +1,30 @@
+{
+    "arrowParens": "always",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": false,
+    "trailingComma": "none",
+    "singleQuote": true,
+    "printWidth": 100,
+    "semi": false,
+    "tabWidth": 4,
+    "overrides": [
+        {
+            "files": ["./plugins/content-data-server.ts"],
+            "options": {
+                "printWidth": 1600
+            }
+        },
+        {
+            "files": ["./content/*.json", "./content/**/*.json"],
+            "options": {
+                "printWidth": 200
+            }
+        },
+        {
+            "files": ["./pages/admin/*.vue"],
+            "options": {
+                "printWidth": 100
+            }
+        }
+    ]
+}

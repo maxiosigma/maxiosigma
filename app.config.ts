@@ -1,4 +1,5 @@
-import config from './config'
-const { siteUrl, sitemapName, title } = config
-
-export default defineAppConfig({ siteUrl, sitemapName, title })
+export default defineAppConfig({
+    title: import.meta.env.AppTitle ?? '',
+    sitemap: import.meta.env.AppSitemap ?? '',
+    url: import.meta.env.AppUrl ?? ''
+})

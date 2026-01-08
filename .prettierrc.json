@@ -9,20 +9,9 @@
     "tabWidth": 4,
     "overrides": [
         {
-            "files": ["./plugins/content-data-server.ts"],
+            "files": ["./package.json", "./nuxt.config.ts"],
             "options": {
-                "printWidth": 1600
-            }
-        },
-        {
-            "files": ["./content/*.json", "./content/**/*.json"],
-            "options": {
-                "printWidth": 200
-            }
-        },
-        {
-            "files": ["./pages/admin/*.vue"],
-            "options": {
+                "singleQuote": false,
                 "printWidth": 100
             }
         }

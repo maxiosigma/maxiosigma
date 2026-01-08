@@ -1,0 +1,9 @@
+{
+    "name": "MAXIOSIGMA",
+    "short_name": "MAXIOSIGMA",
+    "description": "@maxiosigma",
+    "theme_color": "#000000",
+    "display": "standalone",
+    "start_url": "/",
+    "icons": []
+}
