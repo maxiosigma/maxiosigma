@@ -35,7 +35,7 @@ useHead({
 
 <style lang="scss">
 html {
-    @apply: bg-default flex min-h-full min-w-full relative;
+    @apply: bg-self-background-soft flex min-h-full min-w-full relative;
     font-size: 14px;
 }
 
@@ -44,7 +44,7 @@ head {
 }
 
 body {
-    @apply: bg-default flex flex-col font-roboto min-h-full min-w-full h-auto max-w-screen
+    @apply: bg-self-background-soft flex flex-col font-roboto min-h-full min-w-full h-auto max-w-screen
         relative m-0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

@@ -13,6 +13,7 @@ export default defineNuxtConfig({
         nuxtLayers: true
     },
     $development: {
+        devtools: { enabled: false },
         devServer: {
             port: 34343
         }
